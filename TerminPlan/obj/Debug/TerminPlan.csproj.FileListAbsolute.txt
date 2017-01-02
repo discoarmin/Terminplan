@@ -1,0 +1,13 @@
+E:\PrjDotNet4.6.2\TerminPlan\TerminPlan\bin\Debug\TerminPlan.exe.config
+E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\TerminPlan.exe
+E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\TerminPlan.pdb
+E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\Zedgraph.dll
+E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\Zedgraph.xml
+E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\de\Zedgraph.resources.dll
+E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\TerminPlan.csprojResolveAssemblyReference.cache
+E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\TerminPlan.Hauptform.resources
+E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\TerminPlan.Properties.Resources.resources
+E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\TerminPlan.csproj.GenerateResource.Cache
+E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\TerminPlan.exe.licenses
+E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\TerminPlan.exe
+E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\TerminPlan.pdb
