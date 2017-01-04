@@ -154,7 +154,7 @@ namespace Terminplan
         /// <param name="e">Ein <see cref="T:System.EventArgs" /> welches die Ereignisdaten enthält.</param>
         protected override void OnLoad(EventArgs e)
         {
-            this.ChangeIcon();                                                  // Farbe anhand des ausgewählten Themes einstellen
+            this.OnChangeIcon();                                                  // Farbe anhand des ausgewählten Themes einstellen
 
             this.OnInitializationStatusChanged(Properties.Resources.Loading);   // Anzeige im Splashscreen aktualisieren
             base.OnLoad(e);
@@ -169,7 +169,7 @@ namespace Terminplan
 
             // Initialisiert die Kontrols auf dem Formular
             this.OnInitializationStatusChanged(Properties.Resources.Initializing); // Anzeige im Splashscreen aktualisieren
-            this.ColorizeImages();                                              // Farbe der Bilder an das eingestellte Farbschema anpassen
+            this.OnColorizeImages();                                              // Farbe der Bilder an das eingestellte Farbschema anpassen
             this.InitializeUI();                                                // Oberfläche initialisieren
 
             // Ereignisprozedur zum Ändern des Schemas festlegen
@@ -395,142 +395,35 @@ namespace Terminplan
         }
         #endregion OnBindProjectData
 
-        #region ChangeIcon
-
+        #region OnChangeIcon
         /// <summary>
-        /// Changes the icon.
+        /// Ändert das Symbol.
         /// </summary>
-        private void ChangeIcon()
+        private void OnChangeIcon()
         {
-            string iconPath = this.themePaths[this.currentThemeIndex].Replace("StyleLibraries.", "Images.AppIcon - ").Replace(".isl", ".ico");
-
-            System.IO.Stream stream = Utilities.GetEmbeddedResourceStream(iconPath);
-            if (stream != null)
-                this.Icon = new Icon(stream);
+            this.ChangeIcon();
         }
+        #endregion OnChangeIcon
 
-        #endregion //ChangeIcon
-
-        #region ColorizeImages
-
+        #region OnColorizeImages
         /// <summary>
         /// Colorizes the images in the large and small imagelists containing the default images, and place the new images in the colorized imagelists.
         /// </summary>
-        private void ColorizeImages()
+        private void OnColorizeImages()
         {
-            // Suspend painting to the UltraToolbarsManager
-            bool shouldSuspendPainting = !this.ultraToolbarsManager1.IsUpdating;
-            if (shouldSuspendPainting)
-                this.ultraToolbarsManager1.BeginUpdate();
-
-            ImageList largeImageList = this.ultraToolbarsManager1.ImageListLarge;
-            ImageList smallImageList = this.ultraToolbarsManager1.ImageListSmall;
-
-            try
-            {
-                this.ultraToolbarsManager1.ImageListLarge = null;
-                this.ultraToolbarsManager1.ImageListSmall = null;
-
-                ToolBase resolveTool = null;
-
-                if (this.ultraToolbarsManager1.Tools.Exists("Insert_Task"))
-                {
-                    resolveTool = this.ultraToolbarsManager1.Tools["Insert_Task"];
-
-                    // loop through all instances looking for the tool in the RibbonGroup.
-                    foreach (ToolBase instanceTool in resolveTool.SharedProps.ToolInstances)
-                    {
-                        if (instanceTool.OwnerIsRibbonGroup)
-                        {
-                            resolveTool = instanceTool;
-                            break;
-                        }
-                    }
-                }
-
-                if (resolveTool == null)
-                    return;
-
-                // Get the resolved colors
-                Dictionary<string, Color> colors = new Dictionary<string, Color>();
-                AppearanceData appData = new AppearanceData();
-                AppearancePropFlags requestedProps = AppearancePropFlags.ForeColor; 
-                resolveTool.ResolveAppearance(ref appData, ref requestedProps);
-                colors["Normal"] = appData.ForeColor;
-
-                appData = new AppearanceData();
-                requestedProps = AppearancePropFlags.ForeColor | AppearancePropFlags.BackColor;
-                resolveTool.ResolveAppearance(ref appData, ref requestedProps, true, false);
-                colors["Active"] = appData.ForeColor;
-
-                if (appData.BackColor.IsEmpty || appData.BackColor.Equals(Color.Transparent))
-                {
-                    appData = new AppearanceData();
-                    requestedProps = AppearancePropFlags.BackColor;
-                    this.ultraToolbarsManager1.Ribbon.Tabs[0].ResolveTabItemAppearance(ref appData, ref requestedProps);
-                    colors["Disabled"] = appData.BackColor;
-                }
-                else
-                    colors["Disabled"] = appData.BackColor;
-
-                Color replacementColor = Color.Magenta;
-
-                Utilities.ColorizeImages(replacementColor, colors, ref this.ilDefaultImagesLarge, ref this.ilColorizedImagesLarge);
-                Utilities.ColorizeImages(replacementColor, colors, ref this.ilDefaultImagesSmall, ref this.ilColorizedImagesSmall);
-
-                // Make sure the UltraToolbarsManager is using the new colorized images
-                largeImageList = this.ilColorizedImagesLarge;
-                smallImageList = this.ilColorizedImagesSmall;
-            }
-            catch
-            {
-                // Make sure the UltraToolbarsManager is using the new colorized images
-                largeImageList = this.ilDefaultImagesLarge;
-                smallImageList = this.ilDefaultImagesSmall;
-            }
-            finally
-            {
-                this.ultraToolbarsManager1.ImageListLarge = largeImageList;
-                this.ultraToolbarsManager1.ImageListSmall = smallImageList;
-
-                // Resume painting on the UltraToolbarsManager
-                if (shouldSuspendPainting)
-                    this.ultraToolbarsManager1.EndUpdate();
-            }
+            this.ColorizeImages();
         }
+        #endregion OnColorizeImages
 
-        #endregion // ColorizeImages
-
-        #region DeleteTask
-
+        #region OnDeleteTask
         /// <summary>
-        /// Deletes the active task
+        /// Lölscht den aktiven Arbeitsinhalt
         /// </summary>
-        private void DeleteTask()
+        private void OnDeleteTask()
         {
-            Task activeTask = this.ultraGanttView1.ActiveTask;
-            try
-            {
-                if (activeTask != null)
-                {
-                    Task parent = activeTask.Parent;
-
-                    if (parent == null)
-                        this.ultraCalendarInfo1.Tasks.Remove(activeTask);
-                    else
-                        parent.Tasks.Remove(activeTask);
-                }
-
-                Task newActiveTask = this.ultraGanttView1.ActiveTask;
-                this.UpdateTasksToolsState(newActiveTask);
-                this.UpdateToolsRequiringActiveTask(newActiveTask != null);
-            }
-            catch (TaskException ex)
-            {
-                UltraMessageBoxManager.Show(ex.Message, rm.GetString("MessageBox_Error"));
-            }
+            this.DeleteTask();
         }
-        #endregion // DeleteTask
+        #endregion OnDeleteTask
 
         #region InitializeUI
 
@@ -572,7 +465,7 @@ namespace Terminplan
             this.ultraGanttView1.PerformAutoSizeAllGridColumns();
 
             // Colorize the images to match the current theme.
-            this.ColorizeImages();
+            this.OnColorizeImages();
 
             this.ultraToolbarsManager1.Ribbon.FileMenuButtonCaption = Properties.Resources.ribbonFileTabCaption;
         }

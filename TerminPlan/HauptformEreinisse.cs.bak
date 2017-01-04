@@ -538,10 +538,10 @@ namespace Terminplan
             #endregion Projekte
 
             //  Legt die Databinding-Mitglieder für Arbeitsinhalte fest
-            #region Tasks
+            #region Arbeitsinhalte
             this.ultraCalendarInfo1.DataBindingsForTasks.SetDataBinding(data, "Tasks");
 
-            // Basic Task properties 
+            // Grundlegende Eigenschaften für die Arbeitsinhalte
             this.ultraCalendarInfo1.DataBindingsForTasks.NameMember = "TaskName";
             this.ultraCalendarInfo1.DataBindingsForTasks.DurationMember = "TaskDuration";
             this.ultraCalendarInfo1.DataBindingsForTasks.StartDateTimeMember = "TaskStartTime";
@@ -552,12 +552,13 @@ namespace Terminplan
             this.ultraCalendarInfo1.DataBindingsForTasks.ConstraintMember = "Constraint";
             this.ultraCalendarInfo1.DataBindingsForTasks.PercentCompleteMember = "TaskPercentComplete";
 
-            // All other properties
+            // Alle anderen Eigenschaften
             this.ultraCalendarInfo1.DataBindingsForTasks.AllPropertiesMember = "AllProperties";
-            #endregion //Tasks
+            #endregion Arbeitsinhalte
 
-            // Set the DataBinding members for Owners
-            #region Owners
+            // Legt die Databinding-Mitglieder für den Besitzer fest.
+            // Wird in die Kalenderinfo eingebunden.
+            #region Besitzer
             this.ultraCalendarInfo1.DataBindingsForOwners.SetDataBinding(data, "Owners");
             this.ultraCalendarInfo1.DataBindingsForOwners.BindingContextControl = this;
             this.ultraCalendarInfo1.DataBindingsForOwners.KeyMember = "Key";
@@ -565,40 +566,40 @@ namespace Terminplan
             this.ultraCalendarInfo1.DataBindingsForOwners.EmailAddressMember = "EmailAddress";
             this.ultraCalendarInfo1.DataBindingsForOwners.VisibleMember = "Visible";
             this.ultraCalendarInfo1.DataBindingsForOwners.AllPropertiesMember = "AllProperties";
-            #endregion //Owners
+            #endregion Besitzer
 
-            // Assign sample project to the GanttView control.
+            // Das Projekt dem GanttView Control zuweisen.
             this.ultraGanttView1.Project = this.ultraGanttView1.CalendarInfo.Projects[1];
-
         }
-
-        #endregion //BindProjectData
+        #endregion BindProjectData
 
         #region ChangeIcon
-
         /// <summary>
-        /// Changes the icon.
+        /// Ändert das Symbol.
         /// </summary>
         private void ChangeIcon()
         {
+            // Anhand des Farbschemas den Namen des zum Farbschema ehörenden Icons zusammensetzen
             string iconPath = this.themePaths[this.currentThemeIndex].Replace("StyleLibraries.", "Images.AppIcon - ").Replace(".isl", ".ico");
 
             System.IO.Stream stream = Utilities.GetEmbeddedResourceStream(iconPath);
-            if (stream != null)
-                this.Icon = new Icon(stream);
-        }
 
-        #endregion //ChangeIcon
+            // Falls Farbschema existiert, dieses laden
+            if (stream != null)
+                this.Icon = new Icon(stream);                                   // Farbschema laden
+        }
+        #endregion ChangeIcon
 
         #region ColorizeImages
-
         /// <summary>
-        /// Colorizes the images in the large and small imagelists containing the default images, and place the new images in the colorized imagelists.
+        /// Färbt die Bilder in den großen und kleinen Bildlisten mit den Standardbildern 
+        /// und platziert die neuen Bilder in den farbigen Bildlisten.
         /// </summary>
         private void ColorizeImages()
         {
-            // Suspend painting to the UltraToolbarsManager
-            bool shouldSuspendPainting = !this.ultraToolbarsManager1.IsUpdating;
+            // Unterbindet das Zeichnen im UltraToolbarsManaer,
+            // damit die neuen Farben eingestellt werden können-
+            bool shouldSuspendPainting = !this.ultraToolbarsManager1.IsUpdating; // Ermitteln, ob gerade gezeichnet wird
             if (shouldSuspendPainting)
                 this.ultraToolbarsManager1.BeginUpdate();
 
