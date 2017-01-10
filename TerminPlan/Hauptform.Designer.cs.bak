@@ -742,7 +742,7 @@
             // 
             this.ultraTouchProvider1.ContainingControl = this;
             this.ultraTouchProvider1.Enabled = false;
-            this.ultraTouchProvider1.PropertyChanged += new Infragistics.Win.PropertyChangedEventHandler(this.ultraTouchProvider1_PropertyChanged);
+            this.ultraTouchProvider1.PropertyChanged += new Infragistics.Win.PropertyChangedEventHandler(this.OnUltraTouchProvider1PropertyChanged);
             // 
             // ultraGanttViewPrintDocument1
             // 

@@ -1,4 +1,4 @@
-﻿namespace ProjectManager
+﻿namespace Terminplan
 {
     partial class SplashScreen
     {

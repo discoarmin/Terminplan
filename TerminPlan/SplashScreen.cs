@@ -1,15 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using System.Resources;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="SplashScreen.cs" company="EST GmbH + CO.KG">
+//   Copyright (c) EST GmbH + CO.KG. All rights reserved.
+// </copyright>
+// <summary>
+//   Startbildschirm für Terminplan.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+// <remarks>
+//     <para>Autor: Armin Brenner</para>
+//     <para>
+//        History : Datum     bearb.  Änderung
+//                  --------  ------  ------------------------------------
+//                  07.01.17  br      Grundversion
+// </para>
+// </remarks>
+// --------------------------------------------------------------------------------------------------------------------
 
-namespace ProjectManager
+namespace Terminplan
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Data;
+    using System.Drawing;
+    using System.Linq;
+    using System.Text;
+    using System.Windows.Forms;
+    using System.Resources;
+
     public partial class SplashScreen : Form
     {
 
@@ -41,7 +59,7 @@ namespace ProjectManager
 
         #region CloseMe
         private void CloseMe()
-        {           
+        {
             this.Close();
             this.Dispose();
         }
@@ -59,16 +77,16 @@ namespace ProjectManager
         #region HookEvents
         private void HookEvents()
         {
-            ProjectManagerForm.InitializationStatusChanged += new InitializationStatusChangedEventHandler(this.Application_InitializationStatusChanged);
-            ProjectManagerForm.InitializationComplete += new EventHandler(this.Application_InitializationComplete);
+            TerminPlanForm.InitializationStatusChanged += new InitializationStatusChangedEventHandler(this.Application_InitializationStatusChanged);
+            TerminPlanForm.InitializationComplete += new EventHandler(this.Application_InitializationComplete);
         }
         #endregion HookEvents
 
         #region UnHookEvents
         private void UnHookEvents()
         {
-            ProjectManagerForm.InitializationStatusChanged -= new InitializationStatusChangedEventHandler(this.Application_InitializationStatusChanged);
-            ProjectManagerForm.InitializationComplete -= new EventHandler(this.Application_InitializationComplete);
+            TerminPlanForm.InitializationStatusChanged -= new InitializationStatusChangedEventHandler(this.Application_InitializationStatusChanged);
+            TerminPlanForm.InitializationComplete -= new EventHandler(this.Application_InitializationComplete);
         }
         #endregion UnHookEvents
 
@@ -84,7 +102,7 @@ namespace ProjectManager
         {
             this.lblAppName.Text = AboutControl.ApplicationName;
             this.lblVersion.Text = string.Format(" v {0}", Infragistics.Shared.AssemblyVersion.MajorMinor);
-            this.lblStatus.Text = string.Format(rm.GetString("Application_Starting"), Properties.Resources.Title.ToUpper());
+            this.lblStatus.Text = string.Format(rm.GetString("Application_Starting"), Properties. Resources.Title.ToUpper());
         }
         #endregion //LocalizeStrings
 
@@ -133,11 +151,11 @@ namespace ProjectManager
         {
             if (visible)
             {
-                // The Application.Run call will force the visible property to 
+                // The Application.Run call will force the visible property to
                 // true but that will cause the splash screen to be activated
                 // thereby deactivating other windows before the app has fully
                 // loaded. In an effort to prevent this, we'll use apis to show
-                // the splash screen without activating it. Note, since we are 
+                // the splash screen without activating it. Note, since we are
                 // showing the form, we have to do the centering and so I removed
                 // the FormStartPosition property setting.
                 //
@@ -186,8 +204,7 @@ namespace ProjectManager
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-
-            ProjectManagerForm.SplashLoadedEvent.Set();
+            TerminPlanForm.SplashLoadedEvent.Set();
         }
         #endregion //OnLoad
 
@@ -239,7 +256,7 @@ namespace ProjectManager
         }
         #endregion InitializationStatusChangedEventArgs
 
-        #endregion Event Args	
+        #endregion Event Args
 
         #endregion //Event-related
     }

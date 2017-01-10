@@ -1,12 +1,30 @@
-﻿using System;
-using System.Drawing;
-using System.Runtime.InteropServices;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="NativeWindowsMethods.cs" company="EST GmbH + CO.KG">
+//   Copyright (c) EST GmbH + CO.KG. All rights reserved.
+// </copyright>
+// <summary>
+//   Definition von API-Methoden.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+// <remarks>
+//     <para>Autor: Armin Brenner</para>
+//     <para>
+//        History : Datum     bearb.  Änderung
+//                  --------  ------  ------------------------------------
+//                  06.01.17  br      Grundversion
+// </para>
+// </remarks>
+// --------------------------------------------------------------------------------------------------------------------
 
-namespace ProjectManager
+// ReSharper disable All
+namespace TerminPlan
 {
+    using System;
+    using System.Runtime.InteropServices;
+
     internal class NativeWindowMethods
     {
-        #region Constants
+        #region Konstanten
 
         internal static readonly IntPtr HWND_TOPMOST = new IntPtr(-1);
 
@@ -18,7 +36,7 @@ namespace ProjectManager
         internal const int WM_NCHITTEST = 0x84;
         internal const int HTTRANSPARENT = (-1);
 
-        #endregion //Constants
+        #endregion Konstanten
 
         #region APIs
 

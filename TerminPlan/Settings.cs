@@ -1,12 +1,29 @@
-﻿namespace ProjectManager.Properties {
-    
-    
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="Settings.cs" company="EST GmbH + CO.KG">
+//   Copyright (c) EST GmbH + CO.KG. All rights reserved.
+// </copyright>
+// <summary>
+//   Zum Definieren von speziellen Nachrichten der Settings-Klasse.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+// <remarks>
+//     <para>Autor: Armin Brenner</para>
+//     <para>
+//        History : Datum     bearb.  Änderung
+//                  --------  ------  ------------------------------------
+//                  07.01.17  br      Grundversion
+// </para>
+// </remarks>
+// --------------------------------------------------------------------------------------------------------------------
+namespace Terminplan.Properties 
+{
     // This class allows you to handle specific events on the settings class:
     //  The SettingChanging event is raised before a setting's value is changed.
     //  The PropertyChanged event is raised after a setting's value is changed.
     //  The SettingsLoaded event is raised after the setting values are loaded.
     //  The SettingsSaving event is raised before the setting values are saved.
-    internal sealed partial class Settings {
+    internal sealed partial class Settings 
+    {
         
         public Settings() {
             // // To add event handlers for saving and changing settings, uncomment the lines below:

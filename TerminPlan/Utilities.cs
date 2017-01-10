@@ -1,22 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Infragistics.Win;
-using System.Data;
-using System.Diagnostics;
-using System.Reflection;
-using System.Drawing;
-using System.Windows.Forms;
-using Infragistics.Win.UltraWinToolbars;
-using System.Resources;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="Utilities.cs" company="EST GmbH + CO.KG">
+//   Copyright (c) EST GmbH + CO.KG. All rights reserved.
+// </copyright>
+// <summary>
+//   Dienstprogramme für Terminplan.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+// <remarks>
+//     <para>Autor: Armin Brenner</para>
+//     <para>
+//        History : Datum     bearb.  Änderung
+//                  --------  ------  ------------------------------------
+//                  06.01.17  br      Grundversion
+// </para>
+// </remarks>
+// --------------------------------------------------------------------------------------------------------------------
 
-namespace ProjectManager
+namespace Terminplan
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using Infragistics.Win;
+    using System.Data;
+    using System.Diagnostics;
+    using System.Reflection;
+    using System.Drawing;
+    using System.Windows.Forms;
+    using Infragistics.Win.UltraWinToolbars;
+    using System.Resources;
+
     /// <summary>
     /// Utility class to perform context-independent functionality
     /// </summary>
-    internal class Utilities
+    internal class DienstProgramme
     {
 
         #region Static ExecutingAssembly
@@ -108,7 +126,7 @@ namespace ProjectManager
         internal static string GetAssemblyAttribute<T>(Func<T, string> value)
             where T : Attribute
         {
-            T attribute = (T)Attribute.GetCustomAttribute(Utilities.ExecutingAssembly, typeof(T));
+            T attribute = (T)Attribute.GetCustomAttribute(DienstProgramme.ExecutingAssembly, typeof(T));
             return value.Invoke(attribute);
         }
 
@@ -142,7 +160,7 @@ namespace ProjectManager
         /// <returns></returns>
         internal static System.IO.Stream GetEmbeddedResourceStream(string resourceName)
         {
-            System.IO.Stream stream = Utilities.ExecutingAssembly.GetManifestResourceStream(resourceName);
+            System.IO.Stream stream = DienstProgramme.ExecutingAssembly.GetManifestResourceStream(resourceName);
             Debug.Assert(stream != null, "Unable to locate embedded resource.", "Resource name: {0}", resourceName);
             return stream;
         }
@@ -172,7 +190,7 @@ namespace ProjectManager
         /// <returns></returns>
         internal static string[] GetStyleLibraryResourceNames()
         {
-            List<string> resourceStrings = new List<string>(Utilities.ExecutingAssembly.GetManifestResourceNames());
+            List<string> resourceStrings = new List<string>(DienstProgramme.ExecutingAssembly.GetManifestResourceNames());
 
             return resourceStrings.FindAll(i => i.EndsWith(".isl")).ToArray();
         }

@@ -1,33 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using System.Resources;
-using Infragistics.Win;
-using Infragistics.Win.UltraWinSchedule;
-using Infragistics.Win.UltraWinGanttView.Grid;
-using Infragistics.Win.UltraWinGrid;
-using Infragistics.Win.UltraWinGanttView.Internal;
-using Infragistics.Win.UltraWinToolbars;
-using Infragistics.Win.UltraWinSchedule.TaskUI;
-using Infragistics.Win.UltraWinGanttView;
-using Infragistics.Win.UltraMessageBox;
-using Infragistics.Win.UltraWinListView;
-using System.Diagnostics;
-using Infragistics.Shared;
-using Infragistics.Win.Printing;
-using System.Threading;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="HauptForm.cs" company="EST GmbH + CO.KG">
+//   Copyright (c) EST GmbH + CO.KG. All rights reserved.
+// </copyright>
+// <summary>
+//   Definiert die Hauptform.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+// <remarks>
+//     <para>Autor: Armin Brenner</para>
+//     <para>
+//        History : Datum     bearb.  Änderung
+//                  --------  ------  ------------------------------------
+//                  06.01.17  br      Grundversion
+// </para>
+// </remarks>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace Terminplan
 {
+    using System;
+    using System.Data;
+    using System.Windows.Forms;
+    using System.Resources;
+
+    using Infragistics.Win.UltraWinSchedule;
+    using Infragistics.Win.UltraWinToolbars;
+    using Infragistics.Win.UltraWinSchedule.TaskUI;
+    using Infragistics.Win.UltraWinGanttView;
+
+    using System.Threading;
+
     /// <summary>
-    /// Class TerminplanForm.
+    /// Klasse TerminPlanForm (Hauptformular).
     /// </summary>
     /// <seealso cref="System.Windows.Forms.Form" />
-    public partial class TerminplanForm : Form
+    public partial class TerminPlanForm
     {
         #region Aufzählungen
         #region GanttViewAktion
@@ -76,13 +83,13 @@ namespace Terminplan
 
         #region Variablen
         /// <summary> Merker für rekursive Zellaktivierung </summary>
-        private bool cellActivationRecursionFlag = false;                       // keine rekursive Zellaktivierung
+        private bool cellActivationRecursionFlag;                               // Merker rekursive Zellaktivierung
         
         /// <summary> Index des momentanen Farbschemas </summary>
         private int currentThemeIndex;
         
         /// <summary> Der ResourceManager </summary>
-        private ResourceManager rm = Terminplan.Properties.Resources.ResourceManager;
+        private ResourceManager rm = TerminPlan.Properties.Resources.ResourceManager;
         
         /// <summary> Ereignis, wenn der Begrüßungsbildschrm geladen wurde </summary>
         private static ManualResetEvent splashLoadedEvent;
@@ -99,13 +106,14 @@ namespace Terminplan
 
         #region Konstruktor
         /// <summary>
-        /// Initializes a new instance of the <see cref="TerminplanForm" /> class.
+        /// Initialisiert eine neue Instanz der <see cref="TerminPlanForm" /> Klasse.
         /// </summary>
-        public TerminplanForm()
+        public TerminPlanForm()
         {
             splashLoadedEvent = new ManualResetEvent(false);
 
-            ThreadStart threadStart = new ThreadStart(this.ShowSplashScreen);
+            // Splaschscreen anzeigen
+            ThreadStart threadStart = new ThreadStart(this.OnShowSplashScreen);
             Thread thread = new Thread(threadStart);
             thread.Name = "Splash Screen";
             thread.Start();
@@ -113,7 +121,7 @@ namespace Terminplan
 
             // Minimieren der Initialisierungszeit durch Laden der Stilbibliothek
             // vor InitializeComponent(),
-            // andernfalls werden alle Metriken nach dem Ändern des Themas neu berechnet.            this.themePaths = Utilities.GetStyleLibraryResourceNames();
+            // andernfalls werden alle Metriken nach dem Ändern des Themas neu berechnet.            this.themePaths = DienstProgramme.GetStyleLibraryResourceNames();
             for (int i = 0; i < this.themePaths.Length; i++)
             {
                 if (this.themePaths[i].Contains("02"))
@@ -124,7 +132,7 @@ namespace Terminplan
             }
 
             // Eingebettete Ressourcen laden
-            Infragistics.Win.AppStyling.StyleManager.Load(Utilities.GetEmbeddedResourceStream(this.themePaths[this.currentThemeIndex]));
+            Infragistics.Win.AppStyling.StyleManager.Load(DienstProgramme.GetEmbeddedResourceStream(this.themePaths[this.currentThemeIndex]));
             InitializeComponent();
         }
         #endregion Konstruktor
@@ -154,26 +162,26 @@ namespace Terminplan
         /// <param name="e">Ein <see cref="T:System.EventArgs" /> welches die Ereignisdaten enthält.</param>
         protected override void OnLoad(EventArgs e)
         {
-            this.OnChangeIcon();                                                  // Farbe anhand des ausgewählten Themes einstellen
+            this.OnChangeIcon();                                                // Farbe anhand des ausgewählten Themes einstellen
 
-            this.OnInitializationStatusChanged(Properties.Resources.Loading);   // Anzeige im Splashscreen aktualisieren
+            this.OnInitializationStatusChanged(TerminPlan.Properties.Resources.Loading);   // Anzeige im Splashscreen aktualisieren
             base.OnLoad(e);
 
             // Ruft die Daten aus der bereitgestellten XML-Datei ab
-            this.OnInitializationStatusChanged(Properties.Resources.Retrieving);    // Daten im Splashscreen aktualisieren
-            DataSet dataset = Utilities.GetData("Terminplan.Data.TestDaten.XML");   // Testdaten laden
+            this.OnInitializationStatusChanged(TerminPlan.Properties.Resources.Retrieving); // Daten im Splashscreen aktualisieren
+            var dataset = DienstProgramme.GetData("Terminplan.Data.TestDaten.XML");         // Testdaten laden
 
             // Die eingelesenen Daten an die ultraCalendarInfo anbinden. 
-            this.OnInitializationStatusChanged(Properties.Resources.Binding);   // Anzeige im Splashscreen aktualisieren
-            this.OnBindProjectData(dataset);                                      // Daten an ultraCalendarInfo anbinden
+            this.OnInitializationStatusChanged(TerminPlan.Properties.Resources.Binding);    // Anzeige im Splashscreen aktualisieren
+            this.OnBindArbInhaltData(dataset);                                  // Daten an ultraCalendarInfo anbinden
 
             // Initialisiert die Kontrols auf dem Formular
-            this.OnInitializationStatusChanged(Properties.Resources.Initializing); // Anzeige im Splashscreen aktualisieren
-            this.OnColorizeImages();                                              // Farbe der Bilder an das eingestellte Farbschema anpassen
-            this.InitializeUI();                                                // Oberfläche initialisieren
+            this.OnInitializationStatusChanged(TerminPlan.Properties.Resources.Initializing); // Anzeige im Splashscreen aktualisieren
+            this.OnColorizeImages();                                            // Farbe der Bilder an das eingestellte Farbschema anpassen
+            this.OnInitializeUI();                                              // Oberfläche initialisieren
 
             // Ereignisprozedur zum Ändern des Schemas festlegen
-            Infragistics.Win.AppStyling.StyleManager.StyleChanged += new Infragistics.Win.AppStyling.StyleChangedEventHandler(OnApplicationStyleChanged);
+            Infragistics.Win.AppStyling.StyleManager.StyleChanged += this.OnApplicationStyleChanged;
         }
         #endregion OnLoad
 
@@ -384,16 +392,16 @@ namespace Terminplan
         }
         #endregion OnAddNewTask
 
-        #region OnBindProjectData
+        #region OnBindArbInhaltData
         /// <summary>
         /// Bindet die Daten an die UltraCalendarInfo
         /// </summary>
         /// <param name="data">Die Daten.</param>
-        private void OnBindProjectData(DataSet data)
+        private void OnBindArbInhaltData(DataSet data)
         {
-            this.BindProjectData(data);
+            this.BindArbInhaltData(data);
         }
-        #endregion OnBindProjectData
+        #endregion OnBindArbInhaltData
 
         #region OnChangeIcon
         /// <summary>
@@ -409,7 +417,7 @@ namespace Terminplan
         /// <summary>
         /// Färbt die Bilder in den großen und kleinen Bildlisten mit den Standardbildern 
         /// und platziert die neuen Bilder in den farbigen Bildlisten.
-,        /// </summary>
+       /// </summary>
         private void OnColorizeImages()
         {
             this.ColorizeImages();
@@ -418,7 +426,7 @@ namespace Terminplan
 
         #region OnDeleteTask
         /// <summary>
-        /// Löscht den aktiven Arbeitsinhalt
+        /// Löscht den aktiven Arbeitsinhalt, oder die aktive Aufgabe
         /// </summary>
         private void OnDeleteTask()
         {
@@ -426,413 +434,181 @@ namespace Terminplan
         }
         #endregion OnDeleteTask
 
-        #region InitializeUI
-
+        #region OnInitializeUI
         /// <summary>
-        /// Initializes the UI.
+        /// Initialisiert die Oberfläche.
         /// </summary>
-        private void InitializeUI()
+        private void OnInitializeUI()
         {
-            // Populate the themes list
-            int selectedIndex = 0;
-            ListTool themeTool = (ListTool)this.ultraToolbarsManager1.Tools["ThemeList"];
-            foreach (string resourceName in this.themePaths)
-            {
-                ListToolItem item = new ListToolItem(resourceName);
-                string libraryName = resourceName.Replace(".isl", string.Empty);
-                item.Text = libraryName.Remove(0, libraryName.LastIndexOf('.') + 1);
-                themeTool.ListToolItems.Add(item);
+            this.InitializeUI();                                                // Oberfläche initialisieren
+        }
+        #endregion OnInitializeUI
 
-                if (item.Text.Contains("02"))
-                    selectedIndex = item.Index;
-            }
-            themeTool.SelectedItemIndex = selectedIndex;
+        #region OnMoveTask
+        /// <summary>
+        /// Verschiebt Start- und Enddatum der Aufgabe rückwärts oder vorwärts um eine bestimmte Zeitspanne
+        /// </summary>
+        /// <param name="action">Aufzählung der unterstützten ganttView-Aktionen</param>
+        /// <param name="moveTimeSpan">Zeitspanne zum Verschieben des Start- und Enddatums der Aufgabe</param>
+        private void OnMoveTask(GanttViewAction action, TimeSpanForMoving moveTimeSpan)
+        {
+            this.MoveTask(action, moveTimeSpan);
+        }
+        #endregion  OnMoveTask
 
-            // Select the proper touch mode list item.
-            ((ListTool)this.ultraToolbarsManager1.Tools["TouchMode"]).SelectedItemIndex = 0;
+        #region OnPerformIndentOrOutdent
+        /// <summary>
+        /// Führt Einrückung oder Auslagerung der aktiven Aufgabe oder des aktivev Arbeitsinhalts durch
+        /// </summary>
+        /// <param name="action">die auszuführende Aktion(Einrückung oder Auslagerung)</param>
+        private void OnPerformIndentOrOutdent(GanttViewAction action)
+        {
+            this.PerformIndentOrOutdent(action);
+        }
+        #endregion OnPerformIndentOrOutdent
 
-            // Creates a valueList with various font sizes
+        #region OnPopulateFontSizeValueList
+        /// <summary>
+        /// Liste mit den Schriftgrößen erstellen
+        /// </summary>
+        private void OnPopulateFontSizeValueList()
+        {
             this.PopulateFontSizeValueList();
-            ((ComboBoxTool)(this.ultraToolbarsManager1.Tools["FontSize"])).SelectedIndex = 0;
-            ((FontListTool)this.ultraToolbarsManager1.Tools["FontList"]).SelectedIndex = 0;
-            this.UpdateFontToolsState(false);
-
-            Control control = new AboutControl();
-            control.Visible = false;
-            control.Parent = this;
-            ((PopupControlContainerTool)this.ultraToolbarsManager1.Tools["About"]).Control = control;
-
-            // Autosize the columns so all the data is visible.
-            this.ultraGanttView1.PerformAutoSizeAllGridColumns();
-
-            // Colorize the images to match the current theme.
-            this.OnColorizeImages();
-
-            this.ultraToolbarsManager1.Ribbon.FileMenuButtonCaption = Properties.Resources.ribbonFileTabCaption;
         }
+        #endregion OnPopulateFontSizeValueList
 
-        #endregion //InitializeUI
-
-        #region MoveTask
-
+        #region OnSetTaskPercentage
         /// <summary>
-        /// Moves start and end dates of the task backward or foward by a specific timespan
+        /// Weist der aktiven Aufgabe oder der aktiven Arbeitsanweisung einen Prozentsatz des Fertigungsgrads zu       
         /// </summary>
-        /// <param name="action">Enumeration of ganttView actions supported</param>
-        /// <param name="moveTimeSpan">TimeSpan for moving the start and end dates of the task</param>
-        private void MoveTask(GanttViewAction action, TimeSpanForMoving moveTimeSpan)
+        /// <param name="prozentSatz">der zuzuweisende Prozentsatz</param>
+        private void OnSetTaskPercentage(float prozentSatz)
         {
-            Task activeTask = this.ultraGanttView1.ActiveTask;
-
-            if (activeTask != null && activeTask.IsSummary == false)
-            {
-                switch (action)
-                {
-                    case GanttViewAction.MoveTaskDateForward:
-                        {
-                            switch (moveTimeSpan)
-                            {
-                                case TimeSpanForMoving.OneDay:
-                                    activeTask.StartDateTime = activeTask.StartDateTime.AddDays(1);
-                                    break;
-                                case TimeSpanForMoving.OneWeek:
-                                    activeTask.StartDateTime = activeTask.StartDateTime.AddDays(7);
-                                    break;
-                                case TimeSpanForMoving.FourWeeks:
-                                    activeTask.StartDateTime = activeTask.StartDateTime.AddDays(28);
-                                    break;
-                            }
-                        }
-                        break;
-
-                    case GanttViewAction.MoveTaskDateBackward:
-                        {
-                            switch (moveTimeSpan)
-                            {
-                                case TimeSpanForMoving.OneDay:
-                                    activeTask.StartDateTime = activeTask.StartDateTime.Subtract(TimeSpan.FromDays(1));
-                                    break;
-                                case TimeSpanForMoving.OneWeek:
-                                    activeTask.StartDateTime = activeTask.StartDateTime.Subtract(TimeSpan.FromDays(7));
-                                    break;
-                                case TimeSpanForMoving.FourWeeks:
-                                    activeTask.StartDateTime = activeTask.StartDateTime.Subtract(TimeSpan.FromDays(28));
-                                    break;
-                            }
-                        }
-                        break;
-                }
-            }
+            this.SetTaskPercentage(prozentSatz);
         }
-        #endregion  // MoveTask
+        #endregion OnSetTaskPercentage
 
-        #region PerformIndentOrOutdent
-
+        #region OnSetTextBackColor
         /// <summary>
-        /// Perfoms indent or outdent on active task
+        /// Aktualisiert den Wert der Hintergrundfarbe des Textes in der aktiven Zelle abhängig von der 
+        /// im PopupColorPickerTool ausgewählten Farbe.
         /// </summary>
-        /// <param name="action">Action to be performed(indent or outdent)</param>
-        private void PerformIndentOrOutdent(GanttViewAction action)
+        private void OnSetTextBackColor()
         {
-            Task activeTask = this.ultraGanttView1.ActiveTask;
-
-            try
-            {
-                if (activeTask != null)
-                {
-                    switch (action)
-                    {
-                        case GanttViewAction.IndentTask:
-                            if (activeTask.CanIndent())
-                                activeTask.Indent();
-                            break;
-                        case GanttViewAction.OutdentTask:
-                            if (activeTask.CanOutdent())
-                                activeTask.Outdent();
-                            break;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                UltraMessageBoxManager.Show(ex.Message, rm.GetString("MessageBox_Error"));
-            }
+            this.SetTextBackColor();
         }
-        #endregion // PerformIndentOrOutdent
+        #endregion OnSetTextBackColor
 
-        #region PopulateFontSizeValueList
-
+        #region OnSetTextForeColor
         /// <summary>
-        /// Populates the list of font sizes
+        /// Aktualisiert den Wert der Vordergrundfarbe des Textes in der aktiven Zelle abhängig von der 
+        /// im PopupColorPickerTool ausgewählten Farbe.
         /// </summary>
-        private void PopulateFontSizeValueList()
+        private void OnSetTextForeColor()
         {
-            List<float> fontSizeList = new List<float> ( new float [] { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72}); 
-            foreach(float i in fontSizeList)
-            {
-               ((ComboBoxTool)(this.ultraToolbarsManager1.Tools["FontSize"])).ValueList.ValueListItems.Add(i);
-            }
+            this.SetTextForeColor();
         }
-        #endregion // PopulateFontSizeValueList
+        #endregion OnSetTextForeColor
 
-        #region SetTaskPercentage
+        #region OnShowSplashScreen
 
         /// <summary>
-        /// Assigns a percentage complete value to the active task
+        /// Begrüßungsbildschirm anzeigen.
         /// </summary>
-        /// <param name="percent">Percentage to be assigned to the active task</param>
-        private void SetTaskPercentage(float percent)
+        private void OnShowSplashScreen()
         {
-            Task activeTask = this.ultraGanttView1.ActiveTask;
-            try
-            {
-                if (activeTask != null)
-                {
-                    activeTask.PercentComplete = percent;
-                }
-            }
-            catch (TaskException ex)
-            {
-                UltraMessageBoxManager.Show(ex.Message, rm.GetString("MessageBox_Error"));
-            }
+            this.ShowSplashScreen();
         }
-        #endregion // SetTaskPercentage
+        #endregion OnShowSplashScreen
 
-        #region SetTextBackColor
+        #region OnUpdateFontToolsState
 
         /// <summary>
-        /// Updates size of the background color of the active cell depending upon the color
-        /// selected from the PopupColorPickerTool.
+        /// Aktualisiert die Enabled-Eigenschaft für Werkzeuge in der RibbonGruppe "RibbonGrp_Font"
         /// </summary>
-        private void SetTextBackColor()
+        /// <param name="enabled">falls auf <c>true</c> gesetzt ist, freigeben.</param>
+        private void OnUpdateFontToolsState(bool enabled)
         {
-            Color fontBGColor = ((PopupColorPickerTool)this.ultraToolbarsManager1.Tools["Font_BackColor"]).SelectedColor;
-            Task activeTask = this.ultraGanttView1.ActiveTask;
-            if (activeTask != null)
-            {
-                TaskField? activeField = this.ultraGanttView1.ActiveField;
-                if (activeField.HasValue)
-                {
-                    activeTask.GridSettings.CellSettings[(TaskField)activeField].Appearance.BackColor = fontBGColor;
-                }
-            }
+            DienstProgramme.SetRibbonGroupToolsEnabledState(this.ultraToolbarsManager1.Ribbon.Tabs[0].Groups["RibbonGrp_Font"], enabled);
         }
-        #endregion //SetTextBackColor
+        #endregion OnUpdateFontToolsState
 
-        #region SetTextForeColor
-
-        /// <summary>
-        /// Updates fore color of the text in the active cell depending upon the color
-        /// selected from the PopupColorPickerTool.
-        /// </summary>
-        private void SetTextForeColor()
+        #region OnUpdateFontName
+        /// <summary> Aktualisiert den Namen der Schriftart je nach dem im FontListTool ausgewählten Wert. </summary>
+        private void OnUpdateFontName()
         {
-            Color fontColor = ((PopupColorPickerTool)this.ultraToolbarsManager1.Tools["Font_ForeColor"]).SelectedColor;
-            Task activeTask = this.ultraGanttView1.ActiveTask;
-            if (activeTask != null)
-            {
-                TaskField? activeField = this.ultraGanttView1.ActiveField;
-                if (activeField.HasValue)
-                {
-                    activeTask.GridSettings.CellSettings[(TaskField)activeField].Appearance.ForeColor = fontColor;
-                }
-            }
+            this.UpdateFontName();
         }
-        #endregion // SetTextForeColor
+        #endregion OnUpdateFontName
 
-        #region ShowSplashScreen
-
-        /// <summary>
-        /// Shows the splash screen.
-        /// </summary>
-        private void ShowSplashScreen()
+        #region OnUpdateFontSize
+        /// <summary> Aktualisiert die Schriftgröße je nach dem im ComboBoxTool ausgewählten Wert. </summary>
+        private void OnUpdateFontSize()
         {
-            SplashScreen splashScreen = new SplashScreen();
-            Application.Run(splashScreen);
-            Application.ExitThread();
+            this.UpdateFontSize();
         }
-        #endregion //ShowSplashScreen
+        #endregion OnUpdateFontSize
 
-        #region UpdateFontToolsState
-
-        /// <summary>
-        /// Updates the Enabled property for tools in the Font RibbonGroup
-        /// </summary>
-        /// <param name="enabled">if set to <c>true</c> [enabled].</param>
-        private void UpdateFontToolsState(bool enabled)
+        #region OnUpdateFontProperty
+        /// <summary>Methode, um verschiedene Eigenschaften der Schriftart zu aktualisieren</summary>
+        /// <param name="propertyToUpdate">Aufzählung von Eigenschaften, welche von der Schriftart abhängig sind</param>
+        private void OnUpdateFontProperty(FontProperties propertyToUpdate)
         {
-            Utilities.SetRibbonGroupToolsEnabledState(this.ultraToolbarsManager1.Ribbon.Tabs[0].Groups["RibbonGrp_Font"], enabled);
+            this.UpdateFontProperty(propertyToUpdate);
         }
+        #endregion OnUpdateFontProperty
 
-        #endregion // UpdateFontToolsState
+        #region OnUpdateTasksToolsState
 
-        #region UpdateFontName
-
-        /// <summary>
-        /// Updates the font depending upon the value selected from the FontListTool.
-        /// </summary>
-        private void UpdateFontName()
+        /// <summary> Überprüft den Status der Werkzeuge in der RibbonGruppe "RibbonGrp_Tasks" </summary>
+        /// <param name="activeTask">Der aktive Arbeitsinhalt oder die aktive Aufgabe.</param>
+        private void OnUpdateTasksToolsState(Task activeTask)
         {
-            string fontName = ((FontListTool)this.ultraToolbarsManager1.Tools["FontList"]).Text;
-            Task activeTask = this.ultraGanttView1.ActiveTask;
-            if (activeTask != null)
-            {
-                TaskField? activeField = this.ultraGanttView1.ActiveField;
-                if (activeField.HasValue)
-                {
-                    activeTask.GridSettings.CellSettings[(TaskField)activeField].Appearance.FontData.Name = fontName;
-                }
-            }
+            this.UpdateTasksToolsState(activeTask);
         }
-        #endregion // UpdateFontName
+        #endregion OnUpdateTasksToolsState
 
-        #region UpdateFontSize
-
-        /// <summary>
-        /// Updates size of the font depending upon the value selected from the ComboBoxTool.
-        /// </summary>
-        private void UpdateFontSize()
+        #region OnUpdateToolsRequiringActiveTask
+        /// <summary> Überprüft den Status aller Werkzeuge, die eine aktiven Arbeitsinhalt erfordern. </summary>
+        /// <param name="enabled">falls auf <c>true</c>gesetzt, wird Werkzeug freigegeben, sonst gesperrt.</param>
+        private void OnUpdateToolsRequiringActiveTask(bool enabled)
         {
-            ValueListItem item = (ValueListItem)((ComboBoxTool)(this.ultraToolbarsManager1.Tools["FontSize"])).SelectedItem;
-            if (item != null)
-            {
-                float fontSize = (float)item.DataValue;
-                Task activeTask = this.ultraGanttView1.ActiveTask;
-                if (activeTask != null)
-                {
-                    TaskField? activeField = this.ultraGanttView1.ActiveField;
-                    if (activeField.HasValue)
-                    {
-                        activeTask.GridSettings.CellSettings[(TaskField)activeField].Appearance.FontData.SizeInPoints = fontSize;
-                    }
-                }
-            }
+            this.UpdateToolsRequiringActiveTask(enabled);
         }
-        #endregion // UpdateFontSize
+        #endregion OnUpdateToolsRequiringActiveTask
+        #endregion Methoden
 
-        #region UpdateFontProperty
+        #region SplashScreen Ereignisse
+        #region Ereignisse
 
-        /// <summary>
-        /// Method to update various font properties.
-        /// </summary>
-        /// <param name="propertyToUpdate">Enumeration of font related properties</param>
-        private void UpdateFontProperty(FontProperties propertyToUpdate)
-        {
-            Task activeTask = this.ultraGanttView1.ActiveTask;
-            if (activeTask != null)
-            {
-                TaskField? activeField = this.ultraGanttView1.ActiveField;
-                if (activeField.HasValue)
-                {
-                    FontData activeTaskActiveCellFontData = activeTask.GridSettings.CellSettings[(TaskField)activeField].Appearance.FontData;
-                    switch (propertyToUpdate)
-                    {
-                        case FontProperties.Bold:
-                            activeTaskActiveCellFontData.Bold = Utilities.ToggleDefaultableBoolean(activeTaskActiveCellFontData.Bold);
-                            break;
-                        case FontProperties.Italics:
-                            activeTaskActiveCellFontData.Italic = Utilities.ToggleDefaultableBoolean(activeTaskActiveCellFontData.Italic);
-                            break;
-                        case FontProperties.Underline:
-                            activeTaskActiveCellFontData.Underline = Utilities.ToggleDefaultableBoolean(activeTaskActiveCellFontData.Underline);
-                            break;
-                    }
-                }
-            }
-            this.cellActivationRecursionFlag = false;
-        }
-        #endregion // UpdateFontProperty
-
-        #region UpdateTasksToolsState
-
-        /// <summary>
-        /// Verifies the state of the tools in the Tasks RibbonGroup.
-        /// </summary>
-        /// <param name="activeTask">The active task.</param>
-        private void UpdateTasksToolsState(Task activeTask)
-        {
-            RibbonGroup group = this.ultraToolbarsManager1.Ribbon.Tabs["Ribbon_Task"].Groups["RibbonGrp_Tasks"];
-
-            if (activeTask != null)
-            {
-                // For summary tasks, the completion percentage is based on it's child tasks
-                Utilities.SetRibbonGroupToolsEnabledState(group, !activeTask.IsSummary);
-
-                group.Tools["Tasks_MoveLeft"].SharedProps.Enabled = activeTask.CanOutdent();
-                group.Tools["Tasks_MoveRight"].SharedProps.Enabled = activeTask.CanIndent();
-                group.Tools["Tasks_Delete"].SharedProps.Enabled = true;
-            }
-            else
-            {
-                Utilities.SetRibbonGroupToolsEnabledState(group, false);
-            }
-        }
-
-        #endregion // UpdateTasksToolsState
-
-        #region UpdateToolsRequiringActiveTask
-
-        /// <summary>
-        /// Überprüft den Status aller Werkzeuge, die eine aktiven Arbeitsinhalt erfordern.
-        /// </summary>
-        /// <param name="enabled">if set to <c>true</c> [enabled].</param>
-        private void UpdateToolsRequiringActiveTask(bool enabled)
-        {
-            this.ultraToolbarsManager1.Tools["Tasks_Delete"].SharedProps.Enabled = enabled;
-            this.ultraToolbarsManager1.Tools["Insert_Milestone"].SharedProps.Enabled = enabled;
-            this.ultraToolbarsManager1.Tools["Properties_TaskInformation"].SharedProps.Enabled = enabled;
-            this.ultraToolbarsManager1.Tools["Properties_Notes"].SharedProps.Enabled = enabled;
-            this.ultraToolbarsManager1.Tools["Insert_Task_TaskAtSelectedRow"].SharedProps.Enabled = enabled;
-        }
-
-        #endregion // UpdateToolsRequiringActiveTask
-
-        #endregion // Methods
-
-        #region SplashScreen Events
-
-        #region Events
-
-        /// <summary>
-        /// Fired when the staus of the form initialization has changed.
-        /// </summary>
+        /// <summary> Wird ausgelöst, wenn sich der Status der Initialisierung der Hauptform geändert hat. </summary>
         internal static event Terminplan.SplashScreen.InitializationStatusChangedEventHandler InitializationStatusChanged;
 
-        /// <summary>
-        /// Fired when the staus of the form initialization has completed.
-        /// </summary>
+        /// <summary>Wird ausgelöst, wenn Initialisierung der Hauptform beendet ist. </summary>
         internal static event EventHandler InitializationComplete;
 
-        /// <summary>
-        /// The initialization completed
-        /// </summary>
-        bool initializationCompleted = false;
+        /// <summary> Merker, ob Initialisierung beendet ist </summary>
+        bool initializationCompleted = false;                                   // Initialisierung ist noch nicht abgeschlossen
 
         #region OnInitializationComplete
-        /// <summary>
-        /// Called when [initialization complete].
-        /// </summary>
+        /// <summary>Wird aufgerufen, wenn das Hauptfenster initialisiert ist. </summary>
         protected virtual void OnInitializationComplete()
         {
-            if (this.initializationCompleted == false)
-            {
-                this.initializationCompleted = true;
-
-                if (TerminplanForm.InitializationComplete != null)
-                    TerminplanForm.InitializationComplete(this, EventArgs.Empty);
-            }
+            this.InitializationCompleted();
         }
         #endregion OnInitializationStatusChanged
 
         #region OnInitializationStatusChanged
-        /// <summary>
-        /// Called when [initialization status changed].
-        /// </summary>
-        /// <param name="status">The status.</param>
+        /// <summary> Wird aufgerufen, wenn sich der Status der Initialisierung der Hauptform ändert </summary>
+        /// <param name="status">Der Status.</param>
         protected virtual void OnInitializationStatusChanged(string status)
         {
-            if (TerminplanForm.InitializationStatusChanged != null)
-                TerminplanForm.InitializationStatusChanged(this, new Terminplan.SplashScreen.InitializationStatusChangedEventArgs(status));
+            // Nur bearbeiten, falls das Ereignis existier
+            if (TerminPlanForm.InitializationStatusChanged != null)
+            {
+                // Ereignis auslösen
+                TerminPlanForm.InitializationStatusChanged(this, new Terminplan.SplashScreen.InitializationStatusChangedEventArgs(status));
+            }
         }
 
         /// <summary>
@@ -843,13 +619,11 @@ namespace Terminplan
         /// <param name="percentComplete">The percent complete.</param>
         protected virtual void OnInitializationStatusChanged(string status, bool showProgressBar, int percentComplete)
         {
-            if (TerminplanForm.InitializationStatusChanged != null)
-                TerminplanForm.InitializationStatusChanged(this, new Terminplan.SplashScreen.InitializationStatusChangedEventArgs(status, showProgressBar, percentComplete));
+            if (TerminPlanForm.InitializationStatusChanged != null)
+                TerminPlanForm.InitializationStatusChanged(this, new Terminplan.SplashScreen.InitializationStatusChangedEventArgs(status, showProgressBar, percentComplete));
         }
         #endregion OnInitializationStatusChanged
-
-        #endregion Events		
-
-        #endregion //SplashScreen Events
+        #endregion Ereignisse		
+        #endregion SplashScreen Ereignisse
     }
 }
