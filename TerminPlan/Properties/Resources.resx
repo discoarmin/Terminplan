@@ -121,36 +121,36 @@
     <value>&lt;Type Task Name Here&gt;</value>
   </data>
   <data name="Application_Starting" xml:space="preserve">
-    <value>STARTING {0}...</value>
+    <value>Starte {0}...</value>
   </data>
   <data name="Binding" xml:space="preserve">
-    <value>BINDING DATA...</value>
+    <value>Binde Daten...</value>
   </data>
   <data name="Initializing" xml:space="preserve">
-    <value>INITIALIZING INTERFACE...</value>
+    <value>Initialisiere die Oberfläche...</value>
   </data>
   <data name="Loading" xml:space="preserve">
-    <value>LOADING APPLICATION...</value>
+    <value>Lade die Anwendung...</value>
   </data>
   <data name="Retrieving" xml:space="preserve">
-    <value>RETRIEVING DATA...</value>
+    <value>Empfange Daten...</value>
   </data>
   <data name="Copyright" xml:space="preserve">
-    <value>Copyright © Infragistics, Inc. 2014</value>
+    <value>Copyright EST GmbH &amp; CO.KG. 2017</value>
   </data>
   <data name="Publisher" xml:space="preserve">
-    <value>Publisher</value>
+    <value>Herausgeber</value>
   </data>
   <data name="ShortDescription" xml:space="preserve">
-    <value>Project Management showcase to demonstrate the UltraGanttView.</value>
+    <value>Erstellen von Terminplänen, ersetzt bisheriges Excel-Makro.</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Project Manager</value>
+    <value>TerminPlan</value>
   </data>
   <data name="Version" xml:space="preserve">
     <value>Version</value>
   </data>
   <data name="ribbonFileTabCaption" xml:space="preserve">
-    <value>FILE</value>
+    <value>Datei</value>
   </data>
 </root>

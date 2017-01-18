@@ -20,6 +20,7 @@ namespace Terminplan
 {
     using System;
     using System.Data;
+    using System.IO;
     using System.Windows.Forms;
     using System.Resources;
 
@@ -82,6 +83,12 @@ namespace Terminplan
         #endregion Aufzählungen
 
         #region Variablen
+        /// <summary> Delegate zum Melden, dass der Begrüßungsbildschirm geschlossen werden kann </summary>
+        public delegate void SplashScreenCloseDelegate();
+
+        /// <summary> Delegate zum Schließen des Begrüßungsbildschrms</summary>
+        public delegate void closeDelagate();
+
         /// <summary> Merker für rekursive Zellaktivierung </summary>
         private bool cellActivationRecursionFlag;                               // Merker rekursive Zellaktivierung
         
@@ -89,7 +96,7 @@ namespace Terminplan
         private int currentThemeIndex;
         
         /// <summary> Der ResourceManager </summary>
-        private ResourceManager rm = TerminPlan.Properties.Resources.ResourceManager;
+        private ResourceManager rm = Properties.Resources.ResourceManager;
         
         /// <summary> Ereignis, wenn der Begrüßungsbildschrm geladen wurde </summary>
         private static ManualResetEvent splashLoadedEvent;
@@ -104,6 +111,8 @@ namespace Terminplan
         private string[] themePaths;
         #endregion Variablen
 
+        /// <summary> Der Begrüßungsbildschirmn </summary>
+        private SplashScreen splashScreen;
         #region Konstruktor
         /// <summary>
         /// Initialisiert eine neue Instanz der <see cref="TerminPlanForm" /> Klasse.
@@ -113,27 +122,29 @@ namespace Terminplan
             splashLoadedEvent = new ManualResetEvent(false);
 
             // Splaschscreen anzeigen
-            ThreadStart threadStart = new ThreadStart(this.OnShowSplashScreen);
-            Thread thread = new Thread(threadStart);
-            thread.Name = "Splash Screen";
+            var threadStart = new ThreadStart(this.OnShowSplashScreen);
+            var thread = new Thread(threadStart) { Name = "Splash Screen" };
             thread.Start();
             splashLoadedEvent.WaitOne();
 
             // Minimieren der Initialisierungszeit durch Laden der Stilbibliothek
             // vor InitializeComponent(),
-            // andernfalls werden alle Metriken nach dem Ändern des Themas neu berechnet.            this.themePaths = DienstProgramme.GetStyleLibraryResourceNames();
-            for (int i = 0; i < this.themePaths.Length; i++)
+            // andernfalls werden alle Metriken nach dem Ändern des Themas neu berechnet.            
+            this.themePaths = DienstProgramme.GetStyleLibraryResourceNames();
+            for (var i = 0; i < this.themePaths.Length; i++)
             {
-                if (this.themePaths[i].Contains("02"))
+                if (!this.themePaths[i].Contains("04"))
                 {
-                    this.currentThemeIndex = i;
-                    break;
+                    continue;
                 }
+
+                this.currentThemeIndex = i;
+                break;
             }
 
             // Eingebettete Ressourcen laden
             Infragistics.Win.AppStyling.StyleManager.Load(DienstProgramme.GetEmbeddedResourceStream(this.themePaths[this.currentThemeIndex]));
-            InitializeComponent();
+            this.InitializeComponent();
         }
         #endregion Konstruktor
 
@@ -164,19 +175,19 @@ namespace Terminplan
         {
             this.OnChangeIcon();                                                // Farbe anhand des ausgewählten Themes einstellen
 
-            this.OnInitializationStatusChanged(TerminPlan.Properties.Resources.Loading);   // Anzeige im Splashscreen aktualisieren
+            this.OnInitializationStatusChanged(Properties.Resources.Loading);   // Anzeige im Splashscreen aktualisieren
             base.OnLoad(e);
 
             // Ruft die Daten aus der bereitgestellten XML-Datei ab
-            this.OnInitializationStatusChanged(TerminPlan.Properties.Resources.Retrieving); // Daten im Splashscreen aktualisieren
-            var dataset = DienstProgramme.GetData("Terminplan.Data.TestDaten.XML");         // Testdaten laden
+            this.OnInitializationStatusChanged(Properties.Resources.Retrieving); // Daten im Splashscreen aktualisieren
+            var dataset = DienstProgramme.GetData(Path.Combine(Application.StartupPath,  @"Data.TestDaten.XML")); // Testdaten laden
 
             // Die eingelesenen Daten an die ultraCalendarInfo anbinden. 
-            this.OnInitializationStatusChanged(TerminPlan.Properties.Resources.Binding);    // Anzeige im Splashscreen aktualisieren
+            this.OnInitializationStatusChanged(Properties.Resources.Binding);    // Anzeige im Splashscreen aktualisieren
             this.OnBindArbInhaltData(dataset);                                  // Daten an ultraCalendarInfo anbinden
 
             // Initialisiert die Kontrols auf dem Formular
-            this.OnInitializationStatusChanged(TerminPlan.Properties.Resources.Initializing); // Anzeige im Splashscreen aktualisieren
+            this.OnInitializationStatusChanged(Properties.Resources.Initializing); // Anzeige im Splashscreen aktualisieren
             this.OnColorizeImages();                                            // Farbe der Bilder an das eingestellte Farbschema anpassen
             this.OnInitializeUI();                                              // Oberfläche initialisieren
 
@@ -440,7 +451,7 @@ namespace Terminplan
         /// </summary>
         private void OnInitializeUI()
         {
-            this.InitializeUI();                                                // Oberfläche initialisieren
+            this.InitializeUi();                                                // Oberfläche initialisieren
         }
         #endregion OnInitializeUI
 

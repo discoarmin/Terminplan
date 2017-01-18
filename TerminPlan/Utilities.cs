@@ -141,11 +141,12 @@ namespace Terminplan
         internal static DataSet GetData(string fileName)
         {
             // Get the temporary data from the XML file
-            System.IO.Stream stream = GetEmbeddedResourceStream(fileName);
+            //System.IO.Stream stream = GetEmbeddedResourceStream(fileName);
 
             // Convert the stream to the dataset
             DataSet data = new DataSet();
-            data.ReadXml(stream);
+            //data.ReadXml(stream);
+            data.ReadXml(fileName);
             return data;
         }
 
@@ -175,7 +176,7 @@ namespace Terminplan
         /// <returns></returns>
         internal static string GetLocalizedString(string currentString)
         {
-            ResourceManager rm = ProjectManager.Properties.Resources.ResourceManager;
+            var rm = Terminplan.Properties.Resources.ResourceManager;
             string localizedString = rm.GetString(currentString);
             return (string.IsNullOrEmpty(localizedString) ? currentString : localizedString).Replace('_', ' ');
         }
@@ -190,9 +191,8 @@ namespace Terminplan
         /// <returns></returns>
         internal static string[] GetStyleLibraryResourceNames()
         {
-            List<string> resourceStrings = new List<string>(DienstProgramme.ExecutingAssembly.GetManifestResourceNames());
-
-            return resourceStrings.FindAll(i => i.EndsWith(".isl")).ToArray();
+            var resourceStrings = new List<string>(DienstProgramme.ExecutingAssembly.GetManifestResourceNames());
+            return resourceStrings.FindAll(i => i.EndsWith(@".isl")).ToArray();
         }
 
         #endregion // GetStyleLibraryResourceNames

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TerminPlan.Properties {
+namespace Terminplan.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace TerminPlan.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TerminPlan.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Terminplan.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,7 +61,7 @@ namespace TerminPlan.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die STARTING {0}... ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Starte {0}... ähnelt.
         /// </summary>
         internal static string Application_Starting {
             get {
@@ -70,7 +70,7 @@ namespace TerminPlan.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die BINDING DATA... ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Binde Daten... ähnelt.
         /// </summary>
         internal static string Binding {
             get {
@@ -79,7 +79,7 @@ namespace TerminPlan.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Copyright © Infragistics, Inc. 2014 ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Copyright EST GmbH &amp; CO.KG. 2017 ähnelt.
         /// </summary>
         internal static string Copyright {
             get {
@@ -88,7 +88,7 @@ namespace TerminPlan.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die INITIALIZING INTERFACE... ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Initialisiere die Oberfläche... ähnelt.
         /// </summary>
         internal static string Initializing {
             get {
@@ -97,7 +97,7 @@ namespace TerminPlan.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die LOADING APPLICATION... ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Lade die Anwendung... ähnelt.
         /// </summary>
         internal static string Loading {
             get {
@@ -115,7 +115,7 @@ namespace TerminPlan.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Publisher ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Herausgeber ähnelt.
         /// </summary>
         internal static string Publisher {
             get {
@@ -124,7 +124,7 @@ namespace TerminPlan.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die RETRIEVING DATA... ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Empfange Daten... ähnelt.
         /// </summary>
         internal static string Retrieving {
             get {
@@ -133,7 +133,7 @@ namespace TerminPlan.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die FILE ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Datei ähnelt.
         /// </summary>
         internal static string ribbonFileTabCaption {
             get {
@@ -142,7 +142,7 @@ namespace TerminPlan.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Project Management showcase to demonstrate the UltraGanttView. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Erstellen von Terminplänen, ersetzt bisheriges Excel-Makro. ähnelt.
         /// </summary>
         internal static string ShortDescription {
             get {
@@ -151,7 +151,7 @@ namespace TerminPlan.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Project Manager ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die TerminPlan ähnelt.
         /// </summary>
         internal static string Title {
             get {

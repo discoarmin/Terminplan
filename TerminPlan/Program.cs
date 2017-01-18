@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TerminPlan
+namespace Terminplan
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace TerminPlan
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Hauptform());
+            Application.Run(new TerminPlanForm());
         }
     }
 }

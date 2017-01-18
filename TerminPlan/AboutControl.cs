@@ -39,17 +39,17 @@ namespace Terminplan
         public AboutControl()
         {
             InitializeComponent();
-            this.OnInitializeUI();                                              // Oberfläche initialisieren
+            this.OnInitializeUi();                                              // Oberfläche initialisieren
         }
 
         #endregion Konstruktor
 
         #region Methoden
-        #region OnInitializeUI
+        #region OnInitializeUi
         /// <summary>
         /// Initialisiert die Oberfläche.
         /// </summary>
-        private void OnInitializeUI()
+        private void OnInitializeUi()
         {
             // Namen der Anwendung aus den Ressourcen laden und in das Textfeld eintragen
             this.lblAppName.Text = Properties.Resources.Title;
@@ -58,20 +58,21 @@ namespace Terminplan
             this.lblDescription.Text = Properties.Resources.ShortDescription;
             
             // Firmennamen aus des Ressourcen laden und in das Textfeld eintragen
-            this.lblCompany.Text = string.Format("{0}: {1}", DienstProgramme.GetLocalizedString("Publisher"), AboutControl.Company);
+            this.lblCompany.Text = string.Format("{0}: {1}", DienstProgramme.GetLocalizedString(@"Publisher"), Firma);
             
             // Copyright-Info aus den Ressourcen laden und in das Textfeld eintragen
-            this.lblCopyright.Text = DienstProgramme.GetLocalizedString(AboutControl.Copyright);
+            this.lblCopyright.Text = DienstProgramme.GetLocalizedString(Copyright);
             
             // Versionsnummer in das Textfeld eintragen
-            this.lblVersion.Text = string.Format("{0}: {1}", DienstProgramme.GetLocalizedString("Version"), AboutControl.Version);
+            this.lblVersion.Text = string.Format("{0}: {1}", DienstProgramme.GetLocalizedString(@"Version"), AboutControl.Version);
 
-            Stream stream = DienstProgramme.GetEmbeddedResourceStream("ProjectManager.Images.Logo.PNG");
+            //Stream stream = DienstProgramme.GetEmbeddedResourceStream(@"TerminPlan.Images.Logo.PNG");
+            var stream = DienstProgramme.GetEmbeddedResourceStream(@"Logo.PNG");
             Image logo = Image.FromStream(stream);
             this.pbLogo.Size = logo.Size;
             this.pbLogo.Image = logo;
         }
-        #endregion OnInitializeUI
+        #endregion OnInitializeUi
         #endregion Methoden
 
         #region Eigenschaften

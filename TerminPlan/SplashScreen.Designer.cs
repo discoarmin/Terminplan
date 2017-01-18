@@ -37,6 +37,7 @@
         private void InitializeComponent()
         {
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SplashScreen));
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             this.lblStatus = new Infragistics.Win.Misc.UltraLabel();
@@ -63,11 +64,13 @@
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(555, 36);
             this.lblStatus.TabIndex = 2;
-            this.lblStatus.Text = "Initializing Application";
+            this.lblStatus.Text = "Initialisiere Anwendung";
             this.lblStatus.UseAppStyling = false;
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("tableLayoutPanel1.BackgroundImage")));
+            this.tableLayoutPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 67F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -87,29 +90,35 @@
             // 
             this.flowLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.flowLayoutPanel1.AutoSize = true;
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.flowLayoutPanel1.Controls.Add(this.lblAppName);
             this.flowLayoutPanel1.Controls.Add(this.lblVersion);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(73, 80);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(123, 80);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(409, 70);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(308, 70);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // lblAppName
             // 
             this.lblAppName.Anchor = System.Windows.Forms.AnchorStyles.None;
-            appearance2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(79)))), ((int)(((byte)(70)))));
+            appearance2.BackColor = System.Drawing.Color.Transparent;
+            appearance2.FontData.BoldAsString = "True";
+            appearance2.FontData.ItalicAsString = "True";
             appearance2.FontData.Name = "Segoe UI Semilight";
             appearance2.FontData.SizeInPoints = 36F;
-            appearance2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
+            appearance2.ForeColor = System.Drawing.Color.Red;
+            appearance2.TextHAlignAsString = "Center";
+            appearance2.TextVAlignAsString = "Bottom";
             this.lblAppName.Appearance = appearance2;
             this.lblAppName.AutoSize = true;
+            this.lblAppName.Font = new System.Drawing.Font("Valken", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAppName.Location = new System.Drawing.Point(0, 0);
             this.lblAppName.Margin = new System.Windows.Forms.Padding(0);
             this.lblAppName.Name = "lblAppName";
-            this.lblAppName.Size = new System.Drawing.Size(367, 70);
+            this.lblAppName.Size = new System.Drawing.Size(256, 70);
             this.lblAppName.TabIndex = 0;
-            this.lblAppName.Text = "Project Manager";
+            this.lblAppName.Text = "TerminPlan";
             this.lblAppName.UseAppStyling = false;
             // 
             // lblVersion
@@ -121,12 +130,12 @@
             appearance3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(231)))), ((int)(((byte)(218)))));
             this.lblVersion.Appearance = appearance3;
             this.lblVersion.AutoSize = true;
-            this.lblVersion.Location = new System.Drawing.Point(367, 25);
+            this.lblVersion.Location = new System.Drawing.Point(256, 25);
             this.lblVersion.Margin = new System.Windows.Forms.Padding(0);
             this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(42, 20);
+            this.lblVersion.Size = new System.Drawing.Size(52, 20);
             this.lblVersion.TabIndex = 1;
-            this.lblVersion.Text = "v 00.0";
+            this.lblVersion.Text = "V1.0.0.0";
             this.lblVersion.UseAppStyling = false;
             // 
             // SplashScreen

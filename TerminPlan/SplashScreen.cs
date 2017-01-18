@@ -19,14 +19,12 @@
 namespace Terminplan
 {
     using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Data;
     using System.Drawing;
-    using System.Linq;
-    using System.Text;
+    using System.Reflection;
     using System.Windows.Forms;
     using System.Resources;
+
+    using TerminPlan;
 
     public partial class SplashScreen : Form
     {
@@ -35,58 +33,100 @@ namespace Terminplan
 
         private ResourceManager rm = Properties.Resources.ResourceManager;
 
+        private ContainerControl sender;                                        // das aufrufende Element
+
         #endregion Private Members
 
-        #region Constructor
-
+        #region Konstructor    
+        /// <summary>Initialisiert eine neue Instanz der <see cref="SplashScreen"/> Klasse.</summary>
         public SplashScreen()
         {
             this.DoubleBuffered = true;
 
-            // The splash screen should not take focus.
+            // Die Begrüßungsanzeige sollte nicht anwählbar sein
             this.SetStyle(ControlStyles.Selectable, false);
             this.SetStyle(ControlStyles.StandardClick, false);
 
-            // Required for Windows Form Designer support
-            InitializeComponent();
-
-            this.InitializeUI();
+            // Für Windows Form-Designer-Unterstützung erforderlich
+            this.InitializeComponent();
+            this.InitializeUi();
         }
 
-        #endregion //Constructor
+        /// <summary>Initialisiert eine neue Instanz der <see cref="SplashScreen"/> Klasse.</summary>
+        /// <param name="msender">Das aufrufende Element.</param>
+        /// <param name="msenderDelegate">Delegate zur Kommunikation mit dem Hauptfenster</param>
+        public SplashScreen(ContainerControl msender,
+                            Delegate msenderDelegate)
+        {
+            // Übergabeparameter speichern
+            this.Sender = msender;
+            this.SenderDelegate = msenderDelegate;
+
+            this.DoubleBuffered = true;
+
+            // Die Begrüßungsanzeige sollte nicht anwählbar sein
+            this.SetStyle(ControlStyles.Selectable, false);
+            this.SetStyle(ControlStyles.StandardClick, false);
+
+            // Für Windows Form-Designer-Unterstützung erforderlich
+            this.InitializeComponent();
+            this.InitializeUi();
+        }
+
+        #endregion Konstructor
+
+        #region Eigenschaften
+        public ContainerControl Sender
+        {
+            private get
+            {
+                return this.sender;
+            }
+            set
+            {
+                this.sender = value;
+            }
+        }
+
+        /// <summary>Holt oder setzt die Callback-Funktion </summary>
+        /// <value>Die Callback-Funktion</value>
+        public Delegate SenderDelegate { private get; set; }
+
+        #endregion Eigenschaften
+
 
         #region Private Methods
 
         #region CloseMe
-        private void CloseMe()
+        /// <summary> Schließt den Begrüßungsbildschirm </summary>
+        public void CloseMe()
         {
             this.Close();
             this.Dispose();
         }
         #endregion CloseMe
 
-        #region InitializeUI
-        private void InitializeUI()
+        #region InitializeUi
+        private void InitializeUi()
         {
             this.LocalizeStrings();
-
             this.HookEvents();
         }
-        #endregion InitializeUI
+        #endregion InitializeUi
 
         #region HookEvents
         private void HookEvents()
         {
-            TerminPlanForm.InitializationStatusChanged += new InitializationStatusChangedEventHandler(this.Application_InitializationStatusChanged);
-            TerminPlanForm.InitializationComplete += new EventHandler(this.Application_InitializationComplete);
+            TerminPlanForm.InitializationStatusChanged += this.ApplicationInitializationStatusChanged;
+            TerminPlanForm.InitializationComplete += this.ApplicationInitializationComplete;
         }
         #endregion HookEvents
 
         #region UnHookEvents
         private void UnHookEvents()
         {
-            TerminPlanForm.InitializationStatusChanged -= new InitializationStatusChangedEventHandler(this.Application_InitializationStatusChanged);
-            TerminPlanForm.InitializationComplete -= new EventHandler(this.Application_InitializationComplete);
+            TerminPlanForm.InitializationStatusChanged -= this.ApplicationInitializationStatusChanged;
+            TerminPlanForm.InitializationComplete -= this.ApplicationInitializationComplete;
         }
         #endregion UnHookEvents
 
@@ -100,11 +140,14 @@ namespace Terminplan
         #region LocalizeStrings
         private void LocalizeStrings()
         {
+            var assemblyInfoMainApplication = (Assembly.GetEntryAssembly());
+
             this.lblAppName.Text = AboutControl.ApplicationName;
-            this.lblVersion.Text = string.Format(" v {0}", Infragistics.Shared.AssemblyVersion.MajorMinor);
-            this.lblStatus.Text = string.Format(rm.GetString("Application_Starting"), Properties. Resources.Title.ToUpper());
+            //this.lblVersion.Text = string.Format(@" v {0}", assemblyInfoMainApplication.ImageRuntimeVersion);
+            this.lblVersion.Text = string.Format(@" v {0}", AboutControl.Version);
+            this.lblStatus.Text = string.Format(rm.GetString(@"Application_Starting"), Properties. Resources.Title.ToUpper());
         }
-        #endregion //LocalizeStrings
+        #endregion LocalizeStrings
 
         #endregion Private Methods
 
@@ -114,38 +157,52 @@ namespace Terminplan
 
         #region Event Handlers
 
-        #region Application_InitializationStatusChanged
-
-        private void Application_InitializationStatusChanged(object sender, InitializationStatusChangedEventArgs e)
+        #region ApplicationInitializationStatusChanged
+        private void ApplicationInitializationStatusChanged(object sender, InitializationStatusChangedEventArgs e)
         {
             if (this.lblStatus.InvokeRequired)
             {
                 this.lblStatus.Invoke(new UpdateStringDelegate(this.UpdateStatusLabel), new object[] { e.Status });
             }
             else
+            {
                 this.UpdateStatusLabel(e.Status);
+            }
         }
 
-        #endregion // Application_InitializationStatusChanged
+        #endregion ApplicationInitializationStatusChanged
 
-        #region Application_InitializationComplete
-        private void Application_InitializationComplete(object sender, EventArgs e)
+        #region ApplicationInitializationComplete
+        private void ApplicationInitializationComplete(object sender, EventArgs e)
         {
-            if (this.InvokeRequired)
-                try
-                {
-                    this.Invoke(new MethodInvoker(this.CloseMe));
-                }
-                catch { }
-            else
-                this.Close();
-        }
-        #endregion //Application_InitializationComplete
+            if (Sender != null && this.SenderDelegate != null)
+            {
+                //this.Sender.BeginInvoke(this.SenderDelegate);
+                this.Sender.BeginInvoke(new MethodInvoker(this.CloseMe));
+            }
+            //if (this.InvokeRequired)
+            //{
+            //    try
+            //    {
+            //        //this.Close();
+            //        //this.Invoke(new MethodInvoker(this.CloseMe));
+            //        this.Sender.Invoke(new MethodInvoker(this.CloseMe));
+            //    }
+            //    catch
+            //    {
+            //    }
+            //}
+            //else
+            //{
+            //    this.Close();
+            //}
 
+            //Application.DoEvents();
+        }
+        #endregion ApplicationInitializationComplete
         #endregion Event Handlers
 
         #region Base class overrides
-
         #region SetVisibleCore
         protected override void SetVisibleCore(bool visible)
         {
@@ -159,25 +216,24 @@ namespace Terminplan
                 // showing the form, we have to do the centering and so I removed
                 // the FormStartPosition property setting.
                 //
-                bool topMost = true;
-                Rectangle formRect = new Rectangle(Point.Empty, this.Size);
-                Rectangle screenRect = Infragistics.Win.Utilities.ScreenFromPoint(Cursor.Position).Bounds;
+                var topMost = true;
+                //var topMost = false;
+                var formRect = new Rectangle(Point.Empty, this.Size);
+                var screenRect = Infragistics.Win.Utilities.ScreenFromPoint(Cursor.Position).Bounds;
                 Infragistics.Win.DrawUtility.AdjustHAlign(Infragistics.Win.HAlign.Center, ref formRect, screenRect);
                 Infragistics.Win.DrawUtility.AdjustVAlign(Infragistics.Win.VAlign.Middle, ref formRect, screenRect);
                 Point location = formRect.Location;
 
-                IntPtr insertAfter = topMost ? NativeWindowMethods.HWND_TOPMOST : IntPtr.Zero;
+                var insertAfter = topMost ? NativeWindowMethods.HWND_TOPMOST : IntPtr.Zero;
 
                 Form form = this;
                 NativeWindowMethods.SetWindowPos(form.Handle, insertAfter, location.X, location.Y, 0, 0, NativeWindowMethods.SWP_NOACTIVATE | NativeWindowMethods.SWP_NOSIZE);
                 NativeWindowMethods.ShowWindow(form.Handle, NativeWindowMethods.SW_SHOWNA);
-
-                base.SetVisibleCore(visible);
             }
 
             base.SetVisibleCore(visible);
         }
-        #endregion //SetVisibleCore
+        #endregion SetVisibleCore
 
         #region WndProc
         protected override void WndProc(ref System.Windows.Forms.Message message)
@@ -204,11 +260,10 @@ namespace Terminplan
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            TerminPlanForm.SplashLoadedEvent.Set();
+            TerminPlanForm.SplashLoadedEvent.Set();                             // Damit Waiting-Threads ausgeführt werden können
         }
-        #endregion //OnLoad
-
-        #endregion //Base class overrides
+        #endregion OnLoad
+        #endregion Base class overrides
 
         #region Event-related
 

@@ -7,8 +7,8 @@
     <ProjectGuid>{36629A25-74A4-4325-8A60-C43ECE35839E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TerminPlan</RootNamespace>
-    <AssemblyName>TerminPlan</AssemblyName>
+    <RootNamespace>Terminplan</RootNamespace>
+    <AssemblyName>Terminplan</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -32,9 +32,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Infragistics4.Shared.v16.2, Version=16.2.20162.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
-    <Reference Include="Infragistics4.Win.Misc.v16.2, Version=16.2.20162.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
-    <Reference Include="Infragistics4.Win.UltraWinEditors.v16.2, Version=16.2.20162.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
+    <Reference Include="Infragistics4.Shared.v16.2, Version=16.2.20162.2040, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Infragistics4.Shared.v16.2\v4.0_16.2.20162.2040__7dd5c3163f2cd0cb\Infragistics4.Shared.v16.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.Misc.v16.2, Version=16.2.20162.2040, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Infragistics4.Win.Misc.v16.2\v4.0_16.2.20162.2040__7dd5c3163f2cd0cb\Infragistics4.Win.Misc.v16.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinEditors.v16.2, Version=16.2.20162.2040, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Infragistics4.Win.UltraWinEditors.v16.2\v4.0_16.2.20162.2040__7dd5c3163f2cd0cb\Infragistics4.Win.UltraWinEditors.v16.2.dll</HintPath>
+    </Reference>
     <Reference Include="Infragistics4.Win.UltraWinGanttView.v16.2, Version=16.2.20162.2040, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Infragistics4.Win.UltraWinGanttView.v16.2\v4.0_16.2.20162.2040__7dd5c3163f2cd0cb\Infragistics4.Win.UltraWinGanttView.v16.2.dll</HintPath>
@@ -45,13 +54,32 @@
     </Reference>
     <Reference Include="Infragistics4.Win.UltraWinListView.v16.2, Version=16.2.20162.2040, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Infragistics4.Win.UltraWinListView.v16.2\v4.0_16.2.20162.1000__7dd5c3163f2cd0cb\Infragistics4.Win.UltraWinListView.v16.2.dll</HintPath>
+      <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Infragistics4.Win.UltraWinListView.v16.2\v4.0_16.2.20162.2040__7dd5c3163f2cd0cb\Infragistics4.Win.UltraWinListView.v16.2.dll</HintPath>
     </Reference>
-    <Reference Include="Infragistics4.Win.UltraWinSchedule.v16.2, Version=16.2.20162.2040, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
-    <Reference Include="Infragistics4.Win.UltraWinStatusBar.v16.2, Version=16.2.20162.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
-    <Reference Include="Infragistics4.Win.UltraWinTabControl.v16.2, Version=16.2.20162.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
-    <Reference Include="Infragistics4.Win.UltraWinToolbars.v16.2, Version=16.2.20162.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
-    <Reference Include="Infragistics4.Win.v16.2, Version=16.2.20162.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
+    <Reference Include="Infragistics4.Win.UltraWinPrintPreviewDialog.v16.2, Version=16.2.20162.2040, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Infragistics4.Win.UltraWinPrintPreviewDialog.v16.2\v4.0_16.2.20162.2040__7dd5c3163f2cd0cb\Infragistics4.Win.UltraWinPrintPreviewDialog.v16.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinSchedule.v16.2, Version=16.2.20162.2040, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Infragistics4.Win.UltraWinSchedule.v16.2\v4.0_16.2.20162.2040__7dd5c3163f2cd0cb\Infragistics4.Win.UltraWinSchedule.v16.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinStatusBar.v16.2, Version=16.2.20162.2040, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Infragistics4.Win.UltraWinStatusBar.v16.2\v4.0_16.2.20162.2040__7dd5c3163f2cd0cb\Infragistics4.Win.UltraWinStatusBar.v16.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinTabControl.v16.2, Version=16.2.20162.2040, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Infragistics4.Win.UltraWinTabControl.v16.2\v4.0_16.2.20162.2040__7dd5c3163f2cd0cb\Infragistics4.Win.UltraWinTabControl.v16.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinToolbars.v16.2, Version=16.2.20162.2040, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Infragistics4.Win.UltraWinToolbars.v16.2\v4.0_16.2.20162.2040__7dd5c3163f2cd0cb\Infragistics4.Win.UltraWinToolbars.v16.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics4.Win.v16.2, Version=16.2.20162.2040, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Infragistics4.Win.v16.2\v4.0_16.2.20162.2040__7dd5c3163f2cd0cb\Infragistics4.Win.v16.2.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
@@ -89,9 +117,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
-    <Compile Include="Settings.Designer.cs">
-      <DependentUpon>Settings.cs</DependentUpon>
-    </Compile>
     <Compile Include="SplashScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,7 +144,6 @@
     <EmbeddedResource Include="SplashScreen.resx">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -129,9 +153,52 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="StyleLibraries\Theme 01.isl">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StyleLibraries\Theme 02.isl" />
+    <EmbeddedResource Include="StyleLibraries\Theme 03.isl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\AppIcon - Theme 01.ico" />
+    <EmbeddedResource Include="Images\AppIcon - Theme 02.ico" />
+    <EmbeddedResource Include="Images\AppIcon - Theme 03.ico" />
+    <EmbeddedResource Include="Images\Font_BackColor.png" />
+    <EmbeddedResource Include="Images\Font_Bold.png" />
+    <EmbeddedResource Include="Images\Font_ForeColor.png" />
+    <EmbeddedResource Include="Images\Font_Italic.png" />
+    <EmbeddedResource Include="Images\Font_Underline.png" />
+    <EmbeddedResource Include="Images\Insert_Milestone.png" />
+    <EmbeddedResource Include="Images\Insert_Task.png" />
+    <EmbeddedResource Include="Images\Logo.ico" />
+    <EmbeddedResource Include="Images\Logo.PNG" />
+    <EmbeddedResource Include="Images\Properties_Notes.png" />
+    <EmbeddedResource Include="Images\Properties_TaskInformation.png" />
+    <EmbeddedResource Include="Images\Tasks_Delete.png" />
+    <EmbeddedResource Include="Images\Tasks_MoveBackward_Day.png" />
+    <EmbeddedResource Include="Images\Tasks_MoveBackward_Month.png" />
+    <EmbeddedResource Include="Images\Tasks_MoveBackward_Week.png" />
+    <EmbeddedResource Include="Images\Tasks_MoveForward_Day.png" />
+    <EmbeddedResource Include="Images\Tasks_MoveForward_Month.png" />
+    <EmbeddedResource Include="Images\Tasks_MoveForward_Week.png" />
+    <EmbeddedResource Include="Images\Tasks_MoveLeft.png" />
+    <EmbeddedResource Include="Images\Tasks_MoveRight.png" />
+    <EmbeddedResource Include="Images\Tasks_MoveTask.png" />
+    <EmbeddedResource Include="Images\Tasks_PercentComplete_0.png" />
+    <EmbeddedResource Include="Images\Tasks_PercentComplete_100.png" />
+    <EmbeddedResource Include="Images\Tasks_PercentComplete_25.png" />
+    <EmbeddedResource Include="Images\Tasks_PercentComplete_50.png" />
+    <EmbeddedResource Include="Images\Tasks_PercentComplete_75.png" />
+    <Content Include="WinGanttView.PNG" />
+    <Content Include="WinGanttViewPrintDocument.png" />
+    <Content Include="WinToolbarsManager.png" />
+    <Content Include="WinTouchProvider.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

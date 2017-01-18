@@ -29,6 +29,7 @@ namespace Terminplan
     using Infragistics.Win.UltraWinToolbars;
     using Infragistics.Win.UltraWinGanttView;
     using Infragistics.Shared;
+    using Infragistics.Win.Printing;
 
     /// <summary>
     /// Klasse TerminPlanForm (Hauptformular).
@@ -439,7 +440,7 @@ namespace Terminplan
                     this.SetTextBackColor();
                     break;
                 case "Font_ForeColor":
-                    this.OnOnOnSetTextForeColor();
+                    this.OnSetTextForeColor();
                     break;
                 case "FontList":
                     this.UpdateFontName();
@@ -462,7 +463,7 @@ namespace Terminplan
         /// <param name="e">Die <see cref="Infragistics.Win.PropertyChangedEventArgs" /> Instanz, welche die Ereignisdaten enthält.</param>
         private void UltraTouchProvider1PropertyChanged(object sender, Infragistics.Win.PropertyChangedEventArgs e)
         {
-            OnUltraGanttView1ActiveTaskChanging propChanged = e.ChangeInfo;
+            var propChanged = e.ChangeInfo;
             if (propChanged.PropId is Infragistics.Win.Touch.TouchProviderPropertyIds &&
                 ((Infragistics.Win.Touch.TouchProviderPropertyIds)propChanged.PropId) == Infragistics.Win.Touch.TouchProviderPropertyIds.Enabled)
             {
@@ -547,7 +548,7 @@ namespace Terminplan
                     newTask = calendarInfo.Tasks.Insert(insertionIndex, start, TimeSpan.FromDays(1), taskName);
                 }
                 
-                newTask.project = projekt;                                      // 
+                newTask.Project = projekt;                                      // 
                 newTask.RowHeight = TaskRowHeight;
             }
         }
@@ -667,7 +668,7 @@ namespace Terminplan
                 {
                     resolveTool = this.ultraToolbarsManager1.Tools["Insert_Task"]; // Tool merken
 
-,                    // Alle Instanzen auf der Suche nach dem Tool in der RibbonGroup durchsuchen
+                    // Alle Instanzen auf der Suche nach dem Tool in der RibbonGroup durchsuchen
                     foreach (ToolBase instanceTool in resolveTool.SharedProps.ToolInstances)
                     {
                         // Falls das Tool in der Ribbon-Gruppe enthalten ist,
@@ -753,5 +754,6 @@ namespace Terminplan
             }
         }
         #endregion ColorizeImages
+        #endregion Methoden
     }
 }
