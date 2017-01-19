@@ -191,7 +191,7 @@ namespace Terminplan
         /// <returns></returns>
         internal static string[] GetStyleLibraryResourceNames()
         {
-            var resourceStrings = new List<string>(DienstProgramme.ExecutingAssembly.GetManifestResourceNames());
+            var resourceStrings = new List<string>(ExecutingAssembly.GetManifestResourceNames());
             return resourceStrings.FindAll(i => i.EndsWith(@".isl")).ToArray();
         }
 

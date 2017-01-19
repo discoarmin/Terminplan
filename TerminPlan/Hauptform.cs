@@ -38,35 +38,46 @@ namespace Terminplan
     public partial class TerminPlanForm
     {
         #region Aufzählungen
+
         #region GanttViewAktion
+
         /// <summary> Aufzählung der Aktionen, die durchgeführt werden können. </summary>
         private enum GanttViewAction
         {
             /// <summary> Aufgabe nach rechts einziehen </summary>
             IndentTask,
+
             /// <summary> Aufgabe nach links harausziehen </summary>
             OutdentTask,
+
             /// <summary> Termin für die Aufgabe später </summary>
             MoveTaskDateForward,
+
             /// <summary> Termin für die Aufgabe früher </summary>
             MoveTaskDateBackward,
         }
+
         #endregion GanttViewAktion
 
         #region Stardatum verschieben
+
         /// <summary> Aufzählung Zeitspannen, die ausgewählt werden können. </summary>
         private enum TimeSpanForMoving
         {
             /// <summary> Ein Tag </summary>
             OneDay,
+
             /// <summary> Eine Woche </summary>
             OneWeek,
+
             /// <summary> Einen Monat (4 Wochen) </summary>
             FourWeeks,
         }
+
         #endregion  Stardatum verschieben
 
         #region Eigenschaften Schriftart
+
         /// <summary>
         /// Enumeration of font related properties.
         /// </summary>
@@ -74,15 +85,20 @@ namespace Terminplan
         {
             /// <summary> Fettschrift </summary>
             Bold,
+
             /// <summary> Schrägschrift </summary>
             Italics,
+
             /// <summary> Unterstrichen </summary>
             Underline,
         }
+
         #endregion Eigenschaften Schriftart
+
         #endregion Aufzählungen
 
         #region Variablen
+
         /// <summary> Delegate zum Melden, dass der Begrüßungsbildschirm geschlossen werden kann </summary>
         public delegate void SplashScreenCloseDelegate();
 
@@ -90,43 +106,32 @@ namespace Terminplan
         public delegate void closeDelagate();
 
         /// <summary> Merker für rekursive Zellaktivierung </summary>
-        private bool cellActivationRecursionFlag;                               // Merker rekursive Zellaktivierung
-        
+        private bool cellActivationRecursionFlag; // Merker rekursive Zellaktivierung
+
         /// <summary> Index des momentanen Farbschemas </summary>
         private int currentThemeIndex;
-        
+
         /// <summary> Der ResourceManager </summary>
         private ResourceManager rm = Properties.Resources.ResourceManager;
-        
-        /// <summary> Ereignis, wenn der Begrüßungsbildschrm geladen wurde </summary>
-        private static ManualResetEvent splashLoadedEvent;
-        
+
         /// <summary> Zeilenhöhe einer Arbeitsaufgabe </summary>
         private const int TaskRowHeight = 30;
-        
+
         /// <summary> Höhe der Aufgabenleiste </summary>
         private const int TaskBarHeight = 20;
-        
+
         /// <summary> Pfad zu den Farbeinstallungen </summary>
         private string[] themePaths;
+
         #endregion Variablen
 
-        /// <summary> Der Begrüßungsbildschirmn </summary>
-        private SplashScreen splashScreen;
         #region Konstruktor
+
         /// <summary>
         /// Initialisiert eine neue Instanz der <see cref="TerminPlanForm" /> Klasse.
         /// </summary>
         public TerminPlanForm()
         {
-            splashLoadedEvent = new ManualResetEvent(false);
-
-            // Splaschscreen anzeigen
-            var threadStart = new ThreadStart(this.OnShowSplashScreen);
-            var thread = new Thread(threadStart) { Name = "Splash Screen" };
-            thread.Start();
-            splashLoadedEvent.WaitOne();
-
             // Minimieren der Initialisierungszeit durch Laden der Stilbibliothek
             // vor InitializeComponent(),
             // andernfalls werden alle Metriken nach dem Ändern des Themas neu berechnet.            
@@ -146,10 +151,13 @@ namespace Terminplan
             Infragistics.Win.AppStyling.StyleManager.Load(DienstProgramme.GetEmbeddedResourceStream(this.themePaths[this.currentThemeIndex]));
             this.InitializeComponent();
         }
+
         #endregion Konstruktor
 
         #region Überschreibungen der Basisklasse
+
         #region Dispose
+
         /// <summary> Bereinigung aller verwendeter Ressourcen </summary>
         /// <param name="disposing">true, falls verwaltete Ressourcen entsorgt werden sollen; sonst false.</param>
         protected override void Dispose(bool disposing)
@@ -159,65 +167,70 @@ namespace Terminplan
                 // Deaktivieren der Ereignisprozedur OnApplicationStyleChanged()
                 Infragistics.Win.AppStyling.StyleManager.StyleChanged -= new Infragistics.Win.AppStyling.StyleChangedEventHandler(OnApplicationStyleChanged);
 
-                components.Dispose();
+                this.components.Dispose();
             }
-            
+
             base.Dispose(disposing);
         }
+
         #endregion Dispose
 
         #region OnLoad
+
         /// <summary>
         /// Löst das <see cref="E:System.Windows.Forms.Form.Load" /> Ereignis aus.
         /// </summary>
         /// <param name="e">Ein <see cref="T:System.EventArgs" /> welches die Ereignisdaten enthält.</param>
         protected override void OnLoad(EventArgs e)
         {
-            this.OnChangeIcon();                                                // Farbe anhand des ausgewählten Themes einstellen
+            this.OnChangeIcon(); // Farbe anhand des ausgewählten Themes einstellen
 
-            this.OnInitializationStatusChanged(Properties.Resources.Loading);   // Anzeige im Splashscreen aktualisieren
+            this.OnInitializationStatusChanged(Properties.Resources.Loading); // Anzeige im Splashscreen aktualisieren
             base.OnLoad(e);
 
             // Ruft die Daten aus der bereitgestellten XML-Datei ab
             this.OnInitializationStatusChanged(Properties.Resources.Retrieving); // Daten im Splashscreen aktualisieren
-            var dataset = DienstProgramme.GetData(Path.Combine(Application.StartupPath,  @"Data.TestDaten.XML")); // Testdaten laden
+            var dataset = DienstProgramme.GetData(Path.Combine(Application.StartupPath, @"Data.TestDaten.XML")); // Testdaten laden
 
             // Die eingelesenen Daten an die ultraCalendarInfo anbinden. 
-            this.OnInitializationStatusChanged(Properties.Resources.Binding);    // Anzeige im Splashscreen aktualisieren
-            this.OnBindArbInhaltData(dataset);                                  // Daten an ultraCalendarInfo anbinden
+            this.OnInitializationStatusChanged(Properties.Resources.Binding); // Anzeige im Splashscreen aktualisieren
+            this.OnBindArbInhaltData(dataset); // Daten an ultraCalendarInfo anbinden
 
             // Initialisiert die Kontrols auf dem Formular
             this.OnInitializationStatusChanged(Properties.Resources.Initializing); // Anzeige im Splashscreen aktualisieren
-            this.OnColorizeImages();                                            // Farbe der Bilder an das eingestellte Farbschema anpassen
-            this.OnInitializeUI();                                              // Oberfläche initialisieren
+            this.OnColorizeImages(); // Farbe der Bilder an das eingestellte Farbschema anpassen
+            this.OnInitializeUI(); // Oberfläche initialisieren
 
             // Ereignisprozedur zum Ändern des Schemas festlegen
             Infragistics.Win.AppStyling.StyleManager.StyleChanged += this.OnApplicationStyleChanged;
         }
+
         #endregion OnLoad
 
         #region OnShown
+
         /// <summary>
         /// Löst das <see cref="E:System.Windows.Forms.Form.Shown" /> Ereignis aus.
         /// </summary>
         /// <param name="e">Ein <see cref="T:System.EventArgs" /> welches die Ereignisdaten enthält.</param>
         protected override void OnShown(EventArgs e)
         {
-            base.OnShown(e);                                                    // Hauptfenster anzeigen
+            base.OnShown(e); // Hauptfenster anzeigen
 
             // Andere Ereignisse vor dem Auslösen dieses Ereignisses bearbeiten,
-            // andernfalls wird das Formular nicht vollständig gezeichnet, 
+            // andernfalls wird das Formular nicht vollständig gezeichnet, 
             // bevor der Splash-Screen geschlossen wird.
             Application.DoEvents();
-            
-            // Das InitializationComplete-Ereignis auslösen, so dass der SplashScreen geschlossen wird.
-            this.OnInitializationComplete();
         }
+
         #endregion OnShown
+
         #endregion Überschreibungen der Basisklasse
-        
+
         #region Ereignisprozeduren
+
         #region OnApplicationStyleChanged
+
         /// <summary> Behandelt das StyleChanged-Ereignis des Application Styling Managers </summary>
         /// <param name="sender">Die Quelle des Ereignisses.</param>
         /// <param name="e">Die <see cref="Infragistics.Win.AppStyling.StyleChangedEventArgs" /> Instanz,welche die Ereignisdaten enthält.</param>
@@ -225,9 +238,11 @@ namespace Terminplan
         {
             this.ApplicationStyleChanged(sender, e);
         }
+
         #endregion OnApplicationStyleChanged
 
         #region OnUltraCalendarInfo1CalendarInfoChanged
+
         /// <summary> Behandelt das CalendarInfoChanged-Ereignis des ultraCalendarInfo1 Kontrols. </summary>
         /// <param name="sender">Die Quelle des Ereignisses.</param>
         /// <param name="e">Die <see cref="CalendarInfoChangedEventArgs" /> Instanz,welche die Ereignisdaten enthält.</param>
@@ -235,9 +250,11 @@ namespace Terminplan
         {
             this.UltraCalendarInfo1CalendarInfoChanged(sender, e);
         }
+
         #endregion OnUltraCalendarInfo1CalendarInfoChanged
 
         #region OnUltraGanttView1ActiveTaskChanging
+
         /// <summary>
         /// Behandelt das ActiveTaskChanging-Ereignis des ultraGanttView1 Kontrols.
         /// Wird ausgelöst, wenn auf einen anderen Arbeitsinhalt gewechselt wird.
@@ -252,6 +269,7 @@ namespace Terminplan
         #endregion OnUltraGanttView1ActiveTaskChanging
 
         #region OnUltraGanttView1CellActivating
+
         /// <summary> 
         /// Behandelt das CellActivating-Ereignis des ultraGanttView1 Kontrols. 
         /// Wird aufgerufen, wenn eine Zelle aktiviert wird.
@@ -265,9 +283,11 @@ namespace Terminplan
         {
             this.UltraGanttView1CellActivating(sender, e);
         }
+
         #endregion OnUltraGanttView1CellActivating
 
         #region OnUltraGanttView1CellDeactivating
+
         /// <summary>
         /// Behandelt das CellDeactivating-Ereignis des ultraGanttView1 Kontrols.
         /// Wird aufgerufen, wenn eine Zelle deaktiviert wird
@@ -278,9 +298,11 @@ namespace Terminplan
         {
             this.UltraGanttView1CellDeactivating(sender, e);
         }
+
         #endregion OnUltraGanttView1CellDeactivating
 
         #region OnUltraGanttView1TaskAdded
+
         /// <summary>
         /// Behandelt das TaskAdded-Ereignis des ultraGanttView1 Kontrols.
         /// Wird aufgerufen, wenn ein neuer Arbeitsinhalt hinzugefügt wurde.
@@ -291,9 +313,11 @@ namespace Terminplan
         {
             this.UltraGanttView1TaskAdded(sender, e);
         }
+
         #endregion OnUltraGanttView1TaskAdded
 
         #region OnUltraGanttView1TaskDeleted
+
         /// <summary>
         /// Behandelt das TaskDeleted-Ereignis des ultraGanttView1 Kontrols.
         /// Wird aufgerufen, wenn ein Arbeitsinhalt gelöscht wurde.
@@ -304,9 +328,11 @@ namespace Terminplan
         {
             this.UltraGanttView1TaskDeleted(sender, e);
         }
+
         #endregion OnUltraGanttView1TaskDeleted
 
         #region OnUltraGanttView1TaskDialogDisplaying
+
         /// <summary>
         /// Anzeige des Dialogs für Arbeitsinhalte.
         /// </summary>
@@ -318,9 +344,11 @@ namespace Terminplan
             // angezeigt wird
             e.Dialog.SelectPage(TaskDialogPage.Notes);
         }
+
         #endregion OnUltraGanttView1TaskDialogDisplaying
 
         #region OnUltraToolbarsManager1PropertyChanged
+
         /// <summary>
         /// Behandelt das PropertyChanged-Ereignis des ultraToolbarsManager1 Kontrols.
         /// </summary>
@@ -330,9 +358,11 @@ namespace Terminplan
         {
             this.UltraToolbarsManager1PropertyChanged(sender, e);
         }
+
         #endregion OnUltraToolbarsManager1PropertyChanged
 
         #region OnUltraToolbarsManagerToolClick
+
         /// <summary>
         /// Behandelt das ToolClick-Ereignis of the ultraToolbarsManager1 control.
         /// </summary>
@@ -342,9 +372,11 @@ namespace Terminplan
         {
             this.UltraToolbarsManagerToolClick(sender, e);
         }
+
         #endregion OnUltraToolbarsManagerToolClick
 
         #region OnUltraToolbarsManager1ToolValueChanged
+
         /// <summary>
         /// Behandelt das ToolValueChanged-Ereignis des ultraToolbarsManager1 Kontrols.
         /// </summary>
@@ -354,9 +386,11 @@ namespace Terminplan
         {
             this.UltraToolbarsManager1ToolValueChanged(sender, e);
         }
+
         #endregion OnUltraToolbarsManager1ToolValueChanged
 
         #region OnUltraTouchProvider1PropertyChanged
+
         /// <summary>
         /// Behandelt das PropertyChanged-Ereignis des ultraTouchProvider1 Kontrols.
         /// </summary>
@@ -369,27 +403,19 @@ namespace Terminplan
         {
             this.UltraTouchProvider1PropertyChanged(sender, e);
         }
+
         #endregion OnUltraTouchProvider1PropertyChanged
+
         #endregion Ereignisprozeduren
 
         #region Eigenschaften
-        #region SplashLoadedEvent
-        /// <summary>
-        /// Holt das Ereignis, dass der Splashscreen geladen wurde.
-        /// </summary>
-        /// <value>Das Ereignis des SplashScreens.</value>
-        internal static ManualResetEvent SplashLoadedEvent
-        {
-            get
-            {
-                return splashLoadedEvent;
-            }
-        }
-        #endregion SplashLoadedEvent
+
         #endregion Eigenschaften
 
         #region Methoden
+
         #region OnAddNewTask
+
         /// <summary>
         /// Fügt dem GanttView einen neuen Arbeitsinhalt hinzu
         /// </summary>
@@ -401,9 +427,11 @@ namespace Terminplan
         {
             this.AddNewTask(addAtSelectedRow);
         }
+
         #endregion OnAddNewTask
 
         #region OnBindArbInhaltData
+
         /// <summary>
         /// Bindet die Daten an die UltraCalendarInfo
         /// </summary>
@@ -412,9 +440,11 @@ namespace Terminplan
         {
             this.BindArbInhaltData(data);
         }
+
         #endregion OnBindArbInhaltData
 
         #region OnChangeIcon
+
         /// <summary>
         /// Ändert das Symbol.
         /// </summary>
@@ -422,20 +452,24 @@ namespace Terminplan
         {
             this.ChangeIcon();
         }
+
         #endregion OnChangeIcon
 
         #region OnColorizeImages
+
         /// <summary>
         /// Färbt die Bilder in den großen und kleinen Bildlisten mit den Standardbildern 
         /// und platziert die neuen Bilder in den farbigen Bildlisten.
-       /// </summary>
+        /// </summary>
         private void OnColorizeImages()
         {
             this.ColorizeImages();
         }
+
         #endregion OnColorizeImages
 
         #region OnDeleteTask
+
         /// <summary>
         /// Löscht den aktiven Arbeitsinhalt, oder die aktive Aufgabe
         /// </summary>
@@ -443,19 +477,23 @@ namespace Terminplan
         {
             this.DeleteTask();
         }
+
         #endregion OnDeleteTask
 
         #region OnInitializeUI
+
         /// <summary>
         /// Initialisiert die Oberfläche.
         /// </summary>
         private void OnInitializeUI()
         {
-            this.InitializeUi();                                                // Oberfläche initialisieren
+            this.InitializeUi(); // Oberfläche initialisieren
         }
+
         #endregion OnInitializeUI
 
         #region OnMoveTask
+
         /// <summary>
         /// Verschiebt Start- und Enddatum der Aufgabe rückwärts oder vorwärts um eine bestimmte Zeitspanne
         /// </summary>
@@ -465,9 +503,11 @@ namespace Terminplan
         {
             this.MoveTask(action, moveTimeSpan);
         }
+
         #endregion  OnMoveTask
 
         #region OnPerformIndentOrOutdent
+
         /// <summary>
         /// Führt Einrückung oder Auslagerung der aktiven Aufgabe oder des aktivev Arbeitsinhalts durch
         /// </summary>
@@ -476,9 +516,11 @@ namespace Terminplan
         {
             this.PerformIndentOrOutdent(action);
         }
+
         #endregion OnPerformIndentOrOutdent
 
         #region OnPopulateFontSizeValueList
+
         /// <summary>
         /// Liste mit den Schriftgrößen erstellen
         /// </summary>
@@ -486,9 +528,11 @@ namespace Terminplan
         {
             this.PopulateFontSizeValueList();
         }
+
         #endregion OnPopulateFontSizeValueList
 
         #region OnSetTaskPercentage
+
         /// <summary>
         /// Weist der aktiven Aufgabe oder der aktiven Arbeitsanweisung einen Prozentsatz des Fertigungsgrads zu       
         /// </summary>
@@ -497,9 +541,11 @@ namespace Terminplan
         {
             this.SetTaskPercentage(prozentSatz);
         }
+
         #endregion OnSetTaskPercentage
 
         #region OnSetTextBackColor
+
         /// <summary>
         /// Aktualisiert den Wert der Hintergrundfarbe des Textes in der aktiven Zelle abhängig von der 
         /// im PopupColorPickerTool ausgewählten Farbe.
@@ -508,9 +554,11 @@ namespace Terminplan
         {
             this.SetTextBackColor();
         }
+
         #endregion OnSetTextBackColor
 
         #region OnSetTextForeColor
+
         /// <summary>
         /// Aktualisiert den Wert der Vordergrundfarbe des Textes in der aktiven Zelle abhängig von der 
         /// im PopupColorPickerTool ausgewählten Farbe.
@@ -519,18 +567,8 @@ namespace Terminplan
         {
             this.SetTextForeColor();
         }
+
         #endregion OnSetTextForeColor
-
-        #region OnShowSplashScreen
-
-        /// <summary>
-        /// Begrüßungsbildschirm anzeigen.
-        /// </summary>
-        private void OnShowSplashScreen()
-        {
-            this.ShowSplashScreen();
-        }
-        #endregion OnShowSplashScreen
 
         #region OnUpdateFontToolsState
 
@@ -542,31 +580,38 @@ namespace Terminplan
         {
             DienstProgramme.SetRibbonGroupToolsEnabledState(this.ultraToolbarsManager1.Ribbon.Tabs[0].Groups["RibbonGrp_Font"], enabled);
         }
+
         #endregion OnUpdateFontToolsState
 
         #region OnUpdateFontName
+
         /// <summary> Aktualisiert den Namen der Schriftart je nach dem im FontListTool ausgewählten Wert. </summary>
         private void OnUpdateFontName()
         {
             this.UpdateFontName();
         }
+
         #endregion OnUpdateFontName
 
         #region OnUpdateFontSize
+
         /// <summary> Aktualisiert die Schriftgröße je nach dem im ComboBoxTool ausgewählten Wert. </summary>
         private void OnUpdateFontSize()
         {
             this.UpdateFontSize();
         }
+
         #endregion OnUpdateFontSize
 
         #region OnUpdateFontProperty
+
         /// <summary>Methode, um verschiedene Eigenschaften der Schriftart zu aktualisieren</summary>
         /// <param name="propertyToUpdate">Aufzählung von Eigenschaften, welche von der Schriftart abhängig sind</param>
         private void OnUpdateFontProperty(FontProperties propertyToUpdate)
         {
             this.UpdateFontProperty(propertyToUpdate);
         }
+
         #endregion OnUpdateFontProperty
 
         #region OnUpdateTasksToolsState
@@ -577,39 +622,33 @@ namespace Terminplan
         {
             this.UpdateTasksToolsState(activeTask);
         }
+
         #endregion OnUpdateTasksToolsState
 
         #region OnUpdateToolsRequiringActiveTask
+
         /// <summary> Überprüft den Status aller Werkzeuge, die eine aktiven Arbeitsinhalt erfordern. </summary>
         /// <param name="enabled">falls auf <c>true</c>gesetzt, wird Werkzeug freigegeben, sonst gesperrt.</param>
         private void OnUpdateToolsRequiringActiveTask(bool enabled)
         {
             this.UpdateToolsRequiringActiveTask(enabled);
         }
+
         #endregion OnUpdateToolsRequiringActiveTask
+
         #endregion Methoden
 
         #region SplashScreen Ereignisse
+
         #region Ereignisse
 
         /// <summary> Wird ausgelöst, wenn sich der Status der Initialisierung der Hauptform geändert hat. </summary>
         internal static event Terminplan.SplashScreen.InitializationStatusChangedEventHandler InitializationStatusChanged;
 
-        /// <summary>Wird ausgelöst, wenn Initialisierung der Hauptform beendet ist. </summary>
-        internal static event EventHandler InitializationComplete;
-
-        /// <summary> Merker, ob Initialisierung beendet ist </summary>
-        bool initializationCompleted = false;                                   // Initialisierung ist noch nicht abgeschlossen
-
-        #region OnInitializationComplete
-        /// <summary>Wird aufgerufen, wenn das Hauptfenster initialisiert ist. </summary>
-        protected virtual void OnInitializationComplete()
-        {
-            this.InitializationCompleted();
-        }
         #endregion OnInitializationStatusChanged
 
         #region OnInitializationStatusChanged
+
         /// <summary> Wird aufgerufen, wenn sich der Status der Initialisierung der Hauptform ändert </summary>
         /// <param name="status">Der Status.</param>
         protected virtual void OnInitializationStatusChanged(string status)
@@ -630,11 +669,9 @@ namespace Terminplan
         /// <param name="percentComplete">The percent complete.</param>
         protected virtual void OnInitializationStatusChanged(string status, bool showProgressBar, int percentComplete)
         {
-            if (TerminPlanForm.InitializationStatusChanged != null)
-                TerminPlanForm.InitializationStatusChanged(this, new Terminplan.SplashScreen.InitializationStatusChangedEventArgs(status, showProgressBar, percentComplete));
+            if (TerminPlanForm.InitializationStatusChanged != null) TerminPlanForm.InitializationStatusChanged(this, new Terminplan.SplashScreen.InitializationStatusChangedEventArgs(status, showProgressBar, percentComplete));
         }
         #endregion OnInitializationStatusChanged
         #endregion Ereignisse		
-        #endregion SplashScreen Ereignisse
     }
 }

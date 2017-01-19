@@ -12,6 +12,7 @@
 //        History : Datum     bearb.  Änderung
 //                  --------  ------  ------------------------------------
 //                  07.01.17  br      Grundversion
+//                  19.01.17  br      Äbänderung au Thread
 // </para>
 // </remarks>
 // --------------------------------------------------------------------------------------------------------------------
@@ -26,11 +27,10 @@ namespace Terminplan
 
     using TerminPlan;
 
+    /// <summary>Klasse für den Begrüßungsbildschirm</summary>
     public partial class SplashScreen : Form
     {
-
         #region Private Members
-
         private ResourceManager rm = Properties.Resources.ResourceManager;
 
         private ContainerControl sender;                                        // das aufrufende Element
@@ -52,26 +52,26 @@ namespace Terminplan
             this.InitializeUi();
         }
 
-        /// <summary>Initialisiert eine neue Instanz der <see cref="SplashScreen"/> Klasse.</summary>
-        /// <param name="msender">Das aufrufende Element.</param>
-        /// <param name="msenderDelegate">Delegate zur Kommunikation mit dem Hauptfenster</param>
-        public SplashScreen(ContainerControl msender,
-                            Delegate msenderDelegate)
-        {
-            // Übergabeparameter speichern
-            this.Sender = msender;
-            this.SenderDelegate = msenderDelegate;
+        ///// <summary>Initialisiert eine neue Instanz der <see cref="SplashScreen"/> Klasse.</summary>
+        ///// <param name="msender">Das aufrufende Element.</param>
+        ///// <param name="msenderDelegate">Delegate zur Kommunikation mit dem Hauptfenster</param>
+        //public SplashScreen(ContainerControl msender,
+        //                    Delegate msenderDelegate)
+        //{
+        //    // Übergabeparameter speichern
+        //    this.Sender = msender;
+        //    this.SenderDelegate = msenderDelegate;
 
-            this.DoubleBuffered = true;
+        //    this.DoubleBuffered = true;
 
-            // Die Begrüßungsanzeige sollte nicht anwählbar sein
-            this.SetStyle(ControlStyles.Selectable, false);
-            this.SetStyle(ControlStyles.StandardClick, false);
+        //    // Die Begrüßungsanzeige sollte nicht anwählbar sein
+        //    this.SetStyle(ControlStyles.Selectable, false);
+        //    this.SetStyle(ControlStyles.StandardClick, false);
 
-            // Für Windows Form-Designer-Unterstützung erforderlich
-            this.InitializeComponent();
-            this.InitializeUi();
-        }
+        //    // Für Windows Form-Designer-Unterstützung erforderlich
+        //    this.InitializeComponent();
+        //    this.InitializeUi();
+        //}
 
         #endregion Konstructor
 
@@ -91,12 +91,9 @@ namespace Terminplan
         /// <summary>Holt oder setzt die Callback-Funktion </summary>
         /// <value>Die Callback-Funktion</value>
         public Delegate SenderDelegate { private get; set; }
-
         #endregion Eigenschaften
 
-
-        #region Private Methods
-
+        #region Methoden
         #region CloseMe
         /// <summary> Schließt den Begrüßungsbildschirm </summary>
         public void CloseMe()
@@ -118,7 +115,6 @@ namespace Terminplan
         private void HookEvents()
         {
             TerminPlanForm.InitializationStatusChanged += this.ApplicationInitializationStatusChanged;
-            TerminPlanForm.InitializationComplete += this.ApplicationInitializationComplete;
         }
         #endregion HookEvents
 
@@ -126,7 +122,6 @@ namespace Terminplan
         private void UnHookEvents()
         {
             TerminPlanForm.InitializationStatusChanged -= this.ApplicationInitializationStatusChanged;
-            TerminPlanForm.InitializationComplete -= this.ApplicationInitializationComplete;
         }
         #endregion UnHookEvents
 
@@ -256,17 +251,9 @@ namespace Terminplan
         }
         #endregion //WndProc
 
-        #region OnLoad
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-            TerminPlanForm.SplashLoadedEvent.Set();                             // Damit Waiting-Threads ausgeführt werden können
-        }
-        #endregion OnLoad
         #endregion Base class overrides
 
         #region Event-related
-
         #region Delegates
 
         /// <summary>

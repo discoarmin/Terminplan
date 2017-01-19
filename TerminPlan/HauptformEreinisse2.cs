@@ -316,28 +316,6 @@ namespace Terminplan
         }
         #endregion SetTextForeColor
 
-        #region ShowSplashScreen
-        /// <summary> Begrüßungsbildschirm anzeigen. </summary>
-        private void ShowSplashScreen()
-        {
-            SplashScreenCloseDelegate closeDelegate = this.CloseSplashScreen;   // Delegate zum Schließen des Begrüßungsbildschirms
-            this.splashScreen = new SplashScreen(this, closeDelegate);          // Neuen Begrüßungsbildschirm erstellen
-            Application.Run(this.splashScreen);                                 // Begrüßungsbildschirm anzeigen
-            Application.ExitThread();                                           // Nach dem Hochlauf des Hauptformulars den Begrüßungsbildschirm beenden
-        }
-
-        /// <summary> Begrüßungsbildschirm schließen. </summary>
-        public void CloseSplashScreen()
-        {
-            var screen = this.splashScreen;
-            if (screen != null)
-            {
-                this.Invoke(new closeDelagate(screen.CloseMe));                 // Begrüßungsbildschirm schließen
-            }
-        }
-
-        #endregion ShowSplashScreen
-
         #region UpdateFontName
         /// <summary> Aktualisiert den Namen der Schriftart je nach dem im FontListTool ausgewählten Wert. </summary>
         private void UpdateFontName()
@@ -470,28 +448,5 @@ namespace Terminplan
         }
         #endregion UpdateToolsRequiringActiveTask
         #endregion Methoden
-
-        #region SplashScreen Ereignisse
-        #region Ereignisse
-
-        #region InitializationComplete
-        /// <summary>Wird aufgerufen, wenn das Hauptfenster initialisiert ist. </summary>
-        protected virtual void InitializationCompleted()
-        {
-            // Nur bearbeiten, falls die Hauptform noch nicht initialisiert ist
-            if (this.initializationCompleted == false)
-            {
-                this.initializationCompleted = true;                            // Merker setzen, das Hauptform initialisiert ist
-
-                // Nur bearbeiten, falls das Ereignis existiert
-                if (InitializationComplete != null)
-                {
-                    InitializationComplete(this, EventArgs.Empty);              // Ereignis auslösen
-                }
-            }
-        }
-        #endregion InitializationComplete
-        #endregion Ereignisse	
-        #endregion SplashScreen Ereignisse
     }
 }

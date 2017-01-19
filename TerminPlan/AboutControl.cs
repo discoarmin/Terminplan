@@ -18,17 +18,10 @@
 
 namespace Terminplan
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
     using System.Drawing;
-    using System.Data;
-    using System.Linq;
-    using System.Text;
     using System.Windows.Forms;
     using System.Reflection;
-    using System.IO;
-    
+
     public partial class AboutControl : UserControl
     {
         #region Konstruktor
@@ -38,7 +31,7 @@ namespace Terminplan
         /// </summary>
         public AboutControl()
         {
-            InitializeComponent();
+            this.InitializeComponent();
             this.OnInitializeUi();                                              // Oberfläche initialisieren
         }
 
@@ -58,17 +51,17 @@ namespace Terminplan
             this.lblDescription.Text = Properties.Resources.ShortDescription;
             
             // Firmennamen aus des Ressourcen laden und in das Textfeld eintragen
-            this.lblCompany.Text = string.Format("{0}: {1}", DienstProgramme.GetLocalizedString(@"Publisher"), Firma);
+            this.lblCompany.Text = string.Format(@"{0}: {1}", DienstProgramme.GetLocalizedString(@"Publisher"), Firma);
             
             // Copyright-Info aus den Ressourcen laden und in das Textfeld eintragen
             this.lblCopyright.Text = DienstProgramme.GetLocalizedString(Copyright);
             
             // Versionsnummer in das Textfeld eintragen
-            this.lblVersion.Text = string.Format("{0}: {1}", DienstProgramme.GetLocalizedString(@"Version"), AboutControl.Version);
+            this.lblVersion.Text = string.Format(@"{0}: {1}", DienstProgramme.GetLocalizedString(@"Version"), Version);
 
             //Stream stream = DienstProgramme.GetEmbeddedResourceStream(@"TerminPlan.Images.Logo.PNG");
-            var stream = DienstProgramme.GetEmbeddedResourceStream(@"Logo.PNG");
-            Image logo = Image.FromStream(stream);
+            var stream = DienstProgramme.GetEmbeddedResourceStream(@"Terminplan.Images.Logo.PNG");
+            var logo = Image.FromStream(stream);
             this.pbLogo.Size = logo.Size;
             this.pbLogo.Image = logo;
         }

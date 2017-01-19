@@ -79,7 +79,7 @@ namespace Terminplan.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Copyright EST GmbH &amp; CO.KG. 2017 ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Copyright EST GmbH + CO.KG. 2017 ähnelt.
         /// </summary>
         internal static string Copyright {
             get {

@@ -158,6 +158,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StyleLibraries\Theme 02.isl" />
     <EmbeddedResource Include="StyleLibraries\Theme 03.isl" />
+    <EmbeddedResource Include="StyleLibraries\Theme 04.isl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -192,6 +193,7 @@
     <EmbeddedResource Include="Images\Tasks_PercentComplete_25.png" />
     <EmbeddedResource Include="Images\Tasks_PercentComplete_50.png" />
     <EmbeddedResource Include="Images\Tasks_PercentComplete_75.png" />
+    <EmbeddedResource Include="Images\AppIcon - Theme 04.ico" />
     <Content Include="WinGanttView.PNG" />
     <Content Include="WinGanttViewPrintDocument.png" />
     <Content Include="WinToolbarsManager.png" />
