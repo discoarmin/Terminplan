@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <styleLibrary office2007CustomBlendColor="" office2010CustomBlendColor="" office2013ColorScheme="LightGray" office2013CustomBlendColor="">
   <annotation>
-    <lastModified>2017-01-15T17:19:29</lastModified>
+    <lastModified>2017-01-20T21:09:07</lastModified>
   </annotation>
   <styleSets defaultStyleSet="Default">
     <styleSet name="Default" useFlatMode="True">
@@ -371,18 +371,18 @@
         </style>
         <style role="DayViewControlArea">
           <states>
-            <state name="Normal" backColor="White" backGradientStyle="None" backHatchStyle="None" />
+            <state name="Normal" backColor="Gainsboro" backGradientStyle="None" backHatchStyle="None" />
           </states>
         </style>
         <style role="DayViewTimeSlotNonWorkingHour">
           <states>
-            <state name="Normal" backColor="245, 242, 236" backGradientStyle="None" backHatchStyle="None" />
+            <state name="Normal" backColor="Office2007.ApplicationMenuFooterToolGradientDark" backGradientStyle="None" backHatchStyle="None" />
             <state name="Selected" backColor="49, 147, 147" backGradientStyle="None" backHatchStyle="None" />
           </states>
         </style>
         <style role="DayViewTimeSlotWorkingHour">
           <states>
-            <state name="Normal" backColor="White" backGradientStyle="None" backHatchStyle="None" />
+            <state name="Normal" backColor="WhiteSmoke" backGradientStyle="None" backHatchStyle="None" />
             <state name="Selected" backColor="49, 147, 147" backGradientStyle="None" backHatchStyle="None" />
           </states>
         </style>
@@ -690,7 +690,7 @@
                 <name>Grid_HotTracked</name>
               </resources>
             </state>
-            <state name="Active">
+            <state name="Active" backColor="255, 45, 45" foreColor="White" foreColorDisabled="225, 225, 225" backGradientStyle="None" backHatchStyle="None">
               <resources>
                 <name>Accent Back Color</name>
               </resources>
@@ -1228,7 +1228,7 @@
         </style>
         <style role="ListViewControlArea" borderStyle="Solid">
           <states>
-            <state name="Normal">
+            <state name="Normal" backColor="WhiteSmoke" backGradientStyle="None" backHatchStyle="None">
               <resources>
                 <name>Line 03</name>
               </resources>
@@ -1237,7 +1237,7 @@
         </style>
         <style role="ListViewGroupHeader">
           <states>
-            <state name="Normal">
+            <state name="Normal" backColor="Gray" foreColor="White" backGradientStyle="None" backHatchStyle="None">
               <resources>
                 <name>Foreground 02</name>
               </resources>
@@ -1306,6 +1306,11 @@
         <style role="LiveTileViewStaticTile">
           <states>
             <state name="HotTracked" borderColor="94, 79, 70" />
+          </states>
+        </style>
+        <style role="MainMenubarHorizontal">
+          <states>
+            <state name="Normal" backColor="DarkGray" foreColor="Black" foreColorDisabled="WhiteSmoke" backGradientStyle="None" backHatchStyle="None" />
           </states>
         </style>
         <style role="MenuCheckMark">
@@ -1426,6 +1431,11 @@
             </state>
           </states>
         </style>
+        <style role="MessageBox">
+          <states>
+            <state name="Normal" backColor="DimGray" backGradientStyle="None" backHatchStyle="None" />
+          </states>
+        </style>
         <style role="MessageBoxButton" buttonStyle="Flat">
           <states>
             <state name="Normal">
@@ -1447,7 +1457,7 @@
         </style>
         <style role="MessageBoxButtonArea">
           <states>
-            <state name="Normal" backColor="White" backGradientStyle="None" backHatchStyle="None">
+            <state name="Normal" backColor="Gray" backGradientStyle="None" backHatchStyle="None">
               <resources>
                 <name>Line 03</name>
                 <name>Foreground 01</name>
@@ -1457,7 +1467,7 @@
         </style>
         <style role="MessageBoxContentArea">
           <states>
-            <state name="Normal" backColor="White" backGradientStyle="None" backHatchStyle="None">
+            <state name="Normal" backColor="DarkGray" backGradientStyle="None" backHatchStyle="None">
               <image>AAEAAAD/////AQAAAAAAAAAMAgAAAFFTeXN0ZW0uRHJhd2luZywgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2EFAQAAABVTeXN0ZW0uRHJhd2luZy5CaXRtYXABAAAABERhdGEHAgIAAAAJAwAAAA8DAAAApgIAAAKJUE5HDQoaCgAAAA1JSERSAAAAIAAAACAIBgAAAHN6evQAAAAEZ0FNQQAAsY8L/GEFAAAACXBIWXMAAA68AAAOvAGVvHJJAAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M1cbXjNgAAAiBJREFUWEfFlztOAzEQhnOUHGGPAAdASkuXBok2NUJKQUNDhUQLLaKkoEFKgUSbmhMg8WZDxNvMv7E33snvtXdRlJE+RbHntfZ41tsxxiRxt72eCUNhJOSCUWAMc9DJmA8GHfQRZz3rWAeMAZs15tOHDgIx7loncPZlf5vgbOCjy2IAOigGeOpX4VvQjpsCH/DVY7EWBkSx7xlqZ21xvvo6XuWPKODJtXGQx51N83wwoHM1VFbCD449jy77y9Gu+bwZi0lVfh5uzdv5sbkfbFA7i9uOsib8BFAsweBw/DG+EtV6QSJPe1vUhwUxRqI6T0AGokufEtwJkoisBCiOqP/0waOGfdYyOT2szP9OJ3ZmJv48AbGKVUBwdDimVPJ+fTHzagV7rXVQG76gTrQOIUMCaJ1sskQXHapf6+hVSkxg6JafTZbkJ/vWrTHTyzOqo2sEq8b0FCMkwF4sC6CyQ2debxEkchIcORJgE8mw4KxGQvwrARYc28V0Q7ROAE+ppWlw0DoBNBtf2gQHyUWo8QUngOkkUBRh9BgyfIl0vTqKYxhtRAxXA4l9P0TRiKKteIlkSS8jhjuCeAnhPcB0api/jGwCjW5Cuu9jG5hehOJmVCQAZKD2QuKjE8AqML0AixcSIINJVzKH/4Zs0APgm1/JgEw0vpS2OAH8UuoQhdVdyx2iuLoPE4cYrO7TzEeMsRpt2jVs2n+casTZEj7PTecPWGkG0Ip8nsEAAAAASUVORK5CYIILAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==</image>
               <resources>
                 <name>Foreground 01</name>
@@ -1478,7 +1488,7 @@
         </style>
         <style role="MessageBoxHeader">
           <states>
-            <state name="Normal" backColor="White" backGradientStyle="None" backHatchStyle="None">
+            <state name="Normal" backColor="DimGray" foreColor="White" backGradientStyle="None" backHatchStyle="None">
               <resources>
                 <name>Foreground 02</name>
               </resources>
@@ -1698,7 +1708,8 @@
         </style>
         <style role="PivotGridRowDropArea">
           <states>
-            <state name="Normal" backColor="White" backGradientStyle="None" backHatchStyle="None" />
+            <state name="Normal" backColor="DarkGray" backGradientStyle="None" backHatchStyle="None" />
+            <state name="Busy" backColor="Gainsboro" backGradientStyle="None" backHatchStyle="None" />
           </states>
         </style>
         <style role="PivotGridRowDropAreaItem">
@@ -2116,7 +2127,7 @@
         </style>
         <style role="ScheduleCurrentDay">
           <states>
-            <state name="Normal" fontBold="True">
+            <state name="Normal" backColor="LightGray" fontBold="True" backGradientStyle="None" backHatchStyle="None">
               <resources>
                 <name>Foreground 02</name>
               </resources>
@@ -2171,7 +2182,7 @@
         </style>
         <style role="ScheduleNonWorkingDay">
           <states>
-            <state name="Normal" alphaLevel="50">
+            <state name="Normal" backColor="OrangeRed" alphaLevel="50" backGradientStyle="None" backHatchStyle="None">
               <resources>
                 <name>Background 3</name>
               </resources>
@@ -2180,7 +2191,7 @@
         </style>
         <style role="ScheduleOwnerHeader">
           <states>
-            <state name="Normal" backColor="White" backGradientStyle="None" backHatchStyle="None">
+            <state name="Normal" backColor="DimGray" foreColor="White" foreColorDisabled="Gainsboro" backGradientStyle="None" backHatchStyle="None">
               <resources>
                 <name>Foreground 01</name>
               </resources>
@@ -2200,6 +2211,12 @@
                 <name>Line 03</name>
               </resources>
             </state>
+          </states>
+        </style>
+        <style role="ScheduleWorkingDay">
+          <states>
+            <state name="Normal" backColor="White" backGradientStyle="None" backHatchStyle="None" />
+            <state name="AlternateItem" backColor="White" backGradientStyle="None" backHatchStyle="None" />
           </states>
         </style>
         <style role="ScrollBarArrow">
@@ -2380,6 +2397,16 @@
             </state>
           </states>
         </style>
+        <style role="TabControlClientAreaHorizontal">
+          <states>
+            <state name="Normal" backColor="DarkGray" backGradientStyle="None" backHatchStyle="None" />
+          </states>
+        </style>
+        <style role="TabControlClientAreaVertical">
+          <states>
+            <state name="Normal" backColor="DarkGray" backGradientStyle="None" backHatchStyle="None" />
+          </states>
+        </style>
         <style role="TabControlTabItemAreaHorizontalBottom">
           <states>
             <state name="Normal" backColor="245, 242, 236" backGradientStyle="None" backHatchStyle="None" />
@@ -2498,7 +2525,7 @@
         </style>
         <style role="TileHeader">
           <states>
-            <state name="Normal" backColor="94, 79, 70" foreColor="235, 231, 218" backGradientStyle="None" backHatchStyle="None" />
+            <state name="Normal" backColor="94, 79, 70" foreColor="White" foreColorDisabled="Gainsboro" backGradientStyle="None" backHatchStyle="None" />
           </states>
         </style>
         <style role="TileStateChangeButton">
@@ -2569,6 +2596,11 @@
                 <name>Background 5</name>
               </resources>
             </state>
+          </states>
+        </style>
+        <style role="ToolbarDockAreaRight">
+          <states>
+            <state name="Normal" backColor="DarkGray" backGradientStyle="None" backHatchStyle="None" />
           </states>
         </style>
         <style role="ToolbarEditArea">
@@ -2702,6 +2734,11 @@
                 <name>Accent Back Color</name>
               </resources>
             </state>
+          </states>
+        </style>
+        <style role="ToolbarVertical">
+          <states>
+            <state name="Normal" backColor="DarkGray" backGradientStyle="None" backHatchStyle="None" />
           </states>
         </style>
         <style role="ToolTip">
@@ -2913,7 +2950,7 @@
         </style>
         <style role="UltraCalculatorButtonAction">
           <states>
-            <state name="Normal">
+            <state name="Normal" foreColor="96, 0, 0">
               <resources>
                 <name>Foreground 02</name>
                 <name>Line 01</name>
@@ -3132,7 +3169,7 @@
         </style>
         <style role="UltraPanel">
           <states>
-            <state name="Normal" backColor="White" backGradientStyle="None" backHatchStyle="None">
+            <state name="Normal" backColor="DarkGray" backGradientStyle="None" backHatchStyle="None">
               <resources>
                 <name>Line 03</name>
               </resources>
@@ -3216,7 +3253,7 @@
         </style>
         <style role="UltraTile" borderStyle="Solid">
           <states>
-            <state name="Normal" borderAlpha="Opaque">
+            <state name="Normal" backColor="DarkGray" borderAlpha="Opaque" backGradientStyle="None" backHatchStyle="None">
               <resources>
                 <name>Background 5</name>
                 <name>Line 03</name>
@@ -3264,7 +3301,7 @@
     <resource name="Background 1" backColor="124, 104, 90" foreColor="White" backGradientStyle="None" backHatchStyle="None" />
     <resource name="Background 2" backColor="94, 79, 70" foreColor="White" backGradientStyle="None" backHatchStyle="None" />
     <resource name="Background 3" backColor="223, 216, 210" foreColor="90, 80, 73" foreColorDisabled="189, 185, 182" backColorDisabled="214, 208, 205" backGradientStyle="None" backHatchStyle="None" />
-    <resource name="Background 4" backColor="49, 147, 147" foreColor="White" backGradientStyle="None" backHatchStyle="None" />
+    <resource name="Background 4" backColor="49, 147, 147" foreColor="Black" foreColorDisabled="210, 210, 210" backColorDisabled="49, 147, 147" backGradientStyle="None" backHatchStyle="None" />
     <resource name="Background 5" backColor="245, 242, 236" foreColor="90, 80, 73" foreColorDisabled="189, 185, 182" backGradientStyle="None" backHatchStyle="None" />
     <resource name="Button Checked" backColor="235, 104, 65" foreColor="White" backGradientStyle="None" backHatchStyle="None" />
     <resource name="Button Focussed" backColor="124, 104, 90" foreColor="White" borderColor="235, 104, 65" backGradientStyle="None" backHatchStyle="None" />

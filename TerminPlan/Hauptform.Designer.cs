@@ -16,8 +16,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TerminPlanForm));
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance61 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance62 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance63 = new Infragistics.Win.Appearance();
@@ -190,11 +190,21 @@
             // 
             // ultraGanttView1
             // 
+            resources.ApplyResources(this.ultraGanttView1, "ultraGanttView1");
+            appearance1.FontData.BoldAsString = resources.GetString("resource.BoldAsString");
+            appearance1.FontData.ItalicAsString = resources.GetString("resource.ItalicAsString");
             appearance1.FontData.Name = resources.GetString("resource.Name");
+            appearance1.FontData.StrikeoutAsString = resources.GetString("resource.StrikeoutAsString");
+            appearance1.FontData.UnderlineAsString = resources.GetString("resource.UnderlineAsString");
+            resources.ApplyResources(appearance1, "appearance1");
             this.ultraGanttView1.Appearance = appearance1;
             this.ultraGanttView1.CalendarInfo = this.ultraCalendarInfo1;
-            resources.ApplyResources(this.ultraGanttView1, "ultraGanttView1");
+            appearance61.FontData.BoldAsString = resources.GetString("resource.BoldAsString5");
+            appearance61.FontData.ItalicAsString = resources.GetString("resource.ItalicAsString5");
             appearance61.FontData.SizeInPoints = ((float)(resources.GetObject("resource.SizeInPoints4")));
+            appearance61.FontData.StrikeoutAsString = resources.GetString("resource.StrikeoutAsString5");
+            appearance61.FontData.UnderlineAsString = resources.GetString("resource.UnderlineAsString5");
+            resources.ApplyResources(appearance61, "appearance61");
             this.ultraGanttView1.GridSettings.ColumnHeaderAppearance = appearance61;
             this.ultraGanttView1.GridSettings.ColumnSettings.GetValue("Constraint").VisiblePosition = 6;
             this.ultraGanttView1.GridSettings.ColumnSettings.GetValue("ConstraintDateTime").VisiblePosition = 7;
@@ -211,11 +221,19 @@
             this.ultraGanttView1.GridSettings.ColumnSettings.GetValue("Resources").VisiblePosition = 5;
             this.ultraGanttView1.GridSettings.ColumnSettings.GetValue("StartDateTime").VisiblePosition = 2;
             this.ultraGanttView1.GridSettings.ColumnSettings.GetValue("RowNumber").VisiblePosition = 12;
+            appearance62.FontData.BoldAsString = resources.GetString("resource.BoldAsString6");
+            appearance62.FontData.ItalicAsString = resources.GetString("resource.ItalicAsString6");
             appearance62.FontData.SizeInPoints = ((float)(resources.GetObject("resource.SizeInPoints5")));
+            appearance62.FontData.StrikeoutAsString = resources.GetString("resource.StrikeoutAsString6");
+            appearance62.FontData.UnderlineAsString = resources.GetString("resource.UnderlineAsString6");
             resources.ApplyResources(appearance62, "appearance62");
             this.ultraGanttView1.GridSettings.RowAppearance = appearance62;
             this.ultraGanttView1.Name = "ultraGanttView1";
+            appearance63.FontData.BoldAsString = resources.GetString("resource.BoldAsString7");
+            appearance63.FontData.ItalicAsString = resources.GetString("resource.ItalicAsString7");
             appearance63.FontData.SizeInPoints = ((float)(resources.GetObject("resource.SizeInPoints6")));
+            appearance63.FontData.StrikeoutAsString = resources.GetString("resource.StrikeoutAsString7");
+            appearance63.FontData.UnderlineAsString = resources.GetString("resource.UnderlineAsString7");
             resources.ApplyResources(appearance63, "appearance63");
             this.ultraGanttView1.TimelineSettings.BarSettings.BarTextAppearance = appearance63;
             this.ultraGanttView1.VerticalSplitterMinimumResizeWidth = 10;
@@ -233,25 +251,26 @@
             // 
             // Form1_Fill_Panel
             // 
+            resources.ApplyResources(this.Form1_Fill_Panel, "Form1_Fill_Panel");
             this.Form1_Fill_Panel.Controls.Add(this.ultraGanttView1);
             this.Form1_Fill_Panel.Cursor = System.Windows.Forms.Cursors.Default;
-            resources.ApplyResources(this.Form1_Fill_Panel, "Form1_Fill_Panel");
             this.Form1_Fill_Panel.Name = "Form1_Fill_Panel";
             // 
             // _TerminplanForm_Toolbars_Dock_Area_Left
             // 
+            resources.ApplyResources(this._TerminplanForm_Toolbars_Dock_Area_Left, "_TerminplanForm_Toolbars_Dock_Area_Left");
             this._TerminplanForm_Toolbars_Dock_Area_Left.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
             this._TerminplanForm_Toolbars_Dock_Area_Left.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this._TerminplanForm_Toolbars_Dock_Area_Left.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Left;
             this._TerminplanForm_Toolbars_Dock_Area_Left.ForeColor = System.Drawing.SystemColors.ControlText;
             this._TerminplanForm_Toolbars_Dock_Area_Left.InitialResizeAreaExtent = 1;
-            resources.ApplyResources(this._TerminplanForm_Toolbars_Dock_Area_Left, "_TerminplanForm_Toolbars_Dock_Area_Left");
             this._TerminplanForm_Toolbars_Dock_Area_Left.Name = "_TerminplanForm_Toolbars_Dock_Area_Left";
             this._TerminplanForm_Toolbars_Dock_Area_Left.ToolbarsManager = this.ultraToolbarsManager1;
             // 
             // ultraToolbarsManager1
             // 
             appearance2.BackColor = System.Drawing.Color.DarkGray;
+            resources.ApplyResources(appearance2, "appearance2");
             this.ultraToolbarsManager1.Appearance = appearance2;
             this.ultraToolbarsManager1.DesignerFlags = 1;
             this.ultraToolbarsManager1.DockWithinContainer = this;
@@ -259,48 +278,78 @@
             this.ultraToolbarsManager1.ImageListLarge = this.ilDefaultImagesLarge;
             this.ultraToolbarsManager1.ImageListSmall = this.ilDefaultImagesSmall;
             appearance3.BackColor = System.Drawing.Color.Gray;
+            resources.ApplyResources(appearance3, "appearance3");
             this.ultraToolbarsManager1.MenuSettings.Appearance = appearance3;
             appearance4.BackColor = System.Drawing.Color.Gold;
+            resources.ApplyResources(appearance4, "appearance4");
             this.ultraToolbarsManager1.MenuSettings.HotTrackAppearance = appearance4;
             appearance5.BackColor = System.Drawing.Color.Orange;
+            resources.ApplyResources(appearance5, "appearance5");
             this.ultraToolbarsManager1.MenuSettings.PressedAppearance = appearance5;
             appearance6.BackColor = System.Drawing.Color.DarkGray;
+            resources.ApplyResources(appearance6, "appearance6");
             this.ultraToolbarsManager1.MenuSettings.ToolAppearance = appearance6;
             this.ultraToolbarsManager1.Office2007UICompatibility = false;
             appearance7.BackColor = System.Drawing.Color.DarkGray;
             appearance7.BackColor2 = System.Drawing.Color.Gainsboro;
             appearance7.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            resources.ApplyResources(appearance7, "appearance7");
             this.ultraToolbarsManager1.Ribbon.ApplicationMenu.FooterToolbar.Settings.Appearance = appearance7;
+            this.ultraToolbarsManager1.Ribbon.ApplicationMenu.KeyTip = resources.GetString("ultraToolbarsManager1.Ribbon.ApplicationMenu.KeyTip");
             this.ultraToolbarsManager1.Ribbon.ApplicationMenu.ToolAreaLeft.NonInheritedTools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
             buttonTool4});
             appearance8.BackColor = System.Drawing.Color.Black;
             appearance8.ForeColor = System.Drawing.Color.White;
+            resources.ApplyResources(appearance8, "appearance8");
             this.ultraToolbarsManager1.Ribbon.ApplicationMenu.ToolAreaLeft.Settings.Appearance = appearance8;
             appearance9.BackColor = System.Drawing.Color.DarkGray;
             appearance9.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(appearance9, "appearance9");
             this.ultraToolbarsManager1.Ribbon.ApplicationMenu.ToolAreaRight.Settings.Appearance = appearance9;
+            this.ultraToolbarsManager1.Ribbon.ApplicationMenu.ToolTipText = resources.GetString("ultraToolbarsManager1.Ribbon.ApplicationMenu.ToolTipText");
+            this.ultraToolbarsManager1.Ribbon.ApplicationMenu.ToolTipTextFormatted = resources.GetString("ultraToolbarsManager1.Ribbon.ApplicationMenu.ToolTipTextFormatted");
+            this.ultraToolbarsManager1.Ribbon.ApplicationMenu.ToolTipTitle = resources.GetString("ultraToolbarsManager1.Ribbon.ApplicationMenu.ToolTipTitle");
             appearance10.BackColor = System.Drawing.Color.DarkGray;
             appearance10.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(appearance10, "appearance10");
             this.ultraToolbarsManager1.Ribbon.ApplicationMenu2010.ContentArea.Settings.Appearance = appearance10;
             this.ultraToolbarsManager1.Ribbon.ApplicationMenu2010.DisplayStyle = Infragistics.Win.UltraWinToolbars.ApplicationMenu2010DisplayStyle.Office2013;
+            this.ultraToolbarsManager1.Ribbon.ApplicationMenu2010.KeyTip = resources.GetString("ultraToolbarsManager1.Ribbon.ApplicationMenu2010.KeyTip");
             popupMenuTool2.InstanceProps.IsFirstInGroup = true;
             this.ultraToolbarsManager1.Ribbon.ApplicationMenu2010.NavigationMenu.NonInheritedTools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
             buttonTool18,
             buttonTool14,
             popupMenuTool2,
             popupControlContainerTool1});
+            this.ultraToolbarsManager1.Ribbon.ApplicationMenu2010.ToolTipText = resources.GetString("ultraToolbarsManager1.Ribbon.ApplicationMenu2010.ToolTipText");
+            this.ultraToolbarsManager1.Ribbon.ApplicationMenu2010.ToolTipTextFormatted = resources.GetString("ultraToolbarsManager1.Ribbon.ApplicationMenu2010.ToolTipTextFormatted");
+            this.ultraToolbarsManager1.Ribbon.ApplicationMenu2010.ToolTipTitle = resources.GetString("ultraToolbarsManager1.Ribbon.ApplicationMenu2010.ToolTipTitle");
+            appearance11.FontData.BoldAsString = resources.GetString("resource.BoldAsString1");
+            appearance11.FontData.ItalicAsString = resources.GetString("resource.ItalicAsString1");
             appearance11.FontData.Name = resources.GetString("resource.Name1");
             appearance11.FontData.SizeInPoints = ((float)(resources.GetObject("resource.SizeInPoints")));
+            appearance11.FontData.StrikeoutAsString = resources.GetString("resource.StrikeoutAsString1");
+            appearance11.FontData.UnderlineAsString = resources.GetString("resource.UnderlineAsString1");
             resources.ApplyResources(appearance11, "appearance11");
             this.ultraToolbarsManager1.Ribbon.CaptionAreaAppearance = appearance11;
+            appearance12.FontData.BoldAsString = resources.GetString("resource.BoldAsString2");
+            appearance12.FontData.ItalicAsString = resources.GetString("resource.ItalicAsString2");
             appearance12.FontData.Name = resources.GetString("resource.Name2");
             appearance12.FontData.SizeInPoints = ((float)(resources.GetObject("resource.SizeInPoints1")));
+            appearance12.FontData.StrikeoutAsString = resources.GetString("resource.StrikeoutAsString2");
+            appearance12.FontData.UnderlineAsString = resources.GetString("resource.UnderlineAsString2");
+            resources.ApplyResources(appearance12, "appearance12");
             this.ultraToolbarsManager1.Ribbon.FileMenuButtonAppearance = appearance12;
             this.ultraToolbarsManager1.Ribbon.FileMenuButtonCaption = "Datei";
             this.ultraToolbarsManager1.Ribbon.FileMenuStyle = Infragistics.Win.UltraWinToolbars.FileMenuStyle.ApplicationMenu2010;
             appearance13.AlphaLevel = ((short)(128));
+            appearance13.FontData.BoldAsString = resources.GetString("resource.BoldAsString3");
+            appearance13.FontData.ItalicAsString = resources.GetString("resource.ItalicAsString3");
             appearance13.FontData.SizeInPoints = ((float)(resources.GetObject("resource.SizeInPoints2")));
+            appearance13.FontData.StrikeoutAsString = resources.GetString("resource.StrikeoutAsString3");
+            appearance13.FontData.UnderlineAsString = resources.GetString("resource.UnderlineAsString3");
             appearance13.ForegroundAlpha = Infragistics.Win.Alpha.UseAlphaLevel;
+            resources.ApplyResources(appearance13, "appearance13");
             this.ultraToolbarsManager1.Ribbon.GroupSettings.CaptionAppearance = appearance13;
             resources.ApplyResources(ribbonTab1, "ribbonTab1");
             resources.ApplyResources(ribbonGroup1, "ribbonGroup1");
@@ -372,74 +421,101 @@
             ribbonTab1});
             this.ultraToolbarsManager1.Ribbon.QuickAccessToolbar.Visible = false;
             appearance14.BackColor = System.Drawing.Color.DarkGray;
+            resources.ApplyResources(appearance14, "appearance14");
             this.ultraToolbarsManager1.Ribbon.TabAreaAppearance = appearance14;
+            appearance15.FontData.BoldAsString = resources.GetString("resource.BoldAsString4");
+            appearance15.FontData.ItalicAsString = resources.GetString("resource.ItalicAsString4");
             appearance15.FontData.Name = resources.GetString("resource.Name3");
             appearance15.FontData.SizeInPoints = ((float)(resources.GetObject("resource.SizeInPoints3")));
+            appearance15.FontData.StrikeoutAsString = resources.GetString("resource.StrikeoutAsString4");
+            appearance15.FontData.UnderlineAsString = resources.GetString("resource.UnderlineAsString4");
+            resources.ApplyResources(appearance15, "appearance15");
             this.ultraToolbarsManager1.Ribbon.TabSettings.Appearance = appearance15;
             this.ultraToolbarsManager1.Ribbon.Visible = true;
             this.ultraToolbarsManager1.ShowFullMenusDelay = 500;
             this.ultraToolbarsManager1.Style = Infragistics.Win.UltraWinToolbars.ToolbarStyle.Office2013;
             appearance16.BackColor = System.Drawing.Color.DarkGray;
             appearance16.ForeColor = System.Drawing.Color.Black;
+            resources.ApplyResources(appearance16, "appearance16");
             this.ultraToolbarsManager1.ToolbarSettings.Appearance = appearance16;
             appearance17.BackColor = System.Drawing.Color.DarkGray;
+            resources.ApplyResources(appearance17, "appearance17");
             this.ultraToolbarsManager1.ToolbarSettings.ToolAppearance = appearance17;
             appearance18.BackColor = System.Drawing.Color.DarkGray;
+            resources.ApplyResources(appearance18, "appearance18");
             fontListTool2.SharedPropsInternal.AppearancesSmall.Appearance = appearance18;
             comboBoxTool2.ValueList = valueList1;
             popupColorPickerTool3.ReplaceableColor = System.Drawing.Color.Yellow;
             appearance19.Image = "Font_BackColor_Normal";
+            resources.ApplyResources(appearance19, "appearance19");
             popupColorPickerTool3.SharedPropsInternal.AppearancesSmall.Appearance = appearance19;
             appearance20.Image = "Font_BackColor_Active";
+            resources.ApplyResources(appearance20, "appearance20");
             popupColorPickerTool3.SharedPropsInternal.AppearancesSmall.HotTrackAppearance = appearance20;
             resources.ApplyResources(popupColorPickerTool3.SharedPropsInternal, "popupColorPickerTool3.SharedPropsInternal");
             popupColorPickerTool3.ForceApplyResources = "SharedPropsInternal";
             popupColorPickerTool4.ReplaceableColor = System.Drawing.Color.Yellow;
             appearance21.Image = "Font_ForeColor_Normal";
+            resources.ApplyResources(appearance21, "appearance21");
             popupColorPickerTool4.SharedPropsInternal.AppearancesSmall.Appearance = appearance21;
             appearance22.Image = "Font_ForeColor_Active";
+            resources.ApplyResources(appearance22, "appearance22");
             popupColorPickerTool4.SharedPropsInternal.AppearancesSmall.HotTrackAppearance = appearance22;
             resources.ApplyResources(popupColorPickerTool4.SharedPropsInternal, "popupColorPickerTool4.SharedPropsInternal");
             popupColorPickerTool4.ForceApplyResources = "SharedPropsInternal";
             appearance23.Image = "Tasks_PercentComplete_0_Normal";
+            resources.ApplyResources(appearance23, "appearance23");
             buttonTool5.SharedPropsInternal.AppearancesLarge.Appearance = appearance23;
             appearance24.Image = "Tasks_PercentComplete_0_Active";
+            resources.ApplyResources(appearance24, "appearance24");
             buttonTool5.SharedPropsInternal.AppearancesLarge.HotTrackAppearance = appearance24;
             resources.ApplyResources(buttonTool5.SharedPropsInternal, "buttonTool5.SharedPropsInternal");
             buttonTool5.ForceApplyResources = "SharedPropsInternal";
             appearance25.Image = "Tasks_PercentComplete_25_Normal";
+            resources.ApplyResources(appearance25, "appearance25");
             buttonTool24.SharedPropsInternal.AppearancesLarge.Appearance = appearance25;
             appearance26.Image = "Tasks_PercentComplete_25_Active";
+            resources.ApplyResources(appearance26, "appearance26");
             buttonTool24.SharedPropsInternal.AppearancesLarge.HotTrackAppearance = appearance26;
             resources.ApplyResources(buttonTool24.SharedPropsInternal, "buttonTool24.SharedPropsInternal");
             buttonTool24.ForceApplyResources = "SharedPropsInternal";
             appearance27.Image = "Tasks_PercentComplete_50_Normal";
+            resources.ApplyResources(appearance27, "appearance27");
             buttonTool25.SharedPropsInternal.AppearancesLarge.Appearance = appearance27;
             appearance28.Image = "Tasks_PercentComplete_50_Active";
+            resources.ApplyResources(appearance28, "appearance28");
             buttonTool25.SharedPropsInternal.AppearancesLarge.HotTrackAppearance = appearance28;
             resources.ApplyResources(buttonTool25.SharedPropsInternal, "buttonTool25.SharedPropsInternal");
             buttonTool25.ForceApplyResources = "SharedPropsInternal";
             appearance29.Image = "Tasks_PercentComplete_100_Normal";
+            resources.ApplyResources(appearance29, "appearance29");
             buttonTool26.SharedPropsInternal.AppearancesLarge.Appearance = appearance29;
             appearance30.Image = "Tasks_PercentComplete_100_Active";
+            resources.ApplyResources(appearance30, "appearance30");
             buttonTool26.SharedPropsInternal.AppearancesLarge.HotTrackAppearance = appearance30;
             resources.ApplyResources(buttonTool26.SharedPropsInternal, "buttonTool26.SharedPropsInternal");
             buttonTool26.ForceApplyResources = "SharedPropsInternal";
             appearance31.Image = "Tasks_MoveLeft_Normal";
+            resources.ApplyResources(appearance31, "appearance31");
             buttonTool27.SharedPropsInternal.AppearancesLarge.Appearance = appearance31;
             appearance32.Image = "Tasks_MoveLeft_Active";
+            resources.ApplyResources(appearance32, "appearance32");
             buttonTool27.SharedPropsInternal.AppearancesLarge.HotTrackAppearance = appearance32;
             resources.ApplyResources(buttonTool27.SharedPropsInternal, "buttonTool27.SharedPropsInternal");
             buttonTool27.ForceApplyResources = "SharedPropsInternal";
             appearance33.Image = "Tasks_MoveRight_Normal";
+            resources.ApplyResources(appearance33, "appearance33");
             buttonTool28.SharedPropsInternal.AppearancesLarge.Appearance = appearance33;
             appearance34.Image = "Tasks_MoveRight_Active";
+            resources.ApplyResources(appearance34, "appearance34");
             buttonTool28.SharedPropsInternal.AppearancesLarge.HotTrackAppearance = appearance34;
             resources.ApplyResources(buttonTool28.SharedPropsInternal, "buttonTool28.SharedPropsInternal");
             buttonTool28.ForceApplyResources = "SharedPropsInternal";
             appearance35.Image = "Tasks_OnMoveTask_Normal";
+            resources.ApplyResources(appearance35, "appearance35");
             popupMenuTool6.SharedPropsInternal.AppearancesLarge.Appearance = appearance35;
             appearance36.Image = "Tasks_OnMoveTask_Active";
+            resources.ApplyResources(appearance36, "appearance36");
             popupMenuTool6.SharedPropsInternal.AppearancesLarge.HotTrackAppearance = appearance36;
             resources.ApplyResources(popupMenuTool6.SharedPropsInternal, "popupMenuTool6.SharedPropsInternal");
             buttonTool47.InstanceProps.ButtonGroup = "Colors";
@@ -454,8 +530,10 @@
             buttonTool55});
             popupMenuTool6.ForceApplyResources = "SharedPropsInternal";
             appearance37.Image = "Insert_Task_Normal";
+            resources.ApplyResources(appearance37, "appearance37");
             popupMenuTool10.SharedPropsInternal.AppearancesLarge.Appearance = appearance37;
             appearance38.Image = "Insert_Task_Active";
+            resources.ApplyResources(appearance38, "appearance38");
             popupMenuTool10.SharedPropsInternal.AppearancesLarge.HotTrackAppearance = appearance38;
             resources.ApplyResources(popupMenuTool10.SharedPropsInternal, "popupMenuTool10.SharedPropsInternal");
             popupMenuTool10.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
@@ -465,40 +543,51 @@
             resources.ApplyResources(buttonTool37.SharedPropsInternal, "buttonTool37.SharedPropsInternal");
             buttonTool37.ForceApplyResources = "SharedPropsInternal";
             appearance39.Image = "Insert_Milestone_Normal";
+            resources.ApplyResources(appearance39, "appearance39");
             buttonTool38.SharedPropsInternal.AppearancesLarge.Appearance = appearance39;
             appearance40.Image = "Insert_Milestone_Active";
+            resources.ApplyResources(appearance40, "appearance40");
             buttonTool38.SharedPropsInternal.AppearancesLarge.HotTrackAppearance = appearance40;
             resources.ApplyResources(buttonTool38.SharedPropsInternal, "buttonTool38.SharedPropsInternal");
             buttonTool38.ForceApplyResources = "SharedPropsInternal";
             appearance41.Image = "Font_Bold_Normal";
+            resources.ApplyResources(appearance41, "appearance41");
             stateButtonTool2.SharedPropsInternal.AppearancesSmall.Appearance = appearance41;
             appearance42.Image = "Font_Bold_Active";
+            resources.ApplyResources(appearance42, "appearance42");
             stateButtonTool2.SharedPropsInternal.AppearancesSmall.HotTrackAppearance = appearance42;
             resources.ApplyResources(stateButtonTool2.SharedPropsInternal, "stateButtonTool2.SharedPropsInternal");
             stateButtonTool2.ForceApplyResources = "SharedPropsInternal";
             appearance43.Image = "Font_Italic_Normal";
+            resources.ApplyResources(appearance43, "appearance43");
             stateButtonTool4.SharedPropsInternal.AppearancesSmall.Appearance = appearance43;
             appearance44.Image = "Font_Italic_Active";
+            resources.ApplyResources(appearance44, "appearance44");
             stateButtonTool4.SharedPropsInternal.AppearancesSmall.HotTrackAppearance = appearance44;
             resources.ApplyResources(stateButtonTool4.SharedPropsInternal, "stateButtonTool4.SharedPropsInternal");
             stateButtonTool4.ForceApplyResources = "SharedPropsInternal";
             appearance45.Image = "Font_Underline_Normal";
+            resources.ApplyResources(appearance45, "appearance45");
             stateButtonTool6.SharedPropsInternal.AppearancesSmall.Appearance = appearance45;
             appearance46.Image = "Font_Underline_Active";
+            resources.ApplyResources(appearance46, "appearance46");
             stateButtonTool6.SharedPropsInternal.AppearancesSmall.HotTrackAppearance = appearance46;
             resources.ApplyResources(stateButtonTool6.SharedPropsInternal, "stateButtonTool6.SharedPropsInternal");
             stateButtonTool6.ForceApplyResources = "SharedPropsInternal";
             resources.ApplyResources(buttonTool16.SharedPropsInternal, "buttonTool16.SharedPropsInternal");
             buttonTool16.ForceApplyResources = "SharedPropsInternal";
             appearance47.Image = "Tasks_MoveForward_Day_Normal";
+            resources.ApplyResources(appearance47, "appearance47");
             buttonTool50.SharedPropsInternal.AppearancesSmall.Appearance = appearance47;
             resources.ApplyResources(buttonTool50.SharedPropsInternal, "buttonTool50.SharedPropsInternal");
             buttonTool50.ForceApplyResources = "SharedPropsInternal";
             appearance48.Image = "Tasks_MoveForward_Week_Normal";
+            resources.ApplyResources(appearance48, "appearance48");
             buttonTool51.SharedPropsInternal.AppearancesSmall.Appearance = appearance48;
             resources.ApplyResources(buttonTool51.SharedPropsInternal, "buttonTool51.SharedPropsInternal");
             buttonTool51.ForceApplyResources = "SharedPropsInternal";
             appearance49.Image = "Tasks_MoveForward_Month_Normal";
+            resources.ApplyResources(appearance49, "appearance49");
             buttonTool52.SharedPropsInternal.AppearancesSmall.Appearance = appearance49;
             resources.ApplyResources(buttonTool52.SharedPropsInternal, "buttonTool52.SharedPropsInternal");
             buttonTool52.ForceApplyResources = "SharedPropsInternal";
@@ -507,34 +596,43 @@
             resources.ApplyResources(labelTool4.SharedPropsInternal, "labelTool4.SharedPropsInternal");
             labelTool4.ForceApplyResources = "SharedPropsInternal";
             appearance50.Image = "Tasks_MoveBackward_Day_Normal";
+            resources.ApplyResources(appearance50, "appearance50");
             buttonTool56.SharedPropsInternal.AppearancesSmall.Appearance = appearance50;
             resources.ApplyResources(buttonTool56.SharedPropsInternal, "buttonTool56.SharedPropsInternal");
             buttonTool56.ForceApplyResources = "SharedPropsInternal";
             appearance51.Image = "Tasks_MoveBackward_Week_Normal";
+            resources.ApplyResources(appearance51, "appearance51");
             buttonTool57.SharedPropsInternal.AppearancesSmall.Appearance = appearance51;
             resources.ApplyResources(buttonTool57.SharedPropsInternal, "buttonTool57.SharedPropsInternal");
             buttonTool57.ForceApplyResources = "SharedPropsInternal";
             appearance52.Image = "Tasks_MoveBackward_Month_Normal";
+            resources.ApplyResources(appearance52, "appearance52");
             buttonTool58.SharedPropsInternal.AppearancesSmall.Appearance = appearance52;
             resources.ApplyResources(buttonTool58.SharedPropsInternal, "buttonTool58.SharedPropsInternal");
             buttonTool58.ForceApplyResources = "SharedPropsInternal";
             resources.ApplyResources(buttonTool60.SharedPropsInternal, "buttonTool60.SharedPropsInternal");
             buttonTool60.ForceApplyResources = "SharedPropsInternal";
             appearance53.Image = "Tasks_PercentComplete_75_Normal";
+            resources.ApplyResources(appearance53, "appearance53");
             buttonTool3.SharedPropsInternal.AppearancesLarge.Appearance = appearance53;
             appearance54.Image = "Tasks_PercentComplete_75_Active";
+            resources.ApplyResources(appearance54, "appearance54");
             buttonTool3.SharedPropsInternal.AppearancesLarge.HotTrackAppearance = appearance54;
             resources.ApplyResources(buttonTool3.SharedPropsInternal, "buttonTool3.SharedPropsInternal");
             buttonTool3.ForceApplyResources = "SharedPropsInternal";
             appearance55.Image = "Properties_TaskInformation_Normal";
+            resources.ApplyResources(appearance55, "appearance55");
             buttonTool9.SharedPropsInternal.AppearancesLarge.Appearance = appearance55;
             appearance56.Image = "Properties_TaskInformation_Active";
+            resources.ApplyResources(appearance56, "appearance56");
             buttonTool9.SharedPropsInternal.AppearancesLarge.HotTrackAppearance = appearance56;
             resources.ApplyResources(buttonTool9.SharedPropsInternal, "buttonTool9.SharedPropsInternal");
             buttonTool9.ForceApplyResources = "SharedPropsInternal";
             appearance57.Image = "Properties_Notes_Normal";
+            resources.ApplyResources(appearance57, "appearance57");
             buttonTool10.SharedPropsInternal.AppearancesLarge.Appearance = appearance57;
             appearance58.Image = "Properties_Notes_Active";
+            resources.ApplyResources(appearance58, "appearance58");
             buttonTool10.SharedPropsInternal.AppearancesLarge.HotTrackAppearance = appearance58;
             resources.ApplyResources(buttonTool10.SharedPropsInternal, "buttonTool10.SharedPropsInternal");
             buttonTool10.ForceApplyResources = "SharedPropsInternal";
@@ -573,8 +671,10 @@
             resources.ApplyResources(popupControlContainerTool2.SharedPropsInternal, "popupControlContainerTool2.SharedPropsInternal");
             popupControlContainerTool2.ForceApplyResources = "SharedPropsInternal";
             appearance59.Image = "Tasks_Delete_Normal";
+            resources.ApplyResources(appearance59, "appearance59");
             buttonTool17.SharedPropsInternal.AppearancesLarge.Appearance = appearance59;
             appearance60.Image = "Tasks_Delete_Active";
+            resources.ApplyResources(appearance60, "appearance60");
             buttonTool17.SharedPropsInternal.AppearancesLarge.HotTrackAppearance = appearance60;
             resources.ApplyResources(buttonTool17.SharedPropsInternal, "buttonTool17.SharedPropsInternal");
             buttonTool17.ForceApplyResources = "SharedPropsInternal";
@@ -708,33 +808,33 @@
             // 
             // _TerminplanForm_Toolbars_Dock_Area_Right
             // 
+            resources.ApplyResources(this._TerminplanForm_Toolbars_Dock_Area_Right, "_TerminplanForm_Toolbars_Dock_Area_Right");
             this._TerminplanForm_Toolbars_Dock_Area_Right.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
             this._TerminplanForm_Toolbars_Dock_Area_Right.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this._TerminplanForm_Toolbars_Dock_Area_Right.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Right;
             this._TerminplanForm_Toolbars_Dock_Area_Right.ForeColor = System.Drawing.SystemColors.ControlText;
             this._TerminplanForm_Toolbars_Dock_Area_Right.InitialResizeAreaExtent = 1;
-            resources.ApplyResources(this._TerminplanForm_Toolbars_Dock_Area_Right, "_TerminplanForm_Toolbars_Dock_Area_Right");
             this._TerminplanForm_Toolbars_Dock_Area_Right.Name = "_TerminplanForm_Toolbars_Dock_Area_Right";
             this._TerminplanForm_Toolbars_Dock_Area_Right.ToolbarsManager = this.ultraToolbarsManager1;
             // 
             // _TerminplanForm_Toolbars_Dock_Area_Top
             // 
+            resources.ApplyResources(this._TerminplanForm_Toolbars_Dock_Area_Top, "_TerminplanForm_Toolbars_Dock_Area_Top");
             this._TerminplanForm_Toolbars_Dock_Area_Top.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
             this._TerminplanForm_Toolbars_Dock_Area_Top.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this._TerminplanForm_Toolbars_Dock_Area_Top.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Top;
             this._TerminplanForm_Toolbars_Dock_Area_Top.ForeColor = System.Drawing.SystemColors.ControlText;
-            resources.ApplyResources(this._TerminplanForm_Toolbars_Dock_Area_Top, "_TerminplanForm_Toolbars_Dock_Area_Top");
             this._TerminplanForm_Toolbars_Dock_Area_Top.Name = "_TerminplanForm_Toolbars_Dock_Area_Top";
             this._TerminplanForm_Toolbars_Dock_Area_Top.ToolbarsManager = this.ultraToolbarsManager1;
             // 
             // _TerminplanForm_Toolbars_Dock_Area_Bottom
             // 
+            resources.ApplyResources(this._TerminplanForm_Toolbars_Dock_Area_Bottom, "_TerminplanForm_Toolbars_Dock_Area_Bottom");
             this._TerminplanForm_Toolbars_Dock_Area_Bottom.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
             this._TerminplanForm_Toolbars_Dock_Area_Bottom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this._TerminplanForm_Toolbars_Dock_Area_Bottom.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Bottom;
             this._TerminplanForm_Toolbars_Dock_Area_Bottom.ForeColor = System.Drawing.SystemColors.ControlText;
             this._TerminplanForm_Toolbars_Dock_Area_Bottom.InitialResizeAreaExtent = 1;
-            resources.ApplyResources(this._TerminplanForm_Toolbars_Dock_Area_Bottom, "_TerminplanForm_Toolbars_Dock_Area_Bottom");
             this._TerminplanForm_Toolbars_Dock_Area_Bottom.Name = "_TerminplanForm_Toolbars_Dock_Area_Bottom";
             this._TerminplanForm_Toolbars_Dock_Area_Bottom.ToolbarsManager = this.ultraToolbarsManager1;
             // 
@@ -758,6 +858,7 @@
             this.Controls.Add(this._TerminplanForm_Toolbars_Dock_Area_Right);
             this.Controls.Add(this._TerminplanForm_Toolbars_Dock_Area_Bottom);
             this.Controls.Add(this._TerminplanForm_Toolbars_Dock_Area_Top);
+            this.DoubleBuffered = true;
             this.Name = "TerminPlanForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.ultraGanttView1)).EndInit();

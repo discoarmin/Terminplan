@@ -127,6 +127,9 @@
     <EmbeddedResource Include="AboutControl.resx">
       <DependentUpon>AboutControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Hauptform.de-DE.resx">
+      <DependentUpon>Hauptform.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Hauptform.resx">
       <DependentUpon>Hauptform.cs</DependentUpon>
     </EmbeddedResource>

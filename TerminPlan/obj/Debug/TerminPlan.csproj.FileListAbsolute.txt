@@ -1,9 +1,3 @@
-E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\Terminplan.AboutControl.resources
-E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\Terminplan.TerminPlanForm.resources
-E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\Terminplan.Properties.Resources.resources
-E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\Terminplan.SplashScreen.resources
-E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\TerminPlan.csproj.GenerateResource.Cache
-E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\Terminplan.exe.licenses
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\Terminplan.exe.config
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\Terminplan.exe
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\Terminplan.pdb
@@ -19,5 +13,12 @@ E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\Infragistics4.Win.UltraWinStat
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\Infragistics4.Win.UltraWinTabControl.v16.2.dll
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\Infragistics4.Win.UltraWinToolbars.v16.2.dll
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\Infragistics4.Win.v16.2.dll
+E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\TerminPlan.csprojResolveAssemblyReference.cache
+E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\Terminplan.AboutControl.resources
+E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\Terminplan.TerminPlanForm.resources
+E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\Terminplan.Properties.Resources.resources
+E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\Terminplan.SplashScreen.resources
+E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\TerminPlan.csproj.GenerateResource.Cache
+E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\Terminplan.exe.licenses
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\Terminplan.exe
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\Terminplan.pdb
