@@ -1,0 +1,648 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="NewTask_Text" xml:space="preserve">
+    <value>New Task</value>
+  </data>
+  <data name="NewSubTask_Text" xml:space="preserve">
+    <value>New sub-task</value>
+  </data>
+  <data name="GanttViewContextMenuItem_InsertTask_Text" xml:space="preserve">
+    <value>Aufgabe einfügen</value>
+  </data>
+  <data name="GanttViewContextMenuItem_AddSubTask_Text" xml:space="preserve">
+    <value>Unteraufgabe für '{0}' hinzufügen</value>
+  </data>
+  <data name="GanttViewContextMenuItem_RemoveTask_Text" xml:space="preserve">
+    <value>Aufgabe löschen</value>
+  </data>
+  <data name="GanttViewContextMenuItem_ShowDialog_Text" xml:space="preserve">
+    <value>Informationen über die Aufgabe</value>
+  </data>
+  <data name="GanttViewContextMenuItem_IndentTask_Text" xml:space="preserve">
+    <value>Aufgabe nach links verschieben</value>
+  </data>
+  <data name="GanttViewContextMenuItem_OutdentTask_Text" xml:space="preserve">
+    <value>Aufgabe nach rechts verschieben</value>
+  </data>
+  <data name="GanttViewContextMenuItem_EnableTask_Text" xml:space="preserve">
+    <value>Aufgabe aktivieren</value>
+  </data>
+  <data name="GanttViewContextMenuItem_DisableTask_Text" xml:space="preserve">
+    <value>Aufgabe deaktivieren</value>
+  </data>
+  <data name="GanttViewContextMenuItem_ExpandTask_Text" xml:space="preserve">
+    <value>Unterpunkte anzeigen</value>
+  </data>
+  <data name="GanttViewContextMenuItem_CollapseTask_Text" xml:space="preserve">
+    <value>Unterbegriffe ausblenden</value>
+  </data>
+  <data name="TaskProxy_PropertyDisplayName_Task.Name" xml:space="preserve">
+    <value>Task Name</value>
+  </data>
+  <data name="TaskProxy_PropertyDisplayName_Task.Duration" xml:space="preserve">
+    <value>Duration</value>
+  </data>
+  <data name="TaskProxy_PropertyDisplayName_Task.StartDateTime" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="TaskProxy_PropertyDisplayName_Task.EndDateTime" xml:space="preserve">
+    <value>Finish</value>
+  </data>
+  <data name="TaskProxy_PropertyDisplayName_Task.Dependencies" xml:space="preserve">
+    <value>Predecessors</value>
+  </data>
+  <data name="TaskProxy_PropertyDisplayName_Task.Resources" xml:space="preserve">
+    <value>Resource Names</value>
+  </data>
+  <data name="TaskProxy_PropertyDisplayName_Task.RowNumber" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="TaskProxy_PropertyDisplayName_Task.Constraint" xml:space="preserve">
+    <value>Constraint Type</value>
+  </data>
+  <data name="TaskProxy_PropertyDisplayName_Task.ConstraintDateTime" xml:space="preserve">
+    <value>Constraint Date</value>
+  </data>
+  <data name="TaskProxy_PropertyDisplayName_Task.Deadline" xml:space="preserve">
+    <value>Deadline</value>
+  </data>
+  <data name="TaskProxy_PropertyDisplayName_Task.Milestone" xml:space="preserve">
+    <value>Milestone</value>
+  </data>
+  <data name="TaskProxy_PropertyDisplayName_Task.Notes" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="TaskProxy_PropertyDisplayName_Task.PercentComplete" xml:space="preserve">
+    <value>% Complete</value>
+  </data>
+  <data name="TimeSpanEditor_NoValueDisplayString" xml:space="preserve">
+    <value>(none)</value>
+  </data>
+  <data name="TimeSpanEditor_WeekDisplayString_Singular" xml:space="preserve">
+    <value>wk</value>
+  </data>
+  <data name="TimeSpanEditor_WeekDisplayString_Plural" xml:space="preserve">
+    <value>wks</value>
+  </data>
+  <data name="TimeSpanEditor_DayDisplayString_Singular" xml:space="preserve">
+    <value>day</value>
+  </data>
+  <data name="TimeSpanEditor_DayDisplayString_Plural" xml:space="preserve">
+    <value>days</value>
+  </data>
+  <data name="TimeSpanEditor_HourDisplayString_Singular" xml:space="preserve">
+    <value>hr</value>
+  </data>
+  <data name="TimeSpanEditor_HourDisplayString_Plural" xml:space="preserve">
+    <value>hrs</value>
+  </data>
+  <data name="TimeSpanEditor_MinuteDisplayString_Singular" xml:space="preserve">
+    <value>min</value>
+  </data>
+  <data name="TimeSpanEditor_MinuteDisplayString_Plural" xml:space="preserve">
+    <value>mins</value>
+  </data>
+  <data name="UltraGanttView_Exception_CannotAssignUnassociatedProject" xml:space="preserve">
+    <value>The project cannot be assigned to the UltraGanttView because it is not associated with the same UltraCalendarInfo instance.</value>
+  </data>
+  <data name="UltraGanttView_TaskDialogDisplaying" xml:space="preserve">
+    <value>Fired before the TaskDialog is displayed.</value>
+  </data>
+  <data name="TaskDialog_ShowNotSupported" xml:space="preserve">
+    <value>The TaskDialog does not support non-modal display. Use the ShowDialog method to launch the dialog.</value>
+  </data>
+  <data name="TaskDialog_Title" xml:space="preserve">
+    <value>Task Information</value>
+  </data>
+  <data name="UltraGanttView_DisplayTaskDialog_Exception_CalendarInfoNotAssociated" xml:space="preserve">
+    <value>The TaskDialog cannot be displayed because the task and this control are not associated with the same UltraCalendarInfo.</value>
+  </data>
+  <data name="TaskDialog_ErrorTitle" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="TaskDialog_InvalidRowNumberError" xml:space="preserve">
+    <value>Please enter a valid row number.</value>
+  </data>
+  <data name="TaskDialog_InvalidTaskDependencyTypeError" xml:space="preserve">
+    <value>Please enter a valid task dependency type.</value>
+  </data>
+  <data name="TaskDialog_InvalidTaskNameError" xml:space="preserve">
+    <value>Please enter a valid task name.</value>
+  </data>
+  <data name="TaskDialog_InvalidTaskNameOrRowNumber" xml:space="preserve">
+    <value>An invalid Row Number and Task Name pair was found. Please use valid Task Name and Row Number. </value>
+  </data>
+  <data name="TaskDialog_UpdateFailedTitle" xml:space="preserve">
+    <value>Update Failed</value>
+  </data>
+  <data name="TaskDialog_AdvancedTab" xml:space="preserve">
+    <value>Advanced</value>
+  </data>
+  <data name="TaskDialog_GeneralTab" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="TaskDialog_lblConstraintDate" xml:space="preserve">
+    <value>Constraint date:</value>
+  </data>
+  <data name="TaskDialog_lblConstraintTask" xml:space="preserve">
+    <value>Constrain Task</value>
+  </data>
+  <data name="TaskDialog_lblConstraintType" xml:space="preserve">
+    <value>Constraint type:</value>
+  </data>
+  <data name="TaskDialog_lblDates" xml:space="preserve">
+    <value>Dates</value>
+  </data>
+  <data name="TaskDialog_lblDeadline" xml:space="preserve">
+    <value>Deadline:</value>
+  </data>
+  <data name="TaskDialog_lblDuration" xml:space="preserve">
+    <value>Duration:</value>
+  </data>
+  <data name="TaskDialog_lblEndDate" xml:space="preserve">
+    <value>Finish:</value>
+  </data>
+  <data name="TaskDialog_lblMilestone" xml:space="preserve">
+    <value>Mark task as milestone</value>
+  </data>
+  <data name="TasKDialog_lblName" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="TaskDialog_lblPrecentageComplete" xml:space="preserve">
+    <value>Percent Complete:</value>
+  </data>
+  <data name="TaskDialog_lblStartDate" xml:space="preserve">
+    <value>Start:</value>
+  </data>
+  <data name="TaskDialog_NotesTab" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="TaskDialog_PredecessorsTab" xml:space="preserve">
+    <value>Predecessors</value>
+  </data>
+  <data name="TaskDialog_ResourceNameCaption" xml:space="preserve">
+    <value>Resource Name</value>
+  </data>
+  <data name="TaskDialog_ResourcesTab" xml:space="preserve">
+    <value>Resources</value>
+  </data>
+  <data name="TaskDialog_RowNumberCaption" xml:space="preserve">
+    <value>Row Number</value>
+  </data>
+  <data name="TaskDialog_TaskDependencyTypeCaption" xml:space="preserve">
+    <value>Task Dependency Type</value>
+  </data>
+  <data name="TaskDialog_TaskNameCaption" xml:space="preserve">
+    <value>Task Name</value>
+  </data>
+  <data name="TaskDialog_CalendarInfoNullError" xml:space="preserve">
+    <value>CalendarInfo should never return null.</value>
+  </data>
+  <data name="TaskDialog_InvalidTabKeyError" xml:space="preserve">
+    <value>Unknown tab key in FromTabDialogPage</value>
+  </data>
+  <data name="TaskDialog_ProjectNullError" xml:space="preserve">
+    <value>Project should never return null.</value>
+  </data>
+  <data name="TaskDialog_InvalidOwnerError" xml:space="preserve">
+    <value>Invalid Owner found. Please use a valid value.</value>
+  </data>
+  <data name="TaskDialog_InvalidResourceNameError" xml:space="preserve">
+    <value>Please enter a valid resource name</value>
+  </data>
+  <data name="TaskDialog_lblNotes" xml:space="preserve">
+    <value>Notes:</value>
+  </data>
+  <data name="TaskDialog_lblPredecessors" xml:space="preserve">
+    <value>Predecessors:</value>
+  </data>
+  <data name="TaskDialog_lblResources" xml:space="preserve">
+    <value>Resources:</value>
+  </data>
+  <data name="TaskDialog_NullOwnerError" xml:space="preserve">
+    <value>The owner should not be null.</value>
+  </data>
+  <data name="Grid_Error_MessageBoxTitle_Generic" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Grid_Error_MessageBoxTitle_TaskException" xml:space="preserve">
+    <value>Task Error</value>
+  </data>
+  <data name="Grid_Error_MessageBoxText_Generic" xml:space="preserve">
+    <value>The value '{0}' is invalid for '{1}'.</value>
+  </data>
+  <data name="ResourceParseError_MessageBoxText" xml:space="preserve">
+    <value>One or more of the specified resources do not exist.{1}Would you like to add the following resource(s): '{0}'? </value>
+  </data>
+  <data name="UltraGanttView_Exception_ActiveTaskNotAssociated" xml:space="preserve">
+    <value>'{0}' belongs to a different project than the one currently being displayed by the control, and cannot be designated as the ActiveTask.</value>
+  </data>
+  <data name="ToolTipSettings_DefaultTitle" xml:space="preserve">
+    <value>Task</value>
+  </data>
+  <data name="ToolTipSettings_DefaultTitle_Summary" xml:space="preserve">
+    <value>Summary</value>
+  </data>
+  <data name="ToolTipSettings_DefaultTitle_Milestone" xml:space="preserve">
+    <value>Milestone</value>
+  </data>
+  <data name="ToolTipSettings_DefaultTitle_PercentComplete" xml:space="preserve">
+    <value>Progress</value>
+  </data>
+  <data name="ToolTipSettings_DefaultTitle_Deadline" xml:space="preserve">
+    <value>Deadline</value>
+  </data>
+  <data name="ToolTipSettings_Prefix_Name" xml:space="preserve">
+    <value>Task</value>
+  </data>
+  <data name="ToolTipSettings_Prefix_Start" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="ToolTipSettings_Prefix_Duration" xml:space="preserve">
+    <value>Duration</value>
+  </data>
+  <data name="ToolTipSettings_Prefix_Finish" xml:space="preserve">
+    <value>Finish</value>
+  </data>
+  <data name="ToolTipSettings_Prefix_Deadline" xml:space="preserve">
+    <value>Deadline</value>
+  </data>
+  <data name="ToolTipSettings_Prefix_PercentComplete" xml:space="preserve">
+    <value>% Complete</value>
+  </data>
+  <data name="ToolTipSettings_Prefix_CompleteThrough" xml:space="preserve">
+    <value>Complete Through</value>
+  </data>
+  <data name="ToolTipSettingsTaskDependency_Prefix_TaskDependencyType" xml:space="preserve">
+    <value>Task Link</value>
+  </data>
+  <data name="ToolTipSettingsTaskDependency_Prefix_Predecessor" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="ToolTipSettingsTaskDependency_Prefix_Dependent" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="TaskDialog_NumericEditorDurationMaskDays" xml:space="preserve">
+    <value>d</value>
+  </data>
+  <data name="Task_Name_Unnamed" xml:space="preserve">
+    <value>unnamed</value>
+  </data>
+  <data name="TaskDialog_BtnCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="TaskDialog_BtnOK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="UltraGanttView_TaskDeleting" xml:space="preserve">
+    <value>Fired before the user deletes a Task.</value>
+  </data>
+  <data name="UltraGanttView_TaskDeleted" xml:space="preserve">
+    <value>Fired after the user deletes a Task.</value>
+  </data>
+  <data name="UltraGanttView_TaskAdding" xml:space="preserve">
+    <value>Fired before the user adds a Task.</value>
+  </data>
+  <data name="UltraGanttView_TaskAdded" xml:space="preserve">
+    <value>Fired after the user adds a Task.</value>
+  </data>
+  <data name="UltraGanttView_ActiveTaskChanging" xml:space="preserve">
+    <value>Fired before the ActiveTask changes.</value>
+  </data>
+  <data name="UltraGanttView_ActiveTaskChanged" xml:space="preserve">
+    <value>Fired after the ActiveTask changes.</value>
+  </data>
+  <data name="UltraGanttView_CellActivating" xml:space="preserve">
+    <value>Fired before a cell is activated in the grid portion of the control.</value>
+  </data>
+  <data name="UltraGanttView_CellActivated" xml:space="preserve">
+    <value>Fired after a cell is activated in the grid portion of the control.</value>
+  </data>
+  <data name="UltraGanttView_CellDeactivating" xml:space="preserve">
+    <value>Fired before a cell in the grid portion of the contrl is deactivated.</value>
+  </data>
+  <data name="DateTimeColumn_NullText" xml:space="preserve">
+    <value>NA</value>
+  </data>
+  <data name="UltraGanttView_Description" xml:space="preserve">
+    <value>Windows Forms control which presents a WinSchedule Project, along with its Tasks, using a grid on one side and a timeline on the other.</value>
+  </data>
+  <data name="LC_DateTimeInterval" xml:space="preserve">
+    <value>Date/Time Interval</value>
+  </data>
+  <data name="LC_UserInteraction" xml:space="preserve">
+    <value>User Interaction</value>
+  </data>
+  <data name="LC_Behavior" xml:space="preserve">
+    <value>Behavior</value>
+  </data>
+  <data name="LC_Misc" xml:space="preserve">
+    <value>Miscellaneous</value>
+  </data>
+  <data name="LD_Timeline_AutoAddAdditionalInterval" xml:space="preserve">
+    <value>Returns or sets a boolean value indicating whether a weekly DateTimeInterval automatically appears above the PrimaryInterval.</value>
+  </data>
+  <data name="LD_Timeline_AdditionalIntervals" xml:space="preserve">
+    <value>Returns a collection of DateTimeInterval-derived instances which define the date/time intervals that appear above the PrimaryInterval.</value>
+  </data>
+  <data name="LD_Timeline_ColumnHeaderAppearance" xml:space="preserve">
+    <value>Returns or sets the appearance for the headers which represent the PrimaryInterval and the members of the AdditionalIntervals collection.</value>
+  </data>
+  <data name="LD_Timeline_ColumnAutoSizing" xml:space="preserve">
+    <value>Returns or sets a value indicating whether the value of the ColumnWidth property is set to the ideal width for the PrimaryInterval when the user double-clicks the adjustable area of the header.</value>
+  </data>
+  <data name="LD_Timeline_ColumnSizing" xml:space="preserve">
+    <value>Returns or sets a value indicating whether the user can change the value of the ColumnWidth property by dragging the right edge of a PrimaryInterval column header.</value>
+  </data>
+  <data name="LD_Timeline_ColumnWidth" xml:space="preserve">
+    <value>Returns or sets the width, in pixels, of the ColumnHeaderUIElements for the PrimaryInterval and the TimeSlotUIElements.</value>
+  </data>
+  <data name="LD_Timeline_DependencyLinkColor" xml:space="preserve">
+    <value>Returns or sets the color of the lines and arrows which indicate a TaskDependency on the timeline.</value>
+  </data>
+  <data name="LD_Timeline_DrawDependencyLines" xml:space="preserve">
+    <value>Returns or sets a boolean value indicating whether lines are drawn to depict a TaskDependency on the timeline.</value>
+  </data>
+  <data name="LD_Timeline_HorizontalScrollSettings" xml:space="preserve">
+    <value>Returns a HorizontalScrollSettings instance which defines the small and large increments for the horizontal scrollbar.</value>
+  </data>
+  <data name="LD_Timeline_MinimumColumnResizeWidth" xml:space="preserve">
+    <value>Returns or sets the minimum value to which the ColumnWidth property can be changed during a resize operation.</value>
+  </data>
+  <data name="LD_Timeline_NonWorkingHourAppearance" xml:space="preserve">
+    <value>Returns or sets the appearance for TimeSlotUIElements which appear in the non-working hour range.</value>
+  </data>
+  <data name="LD_Timeline_WorkingHourAppearance" xml:space="preserve">
+    <value>Returns or sets the appearance for TimeSlotUIElements which appear in the working hour range.</value>
+  </data>
+  <data name="LD_Timeline_PrimaryInterval" xml:space="preserve">
+    <value>Returns or sets the DateTimeInterval-derived instance which is represented in the bottom row of column headers, and which defines the smallest time interval in effect for the control.</value>
+  </data>
+  <data name="LD_Timeline_ToolTipSettings" xml:space="preserve">
+    <value>Returns the ToolTipSettings instance which determines the information that is displayed to the user when a task tooltip appears.</value>
+  </data>
+  <data name="LD_Timeline_ToolTipSettingsSummary" xml:space="preserve">
+    <value>Returns the ToolTipSettingsSummary instance which determines the information that is displayed to the user when a task tooltip appears for a summary task.</value>
+  </data>
+  <data name="LD_Timeline_ToolTipSettingsMilestone" xml:space="preserve">
+    <value>Returns the ToolTipSettingsMilestone instance which determines the information that is displayed to the user when a task tooltip appears for a milestone task.</value>
+  </data>
+  <data name="LD_Timeline_ToolTipSettingsPercentComplete" xml:space="preserve">
+    <value>Returns the ToolTipSettingsPercentComplete instance which determines the information that is displayed to the user when a tooltip appears for a task's PercentComplete indicator.</value>
+  </data>
+  <data name="LD_Timeline_ToolTipSettingsDeadline" xml:space="preserve">
+    <value>Returns the ToolTipSettingsDeadline instance which determines the information that is displayed to the user when a tooltip appears for a task's Deadline indicator.</value>
+  </data>
+  <data name="LD_Timeline_ToolTipSettingsTaskDependency" xml:space="preserve">
+    <value>Returns the ToolTipSettingsTaskDependency instance which determines the information that is displayed to the user when a tooltip appears for a TaskDependency.</value>
+  </data>
+  <data name="LD_UltraGanttView_AutoDisplayDefaultContextMenu" xml:space="preserve">
+    <value>Returns or sets a value indicating whether the default context menu is automatically displayed when the user right-clicks within the appropriate area of the control.</value>
+  </data>
+  <data name="LD_UltraGanttView_Appearance" xml:space="preserve">
+    <value>Gets/sets the main appearance for the control.</value>
+  </data>
+  <data name="LD_UltraGanttView_AutoDisplayTaskDialog" xml:space="preserve">
+    <value>Returns or sets a value indicating whether the TaskDialog is automatically displayed when the user double-clicks within the appropriate area of the control.</value>
+  </data>
+  <data name="LD_UltraGanttView_ChartAreaWidth" xml:space="preserve">
+    <value>Returns or sets a value which determines the width of the chart area of the control.</value>
+  </data>
+  <data name="LD_UltraGanttView_GridAreaWidth" xml:space="preserve">
+    <value>Returns or sets a value which determines the width of the grid area of the control.</value>
+  </data>
+  <data name="LD_UltraGanttView_GridSettings" xml:space="preserve">
+    <value>Returns a GridSettings instance which determines grid-specific properties of the task, such as the appearance of the row and the settings for the cells.</value>
+  </data>
+  <data name="LD_UltraGanttView_HorizontalResizeMode" xml:space="preserve">
+    <value>Returns or sets the manner in which the control reacts to changes in its width.</value>
+  </data>
+  <data name="LD_UltraGanttView_VerticalSplitterAppearance" xml:space="preserve">
+    <value>Returns or sets the appearance for the VerticalSplitterUIElement which separates the grid area and the chart area of the control.</value>
+  </data>
+  <data name="LD_UltraGanttView_VerticalSplitterEnabled" xml:space="preserve">
+    <value>Returns or sets whether the vertical splitter which separates the grid area and chart area is enabled in the user interface.</value>
+  </data>
+  <data name="LD_UltraGanttView_VerticalSplitterMinimumResizeWidth" xml:space="preserve">
+    <value>Returns or sets a value which determines the minimum value to which the GridAreaWidth and ChartAreaWidth  properties can be set via a resize operation with the vertical splitter.</value>
+  </data>
+  <data name="LD_UltraGanttView_VerticalSplitterWidth" xml:space="preserve">
+    <value>Returns or sets a value which determines the width of the VerticalSplitterUIElement which separates the grid and chart areas of the control.</value>
+  </data>
+  <data name="LD_UltraGanttView_TimelineSettings" xml:space="preserve">
+    <value>Returns an object which exposes properties that provide a way to customize the timeline-related aspects of the control.</value>
+  </data>
+  <data name="LD_UltraGanttView_TaskSettings" xml:space="preserve">
+    <value>Returns a TaskSettings instance which determines whether the user can edit or delete tasks.</value>
+  </data>
+  <data name="LD_UltraGanttView_Timeline_ColumnHeaderInitializing" xml:space="preserve">
+    <value>Fired immediately before the child elements are initialized for a ColumnHeaderUIElement, giving listeners the opportunity to change the text and/or image that is displayed.</value>
+  </data>
+  <data name="LD_UltraGanttView_TimelineColumnHeaderToolTipDisplaying" xml:space="preserve">
+    <value>Fired before a tooltip is displayed for a ColumnHeaderUIElement.</value>
+  </data>
+  <data name="LD_UltraGanttView_TimelineDateNavigationButtonClicked" xml:space="preserve">
+    <value>Fired when a DateNavigationButtonUIElement is clicked, giving listeners the opportunity to change the action that is taken.</value>
+  </data>
+  <data name="LD_UltraGanttView_TimelinePrimaryIntervalChanged" xml:space="preserve">
+    <value>Fired when the PrimaryInterval has changed.</value>
+  </data>
+  <data name="LD_UltraGanttView_TimelineVisibleDateTimeRange" xml:space="preserve">
+    <value>Fired after the date range returned by the VisibleDateTimeRange property has changed.</value>
+  </data>
+  <data name="LD_UltraGanttView_VerticalSplitterDragging" xml:space="preserve">
+    <value>Fired when the VerticalSplitterUIElement is in the process of being dragged by the user.</value>
+  </data>
+  <data name="LD_UltraGanttView_VerticalSplitterDragged" xml:space="preserve">
+    <value>Fired when a drag operation involving the VerticalSplitterUIElement is terminated normally by the user.</value>
+  </data>
+  <data name="LD_UltraGanttView_TaskDialogDisplaying" xml:space="preserve">
+    <value>Fired before the TaskDialog is displayed.</value>
+  </data>
+  <data name="LD_UltraGanttView_ContextMenuInitializing" xml:space="preserve">
+    <value>Fired before the control's custom ContextMenu is displayed.</value>
+  </data>
+  <data name="LD_UltraGanttView_ResourceParseError" xml:space="preserve">
+    <value>Fired when the user leaves the Resources field in the task grid with one or more invalid values.</value>
+  </data>
+  <data name="LD_UltraGanttView_TaskElementDragging" xml:space="preserve">
+    <value>Fired during the course of a drag operation for a Task element.</value>
+  </data>
+  <data name="LD_UltraGanttView_TaskElementDragComplete" xml:space="preserve">
+    <value>Fired when a drag operation for a Task element has been successfully completed.</value>
+  </data>
+  <data name="LD_UltraGanttView_TaskToolTipDisplaying" xml:space="preserve">
+    <value>Fired before a tooltip is displayed for a task element.</value>
+  </data>
+  <data name="LD_ToolTipSettings_Appearance" xml:space="preserve">
+    <value>Returns or sets the Appearance object which controls visual formatting for the tooltips displayed by the control.</value>
+  </data>
+  <data name="LD_ToolTipSettings_DisplayName" xml:space="preserve">
+    <value>Returns or sets a value indicating whether the value of the task's Name property should be displayed in the tooltip.</value>
+  </data>
+  <data name="LD_ToolTipSettings_DisplayStartDateTime" xml:space="preserve">
+    <value>Returns or sets a value indicating whether the value of the task's StartDateTime property should be displayed in the tooltip.</value>
+  </data>
+  <data name="LD_ToolTipSettings_DisplayDuration" xml:space="preserve">
+    <value>Returns or sets a value indicating whether the value of the task's Duration property should be displayed in the tooltip.</value>
+  </data>
+  <data name="LD_ToolTipSettings_DisplayEndDateTime" xml:space="preserve">
+    <value>Returns or sets a value indicating whether the value of the task's EndDateTime property should be displayed in the tooltip.</value>
+  </data>
+  <data name="LD_ToolTipSettings_DisplayDeadline" xml:space="preserve">
+    <value>Returns or sets a value indicating whether the value of the task's Deadline property should be displayed in the tooltip.</value>
+  </data>
+  <data name="LD_ToolTipSettings_DisplayPercentComplete" xml:space="preserve">
+    <value>Returns or sets a value indicating whether the value of the task's PercentComplete property should be displayed in the tooltip.</value>
+  </data>
+  <data name="LD_ToolTipSettings_DisplayCompleteThrough" xml:space="preserve">
+    <value>Returns or sets a value indicating whether the value of the task's CompleteThrough property should be displayed in the tooltip.</value>
+  </data>
+  <data name="LD_ToolTipSettings_DisplayTitle" xml:space="preserve">
+    <value>Returns or sets a value indicating whether a title should be displayed in the tooltip.</value>
+  </data>
+  <data name="LD_ToolTipSettings_Title" xml:space="preserve">
+    <value>Returns or sets the string that is displayed as the title for the tooltip.</value>
+  </data>
+  <data name="LD_ToolTipSettings_DateTimeFormat" xml:space="preserve">
+    <value>Returns or sets the format that is applied to the dates/times displayed in the tooltip.</value>
+  </data>
+  <data name="LD_ToolTipSettings_DisplayToolTip" xml:space="preserve">
+    <value>Returns or sets a value indicating whether a tooltip is displayed.</value>
+  </data>
+  <data name="LD_ToolTipSettingsTaskDependency_Appearance" xml:space="preserve">
+    <value>Returns or sets the Appearance object which controls visual formatting for the tooltips displayed for a TaskDependency.</value>
+  </data>
+  <data name="LD_ToolTipSettingsTaskDependency_DisplayTaskDependencyType" xml:space="preserve">
+    <value>Returns or sets a value indicating whether the value of the DependencyType property should be displayed in the tooltip.</value>
+  </data>
+  <data name="LD_ToolTipSettingsTaskDependency_DisplayPredecessor" xml:space="preserve">
+    <value>Returns or sets a value indicating whether the predecessor task's name should be displayed in the tooltip.</value>
+  </data>
+  <data name="LD_ToolTipSettingsTaskDependency_DisplayDependent" xml:space="preserve">
+    <value>Returns or sets a value indicating whether the dependent task's name should be displayed in the tooltip.</value>
+  </data>
+  <data name="SummaryTaskException_CannotSetPercentComplete" xml:space="preserve">
+    <value>The percentage of completion cannot be set on a summary task. The percentage of completion for a summary task is determined by its sub-tasks.</value>
+  </data>
+  <data name="TaskDialog_InvalidTaskContraint" xml:space="preserve">
+    <value>Please enter a valid Task Constraint Value </value>
+  </data>
+</root>

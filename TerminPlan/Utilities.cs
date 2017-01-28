@@ -21,7 +21,7 @@ namespace Terminplan
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
+
     using Infragistics.Win;
     using System.Data;
     using System.Diagnostics;
@@ -29,7 +29,8 @@ namespace Terminplan
     using System.Drawing;
     using System.Windows.Forms;
     using Infragistics.Win.UltraWinToolbars;
-    using System.Resources;
+
+    using Resources = Terminplan.Properties.Resources;
 
     /// <summary>
     /// Utility class to perform context-independent functionality
@@ -38,43 +39,39 @@ namespace Terminplan
     {
 
         #region Static ExecutingAssembly
-
         private static Assembly executingAssembly;
 
+        /// <summary>Holt das ausführbare Assembly</summary>
+        /// <value>das ausführbare Assembly.</value>
         private static Assembly ExecutingAssembly
         {
             get
             {
-                if (executingAssembly == null)
-                    executingAssembly = Assembly.GetExecutingAssembly();
-                return executingAssembly;
+                return executingAssembly ?? (executingAssembly = Assembly.GetExecutingAssembly());
             }
         }
 
-        #endregion //Static ExecutingAssembly
+        #endregion Static ExecutingAssembly
 
         #region SetRibbonGroupToolsEnabledState
-
         /// <summary>
         /// Sets the Enabled property of the tools within the specified RibbonGroup.
         /// </summary>
         /// <param name="group">The group.</param>
         /// <param name="enabledState">if set to <c>true</c> [enabled state].</param>
-        internal static  void SetRibbonGroupToolsEnabledState(RibbonGroup group, bool enabled)
+        internal static  void SetRibbonGroupToolsEnabledState(RibbonGroup group, bool enabledState)
         {
             if (group == null)
                 return;
 
-            foreach (ToolBase tool in group.Tools)
+            foreach (var tool in group.Tools)
             {
-                tool.SharedProps.Enabled = enabled;
+                tool.SharedProps.Enabled = enabledState;
             }
         }
-
-        #endregion // SetRibbonGroupToolsEnabledState
+        #endregion SetRibbonGroupToolsEnabledState
 
         #region ColorizeImages
-
         /// <summary>
         /// Creates new images using a pixel-based color replacement on the image from the provided imagelist. 
         /// </summary>
@@ -85,35 +82,36 @@ namespace Terminplan
         internal static void ColorizeImages(Color oldColor, Dictionary<string, Color> colors, ref ImageList defaultImageList, ref ImageList colorizedImageList)
         {
             // loop through the default imageliss, colorize the image and put it into the colorized imagelist
-            foreach (string key in defaultImageList.Images.Keys)
+            foreach (var key in defaultImageList.Images.Keys)
             {
-                Bitmap bitmap = defaultImageList.Images[key] as Bitmap;
+                var bitmap = defaultImageList.Images[key] as Bitmap;
+                if (bitmap == null)
+                {
+                    continue;                                                   // Weitersuchen, da kein Bild gefunden
+                }
+
+                bitmap = bitmap.Clone() as Bitmap;
+                foreach (var colorKey in colors.Keys.Where(colorKey => key.EndsWith(colorKey)))
+                {
+                    DrawUtility.ReplaceColor(ref bitmap, oldColor, colors[colorKey]);
+                    break;
+                }
+
+                var index = colorizedImageList.Images.IndexOfKey(key);
+                if (index >= 0)
+                {
+                    var oldImage = colorizedImageList.Images[index];
+                    colorizedImageList.Images.RemoveByKey(key);
+                    oldImage.Dispose();
+                }
+
                 if (bitmap != null)
                 {
-                    bitmap = bitmap.Clone() as Bitmap;
-                    foreach (string colorKey in colors.Keys)
-                    {
-                        if (key.EndsWith(colorKey))
-                        {
-                            Infragistics.Win.DrawUtility.ReplaceColor(ref bitmap, oldColor, colors[colorKey]);
-                            break;
-                        }
-                    }
-
-                    int index = colorizedImageList.Images.IndexOfKey(key);
-                    if (index >= 0)
-                    {
-                        Image oldImage = colorizedImageList.Images[index];
-                        colorizedImageList.Images.RemoveByKey(key);
-                        if (oldImage != null)
-                            oldImage.Dispose();
-                    }
                     colorizedImageList.Images.Add(key, bitmap);
                 }
             }
         }
-
-        #endregion // ColorizeImages
+        #endregion ColorizeImages
 
         #region GetAssemblyAttribute
 
@@ -126,14 +124,13 @@ namespace Terminplan
         internal static string GetAssemblyAttribute<T>(Func<T, string> value)
             where T : Attribute
         {
-            T attribute = (T)Attribute.GetCustomAttribute(DienstProgramme.ExecutingAssembly, typeof(T));
+            T attribute = (T)Attribute.GetCustomAttribute(ExecutingAssembly, typeof(T));
             return value.Invoke(attribute);
         }
 
         #endregion // GetAssemblyAttribute
 
         #region GetData
-
         /// <summary>
         /// Gets the bindable data.
         /// </summary>
@@ -144,16 +141,14 @@ namespace Terminplan
             //System.IO.Stream stream = GetEmbeddedResourceStream(fileName);
 
             // Convert the stream to the dataset
-            DataSet data = new DataSet();
-            //data.ReadXml(stream);
+            var data = new DataSet();
             data.ReadXml(fileName);
             return data;
         }
 
-        #endregion //GetData
+        #endregion GetData
 
         #region GetEmbeddedResourceStream
-
         /// <summary>
         /// Gets the embedded resource stream.
         /// </summary>
@@ -161,12 +156,11 @@ namespace Terminplan
         /// <returns></returns>
         internal static System.IO.Stream GetEmbeddedResourceStream(string resourceName)
         {
-            System.IO.Stream stream = DienstProgramme.ExecutingAssembly.GetManifestResourceStream(resourceName);
-            Debug.Assert(stream != null, "Unable to locate embedded resource.", "Resource name: {0}", resourceName);
+            var stream = ExecutingAssembly.GetManifestResourceStream(resourceName);
+            Debug.Assert(stream != null, Resources.DienstProgramme_GetEmbeddedResourceStream_Unable_to_locate_embedded_resource_, Resources.DienstProgramme_GetEmbeddedResourceStream_Resource_name___0_, resourceName);
             return stream;
         }
-
-        #endregion //GetEmbeddedResourceStream
+        #endregion GetEmbeddedResourceStream
 
         #region GetLocalizedString
         /// <summary>
@@ -176,15 +170,13 @@ namespace Terminplan
         /// <returns></returns>
         internal static string GetLocalizedString(string currentString)
         {
-            var rm = Terminplan.Properties.Resources.ResourceManager;
-            string localizedString = rm.GetString(currentString);
+            var rm = Resources.ResourceManager;
+            var localizedString = rm.GetString(currentString);
             return (string.IsNullOrEmpty(localizedString) ? currentString : localizedString).Replace('_', ' ');
         }
-        #endregion // GetLocalizedString
-
+        #endregion GetLocalizedString
 
         #region GetStyleLibraryResourceNames
-
         /// <summary>
         /// Gets an array of  style library resource names.
         /// </summary>
@@ -195,7 +187,7 @@ namespace Terminplan
             return resourceStrings.FindAll(i => i.EndsWith(@".isl")).ToArray();
         }
 
-        #endregion // GetStyleLibraryResourceNames
+        #endregion GetStyleLibraryResourceNames
 
         #region ToggleDefaultableBoolean
         /// <summary>
@@ -205,18 +197,11 @@ namespace Terminplan
         /// <returns>Changed value.</returns>
         internal static DefaultableBoolean ToggleDefaultableBoolean(DefaultableBoolean value)
         {
-            if (value == Infragistics.Win.DefaultableBoolean.True)
-            {
-                value = Infragistics.Win.DefaultableBoolean.False;
-            }
-            else
-            {
-                value = Infragistics.Win.DefaultableBoolean.True;
-            }
+            value = value == DefaultableBoolean.True ? DefaultableBoolean.False : DefaultableBoolean.True;
 
             return value;
         }
-        #endregion // ToggleDefaultableBoolean
+        #endregion ToggleDefaultableBoolean
 
     }
 }

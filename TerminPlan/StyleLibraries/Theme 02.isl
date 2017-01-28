@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <styleLibrary office2007CustomBlendColor="" office2010CustomBlendColor="" office2013ColorScheme="LightGray" office2013CustomBlendColor="">
   <annotation>
-    <lastModified>2017-01-20T21:09:07</lastModified>
+    <lastModified>2017-01-28T08:33:17</lastModified>
   </annotation>
   <styleSets defaultStyleSet="Default">
     <styleSet name="Default" useFlatMode="True">
@@ -24,6 +24,12 @@
         <componentStyle name="Inbox ComboBox">
           <properties>
             <property name="ForeColor" colorCategory="{Default}">90, 80, 73</property>
+          </properties>
+        </componentStyle>
+        <componentStyle name="Inbox Control">
+          <properties>
+            <property name="BackColor" colorCategory="{Default}">LightGray</property>
+            <property name="ForeColor" colorCategory="{Default}">Black</property>
           </properties>
         </componentStyle>
         <componentStyle name="Inbox DateTimePicker">
@@ -77,8 +83,8 @@
           <properties>
             <property name="BackColor" colorCategory="{Default}">245, 242, 236</property>
             <property name="ForeColor" colorCategory="{Default}">90, 80, 73</property>
-            <property name="ShowTodayCircle" colorCategory="{Default}">False</property>
-            <property name="ShowWeekNumbers" colorCategory="{Default}">False</property>
+            <property name="ShowTodayCircle" colorCategory="{Default}">True</property>
+            <property name="ShowWeekNumbers" colorCategory="{Default}">True</property>
             <property name="TitleBackColor" colorCategory="{Default}">124, 104, 90</property>
             <property name="TitleForeColor" colorCategory="{Default}">White</property>
             <property name="TrailingForeColor" colorCategory="{Default}">193, 187, 181</property>
@@ -86,7 +92,7 @@
         </componentStyle>
         <componentStyle name="Inbox Panel">
           <properties>
-            <property name="BackColor" colorCategory="{Default}">White</property>
+            <property name="BackColor" colorCategory="{Default}">LightGray</property>
             <property name="BorderStyle" colorCategory="{Default}">FixedSingle</property>
           </properties>
         </componentStyle>
@@ -104,39 +110,51 @@
         </componentStyle>
         <componentStyle name="Inbox RadioButton">
           <properties>
+            <property name="BackColor" colorCategory="{Default}">Transparent</property>
             <property name="ForeColor" colorCategory="{Default}">90, 80, 73</property>
+          </properties>
+        </componentStyle>
+        <componentStyle name="Inbox RichTextBox">
+          <properties>
+            <property name="BackColor" colorCategory="{Default}">LightGray</property>
           </properties>
         </componentStyle>
         <componentStyle name="Inbox TextBox">
           <properties>
+            <property name="BackColor" colorCategory="{Default}">LightGray</property>
             <property name="BorderStyle" colorCategory="{Default}">FixedSingle</property>
             <property name="ForeColor" colorCategory="{Default}">90, 80, 73</property>
           </properties>
         </componentStyle>
         <componentStyle name="Inbox TreeView">
           <properties>
-            <property name="BackColor" colorCategory="{Default}">White</property>
+            <property name="BackColor" colorCategory="{Default}">LightGray</property>
             <property name="BorderStyle" colorCategory="{Default}">FixedSingle</property>
             <property name="ForeColor" colorCategory="{Default}">90, 80, 73</property>
           </properties>
         </componentStyle>
         <componentStyle name="Inbox UserControl">
           <properties>
+            <property name="BackColor" colorCategory="{Default}">LightGray</property>
             <property name="ForeColor" colorCategory="{Default}">90, 80, 73</property>
           </properties>
         </componentStyle>
+        <componentStyle name="UltraCalendarCombo" viewStyle="ScenicRibbon" useOsThemes="False" useFlatMode="True" />
         <componentStyle name="UltraCarousel">
           <properties>
             <property name="PathColor" colorCategory="{Default}">61, 55, 50</property>
           </properties>
         </componentStyle>
+        <componentStyle name="UltraCheckEditor" useOsThemes="False" useFlatMode="True" />
+        <componentStyle name="UltraCombo" viewStyle="ScenicRibbon" useOsThemes="False" useFlatMode="True" />
         <componentStyle name="UltraComboEditor" useFlatMode="True" />
+        <componentStyle name="UltraDateTimeEditor" viewStyle="ScenicRibbon" useOsThemes="False" useFlatMode="True" />
         <componentStyle name="UltraDockManager">
           <properties>
             <property name="GroupPaneTabStyle" colorCategory="{Default}">Flat</property>
           </properties>
         </componentStyle>
-        <componentStyle name="UltraExplorerBar">
+        <componentStyle name="UltraExplorerBar" viewStyle="ScenicRibbon" useOsThemes="False" useFlatMode="True">
           <properties>
             <property name="ItemHotTrackStyle" colorCategory="{Default}">HighlightEntireItem</property>
           </properties>
@@ -1019,8 +1037,11 @@
         </style>
         <style role="GridCell">
           <states>
-            <state name="Normal" borderColor="Silver" textTrimming="EllipsisCharacter" />
-            <state name="Active" backColor="192, 255, 192" borderColor="DarkGreen" backGradientStyle="None" backHatchStyle="None" />
+            <state name="Normal" foreColor="Black" borderColor="Silver" textTrimming="EllipsisCharacter" />
+            <state name="Selected" backColor="192, 255, 192" foreColor="Black" backGradientStyle="None" backHatchStyle="None" />
+            <state name="HotTracked" backColor="DarkOrange" backGradientStyle="None" backHatchStyle="None" />
+            <state name="Active" backColor="192, 255, 192" foreColor="Black" borderColor="DarkGreen" backGradientStyle="None" backHatchStyle="None" />
+            <state name="EditMode" backColor="0, 212, 254" foreColor="Black" borderColor="34, 209, 0" foreColorDisabled="Gray" backGradientStyle="None" backHatchStyle="None" />
           </states>
         </style>
         <style role="GridCellProxy">
@@ -1041,7 +1062,7 @@
         </style>
         <style role="GridColumnHeader">
           <states>
-            <state name="Normal" backColor="DarkGreen" foreColor="Black" borderAlpha="Transparent" backColor2="MintCream" backGradientStyle="VerticalWithGlassLeft50">
+            <state name="Normal" backColor="DarkGreen" foreColor="Black" borderAlpha="Transparent" fontBold="True" backColor2="MintCream" backGradientStyle="VerticalWithGlassLeft50">
               <resources>
                 <name>Background 2</name>
               </resources>

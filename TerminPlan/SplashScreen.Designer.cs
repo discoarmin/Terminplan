@@ -1,6 +1,6 @@
 ﻿namespace Terminplan
 {
-    partial class SplashScreen
+    sealed partial class SplashScreen
     {
         private Infragistics.Win.Misc.UltraLabel lblStatus;
 

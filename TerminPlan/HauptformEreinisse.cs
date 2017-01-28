@@ -22,13 +22,13 @@ namespace Terminplan
     using System.Collections.Generic;
     using System.Data;
     using System.Drawing;
+    using System.Linq;
     using System.Windows.Forms;
 
     using Infragistics.Win;
     using Infragistics.Win.UltraWinSchedule;
     using Infragistics.Win.UltraWinToolbars;
     using Infragistics.Win.UltraWinGanttView;
-    using Infragistics.Shared;
     using Infragistics.Win.Printing;
 
     /// <summary>
@@ -49,7 +49,7 @@ namespace Terminplan
 
             // Bilder an das ausgewählte Farbschema anpassen.
             this.ColorizeImages();
-            this.ChangeIcon();
+//            this.ChangeIcon();
         }
         #endregion ApplicationStyleChanged
 
@@ -59,7 +59,7 @@ namespace Terminplan
         /// <param name="e">Die <see cref="CalendarInfoChangedEventArgs" /> Instanz,welche die Ereignisdaten enthält.</param>
         private void UltraCalendarInfo1CalendarInfoChanged(object sender, CalendarInfoChangedEventArgs e)
         {
-            Task activeTask = this.ultraGanttView1.ActiveTask;                  // aktiven Arbeitsinhalt ermitteln
+            var activeTask = this.ultraGanttView1.ActiveTask;                   // aktiven Arbeitsinhalt ermitteln
             
             // Falls kein Arbeitsinhalt ausgewäht ist, kann abgebrochen werden
             if (activeTask == null)
@@ -69,7 +69,7 @@ namespace Terminplan
             
             // Überprüfen, ob sich der Ferigugsgrad des aktiven Arbeitsinhalts geändert hat.
             // Wenn ja, muss der Status des aktiven Arbeitsinhalts neu ermittelt werden.
-            PropChangeInfo propInfo = e.PropChangeInfo.FindTrigger(activeTask); // Informationen über die Art der Änderung
+            var propInfo = e.PropChangeInfo.FindTrigger(activeTask);            // Informationen über die Art der Änderung
             
             // Ermitteln, ob die richtige Änderung ausgewählt ist
             if (propInfo != null &&
@@ -90,7 +90,7 @@ namespace Terminplan
         /// <param name="e">Die <see cref="ActiveTaskChangingEventArgs" /> Instanz,welche die Ereignisdaten enthält.</param>
         private void UltraGanttView1ActiveTaskChanging(object sender, ActiveTaskChangingEventArgs e)
         {
-            Task newActiveTask = e.NewActiveTask;                               // Zur Aufnahme der Daten des jetzt aktiven Arbeitsinhalts
+            var newActiveTask = e.NewActiveTask;                                // Zur Aufnahme der Daten des jetzt aktiven Arbeitsinhalts
             this.UpdateTasksToolsState(newActiveTask);                          // Status des jetzigenArbeitsinhalts anpassen
             this.UpdateToolsRequiringActiveTask(newActiveTask != null);         // Überprüft den Status aller Werkzeuge, welche die aktive Aufgabe erfordert
         }
@@ -108,32 +108,32 @@ namespace Terminplan
         /// <param name="e">Die <see cref="CellActivatingEventArgs" /> Instanz,welche die Ereignisdaten enthält.</param>
         private void UltraGanttView1CellActivating(object sender, CellActivatingEventArgs e)
         {
-            bool originalValue = this.cellActivationRecursionFlag;              // Zustand des Merkers für die Zellaktivierung merken
+            var originalValue = this.cellActivationRecursionFlag;               // Zustand des Merkers für die Zellaktivierung merken
             this.cellActivationRecursionFlag = true;                            // Merker setzen, dass Zelle aktiviert wurde
             try
             {
-                Task activeTask = e.TaskFieldInfo.Task;                         // aktiven Arbeitsinhalt ermitteln
+                var activeTask = e.TaskFieldInfo.Task;                          // aktiven Arbeitsinhalt oder Aufgabe ermitteln
 
                 // Nur bearbeiten, wenn ein Arbeitsinhalt ausgewählt ist
                 if (activeTask != null)
                 {
-                    TaskField? activeField = e.TaskFieldInfo.TaskField;         // aktive Zelle ermitteln
+                    var activeField = e.TaskFieldInfo.TaskField;                // aktive Zelle ermitteln
                     
                     // Nur bearbeiten, falls aktive Zelle einen Wert enthält
                     if (activeField.HasValue)
                     {
                         // Aussehen der aktivierten Zelle ermitteln
-                        Infragistics.Win.AppearanceBase appearance = activeTask.GridSettings.CellSettings[(TaskField)activeField].Appearance;
-                        FontData fontData = appearance.FontData;                // Schrifteinstellung
+                        var appearance = activeTask.GridSettings.CellSettings[(TaskField)activeField].Appearance;
+                        var fontData = appearance.FontData;                     // Schrifteinstellung
 
                         // Setzt den Zustand des Buttons für die Fettschrift für die aktive Zelle
-                        ((StateButtonTool)this.ultraToolbarsManager1.Tools["Font_Bold"]).Checked = (fontData.Bold == DefaultableBoolean.True);
+                        ((StateButtonTool)this.ultraToolbarsManager1.Tools[@"Font_Bold"]).Checked = (fontData.Bold == DefaultableBoolean.True);
 
                         // Setzt den Zustand des Buttons für Kursiv-Schrift für die aktive Zelle
-                        ((StateButtonTool)this.ultraToolbarsManager1.Tools["Font_Italic"]).Checked = (fontData.Italic == DefaultableBoolean.True);
+                        ((StateButtonTool)this.ultraToolbarsManager1.Tools[@"Font_Italic"]).Checked = (fontData.Italic == DefaultableBoolean.True);
 
                         // Setzt den Zustand des Buttons für unterstrichene Schrift der aktiven Zelle
-                        ((StateButtonTool)this.ultraToolbarsManager1.Tools["Font_Underline"]).Checked = (fontData.Underline == DefaultableBoolean.True);
+                        ((StateButtonTool)this.ultraToolbarsManager1.Tools[@"Font_Underline"]).Checked = (fontData.Underline == DefaultableBoolean.True);
 
                         // Name der Schriftart in der Fontliste aktualisieren
                         var fontName = fontData.Name;                           // Name der Schriftart ermitteln
@@ -142,24 +142,24 @@ namespace Terminplan
                         // sonst die ermittelte Schriftart anzeigen
                         if (fontName != null)
                         {
-                            ((FontListTool)this.ultraToolbarsManager1.Tools["FontList"]).Text = fontName;
+                            ((FontListTool)this.ultraToolbarsManager1.Tools[@"FontList"]).Text = fontName;
                         }
                         else
                         {
-                            ((FontListTool)this.ultraToolbarsManager1.Tools["FontList"]).SelectedIndex = 0;
+                            ((FontListTool)this.ultraToolbarsManager1.Tools[@"FontList"]).SelectedIndex = 0;
                         }
 
                         // Falls die Schriftgröße > 0 ist, sie in der Combobox zur Asuwahl der Schriftart
                         // auswählen.
                         // Falls keine Schriftgröße ausgewäht ist, Standardgröße asuwählen.
-                        float fontSize = fontData.SizeInPoints;
-                        if (fontSize != 0)
+                        var fontSize = fontData.SizeInPoints;
+                        if (Math.Abs(fontSize) > 0.1)
                         {
-                            ((ComboBoxTool)(this.ultraToolbarsManager1.Tools["FontSize"])).Value = fontSize;
+                            ((ComboBoxTool)(this.ultraToolbarsManager1.Tools[@"FontSize"])).Value = fontSize;
                         }
                         else
                         {
-                            ((ComboBoxTool)(this.ultraToolbarsManager1.Tools["FontSize"])).SelectedIndex = 0;
+                            ((ComboBoxTool)(this.ultraToolbarsManager1.Tools[@"FontSize"])).SelectedIndex = 0;
                         }
                     }
                 }
@@ -180,7 +180,7 @@ namespace Terminplan
         /// </summary>
         /// <param name="sender">Die Quelle des Ereignisses.</param>
         /// <param name="e">Die <see cref="Infragistics.Win.UltraWinGanttView.CellDeactivatingEventArgs" /> Instanz,welche die Ereignisdaten enthält.</param>
-        private void UltraGanttView1CellDeactivating(object sender, Infragistics.Win.UltraWinGanttView.CellDeactivatingEventArgs e)
+        private void UltraGanttView1CellDeactivating(object sender, CellDeactivatingEventArgs e)
         {
             this.OnUpdateFontToolsState(false);                                 // Anzeige der Schriftart zurücksetzen
             this.UpdateTasksToolsState(null);                                   // Werkzeuge für die Bearbeitung der Arbeitsinhalte zurücksetzen
@@ -224,39 +224,39 @@ namespace Terminplan
         /// </summary>
         /// <param name="sender">Die Quelle des Ereignisses.</param>
         /// <param name="e">Die <see cref="Infragistics.Win.PropertyChangedEventArgs" /> Instanz,welche die Ereignisdaten enthält.</param>
-        private void UltraToolbarsManager1PropertyChanged(object sender, Infragistics.Win.PropertyChangedEventArgs e)
+        private void UltraToolbarsManager1PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            PropChangeInfo trigger = e.ChangeInfo.FindTrigger(null);            // Ermitteln, welche Eigenschaft geändert wurde
+            var trigger = e.ChangeInfo.FindTrigger(null);                       // Ermitteln, welche Eigenschaft geändert wurde
             
-            // Nur bearbeiten, wenn es eine Eigenschaft ist, welche vom Toolbars-Manager verwalter wird
-            if (trigger != null &&
-                trigger.Source is SharedProps &&
-                trigger.PropId is Infragistics.Win.UltraWinToolbars.PropertyIds)
+            // Nur bearbeiten, wenn es eine Eigenschaft ist, welche vom Toolbars-Manager verwaltet wird
+            if (trigger == null || !(trigger.Source is SharedProps) || !(trigger.PropId is Infragistics.Win.UltraWinToolbars.PropertyIds))
             {
-                // ID auswerten
-                switch ((Infragistics.Win.UltraWinToolbars.PropertyIds)trigger.PropId)
-                {
-                    case Infragistics.Win.UltraWinToolbars.PropertyIds.Enabled: // Nur freigegebene Eigenschaften bearbeiten
-                        SharedProps sharedProps = (SharedProps)trigger.Source;  // Kontrol ermitteln
+                return;
+            }
 
-                        // Falls mehrere Instanzen des Kontrols vorhanden sind, die erste Instanz nehmen,
-                        // bei nur einer Instanz muss diese genommen werden
-                        ToolBase tool = (sharedProps.ToolInstances.Count > 0) ? sharedProps.ToolInstances[0] : sharedProps.RootTool; // Name desSchlüssels zusammenstellen
-                        string imageKey = string.Format("{0}_{1}", tool.Key, tool.EnabledResolved ? "Normal" : "Disabled");
+            // ID auswerten
+            switch ((Infragistics.Win.UltraWinToolbars.PropertyIds)trigger.PropId)
+            {
+                case Infragistics.Win.UltraWinToolbars.PropertyIds.Enabled:     // Nur freigegebene Eigenschaften bearbeiten
+                    var sharedProps = (SharedProps)trigger.Source;              // Kontrol ermitteln
+
+                    // Falls mehrere Instanzen des Kontrols vorhanden sind, die erste Instanz nehmen,
+                    // bei nur einer Instanz muss diese genommen werden
+                    var tool = (sharedProps.ToolInstances.Count > 0) ? sharedProps.ToolInstances[0] : sharedProps.RootTool; // Name desSchlüssels zusammenstellen
+                    var imageKey = string.Format(@"{0}_{1}", tool.Key, tool.EnabledResolved ? @"Normal" : @"Disabled");
                         
-                        // Schlüssel des Bildes in die entsprechende Appearance-Eigenschaft eintragen
-                        if (this.ilColorizedImagesLarge.Images.ContainsKey(imageKey))
-                        {
-                            sharedProps.AppearancesLarge.Appearance.Image = imageKey; // Für große Bilder
-                        }
+                    // Schlüssel des Bildes in die entsprechende Appearance-Eigenschaft eintragen
+                    if (this.ilColorizedImagesLarge.Images.ContainsKey(imageKey))
+                    {
+                        sharedProps.AppearancesLarge.Appearance.Image = imageKey; // Für große Bilder
+                    }
                         
-                        if (this.ilColorizedImagesSmall.Images.ContainsKey(imageKey))
-                        {
-                            sharedProps.AppearancesSmall.Appearance.Image = imageKey; // Für kleine Bilder  
-                        }
+                    if (this.ilColorizedImagesSmall.Images.ContainsKey(imageKey))
+                    {
+                        sharedProps.AppearancesSmall.Appearance.Image = imageKey; // Für kleine Bilder  
+                    }
                         
-                        break;
-                }
+                    break;
             }
         }
         #endregion UltraToolbarsManagerPropertyChanged
@@ -270,7 +270,7 @@ namespace Terminplan
         /// </remarks>
         /// <param name="sender">Die Quelle des Ereignisses.</param>
         /// <param name="e">Die <see cref="Infragistics.Win.UltraWinToolbars.ToolClickEventArgs" /> Instanz, welche die Ereignisdaten enthält.</param>
-        private void UltraToolbarsManagerToolClick(object sender, Infragistics.Win.UltraWinToolbars.ToolClickEventArgs e)
+        private void UltraToolbarsManagerToolClick(object sender, ToolClickEventArgs e)
         {
             switch (e.Tool.Key)
             {
@@ -347,42 +347,42 @@ namespace Terminplan
                     this.PerformIndentOrOutdent(GanttViewAction.IndentTask);
                     break;
 
-                case "Tasks_Delete":
+                case "Tasks_Delete":                                            // Arbeitsinhalt oder Aufgabe löschen
                     this.DeleteTask();
                     break;
 
-                case "Schedule_MoveTask_1Day":
+                case "Schedule_OnMoveTask_1Day":                                // Starttermin 1 Tag später
                     this.MoveTask(GanttViewAction.MoveTaskDateForward, TimeSpanForMoving.OneDay);
                     break;
                 
-                case "Schedule_MoveTask_1Week":
+                case "Schedule_OnMoveTask_1Week":                               // Starttermin 1 Woche später
                     this.MoveTask(GanttViewAction.MoveTaskDateForward, TimeSpanForMoving.OneWeek);
                     break;
                 
-                case "Schedule_MoveTask_4Weeks":
+                case "Schedule_MoveTask_4Weeks":                                // Starttermin 4 Wochen später
                     this.MoveTask(GanttViewAction.MoveTaskDateForward, TimeSpanForMoving.FourWeeks);
                     break;
                 
-                case "Schedule_MoveTask_MoveTaskBackwards1Day":
+                case "Schedule_MoveTask_MoveTaskBackwards1Day":                 // Sterttrmin 1 Tag früher
                     this.MoveTask(GanttViewAction.MoveTaskDateBackward, TimeSpanForMoving.OneDay);
                     break;
                 
-                case "Schedule_MoveTask_MoveTaskBackwards1Week":
+                case "Schedule_MoveTask_MoveTaskBackwards1Week":                // Starttermin 1 Woche früher
                     this.MoveTask(GanttViewAction.MoveTaskDateBackward, TimeSpanForMoving.OneWeek);
                     break;
                 
-                case "Schedule_MoveTask_MoveTaskBackwards4Weeks":
+                case "Schedule_MoveTask_MoveTaskBackwards4Weeks":               // Starttermin 4 Wochen früher
                     this.MoveTask(GanttViewAction.MoveTaskDateBackward, TimeSpanForMoving.FourWeeks);
                     break;
 
-                case "Properties_TaskInformation":
+                case "Properties_TaskInformation":                              // Informatinen über den Arbeitsinhalt oder die Aufgabe
                     this.ultraGanttView1.DisplayTaskDialog(this.ultraGanttView1.ActiveTask);
                     break;
 
                 case "Properties_Notes":
-                    this.ultraGanttView1.TaskDialogDisplaying += new TaskDialogDisplayingHandler(OnUltraGanttView1TaskDialogDisplaying);
+                    this.ultraGanttView1.TaskDialogDisplaying += this.OnUltraGanttView1TaskDialogDisplaying;
                     this.ultraGanttView1.DisplayTaskDialog(this.ultraGanttView1.ActiveTask);
-                    this.ultraGanttView1.TaskDialogDisplaying -= new TaskDialogDisplayingHandler(OnUltraGanttView1TaskDialogDisplaying);
+                    this.ultraGanttView1.TaskDialogDisplaying -= this.OnUltraGanttView1TaskDialogDisplaying;
                     break;
 
                 case "Insert_Milestone":
@@ -390,21 +390,23 @@ namespace Terminplan
                     break;
 
                 case "TouchMode":
-                    ListTool touchModeListTool = e.Tool as ListTool;
-                    if (touchModeListTool.SelectedItem == null)
+                    var touchModeListTool = e.Tool as ListTool;
+                    if (touchModeListTool != null && touchModeListTool.SelectedItem == null)
                     {
                         touchModeListTool.SelectedItemIndex = e.ListToolItem.Index;
                     }
 
-                    this.ultraTouchProvider1.Enabled = (e.ListToolItem.Key == "Touch");
+                    this.ultraTouchProvider1.Enabled = (e.ListToolItem.Key == @"Touch");
                     break;
 
                 case "ThemeList":                    
-                    ListTool themeListTool = e.Tool as ListTool;
-                    if (themeListTool.SelectedItem == null)
+                    var themeListTool = e.Tool as ListTool;
+                    if (themeListTool != null && themeListTool.SelectedItem == null)
+                    {
                         themeListTool.SelectedItemIndex = e.ListToolItem.Index;
+                    }
 
-                    string key = e.ListToolItem.Key;
+                    var key = e.ListToolItem.Key;
                     if (this.themePaths[this.currentThemeIndex] != key)
                     {
                         this.currentThemeIndex = e.ListToolItem.Index;
@@ -413,14 +415,22 @@ namespace Terminplan
                     break;
 
                 case "Print":
-                    UltraPrintPreviewDialog printPreview = new UltraPrintPreviewDialog();
-                    printPreview.Document = this.ultraGanttViewPrintDocument1;
+                    var printPreview = new UltraPrintPreviewDialog { Document = this.ultraGanttViewPrintDocument1 };
                     printPreview.ShowDialog(this);
                     break;
 
                 case "Exit":
                 case "Close":
                     Application.Exit();
+                    break;
+
+                case "Neu":                                                     // Neuen Terminplan anlegen
+                    break;
+
+                case "Speichern":                                               // Terminplan speichern
+                    break;
+
+                case "Speichern unter":                                         // Terminplan unter anderem Namen speichern
                     break;
             }
         }
@@ -461,7 +471,7 @@ namespace Terminplan
         /// </remarks>
         /// <param name="sender">Die Quelle des Ereignisses.</param>
         /// <param name="e">Die <see cref="Infragistics.Win.PropertyChangedEventArgs" /> Instanz, welche die Ereignisdaten enthält.</param>
-        private void UltraTouchProvider1PropertyChanged(object sender, Infragistics.Win.PropertyChangedEventArgs e)
+        private void UltraTouchProvider1PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             var propChanged = e.ChangeInfo;
             if (propChanged.PropId is Infragistics.Win.Touch.TouchProviderPropertyIds &&
@@ -485,20 +495,20 @@ namespace Terminplan
         private void AddNewTask(bool addAtSelectedRow)
         {
             TasksCollection parentCollection = null;                            // Sammlung übergeordneter Arbeitsinhalte löschen
-            UltraCalendarInfo calendarInfo = this.ultraGanttView1.CalendarInfo; // Kalenderinfo festlegen
-            Task activeTask = this.ultraGanttView1.ActiveTask;                  // aktiven Arbeitsinhalt ermitteln
-            Project projekt = calendarInfo.Projects[1];                         // Projekt ermitteln
+            var calendarInfo = this.ultraGanttView1.CalendarInfo;               // Kalenderinfo festlegen
+            var activeTask = this.ultraGanttView1.ActiveTask;                   // aktiven Arbeitsinhalt ermitteln
+            var projekt = calendarInfo.Projects[1];                             // Projekt ermitteln
             int insertionIndex;                                                 // Index des neuen Arbeitsinhalts
             DateTime start;                                                     // Startdatum des Arbeitsinhalts
-            bool addToRootcollection = true;                                    // Eintrag wird zum Wurzelknoten hinzugefügt
+            var addToRootcollection = true;                                     // Eintrag wird zum Wurzelknoten hinzugefügt
             
             // Ermitteln, ob bei der ausgewählten Zeile oder am Ende ein neuer Arbeitsinhalt eingefügt werden soll 
-            if (addAtSelectedRow == true)
+            if (addAtSelectedRow)
             {
                 // Einfügen an ausgewählter Zeile
                 if (activeTask != null)
                 {
-                    Task parentTask = activeTask.Parent;                        // Übergeordneten Arbeitsinhalt ermitteln
+                    var parentTask = activeTask.Parent;                         // Übergeordneten Arbeitsinhalt ermitteln
                     
                     // Falls ein übergeordneter Arbeitsinhalt vorhanden ist, besteht die Sammlung der 
                     // übergeordneten Arbeitsinhalten aus den bisherigen übergeordneten
@@ -508,6 +518,7 @@ namespace Terminplan
                     
                     // Das Startdatum ist davon abhängig, ob es sich um einen übergeordneten Arbeitsinhalt
                     // handelt oder nicht
+                    // ReSharper disable once MergeConditionalExpression
                     start = parentTask != null ? parentTask.StartDateTime : projekt.StartDate;
                     addToRootcollection = false;                                // Eintrag wird nicht zum Wurzelknoten hinzugefügt
                 }
@@ -528,29 +539,32 @@ namespace Terminplan
             }
 
             // Nur bearbeiten, falls ein übergeordeter Arbeitsinhalt vorhanden ist
-            if (parentCollection != null)
+            if (parentCollection == null)
             {
-                //  Neue Aufgabe oder neuen Arbeitsinhalt hinzufügen
-                string taskName = rm.GetString("NewTaskName");                  // Namen des Arbeitsinhalts oder der Aufgabe ermitteln
-                Task newTask;
-                
-                // Ermitteln, ob es sich um eine Aufgabe oder einen Arbeitsinhalt handelt
-                if (addToRootcollection == false &&
-                    activeTask != null &&
-                    activeTask.Parent != null)
-                {
-                    // Es handelt sich um einen Arbeitsinhalt
-                    newTask = activeTask.Parent.Tasks.Insert(insertionIndex, start, TimeSpan.FromDays(1), taskName);// newTask);
-                }
-                else
-                {
-                    // Es handelt sich um eine Aufgabe
-                    newTask = calendarInfo.Tasks.Insert(insertionIndex, start, TimeSpan.FromDays(1), taskName);
-                }
-                
-                newTask.Project = projekt;                                      // 
-                newTask.RowHeight = TaskRowHeight;
+                return;                                                         // Abbruch, da kein übergeordneter Arbeitsinhalt
             }
+
+            //  Neue Aufgabe oder neuen Arbeitsinhalt hinzufügen
+            var taskName = this.rm.GetString("NewTaskName");                    // Namen des Arbeitsinhalts oder der Aufgabe ermitteln
+            Task newTask;
+                
+            // Ermitteln, ob es sich um eine Aufgabe oder einen Arbeitsinhalt handelt
+            if (addToRootcollection == false &&
+                // ReSharper disable once ConditionIsAlwaysTrueOrFalse
+                activeTask != null &&
+                activeTask.Parent != null)
+            {
+                // Es handelt sich um einen Arbeitsinhalt
+                newTask = activeTask.Parent.Tasks.Insert(insertionIndex, start, TimeSpan.FromDays(1), taskName);// newTask);
+            }
+            else
+            {
+                // Es handelt sich um eine Aufgabe
+                newTask = calendarInfo.Tasks.Insert(insertionIndex, start, TimeSpan.FromDays(1), taskName);
+            }
+                
+            newTask.Project = projekt;                                          // Projektname dem hinzugefügten Elemnt zuweisen  
+            newTask.RowHeight = TaskRowHeight;
         }
         #endregion AddNewTask
 
@@ -569,44 +583,44 @@ namespace Terminplan
             this.ultraCalendarInfo1.DataBindingsForOwners.BindingContextControl = this;
             #endregion BindingContext
 
-            //  Legt die Databinding-Mitglieder für Arbeitsinhalte fest 
+            //  Legt die Databinding-Mitglieder für Projekte fest 
             #region Projekte
-            this.ultraCalendarInfo1.DataBindingsForProjects.SetDataBinding(data, "Projects");
-            this.ultraCalendarInfo1.DataBindingsForProjects.IdMember = "ProjectID";
-            this.ultraCalendarInfo1.DataBindingsForProjects.KeyMember = "ProjectKey";
-            this.ultraCalendarInfo1.DataBindingsForProjects.NameMember = "ProjectName";
-            this.ultraCalendarInfo1.DataBindingsForProjects.StartDateMember = "ProjectStartTime";
+            this.ultraCalendarInfo1.DataBindingsForProjects.SetDataBinding(data, @"Projekte");
+            this.ultraCalendarInfo1.DataBindingsForProjects.IdMember = @"ProjektID";
+            this.ultraCalendarInfo1.DataBindingsForProjects.KeyMember = @"ProjektKey";
+            this.ultraCalendarInfo1.DataBindingsForProjects.NameMember = @"ProjektName";
+            this.ultraCalendarInfo1.DataBindingsForProjects.StartDateMember = @"ProjektStart";
             #endregion Projekte
 
             //  Legt die Databinding-Mitglieder für Arbeitsinhalte fest
             #region Arbeitsinhalte
-            this.ultraCalendarInfo1.DataBindingsForTasks.SetDataBinding(data, "Tasks");
+            this.ultraCalendarInfo1.DataBindingsForTasks.SetDataBinding(data, @"Arbeitsinhalt_Aufgaben");
 
             // Grundlegende Eigenschaften für die Arbeitsinhalte
-            this.ultraCalendarInfo1.DataBindingsForTasks.NameMember = "TaskName";
-            this.ultraCalendarInfo1.DataBindingsForTasks.DurationMember = "TaskDuration";
-            this.ultraCalendarInfo1.DataBindingsForTasks.StartDateTimeMember = "TaskStartTime";
-            this.ultraCalendarInfo1.DataBindingsForTasks.IdMember = "TaskID";
-            this.ultraCalendarInfo1.DataBindingsForTasks.ProjectKeyMember = "ProjectKey";
-            this.ultraCalendarInfo1.DataBindingsForTasks.ParentTaskIdMember = "ParentTaskID";
+            this.ultraCalendarInfo1.DataBindingsForTasks.NameMember = @"TaskName";
+            this.ultraCalendarInfo1.DataBindingsForTasks.DurationMember = @"TaskDauer";
+            this.ultraCalendarInfo1.DataBindingsForTasks.StartDateTimeMember = @"TaskStartTime";
+            this.ultraCalendarInfo1.DataBindingsForTasks.IdMember = @"TaskID";
+            this.ultraCalendarInfo1.DataBindingsForTasks.ProjectKeyMember = @"ProjektKey";
+            this.ultraCalendarInfo1.DataBindingsForTasks.ParentTaskIdMember = @"ParentTaskID";
 
-            this.ultraCalendarInfo1.DataBindingsForTasks.ConstraintMember = "Constraint";
-            this.ultraCalendarInfo1.DataBindingsForTasks.PercentCompleteMember = "TaskPercentComplete";
+            this.ultraCalendarInfo1.DataBindingsForTasks.ConstraintMember = @"Einschraenkung";
+            this.ultraCalendarInfo1.DataBindingsForTasks.PercentCompleteMember = @"TaskFertigInProzent";
 
             // Alle anderen Eigenschaften
-            this.ultraCalendarInfo1.DataBindingsForTasks.AllPropertiesMember = "AllProperties";
+            this.ultraCalendarInfo1.DataBindingsForTasks.AllPropertiesMember = @"AlleEigenschaften";
             #endregion Arbeitsinhalte
 
             // Legt die Databinding-Mitglieder für den Besitzer fest.
             // Wird in die Kalenderinfo eingebunden.
             #region Besitzer
-            this.ultraCalendarInfo1.DataBindingsForOwners.SetDataBinding(data, "Owners");
+            this.ultraCalendarInfo1.DataBindingsForOwners.SetDataBinding(data, @"Besitzer");
             this.ultraCalendarInfo1.DataBindingsForOwners.BindingContextControl = this;
-            this.ultraCalendarInfo1.DataBindingsForOwners.KeyMember = "Key";
-            this.ultraCalendarInfo1.DataBindingsForOwners.NameMember = "Name";
-            this.ultraCalendarInfo1.DataBindingsForOwners.EmailAddressMember = "EmailAddress";
-            this.ultraCalendarInfo1.DataBindingsForOwners.VisibleMember = "Visible";
-            this.ultraCalendarInfo1.DataBindingsForOwners.AllPropertiesMember = "AllProperties";
+            this.ultraCalendarInfo1.DataBindingsForOwners.KeyMember = @"Key";
+            this.ultraCalendarInfo1.DataBindingsForOwners.NameMember = @"Name";
+            this.ultraCalendarInfo1.DataBindingsForOwners.EmailAddressMember = @"EmailAddresse";
+            this.ultraCalendarInfo1.DataBindingsForOwners.VisibleMember = @"Sichtbar";
+            this.ultraCalendarInfo1.DataBindingsForOwners.AllPropertiesMember = @"AlleEigenschaften";
             #endregion Besitzer
 
             // Das Projekt dem GanttView Control zuweisen.
@@ -620,15 +634,15 @@ namespace Terminplan
         /// </summary>
         private void ChangeIcon()
         {
-            // Anhand des Farbschemas den Namen des zum Farbschema ehörenden Icons zusammensetzen
-            string iconPath = this.themePaths[this.currentThemeIndex].Replace("StyleLibraries.", "Images.AppIcon - ").Replace(".isl", ".ico");
+            // Anhand des Farbschemas den Namen des zum Farbschema gehörenden Icons zusammensetzen
+            var iconPath = this.themePaths[this.currentThemeIndex].Replace(@"StyleLibraries.", @"Images.AppIcon - ").Replace(@".isl", @".ico");
 
-            System.IO.Stream stream = DienstProgramme.GetEmbeddedResourceStream(iconPath); // Zum Laden des Farbschemas
+            var stream = DienstProgramme.GetEmbeddedResourceStream(iconPath);   // Zum Laden des Farbschemas
 
-            // Falls Farbschema existiert, dieses laden
+            // Falls Farbschema existiert, kann Icon geladen werden
             if (stream != null)
             {
-                this.Icon = new Icon(stream);                                   // Farbschema laden
+                this.Icon = new Icon(stream);                                   // Icon laden
             }
         }
         #endregion ChangeIcon
@@ -642,7 +656,7 @@ namespace Terminplan
         {
             // Unterbindet das Zeichnen im UltraToolbarsManager,
             // damit die neuen Farben eingestellt werden können-
-            bool shouldSuspendPainting = !this.ultraToolbarsManager1.IsUpdating; // Ermitteln, ob gerade gezeichnet wird
+            var shouldSuspendPainting = !this.ultraToolbarsManager1.IsUpdating; // Ermitteln, ob gerade gezeichnet wird
 
             // Neue Farben können eingestellt werden, falls nicht gerade aufgefrischt wird
             if (shouldSuspendPainting)
@@ -651,8 +665,8 @@ namespace Terminplan
             }
 
             // Bildlisten mit den neuen Bildern setzen
-            ImageList largeImageList = this.ultraToolbarsManager1.ImageListLarge;
-            ImageList smallImageList = this.ultraToolbarsManager1.ImageListSmall;
+            var largeImageList = this.ultraToolbarsManager1.ImageListLarge;
+            var smallImageList = this.ultraToolbarsManager1.ImageListSmall;
 
             try
             {
@@ -664,20 +678,15 @@ namespace Terminplan
                 ToolBase resolveTool = null;                                    // gefundenes Tool löschen, damit neues erstellt werden kann
 
                 // Nur bearbeiten, falls das Tool"Insert_Task" existiert
-                if (this.ultraToolbarsManager1.Tools.Exists("Insert_Task"))
+                if (this.ultraToolbarsManager1.Tools.Exists(@"Insert_Task"))
                 {
-                    resolveTool = this.ultraToolbarsManager1.Tools["Insert_Task"]; // Tool merken
+                    resolveTool = this.ultraToolbarsManager1.Tools[@"Insert_Task"]; // Tool merken
 
                     // Alle Instanzen auf der Suche nach dem Tool in der RibbonGroup durchsuchen
-                    foreach (ToolBase instanceTool in resolveTool.SharedProps.ToolInstances)
+                    foreach (var instanceTool in resolveTool.SharedProps.ToolInstances.Cast<ToolBase>().Where(instanceTool => instanceTool.OwnerIsRibbonGroup))
                     {
-                        // Falls das Tool in der Ribbon-Gruppe enthalten ist,
-                        // Kann die Suche abgebrochen werden
-                        if (instanceTool.OwnerIsRibbonGroup)
-                        {
-                            resolveTool = instanceTool;
-                            break;
-                        }
+                        resolveTool = instanceTool;                             // Tool gefunden, Suche kann abgebrochen werden
+                        break;
                     }
                 }
 
@@ -688,15 +697,15 @@ namespace Terminplan
                 }
 
                 // Holt die eingestellten Farben                
-                Dictionary<string, Color> colors = new Dictionary<string, Color>(); // Neue Liste erzeugen
+                var colors = new Dictionary<string, Color>();                   // Neue Liste mit den Farben erzeugen
 
                 // Standard-Vordergrundfarbe einstellen
-                AppearanceData appData = new AppearanceData();                  // Neue Einstellungen für Infragistics
-                AppearancePropFlags requestedProps = AppearancePropFlags.ForeColor; // Vordergrundfarbe soll eingestellt werden
+                var appData = new AppearanceData();                             // Neue Einstellungen für Infragistics
+                var requestedProps = AppearancePropFlags.ForeColor;             // Vordergrundfarbe soll eingestellt werden
                 
                 // Das aktuelle Erscheinungsbild des Tools löschen
                 resolveTool.ResolveAppearance(ref appData, ref requestedProps);
-                colors["Normal"] = appData.ForeColor;                           // Standard-Vordergrundfarbe in Liste eintragen
+                colors[@"Normal"] = appData.ForeColor;                          // Standard-Vordergrundfarbe in Liste eintragen
 
                 // Aktive Vordergrundfarbe einstellen
                 appData = new AppearanceData();                                 // Neue Einstellungen für Infragistics
@@ -704,7 +713,7 @@ namespace Terminplan
                 
                 // Das aktuelle Erscheinungsbild des Tools löschen
                 resolveTool.ResolveAppearance(ref appData, ref requestedProps, true, false);
-                colors["Active"] = appData.ForeColor;                           // Aktive Vordergrundfarbe in Liste eintragen
+                colors[@"Active"] = appData.ForeColor;                          // Aktive Vordergrundfarbe in Liste eintragen
 
                 // Hintergrundfarbe einstellen
                 if (appData.BackColor.IsEmpty || appData.BackColor.Equals(Color.Transparent))
@@ -715,16 +724,16 @@ namespace Terminplan
                     
                     // Löscht das aktuelle Erscheinungsbild für die Registerkarte des RibbonTab
                     this.ultraToolbarsManager1.Ribbon.Tabs[0].ResolveTabItemAppearance(ref appData, ref requestedProps);
-                    colors["Disabled"] = appData.BackColor;                     // Hintergrundfarbe für 'gesperrt' in Liste eintragen
+                    colors[@"Disabled"] = appData.BackColor;                    // Hintergrundfarbe für 'gesperrt' in Liste eintragen
                 }
                 else
                 {
                     // Es ist eine Farbe angegeben, diese dann in die Liste eintragen
-                    colors["Disabled"] = appData.BackColor;
+                    colors[@"Disabled"] = appData.BackColor;
                 }
 
                 // Die Standardbilder haben die Farbe 'Magenta'. Diese Farbe muss ersetzt werden
-                Color replacementColor = Color.Magenta;
+                var replacementColor = Color.Magenta;
 
                 // Die Bilder in den großen und kleinen Bildlisten mit den Standardbildern
                 // an das ausgewählte Farbschema anpassen

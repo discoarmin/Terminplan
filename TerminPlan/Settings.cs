@@ -15,6 +15,7 @@
 // </para>
 // </remarks>
 // --------------------------------------------------------------------------------------------------------------------
+// ReSharper disable once CheckNamespace
 namespace Terminplan.Properties 
 {
     // This class allows you to handle specific events on the settings class:
@@ -22,7 +23,7 @@ namespace Terminplan.Properties
     //  The PropertyChanged event is raised after a setting's value is changed.
     //  The SettingsLoaded event is raised after the setting values are loaded.
     //  The SettingsSaving event is raised before the setting values are saved.
-    internal sealed partial class Settings 
+    internal sealed class Settings 
     {
         
         public Settings() {

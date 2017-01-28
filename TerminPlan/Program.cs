@@ -25,7 +25,7 @@ namespace Terminplan
 
     public static class Program
     {
-        public static SplashScreen StartScreen = null;   
+        public static SplashScreen StartScreen;   
         /// <summary>
         /// Der Haupteinstiegspunkt für die Anwendung.
         /// </summary>
@@ -50,7 +50,7 @@ namespace Terminplan
 
             // Hauptanwendung starten
             var mainForm = new TerminPlanForm();
-            mainForm.Load += new EventHandler(OnMainFormLoad);                  // Damit vor dem 1. Anzeigen des Hauptfensters der Begrüßungsbildschirm geschlossen wird
+            mainForm.Load += OnMainFormLoad;                                    // Damit vor dem 1. Anzeigen des Hauptfensters der Begrüßungsbildschirm geschlossen wird
             Application.Run(mainForm);                                          // Hauptanwendung starten
         }
 

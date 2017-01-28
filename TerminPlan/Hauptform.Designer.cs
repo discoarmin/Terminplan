@@ -31,6 +31,9 @@
             Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool30 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Neu");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool31 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Spichern");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool32 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Speichern unter");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool18 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Print");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool14 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Close");
             Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool2 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("Theme");
@@ -168,6 +171,9 @@
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool17 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Tasks_Delete");
             Infragistics.Win.Appearance appearance59 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance60 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool33 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Neu");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool34 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Spichern");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool35 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Speichern unter");
             this.ultraGanttView1 = new Infragistics.Win.UltraWinGanttView.UltraGanttView();
             this.ultraCalendarInfo1 = new Infragistics.Win.UltraWinSchedule.UltraCalendarInfo(this.components);
             this.Form1_Fill_Panel = new System.Windows.Forms.Panel();
@@ -199,6 +205,7 @@
             resources.ApplyResources(appearance1, "appearance1");
             this.ultraGanttView1.Appearance = appearance1;
             this.ultraGanttView1.CalendarInfo = this.ultraCalendarInfo1;
+            this.ultraGanttView1.GridAreaWidth = 461;
             appearance61.FontData.BoldAsString = resources.GetString("resource.BoldAsString5");
             appearance61.FontData.ItalicAsString = resources.GetString("resource.ItalicAsString5");
             appearance61.FontData.SizeInPoints = ((float)(resources.GetObject("resource.SizeInPoints4")));
@@ -211,15 +218,23 @@
             this.ultraGanttView1.GridSettings.ColumnSettings.GetValue("Dependencies").Visible = Infragistics.Win.DefaultableBoolean.False;
             this.ultraGanttView1.GridSettings.ColumnSettings.GetValue("Dependencies").VisiblePosition = 4;
             this.ultraGanttView1.GridSettings.ColumnSettings.GetValue("Deadline").VisiblePosition = 8;
+            resources.ApplyResources(this.ultraGanttView1.GridSettings.ColumnSettings.GetValue("Duration"), "taskColumnSettings5");
             this.ultraGanttView1.GridSettings.ColumnSettings.GetValue("Duration").VisiblePosition = 1;
+            resources.ApplyResources(this.ultraGanttView1.GridSettings.ColumnSettings.GetValue("EndDateTime"), "taskColumnSettings6");
             this.ultraGanttView1.GridSettings.ColumnSettings.GetValue("EndDateTime").VisiblePosition = 3;
+            resources.ApplyResources(this.ultraGanttView1.GridSettings.ColumnSettings.GetValue("Milestone"), "taskColumnSettings7");
             this.ultraGanttView1.GridSettings.ColumnSettings.GetValue("Milestone").VisiblePosition = 9;
+            resources.ApplyResources(this.ultraGanttView1.GridSettings.ColumnSettings.GetValue("Name"), "taskColumnSettings8");
             this.ultraGanttView1.GridSettings.ColumnSettings.GetValue("Name").VisiblePosition = 0;
+            resources.ApplyResources(this.ultraGanttView1.GridSettings.ColumnSettings.GetValue("Notes"), "taskColumnSettings9");
             this.ultraGanttView1.GridSettings.ColumnSettings.GetValue("Notes").VisiblePosition = 10;
+            resources.ApplyResources(this.ultraGanttView1.GridSettings.ColumnSettings.GetValue("PercentComplete"), "taskColumnSettings10");
             this.ultraGanttView1.GridSettings.ColumnSettings.GetValue("PercentComplete").VisiblePosition = 11;
             this.ultraGanttView1.GridSettings.ColumnSettings.GetValue("Resources").Visible = Infragistics.Win.DefaultableBoolean.False;
             this.ultraGanttView1.GridSettings.ColumnSettings.GetValue("Resources").VisiblePosition = 5;
+            resources.ApplyResources(this.ultraGanttView1.GridSettings.ColumnSettings.GetValue("StartDateTime"), "taskColumnSettings12");
             this.ultraGanttView1.GridSettings.ColumnSettings.GetValue("StartDateTime").VisiblePosition = 2;
+            resources.ApplyResources(this.ultraGanttView1.GridSettings.ColumnSettings.GetValue("RowNumber"), "taskColumnSettings13");
             this.ultraGanttView1.GridSettings.ColumnSettings.GetValue("RowNumber").VisiblePosition = 12;
             appearance62.FontData.BoldAsString = resources.GetString("resource.BoldAsString6");
             appearance62.FontData.ItalicAsString = resources.GetString("resource.ItalicAsString6");
@@ -229,6 +244,14 @@
             resources.ApplyResources(appearance62, "appearance62");
             this.ultraGanttView1.GridSettings.RowAppearance = appearance62;
             this.ultraGanttView1.Name = "ultraGanttView1";
+            this.ultraGanttView1.TaskSettings.AllowAddNew = Infragistics.Win.DefaultableBoolean.True;
+            this.ultraGanttView1.TaskSettings.AllowDelete = Infragistics.Win.DefaultableBoolean.True;
+            this.ultraGanttView1.TaskSettings.AllowEditDeadline = Infragistics.Win.DefaultableBoolean.True;
+            this.ultraGanttView1.TaskSettings.AllowEditDuration = Infragistics.Win.DefaultableBoolean.True;
+            this.ultraGanttView1.TaskSettings.AllowEditPercentComplete = Infragistics.Win.DefaultableBoolean.True;
+            this.ultraGanttView1.TaskSettings.AllowEditStartDateTime = Infragistics.Win.DefaultableBoolean.True;
+            this.ultraGanttView1.TaskSettings.Enabled = Infragistics.Win.DefaultableBoolean.True;
+            this.ultraGanttView1.TaskSettings.ReadOnly = Infragistics.Win.DefaultableBoolean.False;
             appearance63.FontData.BoldAsString = resources.GetString("resource.BoldAsString7");
             appearance63.FontData.ItalicAsString = resources.GetString("resource.ItalicAsString7");
             appearance63.FontData.SizeInPoints = ((float)(resources.GetObject("resource.SizeInPoints6")));
@@ -255,6 +278,7 @@
             this.Form1_Fill_Panel.Controls.Add(this.ultraGanttView1);
             this.Form1_Fill_Panel.Cursor = System.Windows.Forms.Cursors.Default;
             this.Form1_Fill_Panel.Name = "Form1_Fill_Panel";
+            this.Form1_Fill_Panel.Paint += new System.Windows.Forms.PaintEventHandler(this.OnForm1FillPanelPaint);
             // 
             // _TerminplanForm_Toolbars_Dock_Area_Left
             // 
@@ -315,8 +339,13 @@
             this.ultraToolbarsManager1.Ribbon.ApplicationMenu2010.ContentArea.Settings.Appearance = appearance10;
             this.ultraToolbarsManager1.Ribbon.ApplicationMenu2010.DisplayStyle = Infragistics.Win.UltraWinToolbars.ApplicationMenu2010DisplayStyle.Office2013;
             this.ultraToolbarsManager1.Ribbon.ApplicationMenu2010.KeyTip = resources.GetString("ultraToolbarsManager1.Ribbon.ApplicationMenu2010.KeyTip");
+            buttonTool18.InstanceProps.IsFirstInGroup = true;
             popupMenuTool2.InstanceProps.IsFirstInGroup = true;
+            popupControlContainerTool1.InstanceProps.IsFirstInGroup = true;
             this.ultraToolbarsManager1.Ribbon.ApplicationMenu2010.NavigationMenu.NonInheritedTools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
+            buttonTool30,
+            buttonTool31,
+            buttonTool32,
             buttonTool18,
             buttonTool14,
             popupMenuTool2,
@@ -678,6 +707,12 @@
             buttonTool17.SharedPropsInternal.AppearancesLarge.HotTrackAppearance = appearance60;
             resources.ApplyResources(buttonTool17.SharedPropsInternal, "buttonTool17.SharedPropsInternal");
             buttonTool17.ForceApplyResources = "SharedPropsInternal";
+            resources.ApplyResources(buttonTool33.SharedPropsInternal, "buttonTool33.SharedPropsInternal");
+            buttonTool33.ForceApplyResources = "SharedPropsInternal";
+            resources.ApplyResources(buttonTool34.SharedPropsInternal, "buttonTool34.SharedPropsInternal");
+            buttonTool34.ForceApplyResources = "SharedPropsInternal";
+            resources.ApplyResources(buttonTool35.SharedPropsInternal, "buttonTool35.SharedPropsInternal");
+            buttonTool35.ForceApplyResources = "SharedPropsInternal";
             this.ultraToolbarsManager1.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
             fontListTool2,
             comboBoxTool2,
@@ -719,8 +754,11 @@
             listTool6,
             buttonTool29,
             popupControlContainerTool2,
-            buttonTool17});
-            this.ultraToolbarsManager1.ToolClick += new Infragistics.Win.UltraWinToolbars.ToolClickEventHandler(this.OnUltraToolbarsManagerToolClick);
+            buttonTool17,
+            buttonTool33,
+            buttonTool34,
+            buttonTool35});
+            this.ultraToolbarsManager1.ToolClick += new Infragistics.Win.UltraWinToolbars.ToolClickEventHandler(this.UltraToolbarsManagerToolClick);
             this.ultraToolbarsManager1.ToolValueChanged += new Infragistics.Win.UltraWinToolbars.ToolEventHandler(this.OnUltraToolbarsManager1ToolValueChanged);
             this.ultraToolbarsManager1.PropertyChanged += new Infragistics.Win.PropertyChangedEventHandler(this.OnUltraToolbarsManager1PropertyChanged);
             // 
@@ -861,6 +899,7 @@
             this.DoubleBuffered = true;
             this.Name = "TerminPlanForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.ClientSizeChanged += new System.EventHandler(this.OnTerminPlanFormClientSizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.ultraGanttView1)).EndInit();
             this.Form1_Fill_Panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManager1)).EndInit();

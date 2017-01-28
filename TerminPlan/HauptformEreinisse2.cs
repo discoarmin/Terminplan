@@ -20,6 +20,7 @@ namespace Terminplan
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Windows.Forms;
     using Infragistics.Win;
     using Infragistics.Win.UltraWinSchedule;
@@ -30,14 +31,14 @@ namespace Terminplan
     /// Klasse TerminPlanForm (Hauptformular).
     /// </summary>
     /// <seealso cref="System.Windows.Forms.Form" />
-    public partial class TerminPlanForm : Form
+    public partial class TerminPlanForm
     {
         #region Methoden
         #region DeleteTask
         /// <summary> Löscht den aktiven Arbeitsinhalt oder die aktive Aufgabe </summary>
         private void DeleteTask()
         {
-            Task activeTask = this.ultraGanttView1.ActiveTask;                  // Aktiven Arbeitsinhalt oder Aufgabe ermitteln
+            var activeTask = this.ultraGanttView1.ActiveTask;                   // Aktiven Arbeitsinhalt oder Aufgabe ermitteln
             try
             {
                 // Nur bearbeiten, falls ein Arbeitsinhalt oder eine Aufgabe aktiv ist
@@ -73,21 +74,69 @@ namespace Terminplan
         /// <summary> Initialisiert die Oberfläche. </summary>
         private void InitializeUi()
         {
+            var culture = CultureInfo.InstalledUICulture;                       // Sprache des Betriebssystems ermitteln
+            System.Threading.Thread.CurrentThread.CurrentCulture = culture;
+            System.Threading.Thread.CurrentThread.CurrentUICulture = culture;
+
+            this.ultraGanttView1
+            var col = this.ultraGanttView1.GridSettings.ColumnSettings.Values;
+
+            // Spaltenbreite einstellen
+            foreach (var de in col)
+            {
+                // Arbeitsinhalt oder Aufgabe
+                if (de.Key.ToLower() == @"name")
+                {
+                    de.Text = "Arbeitsinhalt/Aufgabe";
+                    de.Visible = DefaultableBoolean.True;
+                }
+
+                // Dauer
+                if (de.Key.ToLower() == @"duration")
+                {
+                    de.Text = "Dauer";
+                    de.Visible = DefaultableBoolean.True;
+                }
+
+                // Start
+                if (de.Key.ToLower() == @"start")
+                {
+                    de.Text = "Start";
+                    de.Visible = DefaultableBoolean.True;
+                }
+
+                // Ende
+                if (de.Key.ToLower() == @"enddatetime")
+                {
+                    de.Text = "Ende";
+                    de.Visible = DefaultableBoolean.True;
+                }
+
+                // Fertig in %
+                if (de.Key.ToLower() == @"percentcomplete")
+                {
+                    de.Text = "Status";
+                    de.Visible = DefaultableBoolean.True;
+                }
+            }
+
+            //this.ultraGanttView1.GridAreaWidth = splitterWeite;
+
             // Füllt die Liste mit den Farbschematas
-            int selectedIndex = 0;                                              // Index des ausgewählten Farbschemas (1. Element)
-            ListTool themeTool = (ListTool)this.ultraToolbarsManager1.Tools[@"ThemeList"];
+            var selectedIndex = 0;                                              // Index des ausgewählten Farbschemas (1. Element)
+            var themeTool = (ListTool)this.ultraToolbarsManager1.Tools[@"ThemeList"];
             
             // Alle vorhandenen Farbschematas durchgehen
-            foreach (string resourceName in this.themePaths)
+            foreach (var resourceName in this.themePaths)
             {
-                ListToolItem item = new ListToolItem(resourceName);             // Eintrag aus der liste
+                var item = new ListToolItem(resourceName);                      // Eintrag aus der liste
                 
                 // In der Liste erscheint nur der Name des Farbschemas ohne Endung in Dateinamen
-                string libraryName = resourceName.Replace(@".isl", string.Empty);
+                var libraryName = resourceName.Replace(@".isl", string.Empty);
                 item.Text = libraryName.Remove(0, libraryName.LastIndexOf('.') + 1);
                 themeTool.ListToolItems.Add(item);                              // Name des Farbschemas der Liste hinzufügen
 
-                // Farbschema 2 (dunkle Farbe) auswählen
+                // Farbschema 4 (dunkle Farbe Excel) auswählen
                 if (item.Text.Contains(@"04"))
                 {
                     selectedIndex = item.Index;
@@ -127,51 +176,54 @@ namespace Terminplan
         /// <param name="moveTimeSpan">Zeitspanne zum Verschieben des Start- und Enddatums der Aufgabe</param>
         private void MoveTask(GanttViewAction action, TimeSpanForMoving moveTimeSpan)
         {
-            Task activeTask = this.ultraGanttView1.ActiveTask;                  // Aktive Aufgabe oder aktiven Arbeitsinhalt ermitteln
+            var activeTask = this.ultraGanttView1.ActiveTask;                   // Aktive Aufgabe oder aktiven Arbeitsinhalt ermitteln
 
             // Nur bearbeiten, falls ein Arbeitsinhalt oder eine Aufgabe existiert und
             // wenn es sich nicht um keine Summe handelt
-            if (activeTask != null && activeTask.IsSummary == false)
+            if (activeTask == null || activeTask.IsSummary)
             {
-                // Aktion auswerten
-                switch (action)
-                {
-                    case GanttViewAction.MoveTaskDateForward:                   // Datum vorverlegen
-                        {
-                            // Zeitspanne auswerten
-                            switch (moveTimeSpan)
-                            {
-                                case TimeSpanForMoving.OneDay:                  // einen Tag
-                                    activeTask.StartDateTime = activeTask.StartDateTime.AddDays(1);
-                                    break;
-                                case TimeSpanForMoving.OneWeek:                 // eine Woche
-                                    activeTask.StartDateTime = activeTask.StartDateTime.AddDays(7);
-                                    break;
-                                case TimeSpanForMoving.FourWeeks:               // vier Wochen
-                                    activeTask.StartDateTime = activeTask.StartDateTime.AddDays(28);
-                                    break;
-                            }
-                        }
-                        break;
+                return;                                                         // Abbruch, da Bedingungen nicht erfüllt sind 
+            }
 
-                    case GanttViewAction.MoveTaskDateBackward:                  // Datum zurückverlegen
+            // Aktion auswerten
+            switch (action)
+            {
+                case GanttViewAction.MoveTaskDateForward:                       // Datum vorverlegen
+                    {
+                        // Zeitspanne auswerten
+                        // ReSharper disable once SwitchStatementMissingSomeCases
+                        switch (moveTimeSpan)
                         {
-                            // Zeitspanne auswerten
-                            switch (moveTimeSpan)
-                            {
-                                case TimeSpanForMoving.OneDay:                  // einen Tag
-                                    activeTask.StartDateTime = activeTask.StartDateTime.Subtract(TimeSpan.FromDays(1));
-                                    break;
-                                case TimeSpanForMoving.OneWeek:                 // eine Woche
-                                    activeTask.StartDateTime = activeTask.StartDateTime.Subtract(TimeSpan.FromDays(7));
-                                    break;
-                                case TimeSpanForMoving.FourWeeks:               // vier Wochen
-                                    activeTask.StartDateTime = activeTask.StartDateTime.Subtract(TimeSpan.FromDays(28));
-                                    break;
-                            }
+                            case TimeSpanForMoving.OneDay:                      // einen Tag
+                                activeTask.StartDateTime = activeTask.StartDateTime.AddDays(1);
+                                break;
+                            case TimeSpanForMoving.OneWeek:                     // eine Woche
+                                activeTask.StartDateTime = activeTask.StartDateTime.AddDays(7);
+                                break;
+                            case TimeSpanForMoving.FourWeeks:                   // vier Wochen
+                                activeTask.StartDateTime = activeTask.StartDateTime.AddDays(28);
+                                break;
                         }
-                        break;
-                }
+                    }
+                    break;
+
+                case GanttViewAction.MoveTaskDateBackward:                      // Datum zurückverlegen
+                    {
+                        // Zeitspanne auswerten
+                        switch (moveTimeSpan)
+                        {
+                            case TimeSpanForMoving.OneDay:                      // einen Tag
+                                activeTask.StartDateTime = activeTask.StartDateTime.Subtract(TimeSpan.FromDays(1));
+                                break;
+                            case TimeSpanForMoving.OneWeek:                     // eine Woche
+                                activeTask.StartDateTime = activeTask.StartDateTime.Subtract(TimeSpan.FromDays(7));
+                                break;
+                            case TimeSpanForMoving.FourWeeks:                   // vier Wochen
+                                activeTask.StartDateTime = activeTask.StartDateTime.Subtract(TimeSpan.FromDays(28));
+                                break;
+                        }
+                    }
+                    break;
             }
         }
         #endregion  MoveTask
@@ -183,7 +235,7 @@ namespace Terminplan
         /// <param name="action">die auszuführende Aktion(Einrückung oder Auslagerung)</param>
         private void PerformIndentOrOutdent(GanttViewAction action)
         {
-            Task activeTask = this.ultraGanttView1.ActiveTask;                  // Aktive Aufgabe oder aktiven Arbeitsinhalt ermitteln
+            var activeTask = this.ultraGanttView1.ActiveTask;                   // Aktive Aufgabe oder aktiven Arbeitsinhalt ermitteln
 
             try
             {
@@ -230,10 +282,10 @@ namespace Terminplan
         private void PopulateFontSizeValueList()
         {
             // Schriftgrößen für die Liste vorgeben und neue Liste erstellen
-            List<float> fontSizeList = new List<float> ( new float [] { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72}); 
+            var fontSizeList = new List<float> ( new float [] { 8, 9, 10, 11, 12, 14, 16, 18, 20, 22, 24, 26, 28, 36, 48, 72}); 
             
             // Jeden Eintrag der Liste in das Tool für die Schriftgröße des UltraToolbarsManager eintragen
-            foreach(float i in fontSizeList)
+            foreach(var i in fontSizeList)
             {
                ((ComboBoxTool)(this.ultraToolbarsManager1.Tools[@"FontSize"])).ValueList.ValueListItems.Add(i);
             }
@@ -416,7 +468,7 @@ namespace Terminplan
         private void UpdateTasksToolsState(Task activeTask)
         {
             // Gruppe "RibbonGrp_Tasks" laden 
-            RibbonGroup group = this.ultraToolbarsManager1.Ribbon.Tabs[@"Ribbon_Task"].Groups[@"RibbonGrp_Tasks"];
+            var group = this.ultraToolbarsManager1.Ribbon.Tabs[@"Ribbon_Task"].Groups[@"RibbonGrp_Tasks"];
 
             // Nur bearbeiten, falls ein aktiver Arbeitsinhalt oder eine aktive Ausgabe existiert
             if (activeTask != null)

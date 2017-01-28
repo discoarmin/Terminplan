@@ -17,21 +17,21 @@
 // </remarks>
 // --------------------------------------------------------------------------------------------------------------------
 
+// ReSharper disable ParameterHidesMember
 namespace Terminplan
 {
     using System;
     using System.Drawing;
-    using System.Reflection;
     using System.Windows.Forms;
     using System.Resources;
 
     using TerminPlan;
 
     /// <summary>Klasse für den Begrüßungsbildschirm</summary>
-    public partial class SplashScreen : Form
+    public sealed partial class SplashScreen : Form
     {
         #region Private Members
-        private ResourceManager rm = Properties.Resources.ResourceManager;
+        private readonly ResourceManager rm = Properties.Resources.ResourceManager;
 
         private ContainerControl sender;                                        // das aufrufende Element
 
@@ -135,12 +135,14 @@ namespace Terminplan
         #region LocalizeStrings
         private void LocalizeStrings()
         {
-            var assemblyInfoMainApplication = (Assembly.GetEntryAssembly());
-
             this.lblAppName.Text = AboutControl.ApplicationName;
-            //this.lblVersion.Text = string.Format(@" v {0}", assemblyInfoMainApplication.ImageRuntimeVersion);
             this.lblVersion.Text = string.Format(@" v {0}", AboutControl.Version);
-            this.lblStatus.Text = string.Format(rm.GetString(@"Application_Starting"), Properties. Resources.Title.ToUpper());
+            var resourceManager = this.rm;
+            if (resourceManager != null)
+            {
+                // ReSharper disable once AssignNullToNotNullAttribute
+                this.lblStatus.Text = string.Format(resourceManager.GetString(@"Application_Starting"), Properties. Resources.Title.ToUpper());
+            }
         }
         #endregion LocalizeStrings
 
@@ -153,6 +155,7 @@ namespace Terminplan
         #region Event Handlers
 
         #region ApplicationInitializationStatusChanged
+        // ReSharper disable once ParameterHidesMember
         private void ApplicationInitializationStatusChanged(object sender, InitializationStatusChangedEventArgs e)
         {
             if (this.lblStatus.InvokeRequired)
@@ -167,34 +170,34 @@ namespace Terminplan
 
         #endregion ApplicationInitializationStatusChanged
 
-        #region ApplicationInitializationComplete
-        private void ApplicationInitializationComplete(object sender, EventArgs e)
-        {
-            if (Sender != null && this.SenderDelegate != null)
-            {
-                //this.Sender.BeginInvoke(this.SenderDelegate);
-                this.Sender.BeginInvoke(new MethodInvoker(this.CloseMe));
-            }
-            //if (this.InvokeRequired)
-            //{
-            //    try
-            //    {
-            //        //this.Close();
-            //        //this.Invoke(new MethodInvoker(this.CloseMe));
-            //        this.Sender.Invoke(new MethodInvoker(this.CloseMe));
-            //    }
-            //    catch
-            //    {
-            //    }
-            //}
-            //else
-            //{
-            //    this.Close();
-            //}
+        //#region ApplicationInitializationComplete
+        //private void ApplicationInitializationComplete(object sender, EventArgs e)
+        //{
+        //    if (this.Sender != null && this.SenderDelegate != null)
+        //    {
+        //        //this.Sender.BeginInvoke(this.SenderDelegate);
+        //        this.Sender.BeginInvoke(new MethodInvoker(this.CloseMe));
+        //    }
+        //    //if (this.InvokeRequired)
+        //    //{
+        //    //    try
+        //    //    {
+        //    //        //this.Close();
+        //    //        //this.Invoke(new MethodInvoker(this.CloseMe));
+        //    //        this.Sender.Invoke(new MethodInvoker(this.CloseMe));
+        //    //    }
+        //    //    catch
+        //    //    {
+        //    //    }
+        //    //}
+        //    //else
+        //    //{
+        //    //    this.Close();
+        //    //}
 
-            //Application.DoEvents();
-        }
-        #endregion ApplicationInitializationComplete
+        //    //Application.DoEvents();
+        //}
+        //#endregion ApplicationInitializationComplete
         #endregion Event Handlers
 
         #region Base class overrides
@@ -217,8 +220,9 @@ namespace Terminplan
                 var screenRect = Infragistics.Win.Utilities.ScreenFromPoint(Cursor.Position).Bounds;
                 Infragistics.Win.DrawUtility.AdjustHAlign(Infragistics.Win.HAlign.Center, ref formRect, screenRect);
                 Infragistics.Win.DrawUtility.AdjustVAlign(Infragistics.Win.VAlign.Middle, ref formRect, screenRect);
-                Point location = formRect.Location;
+                var location = formRect.Location;
 
+                // ReSharper disable once ConditionIsAlwaysTrueOrFalse
                 var insertAfter = topMost ? NativeWindowMethods.HWND_TOPMOST : IntPtr.Zero;
 
                 Form form = this;
@@ -231,7 +235,7 @@ namespace Terminplan
         #endregion SetVisibleCore
 
         #region WndProc
-        protected override void WndProc(ref System.Windows.Forms.Message message)
+        protected override void WndProc(ref Message message)
         {
             // We don't want the splash screen to be clickable and if possible
             // prevent its activation.

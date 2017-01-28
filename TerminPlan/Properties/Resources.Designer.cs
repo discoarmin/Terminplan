@@ -79,11 +79,29 @@ namespace Terminplan.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Copyright EST GmbH + CO.KG. 2017 ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Copyright EST GmbH 2017 ähnelt.
         /// </summary>
         internal static string Copyright {
             get {
                 return ResourceManager.GetString("Copyright", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Resource name: {0} ähnelt.
+        /// </summary>
+        internal static string DienstProgramme_GetEmbeddedResourceStream_Resource_name___0_ {
+            get {
+                return ResourceManager.GetString("DienstProgramme_GetEmbeddedResourceStream_Resource_name___0_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Unable to locate embedded resource. ähnelt.
+        /// </summary>
+        internal static string DienstProgramme_GetEmbeddedResourceStream_Unable_to_locate_embedded_resource_ {
+            get {
+                return ResourceManager.GetString("DienstProgramme_GetEmbeddedResourceStream_Unable_to_locate_embedded_resource_", resourceCulture);
             }
         }
         
@@ -115,7 +133,7 @@ namespace Terminplan.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Herausgeber ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Copyright EST GmbH + CO.KG ähnelt.
         /// </summary>
         internal static string Publisher {
             get {

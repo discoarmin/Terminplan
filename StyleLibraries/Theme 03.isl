@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <styleLibrary office2013ColorScheme="White" office2013CustomBlendColor="">
   <annotation>
-    <lastModified>2017-01-20T20:00:50</lastModified>
+    <lastModified>2017-01-28T08:38:20</lastModified>
   </annotation>
   <styleSets defaultStyleSet="Default">
     <styleSet name="Default" useFlatMode="True">
@@ -73,8 +73,8 @@
           <properties>
             <property name="BackColor" colorCategory="{Default}">White</property>
             <property name="ForeColor" colorCategory="{Default}">68, 68, 68</property>
-            <property name="ShowTodayCircle" colorCategory="{Default}">False</property>
-            <property name="ShowWeekNumbers" colorCategory="{Default}">False</property>
+            <property name="ShowTodayCircle" colorCategory="{Default}">True</property>
+            <property name="ShowWeekNumbers" colorCategory="{Default}">True</property>
             <property name="TitleBackColor" colorCategory="{Default}">239, 239, 239</property>
             <property name="TitleForeColor" colorCategory="{Default}">68, 68, 68</property>
             <property name="TrailingForeColor" colorCategory="{Default}">178, 178, 178</property>
@@ -935,7 +935,7 @@
         </style>
         <style role="GridColumnHeader">
           <states>
-            <state name="Normal" borderAlpha="Transparent">
+            <state name="Normal" borderAlpha="Transparent" fontBold="True">
               <resources>
                 <name>Background 1</name>
               </resources>
