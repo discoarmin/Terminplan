@@ -1596,7 +1596,7 @@
     <value>Verschiebe nach rechts</value>
   </data>
   <data name="popupMenuTool6.SharedPropsInternal.Caption" xml:space="preserve">
-    <value>Verschiebe Aufgabe</value>
+    <value>Verschiebe Vorgang</value>
   </data>
   <data name="popupMenuTool10.SharedPropsInternal.Caption" xml:space="preserve">
     <value>Aufgabe</value>
@@ -1611,13 +1611,13 @@
     <value>Fett</value>
   </data>
   <data name="stateButtonTool4.SharedPropsInternal.Caption" xml:space="preserve">
-    <value>Italic</value>
+    <value>Italics</value>
   </data>
   <data name="stateButtonTool6.SharedPropsInternal.Caption" xml:space="preserve">
     <value>Unterstrichen</value>
   </data>
   <data name="buttonTool16.SharedPropsInternal.Caption" xml:space="preserve">
-    <value>Füge Arbeitsinhalt oder Aufgabe am Ende ein</value>
+    <value>Füge Vorgangam Ende ein</value>
   </data>
   <data name="buttonTool50.SharedPropsInternal.Caption" xml:space="preserve">
     <value>1 Tag</value>
@@ -1629,10 +1629,10 @@
     <value>4 Wochen</value>
   </data>
   <data name="labelTool3.SharedPropsInternal.Caption" xml:space="preserve">
-    <value>Aufgabe nach vorne verschieben</value>
+    <value>Vorgang nach vorne verschieben</value>
   </data>
   <data name="labelTool4.SharedPropsInternal.Caption" xml:space="preserve">
-    <value>Aufgabe nach hinten verschieben</value>
+    <value>Vorgang nach hinten verschieben</value>
   </data>
   <data name="buttonTool56.SharedPropsInternal.Caption" xml:space="preserve">
     <value>1 Tag</value>
@@ -1644,10 +1644,10 @@
     <value>4 Wochen</value>
   </data>
   <data name="buttonTool60.SharedPropsInternal.Caption" xml:space="preserve">
-    <value>Füge Arbeitsinhalt oder Aufgabe bei ausgewählter Zeile ein</value>
+    <value>Füge Vorgang bei ausgewählter Zeile ein</value>
   </data>
   <data name="buttonTool9.SharedPropsInternal.Caption" xml:space="preserve">
-    <value>Info über die Aufgabe</value>
+    <value>Info über den Vorgang</value>
   </data>
   <data name="buttonTool10.SharedPropsInternal.Caption" xml:space="preserve">
     <value>Notitzen</value>
@@ -1813,7 +1813,7 @@
     <value>Meilenstein</value>
   </data>
   <data name="taskColumnSettings8.Text" xml:space="preserve">
-    <value>Arbeitsinhalt/Aufgabe</value>
+    <value>Vorgang</value>
   </data>
   <data name="taskColumnSettings9.Text" xml:space="preserve">
     <value>Notitzen</value>
@@ -1831,6 +1831,129 @@
     <value>ultraGanttView1  </value>
   </data>
   <data name="appearance63.TextVAlignAsString" xml:space="preserve">
-    <value>Default</value>
+    <value>Standard</value>
+  </data>
+  <data name="resource.UnderlineAsString1" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="resource.ItalicAsString3" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="resource.StrikeoutAsString7" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="buttonTool24.SharedPropsInternal.Caption" xml:space="preserve">
+    <value>25%</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Terminplan</value>
+  </data>
+  <data name="resource.ItalicAsString4" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="listToolItem2.Text" xml:space="preserve">
+    <value>Touch</value>
+  </data>
+  <data name="resource.ItalicAsString2" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="resource.UnderlineAsString7" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="buttonTool3.SharedPropsInternal.Caption" xml:space="preserve">
+    <value>75%</value>
+  </data>
+  <data name="resource.StrikeoutAsString3" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="resource.ItalicAsString6" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="appearance62.TextVAlignAsString" xml:space="preserve">
+    <value>Mitte</value>
+  </data>
+  <data name="buttonTool26.SharedPropsInternal.Caption" xml:space="preserve">
+    <value>100%</value>
+  </data>
+  <data name="resource.BoldAsString6" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="resource.BoldAsString7" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="resource.UnderlineAsString" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="resource.UnderlineAsString5" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="resource.BoldAsString4" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="resource.ItalicAsString7" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="resource.UnderlineAsString4" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="resource.StrikeoutAsString1" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="resource.BoldAsString5" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="ribbonTab1.Caption" xml:space="preserve">
+    <value>Terminplan</value>
+  </data>
+  <data name="resource.UnderlineAsString3" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="resource.Name3" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="resource.UnderlineAsString2" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="resource.ItalicAsString5" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="buttonTool25.SharedPropsInternal.Caption" xml:space="preserve">
+    <value>50%</value>
+  </data>
+  <data name="resource.BoldAsString3" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="resource.StrikeoutAsString" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="resource.ItalicAsString" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="resource.UnderlineAsString6" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="resource.BoldAsString1" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="resource.StrikeoutAsString2" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="resource.BoldAsString" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="buttonTool12.SharedPropsInternal.Caption" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="resource.StrikeoutAsString6" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="buttonTool5.SharedPropsInternal.Caption" xml:space="preserve">
+    <value>0%</value>
+  </data>
+  <data name="resource.StrikeoutAsString5" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="resource.StrikeoutAsString4" xml:space="preserve">
+    <value>Standard</value>
   </data>
 </root>

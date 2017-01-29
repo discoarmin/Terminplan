@@ -2354,4 +2354,37 @@
   <metadata name="ultraGanttViewPrintDocument1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>364, 43</value>
   </metadata>
+  <data name="buttonTool33.SharedPropsInternal.Caption" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="buttonTool34.SharedPropsInternal.Caption" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="buttonTool35.SharedPropsInternal.Caption" xml:space="preserve">
+    <value>Save As</value>
+  </data>
+  <data name="taskColumnSettings5.Text" xml:space="preserve">
+    <value>Duration</value>
+  </data>
+  <data name="taskColumnSettings6.Text" xml:space="preserve">
+    <value>End</value>
+  </data>
+  <data name="taskColumnSettings7.Text" xml:space="preserve">
+    <value>Milestone</value>
+  </data>
+  <data name="taskColumnSettings8.Text" xml:space="preserve">
+    <value>Task</value>
+  </data>
+  <data name="taskColumnSettings9.Text" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+  <data name="taskColumnSettings10.Text" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="taskColumnSettings12.Text" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="taskColumnSettings13.Text" xml:space="preserve">
+    <value>Line number</value>
+  </data>
 </root>
