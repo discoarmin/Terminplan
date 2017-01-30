@@ -113,6 +113,9 @@
     <Compile Include="HauptformEreinisse2.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="HauptformPart2.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="NativeWindowMethods.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

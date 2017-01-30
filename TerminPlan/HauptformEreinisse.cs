@@ -21,6 +21,7 @@ namespace Terminplan
     using System;
     using System.Collections.Generic;
     using System.Data;
+    using System.Diagnostics.CodeAnalysis;
     using System.Drawing;
     using System.Linq;
     using System.Windows.Forms;
@@ -35,6 +36,7 @@ namespace Terminplan
     /// Klasse TerminPlanForm (Hauptformular).
     /// </summary>
     /// <seealso cref="System.Windows.Forms.Form" />
+    [SuppressMessage("ReSharper", "SwitchStatementMissingSomeCases")]
     public partial class TerminPlanForm : Form
     {
         #region Ereignisprozeduren
@@ -270,7 +272,7 @@ namespace Terminplan
         /// </remarks>
         /// <param name="sender">Die Quelle des Ereignisses.</param>
         /// <param name="e">Die <see cref="Infragistics.Win.UltraWinToolbars.ToolClickEventArgs" /> Instanz, welche die Ereignisdaten enthält.</param>
-        private void UltraToolbarsManagerToolClick(object sender, ToolClickEventArgs e)
+        private void OnUltraToolbarsManagerToolClick(object sender, ToolClickEventArgs e)
         {
             switch (e.Tool.Key)
             {

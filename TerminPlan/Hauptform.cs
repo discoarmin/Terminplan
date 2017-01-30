@@ -619,7 +619,7 @@ namespace Terminplan
                     default:                                                    // Alle sonstigen Spalten
                         if (de.Visible == DefaultableBoolean.True)
                         {
-                            panalWeite += de.Width;                                 // Breite der Spalte hinzuaddieren
+                            panalWeite += de.Width;                             // Breite der Spalte hinzuaddieren
                         }
                         break;
                 }
@@ -631,6 +631,19 @@ namespace Terminplan
 
             var gesamtbreite = this.Width;
             var teiler = Math.Abs((float)breite / (float)gesamtbreite);
+        }
+
+        /// <summary>
+        /// Behandelt das ToolClick-Ereignis of the ultraToolbarsManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Die jeweilige Aktion wird nur durchgeführt, wenn sie nicht schon durchgeführt wurde
+        /// </remarks>
+        /// <param name="sender">Die Quelle des Ereignisses.</param>
+        /// <param name="e">Die <see cref="Infragistics.Win.UltraWinToolbars.ToolClickEventArgs" /> Instanz, welche die Ereignisdaten enthält.</param>
+        private void UltraToolbarsManagerToolClick(object sender, ToolClickEventArgs e)
+        {
+            this.OnUltraToolbarsManagerToolClick(sender, e);
         }
     }
 }

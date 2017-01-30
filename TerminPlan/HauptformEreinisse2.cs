@@ -78,7 +78,6 @@ namespace Terminplan
             System.Threading.Thread.CurrentThread.CurrentCulture = culture;
             System.Threading.Thread.CurrentThread.CurrentUICulture = culture;
 
-            this.ultraGanttView1
             var col = this.ultraGanttView1.GridSettings.ColumnSettings.Values;
 
             // Spaltenbreite einstellen
@@ -87,7 +86,8 @@ namespace Terminplan
                 // Arbeitsinhalt oder Aufgabe
                 if (de.Key.ToLower() == @"name")
                 {
-                    de.Text = "Arbeitsinhalt/Aufgabe";
+                    //de.Text = "Arbeitsinhalt/Aufgabe";
+                    de.Text = "Verfahren";
                     de.Visible = DefaultableBoolean.True;
                 }
 
