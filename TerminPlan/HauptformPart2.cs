@@ -40,5 +40,12 @@ namespace Terminplan
         private static void SetColumnHeaders()
         {
         }
+
+        /// <summary>Speichert die übergebene Datei</summary>
+        /// <param name="dateiName">Name der zu speichernden Datei mit Pfadangabe.</param>
+        private void Speichern(string dateiName)
+        {
+            this.datasetTp.
+        }
     }
 }

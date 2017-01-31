@@ -101,11 +101,14 @@ namespace Terminplan
 
         #region Variablen
 
-        /// <summary> Delegate zum Melden, dass der Begrüßungsbildschirm geschlossen werden kann </summary>
+        /// <summary>Delegate zum Melden, dass der Begrüßungsbildschirm geschlossen werden kann </summary>
         public delegate void SplashScreenCloseDelegate();
 
-        /// <summary> Delegate zum Schließen des Begrüßungsbildschrms</summary>
+        /// <summary>Delegate zum Schließen des Begrüßungsbildschrms</summary>
         public delegate void CloseDelagate();
+
+        /// <summary>Dataset zur Aufnahme der Daten des Terminplans</summary>
+        public DataSet datasetTp;
 
         /// <summary> Merker für rekursive Zellaktivierung </summary>
         private bool cellActivationRecursionFlag; // Merker rekursive Zellaktivierung
@@ -240,15 +243,13 @@ namespace Terminplan
                 }
             }
 
-  //          this.ultraGanttView1.GridAreaWidth = splitterWeite;
-
             // Ruft die Daten aus der bereitgestellten XML-Datei ab
             this.OnInitializationStatusChanged(Properties.Resources.Retrieving); // Daten im Splashscreen aktualisieren
-            var dataset = DienstProgramme.GetData(Path.Combine(Application.StartupPath, @"Data.TestDatenEST.XML")); // Testdaten laden
+            datasetTp = DienstProgramme.GetData(Path.Combine(Application.StartupPath, @"Data.TestDatenEST.XML")); // Testdaten laden
 
             // Die eingelesenen Daten an die ultraCalendarInfo anbinden. 
             this.OnInitializationStatusChanged(Properties.Resources.Binding);   // Anzeige im Splashscreen aktualisieren
-            this.OnBindArbInhaltData(dataset);                                  // Daten an ultraCalendarInfo anbinden
+            this.OnBindArbInhaltData(datasetTp);                                // Daten an ultraCalendarInfo anbinden
 
             // Initialisiert die Kontrols auf dem Formular
             this.OnInitializationStatusChanged(Properties.Resources.Initializing); // Anzeige im Splashscreen aktualisieren

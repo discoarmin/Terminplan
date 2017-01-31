@@ -131,22 +131,21 @@ namespace Terminplan
         #endregion // GetAssemblyAttribute
 
         #region GetData
-        /// <summary>
-        /// Gets the bindable data.
-        /// </summary>
-        /// <returns></returns>
+        /// <summary> R bindenden Daten abuft die zu </summary>
+        /// <returns>die gelesenen Daten als DataSet</returns>
         internal static DataSet GetData(string fileName)
         {
-            // Get the temporary data from the XML file
-            //System.IO.Stream stream = GetEmbeddedResourceStream(fileName);
-
-            // Convert the stream to the dataset
+            // Konvertiert den Stream in ein DataSet
             var data = new DataSet();
             data.ReadXml(fileName);
             return data;
         }
-
         #endregion GetData
+
+        internal static void PutData(string fileName, DataSet data)
+        {
+            data.WriteXml(fileName);
+        }
 
         #region GetEmbeddedResourceStream
         /// <summary>
