@@ -190,8 +190,6 @@ namespace Terminplan
         /// <param name="e">Ein <see cref="T:System.EventArgs" /> welches die Ereignisdaten enthält.</param>
         protected override void OnLoad(EventArgs e)
         {
-//            this.OnChangeIcon();                                                // Farbe anhand des ausgewählten Themes einstellen
-
             this.OnInitializationStatusChanged(Properties.Resources.Loading);   // Anzeige im Splashscreen aktualisieren
             base.OnLoad(e);
 
@@ -535,10 +533,13 @@ namespace Terminplan
         /// <param name="status">Der Status.</param>
         protected virtual void OnInitializationStatusChanged(string status)
         {
-            // Nur bearbeiten, falls das Ereignis existier
+            // Nur bearbeiten, falls das Ereignis existiert
             // Ereignis auslösen
-            InitializationStatusChanged?.Invoke(this, new SplashScreen.InitializationStatusChangedEventArgs(status));
-        }
+            if (InitializationStatusChanged != null)
+            {
+                InitializationStatusChanged.Invoke(this, new SplashScreen.InitializationStatusChangedEventArgs(status));
+            }
+       }
         #endregion OnInitializationStatusChanged
 
         #endregion Ereignisse		
@@ -555,7 +556,6 @@ namespace Terminplan
             var gesamtbreite = this.Width;
             var teiler = Math.Abs((float)breite / (float)gesamtbreite);
             var splitterWeite = (float)gesamtbreite * teiler;
-            //this.ultraGanttView1.GridAreaWidth = Convert.ToInt32(splitterWeite);
         }
 
         /// <summary>

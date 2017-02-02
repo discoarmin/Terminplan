@@ -19,6 +19,8 @@
 namespace Terminplan
 {
     using Infragistics.Win.UltraWinSchedule;
+    using System.IO;
+    using System.Windows.Forms;
 
     /// <summary>
     /// Klasse TerminPlanForm (Hauptformular).
@@ -31,12 +33,12 @@ namespace Terminplan
         /// <param name="text">anzuzeigender Text.</param>
         private static void SetColumnHeaderText(TaskField column, string text)
         {
-            var resourceName = 
+            var resourceName =
             string.Format(@"TaskProxy_ProertyName.{0}", column);
-            
-            
+
+
         }
-        
+
         private static void SetColumnHeaders()
         {
         }
@@ -45,7 +47,33 @@ namespace Terminplan
         /// <param name="dateiName">Name der zu speichernden Datei mit Pfadangabe.</param>
         private void Speichern(string dateiName)
         {
-            this.datasetTp.
+            //var writer = new System.IO.StreamWriter();
+            this.datasetTp.WriteXml(dateiName, System.Data.XmlWriteMode.WriteSchema);
+        }
+
+        /// <summary>Speichert die übergebene Datei unter einem anderen Namen</summary>
+        /// <param name="dateiName">Name der zu speichernden Datei mit Pfadangabe.</param>
+        private void SpeichernUnter(string dateiName)
+        {
+            // Pfadangabe und Dateinamen trennen
+            if (dateiName == null) return;                                      // Falls nichts übergeben wurde, kann hier abebrochen werden
+
+            var directoryName = Path.GetDirectoryName(dateiName);
+            var fileBane = Path.GetFileName(dateiName);
+
+            // Speichern-Dialog anzeigen
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog()
+            {
+                Filter = "XML Dateien|*.xml",
+                Title = "Terminplan speichern"
+            };
+            saveFileDialog1.ShowDialog();
+
+            // Falls ein Name eingegeben ist, kann die Datei jetzt gespeichert werden.
+            if (saveFileDialog1.FileName != "")
+            {
+                this.Speichern(saveFileDialog1.FileName);
+            }
         }
     }
 }

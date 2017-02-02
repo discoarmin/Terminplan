@@ -62,7 +62,10 @@ namespace Terminplan
         public static void OnMainFormLoad(object sender, EventArgs e)
         {
             // Begrüßungsbildaschirm schließen
-            StartScreen?.Invoke(new Action(StartScreen.Close));
+            if (StartScreen != null)
+            {
+                StartScreen.Invoke(new Action(StartScreen.Close));
+            }
         }
     }
 }

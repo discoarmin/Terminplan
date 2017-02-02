@@ -31,6 +31,7 @@ namespace Terminplan
     using Infragistics.Win.UltraWinToolbars;
     using Infragistics.Win.UltraWinGanttView;
     using Infragistics.Win.Printing;
+    using System.IO;
 
     /// <summary>
     /// Klasse TerminPlanForm (Hauptformular).
@@ -430,9 +431,11 @@ namespace Terminplan
                     break;
 
                 case "Speichern":                                               // Terminplan speichern
+                    this.Speichern(Path.Combine(Application.StartupPath, @"Data.TestDatenEST.XML"));
                     break;
 
                 case "Speichern unter":                                         // Terminplan unter anderem Namen speichern
+                    this.SpeichernUnter(Path.Combine(Application.StartupPath, @"Data.TestDatenEST.XML"));
                     break;
             }
         }
