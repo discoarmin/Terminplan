@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="NewTask_Text" xml:space="preserve">
-    <value>Neuer Punkt</value>
+    <value>Neuer Vorgang</value>
   </data>
   <data name="GanttViewContextMenuItem_InsertTask_Text" xml:space="preserve">
     <value>Vorgang einfügen</value>
@@ -127,7 +127,7 @@
     <value>Neuer Unterpunkt</value>
   </data>
   <data name="GanttViewContextMenuItem_AddSubTask_Text" xml:space="preserve">
-    <value>UnterVorgang für '{0}' hinzufügen</value>
+    <value>Unterpunkt für '{0}' hinzufügen</value>
   </data>
   <data name="GanttViewContextMenuItem_ShowDialog_Text" xml:space="preserve">
     <value>Informationen über den Vorgang</value>
@@ -139,7 +139,7 @@
     <value>Vorgang nach links verschieben</value>
   </data>
   <data name="GanttViewContextMenuItem_OutdentTask_Text" xml:space="preserve">
-    <value>VorgangAufgabe nach rechts verschieben</value>
+    <value>Vorgang nach rechts verschieben</value>
   </data>
   <data name="GanttViewContextMenuItem_EnableTask_Text" xml:space="preserve">
     <value>Vorgang aktivieren</value>
@@ -193,13 +193,13 @@
     <value>min</value>
   </data>
   <data name="UltraGanttView_Exception_CannotAssignUnassociatedProject" xml:space="preserve">
-    <value>Das Projekt kann dem UltraGanttView nicht zugewiesen werden, da es nicht mit derselben UltraCalendarInfo-Instanz verknüpft ist.</value>
+    <value>Das Projekt kann dem Balkenplan nicht zugewiesen werden, da es nicht mit derselben Kalender-Instanz verknüpft ist.</value>
   </data>
   <data name="UltraGanttView_TaskDialogDisplaying" xml:space="preserve">
     <value>Wird ausgelöst, bevor der Dialog zum Vorgang angezeigt wird.</value>
   </data>
   <data name="TaskDialog_ShowNotSupported" xml:space="preserve">
-    <value>Der Task-Dialog unterstützt keine nicht-modale Anzeige. Verwenden Sie die ShowDialog-Methode, um den Dialog zu starten.</value>
+    <value>Der Vorgangs-Dialog unterstützt keine nicht-modale Anzeige. Verwenden Sie die ShowDialog-Methode, um den Dialog zu starten.</value>
   </data>
   <data name="TaskDialog_Title" xml:space="preserve">
     <value>Informationen zum Vorgang</value>
@@ -226,7 +226,7 @@
     <value>Meilenstein</value>
   </data>
   <data name="UltraGanttView_DisplayTaskDialog_Exception_CalendarInfoNotAssociated" xml:space="preserve">
-    <value>Der Vorgangs-Dialog kann nicht angezeigt werden, da der Vorgang und dieses Control nicht der gleichen UltraCalendarInfo zugeordnet sind.</value>
+    <value>Der Vorgangs-Dialog kann nicht angezeigt werden, da der Vorgang und dieses Control nicht derselben Kalender zugeordnet sind.</value>
   </data>
   <data name="TaskDialog_ErrorTitle" xml:space="preserve">
     <value>Fehler</value>
@@ -452,5 +452,68 @@
   </data>
   <data name="LD_Timeline_ColumnHeaderAppearance" xml:space="preserve">
     <value>Gibt das Aussehen der Header zurück, die das primäre Intervall und die Mitglieder der AdditionalIntervals-Auflistung repräsentieren.</value>
+  </data>
+  <data name="TaskDialog_NumericEditorDurationMaskDays" xml:space="preserve">
+    <value>t</value>
+  </data>
+  <data name="LD_Timeline_ColumnAutoSizing" xml:space="preserve">
+    <value>Holt oder setzt  einen Wertk, der angibt, ob der Wert der ColumnWidth-Eigenschaft auf die ideale Breite für das primäre Intervall festgelegt ist, wenn der Benutzer den einstellbaren Bereich des Headers doppelt anklickt.</value>
+  </data>
+  <data name="LD_Timeline_ColumnSizing" xml:space="preserve">
+    <value>Holt oder setzt einen Wert, der angibt, ob der Benutzer den Wert der ColumnWidth-Eigenschaft ändern kann, indem er die rechte Kante eines primären Intervall-Spaltenkopfes zieht.</value>
+  </data>
+  <data name="LD_Timeline_ColumnWidth" xml:space="preserve">
+    <value>Gibt die Breite in Pixeln des ColumnHeaderUIElements für das primäre Intervall und des TimeSlotUIElements zurück oder legt diese fest.</value>
+  </data>
+  <data name="LD_Timeline_DependencyLinkColor" xml:space="preserve">
+    <value>Gibt die Farbe der Zeilen und Pfeile, die eine Abhängigkeit von Vorgängen auf der Zeitleiste angeben, zurück oder legt diese fest.</value>
+  </data>
+  <data name="LD_Timeline_DrawDependencyLines" xml:space="preserve">
+    <value>Gibt einen booleschen Wert zurück oder legt diesen fest, ob Zeilen gezeichnet werden, um eine Abhängigkeit von Vorgängen auf der Zeitleiste darzustellen.</value>
+  </data>
+  <data name="LD_Timeline_HorizontalScrollSettings" xml:space="preserve">
+    <value>Gibt eine HorizontalScrollSettings-Instanz zurück, welche die kleinen und großen Inkremente für die horizontale Bildlaufleiste definiert.</value>
+  </data>
+  <data name="LD_Timeline_MinimumColumnResizeWidth" xml:space="preserve">
+    <value>Gibt den Minimalwert zurück, auf den die ColumnWidth-Eigenschaft während einer Größenänderung geändert werden kann.</value>
+  </data>
+  <data name="LD_Timeline_NonWorkingHourAppearance" xml:space="preserve">
+    <value>Gibt die Darstellung für Zeitfenster-UI-Elemente zurück, die im nicht arbeitsfreien Stundenbereich erscheinen.</value>
+  </data>
+  <data name="LD_Timeline_WorkingHourAppearance" xml:space="preserve">
+    <value>Gibt das Aussehen für Zeitfenster-UI-Elemente zurück, die im Arbeitszeitbereich angezeigt werden.</value>
+  </data>
+  <data name="LD_Timeline_PrimaryInterval" xml:space="preserve">
+    <value>Gibt die vom DateTimeInterval abgeleitete Instanz zurück, die in der unteren Zeile der Spaltenüberschriften dargestellt ist und die das kleinste Zeitintervall für das Steuerelement definiert.</value>
+  </data>
+  <data name="LD_Timeline_ToolTipSettings" xml:space="preserve">
+    <value>Gibt die ToolTipSettings-Instanz zurück, welche die Informationen festlegt, die dem Benutzer angezeigt werden, wenn ein Tooltip für einen Vorgang angezeigt wird.</value>
+  </data>
+  <data name="LD_Timeline_ToolTipSettingsSummary" xml:space="preserve">
+    <value>Gibt die ToolTipSettingsSummary-Instanz zurück, welche die Informationen festlegt, die dem Benutzer angezeigt werden, wenn eine Task-Tooltip für eine Zusammenfassung der Vorgänge angezeigt wird.</value>
+  </data>
+  <data name="LD_Timeline_ToolTipSettingsMilestone" xml:space="preserve">
+    <value>Gibt die ToolTipSettingsMilestone-Instanz zurück, wwelche die Informationen festlegt, die dem Benutzer angezeigt werden, wenn ein Tooltip für einen Meilenstein angezeigt wird.</value>
+  </data>
+  <data name="LD_Timeline_ToolTipSettingsPercentComplete" xml:space="preserve">
+    <value>Gibt die ToolTipSettingsPercentComplete-Instanz zurück, welche die Informationen festlegt, die dem Benutzer angezeigt werden, wenn eine QuickInfo für den Prozent Fertiggestellt-Indikator eines Vorgangs angezeigt wird.</value>
+  </data>
+  <data name="LD_Timeline_ToolTipSettingsDeadline" xml:space="preserve">
+    <value>Gibt die ToolTipSettingsDeadline-Instanz zurück,welche die Informationen festlegt, die dem Benutzer angezeigt werden, wenn eine QuickInfo für den Deadline-Indikator einer Aufgabe angezeigt wird.</value>
+  </data>
+  <data name="LD_Timeline_ToolTipSettingsTaskDependency" xml:space="preserve">
+    <value>Gibt die ToolTipSettingsTaskDependency-Instanz zurück, welche die Informationen festlegt, die dem Benutzer angezeigt werden, wenn einen Tooltip für eine Abhängigkeit von Vorgängen angezeigt wird.</value>
+  </data>
+  <data name="LD_UltraGanttView_Appearance" xml:space="preserve">
+    <value>Holt oder setzt das primäre Aussehen für das Steuerelement.</value>
+  </data>
+  <data name="LD_UltraGanttView_AutoDisplayDefaultContextMenu" xml:space="preserve">
+    <value>Holt oder setzt einen Wert, der angibt, ob das Standardkontextmenü automatisch angezeigt wird, wenn der Benutzer mit der rechten Maustaste in den entsprechenden Bereich des Steuerelements klickt.</value>
+  </data>
+  <data name="LD_UltraGanttView_AutoDisplayTaskDialog" xml:space="preserve">
+    <value>Gibt einen Wert zurück, der angibt, ob der Vorgangs-Dialog automatisch angezeigt wird, wenn der Benutzer im entsprechenden Bereich des Steuerelements doppelklickt.</value>
+  </data>
+  <data name="LD_UltraGanttView_ChartAreaWidth" xml:space="preserve">
+    <value>Holt oder setzt einen Wert, welcher die Breite des Diagrammbereichs des Steuerelements bestimmt.</value>
   </data>
 </root>

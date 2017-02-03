@@ -1575,7 +1575,7 @@
     <value>Font</value>
   </data>
   <data name="ribbonGroup2.Caption" xml:space="preserve">
-    <value>Aufgaben</value>
+    <value>Vorgänge</value>
   </data>
   <data name="ribbonGroup3.Caption" xml:space="preserve">
     <value>Einfügen</value>
@@ -1587,7 +1587,7 @@
     <value>Standard</value>
   </data>
   <data name="popupColorPickerTool3.SharedPropsInternal.Caption" xml:space="preserve">
-    <value>Hintergrudfarbe</value>
+    <value>Hintergrundfarbe</value>
   </data>
   <data name="popupColorPickerTool4.SharedPropsInternal.Caption" xml:space="preserve">
     <value>Vordergrundfarbe</value>
@@ -1602,7 +1602,7 @@
     <value>Verschiebe Vorgang</value>
   </data>
   <data name="popupMenuTool10.SharedPropsInternal.Caption" xml:space="preserve">
-    <value>Aufgabe</value>
+    <value>Vorgang</value>
   </data>
   <data name="buttonTool37.SharedPropsInternal.Caption" xml:space="preserve">
     <value>Zusammenfassung</value>
@@ -1617,7 +1617,7 @@
     <value>Unterstrichen</value>
   </data>
   <data name="buttonTool16.SharedPropsInternal.Caption" xml:space="preserve">
-    <value>Füge Vorgangam Ende ein</value>
+    <value>Füge Vorgang am Ende ein</value>
   </data>
   <data name="buttonTool50.SharedPropsInternal.Caption" xml:space="preserve">
     <value>1 Tag</value>
@@ -1665,7 +1665,7 @@
     <value>Optionen</value>
   </data>
   <data name="listTool2.SharedPropsInternal.Caption" xml:space="preserve">
-    <value>Liste mit Farbschemata</value>
+    <value>Liste mit Farbschematas</value>
   </data>
   <data name="buttonTool15.SharedPropsInternal.Caption" xml:space="preserve">
     <value>Beenden</value>
