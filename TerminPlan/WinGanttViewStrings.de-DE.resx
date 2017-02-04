@@ -337,10 +337,10 @@
     <value>Fehler</value>
   </data>
   <data name="Grid_Error_MessageBoxTitle_TaskException" xml:space="preserve">
-    <value>Aufgabenfehler</value>
+    <value>Fehler beim Vorgang</value>
   </data>
   <data name="Grid_Error_MessageBoxText_Generic" xml:space="preserve">
-    <value>Der Wert "{0}" ist ungültig für "{1}".</value>
+    <value>Der Wert "{0}" ist ungültig für '{1}'.</value>
   </data>
   <data name="ResourceParseError_MessageBoxText" xml:space="preserve">
     <value>Eine oder mehrere der angegebenen Ressourcen sind nicht vorhanden. {1}Sollen die folgenden Ressourcen hinzufügt werden: "{0}"?</value>
@@ -515,5 +515,125 @@
   </data>
   <data name="LD_UltraGanttView_ChartAreaWidth" xml:space="preserve">
     <value>Holt oder setzt einen Wert, welcher die Breite des Diagrammbereichs des Steuerelements bestimmt.</value>
+  </data>
+  <data name="LD_UltraGanttView_GridAreaWidth" xml:space="preserve">
+    <value>Holt oder setzt einen Wert, welcher die Breite des Rasterbereichs des Steuerelements bestimmt.</value>
+  </data>
+  <data name="LD_UltraGanttView_GridSettings" xml:space="preserve">
+    <value>Holt oder setzt einen Wert, welcher die gitterspezifischen Eigenschaften der Task bestimmt, beispielsweise das Aussehen der Zeile und die Einstellungen für die Zellen.</value>
+  </data>
+  <data name="LD_UltraGanttView_HorizontalResizeMode" xml:space="preserve">
+    <value>Gibt die Art und Weise zurück, in der das Steuerelement auf Änderungen in seiner Breite reagiert oder legt diese fest.</value>
+  </data>
+  <data name="LD_UltraGanttView_VerticalSplitterAppearance" xml:space="preserve">
+    <value>Gibt das Aussehen für das VerticalSplitterUIElement zurück, welches den Grid-bereich und den Diagrammbereich des Steuerelements trennt oder legt dieses fest.</value>
+  </data>
+  <data name="LD_UltraGanttView_VerticalSplitterEnabled" xml:space="preserve">
+    <value>Gibt zurück t, ob der vertikale Splitter, welcher den Bereichs des Grids und Diagrammfläche in der Benutzeroberfläche trennt , aktiviert ist, oder legt dies fest.</value>
+  </data>
+  <data name="LD_UltraGanttView_VerticalSplitterMinimumResizeWidth" xml:space="preserve">
+    <value>Holt oder setzt einen Wert, welcher  den Mindestwert festlegt, für den die Eigenschaften GridAreaWidth und ChartAreaWidth über eine Größenänderung mit dem vertikalen Teiler festgelegt werden können.</value>
+  </data>
+  <data name="LD_UltraGanttView_VerticalSplitterWidth" xml:space="preserve">
+    <value>Holt oder setzt einen Wert, welcher die Breite des VerticalSplitterUIElement bestimmt, welches die Grid- und Diagrammbereiche des Steuerelements trennt.</value>
+  </data>
+  <data name="LD_UltraGanttView_TimelineSettings" xml:space="preserve">
+    <value>Gibt ein Objekt zurück, welches Eigenschaften enthält, die eine Möglichkeit bieten, die zeitleistenbezogenen Ansichten des Steuerelements anzupassen.</value>
+  </data>
+  <data name="LD_UltraGanttView_TaskSettings" xml:space="preserve">
+    <value>Gibt eine TaskSettings-Instanz zurück, welche festlegt, ob der Benutzer Vorgänge bearbeiten oder löschen kann.</value>
+  </data>
+  <data name="LD_UltraGanttView_Timeline_ColumnHeaderInitializing" xml:space="preserve">
+    <value>Wird sofort ausgelöst, bevor die untergeordneten Elemente für ein ColumnHeaderUIElement initialisiert werden, was den Benutzern die Möglichkeit gibt, den Text und / oder das Bild, das angezeigt wird, zu ändern.</value>
+  </data>
+  <data name="LD_UltraGanttView_TimelineColumnHeaderToolTipDisplaying" xml:space="preserve">
+    <value>Wird ausgelöst, bevor ein Tooltip für ein ColumnHeaderUIElement angezeigt wird.</value>
+  </data>
+  <data name="LD_UltraGanttView_TimelineDateNavigationButtonClicked" xml:space="preserve">
+    <value>Wird ausgelöst, wenn ein DateNavigationButtonUIElement angeklickt wird, was dem Benutzer die Möglichkeit gibt, die getroffene Aktion zu ändern.</value>
+  </data>
+  <data name="LD_UltraGanttView_TimelinePrimaryIntervalChanged" xml:space="preserve">
+    <value>Wird ausgelöst, wenn das primäre Intervall geändert wurde.</value>
+  </data>
+  <data name="LD_UltraGanttView_TimelineVisibleDateTimeRange" xml:space="preserve">
+    <value>Wird ausgelöst, nachdem der Datumsbereich, welcher von der VisibleDateTimeRange-Eigenschaft zurückgegeben wird, geändert wurde.</value>
+  </data>
+  <data name="LD_UltraGanttView_VerticalSplitterDragging" xml:space="preserve">
+    <value>Wird ausgelöst, wenn das VerticalSplitterUIElement vom Benutzer bewegt wird.</value>
+  </data>
+  <data name="LD_UltraGanttView_VerticalSplitterDragged" xml:space="preserve">
+    <value>Wird ausgelöst, wenn ein Bewegen des VerticalSplitterUIElement vom Benutzer normal beendet wird.</value>
+  </data>
+  <data name="LD_UltraGanttView_TaskDialogDisplaying" xml:space="preserve">
+    <value>Wird ausgelöst, bevor der Vorgangs-Dialog angezeigt wird.</value>
+  </data>
+  <data name="LD_UltraGanttView_ContextMenuInitializing" xml:space="preserve">
+    <value>Wird ausgelöst, bevor das benutzerdefinierte ContextMenu des Steuerelements angezeigt wird.</value>
+  </data>
+  <data name="LD_UltraGanttView_ResourceParseError" xml:space="preserve">
+    <value>Wird ausgelöst, wenn der Benutzer das Resources-Feld im Vorgänge-Grid mit einem oder mehreren ungültigen Werten verlässt.</value>
+  </data>
+  <data name="LD_UltraGanttView_TaskElementDragging" xml:space="preserve">
+    <value>Wird während eines Zieh-Vorgangs für einVorgangs-Element ausgelöst.</value>
+  </data>
+  <data name="LD_UltraGanttView_TaskElementDragComplete" xml:space="preserve">
+    <value>Wird ausgelöst, wenn ein Ziehvorgang für ein Task-Element erfolgreich abgeschlossen wurde.</value>
+  </data>
+  <data name="LD_UltraGanttView_TaskToolTipDisplaying" xml:space="preserve">
+    <value>Wird ausgelöst, bevor ein Tooltip für ein Vorgangs-Element angezeigt wird.</value>
+  </data>
+  <data name="LD_ToolTipSettings_Appearance" xml:space="preserve">
+    <value>Gibt das Appearance-Objekt zurück, welches die visuelle Formatierung für die vom Steuerelement angezeigten Tooltips steuert ,oder legt diesen fes.</value>
+  </data>
+  <data name="LD_ToolTipSettings_DisplayName" xml:space="preserve">
+    <value>Gibt einen Wert zurück, der angibt, ob der Name des Vorgangs in der Tooltip angezeigt werden soll, oder legt diesen fest.</value>
+  </data>
+  <data name="LD_ToolTipSettings_DisplayStartDateTime" xml:space="preserve">
+    <value>Gibt einen Wert zurück, der angibt, ob der Wert der StartDateTime-Eigenschaft des Vorgangs im Tooltip angezeigt werden solll, oder legt diesen fest.</value>
+  </data>
+  <data name="LD_ToolTipSettings_DisplayDuration" xml:space="preserve">
+    <value>Gibt einen Wert zurück, welcher angibt, ob die Dauer des Vorgangs in der Tooltip angezeigt werden solll, oder legt diesen fest.</value>
+  </data>
+  <data name="LD_ToolTipSettings_DisplayDeadline" xml:space="preserve">
+    <value>Gibt einen Wert zurück, welcher angibt, ob der Wert der Deadline des Vorgangs imTooltip angezeigt werden soll, oder legt diesen fest.</value>
+  </data>
+  <data name="LD_ToolTipSettings_DisplayEndDateTime" xml:space="preserve">
+    <value>Gibt einen Wert zurück, der angibt, ob der Wert des Ende-Datums der Aufgabe im Tooltip angezeigt werden soll, oder legt diesen fest.</value>
+  </data>
+  <data name="LD_ToolTipSettings_DisplayPercentComplete" xml:space="preserve">
+    <value>Gibt einen Wert zurück,welcherr angibt, ob der Wert Prozent fertigestellt des Vorgangs im Tooltip angezeigt werden soll, oder legt diesen fest.</value>
+  </data>
+  <data name="LD_ToolTipSettings_DisplayCompleteThrough" xml:space="preserve">
+    <value>Gibt einen Wert zurück, welcher angibt, ob der Wert Fertiggestellt von des Vorgangs im Tooltip angezeigt werden soll, oder legt diesen fest.</value>
+  </data>
+  <data name="LD_ToolTipSettings_DisplayTitle" xml:space="preserve">
+    <value>Holt oder setzt einen Wert, welcher angibt, ob ein Titel im Tooltip angezeigt werden soll.</value>
+  </data>
+  <data name="LD_ToolTipSettings_Title" xml:space="preserve">
+    <value>Holt oder setzt die Zeichenfolge, welche als Titel im Tooltip angezeigt wird.</value>
+  </data>
+  <data name="LD_ToolTipSettings_DateTimeFormat" xml:space="preserve">
+    <value>Gibt das Format zurück, das auf die in der Tooltip angezeigten Datums- / Zeitangaben angewendet wird, oder legt diesen fest.</value>
+  </data>
+  <data name="LD_ToolTipSettings_DisplayToolTip" xml:space="preserve">
+    <value>Holt oder setzt einen Wert zurück, welcher angibt, ob ein Tooltip angezeigt wird.</value>
+  </data>
+  <data name="LD_ToolTipSettingsTaskDependency_Appearance" xml:space="preserve">
+    <value>Holt oder setzt das Appearance-Objekt, welches die visuelle Formatierung für die Vorgangs-Abhängigkeit angezeigten Tooltips steuert.</value>
+  </data>
+  <data name="LD_ToolTipSettingsTaskDependency_DisplayTaskDependencyType" xml:space="preserve">
+    <value>Holt oder setzt einen Wertk, welcher angibt, ob der Wert für die Art der Abhängigkeit im Tooltip angezeigt werden soll.</value>
+  </data>
+  <data name="LD_ToolTipSettingsTaskDependency_DisplayDependent" xml:space="preserve">
+    <value>Holt oder setzt einen Wert, welcher angibt, ob der Name des abhängigen Vorgangs im Tooltip angezeigt werden soll.</value>
+  </data>
+  <data name="LD_ToolTipSettingsTaskDependency_DisplayPredecessor" xml:space="preserve">
+    <value>Holt oder setzt einen Wert, welcher angibt, ob der Name des Vorgänger-Vorgangs im Tooltip angezeigt werden soll.</value>
+  </data>
+  <data name="SummaryTaskException_CannotSetPercentComplete" xml:space="preserve">
+    <value>Der Prozentsatz der Fertigstellung kann nicht auf einen Arbeitsinhalt festgelegt werden, da dieser durch den Prozentsatz der Fertigstellung seiner Aufgaben festgelegt ist.</value>
+  </data>
+  <data name="TaskDialog_InvalidTaskContraint" xml:space="preserve">
+    <value>Bitte geben Sie einen gültigen Wert für die Einschränkung des Vorgangs ein.</value>
   </data>
 </root>

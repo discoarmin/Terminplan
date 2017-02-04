@@ -39,8 +39,31 @@ namespace Terminplan
 
         }
 
-        private static void SetColumnHeaders()
+        private void SetResourceStrings()
         {
+            // Jedes Element muss einzeln eingestellt werden
+            var rc = Infragistics.Win.UltraWinGanttView.Resources.Customizer;        // Zum Ändern der anzuzeigenden Texte in der GanttView
+
+            // Context-Menü
+            rc.SetCustomizedString("GanttViewContextMenuItem_AddSubTask_Text", "Unterpunkt hinzufügen für '{0}'");  // Add sub-task for '{0}
+            rc.SetCustomizedString("GanttViewContextMenuItem_CollapseTask_Text", "Unterbegriffe ausblenden");       // Collaps Tasks
+            rc.SetCustomizedString("GanttViewContextMenuItem_DisableTask_Text", "Vorgang deaktivieren");            // Inactivate Task
+            rc.SetCustomizedString("GanttViewContextMenuItem_EnableTask_Text", "Vorgang aktivieren");               // Activate Task
+            rc.SetCustomizedString("GanttViewContextMenuItem_ExpandTask_Text", "Unterpunkte anzeigen");             // Show sub-items
+            rc.SetCustomizedString("GanttViewContextMenuItem_IndentTask_Text", "Vorgang nach links verschieben");   // Indent Task
+            rc.SetCustomizedString("GanttViewContextMenuItem_InsertTask_Text", "Vorgang einfügen");                 // Insert Task
+            rc.SetCustomizedString("GanttViewContextMenuItem_OutdentTask_Text", "Vorgang nach rechts verschieben"); // Outdent Task
+            rc.SetCustomizedString("GanttViewContextMenuItem_RemoveTask_Text", "Vorgang löschen");                  // Delete Task
+            rc.SetCustomizedString("GanttViewContextMenuItem_ShowDialog_Text", "Informationen über den Vorgang");   // Task Information
+
+            // Fehlermeldungen im Grid
+            rc.SetCustomizedString("Grid_Error_MessageBoxText_Generic", "Der Wert "{0}" ist ungültig für '{1}'.");  // Unterpunkt hinzufügen
+            rc.SetCustomizedString("Grid_Error_MessageBoxTitle_Generic", "Fehler.");                                // Error
+            rc.SetCustomizedString("Grid_Error_MessageBoxTitle_TaskException", "Fehler beim Vorgang");              // Task Error
+
+
+
+
         }
 
         /// <summary>Speichert die übergebene Datei</summary>

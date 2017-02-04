@@ -112,7 +112,7 @@
             appearance2.TextVAlignAsString = "Bottom";
             this.lblAppName.Appearance = appearance2;
             this.lblAppName.AutoSize = true;
-            this.lblAppName.Font = new System.Drawing.Font("Valken", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAppName.Font = new System.Drawing.Font("Vollkorn Bold", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAppName.Location = new System.Drawing.Point(0, 0);
             this.lblAppName.Margin = new System.Windows.Forms.Padding(0);
             this.lblAppName.Name = "lblAppName";

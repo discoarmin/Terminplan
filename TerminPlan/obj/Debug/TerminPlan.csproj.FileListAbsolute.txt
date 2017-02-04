@@ -26,5 +26,5 @@ E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\Terminplan.TerminPlanForm.de-D
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\de-DE\Terminplan.resources.dll
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\Terminplan.Properties.Resources.de-DE.resources
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\Terminplan.WinGanttViewStrings.resources
-E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\TerminPlan.csprojResolveAssemblyReference.cache
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\Terminplan.WinGanttViewStrings.de-DE.resources
+E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\TerminPlan.csprojResolveAssemblyReference.cache

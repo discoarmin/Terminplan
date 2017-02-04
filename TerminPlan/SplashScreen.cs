@@ -141,7 +141,7 @@ namespace Terminplan
             if (resourceManager != null)
             {
                 // ReSharper disable once AssignNullToNotNullAttribute
-                this.lblStatus.Text = string.Format(resourceManager.GetString(@"Application_Starting"), Properties. Resources.Title.ToUpper());
+                this.lblStatus.Text = string.Format(resourceManager.GetString(@"Application_Starting"), Properties. Resources.Title);
             }
         }
         #endregion LocalizeStrings

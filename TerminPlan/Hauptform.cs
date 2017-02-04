@@ -18,20 +18,17 @@
 
 namespace Terminplan
 {
-    using System;
-    using System.Collections;
-    using System.Data;
-    using System.IO;
-    using System.Windows.Forms;
-    using System.Resources;
-
     using Infragistics.Win;
     using Infragistics.Win.AppStyling;
-    using Infragistics.Win.Misc.GroupBox;
-    using Infragistics.Win.UltraWinSchedule;
-    using Infragistics.Win.UltraWinToolbars;
-    using Infragistics.Win.UltraWinSchedule.TaskUI;
     using Infragistics.Win.UltraWinGanttView;
+    using Infragistics.Win.UltraWinSchedule;
+    using Infragistics.Win.UltraWinSchedule.TaskUI;
+    using Infragistics.Win.UltraWinToolbars;
+    using System;
+    using System.Data;
+    using System.IO;
+    using System.Resources;
+    using System.Windows.Forms;
 
     /// <summary>
     /// Klasse TerminPlanForm (Hauptformular).
@@ -156,6 +153,7 @@ namespace Terminplan
 
             // Eingebettete Ressourcen laden
             Infragistics.Win.AppStyling.StyleManager.Load(DienstProgramme.GetEmbeddedResourceStream(this.themePaths[this.currentThemeIndex]));
+            this.SetResourceStrings();
             this.InitializeComponent();
         }
 

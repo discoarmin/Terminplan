@@ -205,7 +205,6 @@
             resources.ApplyResources(appearance1, "appearance1");
             this.ultraGanttView1.Appearance = appearance1;
             this.ultraGanttView1.CalendarInfo = this.ultraCalendarInfo1;
-            this.ultraGanttView1.GridAreaWidth = 461;
             appearance61.FontData.BoldAsString = resources.GetString("resource.BoldAsString5");
             appearance61.FontData.ItalicAsString = resources.GetString("resource.ItalicAsString5");
             appearance61.FontData.SizeInPoints = ((float)(resources.GetObject("resource.SizeInPoints4")));

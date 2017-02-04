@@ -124,7 +124,7 @@ namespace Terminplan.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die &lt;Type Task Name Here&gt; ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die &lt;Name des Vorgangs hier eingeben&gt;   ähnelt.
         /// </summary>
         internal static string NewTaskName {
             get {

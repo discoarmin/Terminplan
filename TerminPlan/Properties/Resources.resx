@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="NewTaskName" xml:space="preserve">
-    <value>&lt;Type Task Name Here&gt;</value>
+    <value>&lt;Name des Vorgangs hier eingeben&gt;  </value>
   </data>
   <data name="Application_Starting" xml:space="preserve">
     <value>Starte {0}...</value>
