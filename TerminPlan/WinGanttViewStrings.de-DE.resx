@@ -265,7 +265,7 @@
     <value>Termine</value>
   </data>
   <data name="TaskDialog_lblDeadline" xml:space="preserve">
-    <value>Deadline</value>
+    <value>Deadline:</value>
   </data>
   <data name="TaskDialog_lblDuration" xml:space="preserve">
     <value>Dauer:</value>
@@ -280,7 +280,7 @@
     <value>Name:</value>
   </data>
   <data name="TaskDialog_lblPrecentageComplete" xml:space="preserve">
-    <value>Prozent abgeschlossen:</value>
+    <value>Prozent fertiggestellt</value>
   </data>
   <data name="TaskDialog_lblStartDate" xml:space="preserve">
     <value>Start:</value>
@@ -331,7 +331,7 @@
     <value>Ressourcen:</value>
   </data>
   <data name="TaskDialog_NullOwnerError" xml:space="preserve">
-    <value>Der Eigentümer darf nicht null sein.</value>
+    <value>Der Besitzer darf nicht null sein.</value>
   </data>
   <data name="Grid_Error_MessageBoxTitle_Generic" xml:space="preserve">
     <value>Fehler</value>
@@ -394,7 +394,7 @@
     <value>Nach</value>
   </data>
   <data name="Task_Name_Unnamed" xml:space="preserve">
-    <value>unbenannte</value>
+    <value>unbenannt</value>
   </data>
   <data name="TaskDialog_BtnCancel" xml:space="preserve">
     <value>Abbruch</value>

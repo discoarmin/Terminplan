@@ -418,7 +418,7 @@
     <value>Termine</value>
   </data>
   <data name="TaskDialog_lblDeadline" xml:space="preserve">
-    <value>Deadline</value>
+    <value>Deadline:</value>
   </data>
   <data name="TaskDialog_lblDuration" xml:space="preserve">
     <value>Dauer:</value>
@@ -436,7 +436,7 @@
     <value>Notizen:</value>
   </data>
   <data name="TaskDialog_lblPrecentageComplete" xml:space="preserve">
-    <value>Prozent abgeschlossen:</value>
+    <value>Prozent fertiggestellt:</value>
   </data>
   <data name="TaskDialog_lblPredecessors" xml:space="preserve">
     <value>Vorgänger:</value>
@@ -451,7 +451,7 @@
     <value>Notitzen</value>
   </data>
   <data name="TaskDialog_NullOwnerError" xml:space="preserve">
-    <value>Der Eigentümer darf nicht null sein.</value>
+    <value>Der Besitzerr darf nicht null sein.</value>
   </data>
   <data name="TaskDialog_NumericEditorDurationMaskDays" xml:space="preserve">
     <value>t</value>
@@ -523,7 +523,7 @@
     <value>Start</value>
   </data>
   <data name="Task_Name_Unnamed" xml:space="preserve">
-    <value>unbenannte</value>
+    <value>unbenannt</value>
   </data>
   <data name="TimeSpanEditor_DayDisplayString_Plural" xml:space="preserve">
     <value>Tage</value>
