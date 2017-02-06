@@ -131,7 +131,8 @@ namespace Terminplan
 
             // ToolTip
             rc.SetCustomizedString("ToolTipSettingsTaskDependency_Prefix_Dependent", "Nach");                       // To
-
+            rc.SetCustomizedString("ToolTipSettings_DefaultTitle", "Vorgang");                                      // Task
+            rc.SetCustomizedString("ToolTipSettings_DefaultTitle_Summary", "Zusammenfassung");                      // Summary
 
 
 
