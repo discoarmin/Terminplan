@@ -32,6 +32,7 @@
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool30 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Neu");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool39 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Open");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool31 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Speichern");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool32 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Speichern unter");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool18 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Print");
@@ -182,6 +183,7 @@
             Infragistics.Win.UltraWinToolbars.ListTool listTool3 = new Infragistics.Win.UltraWinToolbars.ListTool("ListToolDateien");
             Infragistics.Win.UltraWinToolbars.ListTool listTool7 = new Infragistics.Win.UltraWinToolbars.ListTool("ListToolDateien");
             Infragistics.Win.UltraWinToolbars.ListToolItem listToolItem3 = new Infragistics.Win.UltraWinToolbars.ListToolItem();
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool41 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Open");
             this.ultraGanttView1 = new Infragistics.Win.UltraWinGanttView.UltraGanttView();
             this.ultraCalendarInfo1 = new Infragistics.Win.UltraWinSchedule.UltraCalendarInfo(this.components);
             this.Form1_Fill_Panel = new System.Windows.Forms.Panel();
@@ -352,6 +354,7 @@
             buttonTool14.InstanceProps.IsFirstInGroup = true;
             this.ultraToolbarsManager1.Ribbon.ApplicationMenu2010.NavigationMenu.NonInheritedTools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
             buttonTool30,
+            buttonTool39,
             buttonTool31,
             buttonTool32,
             buttonTool18,
@@ -737,6 +740,8 @@
             listTool7.ListToolItemsInternal.Add(listToolItem3);
             resources.ApplyResources(listTool7.SharedPropsInternal, "listTool7.SharedPropsInternal");
             listTool7.ForceApplyResources = "SharedPropsInternal";
+            resources.ApplyResources(buttonTool41.SharedPropsInternal, "buttonTool41.SharedPropsInternal");
+            buttonTool41.ForceApplyResources = "SharedPropsInternal";
             this.ultraToolbarsManager1.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
             fontListTool2,
             comboBoxTool2,
@@ -786,7 +791,8 @@
             buttonTool40,
             popupControlContainerTool4,
             popupMenuTool5,
-            listTool7});
+            listTool7,
+            buttonTool41});
             this.ultraToolbarsManager1.ToolClick += new Infragistics.Win.UltraWinToolbars.ToolClickEventHandler(this.UltraToolbarsManagerToolClick);
             this.ultraToolbarsManager1.ToolValueChanged += new Infragistics.Win.UltraWinToolbars.ToolEventHandler(this.OnUltraToolbarsManager1ToolValueChanged);
             this.ultraToolbarsManager1.PropertyChanged += new Infragistics.Win.PropertyChangedEventHandler(this.OnUltraToolbarsManager1PropertyChanged);

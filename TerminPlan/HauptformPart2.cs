@@ -162,7 +162,7 @@ namespace Terminplan
         private void SpeichernUnter(string dateiName)
         {
             // Pfadangabe und Dateinamen trennen
-            if (dateiName == null) return;                                      // Falls nichts übergeben wurde, kann hier abebrochen werden
+            if (dateiName == null) return;                                      // Falls nichts übergeben wurde, kann hier abgebrochen werden
 
             var directoryName = Path.GetDirectoryName(dateiName);
             var fileBane = Path.GetFileName(dateiName);

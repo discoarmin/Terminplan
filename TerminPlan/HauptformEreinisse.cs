@@ -430,6 +430,10 @@ namespace Terminplan
                 case "Neu":                                                     // Neuen Terminplan anlegen
                     break;
 
+                case "Open":                                                    // Datei laden
+                    this.LadeDatei();
+                    break;
+
                 case "Speichern":                                               // Terminplan speichern
                     this.Speichern(Path.Combine(Application.StartupPath, @"Data.TestDatenEST.XML"));
                     break;

@@ -117,19 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="Form1_Fill_Panel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 174</value>
-  </data>
-  <data name="Form1_Fill_Panel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1165, 620</value>
-  </data>
-  <data name="_TerminplanForm_Toolbars_Dock_Area_Left.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 174</value>
-  </data>
-  <data name="_TerminplanForm_Toolbars_Dock_Area_Left.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1, 620</value>
-  </data>
   <data name="ilDefaultImagesLarge.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
@@ -1596,15 +1583,10 @@
   <data name="listTool7.SharedPropsInternal.Caption" xml:space="preserve">
     <value>ListToolDateien</value>
   </data>
-  <data name="_TerminplanForm_Toolbars_Dock_Area_Right.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1166, 174</value>
+  <data name="buttonTool41.SharedPropsInternal.Caption" xml:space="preserve">
+    <value>Öffnen</value>
   </data>
-  <data name="_TerminplanForm_Toolbars_Dock_Area_Right.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1, 620</value>
-  </data>
-  <data name="_TerminplanForm_Toolbars_Dock_Area_Top.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1167, 174</value>
-  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAQEAAAAEACAAoFgAAFgAAACgAAABAAAAAgAAAAAEACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -1703,8 +1685,5 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 </value>
-  </data>
-  <data name="ultraGanttView1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1165, 620</value>
   </data>
 </root>

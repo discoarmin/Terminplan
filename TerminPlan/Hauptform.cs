@@ -241,8 +241,9 @@ namespace Terminplan
 
             // Ruft die Daten aus der bereitgestellten XML-Datei ab
             this.OnInitializationStatusChanged(Properties.Resources.Retrieving); // Daten im Splashscreen aktualisieren
-            datasetTp = DienstProgramme.GetData(Path.Combine(Application.StartupPath, @"Data.TestDatenEST.XML")); // Testdaten laden
-
+                                                                                 //            datasetTp = DienstProgramme.GetData(Path.Combine(Application.StartupPath, @"Data.TestDatenEST.XML")); // Testdaten laden
+            datasetTp = DienstProgramme.GetData(Path.Combine(Application.StartupPath, @"Data.TestDaten1EST.XML")); // Testdaten laden
+            
             // Die eingelesenen Daten an die ultraCalendarInfo anbinden. 
             this.OnInitializationStatusChanged(Properties.Resources.Binding);   // Anzeige im Splashscreen aktualisieren
             this.OnBindArbInhaltData(datasetTp);                                // Daten an ultraCalendarInfo anbinden
@@ -518,6 +519,30 @@ namespace Terminplan
             DienstProgramme.SetRibbonGroupToolsEnabledState(this.ultraToolbarsManager1.Ribbon.Tabs[0].Groups[@"RibbonGrp_Font"], enabled);
         }
         #endregion OnUpdateFontToolsState
+
+        #region Datei laden
+        private void LadeDatei()
+        {
+            // Dialog zum Öffnen einer Datei anzeigen
+            OpenFileDialog openFileDialog1 = new OpenFileDialog()
+            {
+                Filter = "XML Dateien|*.xml",
+                Title = "Terminplan öffnen"
+            };
+
+            if(openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                // Ruft die Daten aus der bereitgestellten XML-Datei ab
+                datasetTp = DienstProgramme.GetData(openFileDialog1.FileName);      // ausgewählte Daten ladenn laden
+
+                // Die eingelesenen Daten an die ultraCalendarInfo anbinden. 
+                this.OnInitializationStatusChanged(Properties.Resources.Binding);   // Anzeige im Splashscreen aktualisieren
+                this.OnBindArbInhaltData(datasetTp);                                // Daten an ultraCalendarInfo anbinden
+            }
+
+        }
+
+        #endregion Datei ladedn
         #endregion Methoden
 
         #region SplashScreen Ereignisse
@@ -539,9 +564,6 @@ namespace Terminplan
             }
        }
         #endregion OnInitializationStatusChanged
-
-        #endregion Ereignisse		
-
 
         /// <summary>
         /// Wird aufgerufen, wenn die Größe des Formulars geändert wurde.
@@ -644,5 +666,6 @@ namespace Terminplan
         {
             this.OnUltraToolbarsManagerToolClick(sender, e);
         }
+        #endregion Ereignisse		
     }
 }
