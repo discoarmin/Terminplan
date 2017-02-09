@@ -35,9 +35,10 @@
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool31 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Speichern");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool32 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Speichern unter");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool18 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Print");
-            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool14 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Close");
             Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool2 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("Theme");
+            Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool4 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("93bebad5-fe12-4b53-94a3-50e57ab7b3f8");
             Infragistics.Win.UltraWinToolbars.PopupControlContainerTool popupControlContainerTool1 = new Infragistics.Win.UltraWinToolbars.PopupControlContainerTool("About");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool14 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Close");
             Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
@@ -174,6 +175,13 @@
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool33 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Neu");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool34 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Speichern");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool35 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Speichern unter");
+            Infragistics.Win.UltraWinToolbars.ListTool listTool4 = new Infragistics.Win.UltraWinToolbars.ListTool("ListTool1");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool40 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Zuletzt bearbeitet:");
+            Infragistics.Win.UltraWinToolbars.PopupControlContainerTool popupControlContainerTool4 = new Infragistics.Win.UltraWinToolbars.PopupControlContainerTool("dl");
+            Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool5 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("93bebad5-fe12-4b53-94a3-50e57ab7b3f8");
+            Infragistics.Win.UltraWinToolbars.ListTool listTool3 = new Infragistics.Win.UltraWinToolbars.ListTool("ListToolDateien");
+            Infragistics.Win.UltraWinToolbars.ListTool listTool7 = new Infragistics.Win.UltraWinToolbars.ListTool("ListToolDateien");
+            Infragistics.Win.UltraWinToolbars.ListToolItem listToolItem3 = new Infragistics.Win.UltraWinToolbars.ListToolItem();
             this.ultraGanttView1 = new Infragistics.Win.UltraWinGanttView.UltraGanttView();
             this.ultraCalendarInfo1 = new Infragistics.Win.UltraWinSchedule.UltraCalendarInfo(this.components);
             this.Form1_Fill_Panel = new System.Windows.Forms.Panel();
@@ -341,14 +349,16 @@
             buttonTool18.InstanceProps.IsFirstInGroup = true;
             popupMenuTool2.InstanceProps.IsFirstInGroup = true;
             popupControlContainerTool1.InstanceProps.IsFirstInGroup = true;
+            buttonTool14.InstanceProps.IsFirstInGroup = true;
             this.ultraToolbarsManager1.Ribbon.ApplicationMenu2010.NavigationMenu.NonInheritedTools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
             buttonTool30,
             buttonTool31,
             buttonTool32,
             buttonTool18,
-            buttonTool14,
             popupMenuTool2,
-            popupControlContainerTool1});
+            popupMenuTool4,
+            popupControlContainerTool1,
+            buttonTool14});
             this.ultraToolbarsManager1.Ribbon.ApplicationMenu2010.ToolTipText = resources.GetString("ultraToolbarsManager1.Ribbon.ApplicationMenu2010.ToolTipText");
             this.ultraToolbarsManager1.Ribbon.ApplicationMenu2010.ToolTipTextFormatted = resources.GetString("ultraToolbarsManager1.Ribbon.ApplicationMenu2010.ToolTipTextFormatted");
             this.ultraToolbarsManager1.Ribbon.ApplicationMenu2010.ToolTipTitle = resources.GetString("ultraToolbarsManager1.Ribbon.ApplicationMenu2010.ToolTipTitle");
@@ -712,6 +722,21 @@
             buttonTool34.ForceApplyResources = "SharedPropsInternal";
             resources.ApplyResources(buttonTool35.SharedPropsInternal, "buttonTool35.SharedPropsInternal");
             buttonTool35.ForceApplyResources = "SharedPropsInternal";
+            resources.ApplyResources(listTool4.SharedPropsInternal, "listTool4.SharedPropsInternal");
+            listTool4.ForceApplyResources = "SharedPropsInternal";
+            resources.ApplyResources(buttonTool40.SharedPropsInternal, "buttonTool40.SharedPropsInternal");
+            buttonTool40.ForceApplyResources = "SharedPropsInternal";
+            popupControlContainerTool4.DropDownArrowStyle = Infragistics.Win.UltraWinToolbars.DropDownArrowStyle.Standard;
+            resources.ApplyResources(popupControlContainerTool4.SharedPropsInternal, "popupControlContainerTool4.SharedPropsInternal");
+            popupControlContainerTool4.ForceApplyResources = "SharedPropsInternal";
+            resources.ApplyResources(popupMenuTool5.SharedPropsInternal, "popupMenuTool5.SharedPropsInternal");
+            popupMenuTool5.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
+            listTool3});
+            popupMenuTool5.ForceApplyResources = "SharedPropsInternal";
+            resources.ApplyResources(listToolItem3, "listToolItem3");
+            listTool7.ListToolItemsInternal.Add(listToolItem3);
+            resources.ApplyResources(listTool7.SharedPropsInternal, "listTool7.SharedPropsInternal");
+            listTool7.ForceApplyResources = "SharedPropsInternal";
             this.ultraToolbarsManager1.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
             fontListTool2,
             comboBoxTool2,
@@ -756,7 +781,12 @@
             buttonTool17,
             buttonTool33,
             buttonTool34,
-            buttonTool35});
+            buttonTool35,
+            listTool4,
+            buttonTool40,
+            popupControlContainerTool4,
+            popupMenuTool5,
+            listTool7});
             this.ultraToolbarsManager1.ToolClick += new Infragistics.Win.UltraWinToolbars.ToolClickEventHandler(this.UltraToolbarsManagerToolClick);
             this.ultraToolbarsManager1.ToolValueChanged += new Infragistics.Win.UltraWinToolbars.ToolEventHandler(this.OnUltraToolbarsManager1ToolValueChanged);
             this.ultraToolbarsManager1.PropertyChanged += new Infragistics.Win.PropertyChangedEventHandler(this.OnUltraToolbarsManager1PropertyChanged);

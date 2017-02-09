@@ -130,9 +130,19 @@ namespace Terminplan
             rc.SetCustomizedString("TimeSpanEditor_WeekDisplayString_Singular", "Woche");                           // Unterpunkt hinzufügen
 
             // ToolTip
-            rc.SetCustomizedString("ToolTipSettingsTaskDependency_Prefix_Dependent", "Nach");                       // To
             rc.SetCustomizedString("ToolTipSettings_DefaultTitle", "Vorgang");                                      // Task
             rc.SetCustomizedString("ToolTipSettings_DefaultTitle_Summary", "Zusammenfassung");                      // Summary
+            rc.SetCustomizedString("ToolTipSettings_DefaultTitle_Milestone", "Meilenstein");                        // Milestone
+            rc.SetCustomizedString("ToolTipSettings_DefaultTitle_PercentComplete", "Fortschritt");                  // Progress
+            rc.SetCustomizedString("ToolTipSettings_Prefix_CompleteThrough", "Fertiggestellt durch");               // Complete Through
+            rc.SetCustomizedString("ToolTipSettings_Prefix_Duration", "Dauer");                                     // Duration
+            rc.SetCustomizedString("ToolTipSettings_Prefix_Finish", "Ende");                                        // Finish
+            rc.SetCustomizedString("ToolTipSettings_Prefix_Name", "Vorgang");                                       // Task
+            rc.SetCustomizedString("ToolTipSettings_Prefix_PercentComplete", "% Fertiggestellt");                   // % Complete
+            rc.SetCustomizedString("ToolTipSettings_Prefix_Start", "Start");                                        // Start
+            rc.SetCustomizedString("ToolTipSettingsTaskDependency_Prefix_Dependent", "Nach");                       // To
+            rc.SetCustomizedString("ToolTipSettingsTaskDependency_Prefix_Predecessor", "von");                      // From
+            rc.SetCustomizedString("ToolTipSettingsTaskDependency_Prefix_TaskDependencyType", "Verknüpfung mit Vorgang");  // Task Link
 
 
 

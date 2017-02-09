@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Utilities.cs" company="EST GmbH + CO.KG">
+// <copyright file="AboutControl.cs" company="EST GmbH + CO.KG">
 //   Copyright (c) EST GmbH + CO.KG. All rights reserved.
 // </copyright>
 // <summary>
@@ -27,7 +27,7 @@ namespace Terminplan
         #region Konstruktor
 
         /// <summary>
-        /// Initialisiert eine neue Instanz der <see cref="TerminPlanForm" /> Klasse.
+        /// Initialisiert eine neue Instanz der <see cref="AboutControl" /> Klasse.
         /// </summary>
         public AboutControl()
         {

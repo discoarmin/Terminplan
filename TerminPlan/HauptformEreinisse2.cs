@@ -18,14 +18,14 @@
 
 namespace Terminplan
 {
+    using Infragistics.Win;
+    using Infragistics.Win.UltraMessageBox;
+    using Infragistics.Win.UltraWinSchedule;
+    using Infragistics.Win.UltraWinToolbars;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Windows.Forms;
-    using Infragistics.Win;
-    using Infragistics.Win.UltraWinSchedule;
-    using Infragistics.Win.UltraWinToolbars;
-    using Infragistics.Win.UltraMessageBox;
 
     /// <summary>
     /// Klasse TerminPlanForm (Hauptformular).
@@ -154,9 +154,13 @@ namespace Terminplan
             ((FontListTool)this.ultraToolbarsManager1.Tools[@"FontList"]).SelectedIndex = 0;
             this.OnUpdateFontToolsState(false);                                 // Font ist nicht auswählbar
 
-            Control control = new AboutControl();                               // Neue Instanz der Aboutbox erzeugen
-            control.Visible = false;                                            // Aboutbox ist nicht sichtbar
-            control.Parent = this;                                              // Das Hauptformular ist das Elternformular
+            // Aboutbox initialisieren
+            Control control = new AboutControl()
+            {
+                Visible = false,                                                // Aboutbox ist nicht sichtbar
+                Parent = this                                                   // Das Hauptformular ist das Elternformular
+            };                                                                  // Neue Instanz der Aboutbox erzeugen
+
             ((PopupControlContainerTool)this.ultraToolbarsManager1.Tools[@"About"]).Control = control; // Aboutbox in die Tools für den UltraToolbarsManager setzen
 
             // Größe der Spalten so einstellen, dass alle Daten sichtbar sind.
