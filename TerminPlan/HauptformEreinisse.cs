@@ -18,20 +18,19 @@
 
 namespace Terminplan
 {
+    using Infragistics.Win;
+    using Infragistics.Win.Printing;
+    using Infragistics.Win.UltraWinGanttView;
+    using Infragistics.Win.UltraWinSchedule;
+    using Infragistics.Win.UltraWinToolbars;
     using System;
     using System.Collections.Generic;
     using System.Data;
     using System.Diagnostics.CodeAnalysis;
     using System.Drawing;
+    using System.IO;
     using System.Linq;
     using System.Windows.Forms;
-
-    using Infragistics.Win;
-    using Infragistics.Win.UltraWinSchedule;
-    using Infragistics.Win.UltraWinToolbars;
-    using Infragistics.Win.UltraWinGanttView;
-    using Infragistics.Win.Printing;
-    using System.IO;
 
     /// <summary>
     /// Klasse TerminPlanForm (Hauptformular).
@@ -435,7 +434,9 @@ namespace Terminplan
                     break;
 
                 case "Speichern":                                               // Terminplan speichern
-                    this.Speichern(Path.Combine(Application.StartupPath, @"Data.TestDatenEST.XML"));
+                    //this.Speichern(Path.Combine(Application.StartupPath, @"Data.TestDatenEST.XML"));
+                    //this.Speichern(Path.Combine(Application.StartupPath, @"Data.TestDaten1EST.XML"));
+                    this.Speichern(Path.Combine(Application.StartupPath, @"Data.TestDatenNeuEST.XML"));
                     break;
 
                 case "Speichern unter":                                         // Terminplan unter anderem Namen speichern
@@ -506,7 +507,32 @@ namespace Terminplan
             TasksCollection parentCollection = null;                            // Sammlung übergeordneter Arbeitsinhalte löschen
             var calendarInfo = this.ultraGanttView1.CalendarInfo;               // Kalenderinfo festlegen
             var activeTask = this.ultraGanttView1.ActiveTask;                   // aktiven Arbeitsinhalt ermitteln
-            var projekt = calendarInfo.Projects[1];                             // Projekt ermitteln
+            var prjHinzuefuegt = false;                                         // Es wurde kein neues Projrkt hinzuefügt
+            Project projekt;
+
+            //this.ultraGanttView1.Project = this.ultraGanttView1.CalendarInfo.Projects[anzProject - 1];
+            try
+            {
+                projekt = calendarInfo.Projects[1];                             // Projekt ermitteln
+            }
+            catch (Exception)
+            {
+                NeuesProjekt prjNeu = new NeuesProjekt();
+                var result = prjNeu.ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+                    if (prjNeu.PrjName != null)
+                    {
+                        calendarInfo.Projects.Add(prjNeu.PrjName, prjNeu.PrjStart);
+                        prjHinzuefuegt = true;                                  // Es wurde ein neues Prijekt hinzugefügt
+                    }
+                }
+            }
+
+            var anzProject = calendarInfo.Projects.Count;
+            projekt = calendarInfo.Projects[anzProject - 1];
+
             int insertionIndex;                                                 // Index des neuen Arbeitsinhalts
             DateTime start;                                                     // Startdatum des Arbeitsinhalts
             var addToRootcollection = true;                                     // Eintrag wird zum Wurzelknoten hinzugefügt
@@ -529,7 +555,11 @@ namespace Terminplan
                     // handelt oder nicht
                     // ReSharper disable once MergeConditionalExpression
                     start = parentTask != null ? parentTask.StartDateTime : projekt.StartDate;
-                    addToRootcollection = false;                                // Eintrag wird nicht zum Wurzelknoten hinzugefügt
+
+                    if (!prjHinzuefuegt)
+                    {
+                        addToRootcollection = false;                            // Eintrag wird nicht zum Wurzelknoten hinzugefügt
+                    }
                 }
                 else
                 {
@@ -633,7 +663,16 @@ namespace Terminplan
             #endregion Besitzer
 
             // Das Projekt dem GanttView Control zuweisen.
-            this.ultraGanttView1.Project = this.ultraGanttView1.CalendarInfo.Projects[1];
+            var anzProject = this.ultraGanttView1.CalendarInfo.Projects.Count;
+            //this.ultraGanttView1.Project = this.ultraGanttView1.CalendarInfo.Projects[anzProject - 1];
+            try
+            {
+                this.ultraGanttView1.Project = this.ultraGanttView1.CalendarInfo.Projects[1];
+            }
+            catch (Exception)
+            {
+                this.ultraGanttView1.Project = this.ultraGanttView1.CalendarInfo.Projects[anzProject - 1];
+            }
         }
         #endregion BindProjectData
 

@@ -241,9 +241,11 @@ namespace Terminplan
 
             // Ruft die Daten aus der bereitgestellten XML-Datei ab
             this.OnInitializationStatusChanged(Properties.Resources.Retrieving); // Daten im Splashscreen aktualisieren
-                                                                                 //            datasetTp = DienstProgramme.GetData(Path.Combine(Application.StartupPath, @"Data.TestDatenEST.XML")); // Testdaten laden
-            datasetTp = DienstProgramme.GetData(Path.Combine(Application.StartupPath, @"Data.TestDaten1EST.XML")); // Testdaten laden
-            
+            //datasetTp = DienstProgramme.GetData(Path.Combine(Application.StartupPath, @"Data.TestDatenEST.XML")); // Testdaten laden
+            //datasetTp = DienstProgramme.GetData(Path.Combine(Application.StartupPath, @"Data.TestDaten1EST.XML")); // Testdaten laden
+            //datasetTp = DienstProgramme.GetData(Path.Combine(Application.StartupPath, @"Data.TestDaten2EST.XML")); // Testdaten laden
+            datasetTp = DienstProgramme.GetData(Path.Combine(Application.StartupPath, @"Data.DatenNeuEST.XML")); // Testdaten laden
+
             // Die eingelesenen Daten an die ultraCalendarInfo anbinden. 
             this.OnInitializationStatusChanged(Properties.Resources.Binding);   // Anzeige im Splashscreen aktualisieren
             this.OnBindArbInhaltData(datasetTp);                                // Daten an ultraCalendarInfo anbinden
@@ -532,11 +534,14 @@ namespace Terminplan
 
             if(openFileDialog1.ShowDialog() == DialogResult.OK)
             {
+                this.components = new System.ComponentModel.Container();
+                this.ultraCalendarInfo1 = new Infragistics.Win.UltraWinSchedule.UltraCalendarInfo(this.components);
+
                 // Ruft die Daten aus der bereitgestellten XML-Datei ab
+                datasetTp = new DataSet();
                 datasetTp = DienstProgramme.GetData(openFileDialog1.FileName);      // ausgewählte Daten ladenn laden
 
                 // Die eingelesenen Daten an die ultraCalendarInfo anbinden. 
-                this.OnInitializationStatusChanged(Properties.Resources.Binding);   // Anzeige im Splashscreen aktualisieren
                 this.OnBindArbInhaltData(datasetTp);                                // Daten an ultraCalendarInfo anbinden
             }
 
