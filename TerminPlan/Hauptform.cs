@@ -539,15 +539,54 @@ namespace Terminplan
 
                 // Ruft die Daten aus der bereitgestellten XML-Datei ab
                 datasetTp = new DataSet();
-                datasetTp = DienstProgramme.GetData(openFileDialog1.FileName);      // ausgewählte Daten ladenn laden
+                datasetTp = DienstProgramme.GetData(openFileDialog1.FileName);  // ausgewählte Daten ladenn laden
 
                 // Die eingelesenen Daten an die ultraCalendarInfo anbinden. 
-                this.OnBindArbInhaltData(datasetTp);                                // Daten an ultraCalendarInfo anbinden
+                this.OnBindArbInhaltData(datasetTp);                            // Daten an ultraCalendarInfo anbinden
             }
 
         }
-
         #endregion Datei ladedn
+
+        #region Neues Projekt
+        private void ErstelleNeuesProjekt()
+        {
+            NeuesProjekt prjNeu = new NeuesProjekt();                           // Neuen Dialog zur Eingabe der Projektdaten
+            var result = prjNeu.ShowDialog();                                   // Gedrückte Taste des Dialogs
+
+
+            if (result == DialogResult.Cancel)
+            {
+                var meldung = "Sie haben das Neuanlegen abgebrochen." + Environment.NewLine +
+                    "Soll ein bestehender Terminplan geladen werten?";
+                var ueberschrift = "Frage";
+                var erg = MessageBox.Show(this, meldung, ueberschrift, MessageBoxButtons.YesNo);
+
+                // Falls ein bestehender Terminplan geladen werden soll, muss der Öffnen-Dialog angezeigt werden
+                if (erg == DialogResult.Yes)
+                {
+                    this.LadeDatei();                                           // Anderen Twerminplan laden
+                    return;                                                     // Bearbeitung beenden
+                }
+            }
+
+            if (prjNeu.PrjName != null)
+            {
+                this.AddNewProjekt();
+            }
+
+            this.components = new System.ComponentModel.Container();
+            this.ultraCalendarInfo1 = new Infragistics.Win.UltraWinSchedule.UltraCalendarInfo(this.components);
+
+            // Ruft die Daten aus der bereitgestellten XML-Datei ab
+            datasetTp = new DataSet();
+            datasetTp = DienstProgramme.GetData(openFileDialog1.FileName);      // ausgewählte Daten ladenn laden
+
+            // Die eingelesenen Daten an die ultraCalendarInfo anbinden. 
+            this.OnBindArbInhaltData(datasetTp);                                // Daten an ultraCalendarInfo anbinden
+        }
+        #endregion Neues Projekt
+
         #endregion Methoden
 
         #region SplashScreen Ereignisse

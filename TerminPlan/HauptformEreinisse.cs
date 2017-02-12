@@ -427,6 +427,7 @@ namespace Terminplan
                     break;
 
                 case "Neu":                                                     // Neuen Terminplan anlegen
+                    this.ErstelleNeuesProjekt();                                // Neuen Terminplan hinzufügen
                     break;
 
                 case "Open":                                                    // Datei laden
@@ -607,6 +608,27 @@ namespace Terminplan
         }
         #endregion AddNewTask
 
+        #region AddNewProjekt
+        /// <summary>
+        /// Fügt einen Neuen Terminplan
+        /// </summary>
+        /// <param name="prjName">Name des Projekts.</param>
+        /// <param name="prjStart">Starttermin des Projektst.</param>
+        private void AddNewProjekt(string prjName, DateTime prjStart)
+        {
+            TasksCollection parentCollection = null;                            // Sammlung übergeordneter Arbeitsinhalte löschen
+            var calendarInfo = this.ultraGanttView1.CalendarInfo;               // Kalenderinfo festlegen
+            var activeTask = this.ultraGanttView1.ActiveTask;                   // aktiven Arbeitsinhalt ermitteln
+            var prjHinzuefuegt = false;                                         // Es wurde kein neues Projrkt hinzuefügt
+            Project projekt;
+
+            calendarInfo.Projects.Add(prjName, prjStart);
+            prjHinzuefuegt = true;                                  // Es wurde ein neues Prijekt hinzugefügt
+
+
+        }
+        #endregion AddNewProjekt
+
         #region BindArbInhaltData
         /// <summary>
         /// Bindet die Daten (Arbeitsinhalte) an die UltraCalendarInfo
@@ -664,7 +686,7 @@ namespace Terminplan
 
             // Das Projekt dem GanttView Control zuweisen.
             var anzProject = this.ultraGanttView1.CalendarInfo.Projects.Count;
-            //this.ultraGanttView1.Project = this.ultraGanttView1.CalendarInfo.Projects[anzProject - 1];
+            //this.ultraGanttView1.Project = this.-ultraGanttView1.CalendarInfo.Projects[anzProject - 1];
             try
             {
                 this.ultraGanttView1.Project = this.ultraGanttView1.CalendarInfo.Projects[1];
