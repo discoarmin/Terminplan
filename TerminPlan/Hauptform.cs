@@ -572,18 +572,18 @@ namespace Terminplan
 
             if (prjNeu.PrjName != null)
             {
-                this.AddNewProjekt();
+                this.AddNewProjekt(prjNeu.PrjName, prjNeu.PrjStart);
             }
 
-            this.components = new System.ComponentModel.Container();
-            this.ultraCalendarInfo1 = new Infragistics.Win.UltraWinSchedule.UltraCalendarInfo(this.components);
+            //this.components = new System.ComponentModel.Container();
+            //this.ultraCalendarInfo1 = new Infragistics.Win.UltraWinSchedule.UltraCalendarInfo(this.components);
 
-            // Ruft die Daten aus der bereitgestellten XML-Datei ab
-            datasetTp = new DataSet();
-            datasetTp = DienstProgramme.GetData(openFileDialog1.FileName);      // ausgewählte Daten ladenn laden
+            //// Ruft die Daten aus der bereitgestellten XML-Datei ab
+            //datasetTp = new DataSet();
+            //datasetTp = DienstProgramme.GetData(openFileDialog1.FileName);      // ausgewählte Daten ladenn laden
 
-            // Die eingelesenen Daten an die ultraCalendarInfo anbinden. 
-            this.OnBindArbInhaltData(datasetTp);                                // Daten an ultraCalendarInfo anbinden
+            //// Die eingelesenen Daten an die ultraCalendarInfo anbinden. 
+            //this.OnBindArbInhaltData(datasetTp);                                // Daten an ultraCalendarInfo anbinden
         }
         #endregion Neues Projekt
 

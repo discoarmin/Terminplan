@@ -31,6 +31,8 @@ namespace Terminplan
     using System.IO;
     using System.Linq;
     using System.Windows.Forms;
+    using System.Xml;
+    using System.Xml.XPath;
 
     /// <summary>
     /// Klasse TerminPlanForm (Hauptformular).
@@ -623,9 +625,18 @@ namespace Terminplan
             Project projekt;
 
             calendarInfo.Projects.Add(prjName, prjStart);
-            prjHinzuefuegt = true;                                  // Es wurde ein neues Prijekt hinzugefügt
+            var anzPrj = calendarInfo.Projects.Count;                           // Anzahl vorhandener Projekte
+            prjHinzuefuegt = true;                                              // Es wurde ein neues Projekt hinzugefügt
+
+            if (anzPrj < 2) return;
+            projekt = calendarInfo.Projects[anzPrj - 1];                        // Hinzugefügtes Projekt
 
 
+            XmlDocument doc = new XmlDocument;
+            doc.LoadXml(Path.Combine(Application.StartupPath, @"Data.DatenNeuEST.XML"));
+            XPathNavigator navigator = doc.CreateNavigator();
+            navigator.MoveToChild()
+            //projekt.
         }
         #endregion AddNewProjekt
 

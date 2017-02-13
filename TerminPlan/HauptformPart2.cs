@@ -143,10 +143,6 @@ namespace Terminplan
             rc.SetCustomizedString("ToolTipSettingsTaskDependency_Prefix_Dependent", "Nach");                       // To
             rc.SetCustomizedString("ToolTipSettingsTaskDependency_Prefix_Predecessor", "von");                      // From
             rc.SetCustomizedString("ToolTipSettingsTaskDependency_Prefix_TaskDependencyType", "Verknüpfung mit Vorgang");  // Task Link
-
-
-
-
         }
 
         /// <summary>Speichert die übergebene Datei</summary>
