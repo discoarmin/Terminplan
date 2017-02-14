@@ -1,0 +1,100 @@
+<?xml version="1.0" standalone="yes"?>
+<TerminPlan>
+  <xs:schema id="TerminPlan" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="TerminPlan" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="Projekte">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="ProjektID" type="xs:string" minOccurs="0" />
+                <xs:element name="ProjektKey" type="xs:string" minOccurs="0" />
+                <xs:element name="ProjektName" type="xs:string" minOccurs="0" />
+                <xs:element name="ProjektStart" type="xs:dateTime" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Arbeitsinhalt_Aufgaben">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="TaskID" type="xs:string" minOccurs="0" />
+                <xs:element name="ProjektKey" type="xs:string" minOccurs="0" />
+                <xs:element name="TaskName" type="xs:string" minOccurs="0" />
+                <xs:element name="TaskStartTime" type="xs:dateTime" minOccurs="0" />
+                <xs:element name="TaskDauer" type="xs:duration" minOccurs="0" />
+                <xs:element name="ParentTaskID" type="xs:string" minOccurs="0" />
+                <xs:element name="Einschraenkung" type="xs:int" minOccurs="0" />
+                <xs:element name="TaskFertigInProzent" type="xs:string" minOccurs="0" />
+                <xs:element name="AlleEigenschaften" type="xs:base64Binary" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Besitzer">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Key" type="xs:string" minOccurs="0" />
+                <xs:element name="Name" type="xs:string" minOccurs="0" />
+                <xs:element name="EmailAddresse" type="xs:string" minOccurs="0" />
+                <xs:element name="Sichtbar" type="xs:boolean" minOccurs="0" />
+                <xs:element name="AlleEigenschaften" type="xs:base64Binary" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+      <xs:unique name="Constraint1">
+        <xs:selector xpath=".//Besitzer" />
+        <xs:field xpath="Key" />
+      </xs:unique>
+    </xs:element>
+  </xs:schema>
+  <Besitzer>
+    <Key>Martin Knoblauch</Key>
+    <Name />
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAG9JbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNC4xLCBWZXJzaW9uPTE0LjEuMC45MDAwLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPTdkZDVjMzE2M2YyY2QwY2IFAQAAACdJbmZyYWdpc3RpY3MuV2luLlVsdHJhV2luU2NoZWR1bGUuT3duZXIBAAAAA0tleQECAAAABgMAAAALUGVyc29uIE5hbWUL</AlleEigenschaften>
+  </Besitzer>
+  <Besitzer>
+    <Key>Martin Kaiser</Key>
+    <Name />
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAG9JbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNC4xLCBWZXJzaW9uPTE0LjEuMC45MDAwLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPTdkZDVjMzE2M2YyY2QwY2IFAQAAACdJbmZyYWdpc3RpY3MuV2luLlVsdHJhV2luU2NoZWR1bGUuT3duZXIBAAAAA0tleQECAAAABgMAAAALUGVyc29uIE5hbWUL</AlleEigenschaften>
+  </Besitzer>
+  <Besitzer>
+    <Key>Wolfgang Roth</Key>
+    <Name />
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAG9JbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNC4xLCBWZXJzaW9uPTE0LjEuMC45MDAwLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPTdkZDVjMzE2M2YyY2QwY2IFAQAAACdJbmZyYWdpc3RpY3MuV2luLlVsdHJhV2luU2NoZWR1bGUuT3duZXIBAAAAA0tleQECAAAABgMAAAALUGVyc29uIE5hbWUL</AlleEigenschaften>
+  </Besitzer>
+  <Besitzer>
+    <Key>C. Klute-Lang</Key>
+    <Name />
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAG9JbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNC4xLCBWZXJzaW9uPTE0LjEuMC45MDAwLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPTdkZDVjMzE2M2YyY2QwY2IFAQAAACdJbmZyYWdpc3RpY3MuV2luLlVsdHJhV2luU2NoZWR1bGUuT3duZXIBAAAAA0tleQECAAAABgMAAAALUGVyc29uIE5hbWUL</AlleEigenschaften>
+  </Besitzer>
+  <Besitzer>
+    <Key>Armin Brenner</Key>
+    <Name />
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAG9JbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNC4xLCBWZXJzaW9uPTE0LjEuMC45MDAwLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPTdkZDVjMzE2M2YyY2QwY2IFAQAAACdJbmZyYWdpc3RpY3MuV2luLlVsdHJhV2luU2NoZWR1bGUuT3duZXIBAAAAA0tleQECAAAABgMAAAALUGVyc29uIE5hbWUL</AlleEigenschaften>
+  </Besitzer>
+  <Besitzer>
+    <Key>J. Echsler-Kull</Key>
+    <Name />
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAG9JbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNC4xLCBWZXJzaW9uPTE0LjEuMC45MDAwLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPTdkZDVjMzE2M2YyY2QwY2IFAQAAACdJbmZyYWdpc3RpY3MuV2luLlVsdHJhV2luU2NoZWR1bGUuT3duZXIBAAAAA0tleQECAAAABgMAAAALUGVyc29uIE5hbWUL</AlleEigenschaften>
+  </Besitzer>
+  <Besitzer>
+    <Key>M. Jetter</Key>
+    <Name />
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAG9JbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNC4xLCBWZXJzaW9uPTE0LjEuMC45MDAwLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPTdkZDVjMzE2M2YyY2QwY2IFAQAAACdJbmZyYWdpc3RpY3MuV2luLlVsdHJhV2luU2NoZWR1bGUuT3duZXIBAAAAA0tleQECAAAABgMAAAALUGVyc29uIE5hbWUL</AlleEigenschaften>
+  </Besitzer>
+</TerminPlan>

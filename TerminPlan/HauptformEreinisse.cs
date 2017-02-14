@@ -623,6 +623,7 @@ namespace Terminplan
             var activeTask = this.ultraGanttView1.ActiveTask;                   // aktiven Arbeitsinhalt ermitteln
             var prjHinzuefuegt = false;                                         // Es wurde kein neues Projrkt hinzuefügt
             Project projekt;
+            bool erg;
 
             calendarInfo.Projects.Add(prjName, prjStart);
             var anzPrj = calendarInfo.Projects.Count;                           // Anzahl vorhandener Projekte
@@ -632,11 +633,17 @@ namespace Terminplan
             projekt = calendarInfo.Projects[anzPrj - 1];                        // Hinzugefügtes Projekt
 
 
-            XmlDocument doc = new XmlDocument;
-            doc.LoadXml(Path.Combine(Application.StartupPath, @"Data.DatenNeuEST.XML"));
+            XmlDocument doc = new XmlDocument();
+            doc.Load(Path.Combine(Application.StartupPath, @"Data.DatenNeuEST.XML"));
+            //doc.Load(Path.Combine(Application.StartupPath, @"bookstore.XML"));
             XPathNavigator navigator = doc.CreateNavigator();
-            navigator.MoveToChild()
-            //projekt.
+            navigator.MoveToRoot();
+            erg = navigator.MoveToChild(@"TerminPlan", string.Empty);
+            erg = navigator.MoveToChild (@"Projekte", string.Empty);
+            erg = navigator.MoveToAttribute("ProjektName", String.Empty);
+            navigator.SetValue(projekt.Name);
+            navigator.MoveToRoot();
+            doc.Save(Path.Combine(Application.StartupPath, @"Data.DatenNeuEST.XML"));
         }
         #endregion AddNewProjekt
 
