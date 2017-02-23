@@ -25,6 +25,7 @@ namespace Terminplan
     {
         private string prjName = null;
         private DateTime prjStart;
+        private string kommission;
 
         public NeuesProjekt()
         {
@@ -61,15 +62,31 @@ namespace Terminplan
             }
         }
 
+        /// <summary>Holt das Startdatum des Projekts</summary>
+        public string Kommission
+        {
+            get
+            {
+                return kommission;
+            }
+
+            private set
+            {
+                kommission = value;
+            }
+        }
         #endregion Eigenschaften
 
+        #region Ereignisse
         /// <summary>Behandelt das Click-Ereignis des btnOk Kontrols.</summary>
         /// <param name="sender">Die Quelle des Ereignisses.</param>
         /// <param name="e">Die <see cref="EventArgs"/> Instanz, welche die Ereignisdaten enthält.</param>
         private void OnBtnOkClick(object sender, EventArgs e)
         {
-            this.PrjName = this.ultraTextEditor1.Text;                          // eingeebener Projektname
+            this.PrjName = this.ultraTextEditorPrjName.Text;                    // eingeebener Projektname
             this.PrjStart = this.ultraDateTimeEditor1.DateTime;                 // eingegebes Startdatum
+            this.Kommission = this.ultraMaskedEditKommission.Text;              // eingegebene Kommissionsnummer
+            this.ErstelleStartDatum();
             this.DialogResult = DialogResult.OK;                                // Ergebnis des Dialogs ist OK
             this.Close();                                                       // Dialog beenden
         }
@@ -82,7 +99,24 @@ namespace Terminplan
             this.DialogResult = DialogResult.Cancel;                            // Ergebnis des Dialogs ist Cancel
             this.Close();                                                       // Dialog beenden
         }
+        #endregion Ereignisse
 
- 
+        /// <summary>Erstellt das Startdatum in dem Format jjjj-mm-ttThh:mm:ss+01:00</summary>
+        /// <remarks>Das Datum liegt in folgendem Fornat vor: dd.mm.jjjj</remarks>
+        /// <returns>Das erstellte Startdatum.</returns>
+        private string ErstelleStartDatum()
+        {
+            var testWert = this.PrjStart.ToString();                            // Startdatum zum Aufspalten in Zeichenkette umwandeln
+            string[] separators = { ".", " " };
+            var splitWert = testWert.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+            var tag = splitWert[0];
+            var monat = splitWert[1];
+            var jahr = splitWert[2];
+            var zeit = splitWert[3];
+
+            var retWert = jahr + "-" + monat + "-" + tag + "T" + zeit + "+01:00";
+
+            return retWert;
+        }
     }
 }

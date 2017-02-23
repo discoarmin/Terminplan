@@ -621,13 +621,13 @@ namespace Terminplan
             TasksCollection parentCollection = null;                            // Sammlung übergeordneter Arbeitsinhalte löschen
             var calendarInfo = this.ultraGanttView1.CalendarInfo;               // Kalenderinfo festlegen
             var activeTask = this.ultraGanttView1.ActiveTask;                   // aktiven Arbeitsinhalt ermitteln
-            var prjHinzuefuegt = false;                                         // Es wurde kein neues Projrkt hinzuefügt
+            var prjHinzugefuegt = false;                                        // Es wurde kein neues Projrkt hinzuefügt
             Project projekt;
             bool erg;
 
             calendarInfo.Projects.Add(prjName, prjStart);
             var anzPrj = calendarInfo.Projects.Count;                           // Anzahl vorhandener Projekte
-            prjHinzuefuegt = true;                                              // Es wurde ein neues Projekt hinzugefügt
+            prjHinzugefuegt = true;                                             // Es wurde ein neues Projekt hinzugefügt
 
             if (anzPrj < 2) return;
             projekt = calendarInfo.Projects[anzPrj - 1];                        // Hinzugefügtes Projekt
@@ -640,8 +640,14 @@ namespace Terminplan
             navigator.MoveToRoot();
             erg = navigator.MoveToChild(@"TerminPlan", string.Empty);
             erg = navigator.MoveToChild (@"Projekte", string.Empty);
-            erg = navigator.MoveToAttribute("ProjektName", String.Empty);
+            erg = navigator.MoveToChild(@"ProjektID", string.Empty);
+            erg = navigator.MoveToNext("ProjektName", String.Empty);
             navigator.SetValue(projekt.Name);
+
+            erg = navigator.MoveToNext("ProjektStart", string.Empty);
+
+            // Das Datum in der XML-Datei hat folgendes Format: 2017-01-17T06:00:00+01:00 (jjjj-mm-ttThh:mm:ss+01:00)
+            navigator.SetValue(projekt.StartDate.ToString());
             navigator.MoveToRoot();
             doc.Save(Path.Combine(Application.StartupPath, @"Data.DatenNeuEST.XML"));
         }

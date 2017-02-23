@@ -29,12 +29,14 @@
         private void InitializeComponent()
         {
             this.ultraLabel1 = new Infragistics.Win.Misc.UltraLabel();
-            this.ultraTextEditor1 = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
+            this.ultraTextEditorPrjName = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.ultraLabel2 = new Infragistics.Win.Misc.UltraLabel();
             this.ultraDateTimeEditor1 = new Infragistics.Win.UltraWinEditors.UltraDateTimeEditor();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraTextEditor1)).BeginInit();
+            this.ultraLabel3 = new Infragistics.Win.Misc.UltraLabel();
+            this.ultraMaskedEditKommission = new Infragistics.Win.UltraWinMaskedEdit.UltraMaskedEdit();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraTextEditorPrjName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraDateTimeEditor1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,12 +48,13 @@
             this.ultraLabel1.TabIndex = 0;
             this.ultraLabel1.Text = "Projektname:";
             // 
-            // ultraTextEditor1
+            // ultraTextEditorPrjName
             // 
-            this.ultraTextEditor1.Location = new System.Drawing.Point(97, 32);
-            this.ultraTextEditor1.Name = "ultraTextEditor1";
-            this.ultraTextEditor1.Size = new System.Drawing.Size(175, 21);
-            this.ultraTextEditor1.TabIndex = 1;
+            this.ultraTextEditorPrjName.DisplayStyle = Infragistics.Win.EmbeddableElementDisplayStyle.Office2013;
+            this.ultraTextEditorPrjName.Location = new System.Drawing.Point(97, 32);
+            this.ultraTextEditorPrjName.Name = "ultraTextEditorPrjName";
+            this.ultraTextEditorPrjName.Size = new System.Drawing.Size(175, 21);
+            this.ultraTextEditorPrjName.TabIndex = 1;
             // 
             // ultraLabel2
             // 
@@ -63,6 +66,7 @@
             // 
             // ultraDateTimeEditor1
             // 
+            this.ultraDateTimeEditor1.DisplayStyle = Infragistics.Win.EmbeddableElementDisplayStyle.Office2013;
             this.ultraDateTimeEditor1.Location = new System.Drawing.Point(97, 67);
             this.ultraDateTimeEditor1.Name = "ultraDateTimeEditor1";
             this.ultraDateTimeEditor1.Size = new System.Drawing.Size(175, 21);
@@ -70,8 +74,9 @@
             // 
             // btnOk
             // 
+            this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOk.Location = new System.Drawing.Point(13, 106);
+            this.btnOk.Location = new System.Drawing.Point(12, 144);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
             this.btnOk.TabIndex = 4;
@@ -82,8 +87,9 @@
             // 
             // btnCancel
             // 
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Abort;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Location = new System.Drawing.Point(197, 106);
+            this.btnCancel.Location = new System.Drawing.Point(192, 144);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 5;
@@ -92,21 +98,44 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.OnBtnCancelClick);
             // 
+            // ultraLabel3
+            // 
+            this.ultraLabel3.Location = new System.Drawing.Point(12, 104);
+            this.ultraLabel3.Name = "ultraLabel3";
+            this.ultraLabel3.Size = new System.Drawing.Size(77, 16);
+            this.ultraLabel3.TabIndex = 7;
+            this.ultraLabel3.Text = "Kommission:";
+            // 
+            // ultraMaskedEditKommission
+            // 
+            this.ultraMaskedEditKommission.DisplayStyle = Infragistics.Win.EmbeddableElementDisplayStyle.Office2013;
+            this.ultraMaskedEditKommission.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.UseSpecifiedMask;
+            this.ultraMaskedEditKommission.InputMask = "####/##";
+            this.ultraMaskedEditKommission.Location = new System.Drawing.Point(100, 100);
+            this.ultraMaskedEditKommission.Name = "ultraMaskedEditKommission";
+            this.ultraMaskedEditKommission.NonAutoSizeHeight = 20;
+            this.ultraMaskedEditKommission.Size = new System.Drawing.Size(56, 20);
+            this.ultraMaskedEditKommission.TabIndex = 8;
+            this.ultraMaskedEditKommission.Text = "/";
+            this.ultraMaskedEditKommission.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            // 
             // NeuesProjekt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
-            this.ClientSize = new System.Drawing.Size(284, 135);
+            this.ClientSize = new System.Drawing.Size(284, 171);
+            this.Controls.Add(this.ultraMaskedEditKommission);
+            this.Controls.Add(this.ultraLabel3);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.ultraDateTimeEditor1);
             this.Controls.Add(this.ultraLabel2);
-            this.Controls.Add(this.ultraTextEditor1);
+            this.Controls.Add(this.ultraTextEditorPrjName);
             this.Controls.Add(this.ultraLabel1);
             this.Name = "NeuesProjekt";
             this.Text = "NeuesProjekt";
-            ((System.ComponentModel.ISupportInitialize)(this.ultraTextEditor1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraTextEditorPrjName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraDateTimeEditor1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -116,10 +145,12 @@
         #endregion
 
         private Infragistics.Win.Misc.UltraLabel ultraLabel1;
-        private Infragistics.Win.UltraWinEditors.UltraTextEditor ultraTextEditor1;
+        private Infragistics.Win.UltraWinEditors.UltraTextEditor ultraTextEditorPrjName;
         private Infragistics.Win.Misc.UltraLabel ultraLabel2;
         private Infragistics.Win.UltraWinEditors.UltraDateTimeEditor ultraDateTimeEditor1;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnCancel;
+        private Infragistics.Win.Misc.UltraLabel ultraLabel3;
+        private Infragistics.Win.UltraWinMaskedEdit.UltraMaskedEdit ultraMaskedEditKommission;
     }
  }
