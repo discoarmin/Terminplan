@@ -64,17 +64,17 @@ namespace Terminplan
         private void UltraCalendarInfo1CalendarInfoChanged(object sender, CalendarInfoChangedEventArgs e)
         {
             var activeTask = this.ultraGanttView1.ActiveTask;                   // aktiven Arbeitsinhalt ermitteln
-            
+
             // Falls kein Arbeitsinhalt ausgewäht ist, kann abgebrochen werden
             if (activeTask == null)
             {
                 return;
             }
-            
+
             // Überprüfen, ob sich der Ferigugsgrad des aktiven Arbeitsinhalts geändert hat.
             // Wenn ja, muss der Status des aktiven Arbeitsinhalts neu ermittelt werden.
             var propInfo = e.PropChangeInfo.FindTrigger(activeTask);            // Informationen über die Art der Änderung
-            
+
             // Ermitteln, ob die richtige Änderung ausgewählt ist
             if (propInfo != null &&
                 propInfo.PropId is TaskPropertyIds &&
@@ -101,13 +101,13 @@ namespace Terminplan
         #endregion UltraGanttView1ActiveTaskChanging
 
         #region UltraGanttView1CellActivating
-        /// <summary> 
-        /// Behandelt das CellActivating-Ereignis des ultraGanttView1 Kontrols. 
+        /// <summary>
+        /// Behandelt das CellActivating-Ereignis des ultraGanttView1 Kontrols.
         /// Wird aufgerufen, wenn eine Zelle aktiviert wird.
-        /// </summary>  
+        /// </summary>
         /// <remarks>
         /// Es werden die Buttons für die Einstellung der Schrift an die ausgewählte Zelle angepasst.
-        /// </remarks>    
+        /// </remarks>
         /// <param name="sender">Die Quelle des Ereignisses.</param>
         /// <param name="e">Die <see cref="CellActivatingEventArgs" /> Instanz,welche die Ereignisdaten enthält.</param>
         private void UltraGanttView1CellActivating(object sender, CellActivatingEventArgs e)
@@ -122,7 +122,7 @@ namespace Terminplan
                 if (activeTask != null)
                 {
                     var activeField = e.TaskFieldInfo.TaskField;                // aktive Zelle ermitteln
-                    
+
                     // Nur bearbeiten, falls aktive Zelle einen Wert enthält
                     if (activeField.HasValue)
                     {
@@ -141,7 +141,7 @@ namespace Terminplan
 
                         // Name der Schriftart in der Fontliste aktualisieren
                         var fontName = fontData.Name;                           // Name der Schriftart ermitteln
-                        
+
                         // Falls keine Schriftart ermittelt wurde, Normalschrift auswählen,
                         // sonst die ermittelte Schriftart anzeigen
                         if (fontName != null)
@@ -168,7 +168,7 @@ namespace Terminplan
                     }
                 }
 
-                this.OnUpdateFontToolsState(e.TaskFieldInfo.TaskField.HasValue);  // Anzeige der Schriftart aktualisieren 
+                this.OnUpdateFontToolsState(e.TaskFieldInfo.TaskField.HasValue);  // Anzeige der Schriftart aktualisieren
             }
             finally
             {
@@ -231,7 +231,7 @@ namespace Terminplan
         private void UltraToolbarsManager1PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             var trigger = e.ChangeInfo.FindTrigger(null);                       // Ermitteln, welche Eigenschaft geändert wurde
-            
+
             // Nur bearbeiten, wenn es eine Eigenschaft ist, welche vom Toolbars-Manager verwaltet wird
             if (trigger == null || !(trigger.Source is SharedProps) || !(trigger.PropId is Infragistics.Win.UltraWinToolbars.PropertyIds))
             {
@@ -248,18 +248,18 @@ namespace Terminplan
                     // bei nur einer Instanz muss diese genommen werden
                     var tool = (sharedProps.ToolInstances.Count > 0) ? sharedProps.ToolInstances[0] : sharedProps.RootTool; // Name desSchlüssels zusammenstellen
                     var imageKey = string.Format(@"{0}_{1}", tool.Key, tool.EnabledResolved ? @"Normal" : @"Disabled");
-                        
+
                     // Schlüssel des Bildes in die entsprechende Appearance-Eigenschaft eintragen
                     if (this.ilColorizedImagesLarge.Images.ContainsKey(imageKey))
                     {
                         sharedProps.AppearancesLarge.Appearance.Image = imageKey; // Für große Bilder
                     }
-                        
+
                     if (this.ilColorizedImagesSmall.Images.ContainsKey(imageKey))
                     {
-                        sharedProps.AppearancesSmall.Appearance.Image = imageKey; // Für kleine Bilder  
+                        sharedProps.AppearancesSmall.Appearance.Image = imageKey; // Für kleine Bilder
                     }
-                        
+
                     break;
             }
         }
@@ -358,23 +358,23 @@ namespace Terminplan
                 case "Schedule_OnMoveTask_1Day":                                // Starttermin 1 Tag später
                     this.MoveTask(GanttViewAction.MoveTaskDateForward, TimeSpanForMoving.OneDay);
                     break;
-                
+
                 case "Schedule_OnMoveTask_1Week":                               // Starttermin 1 Woche später
                     this.MoveTask(GanttViewAction.MoveTaskDateForward, TimeSpanForMoving.OneWeek);
                     break;
-                
+
                 case "Schedule_MoveTask_4Weeks":                                // Starttermin 4 Wochen später
                     this.MoveTask(GanttViewAction.MoveTaskDateForward, TimeSpanForMoving.FourWeeks);
                     break;
-                
+
                 case "Schedule_MoveTask_MoveTaskBackwards1Day":                 // Sterttrmin 1 Tag früher
                     this.MoveTask(GanttViewAction.MoveTaskDateBackward, TimeSpanForMoving.OneDay);
                     break;
-                
+
                 case "Schedule_MoveTask_MoveTaskBackwards1Week":                // Starttermin 1 Woche früher
                     this.MoveTask(GanttViewAction.MoveTaskDateBackward, TimeSpanForMoving.OneWeek);
                     break;
-                
+
                 case "Schedule_MoveTask_MoveTaskBackwards4Weeks":               // Starttermin 4 Wochen früher
                     this.MoveTask(GanttViewAction.MoveTaskDateBackward, TimeSpanForMoving.FourWeeks);
                     break;
@@ -403,7 +403,7 @@ namespace Terminplan
                     this.ultraTouchProvider1.Enabled = (e.ListToolItem.Key == @"Touch");
                     break;
 
-                case "ThemeList":                    
+                case "ThemeList":
                     var themeListTool = e.Tool as ListTool;
                     if (themeListTool != null && themeListTool.SelectedItem == null)
                     {
@@ -502,7 +502,7 @@ namespace Terminplan
         /// Fügt dem GanttView einen neuen Arbeitsinhalt hinzu
         /// </summary>
         /// <param name="addAtSelectedRow">
-        /// Füget bei true einen neuen Arbeitsinhalt an der ausgewählten Zeile ein, 
+        /// Füget bei true einen neuen Arbeitsinhalt an der ausgewählten Zeile ein,
         /// bei false am unteren Rand des ganttViews
         /// </param>
         private void AddNewTask(bool addAtSelectedRow)
@@ -520,7 +520,7 @@ namespace Terminplan
             }
             catch (Exception)
             {
-                NeuesProjekt prjNeu = new NeuesProjekt();
+                var prjNeu = new NeuesProjekt();
                 var result = prjNeu.ShowDialog();
 
                 if (result == DialogResult.OK)
@@ -539,21 +539,21 @@ namespace Terminplan
             int insertionIndex;                                                 // Index des neuen Arbeitsinhalts
             DateTime start;                                                     // Startdatum des Arbeitsinhalts
             var addToRootcollection = true;                                     // Eintrag wird zum Wurzelknoten hinzugefügt
-            
-            // Ermitteln, ob bei der ausgewählten Zeile oder am Ende ein neuer Arbeitsinhalt eingefügt werden soll 
+
+            // Ermitteln, ob bei der ausgewählten Zeile oder am Ende ein neuer Arbeitsinhalt eingefügt werden soll
             if (addAtSelectedRow)
             {
                 // Einfügen an ausgewählter Zeile
                 if (activeTask != null)
                 {
                     var parentTask = activeTask.Parent;                         // Übergeordneten Arbeitsinhalt ermitteln
-                    
-                    // Falls ein übergeordneter Arbeitsinhalt vorhanden ist, besteht die Sammlung der 
+
+                    // Falls ein übergeordneter Arbeitsinhalt vorhanden ist, besteht die Sammlung der
                     // übergeordneten Arbeitsinhalten aus den bisherigen übergeordneten
                     // Arbeitsinhalten, sonst aus den Arbeitsinhalten der Kalenderinfo ermitteln
                     parentCollection = parentTask != null ? parentTask.Tasks : calendarInfo.Tasks;
                     insertionIndex = parentCollection.IndexOf(activeTask);      // Index des bisherigen Arbeitsinhalts
-                    
+
                     // Das Startdatum ist davon abhängig, ob es sich um einen übergeordneten Arbeitsinhalt
                     // handelt oder nicht
                     // ReSharper disable once MergeConditionalExpression
@@ -566,7 +566,7 @@ namespace Terminplan
                 }
                 else
                 {
-                    // es existiert kein aktiver Arbeitsinhalt 
+                    // es existiert kein aktiver Arbeitsinhalt
                     insertionIndex = calendarInfo.Tasks.Count;                  // Index ist die bisherige Anzahl Arbeitsinhalten des übergeordneten Arbeitsinhalts
                     start = projekt.StartDate;                                  // Das Startdatum ist das Startdatum des Projekts
                 }
@@ -589,7 +589,7 @@ namespace Terminplan
             //  Neue Aufgabe oder neuen Arbeitsinhalt hinzufügen
             var taskName = this.rm.GetString("NewTaskName");                    // Namen des Arbeitsinhalts oder der Aufgabe ermitteln
             Task newTask;
-                
+
             // Ermitteln, ob es sich um eine Aufgabe oder einen Arbeitsinhalt handelt
             if (addToRootcollection == false &&
                 // ReSharper disable once ConditionIsAlwaysTrueOrFalse
@@ -604,8 +604,8 @@ namespace Terminplan
                 // Es handelt sich um eine Aufgabe
                 newTask = calendarInfo.Tasks.Insert(insertionIndex, start, TimeSpan.FromDays(1), taskName);
             }
-                
-            newTask.Project = projekt;                                          // Projektname dem hinzugefügten Elemnt zuweisen  
+
+            newTask.Project = projekt;                                          // Projektname dem hinzugefügten Elemnt zuweisen
             newTask.RowHeight = TaskRowHeight;
         }
         #endregion AddNewTask
@@ -647,7 +647,7 @@ namespace Terminplan
             erg = navigator.MoveToNext("ProjektStart", string.Empty);
 
             // Das Datum in der XML-Datei hat folgendes Format: 2017-01-17T06:00:00+01:00 (jjjj-mm-ttThh:mm:ss+01:00)
-            navigator.SetValue(projekt.StartDate.ToString());
+            navigator.SetValue(projekt.  StartDate.ToString());
             navigator.MoveToRoot();
             doc.Save(Path.Combine(Application.StartupPath, @"Data.DatenNeuEST.XML"));
         }
@@ -668,7 +668,7 @@ namespace Terminplan
             this.ultraCalendarInfo1.DataBindingsForOwners.BindingContextControl = this;
             #endregion BindingContext
 
-            //  Legt die Databinding-Mitglieder für Projekte fest 
+            //  Legt die Databinding-Mitglieder für Projekte fest
             #region Projekte
             this.ultraCalendarInfo1.DataBindingsForProjects.SetDataBinding(data, @"Projekte");
             this.ultraCalendarInfo1.DataBindingsForProjects.IdMember = @"ProjektID";
@@ -743,7 +743,7 @@ namespace Terminplan
 
         #region ColorizeImages
         /// <summary>
-        /// Färbt die Bilder in den großen und kleinen Bildlisten mit den Standardbildern 
+        /// Färbt die Bilder in den großen und kleinen Bildlisten mit den Standardbildern
         /// und platziert die neuen Bilder in den farbigen Bildlisten.
         /// </summary>
         private void ColorizeImages()
@@ -790,13 +790,13 @@ namespace Terminplan
                     return;
                 }
 
-                // Holt die eingestellten Farben                
+                // Holt die eingestellten Farben
                 var colors = new Dictionary<string, Color>();                   // Neue Liste mit den Farben erzeugen
 
                 // Standard-Vordergrundfarbe einstellen
                 var appData = new AppearanceData();                             // Neue Einstellungen für Infragistics
                 var requestedProps = AppearancePropFlags.ForeColor;             // Vordergrundfarbe soll eingestellt werden
-                
+
                 // Das aktuelle Erscheinungsbild des Tools löschen
                 resolveTool.ResolveAppearance(ref appData, ref requestedProps);
                 colors[@"Normal"] = appData.ForeColor;                          // Standard-Vordergrundfarbe in Liste eintragen
@@ -804,7 +804,7 @@ namespace Terminplan
                 // Aktive Vordergrundfarbe einstellen
                 appData = new AppearanceData();                                 // Neue Einstellungen für Infragistics
                 requestedProps = AppearancePropFlags.ForeColor | AppearancePropFlags.BackColor; // Ermitteln, ob Vorder- oder Hintergrundfarbe bearbeiteet werden soll
-                
+
                 // Das aktuelle Erscheinungsbild des Tools löschen
                 resolveTool.ResolveAppearance(ref appData, ref requestedProps, true, false);
                 colors[@"Active"] = appData.ForeColor;                          // Aktive Vordergrundfarbe in Liste eintragen
@@ -815,7 +815,7 @@ namespace Terminplan
                     // Hintergrundfabe festlegen, falls keine Farbe oder 'Transparent' angegeben ist
                     appData = new AppearanceData();                             // Neue Einstellungen für Infragistics
                     requestedProps = AppearancePropFlags.BackColor;             // Hintergrundfarbe soll eingestellt werden
-                    
+
                     // Löscht das aktuelle Erscheinungsbild für die Registerkarte des RibbonTab
                     this.ultraToolbarsManager1.Ribbon.Tabs[0].ResolveTabItemAppearance(ref appData, ref requestedProps);
                     colors[@"Disabled"] = appData.BackColor;                    // Hintergrundfarbe für 'gesperrt' in Liste eintragen

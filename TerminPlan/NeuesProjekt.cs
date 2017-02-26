@@ -23,58 +23,25 @@ namespace Terminplan
 
     public partial class NeuesProjekt : Form
     {
-        private string prjName = null;
-        private DateTime prjStart;
-        private string kommission;
-
         public NeuesProjekt()
         {
             this.InitializeComponent();
         }
 
         #region Eigenschaften
+
+        /// <summary>Holt das formatiwerte Startdatum des Projekts</summary>
+        public string StartPrj { get; private set; }
+
         /// <summary>Holt den Namen des Projekts</summary>
-        public string PrjName
-        {
-            get
-            {
-                return prjName;
-            }
-
-            private set
-            {
-                prjName = value;
-            }
-        }
-
+        public string PrjName { get; private set; } = null;
 
         /// <summary>Holt das Startdatum des Projekts</summary>
-        public DateTime PrjStart
-        {
-            get
-            {
-                return prjStart;
-            }
-
-            private set
-            {
-                prjStart = value;
-            }
-        }
+        public DateTime PrjStart { get; private set; }
 
         /// <summary>Holt das Startdatum des Projekts</summary>
-        public string Kommission
-        {
-            get
-            {
-                return kommission;
-            }
+        public string Kommission { get; private set; }
 
-            private set
-            {
-                kommission = value;
-            }
-        }
         #endregion Eigenschaften
 
         #region Ereignisse
@@ -86,7 +53,7 @@ namespace Terminplan
             this.PrjName = this.ultraTextEditorPrjName.Text;                    // eingeebener Projektname
             this.PrjStart = this.ultraDateTimeEditor1.DateTime;                 // eingegebes Startdatum
             this.Kommission = this.ultraMaskedEditKommission.Text;              // eingegebene Kommissionsnummer
-            this.ErstelleStartDatum();
+            this.StartPrj = this.ErstelleStartDatum();                          // Erstellt das 
             this.DialogResult = DialogResult.OK;                                // Ergebnis des Dialogs ist OK
             this.Close();                                                       // Dialog beenden
         }
@@ -114,7 +81,7 @@ namespace Terminplan
             var jahr = splitWert[2];
             var zeit = splitWert[3];
 
-            var retWert = jahr + "-" + monat + "-" + tag + "T" + zeit + "+01:00";
+            var retWert = jahr + @"-" + monat + @"-" + tag + @"T" + zeit + @"+01:00";
 
             return retWert;
         }

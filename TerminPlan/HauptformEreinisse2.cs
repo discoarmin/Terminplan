@@ -87,35 +87,35 @@ namespace Terminplan
                 if (de.Key.ToLower() == @"name")
                 {
                     //de.Text = "Arbeitsinhalt/Aufgabe";
-                    de.Text = "Verfahren";
+                    de.Text = @"Verfahren";
                     de.Visible = DefaultableBoolean.True;
                 }
 
                 // Dauer
                 if (de.Key.ToLower() == @"duration")
                 {
-                    de.Text = "Dauer";
+                    de.Text = @"Dauer";
                     de.Visible = DefaultableBoolean.True;
                 }
 
                 // Start
                 if (de.Key.ToLower() == @"start")
                 {
-                    de.Text = "Start";
+                    de.Text = @"Start";
                     de.Visible = DefaultableBoolean.True;
                 }
 
                 // Ende
                 if (de.Key.ToLower() == @"enddatetime")
                 {
-                    de.Text = "Ende";
+                    de.Text = @"Ende";
                     de.Visible = DefaultableBoolean.True;
                 }
 
                 // Fertig in %
                 if (de.Key.ToLower() == @"percentcomplete")
                 {
-                    de.Text = "Status";
+                    de.Text = @"Status";
                     de.Visible = DefaultableBoolean.True;
                 }
             }
@@ -125,12 +125,12 @@ namespace Terminplan
             // Füllt die Liste mit den Farbschematas
             var selectedIndex = 0;                                              // Index des ausgewählten Farbschemas (1. Element)
             var themeTool = (ListTool)this.ultraToolbarsManager1.Tools[@"ThemeList"];
-            
+
             // Alle vorhandenen Farbschematas durchgehen
             foreach (var resourceName in this.themePaths)
             {
                 var item = new ListToolItem(resourceName);                      // Eintrag aus der liste
-                
+
                 // In der Liste erscheint nur der Name des Farbschemas ohne Endung in Dateinamen
                 var libraryName = resourceName.Replace(@".isl", string.Empty);
                 item.Text = libraryName.Remove(0, libraryName.LastIndexOf('.') + 1);
@@ -142,7 +142,7 @@ namespace Terminplan
                     selectedIndex = item.Index;
                 }
             }
-            
+
             themeTool.SelectedItemIndex = selectedIndex;                        // Ausgewähltes Farbschema als Standard setzen
 
             // Das richtigen Listenelement für den Touch-Modus auswählen
@@ -165,13 +165,13 @@ namespace Terminplan
 
             // Größe der Spalten so einstellen, dass alle Daten sichtbar sind.
             this.ultraGanttView1.PerformAutoSizeAllGridColumns();
- 
-            // Die Bilder entsprechend dem aktuellen Farbschema einfärben. 
+
+            // Die Bilder entsprechend dem aktuellen Farbschema einfärben.
             this.ColorizeImages();
             this.ultraToolbarsManager1.Ribbon.FileMenuButtonCaption = Properties.Resources.ribbonFileTabCaption; // Beschriftung des Datei-Menüs-Button eintragen
         }
         #endregion InitializeUi
-        
+
         #region MoveTask
         /// <summary>
         /// Verschiebt Start- und Enddatum der Aufgabe rückwärts oder vorwärts um eine bestimmte Zeitspanne
