@@ -138,7 +138,7 @@ namespace Terminplan
         {
             // Minimieren der Initialisierungszeit durch Laden der Stilbibliothek
             // vor InitializeComponent(),
-            // andernfalls werden alle Metriken nach dem Ändern des Themas neu berechnet.            
+            // andernfalls werden alle Metriken nach dem Ändern des Themas neu berechnet.
             this.themePaths = DienstProgramme.GetStyleLibraryResourceNames();
             for (var i = 0; i < this.themePaths.Length; i++)
             {
@@ -194,15 +194,15 @@ namespace Terminplan
             var splitterWeite = 10;                                             // Zum Einstellen des Splitters
             var col = this.ultraGanttView1.GridSettings.ColumnSettings.Values;
             var schluessel = string.Empty;
-             
+
             // Überschriften einstellen
             foreach (var de in col)
             {
                 // Arbeitsinhalt oder Aufgabe
-                if (de.Key.ToLower() == @"name")                        
+                if (de.Key.ToLower() == @"name")
                 {
                     de.Text = "Arbeitsinhalt/Aufgabe";
-                    de.Visible = DefaultableBoolean.True;                    
+                    de.Visible = DefaultableBoolean.True;
                     splitterWeite += de.Width;                                  // Breite der Spalte hinzuaddieren
                 }
 
@@ -246,7 +246,7 @@ namespace Terminplan
             //datasetTp = DienstProgramme.GetData(Path.Combine(Application.StartupPath, @"Data.TestDaten2EST.XML")); // Testdaten laden
             datasetTp = DienstProgramme.GetData(Path.Combine(Application.StartupPath, @"Data.DatenNeuEST.XML")); // Testdaten laden
 
-            // Die eingelesenen Daten an die ultraCalendarInfo anbinden. 
+            // Die eingelesenen Daten an die ultraCalendarInfo anbinden.
             this.OnInitializationStatusChanged(Properties.Resources.Binding);   // Anzeige im Splashscreen aktualisieren
             this.OnBindArbInhaltData(datasetTp);                                // Daten an ultraCalendarInfo anbinden
 
@@ -272,7 +272,7 @@ namespace Terminplan
             base.OnShown(e); // Hauptfenster anzeigen
 
             // Andere Ereignisse vor dem Auslösen dieses Ereignisses bearbeiten,
-            // andernfalls wird das Formular nicht vollständig gezeichnet, 
+            // andernfalls wird das Formular nicht vollständig gezeichnet,
             // bevor der Splash-Screen geschlossen wird.
             Application.DoEvents();
         }
@@ -323,13 +323,13 @@ namespace Terminplan
 
         #region OnUltraGanttView1CellActivating
 
-        /// <summary> 
-        /// Behandelt das CellActivating-Ereignis des ultraGanttView1 Kontrols. 
+        /// <summary>
+        /// Behandelt das CellActivating-Ereignis des ultraGanttView1 Kontrols.
         /// Wird aufgerufen, wenn eine Zelle aktiviert wird.
-        /// </summary>  
+        /// </summary>
         /// <remarks>
         /// Es werden die Buttons für die Einstellung der Schrift an die ausgewählte Zelle angepasst.
-        /// </remarks>    
+        /// </remarks>
         /// <param name="sender">Die Quelle des Ereignisses.</param>
         /// <param name="e">Die <see cref="CellActivatingEventArgs" /> Instanz,welche die Ereignisdaten enthält.</param>
         private void OnUltraGanttView1CellActivating(object sender, CellActivatingEventArgs e)
@@ -480,7 +480,7 @@ namespace Terminplan
         #region OnColorizeImages
 
         /// <summary>
-        /// Färbt die Bilder in den großen und kleinen Bildlisten mit den Standardbildern 
+        /// Färbt die Bilder in den großen und kleinen Bildlisten mit den Standardbildern
         /// und platziert die neuen Bilder in den farbigen Bildlisten.
         /// </summary>
         private void OnColorizeImages()
@@ -490,7 +490,7 @@ namespace Terminplan
 
         #endregion OnColorizeImages
 
-        #region OnInitializeUI                            
+        #region OnInitializeUI
         /// <summary>
         /// Initialisiert die Oberfläche.
         /// </summary>
@@ -502,7 +502,7 @@ namespace Terminplan
 
         #region OnSetTextForeColor
         /// <summary>
-        /// Aktualisiert den Wert der Vordergrundfarbe des Textes in der aktiven Zelle abhängig von der 
+        /// Aktualisiert den Wert der Vordergrundfarbe des Textes in der aktiven Zelle abhängig von der
         /// im PopupColorPickerTool ausgewählten Farbe.
         /// </summary>
         private void OnSetTextForeColor()
@@ -528,23 +528,24 @@ namespace Terminplan
             // Dialog zum Öffnen einer Datei anzeigen
             OpenFileDialog openFileDialog1 = new OpenFileDialog()
             {
-                Filter = "XML Dateien|*.xml",
-                Title = "Terminplan öffnen"
+                Filter = @"XML Dateien|*.xml",
+                Title = @"Terminplan öffnen"
             };
 
-            if(openFileDialog1.ShowDialog() == DialogResult.OK)
+            if (openFileDialog1.ShowDialog() != DialogResult.OK)
             {
-                this.components = new System.ComponentModel.Container();
-                this.ultraCalendarInfo1 = new Infragistics.Win.UltraWinSchedule.UltraCalendarInfo(this.components);
-
-                // Ruft die Daten aus der bereitgestellten XML-Datei ab
-                datasetTp = new DataSet();
-                datasetTp = DienstProgramme.GetData(openFileDialog1.FileName);  // ausgewählte Daten ladenn laden
-
-                // Die eingelesenen Daten an die ultraCalendarInfo anbinden. 
-                this.OnBindArbInhaltData(datasetTp);                            // Daten an ultraCalendarInfo anbinden
+                return;                                                         // Abbruch, da keine Datei ausgewählt wurde
             }
 
+            this.components = new System.ComponentModel.Container();
+            this.ultraCalendarInfo1 = new Infragistics.Win.UltraWinSchedule.UltraCalendarInfo(this.components);
+
+            // Ruft die Daten aus der bereitgestellten XML-Datei ab
+            this.datasetTp = new DataSet();
+            this.datasetTp = DienstProgramme.GetData(openFileDialog1.FileName); // ausgewählte Daten laden
+
+            // Die eingelesenen Daten an die ultraCalendarInfo anbinden.
+            this.OnBindArbInhaltData(this.datasetTp);                           // Daten an ultraCalendarInfo anbinden
         }
         #endregion Datei ladedn
 
@@ -557,22 +558,22 @@ namespace Terminplan
 
             if (result == DialogResult.Cancel)
             {
-                var meldung = "Sie haben das Neuanlegen abgebrochen." + Environment.NewLine +
-                    "Soll ein bestehender Terminplan geladen werten?";
+                var meldung = @"Sie haben das Neuanlegen abgebrochen." + Environment.NewLine +
+                    @"Soll ein bestehender Terminplan geladen werten?";
                 var ueberschrift = "Frage";
                 var erg = MessageBox.Show(this, meldung, ueberschrift, MessageBoxButtons.YesNo);
 
                 // Falls ein bestehender Terminplan geladen werden soll, muss der Öffnen-Dialog angezeigt werden
                 if (erg == DialogResult.Yes)
                 {
-                    this.LadeDatei();                                           // Anderen Twerminplan laden
+                    this.LadeDatei();                                           // Anderen Terminplan laden
                     return;                                                     // Bearbeitung beenden
                 }
             }
 
             if (prjNeu.PrjName != null)
             {
-                this.AddNewProjekt(prjNeu.PrjName, prjNeu.PrjStart);
+                this.AddNewProjekt(prjNeu.PrjName, prjNeu.PrjStart, prjNeu.StartPrj, prjNeu.Kommission);
             }
 
             //this.components = new System.ComponentModel.Container();
@@ -582,7 +583,7 @@ namespace Terminplan
             //datasetTp = new DataSet();
             //datasetTp = DienstProgramme.GetData(openFileDialog1.FileName);      // ausgewählte Daten ladenn laden
 
-            //// Die eingelesenen Daten an die ultraCalendarInfo anbinden. 
+            //// Die eingelesenen Daten an die ultraCalendarInfo anbinden.
             //this.OnBindArbInhaltData(datasetTp);                                // Daten an ultraCalendarInfo anbinden
         }
         #endregion Neues Projekt
@@ -590,7 +591,7 @@ namespace Terminplan
         #endregion Methoden
 
         #region SplashScreen Ereignisse
-        #region OnInitializationStatusChanged                
+        #region OnInitializationStatusChanged
         /// <summary> Wird ausgelöst, wenn sich der Status der Initialisierung der Hauptform geändert hat. </summary>
         internal static event SplashScreen.InitializationStatusChangedEventHandler InitializationStatusChanged;
         #endregion OnInitializationStatusChanged
@@ -710,6 +711,6 @@ namespace Terminplan
         {
             this.OnUltraToolbarsManagerToolClick(sender, e);
         }
-        #endregion Ereignisse		
+        #endregion Ereignisse
     }
 }

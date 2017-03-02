@@ -28,6 +28,7 @@ namespace Terminplan
     using System.Data;
     using System.Diagnostics.CodeAnalysis;
     using System.Drawing;
+    using System.Globalization;
     using System.IO;
     using System.Linq;
     using System.Windows.Forms;
@@ -615,10 +616,13 @@ namespace Terminplan
         /// Fügt einen Neuen Terminplan
         /// </summary>
         /// <param name="prjName">Name des Projekts.</param>
-        /// <param name="prjStart">Starttermin des Projektst.</param>
-        private void AddNewProjekt(string prjName, DateTime prjStart)
+        /// <param name="prjStart">Starttermin des Projekts.</param>
+        /// <param name="formatedStart">formatierter Starttermin des Projekts.</param>
+        /// <param name="prjKey">Schlüssel des Projekts, entspricht der Kommissionsnummer.</param>
+        private void AddNewProjekt(string prjName, DateTime prjStart, string formatedStart, string prjKey)
         {
             TasksCollection parentCollection = null;                            // Sammlung übergeordneter Arbeitsinhalte löschen
+            var kultur = new CultureInfo("de-DE");                              // Kultur für Darstellung
             var calendarInfo = this.ultraGanttView1.CalendarInfo;               // Kalenderinfo festlegen
             var activeTask = this.ultraGanttView1.ActiveTask;                   // aktiven Arbeitsinhalt ermitteln
             var prjHinzugefuegt = false;                                        // Es wurde kein neues Projrkt hinzuefügt
@@ -629,25 +633,34 @@ namespace Terminplan
             var anzPrj = calendarInfo.Projects.Count;                           // Anzahl vorhandener Projekte
             prjHinzugefuegt = true;                                             // Es wurde ein neues Projekt hinzugefügt
 
-            if (anzPrj < 2) return;
+            if (anzPrj < 2) return;                                             // Abbruch, da Projekt nicht hinzugefügt wurde
             projekt = calendarInfo.Projects[anzPrj - 1];                        // Hinzugefügtes Projekt
 
-
-            XmlDocument doc = new XmlDocument();
+            var prjId = DienstProgramme.GetGuId();                              
+            var doc = new XmlDocument();
             doc.Load(Path.Combine(Application.StartupPath, @"Data.DatenNeuEST.XML"));
             //doc.Load(Path.Combine(Application.StartupPath, @"bookstore.XML"));
-            XPathNavigator navigator = doc.CreateNavigator();
+            var navigator = doc.CreateNavigator();
             navigator.MoveToRoot();
             erg = navigator.MoveToChild(@"TerminPlan", string.Empty);
             erg = navigator.MoveToChild (@"Projekte", string.Empty);
             erg = navigator.MoveToChild(@"ProjektID", string.Empty);
+            navigator.SetValue(prjId);
+
             erg = navigator.MoveToNext("ProjektName", String.Empty);
             navigator.SetValue(projekt.Name);
 
+           // var datum = Convert.ToDateTime(formatedStart, kultur);              // Startdatum des Projekts
             erg = navigator.MoveToNext("ProjektStart", string.Empty);
 
             // Das Datum in der XML-Datei hat folgendes Format: 2017-01-17T06:00:00+01:00 (jjjj-mm-ttThh:mm:ss+01:00)
-            navigator.SetValue(projekt.  StartDate.ToString());
+            navigator.SetValue(formatedStart);
+
+            erg = navigator.MoveToNext("ProjektKey", string.Empty);
+
+            // Das Datum in der XML-Datei hat folgendes Format: 2017-01-17T06:00:00+01:00 (jjjj-mm-ttThh:mm:ss+01:00)
+            navigator.SetValue(formatedStart);
+
             navigator.MoveToRoot();
             doc.Save(Path.Combine(Application.StartupPath, @"Data.DatenNeuEST.XML"));
         }

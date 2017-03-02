@@ -20,16 +20,14 @@ namespace Terminplan
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-
-    using Infragistics.Win;
     using System.Data;
     using System.Diagnostics;
-    using System.Reflection;
     using System.Drawing;
+    using System.Linq;
+    using System.Reflection;
     using System.Windows.Forms;
+    using Infragistics.Win;
     using Infragistics.Win.UltraWinToolbars;
-
     using Resources = Terminplan.Properties.Resources;
 
     /// <summary>
@@ -201,6 +199,14 @@ namespace Terminplan
             return value;
         }
         #endregion ToggleDefaultableBoolean
+
+        /// <summary>GUID erstellen und formatieren </summary>
+        /// <returns>die GUID als formatierter String</returns>
+        public static string GetGuId()
+        {
+            var retwert = Guid.NewGuid().ToString(@"D");
+            return retwert;
+        }
 
     }
 }

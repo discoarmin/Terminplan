@@ -36,8 +36,12 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.ultraLabel3 = new Infragistics.Win.Misc.UltraLabel();
             this.ultraMaskedEditKommission = new Infragistics.Win.UltraWinMaskedEdit.UltraMaskedEdit();
+            this.radioButtonNormalerText = new System.Windows.Forms.RadioButton();
+            this.rbKommission = new System.Windows.Forms.RadioButton();
+            this.ultraTextEditorNormalerText = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             ((System.ComponentModel.ISupportInitialize)(this.ultraTextEditorPrjName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraDateTimeEditor1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraTextEditorNormalerText)).BeginInit();
             this.SuspendLayout();
             // 
             // ultraLabel1
@@ -102,16 +106,16 @@
             // 
             this.ultraLabel3.Location = new System.Drawing.Point(12, 104);
             this.ultraLabel3.Name = "ultraLabel3";
-            this.ultraLabel3.Size = new System.Drawing.Size(77, 16);
+            this.ultraLabel3.Size = new System.Drawing.Size(64, 16);
             this.ultraLabel3.TabIndex = 7;
-            this.ultraLabel3.Text = "Kommission:";
+            this.ultraLabel3.Text = "Schlüssel:";
             // 
             // ultraMaskedEditKommission
             // 
             this.ultraMaskedEditKommission.DisplayStyle = Infragistics.Win.EmbeddableElementDisplayStyle.Office2013;
             this.ultraMaskedEditKommission.EditAs = Infragistics.Win.UltraWinMaskedEdit.EditAsType.UseSpecifiedMask;
             this.ultraMaskedEditKommission.InputMask = "####/##";
-            this.ultraMaskedEditKommission.Location = new System.Drawing.Point(100, 100);
+            this.ultraMaskedEditKommission.Location = new System.Drawing.Point(216, 100);
             this.ultraMaskedEditKommission.Name = "ultraMaskedEditKommission";
             this.ultraMaskedEditKommission.NonAutoSizeHeight = 20;
             this.ultraMaskedEditKommission.Size = new System.Drawing.Size(56, 20);
@@ -119,12 +123,53 @@
             this.ultraMaskedEditKommission.Text = "/";
             this.ultraMaskedEditKommission.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
             // 
+            // radioButtonNormalerText
+            // 
+            this.radioButtonNormalerText.AutoSize = true;
+            this.radioButtonNormalerText.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.radioButtonNormalerText.Location = new System.Drawing.Point(80, 96);
+            this.radioButtonNormalerText.Name = "radioButtonNormalerText";
+            this.radioButtonNormalerText.Size = new System.Drawing.Size(90, 17);
+            this.radioButtonNormalerText.TabIndex = 9;
+            this.radioButtonNormalerText.Tag = "Text";
+            this.radioButtonNormalerText.Text = "Normaler Text";
+            this.radioButtonNormalerText.UseVisualStyleBackColor = true;
+            this.radioButtonNormalerText.CheckedChanged += new System.EventHandler(this.OnRadioButtonChanged);
+            // 
+            // rbKommission
+            // 
+            this.rbKommission.AutoSize = true;
+            this.rbKommission.Checked = true;
+            this.rbKommission.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rbKommission.Location = new System.Drawing.Point(80, 112);
+            this.rbKommission.Name = "rbKommission";
+            this.rbKommission.Size = new System.Drawing.Size(101, 17);
+            this.rbKommission.TabIndex = 10;
+            this.rbKommission.TabStop = true;
+            this.rbKommission.Tag = "Kommission";
+            this.rbKommission.Text = "Kommissions-Nr.";
+            this.rbKommission.UseVisualStyleBackColor = true;
+            this.rbKommission.CheckedChanged += new System.EventHandler(this.OnRadioButtonChanged);
+            // 
+            // ultraTextEditorNormalerText
+            // 
+            this.ultraTextEditorNormalerText.DisplayStyle = Infragistics.Win.EmbeddableElementDisplayStyle.Office2013;
+            this.ultraTextEditorNormalerText.Location = new System.Drawing.Point(192, 100);
+            this.ultraTextEditorNormalerText.Name = "ultraTextEditorNormalerText";
+            this.ultraTextEditorNormalerText.Size = new System.Drawing.Size(82, 21);
+            this.ultraTextEditorNormalerText.TabIndex = 11;
+            this.ultraTextEditorNormalerText.Visible = false;
+            // 
             // NeuesProjekt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
             this.ClientSize = new System.Drawing.Size(284, 171);
+            this.ControlBox = false;
+            this.Controls.Add(this.ultraTextEditorNormalerText);
+            this.Controls.Add(this.rbKommission);
+            this.Controls.Add(this.radioButtonNormalerText);
             this.Controls.Add(this.ultraMaskedEditKommission);
             this.Controls.Add(this.ultraLabel3);
             this.Controls.Add(this.btnCancel);
@@ -133,10 +178,15 @@
             this.Controls.Add(this.ultraLabel2);
             this.Controls.Add(this.ultraTextEditorPrjName);
             this.Controls.Add(this.ultraLabel1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "NeuesProjekt";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.Text = "NeuesProjekt";
             ((System.ComponentModel.ISupportInitialize)(this.ultraTextEditorPrjName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraDateTimeEditor1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraTextEditorNormalerText)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -152,5 +202,8 @@
         private System.Windows.Forms.Button btnCancel;
         private Infragistics.Win.Misc.UltraLabel ultraLabel3;
         private Infragistics.Win.UltraWinMaskedEdit.UltraMaskedEdit ultraMaskedEditKommission;
+        private System.Windows.Forms.RadioButton radioButtonNormalerText;
+        private System.Windows.Forms.RadioButton rbKommission;
+        private Infragistics.Win.UltraWinEditors.UltraTextEditor ultraTextEditorNormalerText;
     }
  }

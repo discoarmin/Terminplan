@@ -85,5 +85,33 @@ namespace Terminplan
 
             return retWert;
         }
+
+        /// <summary>
+        /// Behandelt das CheckedChanged Ereignis eines RadioButtons.
+        /// </summary>
+        /// <param name="sender">Die Quelle des Ereignisses.</param>
+        /// <param name="e">Die <see cref="EventArgs"/>Instanz, welche die Ereignisdaten enthält.</param>
+        private void OnRadioButtonChanged(object sender, EventArgs e)
+        {
+            var rb = (RadioButton)sender;                                       // die Quelle ist ein RadioButton                                        
+            
+            // Falls der RadioButton abgewählt ist, wird die zugehörige Textbox usichtbar geschaltet, sonst sichtbar
+            if (rb.Checked)
+            {
+                // Ermitteln, welcher RadioButton betätigt wurde
+                if(rb.Tag.ToString() == @"Text")
+                {
+                    // Der Projektschlüssel besteht aus reinem Text
+                    this.ultraTextEditorNormalerText.Visible = true;            // Texteditor ausblenden
+                    this.ultraMaskedEditKommission.Visible = false;             // maskierte Eingabe für EST-Kommissionsnummeer einblenden
+                }
+                else
+                {
+                    // Der Projektschlüssel besteht aus einem 
+                    this.ultraTextEditorNormalerText.Visible = false;           // Texteditor einblenden
+                    this.ultraMaskedEditKommission.Visible = true;              // maskierte Eingabe für EST-Kommissionsnummeer ausblenden
+                }
+            }
+        }
     }
 }
