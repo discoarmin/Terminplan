@@ -21,17 +21,19 @@
 namespace Terminplan
 {
     using System;
+    using System.Diagnostics;
     using System.Drawing;
     using System.Windows.Forms;
     using System.Resources;
-
+    using Infragistics.Win;
     using TerminPlan;
+    using Resources = Properties.Resources;
 
     /// <summary>Klasse für den Begrüßungsbildschirm</summary>
     public sealed partial class SplashScreen : Form
     {
         #region Private Members
-        private readonly ResourceManager rm = Properties.Resources.ResourceManager;
+        private readonly ResourceManager rm = Resources.ResourceManager;
 
         private ContainerControl sender;                                        // das aufrufende Element
 
@@ -41,15 +43,15 @@ namespace Terminplan
         /// <summary>Initialisiert eine neue Instanz der <see cref="SplashScreen"/> Klasse.</summary>
         public SplashScreen()
         {
-            this.DoubleBuffered = true;
+            DoubleBuffered = true;
 
             // Die Begrüßungsanzeige sollte nicht anwählbar sein
-            this.SetStyle(ControlStyles.Selectable, false);
-            this.SetStyle(ControlStyles.StandardClick, false);
+            SetStyle(ControlStyles.Selectable, false);
+            SetStyle(ControlStyles.StandardClick, false);
 
             // Für Windows Form-Designer-Unterstützung erforderlich
-            this.InitializeComponent();
-            this.InitializeUi();
+            InitializeComponent();
+            InitializeUi();
         }
 
         ///// <summary>Initialisiert eine neue Instanz der <see cref="SplashScreen"/> Klasse.</summary>
@@ -80,11 +82,11 @@ namespace Terminplan
         {
             private get
             {
-                return this.sender;
+                return sender;
             }
             set
             {
-                this.sender = value;
+                sender = value;
             }
         }
 
@@ -98,50 +100,50 @@ namespace Terminplan
         /// <summary> Schließt den Begrüßungsbildschirm </summary>
         public void CloseMe()
         {
-            this.Close();
-            this.Dispose();
+            Close();
+            Dispose();
         }
         #endregion CloseMe
 
         #region InitializeUi
         private void InitializeUi()
         {
-            this.LocalizeStrings();
-            this.HookEvents();
+            LocalizeStrings();
+            HookEvents();
         }
         #endregion InitializeUi
 
         #region HookEvents
         private void HookEvents()
         {
-            TerminPlanForm.InitializationStatusChanged += this.ApplicationInitializationStatusChanged;
+            TerminPlanForm.InitializationStatusChanged += ApplicationInitializationStatusChanged;
         }
         #endregion HookEvents
 
         #region UnHookEvents
         private void UnHookEvents()
         {
-            TerminPlanForm.InitializationStatusChanged -= this.ApplicationInitializationStatusChanged;
+            TerminPlanForm.InitializationStatusChanged -= ApplicationInitializationStatusChanged;
         }
         #endregion UnHookEvents
 
         #region UpdateStatusLabel
         private void UpdateStatusLabel(string status)
         {
-            this.lblStatus.Text = status;
+            lblStatus.Text = status;
         }
         #endregion UpdateStatusLabel
 
         #region LocalizeStrings
         private void LocalizeStrings()
         {
-            this.lblAppName.Text = AboutControl.ApplicationName;
-            this.lblVersion.Text = string.Format(@" v {0}", AboutControl.Version);
-            var resourceManager = this.rm;
+            lblAppName.Text = AboutControl.ApplicationName;
+            lblVersion.Text = string.Format(@" v {0}", AboutControl.Version);
+            var resourceManager = rm;
             if (resourceManager != null)
             {
                 // ReSharper disable once AssignNullToNotNullAttribute
-                this.lblStatus.Text = string.Format(resourceManager.GetString(@"Application_Starting"), Properties. Resources.Title);
+                lblStatus.Text = string.Format(resourceManager.GetString(@"Application_Starting"), Resources.Title);
             }
         }
         #endregion LocalizeStrings
@@ -158,13 +160,13 @@ namespace Terminplan
         // ReSharper disable once ParameterHidesMember
         private void ApplicationInitializationStatusChanged(object sender, InitializationStatusChangedEventArgs e)
         {
-            if (this.lblStatus.InvokeRequired)
+            if (lblStatus.InvokeRequired)
             {
-                this.lblStatus.Invoke(new UpdateStringDelegate(this.UpdateStatusLabel), new object[] { e.Status });
+                lblStatus.Invoke(new UpdateStringDelegate(UpdateStatusLabel), new object[] { e.Status });
             }
             else
             {
-                this.UpdateStatusLabel(e.Status);
+                UpdateStatusLabel(e.Status);
             }
         }
 
@@ -216,10 +218,10 @@ namespace Terminplan
                 //
                 var topMost = true;
                 //var topMost = false;
-                var formRect = new Rectangle(Point.Empty, this.Size);
-                var screenRect = Infragistics.Win.Utilities.ScreenFromPoint(Cursor.Position).Bounds;
-                Infragistics.Win.DrawUtility.AdjustHAlign(Infragistics.Win.HAlign.Center, ref formRect, screenRect);
-                Infragistics.Win.DrawUtility.AdjustVAlign(Infragistics.Win.VAlign.Middle, ref formRect, screenRect);
+                var formRect = new Rectangle(Point.Empty, Size);
+                var screenRect = Utilities.ScreenFromPoint(Cursor.Position).Bounds;
+                DrawUtility.AdjustHAlign(HAlign.Center, ref formRect, screenRect);
+                DrawUtility.AdjustVAlign(VAlign.Middle, ref formRect, screenRect);
                 var location = formRect.Location;
 
                 // ReSharper disable once ConditionIsAlwaysTrueOrFalse
@@ -248,7 +250,7 @@ namespace Terminplan
                     message.Result = (IntPtr)NativeWindowMethods.HTTRANSPARENT;
                     break;
                 default:
-                    System.Diagnostics.Debug.WriteLine(message.ToString(), DateTime.Now.ToString("hh:mm:ss:ffffff"));
+                    Debug.WriteLine(message.ToString(), DateTime.Now.ToString("hh:mm:ss:ffffff"));
                     base.WndProc(ref message);
                     break;
             }
@@ -287,17 +289,17 @@ namespace Terminplan
 
             public string Status
             {
-                get { return this.status; }
+                get { return status; }
             }
 
             public bool ShowProgressBar
             {
-                get { return this.showProgressBar; }
+                get { return showProgressBar; }
             }
 
             public int PercentComplete
             {
-                get { return this.percentComplete; }
+                get { return percentComplete; }
             }
         }
         #endregion InitializationStatusChangedEventArgs

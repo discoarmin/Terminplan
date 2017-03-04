@@ -21,6 +21,7 @@ namespace Terminplan
     using System.Drawing;
     using System.Windows.Forms;
     using System.Reflection;
+    using Properties;
 
     public partial class AboutControl : UserControl
     {
@@ -31,8 +32,8 @@ namespace Terminplan
         /// </summary>
         public AboutControl()
         {
-            this.InitializeComponent();
-            this.OnInitializeUi();                                              // Oberfläche initialisieren
+            InitializeComponent();
+            OnInitializeUi();                                              // Oberfläche initialisieren
         }
 
         #endregion Konstruktor
@@ -45,25 +46,25 @@ namespace Terminplan
         private void OnInitializeUi()
         {
             // Namen der Anwendung aus den Ressourcen laden und in das Textfeld eintragen
-            this.lblAppName.Text = Properties.Resources.Title;
+            lblAppName.Text = Resources.Title;
             
             // Beschreibungn der Anwendung aus den Ressourcen laden und in das Textfeld eintragen
-            this.lblDescription.Text = Properties.Resources.ShortDescription;
+            lblDescription.Text = Resources.ShortDescription;
             
             // Firmennamen aus des Ressourcen laden und in das Textfeld eintragen
-            this.lblCompany.Text = string.Format(@"{0}: {1}", DienstProgramme.GetLocalizedString(@"Publisher"), Firma);
+            lblCompany.Text = string.Format(@"{0}: {1}", DienstProgramme.GetLocalizedString(@"Publisher"), Firma);
             
             // Copyright-Info aus den Ressourcen laden und in das Textfeld eintragen
-            this.lblCopyright.Text = DienstProgramme.GetLocalizedString(Copyright);
+            lblCopyright.Text = DienstProgramme.GetLocalizedString(Copyright);
             
             // Versionsnummer in das Textfeld eintragen
-            this.lblVersion.Text = string.Format(@"{0}: {1}", DienstProgramme.GetLocalizedString(@"Version"), Version);
+            lblVersion.Text = string.Format(@"{0}: {1}", DienstProgramme.GetLocalizedString(@"Version"), Version);
 
             //Stream stream = DienstProgramme.GetEmbeddedResourceStream(@"TerminPlan.Images.Logo.PNG");
             var stream = DienstProgramme.GetEmbeddedResourceStream(@"Terminplan.Images.Logo.PNG");
             var logo = Image.FromStream(stream);
-            this.pbLogo.Size = logo.Size;
-            this.pbLogo.Image = logo;
+            pbLogo.Size = logo.Size;
+            pbLogo.Image = logo;
         }
         #endregion OnInitializeUi
         #endregion Methoden

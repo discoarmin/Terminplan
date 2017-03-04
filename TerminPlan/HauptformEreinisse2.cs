@@ -18,6 +18,7 @@
 
 namespace Terminplan
 {
+    using System.Threading;
     using Infragistics.Win;
     using Infragistics.Win.UltraMessageBox;
     using Infragistics.Win.UltraWinSchedule;
@@ -26,6 +27,7 @@ namespace Terminplan
     using System.Collections.Generic;
     using System.Globalization;
     using System.Windows.Forms;
+    using Resources = Properties.Resources;
 
     /// <summary>
     /// Klasse TerminPlanForm (Hauptformular).
@@ -38,7 +40,7 @@ namespace Terminplan
         /// <summary> Löscht den aktiven Arbeitsinhalt oder die aktive Aufgabe </summary>
         private void DeleteTask()
         {
-            var activeTask = this.ultraGanttView1.ActiveTask;                   // Aktiven Arbeitsinhalt oder Aufgabe ermitteln
+            var activeTask = ultraGanttView1.ActiveTask;                   // Aktiven Arbeitsinhalt oder Aufgabe ermitteln
             try
             {
                 // Nur bearbeiten, falls ein Arbeitsinhalt oder eine Aufgabe aktiv ist
@@ -49,7 +51,7 @@ namespace Terminplan
                     if (parent == null)
                     {
                         // Es handelt sich um eine Aufgabe. Diese löschen
-                        this.ultraCalendarInfo1.Tasks.Remove(activeTask);       
+                        ultraCalendarInfo1.Tasks.Remove(activeTask);       
                     }
                     else
                     {
@@ -59,13 +61,13 @@ namespace Terminplan
                 }
 
                 // Status aktualisieren
-                var newActiveTask = this.ultraGanttView1.ActiveTask;
-                this.UpdateTasksToolsState(newActiveTask);
-                this.UpdateToolsRequiringActiveTask(newActiveTask != null);
+                var newActiveTask = ultraGanttView1.ActiveTask;
+                UpdateTasksToolsState(newActiveTask);
+                UpdateToolsRequiringActiveTask(newActiveTask != null);
             }
             catch (TaskException ex)
             {
-                UltraMessageBoxManager.Show(ex.Message, this.rm.GetString("MessageBox_Error"));
+                UltraMessageBoxManager.Show(ex.Message, rm.GetString("MessageBox_Error"));
             }
         }
         #endregion DeleteTask
@@ -75,10 +77,10 @@ namespace Terminplan
         private void InitializeUi()
         {
             var culture = CultureInfo.InstalledUICulture;                       // Sprache des Betriebssystems ermitteln
-            System.Threading.Thread.CurrentThread.CurrentCulture = culture;
-            System.Threading.Thread.CurrentThread.CurrentUICulture = culture;
+            Thread.CurrentThread.CurrentCulture = culture;
+            Thread.CurrentThread.CurrentUICulture = culture;
 
-            var col = this.ultraGanttView1.GridSettings.ColumnSettings.Values;
+            var col = ultraGanttView1.GridSettings.ColumnSettings.Values;
 
             // Spaltenbreite einstellen
             foreach (var de in col)
@@ -124,10 +126,10 @@ namespace Terminplan
 
             // Füllt die Liste mit den Farbschematas
             var selectedIndex = 0;                                              // Index des ausgewählten Farbschemas (1. Element)
-            var themeTool = (ListTool)this.ultraToolbarsManager1.Tools[@"ThemeList"];
+            var themeTool = (ListTool)ultraToolbarsManager1.Tools[@"ThemeList"];
 
             // Alle vorhandenen Farbschematas durchgehen
-            foreach (var resourceName in this.themePaths)
+            foreach (var resourceName in themePaths)
             {
                 var item = new ListToolItem(resourceName);                      // Eintrag aus der liste
 
@@ -146,13 +148,13 @@ namespace Terminplan
             themeTool.SelectedItemIndex = selectedIndex;                        // Ausgewähltes Farbschema als Standard setzen
 
             // Das richtigen Listenelement für den Touch-Modus auswählen
-            ((ListTool)this.ultraToolbarsManager1.Tools[@"TouchMode"]).SelectedItemIndex = 0; // Erstes Element als Auswahl
+            ((ListTool)ultraToolbarsManager1.Tools[@"TouchMode"]).SelectedItemIndex = 0; // Erstes Element als Auswahl
 
             // Erstellt eine Liste mit verschiedenen Schriftgrößen
-            this.PopulateFontSizeValueList();                                   // Fontliste füllen
-            ((ComboBoxTool)(this.ultraToolbarsManager1.Tools[@"FontSize"])).SelectedIndex = 0;
-            ((FontListTool)this.ultraToolbarsManager1.Tools[@"FontList"]).SelectedIndex = 0;
-            this.OnUpdateFontToolsState(false);                                 // Font ist nicht auswählbar
+            PopulateFontSizeValueList();                                   // Fontliste füllen
+            ((ComboBoxTool)(ultraToolbarsManager1.Tools[@"FontSize"])).SelectedIndex = 0;
+            ((FontListTool)ultraToolbarsManager1.Tools[@"FontList"]).SelectedIndex = 0;
+            OnUpdateFontToolsState(false);                                 // Font ist nicht auswählbar
 
             // Aboutbox initialisieren
             Control control = new AboutControl()
@@ -161,14 +163,14 @@ namespace Terminplan
                 Parent = this                                                   // Das Hauptformular ist das Elternformular
             };                                                                  // Neue Instanz der Aboutbox erzeugen
 
-            ((PopupControlContainerTool)this.ultraToolbarsManager1.Tools[@"About"]).Control = control; // Aboutbox in die Tools für den UltraToolbarsManager setzen
+            ((PopupControlContainerTool)ultraToolbarsManager1.Tools[@"About"]).Control = control; // Aboutbox in die Tools für den UltraToolbarsManager setzen
 
             // Größe der Spalten so einstellen, dass alle Daten sichtbar sind.
-            this.ultraGanttView1.PerformAutoSizeAllGridColumns();
+            ultraGanttView1.PerformAutoSizeAllGridColumns();
 
             // Die Bilder entsprechend dem aktuellen Farbschema einfärben.
-            this.ColorizeImages();
-            this.ultraToolbarsManager1.Ribbon.FileMenuButtonCaption = Properties.Resources.ribbonFileTabCaption; // Beschriftung des Datei-Menüs-Button eintragen
+            ColorizeImages();
+            ultraToolbarsManager1.Ribbon.FileMenuButtonCaption = Resources.ribbonFileTabCaption; // Beschriftung des Datei-Menüs-Button eintragen
         }
         #endregion InitializeUi
 
@@ -180,7 +182,7 @@ namespace Terminplan
         /// <param name="moveTimeSpan">Zeitspanne zum Verschieben des Start- und Enddatums der Aufgabe</param>
         private void MoveTask(GanttViewAction action, TimeSpanForMoving moveTimeSpan)
         {
-            var activeTask = this.ultraGanttView1.ActiveTask;                   // Aktive Aufgabe oder aktiven Arbeitsinhalt ermitteln
+            var activeTask = ultraGanttView1.ActiveTask;                   // Aktive Aufgabe oder aktiven Arbeitsinhalt ermitteln
 
             // Nur bearbeiten, falls ein Arbeitsinhalt oder eine Aufgabe existiert und
             // wenn es sich nicht um keine Summe handelt
@@ -239,7 +241,7 @@ namespace Terminplan
         /// <param name="action">die auszuführende Aktion(Einrückung oder Auslagerung)</param>
         private void PerformIndentOrOutdent(GanttViewAction action)
         {
-            var activeTask = this.ultraGanttView1.ActiveTask;                   // Aktive Aufgabe oder aktiven Arbeitsinhalt ermitteln
+            var activeTask = ultraGanttView1.ActiveTask;                   // Aktive Aufgabe oder aktiven Arbeitsinhalt ermitteln
 
             try
             {
@@ -276,7 +278,7 @@ namespace Terminplan
             catch (Exception ex)
             {
                 // Bei einem aufgetretenen Fehler diesen anzeigen
-                UltraMessageBoxManager.Show(ex.Message, this.rm.GetString("MessageBox_Error"));
+                UltraMessageBoxManager.Show(ex.Message, rm.GetString("MessageBox_Error"));
             }
         }
         #endregion PerformIndentOrOutdent
@@ -291,7 +293,7 @@ namespace Terminplan
             // Jeden Eintrag der Liste in das Tool für die Schriftgröße des UltraToolbarsManager eintragen
             foreach(var i in fontSizeList)
             {
-               ((ComboBoxTool)(this.ultraToolbarsManager1.Tools[@"FontSize"])).ValueList.ValueListItems.Add(i);
+               ((ComboBoxTool)(ultraToolbarsManager1.Tools[@"FontSize"])).ValueList.ValueListItems.Add(i);
             }
         }
         #endregion PopulateFontSizeValueList
@@ -303,7 +305,7 @@ namespace Terminplan
         /// <param name="prozentSatz">der zuzuweisende Prozentsatz</param>
         private void SetTaskPercentage(float prozentSatz)
         {
-            var activeTask = this.ultraGanttView1.ActiveTask;                   // Aktive Aufgabe oder aktiven Arbeitsinhalt ermitteln
+            var activeTask = ultraGanttView1.ActiveTask;                   // Aktive Aufgabe oder aktiven Arbeitsinhalt ermitteln
             try
             {
                 // Nur bearbeiten, falls ein aktiver Arbeitsinhalt oder eine aktive Ausgabe existiert
@@ -315,7 +317,7 @@ namespace Terminplan
             catch (TaskException ex)
             {
                 // Bei einem aufgetretenen Fehler diesen anzeigen
-                UltraMessageBoxManager.Show(ex.Message, this.rm.GetString("MessageBox_Error"));
+                UltraMessageBoxManager.Show(ex.Message, rm.GetString("MessageBox_Error"));
             }
         }
         #endregion /SetTaskPercentage
@@ -328,8 +330,8 @@ namespace Terminplan
         private void SetTextBackColor()
         {
             // Ausgewählte Farbe aus dem ColorPicker ermitteln
-            var fontBgColor = ((PopupColorPickerTool)this.ultraToolbarsManager1.Tools[@"Font_BackColor"]).SelectedColor;
-            var activeTask = this.ultraGanttView1.ActiveTask;                   // Aktive Aufgabe oder aktiven Arbeitsinhalt ermitteln
+            var fontBgColor = ((PopupColorPickerTool)ultraToolbarsManager1.Tools[@"Font_BackColor"]).SelectedColor;
+            var activeTask = ultraGanttView1.ActiveTask;                   // Aktive Aufgabe oder aktiven Arbeitsinhalt ermitteln
             
             // Nur bearbeiten, falls ein aktiver Arbeitsinhalt oder eine aktive Ausgabe existiert
             if (activeTask == null)
@@ -337,7 +339,7 @@ namespace Terminplan
                 return;
             }
 
-            var activeField = this.ultraGanttView1.ActiveField;                 // Aktive Zelle ermitteln
+            var activeField = ultraGanttView1.ActiveField;                 // Aktive Zelle ermitteln
                 
             // Nur bearbeiten, falls in der aktiven Zelle einen Wert enthält
             if (activeField.HasValue)
@@ -355,8 +357,8 @@ namespace Terminplan
         private void SetTextForeColor()
         {
             // Ausgewählte Farbe aus dem ColorPicker ermitteln
-            var fontColor = ((PopupColorPickerTool)this.ultraToolbarsManager1.Tools[@"Font_ForeColor"]).SelectedColor;
-            var activeTask = this.ultraGanttView1.ActiveTask;                   // Aktive Aufgabe oder aktiven Arbeitsinhalt ermitteln
+            var fontColor = ((PopupColorPickerTool)ultraToolbarsManager1.Tools[@"Font_ForeColor"]).SelectedColor;
+            var activeTask = ultraGanttView1.ActiveTask;                   // Aktive Aufgabe oder aktiven Arbeitsinhalt ermitteln
             
             // Nur bearbeiten, falls ein aktiver Arbeitsinhalt oder eine aktive Ausgabe existiert
             if (activeTask == null)
@@ -364,7 +366,7 @@ namespace Terminplan
                 return;
             }
 
-            var activeField = this.ultraGanttView1.ActiveField;                 // Aktive Zelle ermitteln
+            var activeField = ultraGanttView1.ActiveField;                 // Aktive Zelle ermitteln
             if (activeField.HasValue)
             {
                 activeTask.GridSettings.CellSettings[(TaskField)activeField].Appearance.ForeColor = fontColor; // Vordergrundfarbe der Schrift setzen
@@ -377,8 +379,8 @@ namespace Terminplan
         private void UpdateFontName()
         {
             // Namen der ausgewählte Schriftart aus der Fontliste ermitteln
-            var fontName = ((FontListTool)this.ultraToolbarsManager1.Tools[@"FontList"]).Text;
-            var activeTask = this.ultraGanttView1.ActiveTask;                  // Aktive Aufgabe oder aktiven Arbeitsinhalt ermitteln
+            var fontName = ((FontListTool)ultraToolbarsManager1.Tools[@"FontList"]).Text;
+            var activeTask = ultraGanttView1.ActiveTask;                  // Aktive Aufgabe oder aktiven Arbeitsinhalt ermitteln
 
             // Nur bearbeiten, falls ein aktiver Arbeitsinhalt oder eine aktive Ausgabe existiert
             if (activeTask == null)
@@ -386,7 +388,7 @@ namespace Terminplan
                 return;
             }
 
-            var activeField = this.ultraGanttView1.ActiveField;                 // Aktive Zelle ermitteln
+            var activeField = ultraGanttView1.ActiveField;                 // Aktive Zelle ermitteln
                 
             // Nur bearbeiten, falls in der aktiven Zelle einen Wert enthält
             if (activeField.HasValue)
@@ -402,7 +404,7 @@ namespace Terminplan
         private void UpdateFontSize()
         {
             // Größe der ausgewählte Schriftart aus dem ComboBoxTool ermitteln
-            var item = (ValueListItem)((ComboBoxTool)(this.ultraToolbarsManager1.Tools[@"FontSize"])).SelectedItem;
+            var item = (ValueListItem)((ComboBoxTool)(ultraToolbarsManager1.Tools[@"FontSize"])).SelectedItem;
 
             // Nur bearbeiten, falls ein Wert vorhanden ist
             if (item == null)
@@ -411,7 +413,7 @@ namespace Terminplan
             }
 
             var fontSize = (float)item.DataValue;                               // Schriftgröße 
-            var activeTask = this.ultraGanttView1.ActiveTask;                   // Aktive Aufgabe oder aktiven Arbeitsinhalt ermitteln
+            var activeTask = ultraGanttView1.ActiveTask;                   // Aktive Aufgabe oder aktiven Arbeitsinhalt ermitteln
                 
             // Nur bearbeiten, falls ein aktiver Arbeitsinhalt oder eine aktive Ausgabe existiert
             if (activeTask == null)
@@ -419,7 +421,7 @@ namespace Terminplan
                 return;
             }
 
-            var activeField = this.ultraGanttView1.ActiveField;                 // Aktive Zelle ermitteln
+            var activeField = ultraGanttView1.ActiveField;                 // Aktive Zelle ermitteln
                     
             // Nur bearbeiten, falls in der aktiven Zelle einen Wert enthält
             if (activeField.HasValue)
@@ -436,12 +438,12 @@ namespace Terminplan
         /// <param name="propertyToUpdate">Aufzählung von Eigenschaften, welche von der Schriftart abhängig sind</param>
         private void UpdateFontProperty(FontProperties propertyToUpdate)
         {
-            var activeTask = this.ultraGanttView1.ActiveTask;                   // Aktive Aufgabe oder aktiven Arbeitsinhalt ermitteln
+            var activeTask = ultraGanttView1.ActiveTask;                   // Aktive Aufgabe oder aktiven Arbeitsinhalt ermitteln
             
             // Nur bearbeiten, falls ein aktiver Arbeitsinhalt oder eine aktive Ausgabe existiert
             if (activeTask != null)
             {
-                var activeField = this.ultraGanttView1.ActiveField;             // Aktive Zelle ermitteln
+                var activeField = ultraGanttView1.ActiveField;             // Aktive Zelle ermitteln
                 if (activeField.HasValue)
                 {
                     var activeTaskActiveCellFontData = activeTask.GridSettings.CellSettings[(TaskField)activeField].Appearance.FontData; // Daten der Schrift in der aktiven Zelle ermitteln
@@ -462,7 +464,7 @@ namespace Terminplan
                 }
             }
 
-            this.cellActivationRecursionFlag = false;                           // Zellen müssen nicht rekursiv bearbeitet werden, gilt also nur für eine Zelle
+            cellActivationRecursionFlag = false;                           // Zellen müssen nicht rekursiv bearbeitet werden, gilt also nur für eine Zelle
         }
         #endregion UpdateFontProperty
 
@@ -472,7 +474,7 @@ namespace Terminplan
         private void UpdateTasksToolsState(Task activeTask)
         {
             // Gruppe "RibbonGrp_Tasks" laden 
-            var group = this.ultraToolbarsManager1.Ribbon.Tabs[@"Ribbon_Task"].Groups[@"RibbonGrp_Tasks"];
+            var group = ultraToolbarsManager1.Ribbon.Tabs[@"Ribbon_Task"].Groups[@"RibbonGrp_Tasks"];
 
             // Nur bearbeiten, falls ein aktiver Arbeitsinhalt oder eine aktive Ausgabe existiert
             if (activeTask != null)
@@ -496,11 +498,11 @@ namespace Terminplan
         /// <param name="enabled">falls auf <c>true</c>gesetzt, wird Werkzeug freigegeben, sonst gesperrt.</param>
         private void UpdateToolsRequiringActiveTask(bool enabled)
         {
-            this.ultraToolbarsManager1.Tools[@"Tasks_Delete"].SharedProps.Enabled = enabled;                     // Löschen freigeben oder sperren
-            this.ultraToolbarsManager1.Tools[@"Insert_Milestone"].SharedProps.Enabled = enabled;                 // Meilensteine freigeben oder sperren
-            this.ultraToolbarsManager1.Tools[@"Properties_TaskInformation"].SharedProps.Enabled = enabled;       // Anzeige der Informationen zum aktuellen Arbeitsinhalt oder der aktuellen Aufgabe freigeben oder sperren
-            this.ultraToolbarsManager1.Tools[@"Properties_Notes"].SharedProps.Enabled = enabled;                 // Anzeige der Beschreibung freigeben oder sperren
-            this.ultraToolbarsManager1.Tools[@"Insert_Task_TaskAtSelectedRow"].SharedProps.Enabled = enabled;    // Einfügen bei ausgewählter Zeile freigeben oder sperren
+            ultraToolbarsManager1.Tools[@"Tasks_Delete"].SharedProps.Enabled = enabled;                     // Löschen freigeben oder sperren
+            ultraToolbarsManager1.Tools[@"Insert_Milestone"].SharedProps.Enabled = enabled;                 // Meilensteine freigeben oder sperren
+            ultraToolbarsManager1.Tools[@"Properties_TaskInformation"].SharedProps.Enabled = enabled;       // Anzeige der Informationen zum aktuellen Arbeitsinhalt oder der aktuellen Aufgabe freigeben oder sperren
+            ultraToolbarsManager1.Tools[@"Properties_Notes"].SharedProps.Enabled = enabled;                 // Anzeige der Beschreibung freigeben oder sperren
+            ultraToolbarsManager1.Tools[@"Insert_Task_TaskAtSelectedRow"].SharedProps.Enabled = enabled;    // Einfügen bei ausgewählter Zeile freigeben oder sperren
         }
         #endregion UpdateToolsRequiringActiveTask
         #endregion Methoden

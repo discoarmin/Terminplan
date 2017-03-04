@@ -1,7 +1,7 @@
 <?xml version="1.0" standalone="yes"?>
 <TerminPlan>
   <xs:schema id="TerminPlan" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xs:element name="TerminPlan" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+    <xs:element name="TerminPlan" msdata:IsDataSet="true" msdata:Locale="de-DE_phoneb">
       <xs:complexType>
         <xs:choice minOccurs="0" maxOccurs="unbounded">
           <xs:element name="Projekte">
@@ -55,15 +55,24 @@
     <ProjektStart>2014-01-17T06:00:00+01:00</ProjektStart>
   </Projekte>
   <Arbeitsinhalt_Aufgaben>
+    <TaskID>f0c9f4a4-ec25-49b3-b6de-a13b4e8c9925</TaskID>
+    <ProjektKey>projectKey</ProjektKey>
+    <TaskName>Arbeitsinhalt 1</TaskName>
+    <TaskStartTime>2014-01-17T18:24:16.9002971+01:00</TaskStartTime>
+    <TaskDauer>P10D</TaskDauer>
+    <Einschraenkung>1</Einschraenkung>
+    <TaskFertigInProzent>15</TaskFertigInProzent>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAHNJbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNi4yLCBWZXJzaW9uPTE2LjIuMjAxNjIuMjA0MCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiBQEAAAAmSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlRhc2sKAAAAAklkEkNvbnN0cmFpbnREYXRlVGltZQhEdXJhdGlvbg5EdXJhdGlvbkZvcm1hdBVTdW1tYXJ5RHVyYXRpb25Gb3JtYXQETmFtZQ9QZXJjZW50Q29tcGxldGUKUHJvamVjdEtleQlSZXNvdXJjZXMNU3RhcnREYXRlVGltZQMAAAAAAQABBAALU3lzdGVtLkd1aWQNDAgICzVJbmZyYWdpc3RpY3MuV2luLlVsdHJhV2luU2NoZWR1bGUuUmVzb3VyY2VzQ29sbGVjdGlvbgIAAAANAgAAAAT9////C1N5c3RlbS5HdWlkCwAAAAJfYQJfYgJfYwJfZAJfZQJfZgJfZwJfaAJfaQJfagJfawAAAAAAAAAAAAAACAcHAgICAgICAgKk9MnwJeyzSbbeoTtOjJklAAAAAAAAAAAAgCGo2wcAAAMAAAADAAAABgQAAAAPQXJiZWl0c2luaGFsdCAxAABwQQYFAAAACnByb2plY3RLZXkJBgAAANtnNnfI4dAIBQYAAAA1SW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlJlc291cmNlc0NvbGxlY3Rpb24BAAAAATABAgAAAAYHAAAAEE1hcnRpbiBLbm9ibGF1Y2gL</AlleEigenschaften>
+  </Arbeitsinhalt_Aufgaben>
+  <Arbeitsinhalt_Aufgaben>
     <TaskID>4ddd2307-cf07-4452-9db0-c3451661be47</TaskID>
     <ProjektKey>projectKey</ProjektKey>
     <TaskName>Aufgabe 1</TaskName>
-    <TaskStartTime>2017-01-17T06:00:00+01:00</TaskStartTime>
+    <TaskStartTime>2014-01-17T00:00:00+01:00</TaskStartTime>
     <TaskDauer>P2D</TaskDauer>
-    <ParentTaskID>f0c9f4a4-ec25-49b3-b6de-a13b4e8c9925</ParentTaskID>
     <Einschraenkung>6</Einschraenkung>
-    <TaskFertigInProzent>100</TaskFertigInProzent>
-    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAHNJbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNi4yLCBWZXJzaW9uPTE2LjIuMjAxNjIuMjA0MCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiBQEAAAAmSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlRhc2sMAAAAAklkCkNvbnN0cmFpbnQSQ29uc3RyYWludERhdGVUaW1lCER1cmF0aW9uDkR1cmF0aW9uRm9ybWF0FVN1bW1hcnlEdXJhdGlvbkZvcm1hdAROYW1lD1BlcmNlbnRDb21wbGV0ZQpQcm9qZWN0S2V5CVJlc291cmNlcw1TdGFydERhdGVUaW1lDFBhcmVudFRhc2tJZAMAAAAAAAEAAQQAAwtTeXN0ZW0uR3VpZAgNDAgICzVJbmZyYWdpc3RpY3MuV2luLlVsdHJhV2luU2NoZWR1bGUuUmVzb3VyY2VzQ29sbGVjdGlvbgIAAAANC1N5c3RlbS5HdWlkAgAAAAT9////C1N5c3RlbS5HdWlkCwAAAAJfYQJfYgJfYwJfZAJfZQJfZgJfZwJfaAJfaQJfagJfawAAAAAAAAAAAAAACAcHAgICAgICAgIHI91NB89SRJ2ww0UWYb5HBgAAAADABTMu4dAIAIDTVJIBAAADAAAAAwAAAAYEAAAACUF1ZmdhYmUgMQAAyEIGBQAAAApwcm9qZWN0S2V5CQYAAAAAwAUzLuHQCAH5/////f///6T0yfAl7LNJtt6hO06MmSUFBgAAADVJbmZyYWdpc3RpY3MuV2luLlVsdHJhV2luU2NoZWR1bGUuUmVzb3VyY2VzQ29sbGVjdGlvbgEAAAABMAECAAAABggAAAALUGVyc29uIE5hbWUL</AlleEigenschaften>
+    <TaskFertigInProzent>15</TaskFertigInProzent>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAHNJbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNi4yLCBWZXJzaW9uPTE2LjIuMjAxNjIuMjA0MCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiBQEAAAAmSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlRhc2sMAAAAAklkCkNvbnN0cmFpbnQSQ29uc3RyYWludERhdGVUaW1lCER1cmF0aW9uDkR1cmF0aW9uRm9ybWF0FVN1bW1hcnlEdXJhdGlvbkZvcm1hdAROYW1lD1BlcmNlbnRDb21wbGV0ZQpQcm9qZWN0S2V5CVJlc291cmNlcw1TdGFydERhdGVUaW1lDFBhcmVudFRhc2tJZAMAAAAAAAEAAQQAAwtTeXN0ZW0uR3VpZAgNDAgICzVJbmZyYWdpc3RpY3MuV2luLlVsdHJhV2luU2NoZWR1bGUuUmVzb3VyY2VzQ29sbGVjdGlvbgIAAAANC1N5c3RlbS5HdWlkAgAAAAT9////C1N5c3RlbS5HdWlkCwAAAAJfYQJfYgJfYwJfZAJfZQJfZgJfZwJfaAJfaQJfagJfawAAAAAAAAAAAAAACAcHAgICAgICAgIHI91NB89SRJ2ww0UWYb5HBgAAAADABTMu4dAIAIDTVJIBAAADAAAAAwAAAAYEAAAACUF1ZmdhYmUgMQAAcEEGBQAAAApwcm9qZWN0S2V5CQYAAAAAwAUzLuHQCAH5/////f///6T0yfAl7LNJtt6hO06MmSUFBgAAADVJbmZyYWdpc3RpY3MuV2luLlVsdHJhV2luU2NoZWR1bGUuUmVzb3VyY2VzQ29sbGVjdGlvbgEAAAABMAECAAAABggAAAANV29sZmdhbmcgUm90aAs=</AlleEigenschaften>
   </Arbeitsinhalt_Aufgaben>
   <Besitzer>
     <Key>Martin Knoblauch</Key>

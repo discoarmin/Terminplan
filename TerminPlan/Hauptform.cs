@@ -18,17 +18,20 @@
 
 namespace Terminplan
 {
+    using System;
+    using System.ComponentModel;
+    using System.Data;
+    using System.IO;
+    using System.Resources;
+    using System.Windows.Forms;
     using Infragistics.Win;
     using Infragistics.Win.AppStyling;
     using Infragistics.Win.UltraWinGanttView;
     using Infragistics.Win.UltraWinSchedule;
     using Infragistics.Win.UltraWinSchedule.TaskUI;
     using Infragistics.Win.UltraWinToolbars;
-    using System;
-    using System.Data;
-    using System.IO;
-    using System.Resources;
-    using System.Windows.Forms;
+    using PropertyChangedEventArgs = Infragistics.Win.PropertyChangedEventArgs;
+    using Resources = Properties.Resources;
 
     /// <summary>
     /// Klasse TerminPlanForm (Hauptformular).
@@ -105,16 +108,19 @@ namespace Terminplan
         public delegate void CloseDelagate();
 
         /// <summary>Dataset zur Aufnahme der Daten des Terminplans</summary>
-        public DataSet datasetTp;
+        public DataSet DatasetTp;
 
         /// <summary> Merker für rekursive Zellaktivierung </summary>
         private bool cellActivationRecursionFlag; // Merker rekursive Zellaktivierung
+
+        /// <summary> Merker, ob neues Projekt hinzugefügt wurde</summary>
+        private bool prjHinzugefuegt;
 
         /// <summary> Index des momentanen Farbschemas </summary>
         private int currentThemeIndex;
 
         /// <summary> Der ResourceManager </summary>
-        private ResourceManager rm = Properties.Resources.ResourceManager;
+        private ResourceManager rm = Resources.ResourceManager;
 
         /// <summary> Zeilenhöhe einer Arbeitsaufgabe </summary>
         private const int TaskRowHeight = 30;
@@ -139,22 +145,22 @@ namespace Terminplan
             // Minimieren der Initialisierungszeit durch Laden der Stilbibliothek
             // vor InitializeComponent(),
             // andernfalls werden alle Metriken nach dem Ändern des Themas neu berechnet.
-            this.themePaths = DienstProgramme.GetStyleLibraryResourceNames();
-            for (var i = 0; i < this.themePaths.Length; i++)
+            themePaths = DienstProgramme.GetStyleLibraryResourceNames();
+            for (var i = 0; i < themePaths.Length; i++)
             {
-                if (!this.themePaths[i].Contains(@"04"))
+                if (!themePaths[i].Contains(@"04"))
                 {
                     continue;
                 }
 
-                this.currentThemeIndex = i;
+                currentThemeIndex = i;
                 break;
             }
 
             // Eingebettete Ressourcen laden
-            Infragistics.Win.AppStyling.StyleManager.Load(DienstProgramme.GetEmbeddedResourceStream(this.themePaths[this.currentThemeIndex]));
-            this.SetResourceStrings();
-            this.InitializeComponent();
+            StyleManager.Load(DienstProgramme.GetEmbeddedResourceStream(themePaths[currentThemeIndex]));
+            SetResourceStrings();
+            InitializeComponent();
         }
 
         #endregion Konstruktor
@@ -167,12 +173,12 @@ namespace Terminplan
         /// <param name="disposing">true, falls verwaltete Ressourcen entsorgt werden sollen; sonst false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (this.components != null))
+            if (disposing && (components != null))
             {
                 // Deaktivieren der Ereignisprozedur OnApplicationStyleChanged()
-                Infragistics.Win.AppStyling.StyleManager.StyleChanged -= this.OnApplicationStyleChanged;
+                StyleManager.StyleChanged -= OnApplicationStyleChanged;
 
-                this.components.Dispose();
+                components.Dispose();
             }
 
             base.Dispose(disposing);
@@ -188,11 +194,11 @@ namespace Terminplan
         /// <param name="e">Ein <see cref="T:System.EventArgs" /> welches die Ereignisdaten enthält.</param>
         protected override void OnLoad(EventArgs e)
         {
-            this.OnInitializationStatusChanged(Properties.Resources.Loading);   // Anzeige im Splashscreen aktualisieren
+            OnInitializationStatusChanged(Resources.Loading);   // Anzeige im Splashscreen aktualisieren
             base.OnLoad(e);
 
             var splitterWeite = 10;                                             // Zum Einstellen des Splitters
-            var col = this.ultraGanttView1.GridSettings.ColumnSettings.Values;
+            var col = ultraGanttView1.GridSettings.ColumnSettings.Values;
             var schluessel = string.Empty;
 
             // Überschriften einstellen
@@ -201,7 +207,7 @@ namespace Terminplan
                 // Arbeitsinhalt oder Aufgabe
                 if (de.Key.ToLower() == @"name")
                 {
-                    de.Text = "Arbeitsinhalt/Aufgabe";
+                    de.Text = @"Arbeitsinhalt/Aufgabe";
                     de.Visible = DefaultableBoolean.True;
                     splitterWeite += de.Width;                                  // Breite der Spalte hinzuaddieren
                 }
@@ -209,7 +215,7 @@ namespace Terminplan
                 // Dauer
                 if (de.Key.ToLower() == @"duration")
                 {
-                    de.Text = "Dauer";
+                    de.Text = @"Dauer";
                     de.Visible = DefaultableBoolean.True;
                     splitterWeite += de.Width;                                  // Breite der Spalte hinzuaddieren
                 }
@@ -217,7 +223,7 @@ namespace Terminplan
                 // Start
                 if (de.Key.ToLower() == @"start")
                 {
-                    de.Text = "Start";
+                    de.Text = @"Start";
                     de.Visible = DefaultableBoolean.True;
                     splitterWeite += de.Width;                                  // Breite der Spalte hinzuaddieren
                 }
@@ -225,7 +231,7 @@ namespace Terminplan
                 // Ende
                 if (de.Key.ToLower() == @"enddatetime")
                 {
-                    de.Text = "Ende";
+                    de.Text = @"Ende";
                     de.Visible = DefaultableBoolean.True;
                     splitterWeite += de.Width;                                  // Breite der Spalte hinzuaddieren
                 }
@@ -233,30 +239,49 @@ namespace Terminplan
                 // Fertig in %
                 if (de.Key.ToLower() == @"percentcomplete")
                 {
-                    de.Text = "Status";
+                    de.Text = @"Status";
                     de.Visible = DefaultableBoolean.True;
                     splitterWeite += de.Width;                                  // Breite der Spalte hinzuaddieren
                 }
             }
 
             // Ruft die Daten aus der bereitgestellten XML-Datei ab
-            this.OnInitializationStatusChanged(Properties.Resources.Retrieving); // Daten im Splashscreen aktualisieren
-            //datasetTp = DienstProgramme.GetData(Path.Combine(Application.StartupPath, @"Data.TestDatenEST.XML")); // Testdaten laden
-            //datasetTp = DienstProgramme.GetData(Path.Combine(Application.StartupPath, @"Data.TestDaten1EST.XML")); // Testdaten laden
-            //datasetTp = DienstProgramme.GetData(Path.Combine(Application.StartupPath, @"Data.TestDaten2EST.XML")); // Testdaten laden
-            datasetTp = DienstProgramme.GetData(Path.Combine(Application.StartupPath, @"Data.DatenNeuEST.XML")); // Testdaten laden
+            OnInitializationStatusChanged(Resources.Retrieving);                // Daten im Splashscreen aktualisieren
+            WasLaden wasLaden = new WasLaden();
+            if (wasLaden.ShowDialog() == DialogResult.OK)
+            {
+                var dateiName = string.Empty;
+                if (wasLaden.Auswahl == 1)
+                {
+                    // Bestehenden Terminplan laden
+                    dateiName = DienstProgramme.OeffneXmlDatei();               // Öffnen-Dialog anzeigen
+                    if (dateiName != string.Empty)
+                    {
+                        DatasetTp = DienstProgramme.GetData(dateiName);         // bestehenden Terminplan laden
+                    }
+
+                }
+                else
+                {
+                    // Neuen Terminplan erzeugen
+                }
+            }
+            //DatasetTp = DienstProgramme.GetData(Path.Combine(Application.StartupPath, @"Data.TestDatenEST.XML")); // Testdaten laden
+            //DatasetTp = DienstProgramme.GetData(Path.Combine(Application.StartupPath, @"Data.TestDaten1EST.XML")); // Testdaten laden
+            //DatasetTp = DienstProgramme.GetData(Path.Combine(Application.StartupPath, @"Data.TestDaten2EST.XML")); // Testdaten laden
+            //DatasetTp = DienstProgramme.GetData(Path.Combine(Application.StartupPath, @"Data.DatenNeuEST.XML")); // Testdaten laden
 
             // Die eingelesenen Daten an die ultraCalendarInfo anbinden.
-            this.OnInitializationStatusChanged(Properties.Resources.Binding);   // Anzeige im Splashscreen aktualisieren
-            this.OnBindArbInhaltData(datasetTp);                                // Daten an ultraCalendarInfo anbinden
+            OnInitializationStatusChanged(Resources.Binding);                   // Anzeige im Splashscreen aktualisieren
+            OnBindArbInhaltData(DatasetTp);                                     // Daten an ultraCalendarInfo anbinden
 
             // Initialisiert die Kontrols auf dem Formular
-            this.OnInitializationStatusChanged(Properties.Resources.Initializing); // Anzeige im Splashscreen aktualisieren
-            this.OnColorizeImages();                                            // Farbe der Bilder an das eingestellte Farbschema anpassen
-            this.OnInitializeUi();                                              // Oberfläche initialisieren
+            OnInitializationStatusChanged(Resources.Initializing);              // Anzeige im Splashscreen aktualisieren
+            OnColorizeImages();                                                 // Farbe der Bilder an das eingestellte Farbschema anpassen
+            OnInitializeUi();                                                   // Oberfläche initialisieren
 
             // Ereignisprozedur zum Ändern des Schemas festlegen
-            Infragistics.Win.AppStyling.StyleManager.StyleChanged += this.OnApplicationStyleChanged;
+            StyleManager.StyleChanged += OnApplicationStyleChanged;
         }
 
         #endregion OnLoad
@@ -287,9 +312,9 @@ namespace Terminplan
         /// <summary> Behandelt das StyleChanged-Ereignis des Application Styling Managers </summary>
         /// <param name="sender">Die Quelle des Ereignisses.</param>
         /// <param name="e">Die <see cref="Infragistics.Win.AppStyling.StyleChangedEventArgs" /> Instanz,welche die Ereignisdaten enthält.</param>
-        private void OnApplicationStyleChanged(object sender, Infragistics.Win.AppStyling.StyleChangedEventArgs e)
+        private void OnApplicationStyleChanged(object sender, StyleChangedEventArgs e)
         {
-            this.ApplicationStyleChanged(sender, e);
+            ApplicationStyleChanged(sender, e);
         }
 
         #endregion OnApplicationStyleChanged
@@ -301,7 +326,7 @@ namespace Terminplan
         /// <param name="e">Die <see cref="CalendarInfoChangedEventArgs" /> Instanz,welche die Ereignisdaten enthält.</param>
         private void OnUltraCalendarInfo1CalendarInfoChanged(object sender, CalendarInfoChangedEventArgs e)
         {
-            this.UltraCalendarInfo1CalendarInfoChanged(sender, e);
+            UltraCalendarInfo1CalendarInfoChanged(sender, e);
         }
 
         #endregion OnUltraCalendarInfo1CalendarInfoChanged
@@ -316,7 +341,7 @@ namespace Terminplan
         /// <param name="e">Die <see cref="ActiveTaskChangingEventArgs" /> Instanz,welche die Ereignisdaten enthält.</param>
         private void OnUltraGanttView1ActiveTaskChanging(object sender, ActiveTaskChangingEventArgs e)
         {
-            this.UltraGanttView1ActiveTaskChanging(sender, e);
+            UltraGanttView1ActiveTaskChanging(sender, e);
         }
 
         #endregion OnUltraGanttView1ActiveTaskChanging
@@ -334,7 +359,7 @@ namespace Terminplan
         /// <param name="e">Die <see cref="CellActivatingEventArgs" /> Instanz,welche die Ereignisdaten enthält.</param>
         private void OnUltraGanttView1CellActivating(object sender, CellActivatingEventArgs e)
         {
-            this.UltraGanttView1CellActivating(sender, e);
+            UltraGanttView1CellActivating(sender, e);
         }
 
         #endregion OnUltraGanttView1CellActivating
@@ -364,7 +389,7 @@ namespace Terminplan
         /// <param name="e">Die <see cref="TaskAddedEventArgs" /> Instanz,welche die Ereignisdaten enthält.</param>
         private void OnUltraGanttView1TaskAdded(object sender, TaskAddedEventArgs e)
         {
-            this.UltraGanttView1TaskAdded(sender, e);
+            UltraGanttView1TaskAdded(sender, e);
         }
 
         #endregion OnUltraGanttView1TaskAdded
@@ -379,7 +404,7 @@ namespace Terminplan
         /// <param name="e">Die <see cref="TaskDeletedEventArgs" /> Instanz,welche die Ereignisdaten enthält.</param>
         private void OnUltraGanttView1TaskDeleted(object sender, TaskDeletedEventArgs e)
         {
-            this.UltraGanttView1TaskDeleted(sender, e);
+            UltraGanttView1TaskDeleted(sender, e);
         }
 
         #endregion OnUltraGanttView1TaskDeleted
@@ -407,9 +432,9 @@ namespace Terminplan
         /// </summary>
         /// <param name="sender">Die Quelle des Ereignisses.</param>
         /// <param name="e">Die <see cref="Infragistics.Win.PropertyChangedEventArgs" /> Instanz,welche die Ereignisdaten enthält.</param>
-        private void OnUltraToolbarsManager1PropertyChanged(object sender, Infragistics.Win.PropertyChangedEventArgs e)
+        private void OnUltraToolbarsManager1PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            this.UltraToolbarsManager1PropertyChanged(sender, e);
+            UltraToolbarsManager1PropertyChanged(sender, e);
         }
 
         #endregion OnUltraToolbarsManager1PropertyChanged
@@ -423,7 +448,7 @@ namespace Terminplan
         /// <param name="e">The <see cref="ToolEventArgs" /> Instanz, welche die Ereignisdaten enthält.</param>
         private void OnUltraToolbarsManager1ToolValueChanged(object sender, ToolEventArgs e)
         {
-            this.UltraToolbarsManager1ToolValueChanged(sender, e);
+            UltraToolbarsManager1ToolValueChanged(sender, e);
         }
 
         #endregion OnUltraToolbarsManager1ToolValueChanged
@@ -438,9 +463,9 @@ namespace Terminplan
         /// </remarks>
         /// <param name="sender">Die Quelle des Ereignisses.</param>
         /// <param name="e">Die <see cref="Infragistics.Win.PropertyChangedEventArgs" /> Instanz, welche die Ereignisdaten enthält.</param>
-        private void OnUltraTouchProvider1PropertyChanged(object sender, Infragistics.Win.PropertyChangedEventArgs e)
+        private void OnUltraTouchProvider1PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            this.UltraTouchProvider1PropertyChanged(sender, e);
+            UltraTouchProvider1PropertyChanged(sender, e);
         }
 
         #endregion OnUltraTouchProvider1PropertyChanged
@@ -459,7 +484,7 @@ namespace Terminplan
         /// <param name="data">Die Daten.</param>
         private void OnBindArbInhaltData(DataSet data)
         {
-            this.BindArbInhaltData(data);
+            BindArbInhaltData(data);
         }
 
         #endregion OnBindArbInhaltData
@@ -472,7 +497,7 @@ namespace Terminplan
         // ReSharper disable once UnusedMember.Local
         private void OnChangeIcon()
         {
-            this.ChangeIcon();
+            ChangeIcon();
         }
 
         #endregion OnChangeIcon
@@ -485,7 +510,7 @@ namespace Terminplan
         /// </summary>
         private void OnColorizeImages()
         {
-            this.ColorizeImages();
+            ColorizeImages();
         }
 
         #endregion OnColorizeImages
@@ -496,7 +521,7 @@ namespace Terminplan
         /// </summary>
         private void OnInitializeUi()
         {
-            this.InitializeUi(); // Oberfläche initialisieren
+            InitializeUi(); // Oberfläche initialisieren
         }
         #endregion OnInitializeUI
 
@@ -507,7 +532,7 @@ namespace Terminplan
         /// </summary>
         private void OnSetTextForeColor()
         {
-            this.SetTextForeColor();
+            SetTextForeColor();
         }
         #endregion OnSetTextForeColor
 
@@ -518,7 +543,7 @@ namespace Terminplan
         /// <param name="enabled">falls auf <c>true</c> gesetzt ist, freigeben.</param>
         private void OnUpdateFontToolsState(bool enabled)
         {
-            DienstProgramme.SetRibbonGroupToolsEnabledState(this.ultraToolbarsManager1.Ribbon.Tabs[0].Groups[@"RibbonGrp_Font"], enabled);
+            DienstProgramme.SetRibbonGroupToolsEnabledState(ultraToolbarsManager1.Ribbon.Tabs[0].Groups[@"RibbonGrp_Font"], enabled);
         }
         #endregion OnUpdateFontToolsState
 
@@ -526,65 +551,69 @@ namespace Terminplan
         private void LadeDatei()
         {
             // Dialog zum Öffnen einer Datei anzeigen
-            OpenFileDialog openFileDialog1 = new OpenFileDialog()
-            {
-                Filter = @"XML Dateien|*.xml",
-                Title = @"Terminplan öffnen"
-            };
+            var dateiName = DienstProgramme.OeffneXmlDatei();
+            if (dateiName == string.Empty) return;                              // Abbruch, da keine Datei ausgewählt wurde
 
-            if (openFileDialog1.ShowDialog() != DialogResult.OK)
-            {
-                return;                                                         // Abbruch, da keine Datei ausgewählt wurde
-            }
-
-            this.components = new System.ComponentModel.Container();
-            this.ultraCalendarInfo1 = new Infragistics.Win.UltraWinSchedule.UltraCalendarInfo(this.components);
+            ultraGanttView1.Project = null;
+            components = new Container();
+            DatasetTp = new DataSet();
+            ultraCalendarInfo1 = new UltraCalendarInfo(components);
 
             // Ruft die Daten aus der bereitgestellten XML-Datei ab
-            this.datasetTp = new DataSet();
-            this.datasetTp = DienstProgramme.GetData(openFileDialog1.FileName); // ausgewählte Daten laden
+            DatasetTp = DienstProgramme.GetData(dateiName);                     // ausgewählte Daten laden
 
             // Die eingelesenen Daten an die ultraCalendarInfo anbinden.
-            this.OnBindArbInhaltData(this.datasetTp);                           // Daten an ultraCalendarInfo anbinden
+            OnBindArbInhaltData(DatasetTp);                                     // Daten an ultraCalendarInfo anbinden
         }
+
         #endregion Datei ladedn
 
         #region Neues Projekt
         private void ErstelleNeuesProjekt()
         {
-            NeuesProjekt prjNeu = new NeuesProjekt();                           // Neuen Dialog zur Eingabe der Projektdaten
+            this.prjHinzugefuegt = false;                                       // Es wurde kein neues Projekt hinzugefügt
+            var prjNeu = new NeuesProjekt();                                    // Neuen Dialog zur Eingabe der Projektdaten
             var result = prjNeu.ShowDialog();                                   // Gedrückte Taste des Dialogs
-
 
             if (result == DialogResult.Cancel)
             {
                 var meldung = @"Sie haben das Neuanlegen abgebrochen." + Environment.NewLine +
                     @"Soll ein bestehender Terminplan geladen werten?";
-                var ueberschrift = "Frage";
-                var erg = MessageBox.Show(this, meldung, ueberschrift, MessageBoxButtons.YesNo);
+                const string Ueberschrift = @"Frage";
+                var erg = MessageBox.Show(this, meldung, Ueberschrift, MessageBoxButtons.YesNo);
 
                 // Falls ein bestehender Terminplan geladen werden soll, muss der Öffnen-Dialog angezeigt werden
                 if (erg == DialogResult.Yes)
                 {
-                    this.LadeDatei();                                           // Anderen Terminplan laden
+                    LadeDatei();                                                // Anderen Terminplan laden
                     return;                                                     // Bearbeitung beenden
                 }
             }
 
             if (prjNeu.PrjName != null)
             {
-                this.AddNewProjekt(prjNeu.PrjName, prjNeu.PrjStart, prjNeu.StartPrj, prjNeu.Kommission);
+                if (AddNewProjekt(prjNeu.PrjName,
+                    prjNeu.PrjStart,
+                    prjNeu.StartPrj,
+                    prjNeu.Kommission))
+                {
+                    this.prjHinzugefuegt = true;                                // Es wurde ein neues Projekt hinzugefügt
+                }               
             }
 
-            //this.components = new System.ComponentModel.Container();
-            //this.ultraCalendarInfo1 = new Infragistics.Win.UltraWinSchedule.UltraCalendarInfo(this.components);
+            if (!this.prjHinzugefuegt) return;                                  // Falls kein neues Projekt hinzugefügt wurde, kann hier abgebrochen werden
 
-            //// Ruft die Daten aus der bereitgestellten XML-Datei ab
-            //datasetTp = new DataSet();
-            //datasetTp = DienstProgramme.GetData(openFileDialog1.FileName);      // ausgewählte Daten ladenn laden
+            var speicherPfad = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
 
-            //// Die eingelesenen Daten an die ultraCalendarInfo anbinden.
-            //this.OnBindArbInhaltData(datasetTp);                                // Daten an ultraCalendarInfo anbinden
+            this.components = new System.ComponentModel.Container();
+            this.ultraCalendarInfo1 = new Infragistics.Win.UltraWinSchedule.UltraCalendarInfo(this.components);
+
+            // Ruft die Daten aus der bereitgestellten XML-Datei ab
+            DatasetTp = new DataSet();
+            DatasetTp = DienstProgramme.GetData(Path.Combine(speicherPfad, @"Data.DatenNeuEST.XML")); // Neue Daten laden
+
+            // Die eingelesenen Daten an die ultraCalendarInfo anbinden.
+            this.OnBindArbInhaltData(DatasetTp);                                // Daten an ultraCalendarInfo anbinden                
         }
         #endregion Neues Projekt
 
@@ -617,9 +646,9 @@ namespace Terminplan
         /// <param name="e">Die <see cref="EventArgs"/> Instanz, welche die Ereignisdaten enthält.</param>
         private void OnTerminPlanFormClientSizeChanged(object sender, EventArgs e)
         {
-            var breite = this.ultraGanttView1.GridAreaWidth;
-            var gesamtbreite = this.Width;
-            var teiler = Math.Abs((float)breite / (float)gesamtbreite);
+            var breite = ultraGanttView1.GridAreaWidth;
+            var gesamtbreite = Width;
+            var teiler = Math.Abs(breite / (float)gesamtbreite);
             var splitterWeite = (float)gesamtbreite * teiler;
         }
 
@@ -636,22 +665,22 @@ namespace Terminplan
             var resBreite = currentScreen.Bounds.Width;                         // Breite des Monitors
             var resHoehe = currentScreen.Bounds.Height;                         // Höhe des Monitors
 
-            var fontGroesse = this.ultraGanttView1.GridSettings.RowAppearance.FontData.SizeInPoints;
-            var headerGroesse = this.ultraGanttView1.GridSettings.ColumnHeaderAppearance.FontData.SizeInPoints;
+            var fontGroesse = ultraGanttView1.GridSettings.RowAppearance.FontData.SizeInPoints;
+            var headerGroesse = ultraGanttView1.GridSettings.ColumnHeaderAppearance.FontData.SizeInPoints;
 
             if (resBreite < 1024)
             {
                 fontGroesse = 8;
                 headerGroesse = 9;
 
-                this.ultraGanttView1.GridSettings.RowAppearance.FontData.SizeInPoints = fontGroesse;
-                this.ultraGanttView1.GridSettings.ColumnHeaderAppearance.FontData.SizeInPoints = this.FontHeight;
+                ultraGanttView1.GridSettings.RowAppearance.FontData.SizeInPoints = fontGroesse;
+                ultraGanttView1.GridSettings.ColumnHeaderAppearance.FontData.SizeInPoints = FontHeight;
             }
 
-            this.ultraGanttView1.Appearance.FontData.SizeInPoints = fontGroesse;
-           var breite = this.ultraGanttView1.GridAreaWidth;
+            ultraGanttView1.Appearance.FontData.SizeInPoints = fontGroesse;
+           var breite = ultraGanttView1.GridAreaWidth;
 
-            var col = this.ultraGanttView1.GridSettings.ColumnSettings.Values;
+            var col = ultraGanttView1.GridSettings.ColumnSettings.Values;
             var schluessel = string.Empty;
             var panalWeite = 0;
 
@@ -691,17 +720,15 @@ namespace Terminplan
                 }
             }
 
-            this.ultraGanttView1.GridAreaWidth = panalWeite;
+            ultraGanttView1.GridAreaWidth = panalWeite;
             var splitterWeite = (float)panalWeite * 1.5;
-            this.ultraGanttView1.GridAreaWidth = Convert.ToInt32(splitterWeite);
+            ultraGanttView1.GridAreaWidth = Convert.ToInt32(splitterWeite);
 
-            var gesamtbreite = this.Width;
+            var gesamtbreite = Width;
             var teiler = Math.Abs((float)breite / (float)gesamtbreite);
         }
 
-        /// <summary>
-        /// Behandelt das ToolClick-Ereignis of the ultraToolbarsManager1 control.
-        /// </summary>
+        /// <summary>Behandelt das ToolClick-Ereignis of the ultraToolbarsManager1 control.</summary>
         /// <remarks>
         /// Die jeweilige Aktion wird nur durchgeführt, wenn sie nicht schon durchgeführt wurde
         /// </remarks>
@@ -709,8 +736,24 @@ namespace Terminplan
         /// <param name="e">Die <see cref="Infragistics.Win.UltraWinToolbars.ToolClickEventArgs" /> Instanz, welche die Ereignisdaten enthält.</param>
         private void UltraToolbarsManagerToolClick(object sender, ToolClickEventArgs e)
         {
-            this.OnUltraToolbarsManagerToolClick(sender, e);
+            OnUltraToolbarsManagerToolClick(sender, e);
         }
         #endregion Ereignisse
+
+        /// <summary>Behandelt das BeforeApplicationMenu2010Displayed-Ereignis of the ultraToolbarsManager1 control.</summary>
+        /// <param name="sender">Die Quelle des Ereignisses.</param>
+        /// <param name="e">Die <see cref="Infragistics.Win.UltraWinToolbars.BeforeApplicationMenu2010DisplayedEventArgs" /> Instanz, welche die Ereignisdaten enthält.</param>
+        private void OnUltraToolbarsManager1BeforeApplicationMenu2010Displayed(object sender, BeforeApplicationMenu2010DisplayedEventArgs e)
+        {
+            // Falls ein neues Projekt hinzugefügt wurde, muss die Auswahl 'Speichern' gesperrt
+            // werden, da noch kein Dateiname angegeben wurde, ansonsten ist die 
+            // Auswahl 'Speichern' freigeschaltet
+            this.ultraToolbarsManager1.Tools[@"Speichern"].SharedProps.Enabled = !this.prjHinzugefuegt;
+        }
+
+        private void ultraGanttView1_BindingContextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

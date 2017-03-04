@@ -43,7 +43,7 @@ namespace TerminPlan
         #region SetWindowPos
 
         [return: MarshalAs(UnmanagedType.Bool)]
-        [DllImport("user32", ExactSpelling = true, CharSet = System.Runtime.InteropServices.CharSet.Auto)]
+        [DllImport("user32", ExactSpelling = true, CharSet = CharSet.Auto)]
         internal static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter,
             int x, int y, int cx, int cy, int flags);
 
@@ -52,7 +52,7 @@ namespace TerminPlan
         #region ShowWindow
 
         [return: MarshalAs(UnmanagedType.Bool)]
-        [DllImport("user32", ExactSpelling = true, CharSet = System.Runtime.InteropServices.CharSet.Auto)]
+        [DllImport("user32", ExactSpelling = true, CharSet = CharSet.Auto)]
         internal static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
 
         #endregion ShowWindow

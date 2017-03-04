@@ -139,6 +139,22 @@
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilities.cs" />
+    <Compile Include="WasLaden.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WasLaden.Designer.cs">
+      <DependentUpon>WasLaden.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinGanttViewStrings.de-DE.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WinGanttViewStrings.de-DE.resx</DependentUpon>
+    </Compile>
+    <Compile Include="WinGanttViewStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WinGanttViewStrings.resx</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AboutControl.resx">
       <DependentUpon>AboutControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -162,8 +178,17 @@
     <EmbeddedResource Include="SplashScreen.resx">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WinGanttViewStrings.de-DE.resx" />
-    <EmbeddedResource Include="WinGanttViewStrings.resx" />
+    <EmbeddedResource Include="WasLaden.resx">
+      <DependentUpon>WasLaden.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinGanttViewStrings.de-DE.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>WinGanttViewStrings.de-DE.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinGanttViewStrings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>WinGanttViewStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

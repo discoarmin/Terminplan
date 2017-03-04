@@ -142,6 +142,9 @@
   <data name="ultraGanttView1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
+  <data name="&gt;&gt;ilDefaultImagesSmall.Name" xml:space="preserve">
+    <value>ilDefaultImagesSmall</value>
+  </data>
   <data name="&gt;&gt;_TerminplanForm_Toolbars_Dock_Area_Bottom.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
@@ -172,6 +175,9 @@
   </data>
   <data name="buttonTool60.SharedPropsInternal.Caption" xml:space="preserve">
     <value>Füge Vorgang bei ausgewählter Zeile ein</value>
+  </data>
+  <data name="taskColumnSettings13.Text" xml:space="preserve">
+    <value>Zeilennummer</value>
   </data>
   <data name="_TerminplanForm_Toolbars_Dock_Area_Left.Size" type="System.Drawing.Size, System.Drawing">
     <value>1, 645</value>
@@ -500,8 +506,8 @@
   <data name="listTool6.SharedPropsInternal.Caption" xml:space="preserve">
     <value>TouchModus</value>
   </data>
-  <data name="taskColumnSettings13.Text" xml:space="preserve">
-    <value>Zeilennummer</value>
+  <data name="ribbonGroup3.Caption" xml:space="preserve">
+    <value>Einfügen</value>
   </data>
   <data name="resource.ItalicAsString2" xml:space="preserve">
     <value>Default</value>
@@ -521,13 +527,10 @@
   <data name="&gt;&gt;Form1_Fill_Panel.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
+  <data name="&gt;&gt;ultraGanttView1.Name" xml:space="preserve">
+    <value>ultraGanttView1</value>
+  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="resource.SizeInPoints" type="System.Single, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="ribbonGroup3.Caption" xml:space="preserve">
-    <value>Einfügen</value>
-  </data>
   <data name="Form1_Fill_Panel.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
@@ -557,9 +560,6 @@
   </data>
   <data name="buttonTool34.SharedPropsInternal.Caption" xml:space="preserve">
     <value>Speichern</value>
-  </data>
-  <data name="&gt;&gt;ultraGanttView1.Name" xml:space="preserve">
-    <value>ultraGanttView1</value>
   </data>
   <data name="taskColumnSettings9.Text" xml:space="preserve">
     <value>Notitzen</value>
@@ -605,9 +605,6 @@
   </data>
   <data name="labelTool10.SharedPropsInternal.Caption" xml:space="preserve">
     <value>Touch/Maus Modus:  </value>
-  </data>
-  <data name="popupControlContainerTool2.SharedPropsInternal.Caption" xml:space="preserve">
-    <value>Über</value>
   </data>
   <data name="taskColumnSettings12.Text" xml:space="preserve">
     <value>Start</value>
@@ -665,7 +662,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAw
-        MgAAAk1TRnQBSQFMAgEBFQEAAWgBAwHcAQMBEAEAARABAAT/ASEBEAj/AUIBTQE2BwABNgMAASgDAAFA
+        MgAAAk1TRnQBSQFMAgEBFQEAAWgBAwEIAQQBEAEAARABAAT/ASEBEAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABYAMAAQEBAAEgBgABYP8AEwADMAH/AzAB/wMwAf8DMAH/AzAB/wMwAf8DMAH/AzAB/wMwAf8DMAH/
         AzAB/wMwAf8DMAH/AzAB/wMwAf/EAAMwAf80AAMwAf/EAAMwAf8EAANHAYADRwGABAADRwGAA0cBgAwA
         A14B0AMMARAIAAMwAf/EAAMwAf8EAANHAYADRwGABAADRwGAA0cBgAwAAzAB/wNfAeADIQEwBAADMAH/
@@ -885,6 +882,9 @@
   <data name="resource.BoldAsString5" xml:space="preserve">
     <value>Default</value>
   </data>
+  <data name="ribbonTab1.Caption" xml:space="preserve">
+    <value>Terminplan</value>
+  </data>
   <data name="&gt;&gt;_TerminplanForm_Toolbars_Dock_Area_Right.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
@@ -918,6 +918,9 @@
   <data name="taskColumnSettings6.Text" xml:space="preserve">
     <value>Ende</value>
   </data>
+  <data name="buttonTool7.SharedPropsInternal.Caption" xml:space="preserve">
+    <value>Beenden</value>
+  </data>
   <data name="taskColumnSettings5.Text" xml:space="preserve">
     <value>Dauer</value>
   </data>
@@ -929,6 +932,9 @@
   </data>
   <data name="resource.SizeInPoints6" type="System.Single, mscorlib">
     <value>10</value>
+  </data>
+  <data name="buttonTool37.SharedPropsInternal.Caption" xml:space="preserve">
+    <value>Zusammenfassung</value>
   </data>
   <data name="resource.BoldAsString3" xml:space="preserve">
     <value>Default</value>
@@ -981,9 +987,6 @@
   <data name="resource.StrikeoutAsString2" xml:space="preserve">
     <value>Default</value>
   </data>
-  <data name="resource.StrikeoutAsString4" xml:space="preserve">
-    <value>Default</value>
-  </data>
   <data name="ultraGanttView1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
@@ -1010,7 +1013,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACk
-        HQEAAk1TRnQBSQFMAgEBJwEAAaABAQEUAQIBIAEAASABAAT/ASEBEAj/AUIBTQE2BwABNgMAASgDAAGA
+        HQEAAk1TRnQBSQFMAgEBJwEAAaABAQFAAQIBIAEAASABAAT/ASEBEAj/AUIBTQE2BwABNgMAASgDAAGA
         AwABQAEBAgABAQEAASAGAAGAAQL/AP8AHwAB/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/
         AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/
         AQAD/wEAA/8BAAL/GAAB/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/
@@ -2261,8 +2264,8 @@
   <data name="&gt;&gt;_TerminplanForm_Toolbars_Dock_Area_Left.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="buttonTool37.SharedPropsInternal.Caption" xml:space="preserve">
-    <value>Zusammenfassung</value>
+  <data name="resource.SizeInPoints" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="Form1_Fill_Panel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -2288,9 +2291,6 @@
   <data name="resource.ItalicAsString1" xml:space="preserve">
     <value>Default</value>
   </data>
-  <data name="Form1_Fill_Panel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 149</value>
-  </data>
   <data name="&gt;&gt;ultraGanttViewPrintDocument1.Type" xml:space="preserve">
     <value>Infragistics.Win.UltraWinGanttView.UltraGanttViewPrintDocument, Infragistics4.Win.UltraWinGanttView.v16.2, Version=16.2.20162.2040, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
   </data>
@@ -2315,8 +2315,8 @@
   <data name="_TerminplanForm_Toolbars_Dock_Area_Right.Location" type="System.Drawing.Point, System.Drawing">
     <value>1166, 149</value>
   </data>
-  <data name="buttonTool7.SharedPropsInternal.Caption" xml:space="preserve">
-    <value>Beenden</value>
+  <data name="Form1_Fill_Panel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 149</value>
   </data>
   <data name="&gt;&gt;_TerminplanForm_Toolbars_Dock_Area_Right.Parent" xml:space="preserve">
     <value>$this</value>
@@ -2336,8 +2336,8 @@
   <data name="resource.StrikeoutAsString5" xml:space="preserve">
     <value>Default</value>
   </data>
-  <data name="ribbonTab1.Caption" xml:space="preserve">
-    <value>Terminplan</value>
+  <data name="resource.StrikeoutAsString4" xml:space="preserve">
+    <value>Default</value>
   </data>
   <data name="stateButtonTool4.SharedPropsInternal.Caption" xml:space="preserve">
     <value>Italics</value>
@@ -2345,8 +2345,8 @@
   <data name="buttonTool57.SharedPropsInternal.Caption" xml:space="preserve">
     <value>1 Woche</value>
   </data>
-  <data name="&gt;&gt;ilDefaultImagesSmall.Name" xml:space="preserve">
-    <value>ilDefaultImagesSmall</value>
+  <data name="popupControlContainerTool2.SharedPropsInternal.Caption" xml:space="preserve">
+    <value>Über</value>
   </data>
   <metadata name="ultraCalendarInfo1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>189, 18</value>

@@ -18,9 +18,10 @@
 
 namespace Terminplan
 {
-    using Infragistics.Win.UltraWinSchedule;
+    using System.Data;
     using System.IO;
     using System.Windows.Forms;
+    using Resources = Infragistics.Win.UltraWinGanttView.Resources;
 
     /// <summary>
     /// Klasse TerminPlanForm (Hauptformular).
@@ -32,7 +33,7 @@ namespace Terminplan
         private void SetResourceStrings()
         {
             // Jedes Element muss einzeln eingestellt werden
-            var rc = Infragistics.Win.UltraWinGanttView.Resources.Customizer;        // Zum Ändern der anzuzeigenden Texte in der GanttView
+            var rc = Resources.Customizer;        // Zum Ändern der anzuzeigenden Texte in der GanttView
 
             // Context-Menü
             rc.SetCustomizedString(@"GanttViewContextMenuItem_AddSubTask_Text", @"Unterpunkt hinzufügen für '{0}'");  // Add sub-task for '{0}
@@ -140,7 +141,11 @@ namespace Terminplan
         private void Speichern(string dateiName)
         {
             //var writer = new System.IO.StreamWriter();
-            this.datasetTp.WriteXml(dateiName, System.Data.XmlWriteMode.WriteSchema);
+            this.DatasetTp.AcceptChanges();                                     // Damit alle Änderungen übernommen werden
+            System.IO.FileStream streamWrite = new System.IO.FileStream
+                    (dateiName, System.IO.FileMode.Create);
+            //this.DatasetTp.WriteXml(dateiName, XmlWriteMode.WriteSchema);
+            this.DatasetTp.WriteXml(streamWrite, XmlWriteMode.WriteSchema);
         }
 
         /// <summary>Speichert die übergebene Datei unter einem anderen Namen</summary>
@@ -151,20 +156,24 @@ namespace Terminplan
             if (dateiName == null) return;                                      // Falls nichts übergeben wurde, kann hier abgebrochen werden
 
             var directoryName = Path.GetDirectoryName(dateiName);
-            var fileBane = Path.GetFileName(dateiName);
+            var fileNane = Path.GetFileName(dateiName);
 
             // Speichern-Dialog anzeigen
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog()
+            var saveFileDialog1 = new SaveFileDialog
             {
                 Filter = @"XML Dateien|*.xml",
-                Title = @"Terminplan speichern"
+                Title = @"Terminplan speichern",
+                InitialDirectory = directoryName,
+                FileName = fileNane
             };
+
             saveFileDialog1.ShowDialog();
 
             // Falls ein Name eingegeben ist, kann die Datei jetzt gespeichert werden.
             if (saveFileDialog1.FileName != "")
             {
-                this.Speichern(saveFileDialog1.FileName);
+                Speichern(saveFileDialog1.FileName);
+                this.prjHinzugefuegt = false;                                   // Damit Auswahl 'Speichern' wieder freigeschaltet wird
             }
         }
     }

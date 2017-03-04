@@ -23,12 +23,13 @@ namespace Terminplan
     using System.Data;
     using System.Diagnostics;
     using System.Drawing;
+    using System.IO;
     using System.Linq;
     using System.Reflection;
     using System.Windows.Forms;
     using Infragistics.Win;
     using Infragistics.Win.UltraWinToolbars;
-    using Resources = Terminplan.Properties.Resources;
+    using Resources = Properties.Resources;
 
     /// <summary>
     /// Utility class to perform context-independent functionality
@@ -133,10 +134,33 @@ namespace Terminplan
         /// <returns>die gelesenen Daten als DataSet</returns>
         internal static DataSet GetData(string fileName)
         {
+            // Ermitteln, ob Datei existiert. Wenn nicht, wird der DateiÖffnen-Dialog angezeigt
+            if (!File.Exists(fileName))
+            {
+                // Dialog zum Öffnen einer Datei anzeigen
+                var dateiName = OeffneXmlDatei();
+                if (dateiName == string.Empty) return null;                     // Abbruch, da keine Datei ausgewählt wurde
+                fileName = dateiName;
+            }
+
             // Konvertiert den Stream in ein DataSet
             var data = new DataSet();
             data.ReadXml(fileName);
             return data;
+        }
+
+        /// <summary>Dialog zum Öffnen einer XML-Datei</summary>
+        /// <returns>die ausgewählte Datei, bei Abbruch Leerstring</returns>
+        public static string OeffneXmlDatei()
+        {
+            // Dialog zum Öffnen einer Datei anzeigen
+            var openFileDialog1 = new OpenFileDialog
+            {
+                Filter = @"XML Dateien|*.xml",
+                Title = @"Terminplan öffnen",                
+            };
+
+            return openFileDialog1.ShowDialog() != DialogResult.OK ? string.Empty : openFileDialog1.FileName;
         }
         #endregion GetData
 
@@ -151,7 +175,7 @@ namespace Terminplan
         /// </summary>
         /// <param name="resourceName">Name of the resource.</param>
         /// <returns></returns>
-        internal static System.IO.Stream GetEmbeddedResourceStream(string resourceName)
+        internal static Stream GetEmbeddedResourceStream(string resourceName)
         {
             var stream = ExecutingAssembly.GetManifestResourceStream(resourceName);
             Debug.Assert(stream != null, Resources.DienstProgramme_GetEmbeddedResourceStream_Unable_to_locate_embedded_resource_, Resources.DienstProgramme_GetEmbeddedResourceStream_Resource_name___0_, resourceName);

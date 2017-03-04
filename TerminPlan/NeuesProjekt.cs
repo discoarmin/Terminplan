@@ -19,13 +19,15 @@
 namespace Terminplan
 {
     using System;
+    using System.Globalization;
     using System.Windows.Forms;
 
     public partial class NeuesProjekt : Form
     {
         public NeuesProjekt()
         {
-            this.InitializeComponent();
+            InitializeComponent();
+            PrjName = null;
         }
 
         #region Eigenschaften
@@ -34,7 +36,7 @@ namespace Terminplan
         public string StartPrj { get; private set; }
 
         /// <summary>Holt den Namen des Projekts</summary>
-        public string PrjName { get; private set; } = null;
+        public string PrjName { get; private set; }
 
         /// <summary>Holt das Startdatum des Projekts</summary>
         public DateTime PrjStart { get; private set; }
@@ -50,12 +52,12 @@ namespace Terminplan
         /// <param name="e">Die <see cref="EventArgs"/> Instanz, welche die Ereignisdaten enthält.</param>
         private void OnBtnOkClick(object sender, EventArgs e)
         {
-            this.PrjName = this.ultraTextEditorPrjName.Text;                    // eingeebener Projektname
-            this.PrjStart = this.ultraDateTimeEditor1.DateTime;                 // eingegebes Startdatum
-            this.Kommission = this.ultraMaskedEditKommission.Text;              // eingegebene Kommissionsnummer
-            this.StartPrj = this.ErstelleStartDatum();                          // Erstellt das 
-            this.DialogResult = DialogResult.OK;                                // Ergebnis des Dialogs ist OK
-            this.Close();                                                       // Dialog beenden
+            PrjName = ultraTextEditorPrjName.Text;                              // eingeebener Projektname
+            PrjStart = ultraDateTimeEditor1.DateTime;                           // eingegebes Startdatum
+            Kommission = ultraMaskedEditKommission.Text;                        // eingegebene Kommissionsnummer
+            StartPrj = ErstelleStartDatum();                                    // Erstellt das 
+            DialogResult = DialogResult.OK;                                     // Ergebnis des Dialogs ist OK
+            Close();                                                            // Dialog beenden
         }
 
         /// <summary>Behandelt das Click-Ereignis des btnCancel Kontrols.</summary>
@@ -63,8 +65,8 @@ namespace Terminplan
         /// <param name="e">Die <see cref="EventArgs"/> Instanz, welche die Ereignisdaten enthält.</param>
         private void OnBtnCancelClick(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;                            // Ergebnis des Dialogs ist Cancel
-            this.Close();                                                       // Dialog beenden
+            DialogResult = DialogResult.Cancel;                            // Ergebnis des Dialogs ist Cancel
+            Close();                                                       // Dialog beenden
         }
         #endregion Ereignisse
 
@@ -73,8 +75,8 @@ namespace Terminplan
         /// <returns>Das erstellte Startdatum.</returns>
         private string ErstelleStartDatum()
         {
-            var testWert = this.PrjStart.ToString();                            // Startdatum zum Aufspalten in Zeichenkette umwandeln
-            string[] separators = { ".", " " };
+            var testWert = PrjStart.ToString(new CultureInfo(@"de-DE"));   // Startdatum zum Aufspalten in Zeichenkette umwandeln
+            string[] separators = { @".", @" " };
             var splitWert = testWert.Split(separators, StringSplitOptions.RemoveEmptyEntries);
             var tag = splitWert[0];
             var monat = splitWert[1];
@@ -102,14 +104,14 @@ namespace Terminplan
                 if(rb.Tag.ToString() == @"Text")
                 {
                     // Der Projektschlüssel besteht aus reinem Text
-                    this.ultraTextEditorNormalerText.Visible = true;            // Texteditor ausblenden
-                    this.ultraMaskedEditKommission.Visible = false;             // maskierte Eingabe für EST-Kommissionsnummeer einblenden
+                    ultraTextEditorNormalerText.Visible = true;            // Texteditor ausblenden
+                    ultraMaskedEditKommission.Visible = false;             // maskierte Eingabe für EST-Kommissionsnummeer einblenden
                 }
                 else
                 {
                     // Der Projektschlüssel besteht aus einem 
-                    this.ultraTextEditorNormalerText.Visible = false;           // Texteditor einblenden
-                    this.ultraMaskedEditKommission.Visible = true;              // maskierte Eingabe für EST-Kommissionsnummeer ausblenden
+                    ultraTextEditorNormalerText.Visible = false;           // Texteditor einblenden
+                    ultraMaskedEditKommission.Visible = true;              // maskierte Eingabe für EST-Kommissionsnummeer ausblenden
                 }
             }
         }

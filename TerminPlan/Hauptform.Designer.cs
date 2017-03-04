@@ -274,6 +274,7 @@
             this.ultraGanttView1.ActiveTaskChanging += new Infragistics.Win.UltraWinGanttView.ActiveTaskChangingHandler(this.OnUltraGanttView1ActiveTaskChanging);
             this.ultraGanttView1.CellActivating += new Infragistics.Win.UltraWinGanttView.CellActivatingHandler(this.OnUltraGanttView1CellActivating);
             this.ultraGanttView1.CellDeactivating += new Infragistics.Win.UltraWinGanttView.CellDeactivatingHandler(this.OnUltraGanttView1CellDeactivating);
+            this.ultraGanttView1.BindingContextChanged += new System.EventHandler(this.ultraGanttView1_BindingContextChanged);
             // 
             // ultraCalendarInfo1
             // 
@@ -795,6 +796,7 @@
             buttonTool41});
             this.ultraToolbarsManager1.ToolClick += new Infragistics.Win.UltraWinToolbars.ToolClickEventHandler(this.UltraToolbarsManagerToolClick);
             this.ultraToolbarsManager1.ToolValueChanged += new Infragistics.Win.UltraWinToolbars.ToolEventHandler(this.OnUltraToolbarsManager1ToolValueChanged);
+            this.ultraToolbarsManager1.BeforeApplicationMenu2010Displayed += new Infragistics.Win.UltraWinToolbars.BeforeApplicationMenu2010DisplayedEventHandler(this.OnUltraToolbarsManager1BeforeApplicationMenu2010Displayed);
             this.ultraToolbarsManager1.PropertyChanged += new Infragistics.Win.PropertyChangedEventHandler(this.OnUltraToolbarsManager1PropertyChanged);
             // 
             // ilDefaultImagesLarge

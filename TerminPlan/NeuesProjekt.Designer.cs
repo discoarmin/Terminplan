@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NeuesProjekt));
             this.ultraLabel1 = new Infragistics.Win.Misc.UltraLabel();
             this.ultraTextEditorPrjName = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.ultraLabel2 = new Infragistics.Win.Misc.UltraLabel();
@@ -78,28 +79,36 @@
             // 
             // btnOk
             // 
+            this.btnOk.BackColor = System.Drawing.Color.Silver;
             this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOk.Image = ((System.Drawing.Image)(resources.GetObject("btnOk.Image")));
+            this.btnOk.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnOk.Location = new System.Drawing.Point(12, 144);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(75, 23);
+            this.btnOk.Size = new System.Drawing.Size(92, 23);
             this.btnOk.TabIndex = 4;
             this.btnOk.Tag = "OK";
             this.btnOk.Text = "Annehmen";
-            this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnOk.UseVisualStyleBackColor = false;
             this.btnOk.Click += new System.EventHandler(this.OnBtnOkClick);
             // 
             // btnCancel
             // 
+            this.btnCancel.BackColor = System.Drawing.Color.Silver;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Abort;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Location = new System.Drawing.Point(192, 144);
+            this.btnCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.Image")));
+            this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCancel.Location = new System.Drawing.Point(164, 144);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Size = new System.Drawing.Size(92, 23);
             this.btnCancel.TabIndex = 5;
             this.btnCancel.Tag = "Cancel";
             this.btnCancel.Text = "Abbruch";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.OnBtnCancelClick);
             // 
             // ultraLabel3
