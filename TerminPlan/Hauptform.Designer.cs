@@ -68,6 +68,7 @@
             Infragistics.Win.UltraWinToolbars.RibbonGroup ribbonGroup4 = new Infragistics.Win.UltraWinToolbars.RibbonGroup("Properties");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool6 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Properties_TaskInformation");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool8 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Properties_Notes");
+            Infragistics.Win.UltraWinToolbars.RibbonTab ribbonTab2 = new Infragistics.Win.UltraWinToolbars.RibbonTab("Stammdaten1");
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
@@ -459,8 +460,10 @@
             ribbonGroup2,
             ribbonGroup3,
             ribbonGroup4});
+            resources.ApplyResources(ribbonTab2, "ribbonTab2");
             this.ultraToolbarsManager1.Ribbon.NonInheritedRibbonTabs.AddRange(new Infragistics.Win.UltraWinToolbars.RibbonTab[] {
-            ribbonTab1});
+            ribbonTab1,
+            ribbonTab2});
             this.ultraToolbarsManager1.Ribbon.QuickAccessToolbar.Visible = false;
             appearance14.BackColor = System.Drawing.Color.DarkGray;
             resources.ApplyResources(appearance14, "appearance14");

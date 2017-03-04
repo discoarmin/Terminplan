@@ -15,7 +15,6 @@ E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\de-DE\Terminplan.resources.dll
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\Terminplan.Properties.Resources.de-DE.resources
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\Terminplan.WinGanttViewStrings.resources
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\Terminplan.WinGanttViewStrings.de-DE.resources
-E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\TerminPlan.csprojResolveAssemblyReference.cache
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\Terminplan.NeuesProjekt.resources
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\Infragistics4.Shared.v16.2.dll
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\Infragistics4.Win.Misc.v16.2.dll
