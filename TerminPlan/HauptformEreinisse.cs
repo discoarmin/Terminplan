@@ -23,11 +23,9 @@ namespace Terminplan
     using System.Data;
     using System.Diagnostics.CodeAnalysis;
     using System.Drawing;
-    using System.Globalization;
     using System.IO;
     using System.Linq;
     using System.Windows.Forms;
-    using System.Xml;
     using Infragistics.Win;
     using Infragistics.Win.AppStyling;
     using Infragistics.Win.Printing;
@@ -98,8 +96,8 @@ namespace Terminplan
         private void UltraGanttView1ActiveTaskChanging(object sender, ActiveTaskChangingEventArgs e)
         {
             var newActiveTask = e.NewActiveTask;                                // Zur Aufnahme der Daten des jetzt aktiven Arbeitsinhalts
-            UpdateTasksToolsState(newActiveTask);                          // Status des jetzigenArbeitsinhalts anpassen
-            UpdateToolsRequiringActiveTask(newActiveTask != null);         // Überprüft den Status aller Werkzeuge, welche die aktive Aufgabe erfordert
+            UpdateTasksToolsState(newActiveTask);                               // Status des jetzigenArbeitsinhalts anpassen
+            UpdateToolsRequiringActiveTask(newActiveTask != null);              // Überprüft den Status aller Werkzeuge, welche die aktive Aufgabe erfordert
         }
         #endregion UltraGanttView1ActiveTaskChanging
 
@@ -198,7 +196,8 @@ namespace Terminplan
             {
                 // Spalte mit dem Startdatum, dieses ermitteln
                 var datum = e.TaskFieldInfo.Task.StartDateTime;
-                ultraGanttView1.EnsureDateTimeVisible(datum);                   // Zeitleiste so verschieben, dass das Startdatum angezeit wird
+                ultraGanttView1.EnsureDateTimeVisible(datum);                   // Zeitleiste so verschieben, dass das Startdatum angezeigt wird
+                AnzeigeDatumEinstellen();
             }
         }
         #endregion UltraGanttView1CellDeactivating
@@ -288,6 +287,15 @@ namespace Terminplan
         /// <param name="e">Die <see cref="Infragistics.Win.UltraWinToolbars.ToolClickEventArgs" /> Instanz, welche die Ereignisdaten enthält.</param>
         private void OnUltraToolbarsManagerToolClick(object sender, ToolClickEventArgs e)
         {
+            // Bearbeitetes Projekt ermitteln
+            var prjName = string.Empty;
+
+            if (this.DatasetTp != null)
+            {
+                prjName = this.DatasetTp.Tables[0].Rows[0].ItemArray[2].ToString();
+            }
+
+            // Ermitteln, auf welches Tool geklickt wurde
             switch (e.Tool.Key)
             {
                 case "Font_Bold":                                               // Fettschrift
@@ -451,11 +459,20 @@ namespace Terminplan
                 case "Speichern":                                               // Terminplan speichern
                     //this.Speichern(Path.Combine(Application.StartupPath, @"Data.TestDatenEST.XML"));
                     //this.Speichern(Path.Combine(Application.StartupPath, @"Data.TestDaten1EST.XML"));
-                    Speichern(Path.Combine(Application.StartupPath, @"Data.TestDatenNeuEST.XML"));
+
+                    // Ermitteln, ob eine Datei geladen wurde. Wenn nicht, muss 'Speichern unter' aufgerufen werden
+                    if (string.IsNullOrEmpty(GeladeneDatei))
+                    {
+                        SpeichernUnter(Path.Combine(Application.StartupPath, prjName +  @"Terminplan.XML"));
+                    }
+                    else
+                    {
+                        Speichern(GeladeneDatei);                               // geladene Datei speichern
+                    }
                     break;
 
                 case "Speichern unter":                                         // Terminplan unter anderem Namen speichern
-                    SpeichernUnter(Path.Combine(Application.StartupPath, @"Data.TestDatenEST.XML"));
+                    SpeichernUnter(Path.Combine(Application.StartupPath, @"Terminplan.XML"));
                     break;
             }
         }
@@ -532,7 +549,7 @@ namespace Terminplan
             }
             catch (Exception)
             {
-                var prjNeu = new NeuesProjekt();
+                var prjNeu = new NeuesProjekt(ref this.ultraCalendarInfo1);
                 var result = prjNeu.ShowDialog();
 
                 if (result == DialogResult.OK)
@@ -630,21 +647,35 @@ namespace Terminplan
         /// <param name="prjStart">Starttermin des Projekts.</param>
         /// <param name="formatedStart">formatierter Starttermin des Projekts.</param>
         /// <param name="prjKey">Schlüssel des Projekts, entspricht der Kommissionsnummer.</param>
+        /// <param name="aufgaben">Liste mit allen anzulegenden Aufgaben.</param>
+        /// <param name="besitzer">Liste mit allenPersonen, welche die Aufgaben bearbeiten können.</param>
         /// <returns> <c>true</c>, falls Projekt hinzugefügt wurde, sonst <c>false</c></returns>
-        private bool AddNewProjekt(string prjName, DateTime prjStart, string formatedStart, string prjKey)
+        private bool AddNewProjekt(string prjName, 
+            DateTime prjStart, 
+            string formatedStart, 
+            string prjKey,
+            List<string> aufgaben,
+            List<string> besitzer )
         {
+            // Neues Projekt erstellen. Der Projektname und das Startdatum des Projekts stammen aus dem zuvor angezeigten Dialog
+            var neuesProjekt = this.ultraCalendarInfo1.Projects.Add(prjName, prjStart);
+            neuesProjekt.Key = prjKey;
+
+
+ /*
             TasksCollection parentCollection = null;                            // Sammlung übergeordneter Arbeitsinhalte löschen
             var kultur = new CultureInfo("de-DE");                              // Kultur für Darstellung
             var calendarInfo = ultraGanttView1.CalendarInfo;                    // Kalenderinfo festlegen
             var activeTask = ultraGanttView1.ActiveTask;                        // aktiven Arbeitsinhalt ermitteln
-            Project projekt;
 
-            calendarInfo.Projects.Add(prjName, prjStart);
-            var anzPrj = calendarInfo.Projects.Count;                           // Anzahl vorhandener Projekte
+            var neuesProjekt = this.ultraCalendarInfo1.Projects.Add(prjName, prjStart);  // Neues Projekt erstellen, welches anders ist als das standardmäßig nicht zugewiesene Projekt
+            //calendarInfo.Projects.Add(prjName, prjStart);
+            //var anzPrj = calendarInfo.Projects.Count;                           // Anzahl vorhandener Projekte
+            var anzPrj = this.ultraCalendarInfo1.Projects.Count;                // Anzahl vorhandener Projekte
             prjHinzugefuegt = true;                                             // Es wurde ein neues Projekt hinzugefügt
 
             if (anzPrj < 2) return false;                                       // Abbruch, da Projekt nicht hinzugefügt wurde
-            projekt = calendarInfo.Projects[anzPrj - 1];                        // Hinzugefügtes Projekt
+            var projekt = this.ultraCalendarInfo1.Projects[anzPrj - 1];
 
             var prjId = DienstProgramme.GetGuId();                              // NeueProjektID erzeugen
             var doc = new XmlDocument();                                        // Neue Instanz zum Bearbeiten von XML-Dakumenten erzeugen
@@ -720,10 +751,10 @@ namespace Terminplan
                     }
 
                     // Startzeit auf Startzeit des Projekts einstellen
-                    erg = navigator.MoveToChild("TaskName", string.Empty);      // Knoten 'TaskName' anwählen
+                    erg = navigator.MoveToNext("TaskName", string.Empty);      // Knoten 'TaskName' anwählen
                     if (erg)
                     {
-                        erg = navigator.MoveToChild("TaskStartTime", string.Empty);      // Knoten 'TaskStartTime' anwählen
+                        erg = navigator.MoveToNext("TaskStartTime", string.Empty);      // Knoten 'TaskStartTime' anwählen
                         if (erg)
                         {
                             // Das Datum in der XML-Datei hat folgendes Format: 2017-01-17T06:00:00+01:00 (jjjj-mm-ttThh:mm:ss+01:00)
@@ -746,7 +777,7 @@ namespace Terminplan
                     if (erg)
                     {
                         erg = navigator.MoveToNext(@"Arbeitsinhalt_Aufgaben",
-                            string.Empty);                                              // Aufgabe 1
+                            string.Empty);                                          // Aufgabe 1
 
                         // Einträge für den zweiten Knoten 'Arbeitsinhalt_Aufgaben' können nur bearbeitet werden, wenn dessen Anwahl erfolgreich war
                         if (erg)
@@ -758,10 +789,10 @@ namespace Terminplan
                             }
 
                             // Startzeit auf Startzeit des Projekts einstellen
-                            erg = navigator.MoveToChild("TaskName", string.Empty);      // Knoten 'TaskName' anwählen
+                            erg = navigator.MoveToNext("TaskName", string.Empty);      // Knoten 'TaskName' anwählen
                             if (erg)
                             {
-                                erg = navigator.MoveToChild("TaskStartTime", string.Empty);      // Knoten 'TaskStartTime' anwählen
+                                erg = navigator.MoveToNext("TaskStartTime", string.Empty); // Knoten 'TaskStartTime' anwählen
                                 if (erg)
                                 {
                                     // Das Datum in der XML-Datei hat folgendes Format: 2017-01-17T06:00:00+01:00 (jjjj-mm-ttThh:mm:ss+01:00)
@@ -778,6 +809,7 @@ namespace Terminplan
             var speicherPfad = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             doc.Save(Path.Combine(speicherPfad, @"Data.DatenNeuEST.XML"));
             return true;                                                        // Neues Projekt wurde hinzugefügt
+*/
         }
         #endregion AddNewProjekt
 
@@ -837,6 +869,8 @@ namespace Terminplan
             #endregion Besitzer
 
             // Das Projekt dem GanttView Control zuweisen.
+            ultraGanttView1.CalendarInfo = ultraCalendarInfo1;
+
             var anzProject = ultraGanttView1.CalendarInfo.Projects.Count;
             try
             {

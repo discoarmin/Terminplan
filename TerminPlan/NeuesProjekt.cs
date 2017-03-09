@@ -21,10 +21,12 @@ namespace Terminplan
     using System;
     using System.Globalization;
     using System.Windows.Forms;
+    using Infragistics.Win.UltraWinMaskedEdit;
+    using Infragistics.Win.UltraWinSchedule;
 
     public partial class NeuesProjekt : Form
     {
-        public NeuesProjekt()
+        public NeuesProjekt(ref UltraCalendarInfo kalenderInfo)
         {
             InitializeComponent();
             PrjName = null;
@@ -43,7 +45,6 @@ namespace Terminplan
 
         /// <summary>Holt das Startdatum des Projekts</summary>
         public string Kommission { get; private set; }
-
         #endregion Eigenschaften
 
         #region Ereignisse
@@ -54,7 +55,9 @@ namespace Terminplan
         {
             PrjName = ultraTextEditorPrjName.Text;                              // eingeebener Projektname
             PrjStart = ultraDateTimeEditor1.DateTime;                           // eingegebes Startdatum
-            Kommission = ultraMaskedEditKommission.Text;                        // eingegebene Kommissionsnummer
+
+            // Die Art der Kommissionsnummer ist ahängig von der Auswahl, ob reiner Text oder EST-Kommissions-Nummer
+            Kommission = rbKommission.Checked ? ultraMaskedEditKommission.Text : ultraTextEditorNormalerText.Text;
             StartPrj = ErstelleStartDatum();                                    // Erstellt das 
             DialogResult = DialogResult.OK;                                     // Ergebnis des Dialogs ist OK
             Close();                                                            // Dialog beenden
@@ -65,8 +68,8 @@ namespace Terminplan
         /// <param name="e">Die <see cref="EventArgs"/> Instanz, welche die Ereignisdaten enthält.</param>
         private void OnBtnCancelClick(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.Cancel;                            // Ergebnis des Dialogs ist Cancel
-            Close();                                                       // Dialog beenden
+            DialogResult = DialogResult.Cancel;                                 // Ergebnis des Dialogs ist Cancel
+            Close();                                                            // Dialog beenden
         }
         #endregion Ereignisse
 
@@ -75,7 +78,7 @@ namespace Terminplan
         /// <returns>Das erstellte Startdatum.</returns>
         private string ErstelleStartDatum()
         {
-            var testWert = PrjStart.ToString(new CultureInfo(@"de-DE"));   // Startdatum zum Aufspalten in Zeichenkette umwandeln
+            var testWert = PrjStart.ToString(new CultureInfo(@"de-DE"));        // Startdatum zum Aufspalten in Zeichenkette umwandeln
             string[] separators = { @".", @" " };
             var splitWert = testWert.Split(separators, StringSplitOptions.RemoveEmptyEntries);
             var tag = splitWert[0];
@@ -104,16 +107,30 @@ namespace Terminplan
                 if(rb.Tag.ToString() == @"Text")
                 {
                     // Der Projektschlüssel besteht aus reinem Text
-                    ultraTextEditorNormalerText.Visible = true;            // Texteditor ausblenden
-                    ultraMaskedEditKommission.Visible = false;             // maskierte Eingabe für EST-Kommissionsnummeer einblenden
+                    ultraTextEditorNormalerText.Visible = true;                 // Texteditor ausblenden
+                    ultraMaskedEditKommission.Visible = false;                  // maskierte Eingabe für EST-Kommissionsnummeer einblenden
                 }
                 else
                 {
                     // Der Projektschlüssel besteht aus einem 
-                    ultraTextEditorNormalerText.Visible = false;           // Texteditor einblenden
-                    ultraMaskedEditKommission.Visible = true;              // maskierte Eingabe für EST-Kommissionsnummeer ausblenden
+                    ultraTextEditorNormalerText.Visible = false;                // Texteditor einblenden
+                    ultraMaskedEditKommission.Visible = true;                   // maskierte Eingabe für EST-Kommissionsnummeer ausblenden
                 }
             }
+        }
+
+        /// <summary>
+        /// Behandelt das Click Ereignis eines ultraMaskedEdit-Controls.
+        /// </summary>
+        /// <param name="sender">Die Quelle des Ereignisses.</param>
+        /// <param name="e">Die <see cref="EventArgs"/>Instanz, welche die Ereignisdaten enthält.</param>
+        private void OnUltraMaskedEditClick(object sender, EventArgs e)
+        {
+            var mtb = sender as UltraMaskedEdit;
+            if (mtb == null) return;                                            // Abbruch, wenn kein UltraMaskedEdit-Control vorhanden ist
+
+            var pos = mtb.Text.Length - 1;                                      // Beginn der Textmarkierung
+            this.BeginInvoke((MethodInvoker)(() => mtb.Select(pos, 0)));
         }
     }
 }

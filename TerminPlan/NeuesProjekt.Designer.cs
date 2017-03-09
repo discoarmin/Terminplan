@@ -131,6 +131,7 @@
             this.ultraMaskedEditKommission.TabIndex = 8;
             this.ultraMaskedEditKommission.Text = "/";
             this.ultraMaskedEditKommission.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.ultraMaskedEditKommission.Click += new System.EventHandler(this.OnUltraMaskedEditClick);
             // 
             // radioButtonNormalerText
             // 

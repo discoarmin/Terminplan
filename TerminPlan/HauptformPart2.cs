@@ -141,11 +141,11 @@ namespace Terminplan
         private void Speichern(string dateiName)
         {
             //var writer = new System.IO.StreamWriter();
-            this.DatasetTp.AcceptChanges();                                     // Damit alle Änderungen übernommen werden
-            System.IO.FileStream streamWrite = new System.IO.FileStream
-                    (dateiName, System.IO.FileMode.Create);
+            DatasetTp.AcceptChanges();                                          // Damit alle Änderungen übernommen werden
+            var streamWrite = new FileStream
+                    (dateiName, FileMode.Create);
             //this.DatasetTp.WriteXml(dateiName, XmlWriteMode.WriteSchema);
-            this.DatasetTp.WriteXml(streamWrite, XmlWriteMode.WriteSchema);
+            DatasetTp.WriteXml(streamWrite, XmlWriteMode.WriteSchema);
         }
 
         /// <summary>Speichert die übergebene Datei unter einem anderen Namen</summary>
@@ -173,7 +173,7 @@ namespace Terminplan
             if (saveFileDialog1.FileName != "")
             {
                 Speichern(saveFileDialog1.FileName);
-                this.prjHinzugefuegt = false;                                   // Damit Auswahl 'Speichern' wieder freigeschaltet wird
+                prjHinzugefuegt = false;                                        // Damit Auswahl 'Speichern' wieder freigeschaltet wird
             }
         }
     }

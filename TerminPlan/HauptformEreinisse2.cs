@@ -18,15 +18,15 @@
 
 namespace Terminplan
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
     using System.Threading;
+    using System.Windows.Forms;
     using Infragistics.Win;
     using Infragistics.Win.UltraMessageBox;
     using Infragistics.Win.UltraWinSchedule;
     using Infragistics.Win.UltraWinToolbars;
-    using System;
-    using System.Collections.Generic;
-    using System.Globalization;
-    using System.Windows.Forms;
     using Resources = Properties.Resources;
 
     /// <summary>
@@ -36,42 +36,6 @@ namespace Terminplan
     public partial class TerminPlanForm
     {
         #region Methoden
-        #region DeleteTask
-        /// <summary> Löscht den aktiven Arbeitsinhalt oder die aktive Aufgabe </summary>
-        private void DeleteTask()
-        {
-            var activeTask = ultraGanttView1.ActiveTask;                   // Aktiven Arbeitsinhalt oder Aufgabe ermitteln
-            try
-            {
-                // Nur bearbeiten, falls ein Arbeitsinhalt oder eine Aufgabe aktiv ist
-                if (activeTask != null)
-                {
-                    var parent = activeTask.Parent;                             // Arbeitsinhalt ermitteln
-
-                    if (parent == null)
-                    {
-                        // Es handelt sich um eine Aufgabe. Diese löschen
-                        ultraCalendarInfo1.Tasks.Remove(activeTask);       
-                    }
-                    else
-                    {
-                        // Arbeitsinhalt löschen
-                        parent.Tasks.Remove(activeTask);
-                    }
-                }
-
-                // Status aktualisieren
-                var newActiveTask = ultraGanttView1.ActiveTask;
-                UpdateTasksToolsState(newActiveTask);
-                UpdateToolsRequiringActiveTask(newActiveTask != null);
-            }
-            catch (TaskException ex)
-            {
-                UltraMessageBoxManager.Show(ex.Message, rm.GetString("MessageBox_Error"));
-            }
-        }
-        #endregion DeleteTask
-
         #region InitializeUi
         /// <summary> Initialisiert die Oberfläche. </summary>
         private void InitializeUi()
@@ -173,6 +137,86 @@ namespace Terminplan
             ultraToolbarsManager1.Ribbon.FileMenuButtonCaption = Resources.ribbonFileTabCaption; // Beschriftung des Datei-Menüs-Button eintragen
         }
         #endregion InitializeUi
+
+        #region CreateNewTasks
+        /// <summary>Erzeugt die erforderlichen Vorgänge zum Erstellen eines neuen Terminplans</summary>
+        /// <param name="neuesProjekt">Referenz auf das neu erzeugte Projekt.</param>
+        /// <param name="startDatum">das Startdatum des Projekts.</param>
+        /// <param name="prjKey">Schlüssel des Projekts, entspricht der Kommissionsnummer.</param>
+        /// <param name="aufgaben">Liste mit allen anzulegenden Aufgaben.</param>
+        /// <param name="besitzer">Liste mit allenPersonen, welche die Aufgaben bearbeiten können.</param>
+        /// <param name="arbInhalt">der anzulegende Arbeitsinhalt.</param>
+        private void ErzeugeNeueTasks(ref Project neuesProjekt, 
+            DateTime startDatum, 
+            string prjKey, 
+            List<string> aufgaben, 
+            List<string> besitzer, 
+            string arbInhalt)
+        {
+            // Den Arbeitsinhalt generieren. Es wird eine Dauer von fünf Tagen angenommen. Kann nachträglich geändert werden
+            const string AlleEigenschaften = "AAEAAAD/////AQAAAAAAAAAMAgAAAG9JbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNC4xLCBWZXJzaW9uPTE0LjEuMC45MDAwLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPTdkZDVjMzE2M2YyY2QwY2IFAQAAACdJbmZyYWdpc3RpY3MuV2luLlVsdHJhV2luU2NoZWR1bGUuT3duZXIBAAAAA0tleQECAAAABgMAAAALUGVyc29uIE5hbWUL";
+
+            var arbInhaltTask = this.ultraCalendarInfo1.Tasks.Add(startDatum, TimeSpan.FromDays(5), @"Arbeitsinhalt_Aufgaben", prjKey);
+            Task aufabeTask;                                                    // Eintrag für eine Aufgabe
+            var anzAufgaben = aufgaben.Count;                                   // Ermitteln, wie viele Aufgaben angelegt werden müsse
+            var anzBesitzer = besitzer.Count;                                   // Anzahl Personen, welche die Aufgaben bearbeiten können
+
+            // Alle vorhandenen Aufgaben eintragen
+            for (var a = 0; a < anzAufgaben; a++)
+            {
+                // Aufgabe für den Arbeitsinhalt generieren. Es wird eine Dauer von zwei Tagen angenommen. Kann nachträglich geändert werden
+                aufabeTask = arbInhaltTask.Tasks.Add(DateTime.Today, TimeSpan.FromDays(2), aufgaben[a]);
+
+                // Einschränkung für diese Aufgabe erstellen
+                aufabeTask.Constraint = TaskConstraint.AsSoonAsPossible;        // So bald wie möglich
+
+                // Alle Personen eintragen, welche die AUfgaben bearbeiten dürfen
+                for (var owner = 0; owner < anzBesitzer; owner++)
+                {
+                    var aufgabeOwner = this.ultraCalendarInfo1.Owners.Add(@"Besitzer", besitzer[owner]);
+                    aufabeTask.Resources.Add(aufgabeOwner);
+                }
+
+            }
+
+        }
+        #endregion CreateNewTasks
+
+        #region DeleteTask
+        /// <summary> Löscht den aktiven Arbeitsinhalt oder die aktive Aufgabe </summary>
+        private void DeleteTask()
+        {
+            var activeTask = ultraGanttView1.ActiveTask;                   // Aktiven Arbeitsinhalt oder Aufgabe ermitteln
+            try
+            {
+                // Nur bearbeiten, falls ein Arbeitsinhalt oder eine Aufgabe aktiv ist
+                if (activeTask != null)
+                {
+                    var parent = activeTask.Parent;                             // Arbeitsinhalt ermitteln
+
+                    if (parent == null)
+                    {
+                        // Es handelt sich um eine Aufgabe. Diese löschen
+                        ultraCalendarInfo1.Tasks.Remove(activeTask);       
+                    }
+                    else
+                    {
+                        // Arbeitsinhalt löschen
+                        parent.Tasks.Remove(activeTask);
+                    }
+                }
+
+                // Status aktualisieren
+                var newActiveTask = ultraGanttView1.ActiveTask;
+                UpdateTasksToolsState(newActiveTask);
+                UpdateToolsRequiringActiveTask(newActiveTask != null);
+            }
+            catch (TaskException ex)
+            {
+                UltraMessageBoxManager.Show(ex.Message, rm.GetString("MessageBox_Error"));
+            }
+        }
+        #endregion DeleteTask
 
         #region MoveTask
         /// <summary>

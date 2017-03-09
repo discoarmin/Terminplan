@@ -19,10 +19,11 @@
 namespace Terminplan
 {
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel;
     using System.Data;
+    using System.Globalization;
     using System.IO;
-    using System.Resources;
     using System.Windows.Forms;
     using Infragistics.Win;
     using Infragistics.Win.AppStyling;
@@ -39,103 +40,6 @@ namespace Terminplan
     /// <seealso cref="System.Windows.Forms.Form" />
     public partial class TerminPlanForm
     {
-        #region Aufzählungen
-
-        #region GanttViewAktion
-
-        /// <summary> Aufzählung der Aktionen, die durchgeführt werden können. </summary>
-        private enum GanttViewAction
-        {
-            /// <summary> Aufgabe nach rechts einziehen </summary>
-            IndentTask,
-
-            /// <summary> Aufgabe nach links harausziehen </summary>
-            OutdentTask,
-
-            /// <summary> Termin für die Aufgabe später </summary>
-            MoveTaskDateForward,
-
-            /// <summary> Termin für die Aufgabe früher </summary>
-            MoveTaskDateBackward,
-        }
-
-        #endregion GanttViewAktion
-
-        #region Stardatum verschieben
-
-        /// <summary> Aufzählung Zeitspannen, die ausgewählt werden können. </summary>
-        private enum TimeSpanForMoving
-        {
-            /// <summary> Ein Tag </summary>
-            OneDay,
-
-            /// <summary> Eine Woche </summary>
-            OneWeek,
-
-            /// <summary> Einen Monat (4 Wochen) </summary>
-            FourWeeks,
-        }
-
-        #endregion  Stardatum verschieben
-
-        #region Eigenschaften Schriftart
-
-        /// <summary>
-        /// Enumeration of font related properties.
-        /// </summary>
-        private enum FontProperties
-        {
-            /// <summary> Fettschrift </summary>
-            Bold,
-
-            /// <summary> Schrägschrift </summary>
-            Italics,
-
-            /// <summary> Unterstrichen </summary>
-            Underline,
-        }
-
-        #endregion Eigenschaften Schriftart
-
-        #endregion Aufzählungen
-
-        #region Variablen
-
-        /// <summary>Delegate zum Melden, dass der Begrüßungsbildschirm geschlossen werden kann </summary>
-        public delegate void SplashScreenCloseDelegate();
-
-        /// <summary>Delegate zum Schließen des Begrüßungsbildschrms</summary>
-        public delegate void CloseDelagate();
-
-        /// <summary>Dataset zur Aufnahme der Daten des Terminplans</summary>
-        public DataSet DatasetTp;
-
-        /// <summary> Merker für rekursive Zellaktivierung </summary>
-        private bool cellActivationRecursionFlag; // Merker rekursive Zellaktivierung
-
-        /// <summary> Merker, ob neues Projekt hinzugefügt wurde</summary>
-        private bool prjHinzugefuegt;
-
-        /// <summary> Index des momentanen Farbschemas </summary>
-        private int currentThemeIndex;
-
-        /// <summary> Der ResourceManager </summary>
-        private ResourceManager rm = Resources.ResourceManager;
-
-        /// <summary> Zeilenhöhe einer Arbeitsaufgabe </summary>
-        private const int TaskRowHeight = 30;
-
-        /// <summary> Höhe der Aufgabenleiste </summary>
-        // ReSharper disable once UnusedMember.Local
-        private const int TaskBarHeight = 20;
-
-        /// <summary> Pfad zu den Farbeinstallungen </summary>
-        // ReSharper disable once FieldCanBeMadeReadOnly.Local
-        private string[] themePaths;
-
-        public StyleManager StyleManagerIntern;
-        #endregion Variablen
-
         #region Konstruktor
         /// <summary>
         /// Initialisiert eine neue Instanz der <see cref="TerminPlanForm" /> Klasse.
@@ -156,6 +60,10 @@ namespace Terminplan
                 currentThemeIndex = i;
                 break;
             }
+
+            var culture = new CultureInfo("de-DE");
+            System.Threading.Thread.CurrentThread.CurrentCulture = culture;
+            System.Threading.Thread.CurrentThread.CurrentUICulture = culture;
 
             // Eingebettete Ressourcen laden
             StyleManager.Load(DienstProgramme.GetEmbeddedResourceStream(themePaths[currentThemeIndex]));
@@ -195,7 +103,7 @@ namespace Terminplan
         protected override void OnLoad(EventArgs e)
         {
             OnInitializationStatusChanged(Resources.Loading);   // Anzeige im Splashscreen aktualisieren
-            base.OnLoad(e);
+            //base.OnLoad(e);
 
             var splitterWeite = 10;                                             // Zum Einstellen des Splitters
             var col = ultraGanttView1.GridSettings.ColumnSettings.Values;
@@ -247,7 +155,7 @@ namespace Terminplan
 
             // Ruft die Daten aus der bereitgestellten XML-Datei ab
             OnInitializationStatusChanged(Resources.Retrieving);                // Daten im Splashscreen aktualisieren
-            WasLaden wasLaden = new WasLaden();
+            var wasLaden = new WasLaden();
             if (wasLaden.ShowDialog() == DialogResult.OK)
             {
                 var dateiName = string.Empty;
@@ -259,17 +167,17 @@ namespace Terminplan
                     {
                         DatasetTp = DienstProgramme.GetData(dateiName);         // bestehenden Terminplan laden
                     }
-
                 }
                 else
                 {
-                    // Neuen Terminplan erzeugen
+                    ErstelleNeuesProjekt();                                     // Neuen Terminplan erzeugen
                 }
             }
             //DatasetTp = DienstProgramme.GetData(Path.Combine(Application.StartupPath, @"Data.TestDatenEST.XML")); // Testdaten laden
             //DatasetTp = DienstProgramme.GetData(Path.Combine(Application.StartupPath, @"Data.TestDaten1EST.XML")); // Testdaten laden
             //DatasetTp = DienstProgramme.GetData(Path.Combine(Application.StartupPath, @"Data.TestDaten2EST.XML")); // Testdaten laden
             //DatasetTp = DienstProgramme.GetData(Path.Combine(Application.StartupPath, @"Data.DatenNeuEST.XML")); // Testdaten laden
+            //DatasetTp = DienstProgramme.GetData(Path.Combine(Application.StartupPath, @"ProjectTerminplan.XML")); // Testdaten laden
 
             // Die eingelesenen Daten an die ultraCalendarInfo anbinden.
             OnInitializationStatusChanged(Resources.Binding);                   // Anzeige im Splashscreen aktualisieren
@@ -282,6 +190,15 @@ namespace Terminplan
 
             // Ereignisprozedur zum Ändern des Schemas festlegen
             StyleManager.StyleChanged += OnApplicationStyleChanged;
+
+            // Startdatum des Projekts ermitteln
+            AnzeigeDatumEinstellen();
+//            if (DatasetTp != null)
+//            {
+//                DatasetTp.AcceptChanges();
+//                var datum = this.DatasetTp.Tables[0].Rows[0].ItemArray[2].ToString();
+//                ultraGanttView1.EnsureDateTimeVisible(datum);                   // Zeitleiste so verschieben, dass das Startdatum angezeit wird
+//            }
         }
 
         #endregion OnLoad
@@ -374,7 +291,7 @@ namespace Terminplan
         /// <param name="e">Die <see cref="Infragistics.Win.UltraWinGanttView.CellDeactivatingEventArgs" /> Instanz,welche die Ereignisdaten enthält.</param>
         private void OnUltraGanttView1CellDeactivating(object sender, CellDeactivatingEventArgs e)
         {
-            this.UltraGanttView1CellDeactivating(sender, e);
+            UltraGanttView1CellDeactivating(sender, e);
         }
 
         #endregion OnUltraGanttView1CellDeactivating
@@ -561,6 +478,7 @@ namespace Terminplan
 
             // Ruft die Daten aus der bereitgestellten XML-Datei ab
             DatasetTp = DienstProgramme.GetData(dateiName);                     // ausgewählte Daten laden
+            this.GeladeneDatei = dateiName;                                     // ausgewählte Daten-Datei merken
 
             // Die eingelesenen Daten an die ultraCalendarInfo anbinden.
             OnBindArbInhaltData(DatasetTp);                                     // Daten an ultraCalendarInfo anbinden
@@ -571,8 +489,13 @@ namespace Terminplan
         #region Neues Projekt
         private void ErstelleNeuesProjekt()
         {
-            this.prjHinzugefuegt = false;                                       // Es wurde kein neues Projekt hinzugefügt
-            var prjNeu = new NeuesProjekt();                                    // Neuen Dialog zur Eingabe der Projektdaten
+            prjHinzugefuegt = false;                                            // Es wurde kein neues Projekt hinzugefügt
+            components = new Container();
+            ultraCalendarInfo1 = null;
+            GC.Collect();                                                       // Speicher bereinigen
+
+            ultraCalendarInfo1 = new UltraCalendarInfo(components);
+            var prjNeu = new NeuesProjekt(ref ultraCalendarInfo1);              // Neuen Dialog zur Eingabe der Projektdaten
             var result = prjNeu.ShowDialog();                                   // Gedrückte Taste des Dialogs
 
             if (result == DialogResult.Cancel)
@@ -592,28 +515,51 @@ namespace Terminplan
 
             if (prjNeu.PrjName != null)
             {
+                // Listen erzeugen
+                // TODO: Daten aus Stammdaten holen
+                List<string> listBesitzer = new List<string>();                 // Liste für Bearbeiter der Aufgaben
+                listBesitzer.Add(@"Martin Knoblauch");
+                listBesitzer.Add(@"Martin Kaiser");
+                listBesitzer.Add(@"Wolfgang Roth");
+                listBesitzer.Add(@"C. Klute-Lang");
+                listBesitzer.Add(@"Armin Brenner");
+                listBesitzer.Add(@"J. Echsler-Kull");
+                listBesitzer.Add(@"M. Jetter");
+
+                // TODO: Falls nicht EST, Daten aus den Stammdaten holen
+                List<string> listAufgaben = new List<string>();                 // Liste der Aufgaben
+                listAufgaben.Add(@"Aufgabe 1");                                 // Bei EST gibt es nur eine Aufgabe
+
+
+
                 if (AddNewProjekt(prjNeu.PrjName,
                     prjNeu.PrjStart,
                     prjNeu.StartPrj,
-                    prjNeu.Kommission))
+                    prjNeu.Kommission,
+                    listAufgaben,
+                    listBesitzer))
                 {
-                    this.prjHinzugefuegt = true;                                // Es wurde ein neues Projekt hinzugefügt
+                    prjHinzugefuegt = true;                                     // Es wurde ein neues Projekt hinzugefügt
                 }               
             }
 
-            if (!this.prjHinzugefuegt) return;                                  // Falls kein neues Projekt hinzugefügt wurde, kann hier abgebrochen werden
+            if (!prjHinzugefuegt) return;                                       // Falls kein neues Projekt hinzugefügt wurde, kann hier abgebrochen werden
 
             var speicherPfad = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
 
-            this.components = new System.ComponentModel.Container();
-            this.ultraCalendarInfo1 = new Infragistics.Win.UltraWinSchedule.UltraCalendarInfo(this.components);
+            //components = new Container();
+            //ultraCalendarInfo1 = null;
+            //GC.Collect();                                                       // Speicher bereinigen
+
+            //ultraCalendarInfo1 = new UltraCalendarInfo(components);
 
             // Ruft die Daten aus der bereitgestellten XML-Datei ab
-            DatasetTp = new DataSet();
+            //DatasetTp = new DataSet();
             DatasetTp = DienstProgramme.GetData(Path.Combine(speicherPfad, @"Data.DatenNeuEST.XML")); // Neue Daten laden
-
+            //DatasetTp = DienstProgramme.GetData(Path.Combine(Application.StartupPath, @"ProjectTerminplan.XML")); // Testdaten laden
             // Die eingelesenen Daten an die ultraCalendarInfo anbinden.
-            this.OnBindArbInhaltData(DatasetTp);                                // Daten an ultraCalendarInfo anbinden                
+            //this.DatasetTp.AcceptChanges();
+            //OnBindArbInhaltData(DatasetTp);                                     // Daten an ultraCalendarInfo anbinden                
         }
         #endregion Neues Projekt
 
@@ -748,7 +694,7 @@ namespace Terminplan
             // Falls ein neues Projekt hinzugefügt wurde, muss die Auswahl 'Speichern' gesperrt
             // werden, da noch kein Dateiname angegeben wurde, ansonsten ist die 
             // Auswahl 'Speichern' freigeschaltet
-            this.ultraToolbarsManager1.Tools[@"Speichern"].SharedProps.Enabled = !this.prjHinzugefuegt;
+            ultraToolbarsManager1.Tools[@"Speichern"].SharedProps.Enabled = !prjHinzugefuegt;
         }
 
         private void ultraGanttView1_BindingContextChanged(object sender, EventArgs e)

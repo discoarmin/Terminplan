@@ -20,12 +20,13 @@
 namespace Terminplan
 {
     using System;
-    using System.Windows.Forms;
     using System.Threading;
+    using System.Windows.Forms;
 
     public static class Program
     {
-        public static SplashScreen StartScreen;   
+        static SplashScreen startScreen;
+ 
         /// <summary>
         /// Der Haupteinstiegspunkt für die Anwendung.
         /// </summary>
@@ -40,18 +41,18 @@ namespace Terminplan
                 (
                     delegate
                         {
-                            StartScreen = new SplashScreen();
-                            Application.Run(StartScreen);
+                            startScreen = new SplashScreen();
+                            Application.Run(startScreen);
                         }
                 ));                                                             // Thread zum Starten des Begrüßungsbildschirm
 
             splashThread.SetApartmentState(ApartmentState.STA);
             splashThread.Start();                                               // Thread zum Anzeigen des BegrüßungsBildschirm starten
 
-            // Hauptanwendung starten
-            var mainForm = new TerminPlanForm();
-            mainForm.Load += OnMainFormLoad;                                    // Damit vor dem 1. Anzeigen des Hauptfensters der Begrüßungsbildschirm geschlossen wird
-            Application.Run(mainForm);                                          // Hauptanwendung starten
+            var startForm = new StartForm();
+            startForm.Load += OnMainFormLoad;                                   // Damit vor dem 1. Anzeigen des Formulars der Begrüßungsbildschirm geschlossen wird
+            Application.Run(startForm);                                         // Hauptanwendung starten
+
         }
 
         /// <summary>
@@ -59,12 +60,12 @@ namespace Terminplan
         /// </summary>
         /// <param name="sender">Das aufrufende Element</param>
         /// <param name="e">Die <see cref="EventArgs"/> Instanz, welche die Ereignisdaten enthält.</param>
-        public static void OnMainFormLoad(object sender, EventArgs e)
+        private static void OnMainFormLoad(object sender, EventArgs e)
         {
             // Begrüßungsbildaschirm schließen
-            if (StartScreen != null)
+            if (startScreen != null)
             {
-                StartScreen.Invoke(new Action(StartScreen.Close));
+                startScreen.Invoke(new Action(startScreen.Close));
             }
         }
     }

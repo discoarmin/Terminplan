@@ -1,0 +1,77 @@
+private void Form1_Load(object sender, System.EventArgs e)
+{   
+    this.ultraGrid1.DrawFilter = new BordersDrawFilter();
+}
+
+
+private void ultraGrid1_InitializeLayout(object sender, Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+{
+    e.Layout.Override.BorderStyleRow = UIElementBorderStyle.None;
+    e.Layout.Override.BorderStyleCell = UIElementBorderStyle.InsetSoft;
+}
+
+public class BordersDrawFilter : IUIElementDrawFilter
+{
+
+    #region IUIElementDrawFilter Members
+
+    bool IUIElementDrawFilter.DrawElement(DrawPhase drawPhase, ref UIElementDrawParams drawParams)
+    {
+        // Get the cell. 
+        UltraGridCell cell = drawParams.Element.GetContext(typeof(UltraGridCell)) as UltraGridCell;
+        if (cell == null)
+        {
+            Debug.Fail("Failed to a get a cell from the element; unexpected.");
+            return false;
+        }            
+
+        // Determine if the column should have borders or not. I arbitrarily used index >= 5 here
+        // just for testing purposes. But it's probably better to base this on the column's Key in 
+        // a real application.
+        if (cell.Column.Index < 5)
+        {
+            // We do not want this cell to draw a border. So we could simply return true here. But that
+            // would leave a gap where the cell borderw would have been and the row color will 
+            // show though. So what we need to do is draw a solid border using the cell's BackColor.                
+            drawParams.DrawBorders(UIElementBorderStyle.Solid, Border3DSide.All, drawParams.AppearanceData.BackColor, drawParams.Element.Rect, drawParams.Element.ClipRect);
+
+            // Return true to let the grid know that the drawing has been done. 
+            return true;
+        }
+
+        // Return false so the grid just does the normal border drawing. 
+        return false;
+    }
+
+    DrawPhase IUIElementDrawFilter.GetPhasesToFilter(ref UIElementDrawParams drawParams)
+    {
+        // Handle the drawing of the borders for CellUIElements.
+        if (drawParams.Element is CellUIElement)
+            return DrawPhase.BeforeDrawBorders;
+
+        // Do nothing. 
+        return DrawPhase.None;
+    }
+
+    #endregion
+}
+
+Private Sub expPdfExporter_RowExported(ByVal sender As System.Object, ByVal e As Infragistics.Win.UltraWinGrid.DocumentExport.RowExportedEventArgs) Handles expPdfExporter.RowExported
+    Dim row As UltraGridRow = e.GridRow
+
+
+    If lstUnderLine.ContainsKey(row.Index) Or lstOverLine.ContainsKey(row.Index) Then
+        ' This will only be called for the BeforeDrawBorders phase of a
+        ' RowCellAreaUIElement based on the flags returned from GetPhasesToFilter.
+
+        ' Draw a border along the top edge of the element.
+        e.ReportRow.Borders = New Infragistics.Documents.Report.Borders(Nothing, Nothing, Infragistics.Documents.Graphics.Pens.Black, Nothing)
+
+
+        'if it is the last row draw a line at the bottom
+        If row.HasNextSibling = False Then
+            e.ReportRow.Borders = New Infragistics.Documents.Report.Borders(Nothing, Nothing, Infragistics.Documents.Graphics.Pens.Black, Infragistics.Documents.Graphics.Pens.Black)
+        End If
+    End If
+End Sub
+
