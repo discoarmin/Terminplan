@@ -23,7 +23,6 @@ namespace Terminplan
     using System.ComponentModel;
     using System.Data;
     using System.Globalization;
-    using System.IO;
     using System.Windows.Forms;
     using Infragistics.Win;
     using Infragistics.Win.AppStyling;
@@ -438,7 +437,7 @@ namespace Terminplan
         /// </summary>
         private void OnInitializeUi()
         {
-            InitializeUi(); // Oberfläche initialisieren
+            InitializeUi();                                                     // Oberfläche initialisieren
         }
         #endregion OnInitializeUI
 
@@ -515,21 +514,93 @@ namespace Terminplan
 
             if (prjNeu.PrjName != null)
             {
-                // Listen erzeugen
+                // Listen erzeugen. Die Liste se
                 // TODO: Daten aus Stammdaten holen
-                List<string> listBesitzer = new List<string>();                 // Liste für Bearbeiter der Aufgaben
-                listBesitzer.Add(@"Martin Knoblauch");
-                listBesitzer.Add(@"Martin Kaiser");
-                listBesitzer.Add(@"Wolfgang Roth");
-                listBesitzer.Add(@"C. Klute-Lang");
-                listBesitzer.Add(@"Armin Brenner");
-                listBesitzer.Add(@"J. Echsler-Kull");
-                listBesitzer.Add(@"M. Jetter");
+                var listBesitzer = new List<Besitzer>
+                {
+                    new Besitzer
+                    {
+                        Key = @"Martin Knoblauch",
+                        Name = @"kn",
+                        Sichtbar = true,
+                        EmailAddresse = string.Empty
+                    },
+
+                    new Besitzer
+                    {
+                        Key = @"Martin Kaiser",
+                        Name = @"ka",
+                        Sichtbar = true,
+                        EmailAddresse = string.Empty
+                    },
+
+                    new Besitzer
+                    {
+                        Key = @"Wolfgang Roth",
+                        Name = @"ro",
+                        Sichtbar = true,
+                        EmailAddresse = string.Empty
+                    },
+
+                    new Besitzer
+                    {
+                        Key = @"Armin Brenner",
+                        Name = @"br",
+                        Sichtbar = true,
+                        EmailAddresse = string.Empty
+                    },
+
+                    new Besitzer
+                    {
+                        Key = @"C. Klute-Lang",
+                        Name = @"kl",
+                        Sichtbar = true,
+                        EmailAddresse = string.Empty
+                    },
+
+                    new Besitzer
+                    {
+                        Key = @"Martin Jetter",
+                        Name = @"je",
+                        Sichtbar = true,
+                        EmailAddresse = string.Empty
+                    },
+
+                    new Besitzer
+                    {
+                        Key = @"J. Echsler-Kull",
+                        Name = @"ku",
+                        Sichtbar = true,
+                        EmailAddresse = string.Empty
+                    },
+
+                    new Besitzer
+                    {
+                        Key = @"Benjamin Kittlaus",
+                        Name = @"ks",
+                        Sichtbar = true,
+                        EmailAddresse = string.Empty
+                    },
+
+                    new Besitzer
+                    {
+                        Key = @"Andreas Held",
+                        Name = @"hd",
+                        Sichtbar = true,
+                        EmailAddresse = string.Empty
+                    },
+
+                    new Besitzer
+                    {
+                        Key = @"Xue Yang",
+                        Name = @"ya",
+                        Sichtbar = true,
+                        EmailAddresse = string.Empty
+                    }
+                };
 
                 // TODO: Falls nicht EST, Daten aus den Stammdaten holen
-                List<string> listAufgaben = new List<string>();                 // Liste der Aufgaben
-                listAufgaben.Add(@"Aufgabe 1");                                 // Bei EST gibt es nur eine Aufgabe
-
+                var listAufgaben = new List<string> {@"Aufgabe 1"};             // Liste der Aufgaben
 
 
                 if (AddNewProjekt(prjNeu.PrjName,
@@ -545,7 +616,12 @@ namespace Terminplan
 
             if (!prjHinzugefuegt) return;                                       // Falls kein neues Projekt hinzugefügt wurde, kann hier abgebrochen werden
 
-            var speicherPfad = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            // Erzeugte Projekt speichern
+            //var speicherPfad = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            //this.ultraCalendarInfo1.SaveAsXml(Path.Combine(speicherPfad, @"Data.DatenNeuEST.XML"),
+            //    CalendarInfoCategories.All);
+
+            //DatasetTp = DienstProgramme.GetData(Path.Combine(speicherPfad, @"Data.DatenNeuEST.XML")); // Neue Daten laden
 
             //components = new Container();
             //ultraCalendarInfo1 = null;
@@ -555,7 +631,6 @@ namespace Terminplan
 
             // Ruft die Daten aus der bereitgestellten XML-Datei ab
             //DatasetTp = new DataSet();
-            DatasetTp = DienstProgramme.GetData(Path.Combine(speicherPfad, @"Data.DatenNeuEST.XML")); // Neue Daten laden
             //DatasetTp = DienstProgramme.GetData(Path.Combine(Application.StartupPath, @"ProjectTerminplan.XML")); // Testdaten laden
             // Die eingelesenen Daten an die ultraCalendarInfo anbinden.
             //this.DatasetTp.AcceptChanges();

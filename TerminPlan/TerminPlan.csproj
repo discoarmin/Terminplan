@@ -114,6 +114,7 @@
     <Compile Include="AboutControl.Designer.cs">
       <DependentUpon>AboutControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Besitzer.cs" />
     <Compile Include="BordersDrawFilter.cs" />
     <Compile Include="Hauptform.cs">
       <SubType>Form</SubType>

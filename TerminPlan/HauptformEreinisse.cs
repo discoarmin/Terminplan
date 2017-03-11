@@ -23,6 +23,7 @@ namespace Terminplan
     using System.Data;
     using System.Diagnostics.CodeAnalysis;
     using System.Drawing;
+    using System.Globalization;
     using System.IO;
     using System.Linq;
     using System.Windows.Forms;
@@ -654,15 +655,34 @@ namespace Terminplan
             DateTime prjStart, 
             string formatedStart, 
             string prjKey,
-            List<string> aufgaben,
-            List<string> besitzer )
+            IReadOnlyList<string> aufgaben,
+            IReadOnlyList<Besitzer> besitzer)
         {
             // Neues Projekt erstellen. Der Projektname und das Startdatum des Projekts stammen aus dem zuvor angezeigten Dialog
             var neuesProjekt = this.ultraCalendarInfo1.Projects.Add(prjName, prjStart);
             neuesProjekt.Key = prjKey;
 
+            var neuesDataSet = this.GetNewProjectData(
+                prjKey,
+                prjStart,
+                prjName,
+                aufgaben,
+                @"Arbeitsinhalt 1");
 
- /*
+            ErzeugeBesitzer(besitzer, ref neuesDataSet);                        // Benutzer anlegen, welche das Projekt bearbeiten dürfen
+            ErzeugeNeueTasks(ref neuesProjekt,
+                prjStart,
+                prjKey,
+                aufgaben,
+                @"Arbeitsinhalt1");
+
+            ErstelleDatenBindungen(neuesDataSet);                               // Datenanbindungen an das GanttView erstellen
+            var kultur = new CultureInfo("de-DE");                              // Kultur für Darstellung
+
+            this.DatasetTp = neuesDataSet;
+            this.DatasetTp.Locale = kultur;
+            return true;
+            /*
             TasksCollection parentCollection = null;                            // Sammlung übergeordneter Arbeitsinhalte löschen
             var kultur = new CultureInfo("de-DE");                              // Kultur für Darstellung
             var calendarInfo = ultraGanttView1.CalendarInfo;                    // Kalenderinfo festlegen

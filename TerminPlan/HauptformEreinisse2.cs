@@ -20,6 +20,7 @@ namespace Terminplan
 {
     using System;
     using System.Collections.Generic;
+    using System.Data;
     using System.Globalization;
     using System.Threading;
     using System.Windows.Forms;
@@ -144,42 +145,203 @@ namespace Terminplan
         /// <param name="startDatum">das Startdatum des Projekts.</param>
         /// <param name="prjKey">Schlüssel des Projekts, entspricht der Kommissionsnummer.</param>
         /// <param name="aufgaben">Liste mit allen anzulegenden Aufgaben.</param>
-        /// <param name="besitzer">Liste mit allenPersonen, welche die Aufgaben bearbeiten können.</param>
         /// <param name="arbInhalt">der anzulegende Arbeitsinhalt.</param>
         private void ErzeugeNeueTasks(ref Project neuesProjekt, 
             DateTime startDatum, 
             string prjKey, 
-            List<string> aufgaben, 
-            List<string> besitzer, 
+            IReadOnlyList<string> aufgaben, 
             string arbInhalt)
         {
             // Den Arbeitsinhalt generieren. Es wird eine Dauer von fünf Tagen angenommen. Kann nachträglich geändert werden
-            const string AlleEigenschaften = "AAEAAAD/////AQAAAAAAAAAMAgAAAG9JbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNC4xLCBWZXJzaW9uPTE0LjEuMC45MDAwLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPTdkZDVjMzE2M2YyY2QwY2IFAQAAACdJbmZyYWdpc3RpY3MuV2luLlVsdHJhV2luU2NoZWR1bGUuT3duZXIBAAAAA0tleQECAAAABgMAAAALUGVyc29uIE5hbWUL";
-
             var arbInhaltTask = this.ultraCalendarInfo1.Tasks.Add(startDatum, TimeSpan.FromDays(5), @"Arbeitsinhalt_Aufgaben", prjKey);
-            Task aufabeTask;                                                    // Eintrag für eine Aufgabe
+            arbInhaltTask.Name = arbInhalt;                                     // Bezeichnung des Arbeitsinhalts
+
             var anzAufgaben = aufgaben.Count;                                   // Ermitteln, wie viele Aufgaben angelegt werden müsse
-            var anzBesitzer = besitzer.Count;                                   // Anzahl Personen, welche die Aufgaben bearbeiten können
 
             // Alle vorhandenen Aufgaben eintragen
             for (var a = 0; a < anzAufgaben; a++)
             {
                 // Aufgabe für den Arbeitsinhalt generieren. Es wird eine Dauer von zwei Tagen angenommen. Kann nachträglich geändert werden
-                aufabeTask = arbInhaltTask.Tasks.Add(DateTime.Today, TimeSpan.FromDays(2), aufgaben[a]);
+                var aufabeTask = arbInhaltTask.Tasks.Add(DateTime.Today, TimeSpan.FromDays(2), aufgaben[a]); // Eintrag für eine Aufgabe
 
                 // Einschränkung für diese Aufgabe erstellen
                 aufabeTask.Constraint = TaskConstraint.AsSoonAsPossible;        // So bald wie möglich
 
-                // Alle Personen eintragen, welche die AUfgaben bearbeiten dürfen
-                for (var owner = 0; owner < anzBesitzer; owner++)
-                {
-                    var aufgabeOwner = this.ultraCalendarInfo1.Owners.Add(@"Besitzer", besitzer[owner]);
-                    aufabeTask.Resources.Add(aufgabeOwner);
-                }
-
             }
 
         }
+
+        /// <summary>Erzeugt die Besitzer-Einträge für den neuen Terminplan</summary>
+        /// <param name="besitzer">Liste mit allenPersonen, welche die Aufgaben bearbeiten können.</param>
+        private void ErzeugeBesitzer(IReadOnlyList<Besitzer> besitzer, ref DataSet neuesDataSet)
+        {
+//            const string AlleEigenschaften = "AAEAAAD/////AQAAAAAAAAAMAgAAAG9JbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNC4xLCBWZXJzaW9uPTE0LjEuMC45MDAwLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPTdkZDVjMzE2M2YyY2QwY2IFAQAAACdJbmZyYWdpc3RpY3MuV2luLlVsdHJhV2luU2NoZWR1bGUuT3duZXIBAAAAA0tleQECAAAABgMAAAALUGVyc29uIE5hbWUL";
+
+            var anzBesitzer = besitzer.Count;                                   // Anzahl Personen, welche die Aufgaben bearbeiten können
+            this.ultraCalendarInfo1.Owners.Clear();                             // Erst mal alle Besitzer löschen
+            var dieBesitzer = neuesDataSet.Tables.Add(@"Besitzer");             // Tabelle für die Besitzer erzeugen
+
+            // Spalten für die Tabelle 'Besitzer' definieren
+            dieBesitzer.Columns.Add(@"Key", typeof(String));                    // Voller Name des Besitzers
+            dieBesitzer.Columns.Add(@"Name", typeof(String));                   // Spalte für das Namenskürzel
+            dieBesitzer.Columns.Add(@"EmailAddresse", typeof(String));          // Email-Addresse des Besitzers
+            dieBesitzer.Columns.Add(@"Sichtbar", typeof(Boolean));              // Besitzers sichtbar
+            dieBesitzer.Columns.Add(@"AlleEigenschaften", typeof(Byte[]));      // Binäre nicht angebundene Daten
+
+            System.Text.ASCIIEncoding enc = new System.Text.ASCIIEncoding();  // Zum Eintragen des ByteArrays
+
+            // Alle Personen eintragen, welche die Aufgaben bearbeiten dürfen
+            for (var owner = 0; owner < anzBesitzer; owner++)
+            {
+                var besitzerName = besitzer[owner].Key;                         // Name des Besitzers ermitteln
+                var kuerzel = besitzer[owner].Name;                             // Kurzbezeichnung
+                var sichtbar = besitzer[owner].Sichtbar;                        // Ist Besitzer sichtbar
+                var email = besitzer[owner].EmailAddresse;                      // E-Mail Addresse des Besitzers
+
+                // Besitzer-Tabelle erstellen, wenn sie noch nicht existiert und zugehörige Werte eintragen
+                // Die übergebenen Besitzer hinzufügen
+                dieBesitzer.Rows.Add(
+                    besitzerName,
+                    kuerzel,
+                    email,
+                    sichtbar,
+                    null);                                                      // Zeile hinzufügen
+                                                                                                   
+                //try
+                //{
+                //    var aufgabeOwner = this.ultraCalendarInfo1.Owners.Add(besitzerName, kuerzel);
+                //    aufgabeOwner.Visible = sichtbar;
+                //    aufgabeOwner.EmailAddress = email;
+                //}
+                //catch(Exception e)
+                //{
+                //    Console.WriteLine(e.Message);
+                //}
+            }
+        }
+
+        /// <summary>Erstellt ein Dataset mit den für einen neuen Terminplan benötiten Daten</summary>
+        /// <param name="prjKey">Schlüssel des Projekts, entspricht der Kommissionsnummer.</param>
+        /// <param name="prjStart">das Startdatum des Projekts.</param>
+        /// <param name="prjName">Name des Projekts.</param>
+        /// <param name="aufgaben">Liste mit allen anzulegenden Aufgaben.</param>
+        /// <param name="arbInhalt">der anzulegende Arbeitsinhalt.</param>
+        /// <returns></returns>
+        private DataSet GetNewProjectData(
+            string prjKey,
+            DateTime prjStart,
+            string prjName,
+            IReadOnlyList<string> aufgaben,
+            string arbInhalt)
+        {
+            var neuesDataSet = new DataSet();                                   // DataSet erzeugen
+            neuesDataSet.Locale = new CultureInfo(@"de-DE");
+
+            var dieProjekte = neuesDataSet.Tables.Add(@"Projekte");             // Tabelle für die Projekte erzeugen
+
+            // Spalten für die Tabelle 'Projekte' definieren
+            dieProjekte.Columns.Add(@"ProjektID", typeof(String));
+            dieProjekte.Columns.Add(@"ProjektKey", typeof(String));
+            dieProjekte.Columns.Add(@"ProjektName", typeof(String));
+            dieProjekte.Columns.Add(@"ProjektStart", typeof(DateTime));
+            
+            // Die eingegebenen Daten in das DataSet eintragen
+            dieProjekte.Rows.Add(new Object[] { DienstProgramme.GetGuId(), prjKey, prjName, prjStart });
+
+            var theTasks = neuesDataSet.Tables.Add(@"Arbeitsinhalt_Aufgaben");  // Tabelle für die Arbeitsinhalte und Aufgaben erzeugen
+
+            // Spalten für die Tabelle 'Arbeitsinhalt_Aufgaben' definieren
+            theTasks.Columns.Add(@"TaskID", typeof(String));
+            theTasks.Columns.Add(@"ProjektKey", typeof(String));
+            theTasks.Columns.Add(@"TaskName", typeof(String));
+            theTasks.Columns.Add(@"TaskStartTime", typeof(DateTime));
+            theTasks.Columns.Add(@"TaskDauer", typeof(TimeSpan));
+            theTasks.Columns.Add(@"ParentTaskID", typeof(String));
+            theTasks.Columns.Add(@"Einschraenkung", typeof(object));
+            theTasks.Columns.Add(@"TaskFertigInProzent", typeof(String));
+
+            // Die Task-Eigenschaften sind alle von einzelnen Mitgliedern abgedeckt. Aber wir könnten Platz in der Datenbank
+            // durch die Speicherung von Daten als Binär sparen, indem die betroffenen Felder nicht angebunden werden, sondern
+            // in der Eigenschft 'AllProperties' eingetragen werden.
+            theTasks.Columns.Add(@"AlleEigenschaften", typeof(Byte[]));
+            var arbInhaltTaskid = DienstProgramme.GetGuId();                     // Neue GUID erzeugen
+            
+            // Bei einem neuen Terminplan gibt es einen Arbeitsinhalt. Die zugehörigen Aufgaben werden einer Liste entnommen
+            // a) Arbeitsinhalt erzeugen. Hier wird eine Dauer von 5 Tagen vorgegeben. Kann im Terminplan geändert werden.
+            theTasks.Rows.Add(new Object[]
+            {
+                arbInhaltTaskid,                                                // GUID
+                prjKey,                                                         // Schlüssel des Projekts, entspricht der Kommissionsnummer
+                arbInhalt,                                                      // Name des Arbeitsinhalts
+                prjStart,                                                       // Startzeitpunkt des Arbeitsinhalts ist der Projektstart
+                TimeSpan.FromDays(5),                                           // Die Dauer beträgt 5 Tage
+                null,                                                           // Es gibt keine Eltern
+                TaskConstraint.AsSoonAsPossible,                                // Start soll so bald wie möglich erfolgen
+                null                                                            // Fertiggestellt ist noch nichts
+            });
+
+            var anzAufgaben = aufgaben.Count;                                   // Ermitteln, wie viele Aufgaben angelegt werden müsse
+
+            // TODO: Falls es Abhängigkeiten gibt, diese eintragen
+            // Alle vorhandenen Aufgaben eintragen
+            for (var a = 0; a < anzAufgaben; a++)
+            {
+                // Aufgabe für den Arbeitsinhalt generieren. Es wird eine Dauer von zwei Tagen angenommen. Kann nachträglich geändert werden
+                theTasks.Rows.Add(new Object[]
+                {
+                    DienstProgramme.GetGuId(),                                  // GUID
+                    prjKey,                                                     // Schlüssel des Projekts, entspricht der Kommissionsnummer
+                    aufgaben[a],                                                // Bezeichnung der Aufgabe
+                    prjStart,                                                   // Startzeitpunkt der Aufgabe ist der Projektstart
+                    TimeSpan.FromDays(2),                                       // Die Dauer beträgt 2 Tage
+                    arbInhaltTaskid,                                            // ID des zugehörigen Arbeitsinhalts
+                    TaskConstraint.StartNoEarlierThan,                          // nicht vorher starten
+                    25                                                          // 25% fertig (damit was angzeigt wird)
+                });
+            }
+
+            return neuesDataSet;
+        }
+
+        /// <summary>Erstellt die Datenbindungen für das neue Projekt.</summary>
+        /// <param name="ds">das zugehörige DataSet.</param>
+        private void ErstelleDatenBindungen(DataSet ds)
+        {
+            //  Legt die BindingContextControl-Eigenschaft fest, um auf dieses Formular zu verweisen
+            this.ultraCalendarInfo1.DataBindingsForTasks.BindingContextControl = this;
+            this.ultraCalendarInfo1.DataBindingsForProjects.BindingContextControl = this;
+
+            //  Setzt die DataBinding-Mitglieder für Projekte fest
+            this.ultraCalendarInfo1.DataBindingsForProjects.SetDataBinding(ds, @"Projekte");
+            this.ultraCalendarInfo1.DataBindingsForProjects.IdMember = @"ProjektID";
+            this.ultraCalendarInfo1.DataBindingsForProjects.KeyMember = @"ProjektKey";
+            this.ultraCalendarInfo1.DataBindingsForProjects.NameMember = @"ProjektName";
+            this.ultraCalendarInfo1.DataBindingsForProjects.StartDateMember = @"ProjektStart";
+
+            //  Setzt die DataBinding-Mitglieder für die Arbeitsinhalte und Aufgaben fest
+            this.ultraCalendarInfo1.DataBindingsForTasks.SetDataBinding(ds, @"Arbeitsinhalt_Aufgaben");
+
+            // Grundlegende Aufgabeneigenschaften 
+            this.ultraCalendarInfo1.DataBindingsForTasks.NameMember = @"TaskName";
+            this.ultraCalendarInfo1.DataBindingsForTasks.DurationMember = @"TaskDauer";
+            this.ultraCalendarInfo1.DataBindingsForTasks.StartDateTimeMember = @"TaskStartTime";
+            this.ultraCalendarInfo1.DataBindingsForTasks.IdMember = @"TaskID";
+            this.ultraCalendarInfo1.DataBindingsForTasks.ProjectKeyMember = "ProjektKey";
+            this.ultraCalendarInfo1.DataBindingsForTasks.ParentTaskIdMember = @"ParentTaskID";
+
+            this.ultraCalendarInfo1.DataBindingsForTasks.ConstraintMember = @"Einschraenkung";
+            this.ultraCalendarInfo1.DataBindingsForTasks.PercentCompleteMember = @"TaskFertigInProzent";
+            
+            // Alle anderen Eigeenschaften
+            this.ultraCalendarInfo1.DataBindingsForTasks.AllPropertiesMember = @"AlleEigenschaften";
+
+            // Da eine Aufgabe angezeigt werden soll, welche zu einer explizit definierten Projekt gehört
+            // (d.h. nicht das UnassignedProject), muss das Projekt zu der Projekt-Eigenschaft des
+            // UltraGanttView-Steuerelements zugeordnet werden, damit das Steuerelemnt dieses Projekt anzeigen kann.
+            this.ultraGanttView1.CalendarInfo = this.ultraCalendarInfo1;
+            this.ultraGanttView1.Project = this.ultraGanttView1.CalendarInfo.Projects[1];
+        }
+
         #endregion CreateNewTasks
 
         #region DeleteTask

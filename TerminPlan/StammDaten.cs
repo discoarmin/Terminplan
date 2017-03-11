@@ -2,8 +2,8 @@
 
 namespace Terminplan
 {
-    using Infragistics.Win.UltraWinToolbars;
     using System.Globalization;
+    using Infragistics.Win.UltraWinToolbars;
 
     public partial class StammDaten : Form
     {
