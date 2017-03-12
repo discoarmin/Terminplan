@@ -538,8 +538,8 @@ namespace Terminplan
         private void AddNewTask(bool addAtSelectedRow)
         {
             TasksCollection parentCollection = null;                            // Sammlung übergeordneter Arbeitsinhalte löschen
-            var calendarInfo = ultraGanttView1.CalendarInfo;               // Kalenderinfo festlegen
-            var activeTask = ultraGanttView1.ActiveTask;                   // aktiven Arbeitsinhalt ermitteln
+            var calendarInfo = ultraGanttView1.CalendarInfo;                    // Kalenderinfo festlegen
+            var activeTask = ultraGanttView1.ActiveTask;                        // aktiven Arbeitsinhalt ermitteln
             var prjHinzuefuegt = false;                                         // Es wurde kein neues Projrkt hinzuefügt
             Project projekt;
 

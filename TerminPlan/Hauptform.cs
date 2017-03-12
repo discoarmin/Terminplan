@@ -170,6 +170,7 @@ namespace Terminplan
                 else
                 {
                     ErstelleNeuesProjekt();                                     // Neuen Terminplan erzeugen
+                    OnInitializationStatusChanged(Resources.Binding);           // Anzeige im Splashscreen aktualisieren
                 }
             }
             //DatasetTp = DienstProgramme.GetData(Path.Combine(Application.StartupPath, @"Data.TestDatenEST.XML")); // Testdaten laden
@@ -178,9 +179,13 @@ namespace Terminplan
             //DatasetTp = DienstProgramme.GetData(Path.Combine(Application.StartupPath, @"Data.DatenNeuEST.XML")); // Testdaten laden
             //DatasetTp = DienstProgramme.GetData(Path.Combine(Application.StartupPath, @"ProjectTerminplan.XML")); // Testdaten laden
 
-            // Die eingelesenen Daten an die ultraCalendarInfo anbinden.
-            OnInitializationStatusChanged(Resources.Binding);                   // Anzeige im Splashscreen aktualisieren
-            OnBindArbInhaltData(DatasetTp);                                     // Daten an ultraCalendarInfo anbinden
+
+            if (!this.prjHinzugefuegt)
+            {
+                // Die eingelesenen Daten an die ultraCalendarInfo anbinden.
+                OnInitializationStatusChanged(Resources.Binding);                   // Anzeige im Splashscreen aktualisieren
+                OnBindArbInhaltData(DatasetTp);                                 // Daten an ultraCalendarInfo anbinden
+            }
 
             // Initialisiert die Kontrols auf dem Formular
             OnInitializationStatusChanged(Resources.Initializing);              // Anzeige im Splashscreen aktualisieren
@@ -614,7 +619,8 @@ namespace Terminplan
                 }               
             }
 
-            if (!prjHinzugefuegt) return;                                       // Falls kein neues Projekt hinzugefügt wurde, kann hier abgebrochen werden
+            //if (!prjHinzugefuegt) return;                                       // Falls kein neues Projekt hinzugefügt wurde, kann hier abgebrochen werden
+            return;
 
             // Erzeugte Projekt speichern
             //var speicherPfad = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);

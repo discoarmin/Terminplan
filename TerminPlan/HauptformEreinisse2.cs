@@ -188,7 +188,7 @@ namespace Terminplan
             dieBesitzer.Columns.Add(@"Sichtbar", typeof(Boolean));              // Besitzers sichtbar
             dieBesitzer.Columns.Add(@"AlleEigenschaften", typeof(Byte[]));      // Binäre nicht angebundene Daten
 
-            System.Text.ASCIIEncoding enc = new System.Text.ASCIIEncoding();  // Zum Eintragen des ByteArrays
+            System.Text.ASCIIEncoding enc = new System.Text.ASCIIEncoding();    // Zum Eintragen des ByteArrays
 
             // Alle Personen eintragen, welche die Aufgaben bearbeiten dürfen
             for (var owner = 0; owner < anzBesitzer; owner++)
@@ -202,21 +202,23 @@ namespace Terminplan
                 // Die übergebenen Besitzer hinzufügen
                 dieBesitzer.Rows.Add(
                     besitzerName,
-                    kuerzel,
+                    besitzerName + @"(" + kuerzel +@")",
                     email,
                     sichtbar,
                     null);                                                      // Zeile hinzufügen
-                                                                                                   
-                //try
-                //{
-                //    var aufgabeOwner = this.ultraCalendarInfo1.Owners.Add(besitzerName, kuerzel);
-                //    aufgabeOwner.Visible = sichtbar;
-                //    aufgabeOwner.EmailAddress = email;
-                //}
-                //catch(Exception e)
-                //{
-                //    Console.WriteLine(e.Message);
-                //}
+
+                // Da alle Besitzer gelöscht wurden, die Liste wieder hinzufügen. Wird so
+                // emacht, falls sich bei den Besitzern etwas geändert hat
+                try
+                {
+                    var aufgabeOwner = this.ultraCalendarInfo1.Owners.Add(besitzerName, besitzerName +@" (" + kuerzel + @")");
+                    aufgabeOwner.Visible = sichtbar;
+                    aufgabeOwner.EmailAddress = email;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
             }
         }
 
