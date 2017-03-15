@@ -392,6 +392,8 @@
             resources.ApplyResources(ribbonTab1, "ribbonTab1");
             resources.ApplyResources(ribbonGroup1, "ribbonGroup1");
             ribbonGroup1.LayoutDirection = Infragistics.Win.UltraWinToolbars.RibbonGroupToolLayoutDirection.Horizontal;
+            fontListTool1.InstanceProps.ButtonGroup = "FontSize";
+            fontListTool1.InstanceProps.IsFirstInGroup = true;
             fontListTool1.InstanceProps.Width = 193;
             comboBoxTool1.InstanceProps.ButtonGroup = "FontSize";
             comboBoxTool1.InstanceProps.Width = 50;
