@@ -21,7 +21,7 @@ namespace Terminplan
             InitializeComponent();
         }
 
-        private void ultraToolbarsManager1_ToolClick(object sender, ToolClickEventArgs e)
+        private void ultraToolbarsManagerStamm_ToolClick(object sender, ToolClickEventArgs e)
         {
 
         }
