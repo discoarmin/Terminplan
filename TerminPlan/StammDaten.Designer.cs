@@ -1588,7 +1588,7 @@
             buttonTool73.SharedPropsInternal.AppearancesSmall.Appearance = appearance90;
             buttonTool73.SharedPropsInternal.Caption = "Textumbruch";
             buttonTool73.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
-            buttonTool73.SharedPropsInternal.ToolTipTextFormatted = resources.GetString("buttonTool73.SharedPropsInternal.ToolTipTextFormatted");
+            buttonTool73.SharedPropsInternal.ToolTipTextFormatted = resources.GetString("resource.ToolTipTextFormatted");
             buttonTool73.SharedPropsInternal.ToolTipTitle = "Textumbruch";
             appearance91.Image = ((object)(resources.GetObject("appearance91.Image")));
             popupMenuTool24.SharedPropsInternal.AppearancesSmall.Appearance = appearance91;
