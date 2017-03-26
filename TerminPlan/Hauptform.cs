@@ -782,5 +782,10 @@ namespace Terminplan
         {
 
         }
+
+        private void OnZoomFactorChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

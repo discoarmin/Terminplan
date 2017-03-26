@@ -25,5 +25,10 @@ namespace Terminplan
         {
 
         }
+
+        private void OnZoomFactorChanged(object sender, System.EventArgs e)
+        {
+
+        }
     }
 }

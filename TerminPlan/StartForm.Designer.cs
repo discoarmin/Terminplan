@@ -29,19 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance("trackBar");
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel1 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
-            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel2 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
-            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel3 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
-            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance("trackBar");
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
@@ -49,8 +39,19 @@
             Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel1 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
+            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel2 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
+            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinStatusBar.UltraStatusPanel ultraStatusPanel3 = new Infragistics.Win.UltraWinStatusBar.UltraStatusPanel();
+            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StartForm));
+            this.trackBarZoom = new Infragistics.Win.UltraWinEditors.UltraTrackBar();
             this.ultraTabbedMdiManager1 = new Infragistics.Win.UltraWinTabbedMdi.UltraTabbedMdiManager(this.components);
             this.ultraFormManager = new Infragistics.Win.UltraWinForm.UltraFormManager(this.components);
             this._MainForm_UltraFormManager_Dock_Area_Left = new Infragistics.Win.UltraWinForm.UltraFormDockArea();
@@ -59,24 +60,80 @@
             this._MainForm_UltraFormManager_Dock_Area_Bottom = new Infragistics.Win.UltraWinForm.UltraFormDockArea();
             this.ultraToolbarsManagerStart = new Infragistics.Win.UltraWinToolbars.UltraToolbarsManager(this.components);
             this.ultraStatusBarStart = new Infragistics.Win.UltraWinStatusBar.UltraStatusBar();
-            this.trackBarZoom = new Infragistics.Win.UltraWinEditors.UltraTrackBar();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarZoom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraTabbedMdiManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraFormManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManagerStart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraStatusBarStart)).BeginInit();
             this.ultraStatusBarStart.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarZoom)).BeginInit();
             this.SuspendLayout();
+            // 
+            // trackBarZoom
+            // 
+            appearance1.BackColor = System.Drawing.Color.DimGray;
+            appearance1.FontData.SizeInPoints = 5F;
+            appearance1.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.trackBarZoom.Appearance = appearance1;
+            this.trackBarZoom.AutoSize = false;
+            this.trackBarZoom.BackColor = System.Drawing.Color.DimGray;
+            this.trackBarZoom.BackColorInternal = System.Drawing.Color.DimGray;
+            this.trackBarZoom.ButtonSettings.ButtonSize = new System.Drawing.Size(10, 10);
+            this.trackBarZoom.ButtonSettings.ButtonSpacing = 10;
+            appearance2.BackColor = System.Drawing.Color.DimGray;
+            appearance2.BorderAlpha = Infragistics.Win.Alpha.Transparent;
+            appearance2.BorderColor = System.Drawing.Color.DimGray;
+            appearance2.FontData.SizeInPoints = 3F;
+            appearance2.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.trackBarZoom.ButtonSettings.DecrementButtonAppearance = appearance2;
+            appearance3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.trackBarZoom.ButtonSettings.DecrementButtonPressedAppearance = appearance3;
+            appearance4.BackColor = System.Drawing.Color.DimGray;
+            appearance4.BorderAlpha = Infragistics.Win.Alpha.Transparent;
+            appearance4.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.trackBarZoom.ButtonSettings.IncrementButtonAppearance = appearance4;
+            appearance5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.trackBarZoom.ButtonSettings.IncrementButtonPressedAppearance = appearance5;
+            this.trackBarZoom.ButtonSettings.ShowIncrementButtons = Infragistics.Win.DefaultableBoolean.True;
+            this.trackBarZoom.ButtonSettings.ShowMinMaxButtons = Infragistics.Win.DefaultableBoolean.False;
+            this.trackBarZoom.ButtonStyle = Infragistics.Win.UIElementButtonStyle.FlatBorderless;
+            this.trackBarZoom.LargeChange = 15;
+            this.trackBarZoom.Location = new System.Drawing.Point(1964, 2);
+            this.trackBarZoom.MaxValue = 300;
+            appearance6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.trackBarZoom.MidpointSettings.Appearance = appearance6;
+            this.trackBarZoom.Name = "trackBarZoom";
+            this.trackBarZoom.Size = new System.Drawing.Size(220, 21);
+            this.trackBarZoom.SmallChange = 5;
+            this.trackBarZoom.TabIndex = 11;
+            appearance7.BackColor = System.Drawing.Color.White;
+            this.trackBarZoom.TickmarkSettingsMajor.Appearance = appearance7;
+            this.trackBarZoom.TickmarkSettingsMajor.Frequency = 50;
+            this.trackBarZoom.TickmarkSettingsMajor.TrackOffset = 0;
+            this.trackBarZoom.TickmarkSettingsMajor.Visible = Infragistics.Win.DefaultableBoolean.True;
+            appearance8.BackColor = System.Drawing.Color.WhiteSmoke;
+            appearance8.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.trackBarZoom.TickmarkSettingsMinor.Appearance = appearance8;
+            this.trackBarZoom.TickmarkSettingsMinor.Frequency = 25;
+            this.trackBarZoom.TickmarkSettingsMinor.TrackOffset = 0;
+            this.trackBarZoom.TickmarkSettingsMinor.Visible = Infragistics.Win.DefaultableBoolean.True;
+            appearance9.FontData.SizeInPoints = 3F;
+            this.trackBarZoom.TrackAppearance = appearance9;
+            this.trackBarZoom.TrackClickAction = Infragistics.Win.UltraWinEditors.TrackClickAction.UseLargeChange;
+            this.trackBarZoom.TrackThickness = 2;
+            this.trackBarZoom.UseAppStyling = false;
+            this.trackBarZoom.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
+            this.trackBarZoom.ViewStyle = Infragistics.Win.UltraWinEditors.TrackBarViewStyle.Standard;
+            this.trackBarZoom.ValueChanged += new System.EventHandler(this.OnTrackBarZoomValueChanged);
             // 
             // ultraTabbedMdiManager1
             // 
             this.ultraTabbedMdiManager1.AllowMaximize = true;
             this.ultraTabbedMdiManager1.AllowVerticalTabGroups = false;
-            appearance1.BackColor = System.Drawing.Color.Gray;
-            appearance1.FontData.BoldAsString = "True";
-            appearance1.FontData.SizeInPoints = 12F;
-            appearance1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.ultraTabbedMdiManager1.Appearance = appearance1;
+            appearance10.BackColor = System.Drawing.Color.Gray;
+            appearance10.FontData.BoldAsString = "True";
+            appearance10.FontData.SizeInPoints = 12F;
+            appearance10.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.ultraTabbedMdiManager1.Appearance = appearance10;
             this.ultraTabbedMdiManager1.BorderStyle = Infragistics.Win.UltraWinTabbedMdi.MdiClientBorderStyle.None;
             this.ultraTabbedMdiManager1.MdiParent = this;
             this.ultraTabbedMdiManager1.TabGroupSettings.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Office2013Button;
@@ -104,6 +161,7 @@
             appearance18.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.ultraTabbedMdiManager1.TabSettings.TabAppearance = appearance18;
             this.ultraTabbedMdiManager1.UseAppStyling = false;
+            this.ultraTabbedMdiManager1.TabSelected += new Infragistics.Win.UltraWinTabbedMdi.MdiTabEventHandler(this.OnUltraTabbedMdiManager1TabSelected);
             // 
             // ultraFormManager
             // 
@@ -177,9 +235,9 @@
             // 
             // ultraStatusBarStart
             // 
-            appearance2.BackColor = System.Drawing.Color.DimGray;
-            appearance2.ForeColor = System.Drawing.Color.White;
-            this.ultraStatusBarStart.Appearance = appearance2;
+            appearance11.BackColor = System.Drawing.Color.DimGray;
+            appearance11.ForeColor = System.Drawing.Color.White;
+            this.ultraStatusBarStart.Appearance = appearance11;
             this.ultraStatusBarStart.Controls.Add(this.trackBarZoom);
             this.ultraStatusBarStart.Location = new System.Drawing.Point(1, 1100);
             this.ultraStatusBarStart.Name = "ultraStatusBarStart";
@@ -209,7 +267,7 @@
             ultraStatusPanel3.Appearance = appearance14;
             ultraStatusPanel3.BorderStyle = Infragistics.Win.UIElementBorderStyle.None;
             ultraStatusPanel3.Key = "ZoomInfo";
-            ultraStatusPanel3.Text = "999%";
+            ultraStatusPanel3.Text = "  0%";
             ultraStatusPanel3.ToolTipText = "Eingestellter Zoomfaktor";
             ultraStatusPanel3.Width = 80;
             ultraStatusPanel3.WrapText = Infragistics.Win.DefaultableBoolean.False;
@@ -221,64 +279,6 @@
             this.ultraStatusBarStart.TabIndex = 5;
             this.ultraStatusBarStart.UseAppStyling = false;
             this.ultraStatusBarStart.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
-            // 
-            // trackBarZoom
-            // 
-            appearance3.BackColor = System.Drawing.Color.DimGray;
-            appearance3.FontData.SizeInPoints = 5F;
-            appearance3.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.trackBarZoom.Appearance = appearance3;
-            this.trackBarZoom.AutoSize = false;
-            this.trackBarZoom.BackColor = System.Drawing.Color.DimGray;
-            this.trackBarZoom.ButtonSettings.ButtonSize = new System.Drawing.Size(10, 10);
-            this.trackBarZoom.ButtonSettings.ButtonSpacing = 10;
-            appearance4.BackColor = System.Drawing.Color.DimGray;
-            appearance4.BorderAlpha = Infragistics.Win.Alpha.Transparent;
-            appearance4.BorderColor = System.Drawing.Color.DimGray;
-            appearance4.FontData.SizeInPoints = 3F;
-            appearance4.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.trackBarZoom.ButtonSettings.DecrementButtonAppearance = appearance4;
-            appearance5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.trackBarZoom.ButtonSettings.DecrementButtonPressedAppearance = appearance5;
-            appearance6.BackColor = System.Drawing.Color.DimGray;
-            appearance6.BorderAlpha = Infragistics.Win.Alpha.Transparent;
-            appearance6.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.trackBarZoom.ButtonSettings.IncrementButtonAppearance = appearance6;
-            appearance7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.trackBarZoom.ButtonSettings.IncrementButtonPressedAppearance = appearance7;
-            this.trackBarZoom.ButtonSettings.ShowIncrementButtons = Infragistics.Win.DefaultableBoolean.True;
-            this.trackBarZoom.ButtonSettings.ShowMinMaxButtons = Infragistics.Win.DefaultableBoolean.False;
-            this.trackBarZoom.ButtonStyle = Infragistics.Win.UIElementButtonStyle.FlatBorderless;
-            this.trackBarZoom.LargeChange = 15;
-            this.trackBarZoom.Location = new System.Drawing.Point(1964, 0);
-            this.trackBarZoom.MaxValue = 300;
-            appearance8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.trackBarZoom.MidpointSettings.Appearance = appearance8;
-            this.trackBarZoom.MinValue = 10;
-            this.trackBarZoom.Name = "trackBarZoom";
-            this.trackBarZoom.Size = new System.Drawing.Size(220, 23);
-            this.trackBarZoom.SmallChange = 5;
-            this.trackBarZoom.TabIndex = 11;
-            appearance9.BackColor = System.Drawing.Color.White;
-            this.trackBarZoom.TickmarkSettingsMajor.Appearance = appearance9;
-            this.trackBarZoom.TickmarkSettingsMajor.Frequency = 50;
-            this.trackBarZoom.TickmarkSettingsMajor.TrackOffset = 0;
-            this.trackBarZoom.TickmarkSettingsMajor.Visible = Infragistics.Win.DefaultableBoolean.True;
-            appearance10.BackColor = System.Drawing.Color.WhiteSmoke;
-            appearance10.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.trackBarZoom.TickmarkSettingsMinor.Appearance = appearance10;
-            this.trackBarZoom.TickmarkSettingsMinor.Frequency = 25;
-            this.trackBarZoom.TickmarkSettingsMinor.TrackOffset = 0;
-            this.trackBarZoom.TickmarkSettingsMinor.Visible = Infragistics.Win.DefaultableBoolean.True;
-            appearance11.FontData.SizeInPoints = 3F;
-            this.trackBarZoom.TrackAppearance = appearance11;
-            this.trackBarZoom.TrackClickAction = Infragistics.Win.UltraWinEditors.TrackClickAction.UseLargeChange;
-            this.trackBarZoom.TrackThickness = 2;
-            this.trackBarZoom.UseAppStyling = false;
-            this.trackBarZoom.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
-            this.trackBarZoom.Value = 10;
-            this.trackBarZoom.ValueObject = 10;
-            this.trackBarZoom.ViewStyle = Infragistics.Win.UltraWinEditors.TrackBarViewStyle.Standard;
             // 
             // StartForm
             // 
@@ -300,12 +300,12 @@
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "StartForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarZoom)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraTabbedMdiManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraFormManager)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManagerStart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraStatusBarStart)).EndInit();
             this.ultraStatusBarStart.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarZoom)).EndInit();
             this.ResumeLayout(false);
 
         }
