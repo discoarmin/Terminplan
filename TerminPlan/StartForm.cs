@@ -77,7 +77,7 @@ namespace Terminplan
         {
             // Hier müssen die beiden Formulare geladen werden
             // a) Stammdaten
-            var fs = new StammDaten
+            this.fs = new StammDaten
             {
                 Tag = @"Stammdaten",
                 Text = @"Stammdaten",
@@ -107,9 +107,11 @@ namespace Terminplan
         /// <param name="e">Die <see cref="EventArgs"/> Instanz, welche die Ereignisdaten enthält.</param>
         private void OnTrackBarZoomValueChanged(object sender, EventArgs e)
         {
-            var zooLevel = Convert.ToDouble(this.trackBarZoom.Value);
-            var anzeigeWert = (zooLevel / 100d).ToString("P0", CultureInfo.CreateSpecificCulture("de-DE"));
-            this.ultraStatusBarStart.Panels[@"ZoomInfo"].Text = anzeigeWert;                                                                        
+            var zoomLevel = Convert.ToDouble(this.trackBarZoom.Value);
+            var anzeigeWert = (zoomLevel / 100d).ToString("P0", CultureInfo.CreateSpecificCulture("de-DE"));
+            this.ultraStatusBarStart.Panels[@"ZoomInfo"].Text = anzeigeWert;
+            this.fs.ultraZoomPanelStammDaten.ZoomProperties.ZoomFactor = (float)(zoomLevel / 10) + 1;
+            this.ft.ultraZoomPanelTerminPlan.ZoomProperties.ZoomFactor = (float)(zoomLevel / 10) + 1;
         }
 
         /// <summary> Behandelt das TabSelected-Ereignis des ultraTabbedMdiManager1 </summary>

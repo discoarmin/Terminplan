@@ -101,6 +101,7 @@
             this.trackBarZoom.MaxValue = 300;
             appearance6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.trackBarZoom.MidpointSettings.Appearance = appearance6;
+            this.trackBarZoom.MinValue = 1;
             this.trackBarZoom.Name = "trackBarZoom";
             this.trackBarZoom.Size = new System.Drawing.Size(220, 21);
             this.trackBarZoom.SmallChange = 5;
@@ -122,6 +123,8 @@
             this.trackBarZoom.TrackThickness = 2;
             this.trackBarZoom.UseAppStyling = false;
             this.trackBarZoom.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
+            this.trackBarZoom.Value = 100;
+            this.trackBarZoom.ValueObject = 100;
             this.trackBarZoom.ViewStyle = Infragistics.Win.UltraWinEditors.TrackBarViewStyle.Standard;
             this.trackBarZoom.ValueChanged += new System.EventHandler(this.OnTrackBarZoomValueChanged);
             // 
