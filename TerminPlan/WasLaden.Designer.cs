@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WasLaden));
-            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             this.btnOk = new System.Windows.Forms.Button();
             this.ultraLabel1 = new Infragistics.Win.Misc.UltraLabel();
             this.rbKommission = new System.Windows.Forms.RadioButton();
@@ -44,7 +44,7 @@
             this.btnOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOk.Image = ((System.Drawing.Image)(resources.GetObject("btnOk.Image")));
             this.btnOk.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOk.Location = new System.Drawing.Point(96, 108);
+            this.btnOk.Location = new System.Drawing.Point(105, 108);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(68, 23);
             this.btnOk.TabIndex = 6;
@@ -56,8 +56,8 @@
             // 
             // ultraLabel1
             // 
-            appearance3.FontData.BoldAsString = "True";
-            this.ultraLabel1.Appearance = appearance3;
+            appearance4.FontData.BoldAsString = "True";
+            this.ultraLabel1.Appearance = appearance4;
             this.ultraLabel1.Location = new System.Drawing.Point(16, 20);
             this.ultraLabel1.Name = "ultraLabel1";
             this.ultraLabel1.Size = new System.Drawing.Size(256, 23);
@@ -106,18 +106,19 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
             this.ClientSize = new System.Drawing.Size(284, 133);
-            this.ControlBox = false;
             this.Controls.Add(this.rbKommission);
             this.Controls.Add(this.radioButtonNormalerText);
             this.Controls.Add(this.ultraLabel3);
             this.Controls.Add(this.ultraLabel1);
             this.Controls.Add(this.btnOk);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "WasLaden";
-            this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "WasLaden";
+            this.Text = "Was soll geladen werden?";
             this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -64,7 +64,7 @@ namespace Terminplan
             FourWeeks,
         }
 
-        #endregion  Stardatum verschieben
+        #endregion Stardatum verschieben
 
         #region Eigenschaften Schriftart
 
@@ -99,7 +99,7 @@ namespace Terminplan
         public DataSet DatasetTp;
 
         /// <summary> Merker für rekursive Zellaktivierung </summary>
-        private bool cellActivationRecursionFlag; // Merker rekursive Zellaktivierung
+        private bool cellActivationRecursionFlag;
 
         /// <summary> Merker, ob neues Projekt hinzugefügt wurde</summary>
         private bool prjHinzugefuegt;
@@ -121,11 +121,13 @@ namespace Terminplan
         // ReSharper disable once FieldCanBeMadeReadOnly.Local
         private string[] themePaths;
 
+        /// <summary> Pfad zu den Farbeinstallungen </summary>
         public static StyleManager StyleManagerIntern;
 
         #endregion Variablen
 
         #region Eigenschaften
+
         /// <summary>Setzt das Formular für den Terminplan</summary>
         public StammDaten FrmStammDaten { private get; set; }
 

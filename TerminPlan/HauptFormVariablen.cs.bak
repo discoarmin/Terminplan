@@ -1,0 +1,459 @@
+// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="HauptFormVariablen.Cs" company="EST GmbH + CO.KG">
+//   Copyright (c) EST GmbH + CO.KG. All rights reserved.
+// </copyright>
+// <summary>
+//   Zusammenfassung für HauptForm, Variablen.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+// <remarks>
+//     <para>Autor: Armin Brenner</para>
+//     <para>
+//        History : Datum     bearb.  Änderung
+//                  --------  ------  ------------------------------------
+//                  20.12.11  br      Grundversion
+//                  17.07.16  br      Variablen für Ribbon
+//                  26.09.16  br      Variablen zum Merken von Änderungen
+//      </para>
+// </remarks>
+// --------------------------------------------------------------------------------------------------------------------
+namespace FlexChip
+{
+    using AllgemeineFunktionen;
+    using ComTools2.Hilfe;
+    using DatenbankVergleich;
+    using Datensicherung;
+    using Infragistics.Win.UltraWinGrid;
+    using Infragistics.Win.UltraWinToolbars;
+    using Kommunikation;
+    using MeldungWerkzeug;
+    using System;
+    using System.Collections;
+    using System.Drawing;
+    using System.Globalization;
+    using System.Security.AccessControl;
+    using System.Windows.Forms;
+
+    /// <summary>
+    /// Die Variablendeklaration.
+    /// </summary>
+    public partial class HauptForm
+    {
+        /// <summary>Formular zur Anzeige der Fehlermeldung </summary>
+        FmPfadNichtErreichbar frmNichtErreichbar;
+
+        #region Membervariablen
+
+        /// <summary>Merker, ob Daten auf dem Chip überschrieben werden sollen</summary>
+        public static bool Ueberschreiben;
+
+        /// <summary>ausgewähltes Format für die Anzeige der Version der Parameterdatei beim Suchen</summary>
+        public static string AusWahlFormat;
+
+        /// <summary>eingestellte Sprache der Anwendung</summary>
+        public static string Sprache;
+
+        /// <summary>Sprache für Schreiben in Datenbank</summary>
+        public static CustomProvider provider;
+
+        /// <summary>Get OperatingSystem information from the system namespace.</summary>
+        private readonly OperatingSystem sytemInfo = Environment.OSVersion;
+
+        /// <summary>Tabelle zur Aufnahme der maximalen Baudrate einer Schnittstelle</summary>
+        private readonly string[] baudraten = { @"38400", @"57600", @"115200", @"128000", @"230400", @"460800" };
+
+        /// <summary>Nummer der geänderten Zeile Motordaten E05</summary>
+        private int geaenderteZeileMotorE05;
+
+        /// <summary>Nummer der geänderten Zeile Geberdaten E05</summary>
+        private int geaenderteZeileGeberE05;
+
+        /// <summary>Nummer der geänderten Zeile Daten Fügemodul</summary>
+        private int geaenderteZeileFuegemodul;
+
+        /// <summary>Nummer der geänderten Zeile Motordaten E12</summary>
+        private int geaenderteZeileMotorE12;
+
+        /// <summary>Nummer der geänderten Zeile Geberdaten E12</summary>
+        private int geaenderteZeileGeberE12;
+
+        /// <summary>Position der Zeile im Datensatz </summary>
+        private int rowPos;
+
+        /// <summary>Position der Zeile im Datensatz merken</summary>
+        private int rowPosMerk;
+
+        /// <summary>Position der Zeile im Geberdatensatz für E05 merken</summary>
+        private int rowPosMerkGeberE05;
+
+        /// <summary>Position der Zeile im Motordatensatz für E05 merken</summary>
+        private int rowPosMerkMotorE05;
+
+        /// <summary>Position der Zeile im Geberdatensatz für E12 merken</summary>
+        private int rowPosMerkGeberE12;
+
+        /// <summary>Position der Zeile im Motordatensatz für E12 merken</summary>
+        private int rowPosMerkMotorE12;
+
+        /// <summary>Position der Zeile im Datensatz </summary>
+        private string indexNummer;
+
+        /// <summary>Indexnummer der aktiven Zeile </summary>
+        private string indexNummerAktiveZeile;
+
+        /// <summary>Index der aktiven Zeile </summary>
+        private int rowIndex;
+
+        /// <summary>Indexliste mit den vorhandenen flexTool-Motor-Werkzeugen</summary>
+        private ArrayList indexListFlexToolME05;
+
+        /// <summary>Indexliste mit den vorhandenen flexTool-Geber-Werkzeugen</summary>
+        private ArrayList indexListFlexToolGE05;
+
+        /// <summary>Indexliste mit den vorhandenen Fügemodul-Motor-Werkzeugen</summary>
+        private ArrayList indexListFuegeModul;
+
+        /// <summary>Indexliste mit den vorhandenen flexTool-Werkzeugen</summary>
+        private ArrayList indexListFlexToolME12;
+
+        /// <summary>Indexliste mit den vorhandenen flexTool-Geber-Werkzeugen</summary>
+        private ArrayList indexListFlexToolGE12;
+
+        /// <summary>Es handelt sich um eine >Eingabe von Daten des Geberchips</summary>
+        private bool geberEingabe;
+
+        /// <summary>Merker, ob es sich um eine >Eingabe von Daten des Geberchips handelt</summary>
+        private bool geberEingabeMerk;
+
+        /// <summary>Es handelt sich um eine >Eingabe von Daten des Fügemoduls</summary>
+        private bool fuegeModulEingabe;
+
+        /// <summary>Geberchip-Daten wurden gelesen</summary>
+        private bool geberChipGelesen;
+
+        /// <summary>Geberchip-Daten wurden hinzugefügt</summary>
+        private bool geberChipInsert;
+
+        /// <summary>Motorchip-Daten wurden gelesen</summary>
+        private bool motorChipGelesen;
+
+        /// <summary>Motorchip-Daten wurden hinzugefügt</summary>
+        private bool motorChipInsert;
+
+        /// <summary>Daten des Fügemoduls wurden gelesen</summary>
+        private bool fuegeModulGelesen;
+
+        /// <summary>Daten des Fügemoduls wurden hinzugefügt</summary>
+        private bool fuegeModulInsert;
+
+        /// <summary>Geberchip-Daten für E12 wurden gelesen</summary>
+        private bool geberChipGelesenE12;
+
+        /// <summary>Geberchip-Daten für E12 wurden hinzugefügt</summary>
+        private bool geberChipInsertE12;
+
+        /// <summary>Motorchip-Daten wurden für E12 gelesen</summary>
+        private bool motorChipGelesenE12;
+
+        /// <summary>Motorchip-Daten wurden für E12 hinzugefügt</summary>
+        private bool motorChipInsertE12;
+
+        /// <summary>Merker: ausgewähltes Fenster ist falsches Fenster </summary>
+        private bool falschesFenster;
+
+        /// <summary>Merker: Es ist ein FlexTool-Werkzeug für E12 angewählt </summary>
+        private bool flexToolE12Angewaehlt;
+
+        /// <summary>Merker: Es ist ein FlexTool-Werkzeug für E05 angewählt </summary>
+        private bool flexToolAngewaehlt;
+
+        /// <summary>Formular zur Anzeige der Chipdaten</summary>
+        private ChipDaten chipdaten;
+
+        /// <summary>Baudrate zur Kommunikation mit dem Werkzeug</summary>
+        private string baudRate;
+
+        /// <summary>Port zur Kommunikation mit dem Werkzeug</summary>
+        private string port;
+
+        /// <summary>Tabelle zur Aufnahme der Ports für die Kommunikation mit dem Werkzeug</summary>
+        private Hashtable portTable;
+
+        /// <summary>Klasse zur Kommunikation mit dem Werkzeug</summary>
+        private MsLorenz lorenz;
+
+        /// <summary>Klasse zum Anzeigen der Hilfe als PDF-Datei</summary>
+        private HilfeDialog hilfe;
+
+        /// <summary>Klasse zum Anzeigen der Dokumentation als PDF-Datei</summary>
+        private HilfeDialog doku;
+
+        /// <summary>Delegate zum Durchführen der ausgewählten Aktion nach dem Vergleich</summary>
+        private VergleichsAktionDelegate vergleichsAktionDelegate;
+
+        /// <summary>Das Anzeigegrid</summary>
+        private UltraGrid ultraGrid1;
+
+        /// <summary>Information über die Kultur zur korrekten Datumsanzeige </summary>
+        private CultureInfo culture;
+
+        /// <summary>Information über die Kultur zum Übertragen auf den Chip. Sollte deutsch sein </summary>
+        private CultureInfo transCulture;
+
+        /// <summary>Verwaltet die Datenanbindung der Geberdaten </summary>
+        private BindingManagerBase bindManagerGeber;
+
+        /// <summary>Verwaltet die Datenanbindung der Motordaten </summary>
+        private BindingManagerBase bindManagerMotor;
+
+        /// <summary>Verwaltet die Datenanbindung der Fügemuoduldaten </summary>
+        private BindingManagerBase bindManagerFuegeModul;
+
+        /// <summary>Verwaltet die Datenanbindung der Geberdaten </summary>
+        private BindingManagerBase bindManagerGeberE12;
+
+        /// <summary>Verwaltet die Datenanbindung der Motordaten </summary>
+        private BindingManagerBase bindManagerMotorE12;
+
+        /// <summary>Standard Hintergrundfarbe der Buttons bei Werkzeugauswahl  </summary>
+        private Color hinterGrundFarbe;
+
+        /// <summary>Erste Hintergrundfarbe der Buttons bei Werkzeugauswahl  </summary>
+        private Color hinterGrundFarbe1;
+
+        /// <summary>Zweite Hintergrundfarbe der Buttons bei Werkzeugauswahl  </summary>
+        private Color hinterGrundFarbe2;
+
+        /// <summary>Standard Vordergrundfarbe der Buttons bei Werkzeugauswahl</summary>
+        private Color auswahlFarbe;
+
+        /// <summary>Standardhintergrundfarbe der Buttons bei Werkzeugauswahl  </summary>
+        private DlgNeuesWerkzeug werkzeugAnzeige;
+
+        /// <summary>Merker, ob 1. Start  </summary>
+        private bool hochlauf;
+
+        /// <summary>Merker, ob Daten auf Chip übertragen werden </summary>
+        private bool uebertragung;
+
+        /// <summary>Aktive Zelle im Grid  </summary>
+        private UltraGridCell activeZelle;
+
+        /// <summary>Merker, ob Auswahlliste neu ermittelt werden darf</summary>
+        private bool auswahllisteLoeschen;
+
+        /// <summary>Delegate zum Anzeigen des Fortschrittsbalkens</summary>
+        private FortschrittsDelegate progress;
+
+        /// <summary>Sicherung der Datenbanken</summary>
+        private DatenSicherung datenBankSicherung;
+
+        /// <summary>Cursor für die einzelnen Controls</summary>
+        private Cursor[] cursorAllerControls;
+
+        /// <summary>Breite des Panals zur Aufnahle der Chipdaten im Splitcontainer</summary>
+        private int splitterDistance;
+
+        /// <summary>Merker, ob die gelesenen Daten in der linken Anzeige bei einem Zeilenwechsel gelöschtwerden sollen</summary>
+        private bool geleseneDatenLoeschen;
+
+        /// <summary>Textbox zum Anzeigen des ausgewählten Werkzeugs</summary>
+        private TextBoxTool tbTool;
+
+        /// <summary>Textbox zum Anzeigen der Schnittstellendaten zur Kommunikation mit dem Werkzeug</summary>
+        private TextBoxTool tbSchnittstelle;
+
+        /// <summary>Merker, ob das RibbonControl seine Größe ändert</summary>
+        private bool ribbonResize;
+
+        /// <summary>Button zum Ein- oder Ausblenden der gelesenen Werkzeugdaten</summary>
+        private StateButtonTool btnCollaps;
+
+        /// <summary>Combobox zur Auswahl der zu durchsuchenden Spalte</summary>
+        private ComboBoxTool cbSpaltenAuswahl;
+
+        /// <summary>Textbox zur Eingabe des Suchbegriffs</summary>
+        private TextBoxTool tbSuchAuswahl;
+
+        /// <summary>Klasse zum Bearbeiten der Konfigurationsdatei</summary>
+        public Config config;
+
+        /// <summary>Das momentan aktive Grid</summary>
+        private UltraGridBase aktivesGrid;
+
+        /// <summary>Button Suchen im Ribbon-Menü</summary>
+        private ButtonTool ribbonButtonSuch;
+
+        /// <summary>Datensdatz, welcher gerade bearbeitet wird</summary>
+        private Int32 bearbeiteterDs;
+
+        /// <summary>Merker, ob Datensdatz für Motordaten E05 schon an das Werkzeug übertragen wurde</summary>
+        private bool istDsUebertragenMe05;
+
+        /// <summary>Merker, ob Datensdatz für Geberdaten E05 schon an das Werkzeug übertragen wurde</summary>
+        private bool istDsUebertragenGe05;
+
+        /// <summary>Merker, ob Datensdatz für Motordaten E12 schon an das Werkzeug übertragen wurde</summary>
+        private bool istDsUebertragenMe12;
+
+        /// <summary>Merker, ob Datensdatz für Geberdaten E12 schon an das Werkzeug übertragen wurde</summary>
+        private bool istDsUebertragenGe12;
+
+        /// <summary>Merker, ob Datensdatz für Fügemoduldaten schon an das Werkzeug übertragen wurde</summary>
+        private bool istDsUebertragenF;
+
+        /// <summary>Merker, ob Inhalt der Zelle bei Motor E05 geändert wurde wurde</summary>
+        private bool zelleWurdeGeaendertMe05;
+
+        /// <summary>Merker, ob Inhalt der Zelle bei Geber E05 geändert wurde wurde</summary>
+        private bool zelleWurdeGeaendertGe05;
+
+        /// <summary>Merker, ob Inhalt der Zelle Motor E12 geändert wurde wurde</summary>
+        private bool zelleWurdeGeaendertMe12;
+
+        /// <summary>Merker, ob Inhalt der Zelle bei Geber E12 geändert wurde wurde</summary>
+        private bool zelleWurdeGeaendertGe12;
+
+        /// <summary>Merker, ob Inhalt der Zelle bei Fügemodul geändert wurde wurde</summary>
+        private bool zelleWurdeGeaendertF;
+
+        /// <summary>Merker, ob Zeile im Grid für Motordaten E05 vor dem Übertragen angewählt wurde</summary>
+        private bool zeileGeaendertVorUebertragenMe05;
+
+        /// <summary>Merker, ob Zeile im Grid für Geberdaten E05 vor dem Übertragen angewählt wurde</summary>
+        private bool zeileGeaendertVorUebertragenGe05;
+
+        /// <summary>Merker, ob Zeile im Grid für Motordaten E12 vor dem Übertragen angewählt wurde</summary>
+        private bool zeileGeaendertVorUebertragenMe12;
+
+        /// <summary>Merker, ob Zeile im Grid für Geberdaten E12 vor dem Übertragen angewählt wurde</summary>
+        private bool zeileGeaendertVorUebertragenGe12;
+
+        /// <summary>Merker, ob Zeile im Grid für Fügemodule vor dem Übertragen angewählt wurde</summary>
+        private bool zeileGeaendertVorUebertragenF;
+
+        /// <summary>Merker, ob Zelle im Grid für Motordaten E05 vor dem Übertragen angewählt wurde</summary>
+        private bool zelleGeaendertVorUebertragenMe05;
+
+        /// <summary>Merker, ob Zelle im Grid für Geberdaten E05 vor dem Übertragen angewählt wurde</summary>
+        private bool zelleGeaendertVorUebertragenGe05;
+
+        /// <summary>Merker, ob Zelle im Grid für Motordaten E12 vor dem Übertragen angewählt wurde</summary>
+        private bool zelleGeaendertVorUebertragenMe12;
+
+        /// <summary>Merker, ob Zelle im Grid für Geberdaten E12 vor dem Übertragen angewählt wurde</summary>
+        private bool zelleGeaendertVorUebertragenGe12;
+
+        /// <summary>Merker, ob Zelle im Grid für Fügemodule vor dem Übertragen angewählt wurde</summary>
+        private bool zelleGeaendertVorUebertragenF;
+
+        /// <summary>Zur Anzeige des Zoom-Levels</summary>
+        private Infragistics.Win.UltraWinToolTip.UltraToolTipInfo ultraToolTipInfo;
+
+        #region Variablen für die Suche
+
+        /// <summary>Eintrag 1 für ein Editor-Control für die Eingabe des Suchkriteriums</summary>
+        private Infragistics.Win.ValueListItem valueListItem1;
+
+        /// <summary>Eintrag 2 für ein Editor-Control für die Eingabe des Suchkriteriums</summary>
+        private Infragistics.Win.ValueListItem valueListItem2;
+
+        /// <summary>Eintrag 3 für ein Editor-Control für die Eingabe des Suchkriteriums</summary>
+        private Infragistics.Win.ValueListItem valueListItem3;
+
+        /// <summary>Eintrag 4 für ein Editor-Control für die Eingabe des Suchkriteriums</summary>
+        private Infragistics.Win.ValueListItem valueListItem4;
+
+        /// <summary>Eintrag 5 für ein Editor-Control für die Eingabe des Suchkriteriums</summary>
+        private Infragistics.Win.ValueListItem valueListItem5;
+
+        /// <summary>Eintrag 6 für ein Editor-Control für die Eingabe des Suchkriteriums</summary>
+        private Infragistics.Win.ValueListItem valueListItem6;
+
+        /// <summary>Eintrag 7 für ein Editor-Control für die Eingabe des Suchkriteriums</summary>
+        private Infragistics.Win.ValueListItem valueListItem7;
+
+        /// <summary>Eintrag 8 für ein Editor-Control für die Eingabe des Suchkriteriums</summary>
+        private Infragistics.Win.ValueListItem valueListItem8;
+
+        /// <summary>Eintrag 9 für ein Editor-Control für die Eingabe des Suchkriteriums</summary>
+        private Infragistics.Win.ValueListItem valueListItem9;
+
+        /// <summary>Eintrag 10 für ein Editor-Control für die Eingabe des Suchkriteriums</summary>
+        private Infragistics.Win.ValueListItem valueListItem10;
+        #endregion Variablen für die Suche
+
+        #region Variablen für Zoom
+
+        /// <summary>Zoomdaten für FlexToolE05Geber</summary>
+        private WinGridZoomGrid.WinGridZoomGrid.GridZoomProperty zoomGridGeberE05;
+
+        /// <summary>Zoomdaten für FlexToolE05Motor</summary>
+        private WinGridZoomGrid.WinGridZoomGrid.GridZoomProperty zoomGridMotorE05;
+
+        /// <summary>Zoomdaten für FlexToolE12Geber</summary>
+        private WinGridZoomGrid.WinGridZoomGrid.GridZoomProperty zoomGridGeberE12;
+
+        /// <summary>Zoomdaten für FlexToolE12Motor</summary>
+        private WinGridZoomGrid.WinGridZoomGrid.GridZoomProperty zoomGridMotorE12;
+
+        /// <summary>Zoomdaten für Fügemodul</summary>emodul
+        private WinGridZoomGrid.WinGridZoomGrid.GridZoomProperty zoomGridFuegeModul;
+
+        /// <summary>Gerade bearbeitete Zoomdaten</summary>emodul
+        private WinGridZoomGrid.WinGridZoomGrid.GridZoomProperty zoomGridAktuell;
+
+        /// <summary>Das momentan aktive Grid</summary>emodul
+        private UltraGrid activeGrid;
+
+        #endregion Variablen für Zoom
+        #endregion Membervariablen
+
+        #region Werkzeugtyp
+
+        /// <summary>
+        /// Aufzählung für Werkzeuge
+        /// </summary>
+        public enum Werkzeug : ushort
+        {
+            /// <summary>Flextool E05</summary>
+            FlexToolE05 = 0,
+
+            /// <summary>Fügemodul Werkzeug'</summary>
+            FuegeModul = 1,
+
+            /// <summary>Flextool E12</summary>
+            FlexToolE12 = 2,
+        }
+
+        /// <summary>
+        /// Holt oder setzt Dialog zum Anzeigen des Vergleichs zwischen Werkzeug und Datenbank.
+        /// </summary>
+        /// <value>Dialog zum Anzeigen des Vergleichsergebnisses.</value>
+        private VergleichsErgebnis VerGleichsErgebnis { get; set; }
+
+        #endregion Werkzeugtyp
+
+        #region Zugriffsberechtigungen
+        private readonly FileSystemRights[] notwendigeBerechtigungen =
+        {
+            FileSystemRights.FullControl,
+            FileSystemRights.Modify,
+            FileSystemRights.CreateDirectories,
+            FileSystemRights.CreateFiles,
+            FileSystemRights.Read,
+            FileSystemRights.Write
+        };
+
+        public enum genericResponseType
+        {
+            NothingToRead = 1,
+            OK = 0,
+            CannotRead = -1,
+            CannotWriteDir = -2,
+            CannotWriteFile = -3,
+            ItemNotFound = -4
+        }
+        #endregion Zugriffsberechtigungen
+    }
+}

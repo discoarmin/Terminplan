@@ -1,4 +1,22 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="$File" company="EST GmbH + CO.KG">
+//   Copyright (c) EST GmbH + CO.KG. All rights reserved.
+// </copyright>
+// <summary>
+//   Zusammenfassung für .
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+// <remarks>
+//     <para>Autor: Armin Brenner</para>
+//     <para>
+//        History : Datum     bearb.  Änderung
+//                  --------  ------  ------------------------------------
+//                  02.04.17  br      Grundversion
+//      </para>
+// </remarks>
+// --------------------------------------------------------------------------------------------------------------------
+
+// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="StartForm.cs" company="EST GmbH + CO.KG">
 //   Copyright (c) EST GmbH + CO.KG. All rights reserved.
 // </copyright>
@@ -28,20 +46,23 @@ namespace Terminplan
     public partial class StartForm : Form
     {
         #region Variablen
+
         /// <summary> das aktive Panel </summary>
-        UltraZoomPanel activeZoomPanel;
+        private UltraZoomPanel activeZoomPanel;
 
         /// <summary> Liste mit allen zoombaren Panels </summary>
-        List<UltraZoomPanel> zoomPanels;
+        private List<UltraZoomPanel> zoomPanels;
 
         /// <summary> Formular mit den Stanndaten </summary>
-        StammDaten fs;
+        private StammDaten fs;
 
         /// <summary> Formular mit dem Terminplan </summary>
-        TerminPlanForm ft;
+        private TerminPlanForm ft;
+
         #endregion Variablen
 
         #region Konstruktor
+
         /// <summary> Initialisiert eine neue Instanz der <see cref="StartForm"/> Klasse.
         /// </summary>
         public StartForm()
@@ -56,6 +77,7 @@ namespace Terminplan
         #endregion Konstruktor
 
         #region InitializeZoomPanels
+
         private void InitializeZoomPanels()
         {
             this.zoomPanels = new List<UltraZoomPanel>() { fs.ultraZoomPanelStammDaten, ft.ultraZoomPanelTerminPlan };
@@ -67,7 +89,8 @@ namespace Terminplan
 
             //activeZoomPanel = uzpGrid;
         }
-        #endregion
+
+        #endregion InitializeZoomPanels
 
         /// <summary>
         /// Löst das <see cref="System.Windows.Forms.Form.Load" /> Ereignis aus.
@@ -92,8 +115,8 @@ namespace Terminplan
                 MdiParent = this
             };
 
-            this.fs.FrmTerminPlan = ft;                                         // Dem Projektplan die Stammdaten bekannt machen
-            this.ft.FrmStammDaten = fs;                                         // Den Stammdaten den Projektplan bekant machen
+            this.fs.FrmTerminPlan = this.ft;                                    // Dem Projektplan die Stammdaten bekannt machen
+            this.ft.FrmStammDaten = this.fs;                                    // Den Stammdaten den Projektplan bekant machen
 
             // Formulare anzeigen
             this.fs.Show();
@@ -122,8 +145,7 @@ namespace Terminplan
             var tabManager = (UltraTabbedMdiManager)sender;                     // Die Quelle ist ein UltraTabbedMdiManager
             var activeTab = e.Tab;                                              // ausgewählten Tab ermitteln
                                                                                 //
-           //activeZoomPanel = (UltraZoomPanel)activeTab.t  .Form.   C     TabPage.Controls[0];
-
+                                                                                //activeZoomPanel = (UltraZoomPanel)activeTab.t  .Form.   C     TabPage.Controls[0];
         }
     }
 }

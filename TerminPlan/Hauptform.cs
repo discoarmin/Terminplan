@@ -1,4 +1,22 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="$File" company="EST GmbH + CO.KG">
+//   Copyright (c) EST GmbH + CO.KG. All rights reserved.
+// </copyright>
+// <summary>
+//   Zusammenfassung für .
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+// <remarks>
+//     <para>Autor: Armin Brenner</para>
+//     <para>
+//        History : Datum     bearb.  Änderung
+//                  --------  ------  ------------------------------------
+//                  02.04.17  br      Grundversion
+//      </para>
+// </remarks>
+// --------------------------------------------------------------------------------------------------------------------
+
+// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="HauptForm.cs" company="EST GmbH + CO.KG">
 //   Copyright (c) EST GmbH + CO.KG. All rights reserved.
 // </copyright>
@@ -40,6 +58,7 @@ namespace Terminplan
     public partial class TerminPlanForm
     {
         #region Konstruktor
+
         /// <summary>
         /// Initialisiert eine neue Instanz der <see cref="TerminPlanForm" /> Klasse.
         /// </summary>
@@ -51,12 +70,12 @@ namespace Terminplan
             themePaths = DienstProgramme.GetStyleLibraryResourceNames();
             for (var i = 0; i < themePaths.Length; i++)
             {
-                if (!themePaths[i].Contains(@"04"))
+                if (!this.themePaths[i].Contains(@"04"))
                 {
                     continue;
                 }
 
-                currentThemeIndex = i;
+                this.currentThemeIndex = i;
                 break;
             }
 
@@ -80,10 +99,10 @@ namespace Terminplan
         /// <param name="disposing">true, falls verwaltete Ressourcen entsorgt werden sollen; sonst false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && (this.components != null))
             {
                 // Deaktivieren der Ereignisprozedur OnApplicationStyleChanged()
-                StyleManager.StyleChanged -= OnApplicationStyleChanged;
+                StyleManager.StyleChanged -= this.OnApplicationStyleChanged;
 
                 components.Dispose();
             }
@@ -179,7 +198,6 @@ namespace Terminplan
             //DatasetTp = DienstProgramme.GetData(Path.Combine(Application.StartupPath, @"Data.DatenNeuEST.XML")); // Testdaten laden
             //DatasetTp = DienstProgramme.GetData(Path.Combine(Application.StartupPath, @"ProjectTerminplan.XML")); // Testdaten laden
 
-
             if (!this.prjHinzugefuegt)
             {
                 // Die eingelesenen Daten an die ultraCalendarInfo anbinden.
@@ -193,16 +211,16 @@ namespace Terminplan
             OnInitializeUi();                                                   // Oberfläche initialisieren
 
             // Ereignisprozedur zum Ändern des Schemas festlegen
-            StyleManager.StyleChanged += OnApplicationStyleChanged;
+            StyleManager.StyleChanged += this.OnApplicationStyleChanged;
 
             // Startdatum des Projekts ermitteln
             AnzeigeDatumEinstellen();
-//            if (DatasetTp != null)
-//            {
-//                DatasetTp.AcceptChanges();
-//                var datum = this.DatasetTp.Tables[0].Rows[0].ItemArray[2].ToString();
-//                ultraGanttView1.EnsureDateTimeVisible(datum);                   // Zeitleiste so verschieben, dass das Startdatum angezeit wird
-//            }
+            //            if (DatasetTp != null)
+            //            {
+            //                DatasetTp.AcceptChanges();
+            //                var datum = this.DatasetTp.Tables[0].Rows[0].ItemArray[2].ToString();
+            //                ultraGanttView1.EnsureDateTimeVisible(datum);                   // Zeitleiste so verschieben, dass das Startdatum angezeit wird
+            //            }
         }
 
         #endregion OnLoad
@@ -224,6 +242,7 @@ namespace Terminplan
         }
 
         #endregion OnShown
+
         #endregion Überschreibungen der Basisklasse
 
         #region Ereignisprozeduren
@@ -398,7 +417,9 @@ namespace Terminplan
         #endregion Eigenschaften
 
         #region Methoden
+
         #region OnBindArbInhaltData
+
         /// <summary>
         /// Bindet die Daten an die UltraCalendarInfo
         /// </summary>
@@ -437,6 +458,7 @@ namespace Terminplan
         #endregion OnColorizeImages
 
         #region OnInitializeUI
+
         /// <summary>
         /// Initialisiert die Oberfläche.
         /// </summary>
@@ -444,9 +466,11 @@ namespace Terminplan
         {
             InitializeUi();                                                     // Oberfläche initialisieren
         }
+
         #endregion OnInitializeUI
 
         #region OnSetTextForeColor
+
         /// <summary>
         /// Aktualisiert den Wert der Vordergrundfarbe des Textes in der aktiven Zelle abhängig von der
         /// im PopupColorPickerTool ausgewählten Farbe.
@@ -455,9 +479,11 @@ namespace Terminplan
         {
             SetTextForeColor();
         }
+
         #endregion OnSetTextForeColor
 
         #region OnUpdateFontToolsState
+
         /// <summary>
         /// Aktualisiert die Enabled-Eigenschaft für Werkzeuge in der RibbonGruppe "RibbonGrp_Font"
         /// </summary>
@@ -466,9 +492,11 @@ namespace Terminplan
         {
             DienstProgramme.SetRibbonGroupToolsEnabledState(ultraToolbarsManager1.Ribbon.Tabs[0].Groups[@"RibbonGrp_Font"], enabled);
         }
+
         #endregion OnUpdateFontToolsState
 
         #region Datei laden
+
         private void LadeDatei()
         {
             // Dialog zum Öffnen einer Datei anzeigen
@@ -488,9 +516,10 @@ namespace Terminplan
             OnBindArbInhaltData(DatasetTp);                                     // Daten an ultraCalendarInfo anbinden
         }
 
-        #endregion Datei ladedn
+        #endregion Datei laden
 
         #region Neues Projekt
+
         private void ErstelleNeuesProjekt()
         {
             prjHinzugefuegt = false;                                            // Es wurde kein neues Projekt hinzugefügt
@@ -605,8 +634,7 @@ namespace Terminplan
                 };
 
                 // TODO: Falls nicht EST, Daten aus den Stammdaten holen
-                var listAufgaben = new List<string> {@"Aufgabe 1"};             // Liste der Aufgaben
-
+                var listAufgaben = new List<string> { @"Aufgabe 1" };             // Liste der Aufgaben
 
                 if (AddNewProjekt(prjNeu.PrjName,
                     prjNeu.PrjStart,
@@ -616,7 +644,7 @@ namespace Terminplan
                     listBesitzer))
                 {
                     prjHinzugefuegt = true;                                     // Es wurde ein neues Projekt hinzugefügt
-                }               
+                }
             }
 
             //if (!prjHinzugefuegt) return;                                       // Falls kein neues Projekt hinzugefügt wurde, kann hier abgebrochen werden
@@ -640,19 +668,24 @@ namespace Terminplan
             //DatasetTp = DienstProgramme.GetData(Path.Combine(Application.StartupPath, @"ProjectTerminplan.XML")); // Testdaten laden
             // Die eingelesenen Daten an die ultraCalendarInfo anbinden.
             //this.DatasetTp.AcceptChanges();
-            //OnBindArbInhaltData(DatasetTp);                                     // Daten an ultraCalendarInfo anbinden                
+            //OnBindArbInhaltData(DatasetTp);                                     // Daten an ultraCalendarInfo anbinden
         }
+
         #endregion Neues Projekt
 
         #endregion Methoden
 
         #region SplashScreen Ereignisse
+
         #region OnInitializationStatusChanged
+
         /// <summary> Wird ausgelöst, wenn sich der Status der Initialisierung der Hauptform geändert hat. </summary>
         internal static event SplashScreen.InitializationStatusChangedEventHandler InitializationStatusChanged;
+
         #endregion OnInitializationStatusChanged
 
         #region OnInitializationStatusChanged
+
         /// <summary> Wird aufgerufen, wenn sich der Status der Initialisierung der Hauptform ändert </summary>
         /// <param name="status">Der Status.</param>
         protected virtual void OnInitializationStatusChanged(string status)
@@ -663,7 +696,8 @@ namespace Terminplan
             {
                 InitializationStatusChanged.Invoke(this, new SplashScreen.InitializationStatusChangedEventArgs(status));
             }
-       }
+        }
+
         #endregion OnInitializationStatusChanged
 
         /// <summary>
@@ -705,7 +739,7 @@ namespace Terminplan
             }
 
             ultraGanttView1.Appearance.FontData.SizeInPoints = fontGroesse;
-           var breite = ultraGanttView1.GridAreaWidth;
+            var breite = ultraGanttView1.GridAreaWidth;
 
             var col = ultraGanttView1.GridSettings.ColumnSettings.Values;
             var schluessel = string.Empty;
@@ -726,18 +760,23 @@ namespace Terminplan
                     case @"name":                                               // Name (Arbeitsinhalt oder Aufgabe)
                         panalWeite += de.Width;                                 // Breite der Spalte hinzuaddieren
                         break;
+
                     case @"duration":                                           // Dauer
                         panalWeite += de.Width;                                 // Breite der Spalte hinzuaddieren
                         break;
+
                     case @"start":                                              // Startdatum
                         panalWeite += de.Width;                                 // Breite der Spalte hinzuaddieren
                         break;
+
                     case @"enddatetime":                                        // Endedatum
                         panalWeite += de.Width;                                 // Breite der Spalte hinzuaddieren
                         break;
+
                     case @"percentcomplete":                                    // Fetiggestellt (Status)
                         panalWeite += de.Width;                                 // Breite der Spalte hinzuaddieren
                         break;
+
                     default:                                                    // Alle sonstigen Spalten
                         if (de.Visible == DefaultableBoolean.True)
                         {
@@ -765,7 +804,8 @@ namespace Terminplan
         {
             OnUltraToolbarsManagerToolClick(sender, e);
         }
-        #endregion Ereignisse
+
+        #endregion SplashScreen Ereignisse
 
         /// <summary>Behandelt das BeforeApplicationMenu2010Displayed-Ereignis of the ultraToolbarsManager1 control.</summary>
         /// <param name="sender">Die Quelle des Ereignisses.</param>
@@ -773,19 +813,17 @@ namespace Terminplan
         private void OnUltraToolbarsManager1BeforeApplicationMenu2010Displayed(object sender, BeforeApplicationMenu2010DisplayedEventArgs e)
         {
             // Falls ein neues Projekt hinzugefügt wurde, muss die Auswahl 'Speichern' gesperrt
-            // werden, da noch kein Dateiname angegeben wurde, ansonsten ist die 
+            // werden, da noch kein Dateiname angegeben wurde, ansonsten ist die
             // Auswahl 'Speichern' freigeschaltet
             ultraToolbarsManager1.Tools[@"Speichern"].SharedProps.Enabled = !prjHinzugefuegt;
         }
 
         private void ultraGanttView1_BindingContextChanged(object sender, EventArgs e)
         {
-
         }
 
         private void OnZoomFactorChanged(object sender, EventArgs e)
         {
-
         }
     }
 }

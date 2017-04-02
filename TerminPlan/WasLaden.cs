@@ -31,7 +31,7 @@ namespace Terminplan
         /// <param name="e">Die <see cref="EventArgs"/>Instanz, welche die Ereignisdaten enthält.</param>
         private void OnRadioButtonChanged(object sender, EventArgs e)
         {
-            var rb = (RadioButton)sender;                                       // die Quelle ist ein RadioButton                                        
+            var rb = (RadioButton)sender;                                       // die Quelle ist ein RadioButton
 
             // Falls der RadioButton abgewählt ist, wird die zugehörige Textbox usichtbar geschaltet, sonst sichtbar
             if (rb.Checked)
@@ -39,14 +39,13 @@ namespace Terminplan
                 // Soll ein neuer Terminplan geladen werden ?
                 if (rb.Tag.ToString() == @"Neu")
                 {
-                    Auswahl = 2;                                           // Neuer Terminplan
+                    this.Auswahl = 2;                                           // Neuer Terminplan
                 }
                 else
                 {
-                    Auswahl = 1;                                           // Vorhandener Terminplan
+                    this.Auswahl = 1;                                           // Vorhandener Terminplan
                 }
             }
         }
-
     }
 }

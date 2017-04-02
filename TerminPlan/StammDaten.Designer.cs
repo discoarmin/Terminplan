@@ -7,18 +7,6 @@
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
 
         #region Windows Form Designer generated code
 
@@ -1656,7 +1644,7 @@
             listTool9});
             this.ultraToolbarsManagerStamm.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
             this.ultraToolbarsManagerStamm.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
-            this.ultraToolbarsManagerStamm.ToolClick += new Infragistics.Win.UltraWinToolbars.ToolClickEventHandler(this.ultraToolbarsManagerStamm_ToolClick);
+            this.ultraToolbarsManagerStamm.ToolClick += new Infragistics.Win.UltraWinToolbars.ToolClickEventHandler(this.OnUltraToolbarsManagerStammToolClick);
             // 
             // _TerminPlanForm_Toolbars_Dock_Area_Top
             // 
