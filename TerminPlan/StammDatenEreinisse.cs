@@ -24,7 +24,6 @@ namespace Terminplan
     using System.Data;
     using System.Diagnostics.CodeAnalysis;
     using System.Drawing;
-    using System.Globalization;
     using System.IO;
     using System.Linq;
     using System.Windows.Forms;
@@ -32,7 +31,7 @@ namespace Terminplan
     using Infragistics.Win.AppStyling;
     using Infragistics.Win.Printing;
     using Infragistics.Win.Touch;
-    using Infragistics.Win.UltraWinSchedule;
+    using Infragistics.Win.UltraWinGrid;
     using Infragistics.Win.UltraWinToolbars;
     using PropertyIds = Infragistics.Win.UltraWinToolbars.PropertyIds;
 
@@ -121,21 +120,21 @@ namespace Terminplan
                 case "Font_Bold":                                               // Fettschrift
                     if (this.cellActivationRecursionFlag == false)
                     {
-                        UpdateFontProperty(FontProperties.Bold);
+                        this.UpdateFontProperty(FontProperties.Bold);
                     }
                     break;
 
                 case "Font_Italic":                                             // Kursivschrift
                     if (this.cellActivationRecursionFlag == false)
                     {
-                        UpdateFontProperty(FontProperties.Italics);
+                        this.UpdateFontProperty(FontProperties.Italics);
                     }
                     break;
 
                 case "Font_Underline":
                     if (this.cellActivationRecursionFlag == false)              // Unterstrichene Schrift
                     {
-                        UpdateFontProperty(FontProperties.Underline);
+                        this.UpdateFontProperty(FontProperties.Underline);
                     }
                     break;
 
@@ -356,6 +355,122 @@ namespace Terminplan
 
         #region Methoden
 
+        #region SetTextBackColor
+
+        /// <summary>
+        /// Aktualisiert den Wert der Hintergrundfarbe des Textes in der aktiven Zelle abhängig von der
+        /// im PopupColorPickerTool ausgewählten Farbe.
+        /// </summary>
+        private void SetTextBackColor()
+        {
+            // Ausgewählte Farbe aus dem ColorPicker ermitteln
+            var fontBgColor = ((PopupColorPickerTool)this.ultraToolbarsManager1.Tools[@"Font_BackColor"]).SelectedColor;
+            var activeTask = this.ultraGanttView1.ActiveTask;                   // Aktive Aufgabe oder aktiven Arbeitsinhalt ermitteln
+
+            // Nur bearbeiten, falls ein aktiver Arbeitsinhalt oder eine aktive Ausgabe existiert
+            if (activeTask == null)
+            {
+                return;
+            }
+
+            var activeField = this.ultraGanttView1.ActiveField;                 // Aktive Zelle ermitteln
+
+            // Nur bearbeiten, falls in der aktiven Zelle einen Wert enthält
+            if (activeField.HasValue)
+            {
+                activeTask.GridSettings.CellSettings[(TaskField)activeField].Appearance.BackColor = fontBgColor; // Hintergrundfarbe der Schrift setzen
+            }
+        }
+
+        #endregion SetTextBackColor
+
+        #region SetTextForeColor
+
+        /// <summary>
+        /// Aktualisiert den Wert der Vordergrundfarbe des Textes in der aktiven Zelle abhängig von der
+        /// im PopupColorPickerTool ausgewählten Farbe.
+        /// </summary>
+        private void SetTextForeColor()
+        {
+            // Ausgewählte Farbe aus dem ColorPicker ermitteln
+            var fontColor = ((PopupColorPickerTool)this.ultraToolbarsManager2.Tools[@"Font_ForeColor"]).SelectedColor;
+            var activeTask = ultraGanttView1.ActiveTask;                   // Aktive Aufgabe oder aktiven Arbeitsinhalt ermitteln
+
+            // Nur bearbeiten, falls ein aktiver Arbeitsinhalt oder eine aktive Ausgabe existiert
+            if (activeTask == null)
+            {
+                return;
+            }
+
+            var activeField = ultraGanttView1.ActiveField;                 // Aktive Zelle ermitteln
+            if (activeField.HasValue)
+            {
+                activeTask.GridSettings.CellSettings[(TaskField)activeField].Appearance.ForeColor = fontColor; // Vordergrundfarbe der Schrift setzen
+            }
+        }
+
+        #endregion SetTextForeColor
+
+        #region UpdateFontName
+
+        /// <summary> Aktualisiert den Namen der Schriftart je nach dem im FontListTool ausgewählten Wert. </summary>
+        private void UpdateFontName()
+        {
+            // Namen der ausgewählte Schriftart aus der Fontliste ermitteln
+            var fontName = ((FontListTool)ultraToolbarsManager1.Tools[@"FontList"]).Text;
+            var activeTask = ultraGanttView1.ActiveTask;                  // Aktive Aufgabe oder aktiven Arbeitsinhalt ermitteln
+
+            // Nur bearbeiten, falls ein aktiver Arbeitsinhalt oder eine aktive Ausgabe existiert
+            if (activeTask == null)
+            {
+                return;
+            }
+
+            var activeField = ultraGanttView1.ActiveField;                 // Aktive Zelle ermitteln
+
+            // Nur bearbeiten, falls in der aktiven Zelle einen Wert enthält
+            if (activeField.HasValue)
+            {
+                activeTask.GridSettings.CellSettings[(TaskField)activeField].Appearance.FontData.Name = fontName; // Namen der Schriftart der Zelle zuweisen
+            }
+        }
+
+        #endregion UpdateFontName
+
+        #region UpdateFontSize
+
+        /// <summary> Aktualisiert die Schriftgröße je nach dem im ComboBoxTool ausgewählten Wert. </summary>
+        private void UpdateFontSize()
+        {
+            // Größe der ausgewählte Schriftart aus dem ComboBoxTool ermitteln
+            var item = (ValueListItem)((ComboBoxTool)(ultraToolbarsManager1.Tools[@"FontSize"])).SelectedItem;
+
+            // Nur bearbeiten, falls ein Wert vorhanden ist
+            if (item == null)
+            {
+                return;
+            }
+
+            var fontSize = (float)item.DataValue;                               // Schriftgröße
+            var activeTask = ultraGanttView1.ActiveTask;                   // Aktive Aufgabe oder aktiven Arbeitsinhalt ermitteln
+
+            // Nur bearbeiten, falls ein aktiver Arbeitsinhalt oder eine aktive Ausgabe existiert
+            if (activeTask == null)
+            {
+                return;
+            }
+
+            var activeField = ultraGanttView1.ActiveField;                 // Aktive Zelle ermitteln
+
+            // Nur bearbeiten, falls in der aktiven Zelle einen Wert enthält
+            if (activeField.HasValue)
+            {
+                activeTask.GridSettings.CellSettings[(TaskField)activeField].Appearance.FontData.SizeInPoints = fontSize; // Schriftgröße der Zelle zuweisen
+            }
+        }
+
+        #endregion UpdateFontSize
+
         #region UpdateFontProperty
 
         /// <summary>Methode, um verschiedene Eigenschaften der Schriftart zu aktualisieren</summary>
@@ -363,348 +478,66 @@ namespace Terminplan
         /// <param name="propertyToUpdate">Aufzählung von Eigenschaften, welche von der Schriftart abhängig sind</param>
         private void UpdateFontProperty(FontProperties propertyToUpdate)
         {
-            var activeTask = ultraGanttView1.ActiveTask;                   // Aktive Aufgabe oder aktiven Arbeitsinhalt ermitteln
-
-            // Nur bearbeiten, falls ein aktiver Arbeitsinhalt oder eine aktive Ausgabe existiert
-            if (activeTask != null)
+            var activeCell = this.ultraGridStammDaten.ActiveCell;               // Aktive Zelle im Grid ermitteln ermitteln
+            UltraGridCell zelle;
+            // Nur bearbeiten, falls keine aktive Zelle existiert
+            if (activeCell == null)
             {
-                var activeField = ultraGanttView1.ActiveField;             // Aktive Zelle ermitteln
-                if (activeField.HasValue)
+                // Falls es kein aktive Zelle gibt, können auch Zellen selektiert sein
+                var anzZeilen = this.ultraGridStammDaten.Rows.Count;           // Anzahl Zeilen im Grid
+                var anzSpalten = this.ultraGridStammDaten.DisplayLayout.Bands[0].Columns.Count; // Anzahl Spalten des Grids
+
+                // Alle Zeilen und Spalten durchgehen und selektierte Zellen ermitteln
+                for (var z = 0; z < anzZeilen; z++)
                 {
-                    var activeTaskActiveCellFontData = activeTask.GridSettings.CellSettings[(TaskField)activeField].Appearance.FontData; // Daten der Schrift in der aktiven Zelle ermitteln
-
-                    // Art der Daten auswerten
-                    switch (propertyToUpdate)
+                    for (var s = 0; s < anzSpalten; s++)
                     {
-                        case FontProperties.Bold:                               // Fettschrift
-                            activeTaskActiveCellFontData.Bold = DienstProgramme.ToggleDefaultableBoolean(activeTaskActiveCellFontData.Bold); // Fettschrift aus- oder einschalten
-                            break;
-
-                        case FontProperties.Italics:                            // Kursiv
-                            activeTaskActiveCellFontData.Italic = DienstProgramme.ToggleDefaultableBoolean(activeTaskActiveCellFontData.Italic); // Kursivschrift umschalten
-                            break;
-
-                        case FontProperties.Underline:                          // Unterstrichen
-                            activeTaskActiveCellFontData.Underline = DienstProgramme.ToggleDefaultableBoolean(activeTaskActiveCellFontData.Underline); // unterstrichene Schrift umschalten
-                            break;
+                        zelle = this.ultraGridStammDaten.Rows[z].Cells[s];      // Zelle im Grid
+                        if (zelle.Selected)
+                        {
+                            // Die Zelle ist ausgewählt, Fontdaten einstellen
+                            this.StelleFontEigenschaftEin(ref zelle, propertyToUpdate);
+                        }
                     }
                 }
             }
+            else
+            {
+                // Die Zelle ist aktiv, Fontdaten einstellen
+                this.StelleFontEigenschaftEin(ref activeCell, propertyToUpdate);
+            }
 
-            cellActivationRecursionFlag = false;                           // Zellen müssen nicht rekursiv bearbeitet werden, gilt also nur für eine Zelle
+            this.cellActivationRecursionFlag = false;                           // Zellen müssen nicht rekursiv bearbeitet werden, gilt also nur für eine Zelle
+        }
+
+        /// <summary>
+        /// Methode, um verschiedene Eigenschaften der Schriftart zu aktualisieren
+        /// </summary>
+        /// <param name="zelle">Die zu bearbeitende Zelle.</param>
+        /// <param name="propertyToUpdate">Aufzählung von Eigenschaften, welche von der Schriftart abhängig sind</param>
+        /// <remarks>
+        /// Die Eigenschaften werden umgeschaltet.
+        /// </remarks>
+        private void StelleFontEigenschaftEin(ref UltraGridCell zelle, FontProperties propertyToUpdate)
+        {
+            // Art der Daten auswerten
+            switch (propertyToUpdate)
+            {
+                case FontProperties.Bold:                                       // Fettschrift
+                    zelle.Appearance.FontData.Bold = DienstProgramme.ToggleDefaultableBoolean(zelle.Appearance.FontData.Bold); // Fettschrift aus- oder einschalten
+                    break;
+
+                case FontProperties.Italics:                            // Kursiv
+                    activeTaskActiveCellFontData.Italic = DienstProgramme.ToggleDefaultableBoolean(activeTaskActiveCellFontData.Italic); // Kursivschrift umschalten
+                    break;
+
+                case FontProperties.Underline:                          // Unterstrichen
+                    activeTaskActiveCellFontData.Underline = DienstProgramme.ToggleDefaultableBoolean(activeTaskActiveCellFontData.Underline); // unterstrichene Schrift umschalten
+                    break;
+            }
         }
 
         #endregion UpdateFontProperty
-
-        #region AddNewTask
-
-        /// <summary>
-        /// Fügt dem GanttView einen neuen Arbeitsinhalt hinzu
-        /// </summary>
-        /// <param name="addAtSelectedRow">
-        /// Füget bei true einen neuen Arbeitsinhalt an der ausgewählten Zeile ein,
-        /// bei false am unteren Rand des ganttViews
-        /// </param>
-        private void AddNewTask(bool addAtSelectedRow)
-        {
-            TasksCollection parentCollection = null;                            // Sammlung übergeordneter Arbeitsinhalte löschen
-            var calendarInfo = ultraGanttView1.CalendarInfo;                    // Kalenderinfo festlegen
-            var activeTask = ultraGanttView1.ActiveTask;                        // aktiven Arbeitsinhalt ermitteln
-            var prjHinzuefuegt = false;                                         // Es wurde kein neues Projrkt hinzuefügt
-            Project projekt;
-
-            //this.ultraGanttView1.Project = this.ultraGanttView1.CalendarInfo.Projects[anzProject - 1];
-            try
-            {
-                projekt = calendarInfo.Projects[1];                             // Projekt ermitteln
-            }
-            catch (Exception)
-            {
-                var prjNeu = new NeuesProjekt(ref this.ultraCalendarInfo1);
-                var result = prjNeu.ShowDialog();
-
-                if (result == DialogResult.OK)
-                {
-                    if (prjNeu.PrjName != null)
-                    {
-                        calendarInfo.Projects.Add(prjNeu.PrjName, prjNeu.PrjStart);
-                        prjHinzuefuegt = true;                                  // Es wurde ein neues Prijekt hinzugefügt
-                    }
-                }
-            }
-
-            var anzProject = calendarInfo.Projects.Count;
-            projekt = calendarInfo.Projects[anzProject - 1];
-
-            int insertionIndex;                                                 // Index des neuen Arbeitsinhalts
-            DateTime start;                                                     // Startdatum des Arbeitsinhalts
-            var addToRootcollection = true;                                     // Eintrag wird zum Wurzelknoten hinzugefügt
-
-            // Ermitteln, ob bei der ausgewählten Zeile oder am Ende ein neuer Arbeitsinhalt eingefügt werden soll
-            if (addAtSelectedRow)
-            {
-                // Einfügen an ausgewählter Zeile
-                if (activeTask != null)
-                {
-                    var parentTask = activeTask.Parent;                         // Übergeordneten Arbeitsinhalt ermitteln
-
-                    // Falls ein übergeordneter Arbeitsinhalt vorhanden ist, besteht die Sammlung der
-                    // übergeordneten Arbeitsinhalten aus den bisherigen übergeordneten
-                    // Arbeitsinhalten, sonst aus den Arbeitsinhalten der Kalenderinfo ermitteln
-                    parentCollection = parentTask != null ? parentTask.Tasks : calendarInfo.Tasks;
-                    insertionIndex = parentCollection.IndexOf(activeTask);      // Index des bisherigen Arbeitsinhalts
-
-                    // Das Startdatum ist davon abhängig, ob es sich um einen übergeordneten Arbeitsinhalt
-                    // handelt oder nicht
-                    // ReSharper disable once MergeConditionalExpression
-                    start = parentTask != null ? parentTask.StartDateTime : projekt.StartDate;
-
-                    if (!prjHinzuefuegt)
-                    {
-                        addToRootcollection = false;                            // Eintrag wird nicht zum Wurzelknoten hinzugefügt
-                    }
-                }
-                else
-                {
-                    // es existiert kein aktiver Arbeitsinhalt
-                    insertionIndex = calendarInfo.Tasks.Count;                  // Index ist die bisherige Anzahl Arbeitsinhalten des übergeordneten Arbeitsinhalts
-                    start = projekt.StartDate;                                  // Das Startdatum ist das Startdatum des Projekts
-                }
-            }
-            else
-            {
-                // Einfügen am Ende
-                // Die Sammlung der übergeordneten Arbeitsinhalten besteht aus den Arbeitsinhalten der Kalenderinfo
-                parentCollection = calendarInfo.Tasks;
-                insertionIndex = calendarInfo.Tasks.Count;                      // Index ist die bisherige Anzahl Arbeitsinhalten des übergeordneten Arbeitsinhalts
-                start = projekt.StartDate;                                      // Das Startdatum ist das Startdatum des Projekts
-            }
-
-            // Nur bearbeiten, falls ein übergeordeter Arbeitsinhalt vorhanden ist
-            if (parentCollection == null)
-            {
-                return;                                                         // Abbruch, da kein übergeordneter Arbeitsinhalt
-            }
-
-            //  Neue Aufgabe oder neuen Arbeitsinhalt hinzufügen
-            var taskName = this.rm.GetString("NewTaskName");                    // Namen des Arbeitsinhalts oder der Aufgabe ermitteln
-            Task newTask;
-
-            // Ermitteln, ob es sich um eine Aufgabe oder einen Arbeitsinhalt handelt
-            if (addToRootcollection == false &&
-                // ReSharper disable once ConditionIsAlwaysTrueOrFalse
-                activeTask != null &&
-                activeTask.Parent != null)
-            {
-                // Es handelt sich um einen Arbeitsinhalt
-                newTask = activeTask.Parent.Tasks.Insert(insertionIndex, start, TimeSpan.FromDays(1), taskName); // newTask;
-            }
-            else
-            {
-                // Es handelt sich um eine Aufgabe
-                newTask = calendarInfo.Tasks.Insert(insertionIndex, start, TimeSpan.FromDays(1), taskName);
-            }
-
-            newTask.Project = projekt;                                          // Projektname dem hinzugefügten Elemnt zuweisen
-            newTask.RowHeight = TaskRowHeight;
-        }
-
-        #endregion AddNewTask
-
-        #region AddNewProjekt
-
-        /// <summary>
-        /// Fügt einen Neuen Terminplan
-        /// </summary>
-        /// <param name="prjName">Name des Projekts.</param>
-        /// <param name="prjStart">Starttermin des Projekts.</param>
-        /// <param name="formatedStart">formatierter Starttermin des Projekts.</param>
-        /// <param name="prjKey">Schlüssel des Projekts, entspricht der Kommissionsnummer.</param>
-        /// <param name="aufgaben">Liste mit allen anzulegenden Aufgaben.</param>
-        /// <param name="besitzer">Liste mit allenPersonen, welche die Aufgaben bearbeiten können.</param>
-        /// <returns> <c>true</c>, falls Projekt hinzugefügt wurde, sonst <c>false</c></returns>
-        private bool AddNewProjekt(string prjName,
-            DateTime prjStart,
-            string formatedStart,
-            string prjKey,
-            IReadOnlyList<string> aufgaben,
-            IReadOnlyList<Besitzer> besitzer)
-        {
-            // Neues Projekt erstellen. Der Projektname und das Startdatum des Projekts stammen aus dem zuvor angezeigten Dialog
-            var neuesProjekt = this.ultraCalendarInfo1.Projects.Add(prjName, prjStart);
-            neuesProjekt.Key = prjKey;
-
-            var neuesDataSet = this.GetNewProjectData(
-                prjKey,
-                prjStart,
-                prjName,
-                aufgaben,
-                @"Arbeitsinhalt 1");
-
-            ErzeugeBesitzer(besitzer, ref neuesDataSet);                        // Benutzer anlegen, welche das Projekt bearbeiten dürfen
-            ErzeugeNeueTasks(ref neuesProjekt,
-                prjStart,
-                prjKey,
-                aufgaben,
-                @"Arbeitsinhalt1");
-
-            ErstelleDatenBindungen(neuesDataSet);                               // Datenanbindungen an das GanttView erstellen
-            var kultur = new CultureInfo("de-DE");                              // Kultur für Darstellung
-
-            this.DatasetTp = neuesDataSet;
-            this.DatasetTp.Locale = kultur;
-            return true;
-            /*
-            TasksCollection parentCollection = null;                            // Sammlung übergeordneter Arbeitsinhalte löschen
-            var kultur = new CultureInfo("de-DE");                              // Kultur für Darstellung
-            var calendarInfo = ultraGanttView1.CalendarInfo;                    // Kalenderinfo festlegen
-            var activeTask = ultraGanttView1.ActiveTask;                        // aktiven Arbeitsinhalt ermitteln
-
-            var neuesProjekt = this.ultraCalendarInfo1.Projects.Add(prjName, prjStart);  // Neues Projekt erstellen, welches anders ist als das standardmäßig nicht zugewiesene Projekt
-            //calendarInfo.Projects.Add(prjName, prjStart);
-            //var anzPrj = calendarInfo.Projects.Count;                           // Anzahl vorhandener Projekte
-            var anzPrj = this.ultraCalendarInfo1.Projects.Count;                // Anzahl vorhandener Projekte
-            prjHinzugefuegt = true;                                             // Es wurde ein neues Projekt hinzugefügt
-
-            if (anzPrj < 2) return false;                                       // Abbruch, da Projekt nicht hinzugefügt wurde
-            var projekt = this.ultraCalendarInfo1.Projects[anzPrj - 1];
-
-            var prjId = DienstProgramme.GetGuId();                              // NeueProjektID erzeugen
-            var doc = new XmlDocument();                                        // Neue Instanz zum Bearbeiten von XML-Dakumenten erzeugen
-            doc.Load(Path.Combine(Application.StartupPath, @"Data.DatenNeuEST.XML")); // Leere Datei laden
-            var navigator = doc.CreateNavigator();                              // wird zum Navigieren im XML-Dokument benötigt
-            navigator.MoveToRoot();                                             // Stammknoten auswählen
-            var erg = navigator.MoveToChild(@"TerminPlan", string.Empty);       // Hauptknoten anwählen
-
-            // Weitere Bearbeitung nur sinnvoll, wenn Hauptknoten vorhanden ist.
-            // Die Knoten müssen in derjenigen Reihenfolge bearbeitet werden,
-            // in welcher sie auch in der XML-Datei stehen
-            if (erg)
-            {
-                // Knoten 'Projekte' anwählen. Hier werden die im Dialog eingegebenen Daten eingetragen
-                erg = navigator.MoveToChild(@"Projekte",
-                    string.Empty);
-                // Einträge für den Knoten 'Projekte' können nur bearbeitet werden, wenn dessen Anwahl erfolgreich war
-                if (erg)
-                {
-                    // ProjektID eintragen
-                    erg = navigator.MoveToChild(@"ProjektID", string.Empty);
-                    if (erg)
-                    {
-                        navigator.SetValue(prjId);
-                    }
-
-                    erg = navigator.MoveToNext("ProjektKey", string.Empty);     // Knoten 'ProjektKey' anwählen
-
-                    // Projektschlüssel eintragen. Dieser Schlüssel wird auch bei allen zu diesem Projekt
-                    // gehörenden Aufgaben eingetragen
-                    if (erg)
-                    {
-                        navigator.SetValue(prjKey);
-                    }
-
-                    erg = navigator.MoveToNext("ProjektName", String.Empty);    // Knoten 'ProjektName' anwählen
-
-                    // Projektnamen eintragen
-                    if (erg)
-                    {
-                        navigator.SetValue(projekt.Name);
-                    }
-
-                    erg = navigator.MoveToNext("ProjektStart", string.Empty);   // Knoten 'ProjektStart' anwählen
-                    if (erg)
-                    {
-                        // Das Datum in der XML-Datei hat folgendes Format: 2017-01-17T06:00:00+01:00 (jjjj-mm-ttThh:mm:ss+01:00)
-                        navigator.SetValue(formatedStart);                      // Startdatum des Projekts
-                    }
-                }
-            }
-
-            // In der Vorlage für einen neuen Terminplan ist ein Arbeitsinhalt und eine dazugehörige Aufgabe enthalten
-            // In diese Knoten muss der Projektschlüssel eingetragen werden
-            // Um auf diesen Knoten zu gelangen, muss zuerst wieder der Stammknoten und anschließend der Hauptknoten
-            // ausgewählt werden
-            navigator.MoveToRoot();                                             // Stammknoten auswählen
-            erg = navigator.MoveToChild(@"TerminPlan", string.Empty);           // Hauptknoten anwählen
-
-            // Weitere Bearbeitung nur sinnvoll, wenn Hauptknoten vorhanden ist.
-            if (erg)
-            {
-                erg = navigator.MoveToChild(@"Arbeitsinhalt_Aufgaben",
-                    string.Empty);                                              // Arbeitsinhalt 1
-
-                // Einträge für den ersten Knoten 'Arbeitsinhalt_Aufgaben' können nur bearbeitet werden, wenn dessen Anwahl erfolgreich war
-                if (erg)
-                {
-                    erg = navigator.MoveToChild("ProjektKey", string.Empty);    // Knoten 'ProjektKey' anwählen
-                    if (erg)
-                    {
-                        navigator.SetValue(prjKey);
-                    }
-
-                    // Startzeit auf Startzeit des Projekts einstellen
-                    erg = navigator.MoveToNext("TaskName", string.Empty);      // Knoten 'TaskName' anwählen
-                    if (erg)
-                    {
-                        erg = navigator.MoveToNext("TaskStartTime", string.Empty);      // Knoten 'TaskStartTime' anwählen
-                        if (erg)
-                        {
-                            // Das Datum in der XML-Datei hat folgendes Format: 2017-01-17T06:00:00+01:00 (jjjj-mm-ttThh:mm:ss+01:00)
-                            navigator.SetValue(formatedStart);                  // Startdatum der Aufgabe = Startdatum des Projekts
-                        }
-                    }
-                }
-
-                // Um auf den zweiten Knoten zu gelangen, muss zuerst wider der Stammknoten und der Hauptknoten
-                // angewählt werden. Danach muss zuerst der Knoten mit dem Arbeitsinhalt und gleich anschließend
-                // der Knoten mit der Aufgabe angewählt werden
-                navigator.MoveToRoot();                                             // Stammknoten auswählen
-                erg = navigator.MoveToChild(@"TerminPlan", string.Empty);           // Hauptknoten anwählen
-
-                // Weitere Bearbeitung nur sinnvoll, wenn Hauptknoten vorhanden ist.
-                if (erg)
-                {
-                    erg = navigator.MoveToChild(@"Arbeitsinhalt_Aufgaben",
-                        string.Empty);                                              // Arbeitsinhalt 1
-                    if (erg)
-                    {
-                        erg = navigator.MoveToNext(@"Arbeitsinhalt_Aufgaben",
-                            string.Empty);                                          // Aufgabe 1
-
-                        // Einträge für den zweiten Knoten 'Arbeitsinhalt_Aufgaben' können nur bearbeitet werden, wenn dessen Anwahl erfolgreich war
-                        if (erg)
-                        {
-                            erg = navigator.MoveToChild("ProjektKey", string.Empty);    // Knoten 'ProjektKey' anwählen
-                            if (erg)
-                            {
-                                navigator.SetValue(prjKey);
-                            }
-
-                            // Startzeit auf Startzeit des Projekts einstellen
-                            erg = navigator.MoveToNext("TaskName", string.Empty);      // Knoten 'TaskName' anwählen
-                            if (erg)
-                            {
-                                erg = navigator.MoveToNext("TaskStartTime", string.Empty); // Knoten 'TaskStartTime' anwählen
-                                if (erg)
-                                {
-                                    // Das Datum in der XML-Datei hat folgendes Format: 2017-01-17T06:00:00+01:00 (jjjj-mm-ttThh:mm:ss+01:00)
-                                    navigator.SetValue(formatedStart);                  // Startdatum der Aufgabe = Startdatum des Projekts
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            // Änderungen Speichern, damit sie
-            navigator.MoveToRoot();                                             // Stammknoten auswählen
-            var speicherPfad = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            doc.Save(Path.Combine(speicherPfad, @"Data.DatenNeuEST.XML"));
-            return true;                                                        // Neues Projekt wurde hinzugefügt
-*/
-        }
-
-        #endregion AddNewProjekt
 
         #region BindArbInhaltData
 

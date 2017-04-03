@@ -158,13 +158,13 @@ namespace Terminplan
                         var fontData = appearance.FontData;                     // Schrifteinstellung
 
                         // Setzt den Zustand des Buttons für die Fettschrift für die aktive Zelle
-                        ((StateButtonTool)ultraToolbarsManager1.Tools[@"Font_Bold"]).Checked = (fontData.Bold == DefaultableBoolean.True);
+                        ((StateButtonTool)this.ultraToolbarsManager1.Tools[@"Font_Bold"]).Checked = (fontData.Bold == DefaultableBoolean.True);
 
                         // Setzt den Zustand des Buttons für Kursiv-Schrift für die aktive Zelle
-                        ((StateButtonTool)ultraToolbarsManager1.Tools[@"Font_Italic"]).Checked = (fontData.Italic == DefaultableBoolean.True);
+                        ((StateButtonTool)this.ultraToolbarsManager1.Tools[@"Font_Italic"]).Checked = (fontData.Italic == DefaultableBoolean.True);
 
                         // Setzt den Zustand des Buttons für unterstrichene Schrift der aktiven Zelle
-                        ((StateButtonTool)ultraToolbarsManager1.Tools[@"Font_Underline"]).Checked = (fontData.Underline == DefaultableBoolean.True);
+                        ((StateButtonTool)this.ultraToolbarsManager1.Tools[@"Font_Underline"]).Checked = (fontData.Underline == DefaultableBoolean.True);
 
                         // Name der Schriftart in der Fontliste aktualisieren
                         var fontName = fontData.Name;                           // Name der Schriftart ermitteln
@@ -336,102 +336,102 @@ namespace Terminplan
                 case "Font_Bold":                                               // Fettschrift
                     if (this.cellActivationRecursionFlag == false)
                     {
-                        UpdateFontProperty(FontProperties.Bold);
+                        this.UpdateFontProperty(FontProperties.Bold);
                     }
                     break;
 
                 case "Font_Italic":                                             // Kursivschrift
                     if (this.cellActivationRecursionFlag == false)
                     {
-                        UpdateFontProperty(FontProperties.Italics);
+                        this.UpdateFontProperty(FontProperties.Italics);
                     }
                     break;
 
                 case "Font_Underline":
                     if (this.cellActivationRecursionFlag == false)              // Unterstrichene Schrift
                     {
-                        UpdateFontProperty(FontProperties.Underline);
+                        this.UpdateFontProperty(FontProperties.Underline);
                     }
                     break;
 
                 case "Font_BackColor":                                          // Hintergrundfarbe
-                    SetTextBackColor();
+                    this.SetTextBackColor();
                     break;
 
                 case "Font_ForeColor":                                          // Vordergrundfarbe
-                    SetTextForeColor();
+                    this.SetTextForeColor();
                     break;
 
                 case "FontList":                                                // Liste mit den Schriftarten
-                    UpdateFontName();
+                    this.UpdateFontName();
                     break;
 
                 case "FontSize":                                                // Schriftgröße
-                    UpdateFontSize();
+                    this.UpdateFontSize();
                     break;
 
                 case "Insert_Task_Task":                                        // Neuen Arbeitsinhalt oder neue Aufgabe am Ende hinzufügen
-                    AddNewTask(false);
+                    this.AddNewTask(false);
                     break;
 
                 case "Insert_Task_TaskAtSelectedRow":                           // Neuen Arbeitsinhalt oder neue Aufgabe nach der aktuellen Zeile hinzufügen
-                    AddNewTask(true);
+                    this.AddNewTask(true);
                     break;
 
                 case "Tasks_PercentComplete_0":                                 // Fertigungsgrad 0%
-                    SetTaskPercentage(0);
+                    this.SetTaskPercentage(0);
                     break;
 
                 case "Tasks_PercentComplete_25":                                // Fertigungsgrad 25%
-                    SetTaskPercentage(25);
+                    this.SetTaskPercentage(25);
                     break;
 
                 case "Tasks_PercentComplete_50":                                // Fertigungsgrad 50%
-                    SetTaskPercentage(50);
+                    this.SetTaskPercentage(50);
                     break;
 
                 case "Tasks_PercentComplete_75":                                // Fertigungsgrad 75%
-                    SetTaskPercentage(75);
+                    this.SetTaskPercentage(75);
                     break;
 
                 case "Tasks_PercentComplete_100":                               // Fertigungsgrad 100%
-                    SetTaskPercentage(100);
+                    this.SetTaskPercentage(100);
                     break;
 
                 case "Tasks_MoveLeft":                                          // Nach links verschieben
-                    PerformIndentOrOutdent(GanttViewAction.OutdentTask);
+                    this.PerformIndentOrOutdent(GanttViewAction.OutdentTask);
                     break;
 
                 case "Tasks_MoveRight":                                         // Nach rechts verschieben
-                    PerformIndentOrOutdent(GanttViewAction.IndentTask);
+                    this.PerformIndentOrOutdent(GanttViewAction.IndentTask);
                     break;
 
                 case "Tasks_Delete":                                            // Arbeitsinhalt oder Aufgabe löschen
-                    DeleteTask();
+                    this.DeleteTask();
                     break;
 
                 case "Schedule_OnMoveTask_1Day":                                // Starttermin 1 Tag später
-                    MoveTask(GanttViewAction.MoveTaskDateForward, TimeSpanForMoving.OneDay);
+                    this.MoveTask(GanttViewAction.MoveTaskDateForward, TimeSpanForMoving.OneDay);
                     break;
 
                 case "Schedule_OnMoveTask_1Week":                               // Starttermin 1 Woche später
-                    MoveTask(GanttViewAction.MoveTaskDateForward, TimeSpanForMoving.OneWeek);
+                    this.MoveTask(GanttViewAction.MoveTaskDateForward, TimeSpanForMoving.OneWeek);
                     break;
 
                 case "Schedule_MoveTask_4Weeks":                                // Starttermin 4 Wochen später
-                    MoveTask(GanttViewAction.MoveTaskDateForward, TimeSpanForMoving.FourWeeks);
+                    this.MoveTask(GanttViewAction.MoveTaskDateForward, TimeSpanForMoving.FourWeeks);
                     break;
 
                 case "Schedule_MoveTask_MoveTaskBackwards1Day":                 // Sterttrmin 1 Tag früher
-                    MoveTask(GanttViewAction.MoveTaskDateBackward, TimeSpanForMoving.OneDay);
+                    this.MoveTask(GanttViewAction.MoveTaskDateBackward, TimeSpanForMoving.OneDay);
                     break;
 
                 case "Schedule_MoveTask_MoveTaskBackwards1Week":                // Starttermin 1 Woche früher
-                    MoveTask(GanttViewAction.MoveTaskDateBackward, TimeSpanForMoving.OneWeek);
+                    this.MoveTask(GanttViewAction.MoveTaskDateBackward, TimeSpanForMoving.OneWeek);
                     break;
 
                 case "Schedule_MoveTask_MoveTaskBackwards4Weeks":               // Starttermin 4 Wochen früher
-                    MoveTask(GanttViewAction.MoveTaskDateBackward, TimeSpanForMoving.FourWeeks);
+                    this.MoveTask(GanttViewAction.MoveTaskDateBackward, TimeSpanForMoving.FourWeeks);
                     break;
 
                 case "Properties_TaskInformation":                              // Informatinen über den Arbeitsinhalt oder die Aufgabe
