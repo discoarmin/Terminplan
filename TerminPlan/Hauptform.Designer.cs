@@ -868,6 +868,7 @@
             // 
             appearance2.BackColor = System.Drawing.Color.DarkGray;
             this.ultraZoomPanelTerminPlan.Appearance = appearance2;
+            this.ultraZoomPanelTerminPlan.AutoScrollMinSize = new System.Drawing.Size(1167, 641);
             // 
             // ultraZoomPanelTerminPlan.ClientArea
             // 

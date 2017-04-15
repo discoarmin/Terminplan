@@ -20,7 +20,7 @@
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("A");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("B");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("B", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn3 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("C");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn4 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("D");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn5 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("E");
@@ -645,7 +645,7 @@
             this.ultraGridStammDaten.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ultraGridStammDaten.Location = new System.Drawing.Point(0, 0);
             this.ultraGridStammDaten.Name = "ultraGridStammDaten";
-            this.ultraGridStammDaten.Size = new System.Drawing.Size(1149, 604);
+            this.ultraGridStammDaten.Size = new System.Drawing.Size(1149, 602);
             this.ultraGridStammDaten.TabIndex = 0;
             // 
             // ultraDataSource1
@@ -1206,9 +1206,9 @@
             buttonTool161.InstanceProps.IsFirstInGroup = true;
             buttonTool161.InstanceProps.MinimumSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large;
             buttonTool162.InstanceProps.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
-            buttonTool162.InstanceProps.PreferredSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Normal;
+            buttonTool162.InstanceProps.PreferredSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large;
             buttonTool163.InstanceProps.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
-            buttonTool163.InstanceProps.PreferredSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Normal;
+            buttonTool163.InstanceProps.PreferredSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large;
             ribbonGroup1.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
             buttonTool161,
             buttonTool162,
@@ -1645,6 +1645,8 @@
             this.ultraToolbarsManagerStamm.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
             this.ultraToolbarsManagerStamm.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.ultraToolbarsManagerStamm.ToolClick += new Infragistics.Win.UltraWinToolbars.ToolClickEventHandler(this.OnUltraToolbarsManagerStammToolClick);
+            this.ultraToolbarsManagerStamm.ToolValueChanged += new Infragistics.Win.UltraWinToolbars.ToolEventHandler(this.OnUltraToolbarsManagerStammToolValueChanged);
+            this.ultraToolbarsManagerStamm.PropertyChanged += new Infragistics.Win.PropertyChangedEventHandler(this.ultraToolbarsManagerStamm_PropertyChanged);
             // 
             // _TerminPlanForm_Toolbars_Dock_Area_Top
             // 
@@ -1654,7 +1656,7 @@
             this._TerminPlanForm_Toolbars_Dock_Area_Top.ForeColor = System.Drawing.SystemColors.ControlText;
             this._TerminPlanForm_Toolbars_Dock_Area_Top.Location = new System.Drawing.Point(0, 0);
             this._TerminPlanForm_Toolbars_Dock_Area_Top.Name = "_TerminPlanForm_Toolbars_Dock_Area_Top";
-            this._TerminPlanForm_Toolbars_Dock_Area_Top.Size = new System.Drawing.Size(1151, 151);
+            this._TerminPlanForm_Toolbars_Dock_Area_Top.Size = new System.Drawing.Size(1151, 153);
             this._TerminPlanForm_Toolbars_Dock_Area_Top.ToolbarsManager = this.ultraToolbarsManagerStamm;
             // 
             // _TerminPlanForm_Toolbars_Dock_Area_Bottom
@@ -1676,9 +1678,9 @@
             this._TerminPlanForm_Toolbars_Dock_Area_Left.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Left;
             this._TerminPlanForm_Toolbars_Dock_Area_Left.ForeColor = System.Drawing.SystemColors.ControlText;
             this._TerminPlanForm_Toolbars_Dock_Area_Left.InitialResizeAreaExtent = 1;
-            this._TerminPlanForm_Toolbars_Dock_Area_Left.Location = new System.Drawing.Point(0, 151);
+            this._TerminPlanForm_Toolbars_Dock_Area_Left.Location = new System.Drawing.Point(0, 153);
             this._TerminPlanForm_Toolbars_Dock_Area_Left.Name = "_TerminPlanForm_Toolbars_Dock_Area_Left";
-            this._TerminPlanForm_Toolbars_Dock_Area_Left.Size = new System.Drawing.Size(1, 604);
+            this._TerminPlanForm_Toolbars_Dock_Area_Left.Size = new System.Drawing.Size(1, 602);
             this._TerminPlanForm_Toolbars_Dock_Area_Left.ToolbarsManager = this.ultraToolbarsManagerStamm;
             // 
             // _TerminPlanForm_Toolbars_Dock_Area_Right
@@ -1688,23 +1690,24 @@
             this._TerminPlanForm_Toolbars_Dock_Area_Right.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Right;
             this._TerminPlanForm_Toolbars_Dock_Area_Right.ForeColor = System.Drawing.SystemColors.ControlText;
             this._TerminPlanForm_Toolbars_Dock_Area_Right.InitialResizeAreaExtent = 1;
-            this._TerminPlanForm_Toolbars_Dock_Area_Right.Location = new System.Drawing.Point(1150, 151);
+            this._TerminPlanForm_Toolbars_Dock_Area_Right.Location = new System.Drawing.Point(1150, 153);
             this._TerminPlanForm_Toolbars_Dock_Area_Right.Name = "_TerminPlanForm_Toolbars_Dock_Area_Right";
-            this._TerminPlanForm_Toolbars_Dock_Area_Right.Size = new System.Drawing.Size(1, 604);
+            this._TerminPlanForm_Toolbars_Dock_Area_Right.Size = new System.Drawing.Size(1, 602);
             this._TerminPlanForm_Toolbars_Dock_Area_Right.ToolbarsManager = this.ultraToolbarsManagerStamm;
             // 
             // ultraZoomPanelStammDaten
             // 
             appearance13.BackColor = System.Drawing.Color.DarkGray;
             this.ultraZoomPanelStammDaten.Appearance = appearance13;
+            this.ultraZoomPanelStammDaten.AutoScrollMinSize = new System.Drawing.Size(1149, 602);
             // 
             // ultraZoomPanelStammDaten.ClientArea
             // 
             this.ultraZoomPanelStammDaten.ClientArea.Controls.Add(this.ultraGridStammDaten);
             this.ultraZoomPanelStammDaten.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraZoomPanelStammDaten.Location = new System.Drawing.Point(1, 151);
+            this.ultraZoomPanelStammDaten.Location = new System.Drawing.Point(1, 153);
             this.ultraZoomPanelStammDaten.Name = "ultraZoomPanelStammDaten";
-            this.ultraZoomPanelStammDaten.Size = new System.Drawing.Size(1149, 604);
+            this.ultraZoomPanelStammDaten.Size = new System.Drawing.Size(1149, 602);
             this.ultraZoomPanelStammDaten.TabIndex = 13;
             this.ultraZoomPanelStammDaten.Tag = "StammDaten";
             this.ultraZoomPanelStammDaten.ZoomProperties.MaxZoomFactor = 3F;

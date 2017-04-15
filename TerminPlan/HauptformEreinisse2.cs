@@ -47,7 +47,7 @@ namespace Terminplan
             Thread.CurrentThread.CurrentCulture = culture;
             Thread.CurrentThread.CurrentUICulture = culture;
 
-            var col = ultraGanttView1.GridSettings.ColumnSettings.Values;
+            var col = this.ultraGanttView1.GridSettings.ColumnSettings.Values;
 
             // Spaltenbreite einstellen
             foreach (var de in col)
@@ -93,7 +93,7 @@ namespace Terminplan
 
             // Füllt die Liste mit den Farbschematas
             var selectedIndex = 0;                                              // Index des ausgewählten Farbschemas (1. Element)
-            var themeTool = (ListTool)ultraToolbarsManager1.Tools[@"ThemeList"];
+            var themeTool = (ListTool)this.ultraToolbarsManager1.Tools[@"ThemeList"];
 
             // Alle vorhandenen Farbschematas durchgehen
             foreach (var resourceName in themePaths)
@@ -115,12 +115,12 @@ namespace Terminplan
             themeTool.SelectedItemIndex = selectedIndex;                        // Ausgewähltes Farbschema als Standard setzen
 
             // Das richtigen Listenelement für den Touch-Modus auswählen
-            ((ListTool)ultraToolbarsManager1.Tools[@"TouchMode"]).SelectedItemIndex = 0; // Erstes Element als Auswahl
+            ((ListTool)this.ultraToolbarsManager1.Tools[@"TouchMode"]).SelectedItemIndex = 0; // Erstes Element als Auswahl
 
             // Erstellt eine Liste mit verschiedenen Schriftgrößen
             PopulateFontSizeValueList();                                   // Fontliste füllen
-            ((ComboBoxTool)(ultraToolbarsManager1.Tools[@"FontSize"])).SelectedIndex = 0;
-            ((FontListTool)ultraToolbarsManager1.Tools[@"FontList"]).SelectedIndex = 0;
+            ((ComboBoxTool)(this.ultraToolbarsManager1.Tools[@"FontSize"])).SelectedIndex = 0;
+            ((FontListTool)this.ultraToolbarsManager1.Tools[@"FontList"]).SelectedIndex = 0;
             OnUpdateFontToolsState(false);                                 // Font ist nicht auswählbar
 
             // Aboutbox initialisieren
@@ -130,14 +130,14 @@ namespace Terminplan
                 Parent = this                                                   // Das Hauptformular ist das Elternformular
             };                                                                  // Neue Instanz der Aboutbox erzeugen
 
-            ((PopupControlContainerTool)ultraToolbarsManager1.Tools[@"About"]).Control = control; // Aboutbox in die Tools für den UltraToolbarsManager setzen
+            ((PopupControlContainerTool)this.ultraToolbarsManager1.Tools[@"About"]).Control = control; // Aboutbox in die Tools für den UltraToolbarsManager setzen
 
             // Größe der Spalten so einstellen, dass alle Daten sichtbar sind.
-            ultraGanttView1.PerformAutoSizeAllGridColumns();
+            this.ultraGanttView1.PerformAutoSizeAllGridColumns();
 
             // Die Bilder entsprechend dem aktuellen Farbschema einfärben.
             ColorizeImages();
-            ultraToolbarsManager1.Ribbon.FileMenuButtonCaption = Resources.ribbonFileTabCaption; // Beschriftung des Datei-Menüs-Button eintragen
+            this.ultraToolbarsManager1.Ribbon.FileMenuButtonCaption = Resources.ribbonFileTabCaption; // Beschriftung des Datei-Menüs-Button eintragen
         }
 
         #endregion InitializeUi
@@ -514,7 +514,7 @@ namespace Terminplan
             // Jeden Eintrag der Liste in das Tool für die Schriftgröße des UltraToolbarsManager eintragen
             foreach (var i in fontSizeList)
             {
-                ((ComboBoxTool)(ultraToolbarsManager1.Tools[@"FontSize"])).ValueList.ValueListItems.Add(i);
+                ((ComboBoxTool)(this.ultraToolbarsManager1.Tools[@"FontSize"])).ValueList.ValueListItems.Add(i);
             }
         }
 

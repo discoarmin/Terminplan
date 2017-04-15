@@ -106,8 +106,8 @@ namespace Terminplan
         /// <param name="e">Ein <see cref="T:System.EventArgs" /> welches die Ereignisdaten enthält.</param>
         protected override void OnLoad(System.EventArgs e)
         {
-            OnColorizeImages();                                                 // Farbe der Bilder an das eingestellte Farbschema anpassen
-            OnInitializeUi();                                                   // Oberfläche initialisieren
+            ColorizeImages();                                                   // Farbe der Bilder an das eingestellte Farbschema anpassen
+            InitializeUi();                                                     // Oberfläche initialisieren
 
             // Ereignisprozedur zum Ändern des Schemas festlegen
             StyleManager.StyleChanged += this.OnApplicationStyleChanged;
@@ -116,5 +116,24 @@ namespace Terminplan
         #endregion OnLoad
 
         #endregion Überschreibungen der Basisklasse
+
+        /// <summary>
+        /// Behandelt das ToolValueChanged-Ereignis des ultraToolbarsManagerStamm Kontrols.
+        /// </summary>
+        /// <param name="sender">Die Quelle des Ereignisses.</param>
+        /// <param name="e">The <see cref="ToolEventArgs" /> Instanz, welche die Ereignisdaten enthält.</param>
+        private void OnUltraToolbarsManagerStammToolValueChanged(object sender, ToolEventArgs e)
+        {
+        }
+
+        /// <summary>
+        /// Behandelt das PropertyChanged-Ereignis des ultraToolbarsManagerStamm Kontrols.
+        /// </summary>
+        /// <param name="sender">Die Quelle des Ereignisses.</param>
+        /// <param name="e">The <see cref="PropertyChangedEventArgs" /> Instanz, welche die Ereignisdaten enthält.</param>
+        private void ultraToolbarsManagerStamm_PropertyChanged(object sender, Infragistics.Win.PropertyChangedEventArgs e)
+        {
+            UltraToolbarsManagerStammPropertyChanged(sender, e);
+        }
     }
 }

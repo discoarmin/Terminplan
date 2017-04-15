@@ -75,7 +75,7 @@ namespace Terminplan
                     continue;
                 }
 
-                this.currentThemeIndex = i;
+                this.CurrentThemeIndex = i;
                 break;
             }
 
@@ -84,7 +84,7 @@ namespace Terminplan
             System.Threading.Thread.CurrentThread.CurrentUICulture = culture;
 
             // Eingebettete Ressourcen laden
-            StyleManager.Load(DienstProgramme.GetEmbeddedResourceStream(themePaths[currentThemeIndex]));
+            StyleManager.Load(DienstProgramme.GetEmbeddedResourceStream(themePaths[CurrentThemeIndex]));
             SetResourceStrings();
             InitializeComponent();
         }
@@ -490,7 +490,7 @@ namespace Terminplan
         /// <param name="enabled">falls auf <c>true</c> gesetzt ist, freigeben.</param>
         private void OnUpdateFontToolsState(bool enabled)
         {
-            DienstProgramme.SetRibbonGroupToolsEnabledState(ultraToolbarsManager1.Ribbon.Tabs[0].Groups[@"RibbonGrp_Font"], enabled);
+            DienstProgramme.SetRibbonGroupToolsEnabledState(this.ultraToolbarsManager1.Ribbon.Tabs[0].Groups[@"RibbonGrp_Font"], enabled);
         }
 
         #endregion OnUpdateFontToolsState
@@ -503,13 +503,13 @@ namespace Terminplan
             var dateiName = DienstProgramme.OeffneXmlDatei();
             if (dateiName == string.Empty) return;                              // Abbruch, da keine Datei ausgewählt wurde
 
-            ultraGanttView1.Project = null;
-            components = new Container();
-            DatasetTp = new DataSet();
-            ultraCalendarInfo1 = new UltraCalendarInfo(components);
+            this.ultraGanttView1.Project = null;
+            this.components = new Container();
+            this.DatasetTp = new DataSet();
+            this.ultraCalendarInfo1 = new UltraCalendarInfo(components);
 
             // Ruft die Daten aus der bereitgestellten XML-Datei ab
-            DatasetTp = DienstProgramme.GetData(dateiName);                     // ausgewählte Daten laden
+            this.DatasetTp = DienstProgramme.GetData(dateiName);                // ausgewählte Daten laden
             this.GeladeneDatei = dateiName;                                     // ausgewählte Daten-Datei merken
 
             // Die eingelesenen Daten an die ultraCalendarInfo anbinden.
@@ -522,7 +522,7 @@ namespace Terminplan
 
         private void ErstelleNeuesProjekt()
         {
-            prjHinzugefuegt = false;                                            // Es wurde kein neues Projekt hinzugefügt
+            this.prjHinzugefuegt = false;                                       // Es wurde kein neues Projekt hinzugefügt
             components = new Container();
             ultraCalendarInfo1 = null;
             GC.Collect();                                                       // Speicher bereinigen

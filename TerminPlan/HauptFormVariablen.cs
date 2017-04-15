@@ -104,9 +104,6 @@ namespace Terminplan
         /// <summary> Merker, ob neues Projekt hinzugefügt wurde</summary>
         private bool prjHinzugefuegt;
 
-        /// <summary> Index des momentanen Farbschemas </summary>
-        private int currentThemeIndex;
-
         /// <summary> Der ResourceManager </summary>
         private ResourceManager rm = Resources.ResourceManager;
 
@@ -133,6 +130,11 @@ namespace Terminplan
 
         /// <summary>Setzt die zu bearbeitende Terminplan-Datei</summary>
         public string GeladeneDatei { get; private set; }
+
+        /// <summary>
+        /// Holt oder setzt den Index des momentanen Farbschemas
+        /// </summary>
+        public int CurrentThemeIndex { get; set; }
 
         #endregion Eigenschaften
     }

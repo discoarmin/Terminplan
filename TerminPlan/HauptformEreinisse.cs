@@ -285,7 +285,7 @@ namespace Terminplan
             // ID auswerten
             switch ((PropertyIds)trigger.PropId)
             {
-                case PropertyIds.Enabled:     // Nur freigegebene Eigenschaften bearbeiten
+                case PropertyIds.Enabled:                                       // Nur freigegebene Eigenschaften bearbeiten
                     var sharedProps = (SharedProps)trigger.Source;              // Kontrol ermitteln
 
                     // Falls mehrere Instanzen des Kontrols vorhanden sind, die erste Instanz nehmen,
@@ -466,9 +466,9 @@ namespace Terminplan
                     }
 
                     var key = e.ListToolItem.Key;
-                    if (this.themePaths[this.currentThemeIndex] != key)
+                    if (this.themePaths[this.CurrentThemeIndex] != key)
                     {
-                        this.currentThemeIndex = e.ListToolItem.Index;
+                        this.CurrentThemeIndex = e.ListToolItem.Index;
                         StyleManager.Load(DienstProgramme.GetEmbeddedResourceStream(key));
                     }
                     break;
@@ -975,7 +975,7 @@ namespace Terminplan
         private void ChangeIcon()
         {
             // Anhand des Farbschemas den Namen des zum Farbschema gehörenden Icons zusammensetzen
-            var iconPath = themePaths[this.currentThemeIndex].Replace(@"StyleLibraries.", @"Images.AppIcon - ").Replace(@".isl", @".ico");
+            var iconPath = themePaths[this.CurrentThemeIndex].Replace(@"StyleLibraries.", @"Images.AppIcon - ").Replace(@".isl", @".ico");
 
             var stream = DienstProgramme.GetEmbeddedResourceStream(iconPath);   // Zum Laden des Farbschemas
 
