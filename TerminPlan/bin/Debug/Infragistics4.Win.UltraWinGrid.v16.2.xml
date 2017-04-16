@@ -10345,6 +10345,15 @@
             <seealso cref="M:Infragistics.Win.UltraWinGrid.SortedColumnsCollection.Add(Infragistics.Win.UltraWinGrid.UltraGridColumn,System.Boolean,System.Boolean)"/>
             </remarks>
         </member>
+        <member name="P:Infragistics.Win.UltraWinGrid.UltraGridColumn.InitialSortDirection">
+            <summary>
+            Gets or sets the initial sort direction.
+            </summary>
+            <value>
+            The initial sort direction.
+            </value>
+            <exception cref="T:System.ComponentModel.InvalidEnumArgumentException">SortDirection</exception>
+        </member>
         <member name="P:Infragistics.Win.UltraWinGrid.UltraGridColumn.Style">
             <summary>
             Determines the style of the column.
@@ -13357,6 +13366,13 @@
             <param name="invalidate">If true the control should invalidate itself.</param>
             <remarks>The default implementation calls <see cref="M:Infragistics.Win.UIElement.DirtyChildElements(System.Boolean)"/>.</remarks>        
         </member>
+        <member name="M:Infragistics.Win.UltraWinGrid.UltraGridBase.OnZoomFactorChanged(System.Single,System.Single)">
+            <summary>
+            Called when the zoom factor of the UltraControlBase is changed.
+            </summary>
+            <param name="previousFactor">The previous zoom factor.</param>
+            <param name="newFactor">The new zoom factor.</param>
+        </member>
         <member name="P:Infragistics.Win.UltraWinGrid.UltraGridBase.BackColor">
             <summary>
             BackColor property is not supported. Use DisplayLayout's
@@ -13941,6 +13957,7 @@
             Constructor
             </summary>
             <param name="gridBase">The UltraGridBase this UI Automation provider represents.</param>
+            <param name="controlElement">The control UIElement.</param>
         </member>
         <member name="M:Infragistics.Win.UltraWinGrid.UltraGridBase.UltraGridUIAProviderStub.ElementProviderFromPoint(System.Drawing.Point)">
             <summary>
@@ -21326,7 +21343,23 @@
             to set the text to display in the cell(or combo's edit area) 
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "P:Infragistics.Win.UltraDataGridView.UltraGridComboColumn.DisplayLayout" -->
+        <member name="P:Infragistics.Win.UltraDataGridView.UltraGridComboColumn.DisplayLayout">
+            <summary>
+            Returns the DisplayLayout object that determines the layout of the control. This property is read-only at run-time.
+            </summary>
+            <remarks>
+            <p class="body">The <b>DisplayLayout</b> property of an object is used to access the DisplayLayout object that determines the settings of various properties related to the appearance and behavior of the object. The DisplayLayout object provides a simple way to maintain multiple layouts for the grid and apply them as needed. You can also save grid layouts to disk, the registry or a storage stream and restore them later.</p>
+            <p class="body">The DisplayLayout object has properties such as <b>Appearance</b> and <b>Override</b>, so the DisplayLayout object has sub-objects of these types, and their settings are included as part of the layout. However, the information that is actually persisted depends on how the settings of these properties were assigned. If the properties were set using the DisplayLayout object's intrinsic objects, the property settings will be included as part of the layout. However, if a named object was assigned to the property from a collection, the layout will only include the reference into the collection, not the actual settings of the named object.</p>
+            <p class="body">For example, if the DisplayLayout object's <b>Appearance</b> property is used to set values for the intrinsic Appearance object like this:</p>
+            <p class="code">UltraWinGrid1.Layout.Appearance.ForeColor = vbBlue</p>
+            <p class="body">Then the setting (in this case, <b>ForeColor</b>) will be included as part of the layout, and will be saved, loaded and applied along with the other layout data. However, suppose you apply the settings of a named object to the DisplayLayout's <b>Appearance</b> property in this manner:</p>
+            <p class="code">UltraWinGrid1.Appearances.Add "New1"</p>
+            <p class="code">UltraWinGrid1.Appearances("New1").ForeColor = vbBlue</p>
+            <p class="code">UltraWinGrid1.DisplayLayout.Appearance = UltraWinGrid1.Appearances("New1")</p>
+            <p class="body">In this case, the <b>ForeColor</b> setting will not be persisted as part of the layout. Instead, the layout will include a reference to the "New1" Appearance object and use whatever setting is present in that object when the layout is applied.</p>
+            <p class="body">By default, the layout includes a copy of the entire Appearances collection, so if the layout is saved and restored using the default settings, the object should always be present in the collection when it is referred to. However, it is possible to use the <b>Load</b> and <b>Save</b> methods of the DisplayLayout object in such a way that the collection will not be re-created when the layout is applied. If this is the case, and the layout contains a reference to a non-existent object, the default settings for that object's properties will be used.</p>
+            </remarks>
+        </member>
         <member name="P:Infragistics.Win.UltraDataGridView.UltraGridComboColumn.DropDownStyle">
             <summary>
             Determines whether the edit portion of the control is editable.
@@ -26409,7 +26442,7 @@
             <remarks>
             <p class="body">
             The <b>SortDirection</b> enum is used for specifying the Column's
-            <see cref="!:UltraGridColumn.SortDirection"/> property.
+            <see cref="P:Infragistics.Win.UltraWinGrid.UltraGridColumn.InitialSortDirection"/> property.
             To allow the user to sort the columns set the <see cref="P:Infragistics.Win.UltraWinGrid.UltraGridOverride.HeaderClickAction"/>
             property of the Override object to <b>SortSingle</b> or <b>SortMulti</b>. This will
             allow the user to sort rows by a column by clicking on the column's header.
@@ -46519,7 +46552,7 @@
         </member>
         <member name="F:Infragistics.Win.UltraWinGrid.PropertyIds.DataErrorInfoRowError">
             <summary>
-            Property id identifying <see cref="!:UltraGridRowDataErrorInfo.RowError"/> property.
+            Property id identifying <see cref="P:Infragistics.Win.UltraWinGrid.UltraGridRow.UltraGridRowDataErrorInfo.RowError"/> property.
             </summary>
         </member>
         <member name="F:Infragistics.Win.UltraWinGrid.PropertyIds.DataErrorInfoColumnError">

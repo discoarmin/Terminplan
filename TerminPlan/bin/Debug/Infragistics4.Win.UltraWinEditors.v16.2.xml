@@ -10352,11 +10352,7 @@
             <p class="note">
             <b>Note:</b> The value of the <b>DropDownStyle</b> property also influences certain aspects of the keyboard behavior. For example, when the <b>DropDownStyle</b> property is <b>DropDownList</b>, pressing an alpha-numeric key results in the first item whose text begins with that character becoming selected.
             </p>
-            <p class="note">
-            <b>Note:</b> The control also exposes an <see cref="!:AutoComplete"/> property, which is only applicable when the <b>DropDownStyle</b> property is set to <b>DropDown</b>.
-            </p>
             </remarks>
-            <seealso cref="!:AutoComplete"/>
         </member>
         <member name="P:Infragistics.Win.UltraWinEditors.UltraDateTimeEditor.SpinButtonIntervalSettings">
             <summary>

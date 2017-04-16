@@ -96,7 +96,7 @@ namespace Terminplan
             var themeTool = (ListTool)this.ultraToolbarsManager1.Tools[@"ThemeList"];
 
             // Alle vorhandenen Farbschematas durchgehen
-            foreach (var resourceName in themePaths)
+            foreach (var resourceName in this.ThemePaths)
             {
                 var item = new ListToolItem(resourceName);                      // Eintrag aus der liste
 

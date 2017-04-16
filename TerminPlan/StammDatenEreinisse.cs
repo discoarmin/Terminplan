@@ -201,7 +201,7 @@ namespace Terminplan
         private void SetTextBackColor()
         {
             // Ausgewählte Farbe aus dem ColorPicker ermitteln
-            var fontBgColor = ((PopupColorPickerTool)this.this.ultraToolbarsManagerStamm.Tools[@"Font_BackColor"]).SelectedColor;
+            var fontBgColor = ((PopupColorPickerTool)this.ultraToolbarsManagerStamm.Tools[@"Font_BackColor"]).SelectedColor;
             var activeZelle = this.ultraGridStammDaten.ActiveCell;              // Aktive Zelle ermitteln
 
             // Nur bearbeiten, falls eine aktive Zelle existiert
@@ -224,7 +224,7 @@ namespace Terminplan
         private void SetTextForeColor()
         {
             // Ausgewählte Farbe aus dem ColorPicker ermitteln
-            var fontColor = ((PopupColorPickerTool)this.this.ultraToolbarsManagerStamm.Tools[@"Font_ForeColor"]).SelectedColor;
+            var fontColor = ((PopupColorPickerTool)this.ultraToolbarsManagerStamm.Tools[@"Font_ForeColor"]).SelectedColor;
             var activeZelle = this.ultraGridStammDaten.ActiveCell;              // Aktive Zelle ermitteln
 
             // Nur bearbeiten, falls eine aktive Zelle existiert
@@ -362,7 +362,7 @@ namespace Terminplan
         private void ChangeIcon()
         {
             // Anhand des Farbschemas den Namen des zum Farbschema gehörenden Icons zusammensetzen
-            var iconPath = this.themePaths[this.FrmTerminPlan.CurrentThemeIndex].Replace(@"StyleLibraries.", @"Images.AppIcon - ").Replace(@".isl", @".ico");
+            var iconPath = this.FrmTerminPlan.ThemePaths[this.FrmTerminPlan.CurrentThemeIndex].Replace(@"StyleLibraries.", @"Images.AppIcon - ").Replace(@".isl", @".ico");
 
             var stream = DienstProgramme.GetEmbeddedResourceStream(iconPath);   // Zum Laden des Farbschemas
 
@@ -385,31 +385,31 @@ namespace Terminplan
         {
             // Unterbindet das Zeichnen im UltraToolbarsManager,
             // damit die neuen Farben eingestellt werden können-
-            var shouldSuspendPainting = !this.this.ultraToolbarsManagerStamm.IsUpdating; // Ermitteln, ob gerade gezeichnet wird
+            var shouldSuspendPainting = !this.ultraToolbarsManagerStamm.IsUpdating; // Ermitteln, ob gerade gezeichnet wird
 
             // Neue Farben können eingestellt werden, falls nicht gerade aufgefrischt wird
             if (shouldSuspendPainting)
             {
-                this.this.ultraToolbarsManagerStamm.BeginUpdate();                       // Auffrischen starten
+                this.ultraToolbarsManagerStamm.BeginUpdate();                       // Auffrischen starten
             }
 
             // Bildlisten mit den neuen Bildern setzen
-            var largeImageList = this.this.ultraToolbarsManagerStamm.ImageListLarge;
-            var smallImageList = this.this.ultraToolbarsManagerStamm.ImageListSmall;
+            var largeImageList = this.ultraToolbarsManagerStamm.ImageListLarge;
+            var smallImageList = this.ultraToolbarsManagerStamm.ImageListSmall;
 
             try
             {
                 // Bildlisten im UltraToolbarsManager löschen, damit weiter andere
                 // Farben eingestellt werden können
-                this.this.ultraToolbarsManagerStamm.ImageListLarge = null;
-                this.this.ultraToolbarsManagerStamm.ImageListSmall = null;
+                this.ultraToolbarsManagerStamm.ImageListLarge = null;
+                this.ultraToolbarsManagerStamm.ImageListSmall = null;
 
                 ToolBase resolveTool = null;                                    // gefundenes Tool löschen, damit neues erstellt werden kann
 
-                // Nur bearbeiten, falls das Tool"Insert_Task" existiert
-                if (this.this.ultraToolbarsManagerStamm.Tools.Exists(@"Insert_Task"))
-                    {
-                    resolveTool = this.this.ultraToolbarsManagerStamm.Tools[@"Insert_Task"]; // Tool merken
+                // Nur bearbeiten, falls das Tool "Paste" existiert
+                if (this.ultraToolbarsManagerStamm.Tools.Exists(@"Paste"))
+                {
+                    resolveTool = this.ultraToolbarsManagerStamm.Tools[@"Paste"]; // Tool merken
 
                     // Alle Instanzen auf der Suche nach dem Tool in der RibbonGroup durchsuchen
                     foreach (var instanceTool in resolveTool.SharedProps.ToolInstances.Cast<ToolBase>().Where(instanceTool => instanceTool.OwnerIsRibbonGroup))
@@ -452,7 +452,7 @@ namespace Terminplan
                     requestedProps = AppearancePropFlags.BackColor;             // Hintergrundfarbe soll eingestellt werden
 
                     // Löscht das aktuelle Erscheinungsbild für die Registerkarte des RibbonTab
-                    this.this.ultraToolbarsManagerStamm.Ribbon.Tabs[0].ResolveTabItemAppearance(ref appData, ref requestedProps);
+                    this.ultraToolbarsManagerStamm.Ribbon.Tabs[0].ResolveTabItemAppearance(ref appData, ref requestedProps);
                     colors[@"Disabled"] = appData.BackColor;                    // Hintergrundfarbe für 'gesperrt' in Liste eintragen
                 }
                 else
@@ -481,13 +481,13 @@ namespace Terminplan
             }
             finally
             {
-                this.this.ultraToolbarsManagerStamm.ImageListLarge = largeImageList;
-                this.this.ultraToolbarsManagerStamm.ImageListSmall = smallImageList;
+                this.ultraToolbarsManagerStamm.ImageListLarge = largeImageList;
+                this.ultraToolbarsManagerStamm.ImageListSmall = smallImageList;
 
                 // Zeichnen im UltraToolbarsManager fortsetzen, falls es unterbrochen war
                 if (shouldSuspendPainting)
                 {
-                    this.this.ultraToolbarsManagerStamm.EndUpdate();                     // Auffrischen ist fertig
+                    this.ultraToolbarsManagerStamm.EndUpdate();                 // Auffrischen ist fertig
                 }
             }
         }
@@ -508,7 +508,7 @@ namespace Terminplan
             var themeTool = (ListTool)this.ultraToolbarsManagerStamm.Tools[@"ThemeList"];
 
             // Alle vorhandenen Farbschematas durchgehen
-            foreach (var resourceName in this.themePaths)
+            foreach (var resourceName in this.FrmTerminPlan.ThemePaths)
             {
                 var item = new ListToolItem(resourceName);                      // Eintrag aus der liste
 
@@ -531,8 +531,8 @@ namespace Terminplan
 
             // Erstellt eine Liste mit verschiedenen Schriftgrößen
             PopulateFontSizeValueList();                                        // Fontliste füllen
-            ((ComboBoxTool)(ultraToolbarsManagerStamm.Tools[@"FontSize"])).SelectedIndex = 0;
-            ((FontListTool)ultraToolbarsManagerStamm.Tools[@"FontList"]).SelectedIndex = 0;
+            ((ComboBoxTool)(this.ultraToolbarsManagerStamm.Tools[@"FontSize"])).SelectedIndex = 0;
+            ((FontListTool)this.ultraToolbarsManagerStamm.Tools[@"FontList"]).SelectedIndex = 0;
             OnUpdateFontToolsState(false);                                      // Font ist nicht auswählbar
 
             // Aboutbox initialisieren
@@ -542,14 +542,11 @@ namespace Terminplan
                 Parent = this                                                   // Das Hauptformular ist das Elternformular
             };                                                                  // Neue Instanz der Aboutbox erzeugen
 
-            ((PopupControlContainerTool)ultraToolbarsManagerStamm.Tools[@"About"]).Control = control; // Aboutbox in die Tools für den UltraToolbarsManager setzen
-
-            // Größe der Spalten so einstellen, dass alle Daten sichtbar sind.
-            ultraGanttView1.PerformAutoSizeAllGridColumns();
+            ((PopupControlContainerTool)this.ultraToolbarsManagerStamm.Tools[@"About"]).Control = control; // Aboutbox in die Tools für den UltraToolbarsManager setzen
 
             // Die Bilder entsprechend dem aktuellen Farbschema einfärben.
             ColorizeImages();
-            ultraToolbarsManager1.Ribbon.FileMenuButtonCaption = Resources.ribbonFileTabCaption; // Beschriftung des Datei-Menüs-Button eintragen
+            this.ultraToolbarsManagerStamm.Ribbon.FileMenuButtonCaption = Properties.Resources.ribbonFileTabCaption; // Beschriftung des Datei-Menüs-Button eintragen
         }
 
         #endregion InitializeUi
@@ -579,7 +576,7 @@ namespace Terminplan
         /// <param name="enabled">falls auf <c>true</c> gesetzt ist, freigeben.</param>
         private void OnUpdateFontToolsState(bool enabled)
         {
-            DienstProgramme.SetRibbonGroupToolsEnabledState(this.ultraToolbarsManagerStamm.Ribbon.Tabs[1].Groups[@"RibbonGrp_Font"], enabled);
+            DienstProgramme.SetRibbonGroupToolsEnabledState(this.ultraToolbarsManagerStamm.Ribbon.Tabs[0].Groups[@"RibbonGrp_Font"], enabled);
         }
 
         #endregion OnUpdateFontToolsState

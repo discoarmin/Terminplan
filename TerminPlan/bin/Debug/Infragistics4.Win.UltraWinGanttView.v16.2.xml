@@ -1964,6 +1964,15 @@
             </summary>
             <param name="e">An <see cref="T:System.EventArgs"/> that contains the event data.</param>
         </member>
+        <member name="M:Infragistics.Win.UltraWinGanttView.UltraGanttView.GetChildControlsInterestedInZoomChange">
+            <summary>
+            Method allowing the UltraControlBase control to specify additional child controls that should be zoomed as well.
+            For example the UltraCalndarCombo provides its dropdown control for this purpose.
+            </summary>
+            <returns>
+            The child controls interested in zoom change.
+            </returns>
+        </member>
         <member name="M:Infragistics.Win.UltraWinGanttView.UltraGanttView.CreateComponentRole">
             <summary>
             Factory method used to create the component role that provides the style information for the control.

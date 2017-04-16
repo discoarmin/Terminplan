@@ -50,10 +50,6 @@ namespace Terminplan
         #region Variablen
 
         /// <summary> Pfad zu den Farbeinstallungen </summary>
-        // ReSharper disable once FieldCanBeMadeReadOnly.Local
-        private string[] themePaths;
-
-        /// <summary> Pfad zu den Farbeinstallungen </summary>
         public static StyleManager StyleManagerStammDaten;
 
         /// <summary> Merker für rekursive Zellaktivierung </summary>

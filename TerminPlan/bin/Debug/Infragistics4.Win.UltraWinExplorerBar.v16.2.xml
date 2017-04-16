@@ -10218,11 +10218,6 @@
             </summary>
             <param name="explorerBar">The UltraExplorerBar associated with this instance.</param>
         </member>
-        <member name="M:Infragistics.Win.UltraWinExplorerBar.NavigationPaneExpansionManager.SetFlyoutSize(System.Int32,System.Int32)">
-            <summary>
-            Returns the size of the navigation pane flyout.
-            </summary>
-        </member>
         <member name="M:Infragistics.Win.UltraWinExplorerBar.NavigationPaneExpansionManager.ExpandNavigationPane(System.Boolean)">
             <summary>
             Expands or collapses the navigation pane.
@@ -15174,7 +15169,8 @@
             <summary>
             Animates the selection of groups.  Only valid for control styles Listbar and Toolbox.
             </summary>
-            <param name="newSelectedGroup"></param>
+            <param name="newSelectedGroup">The new selected group.</param>
+            <param name="animationEnabled">if set to <c>true</c> [animation enabled].</param>
         </member>
         <member name="M:Infragistics.Win.UltraWinExplorerBar.UltraExplorerBar.OnContextMenuAddGroup(System.Object,System.EventArgs)">
             <summary>
@@ -15424,14 +15420,14 @@
         <member name="M:Infragistics.Win.UltraWinExplorerBar.UltraExplorerBar.ShouldSerializeGesturesEnabled">
             <summary>
             Returns a boolean value indicating whether the
-            <see cref="!:Infragistics.Win.UltraWinGrid.UltraGrid.GesturesEnabled">GesturesEnabled</see>
+            <see cref="P:Infragistics.Win.UltraWinExplorerBar.UltraExplorerBar.GesturesEnabled">GesturesEnabled</see>
             property requires serialization.
             </summary>
         </member>
         <member name="M:Infragistics.Win.UltraWinExplorerBar.UltraExplorerBar.ResetGesturesEnabled">
             <summary>
             Restores the
-            <see cref="!:Infragistics.Win.UltraWinGrid.UltraGrid.GesturesEnabled">GesturesEnabled</see>
+            <see cref="P:Infragistics.Win.UltraWinExplorerBar.UltraExplorerBar.GesturesEnabled">GesturesEnabled</see>
             property to its default value.
             </summary>
         </member>
@@ -16992,7 +16988,7 @@
             <summary>
             Returns a boolean value indicating whether gestures are enabled for this control.
             </summary>
-            <seealso cref="!:Infragistics.Win.UltraWinGrid.UltraGrid.GesturesEnabled">GesturesEnabled (UltraGrid class)</seealso>
+            <seealso cref="P:Infragistics.Win.UltraWinExplorerBar.UltraExplorerBar.GesturesEnabled">GesturesEnabled (UltraExplorerBar class)</seealso>
             <seealso cref="P:Infragistics.Win.UltraControlBase.GesturesEnabled">GesturesEnabled (UltraControlBase class)</seealso>
         </member>
         <member name="T:Infragistics.Win.UltraWinExplorerBar.UltraExplorerBar.ExplorerBarAccessibleObject">

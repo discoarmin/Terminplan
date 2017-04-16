@@ -466,7 +466,7 @@ namespace Terminplan
                     }
 
                     var key = e.ListToolItem.Key;
-                    if (this.themePaths[this.CurrentThemeIndex] != key)
+                    if (this.ThemePaths[this.CurrentThemeIndex] != key)
                     {
                         this.CurrentThemeIndex = e.ListToolItem.Index;
                         StyleManager.Load(DienstProgramme.GetEmbeddedResourceStream(key));
@@ -975,7 +975,7 @@ namespace Terminplan
         private void ChangeIcon()
         {
             // Anhand des Farbschemas den Namen des zum Farbschema gehörenden Icons zusammensetzen
-            var iconPath = themePaths[this.CurrentThemeIndex].Replace(@"StyleLibraries.", @"Images.AppIcon - ").Replace(@".isl", @".ico");
+            var iconPath = this.ThemePaths[this.CurrentThemeIndex].Replace(@"StyleLibraries.", @"Images.AppIcon - ").Replace(@".isl", @".ico");
 
             var stream = DienstProgramme.GetEmbeddedResourceStream(iconPath);   // Zum Laden des Farbschemas
 
@@ -1019,7 +1019,7 @@ namespace Terminplan
 
                 ToolBase resolveTool = null;                                    // gefundenes Tool löschen, damit neues erstellt werden kann
 
-                // Nur bearbeiten, falls das Tool"Insert_Task" existiert
+                // Nur bearbeiten, falls das Tool "Insert_Task" existiert
                 if (this.ultraToolbarsManager1.Tools.Exists(@"Insert_Task"))
                 {
                     resolveTool = this.ultraToolbarsManager1.Tools[@"Insert_Task"]; // Tool merken

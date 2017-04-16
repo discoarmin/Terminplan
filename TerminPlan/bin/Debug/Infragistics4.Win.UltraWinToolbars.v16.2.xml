@@ -29,7 +29,6 @@
             <summary>
             Creates the <see cref="T:Infragistics.Win.UltraWinToolbars.MenuAgentBase.MenuAgentBaseUiaProviderStub"/>-derived menu automation provider.
             </summary>
-            <param name="element">The element.</param>
             <returns></returns>
         </member>
         <member name="M:Infragistics.Win.UltraWinToolbars.MenuAgentBase.GetAutomationProvider">
@@ -92,8 +91,6 @@
             <summary>
             Fired when the popup closes. Allowing the derived agents to cancel the closing.
             </summary>
-            <param name="sender"></param>
-            <param name="e"></param>
             <returns>Returns true to cancel the close.</returns>
         </member>
         <member name="P:Infragistics.Win.UltraWinToolbars.MenuAgentBase.DropDownRoundedCorners">
@@ -1669,9 +1666,8 @@
         </member>
         <member name="M:Infragistics.Win.UltraWinToolbars.ApplicationMenuAgent.CreateUIAutomationStub">
             <summary>
-            Creates the <see cref="!:MenuAgentBaseUiaProviderStub"/>-derived menu automation provider.
+            Creates the <see cref="T:Infragistics.Win.UltraWinToolbars.MenuAgentBase.MenuAgentBaseUiaProviderStub"/>-derived menu automation provider.
             </summary>
-            <param name="element">The element.</param>
             <returns></returns>
         </member>
         <member name="T:Infragistics.Win.UltraWinToolbars.ApplicationMenuAgent.ApplicationMenuAgentUiaProviderStub">
@@ -6832,7 +6828,7 @@
         </member>
         <member name="P:Infragistics.Win.UltraWinToolbars.ToolBase.OwnerIsApplicationMenuAreaBase">
             <summary>
-            Returns a value indicating whether the tool type supports being place in a <see cref="T:Infragistics.Win.UltraWinToolbars.ApplicationMenu"/> or <see cref="!:BackStage"/>.
+            Returns a value indicating whether the tool type supports being place in a <see cref="T:Infragistics.Win.UltraWinToolbars.ApplicationMenu"/> or <see cref="T:Infragistics.Win.UltraWinToolbars.ApplicationMenu2010"/>.
             </summary>
             <seealso cref="P:Infragistics.Win.UltraWinToolbars.ToolBase.Owner"/>
             <seealso cref="P:Infragistics.Win.UltraWinToolbars.ToolBase.OwnerIsMenu"/>
@@ -8719,6 +8715,12 @@
             <param name="value">The value to be converted to the destination type.</param>
             <param name="destinationType">The <see cref="T:System.Type"/> the object should be converted to.</param>
             <returns>The converted object of the destination type or null if the conversion failed.</returns>
+        </member>
+        <member name="T:Infragistics.Win.UltraWinToolbars.ButtonTool.ButtonToolUiaProviderStub">
+            <summary>
+            UI Automation Provider stub for the ButtonTool
+            </summary>
+            <seealso cref="T:Infragistics.Win.UltraWinToolbars.ToolBase.ToolBaseUiaProviderStub"/>
         </member>
         <member name="M:Infragistics.Win.UltraWinToolbars.ButtonTool.ButtonToolUiaProviderStub.#ctor(Infragistics.Win.UltraWinToolbars.ButtonTool)">
             <summary>
@@ -11242,7 +11244,7 @@
             <summary>
             Initializes a new instance of the <see cref="T:Infragistics.Win.UltraWinToolbars.ContextualTabGroup.ContextualTabGroupUiaProviderStub"/> class.
             </summary>
-            <param name="toolsCollection">The tabs collection.</param>
+            <param name="tabGroup">The tabs collection.</param>
         </member>
         <member name="M:Infragistics.Win.UltraWinToolbars.ContextualTabGroup.ContextualTabGroupUiaProviderStub.CreateAutomationId">
             <summary>
@@ -12320,6 +12322,12 @@
             <summary>
             Constructor
             </summary>
+        </member>
+        <member name="T:Infragistics.Win.UltraWinToolbars.ControlContainerTool.ControlContainerToolUiaProviderStub">
+            <summary>
+            UI Automation Provider stub for the ControlContainerTool
+            </summary>
+            <seealso cref="T:Infragistics.Win.UltraWinToolbars.ToolBase.ToolBaseUiaProviderStub"/>
         </member>
         <member name="M:Infragistics.Win.UltraWinToolbars.ControlContainerTool.ControlContainerToolUiaProviderStub.#ctor(Infragistics.Win.UltraWinToolbars.ControlContainerTool)">
             <summary>
@@ -14488,6 +14496,21 @@
         <member name="T:Infragistics.Win.UltraWinToolbars.ApplicationMenu2010DisplayStyle">
             <summary>
             Used to indicates the DisplayStyle of the ApplicationMenu2010 (BackStage)
+            </summary>
+        </member>
+        <member name="F:Infragistics.Win.UltraWinToolbars.ApplicationMenu2010DisplayStyle.Default">
+            <summary>
+            The default
+            </summary>
+        </member>
+        <member name="F:Infragistics.Win.UltraWinToolbars.ApplicationMenu2010DisplayStyle.Office2010">
+            <summary>
+            The Office2010 style of ApplicationMenu2010
+            </summary>
+        </member>
+        <member name="F:Infragistics.Win.UltraWinToolbars.ApplicationMenu2010DisplayStyle.Office2013">
+            <summary>
+            The Office2013 style of ApplicationMenu2010
             </summary>
         </member>
         <member name="T:Infragistics.Win.UltraWinToolbars.TabItemAreaDisplayStyle">
@@ -16986,6 +17009,8 @@
             Initializes a new instance of the <see cref="T:Infragistics.Win.UltraWinToolbars.GalleryToolItem.GalleryToolItemUiaProviderStub"/> class.
             </summary>
             <param name="item">The item.</param>
+            <param name="previewOnRibbon">if set to <c>true</c> [preview on ribbon].</param>
+            <param name="parent">The parent.</param>
         </member>
         <member name="M:Infragistics.Win.UltraWinToolbars.GalleryToolItem.GalleryToolItemUiaProviderStub.CreateAutomationId">
             <summary>
@@ -17264,6 +17289,7 @@
             Initializes a new instance of the <see cref="T:Infragistics.Win.UltraWinToolbars.GalleryToolMenuItem.GalleryToolMenuItemUiaProviderStub.PopupGalleryGroupAreaUiaProviderStub"/> class.
             </summary>
             <param name="previewInfo">The PreviewInfo of the PopupGalleryTool.</param>
+            <param name="parent">The parent.</param>
         </member>
         <member name="M:Infragistics.Win.UltraWinToolbars.GalleryToolMenuItem.GalleryToolMenuItemUiaProviderStub.PopupGalleryGroupAreaUiaProviderStub.CreateAutomationId">
             <summary>
@@ -17454,6 +17480,11 @@
             Returns True if this element wants to be notified when the mouse hovers over it.
             </summary>
         </member>
+        <member name="T:Infragistics.Win.UltraWinToolbars.IRibbonCustomizationProvider">
+            <summary>
+            Interface used to display a Ribbon Customization Dialog.
+            </summary>
+        </member>
         <member name="M:Infragistics.Win.UltraWinToolbars.IRibbonCustomizationProvider.ShowCustomizationDialog(Infragistics.Win.UltraWinToolbars.UltraToolbarsManager,Infragistics.Win.UltraWinToolbars.RibbonCustomizationType)">
             <summary>
             Displays the customization dialog.
@@ -17474,7 +17505,7 @@
         </member>
         <member name="T:Infragistics.Win.UltraWinToolbars.RibbonCustomizationType">
             <summary>
-            Specifies which tab on the <see cref="!:IRibbonCustomationProvider"/> should be active.
+            Specifies which tab on the <see cref="T:Infragistics.Win.UltraWinToolbars.IRibbonCustomizationProvider"/> should be active.
             </summary>
         </member>
         <member name="F:Infragistics.Win.UltraWinToolbars.RibbonCustomizationType.Default">
@@ -17737,7 +17768,7 @@
         </member>
         <member name="M:Infragistics.Win.UltraWinToolbars.LabelTool.LabelToolUiaProviderStub.#ctor(Infragistics.Win.UltraWinToolbars.LabelTool)">
             <summary>
-            Initializes a new instance of the <see cref="!:LabelToollUiaProviderStub"/> class.
+            Initializes a new instance of the <see cref="T:Infragistics.Win.UltraWinToolbars.LabelTool.LabelToolUiaProviderStub"/> class.
             </summary>
             <param name="tool">The tool.</param>
         </member>
@@ -17747,6 +17778,15 @@
             </summary>
             <returns>
             An enum that identifies the type of the automation element.
+            </returns>
+        </member>
+        <member name="M:Infragistics.Win.UltraWinToolbars.LabelTool.LabelToolUiaProviderStub.GetPatternProvider(Infragistics.Win.UIAutomation.AutomationPatternIds)">
+            <summary>
+            Retrieves an object that provides support for a control pattern on a UI Automation element.
+            </summary>
+            <param name="patternId">Identifier of the pattern.</param>
+            <returns>
+            Object that implements the pattern interface, or null if the pattern is not supported.
             </returns>
         </member>
         <member name="T:Infragistics.Win.UltraWinToolbars.LabelTool.LabelToolConverter">
@@ -19235,7 +19275,7 @@
         </member>
         <member name="M:Infragistics.Win.UltraWinToolbars.NavigationButtonAreaUIElement.NavigationButtonAreaUIElementUiaProviderStub.#ctor(Infragistics.Win.UIElement)">
             <summary>
-            Initializes a new instance of the <see cref="!:RibbonGroupAreaUIElementUiaProviderStub"/> class.
+            Initializes a new instance of the <see cref="T:Infragistics.Win.UltraWinToolbars.NavigationButtonAreaUIElement.NavigationButtonAreaUIElementUiaProviderStub"/> class.
             </summary>
             <param name="navigationButtonAreaUIElement">The UIElement for the navigation area of a TaskPane Toolbar.</param>
         </member>
@@ -19386,7 +19426,7 @@
         </member>
         <member name="M:Infragistics.Win.UltraWinToolbars.NavigationButtonUIElement.NavigationButtonUIElementUiaProviderStub.#ctor(Infragistics.Win.UIElement)">
             <summary>
-            Initializes a new instance of the <see cref="!:RibbonGroupAreaUIElementUiaProviderStub"/> class.
+            Initializes a new instance of the <see cref="T:Infragistics.Win.UltraWinToolbars.NavigationButtonUIElement.NavigationButtonUIElementUiaProviderStub"/> class.
             </summary>
             <param name="navigationButtonUIElement">The UIElement for a button in the navigation area of a TaskPane toolbar</param>
         </member>
@@ -19520,6 +19560,12 @@
             Gets the NavigationMenu associated with this element
             </summary>
         </member>
+        <member name="T:Infragistics.Win.UltraWinToolbars.BackStageContentAreaUIElement">
+            <summary>
+            UIElement for the ApplicationMenu2010 content area.
+            </summary>
+            <seealso cref="T:Infragistics.Win.UIElement"/>
+        </member>
         <member name="M:Infragistics.Win.UltraWinToolbars.BackStageContentAreaUIElement.CreateUIAutomationProvider">
             <summary>
             Factory method which creates a UI Automation wrapper for the specified context.
@@ -19614,7 +19660,7 @@
         </member>
         <member name="M:Infragistics.Win.UltraWinToolbars.BackStageMenuAgent.CreateUIAutomationStub">
             <summary>
-            Creates the <see cref="!:MenuAgentBaseUiaProviderStub"/>-derived menu automation provider.
+            Creates the <see cref="T:Infragistics.Win.UltraWinToolbars.MenuAgentBase.MenuAgentBaseUiaProviderStub"/>-derived menu automation provider.
             </summary>
             <returns></returns>
         </member>
@@ -19724,6 +19770,18 @@
             i.e., does not derive from PopupToolBase, ToolClick is fired
             for the tool.
             </summary>
+        </member>
+        <member name="T:Infragistics.Win.UltraWinToolbars.NavigationMenuAreaUIElement">
+            <summary>
+            UIElement for the NavigationMenu
+            </summary>
+            <seealso cref="T:Infragistics.Win.UltraWinToolbars.MenuItemAreaUIElement"/>
+        </member>
+        <member name="M:Infragistics.Win.UltraWinToolbars.NavigationMenuAreaUIElement.DrawBackColor(Infragistics.Win.UIElementDrawParams@)">
+            <summary>
+            Default backcolor drawing just does a FillRectangle with the backcolor.
+            </summary>
+            <param name="drawParams">The <see cref="T:Infragistics.Win.UIElementDrawParams" /> used to provide rendering information.</param>
         </member>
         <member name="M:Infragistics.Win.UltraWinToolbars.NavigationMenuAreaUIElement.InitAppearance(Infragistics.Win.AppearanceData@,Infragistics.Win.AppearancePropFlags@)">
             <summary>
@@ -21220,12 +21278,39 @@
             </summary>
             <returns>True to prevent the base implementation from being invoked.</returns>
         </member>
+        <member name="T:Infragistics.Win.UltraWinToolbars.ActivePopupNotchUIElement">
+            <summary>
+            UIElement for the notch displayed in the NavigationMenu
+            </summary>
+            <seealso cref="T:Infragistics.Win.UIElement"/>
+        </member>
         <member name="M:Infragistics.Win.UltraWinToolbars.ActivePopupNotchUIElement.#ctor(Infragistics.Win.UIElement,Infragistics.Win.UltraWinToolbars.ApplicationMenu2010,Infragistics.Win.UltraWinToolbars.PopupToolBase)">
             <summary>
             Creates a new <see cref="T:Infragistics.Win.UltraWinToolbars.ActivePopupNotchUIElement"/> instance.
             </summary>
             <param name="parentElement">The parent element which owns the created element.</param>
             <param name="backStage">The ApplicationMenu2010</param>
+            <param name="tool">The tool.</param>
+        </member>
+        <member name="M:Infragistics.Win.UltraWinToolbars.ActivePopupNotchUIElement.InitAppearance(Infragistics.Win.AppearanceData@,Infragistics.Win.AppearancePropFlags@)">
+            <summary>
+            Initialize the appearance structure for this element
+            </summary>
+            <param name="appearance">The appearance structure to initialize</param>
+            <param name="requestedProps">The properties that are needed</param>
+        </member>
+        <member name="P:Infragistics.Win.UltraWinToolbars.ActivePopupNotchUIElement.ClipSelf">
+            <summary>
+            Returning true causes all drawing of this element to be expicitly clipped
+            to its region
+            </summary>
+        </member>
+        <member name="P:Infragistics.Win.UltraWinToolbars.ActivePopupNotchUIElement.Region">
+            <summary>
+            Returns the region of this element. The default returns the element's
+            Rect as a region. This method can be overriden to supply an irregularly
+            shaped region
+            </summary>
         </member>
         <member name="T:Infragistics.Win.UltraWinToolbars.ApplicationMenu2010">
             <summary>
@@ -21620,6 +21705,19 @@
             Gets the MenuAgent as a BackStageMenuAgent
             </summary>
         </member>
+        <member name="T:Infragistics.Win.UltraWinToolbars.BackStageContentAreaMenuUIElement">
+            <summary>
+            UIElement for the column in the ApplicationMenu2010 content area
+            </summary>
+            <seealso cref="T:Infragistics.Win.UltraWinToolbars.MenuItemAreaUIElement"/>
+        </member>
+        <member name="M:Infragistics.Win.UltraWinToolbars.BackStageContentAreaMenuUIElement.InitAppearance(Infragistics.Win.AppearanceData@,Infragistics.Win.AppearancePropFlags@)">
+            <summary>
+            Initialize the appearance structure for this element
+            </summary>
+            <param name="appearance">The appearance structure to initialize</param>
+            <param name="requestedProps">The properties that are needed</param>
+        </member>
         <member name="M:Infragistics.Win.UltraWinToolbars.BackStageContentAreaMenuUIElement.PositionChildElements">
             <summary>
             Creates/verifies the child UI elements for the control.
@@ -21635,6 +21733,12 @@
               <see cref="T:System.Object"/>
             </returns>
             <seealso cref="M:Infragistics.Win.UIElement.ContinueDescendantSearch(System.Type,System.Object[])"/>
+        </member>
+        <member name="T:Infragistics.Win.UltraWinToolbars.BackStageHeaderUIElement">
+            <summary>
+            UIElement for the header of the ApplicationMenu2010
+            </summary>
+            <seealso cref="T:Infragistics.Win.UIElement"/>
         </member>
         <member name="M:Infragistics.Win.UltraWinToolbars.BackStageHeaderUIElement.DrawBorders(Infragistics.Win.UIElementDrawParams@)">
             <summary>
@@ -21849,6 +21953,15 @@
             Gets the BackStage associated with this element
             </summary>
         </member>
+        <member name="T:Infragistics.Win.UltraWinToolbars.ContentArea">
+            <summary>
+            Content Area of the ApplicationMenu2010
+            </summary>
+            <seealso cref="T:Infragistics.Shared.SubObjectBase"/>
+            <seealso cref="T:System.Runtime.Serialization.ISerializable"/>
+            <seealso cref="T:System.Runtime.Serialization.IDeserializationCallback"/>
+            <seealso cref="T:Infragistics.Win.UltraWinToolbars.IKeyTipContainer"/>
+        </member>
         <member name="M:Infragistics.Win.UltraWinToolbars.ContentArea.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
             <summary>
             Constructor used for deserialization.
@@ -21875,11 +21988,11 @@
         </member>
         <member name="M:Infragistics.Win.UltraWinToolbars.ContentArea.ResetDistanceFromTop">
             <summary>
-            Resets the <see cref="!:SpaceAboveColumns"/> property to its default value.
+            Resets the <see cref="P:Infragistics.Win.UltraWinToolbars.ContentArea.DistanceFromTop"/> property to its default value.
             </summary>
             <remarks>
             <p class="body">Invoke this method to reset the <see cref="P:Infragistics.Win.UltraWinToolbars.ContentArea.DistanceFromTop"/> property to its default value.</p>
-            <p class="body">Once this method is invoked, the <see cref="M:Infragistics.Win.UltraWinToolbars.ContentArea.ShouldSerializeDistanceFromTop"/> method will return False until the <see cref="P:Infragistics.Win.UltraWinToolbars.ContentArea.SpaceBetweenColumns"/> property is set again.</p>
+            <p class="body">Once this method is invoked, the <see cref="M:Infragistics.Win.UltraWinToolbars.ContentArea.ShouldSerializeDistanceFromTop"/> method will return False until the <see cref="P:Infragistics.Win.UltraWinToolbars.ContentArea.DistanceFromTop"/> property is set again.</p>
             </remarks>
             <seealso cref="P:Infragistics.Win.UltraWinToolbars.ContentArea.DistanceFromTop"/>
         </member>
@@ -21944,7 +22057,7 @@
         </member>
         <member name="P:Infragistics.Win.UltraWinToolbars.ContentArea.DistanceFromTop">
             <summary>
-            Gets/Sets the spacing in pixels between the top of the BackStage and the content area menus.
+            Gets/Sets the spacing in pixels between the top of the ApplicationMenu2010 and the content area menus.
             </summary>
         </member>
         <member name="P:Infragistics.Win.UltraWinToolbars.ContentArea.Settings">
@@ -21977,6 +22090,25 @@
             <summary>
             Returns an object that provides settings that affect the look and feel of the content area.
             </summary>
+        </member>
+        <member name="T:Infragistics.Win.UltraWinToolbars.ContentAreaSeparatorUIElement">
+            <summary>
+            UIElement for the ApplicationMenu2010 ContentArea separator
+            </summary>
+            <seealso cref="T:Infragistics.Win.UIElement"/>
+        </member>
+        <member name="M:Infragistics.Win.UltraWinToolbars.ContentAreaSeparatorUIElement.#ctor(Infragistics.Win.UIElement)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Infragistics.Win.UltraWinToolbars.ContentAreaSeparatorUIElement"/> class.
+            </summary>
+            <param name="parent">The parent element</param>
+        </member>
+        <member name="M:Infragistics.Win.UltraWinToolbars.ContentAreaSeparatorUIElement.InitAppearance(Infragistics.Win.AppearanceData@,Infragistics.Win.AppearancePropFlags@)">
+            <summary>
+            Initialize the appearance structure for this element
+            </summary>
+            <param name="appearance">The appearance structure to initialize</param>
+            <param name="requestedProps">The properties that are needed</param>
         </member>
         <member name="T:Infragistics.Win.UltraWinToolbars.ContentAreaSettings">
             <summary>
@@ -22168,7 +22300,7 @@
             <summary>
             Creates a new accessible object for a NavigationMenu.
             </summary>
-            <param name="applicationMenuArea">The NavigationMenu represented by this accessible object.</param>
+            <param name="navigationMenu">The NavigationMenu represented by this accessible object.</param>
         </member>
         <member name="M:Infragistics.Win.UltraWinToolbars.NavigationMenu.NavigationMenuAccessibleObject.GetChild(System.Int32)">
             <summary>
@@ -23887,6 +24019,12 @@
             </remarks>
             <param name="collection">The collection from which the object is being removed.</param>
         </member>
+        <member name="M:Infragistics.Win.UltraWinToolbars.PopupGalleryTool.Reset">
+            <summary>
+            Resets all properties of the <see cref="T:Infragistics.Win.UltraWinToolbars.PopupMenuTool"/> to their default values.
+            </summary>
+            <seealso cref="T:Infragistics.Win.UltraWinToolbars.PopupMenuTool"/>
+        </member>
         <member name="M:Infragistics.Win.UltraWinToolbars.PopupGalleryTool.ResolvePopupStyle(Infragistics.Win.UltraWinToolbars.PopupStyle)">
             <summary>
             Gets the popup style that should be used on the menu when the specified style is 
@@ -24960,6 +25098,7 @@
             Initializes a new instance of the <see cref="T:Infragistics.Win.UltraWinToolbars.PopupGalleryTool.PopupGalleryToolUiaProviderStub.RibbonGalleryPreviewAreaUiaProviderStub"/> class.
             </summary>
             <param name="previewInfo">The PreviewInfo of the PopupGalleryTool.</param>
+            <param name="parent">The parent.</param>
         </member>
         <member name="M:Infragistics.Win.UltraWinToolbars.PopupGalleryTool.PopupGalleryToolUiaProviderStub.RibbonGalleryPreviewAreaUiaProviderStub.CreateAutomationId">
             <summary>
@@ -27156,6 +27295,16 @@
             </summary>
             <param name="index">Index at which the tabs should be inserted</param>
             <param name="groups">Array of tabs to insert</param>
+        </member>
+        <member name="M:Infragistics.Win.UltraWinToolbars.RibbonGroupCollection.InsertGroupInternal(System.Int32,Infragistics.Win.UltraWinToolbars.RibbonGroup,System.Boolean,System.Collections.Generic.List{System.String})">
+            <summary>
+            Inserts the group.
+            </summary>
+            <param name="index">The index.</param>
+            <param name="group">The group.</param>
+            <param name="clone">if set to <c>true</c> [clone].</param>
+            <param name="excludedToolKeys">The excluded tool keys.</param>
+            <returns></returns>
         </member>
         <member name="P:Infragistics.Win.UltraWinToolbars.RibbonGroupCollection.InitialCapacity">
             <summary>
@@ -40634,7 +40783,7 @@
         </member>
         <member name="F:Infragistics.Win.UltraWinToolbars.PropertyIds.ContentAreaAppearance">
             <summary>
-            The <see cref="!:Infragistics.Win.UltraWinToolbars.ApplicationMenu2010.ContentAreaAppearance"/> property.
+            The Infragistics.Win.UltraWinToolbars.ApplicationMenu2010.ContentAreaAppearance property.
             </summary>
         </member>
         <member name="F:Infragistics.Win.UltraWinToolbars.PropertyIds.ApplicationMenu2010HeaderAppearance">
@@ -40843,17 +40992,17 @@
         </member>
         <member name="F:Infragistics.Win.UltraWinToolbars.PropertyIds.DefaultCaptionButtonsAppearances">
             <summary>
-            The <see cref="!:Infragistics.Win.UltraWinToolbars.UltraToolbarsManager.DefaultCaptionButtonsAppearances"/> property
+            The <see cref="P:Infragistics.Win.UltraWinToolbars.Ribbon.DefaultCaptionButtonsAppearances"/> property
             </summary>
         </member>
         <member name="F:Infragistics.Win.UltraWinToolbars.PropertyIds.CaptionButtonsAppearances">
             <summary>
-            The <see cref="!:Infragistics.Win.UltraWinToolbars.UltraToolbarsManager.CaptionButtonsAppearances"/> property
+            The <see cref="P:Infragistics.Win.UltraWinToolbars.Ribbon.CaptionButtonsAppearances"/> property
             </summary>
         </member>
         <member name="F:Infragistics.Win.UltraWinToolbars.PropertyIds.MaximizedMdiChildFormCaptionButtonsAppearances">
             <summary>
-            The <see cref="!:Infragistics.Win.UltraWinToolbars.UltraToolbarsManager.MaximizedMdiChildFormCaptionButtonsAppearances"/> property
+            The <see cref="P:Infragistics.Win.UltraWinToolbars.Ribbon.MaximizedMdiChildFormCaptionButtonsAppearances"/> property
             </summary>
         </member>
         <member name="F:Infragistics.Win.UltraWinToolbars.PropertyIds.RibbonDisplayOptionsButtonAppearances">
@@ -42119,7 +42268,7 @@
         </member>
         <member name="M:Infragistics.Win.UltraWinToolbars.Ribbon.DropDown">
             <summary>
-            Displays the entire Ribbon or the contents of the <see cref="P:Infragistics.Win.UltraWinToolbars.Ribbon.SelectedTab"/> when the <see cref="P:Infragistics.Win.UltraWinToolbars.Ribbon.DisplayMode"/> property is set to <see cref="!:DisplayMode.AutoHide"/> or <see cref="!:DisplayMode.TabsOnly"/>.
+            Displays the entire Ribbon or the contents of the <see cref="P:Infragistics.Win.UltraWinToolbars.Ribbon.SelectedTab"/> when the <see cref="P:Infragistics.Win.UltraWinToolbars.Ribbon.DisplayMode"/> property is set to <see cref="F:Infragistics.Win.UltraWinToolbars.RibbonDisplayMode.AutoHide"/> or <see cref="F:Infragistics.Win.UltraWinToolbars.RibbonDisplayMode.TabsOnly"/>.
             </summary>
         </member>
         <member name="M:Infragistics.Win.UltraWinToolbars.Ribbon.TabFromPoint(System.Drawing.Point)">
@@ -43415,7 +43564,7 @@
             <summary>
             Initializes a new instance of the <see cref="T:Infragistics.Win.UltraWinToolbars.Ribbon.RibbonUiaProviderStub"/> class.
             </summary>
-            <param name="toolbarUIElement">The RibbonArea UI element.</param>
+            <param name="ribbonElement">The RibbonArea UI element.</param>
         </member>
         <member name="M:Infragistics.Win.UltraWinToolbars.Ribbon.RibbonUiaProviderStub.CreateAutomationId">
             <summary>
@@ -46654,7 +46803,7 @@
         <member name="T:Infragistics.Win.UltraWinToolbars.ScenicApplicationMenuButtonUIElement">
             <summary>
             UIElement that represents the dropdown button for the <see cref="T:Infragistics.Win.UltraWinToolbars.ApplicationMenu"/> in the Scenic Ribbon and
-            represents the dropdown button for the <see cref="T:Infragistics.Win.UltraWinToolbars.ApplicationMenu"/> and <see cref="!:BackStage"/> in the Office 2010 Ribbon.
+            represents the dropdown button for the <see cref="T:Infragistics.Win.UltraWinToolbars.ApplicationMenu"/> and <see cref="T:Infragistics.Win.UltraWinToolbars.ApplicationMenu2010"/> in the Office 2010 Ribbon.
             </summary>
         </member>
         <member name="M:Infragistics.Win.UltraWinToolbars.ScenicApplicationMenuButtonUIElement.DrawBorders(Infragistics.Win.UIElementDrawParams@)">
@@ -48232,6 +48381,13 @@
             <summary>
             Constructor
             </summary>
+        </member>
+        <member name="T:Infragistics.Win.UltraWinToolbars.StateButtonTool.StateButtonToolUiaProviderStub">
+            <summary>
+            UI Automation Provider stub for the StateButtonTool
+            </summary>
+            <seealso cref="T:Infragistics.Win.UltraWinToolbars.ButtonTool.ButtonToolUiaProviderStub"/>
+            <seealso cref="T:System.Windows.Automation.Provider.IToggleProvider"/>
         </member>
         <member name="M:Infragistics.Win.UltraWinToolbars.StateButtonTool.StateButtonToolUiaProviderStub.#ctor(Infragistics.Win.UltraWinToolbars.StateButtonTool)">
             <summary>
@@ -52463,6 +52619,14 @@
             <summary>
             Disposes the object
             </summary>
+        </member>
+        <member name="M:Infragistics.Win.UltraWinToolbars.ToolNotificationBadgeSettings.Clone">
+            <summary>
+            Clones the NotificationBadgeSettings
+            </summary>
+            <returns>
+            The cloned NotificationBadgeSettings
+            </returns>
         </member>
         <member name="P:Infragistics.Win.UltraWinToolbars.ToolNotificationBadgeSettings.AppearanceSmall">
             <summary>

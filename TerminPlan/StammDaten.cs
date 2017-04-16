@@ -22,6 +22,7 @@ namespace Terminplan
     using System.Globalization;
     using System.Windows.Forms;
     using Infragistics.Win.AppStyling;
+    using Infragistics.Win.Printing;
     using Infragistics.Win.UltraWinToolbars;
 
     public partial class StammDaten : Form
@@ -83,6 +84,71 @@ namespace Terminplan
         /// <param name="e">Die <see cref="Infragistics.Win.UltraWinToolbars.ToolClickEventArgs" /> Instanz, welche die Ereignisdaten enthält.</param>
         private void OnUltraToolbarsManagerStammToolClick(object sender, ToolClickEventArgs e)
         {
+            // Ermitteln, auf welches Tool geklickt wurde
+            switch (e.Tool.Key)
+            {
+                case "Font_Bold":                                               // Fettschrift
+                    if (this.cellActivationRecursionFlag == false)
+                    {
+                        this.UpdateFontProperty(FontProperties.Bold);
+                    }
+                    break;
+
+                case "Font_Italic":                                             // Kursivschrift
+                    if (this.cellActivationRecursionFlag == false)
+                    {
+                        this.UpdateFontProperty(FontProperties.Italics);
+                    }
+                    break;
+
+                case "Font_Underline":
+                    if (this.cellActivationRecursionFlag == false)              // Unterstrichene Schrift
+                    {
+                        this.UpdateFontProperty(FontProperties.Underline);
+                    }
+                    break;
+
+                case "Font_BackColor":                                          // Hintergrundfarbe
+                    this.SetTextBackColor();
+                    break;
+
+                case "Font_ForeColor":                                          // Vordergrundfarbe
+                    this.SetTextForeColor();
+                    break;
+
+                case "FontList":                                                // Liste mit den Schriftarten
+                    this.UpdateFontName();
+                    break;
+
+                case "FontSize":                                                // Schriftgröße
+                    this.UpdateFontSize();
+                    break;
+
+                case "ThemeList":
+                    var themeListTool = e.Tool as ListTool;
+                    if (themeListTool != null && themeListTool.SelectedItem == null)
+                    {
+                        themeListTool.SelectedItemIndex = e.ListToolItem.Index;
+                    }
+
+                    var key = e.ListToolItem.Key;
+                    if (this.FrmTerminPlan.ThemePaths[this.FrmTerminPlan.CurrentThemeIndex] != key)
+                    {
+                        this.FrmTerminPlan.CurrentThemeIndex = e.ListToolItem.Index;
+                        StyleManager.Load(DienstProgramme.GetEmbeddedResourceStream(key));
+                    }
+                    break;
+
+                case "Print":
+                    var printPreview = new UltraPrintPreviewDialog { Document = this.ultraGridPrintDocumentStamm };
+                    printPreview.ShowDialog(this);
+                    break;
+
+                case "Exit":
+                case "Close":
+                    Application.Exit();
+                    break;
+            }
         }
 
         /// <summary>

@@ -2549,6 +2549,11 @@
             The text area is located below the image.
             </summary>
         </member>
+        <member name="F:Infragistics.Win.UltraWinListView.TextAreaAlignment.None">
+            <summary>
+            The text area is not visible with the image.
+            </summary>
+        </member>
         <member name="T:Infragistics.Win.UltraWinListView.PropertyIds">
             <summary>
             Enumeration which contains constants that identify the properties of the <see cref="T:Infragistics.Win.UltraWinListView.UltraListView"/> control and its sub-objects.
@@ -9148,7 +9153,7 @@
             Called when the TouchProvider's state hase changed (e.g. when its Visble or Enabled property has changed).
             </summary>
             <param name="invalidate">If true the control should invalidate itself.</param>
-            <remarks>The default implementation calls <see cref="!:UIElement.DirtyChildElements(bool)"/>.</remarks>        
+            <remarks>The default implementation calls <see cref="M:Infragistics.Win.UIElement.DirtyChildElements(System.Boolean)"/>.</remarks>        
         </member>
         <member name="M:Infragistics.Win.UltraWinListView.UltraListView.ShouldSerializeGesturesEnabled">
             <summary>

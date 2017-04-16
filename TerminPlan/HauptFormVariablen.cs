@@ -114,9 +114,10 @@ namespace Terminplan
         // ReSharper disable once UnusedMember.Local
         private const int TaskBarHeight = 20;
 
-        /// <summary> Pfad zu den Farbeinstallungen </summary>
-        // ReSharper disable once FieldCanBeMadeReadOnly.Local
-        private string[] themePaths;
+        /// <summary>
+        /// Holt oder setzt den Pfad zu den Farbeinstellungen
+        /// </summary>
+        public string[] TemePaths { get; set; }
 
         /// <summary> Pfad zu den Farbeinstallungen </summary>
         public static StyleManager StyleManagerIntern;
@@ -135,6 +136,11 @@ namespace Terminplan
         /// Holt oder setzt den Index des momentanen Farbschemas
         /// </summary>
         public int CurrentThemeIndex { get; set; }
+
+        /// <summary>
+        /// Holt oder setzt den Pfad zu den Farbeinstellungen
+        /// </summary>
+        public string[] ThemePaths { get; set; }
 
         #endregion Eigenschaften
     }

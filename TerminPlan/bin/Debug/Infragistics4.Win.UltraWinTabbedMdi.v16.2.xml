@@ -1881,8 +1881,8 @@
             </summary>
             <param name="relativeTabGroup">The MdiTabGroup to which the new MdiTabGroup should be a sibling.</param>
             <param name="relativePosition">Enumeration indicating where the new <see cref="T:Infragistics.Win.UltraWinTabbedMdi.MdiTabGroup"/> should be inserted in relation to the <paramref name="relativeTabGroup"/>.</param>
-            <param name="orientation">Indicates the orientation of the new mdi tabgroup. If this value differs from the orientation of the <paramref name="relativeGroup"/> 
-            then a new group that contains both the <paramref name="relativeGroup"/> and the group to contain the specified <paramref name="tab"/> will also be created.</param>
+            <param name="orientation">Indicates the orientation of the new mdi tabgroup. If this value differs from the orientation of the <paramref name="relativeTabGroup"/> 
+            then a new group that contains both the <paramref name="relativeTabGroup"/> and the group to contain this tab will also be created.</param>
             <returns>The new <see cref="T:Infragistics.Win.UltraWinTabbedMdi.MdiTabGroup"/></returns>
             <seealso cref="M:Infragistics.Win.UltraWinTabbedMdi.MdiTab.MoveToGroup(Infragistics.Win.UltraWinTabbedMdi.MdiTabGroup)"/>
             <seealso cref="E:Infragistics.Win.UltraWinTabbedMdi.UltraTabbedMdiManager.TabMoving"/>
@@ -6569,7 +6569,7 @@
             </summary>
             <param name="tab"><b>MdiTab</b> to reposition</param>
             <param name="relativeGroup">Group relative to the currently containing tab group</param>
-            <param name="orientation">Indicates the orientation of the new mdi tabgroup. If this value differs from the orientation of the <paramref name="MdiTab.TabGroup"/> 
+            <param name="orientation">Indicates the orientation of the new mdi tabgroup. If this value differs from the orientation of the <see cref="P:Infragistics.Win.UltraWinTabbedMdi.MdiTab.TabGroup"/> 
             then a new group that contains both the <paramref name="relativeGroup"/> and the group to contain the specified <paramref name="tab"/> will also be created.</param>
             <returns>The new <see cref="T:Infragistics.Win.UltraWinTabbedMdi.MdiTabGroup"/></returns>
             <seealso cref="M:Infragistics.Win.UltraWinTabbedMdi.MdiTab.MoveToNewGroup"/>

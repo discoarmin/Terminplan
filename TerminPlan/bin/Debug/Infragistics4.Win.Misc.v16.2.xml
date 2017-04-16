@@ -3128,6 +3128,13 @@
             </summary>
             <param name="e">The event args which contains event data.</param>
         </member>
+        <member name="M:Infragistics.Win.Misc.UltraPanel.ScaleControl(System.Drawing.SizeF,System.Windows.Forms.BoundsSpecified)">
+            <summary>
+            Scales a control's location, size, padding and margin.
+            </summary>
+            <param name="factor">The factor by which the height and width of the control will be scaled.</param>
+            <param name="specified">A <see cref="T:System.Windows.Forms.BoundsSpecified" /> value that specifies the bounds of the control to use when defining its size and position.</param>
+        </member>
         <member name="M:Infragistics.Win.Misc.UltraPanel.SetBoundsCore(System.Int32,System.Int32,System.Int32,System.Int32,System.Windows.Forms.BoundsSpecified)">
             <summary>
             Sets the bounds of the control.
@@ -3832,19 +3839,6 @@
             <param name="activeControl">The control which will be scrolled into view.</param>
             <returns>A point represent the scroll offset required to place the specific child control in view.</returns>
         </member>
-        <member name="M:Infragistics.Win.Misc.UltraPanelClientArea.CreateControlsInstance">
-            <summary>
-            Creates the ControlCollection for the control. If this PanelClientArea is used by an <see cref="T:Infragistics.Win.Misc.UltraZoomPanel"/> it will return a custom collection,
-            which hides the scroll control, used to adjust the size of the client area, so that it can be scrolled properly and have the correct behavior, when it contains docked controls.
-            </summary>
-            <returns>The ControlCollection for the control</returns>
-        </member>
-        <member name="M:Infragistics.Win.Misc.UltraPanelClientArea.AdjustFormScrollbars(System.Boolean)">
-            <summary>
-            Notifies the control collection to provide to the base method the scroll control, so the area can be adjusted correctly.
-            </summary>
-            <param name="displayScrollbars">True to show the scrollbars; otherwise false.</param>
-        </member>
         <member name="M:Infragistics.Win.Misc.UltraPanelClientAreaUnsafe.AdjustFormScrollbars(System.Boolean)">
             <summary>
             This member overrides the <b>AdjustFormScrollbars</b> of the <see cref="T:System.Windows.Forms.Form"/>
@@ -3896,6 +3890,13 @@
             </summary>
             <param name="appearance">The appearance structure to initialize.</param>
             <param name="requestedProps">The properties that are needed.</param>
+        </member>
+        <member name="M:Infragistics.Win.Misc.UltraPanelClientAreaUIElement.PositionChildElements">
+            <summary>
+            Makes sure that the child elements for this element are in the
+            ChildElements array and that they are positioned properly.
+            This needs to be overridden if the element has any child elements.
+            </summary>
         </member>
         <member name="P:Infragistics.Win.Misc.UltraPanelClientAreaUIElement.UIRole">
             <summary>
@@ -4012,12 +4013,6 @@
             <returns>Whether or not the control performs a default action.</returns>
             <seealso cref="T:Infragistics.Win.Touch.IGestureConsumer"/> 
         </member>
-        <member name="M:Infragistics.Win.Misc.UltraZoomPanel.OnVisibleChanged(System.EventArgs)">
-            <summary>
-            Called when the visibility of the control is chnaged.
-            </summary>
-            <param name="e">The event args.</param>
-        </member>
         <member name="M:Infragistics.Win.Misc.UltraZoomPanel.OnMouseDownClient(System.Windows.Forms.MouseEventArgs)">
             <summary>
             Occurs when the mouse is pressed down over the <see cref="P:Infragistics.Win.Misc.UltraPanel.ClientArea"/> of the UltraPanel.
@@ -4060,6 +4055,12 @@
             </summary>
             <param name="e">Event arguments</param>
         </member>
+        <member name="M:Infragistics.Win.Misc.UltraZoomPanel.OnClientSizeChanged(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:System.Windows.Forms.Control.ClientSizeChanged"/> event.        
+            </summary>
+            <param name="e">An <see cref="T:System.EventArgs"/> that contains the event data.</param>
+        </member>
         <member name="P:Infragistics.Win.Misc.UltraZoomPanel.ZoomProperties">
             <summary>
             Gets the zoom related properties for this control.
@@ -4067,7 +4068,7 @@
         </member>
         <member name="E:Infragistics.Win.Misc.UltraZoomPanel.ZoomFactorChanged">
             <summary>
-            Event raised when the <see cref="!:ZoomProperties.ZoomFactor"/> is changed.
+            Event raised when the <see cref="P:Infragistics.Win.Misc.ZoomProperties.ZoomFactor"/> is changed.
             </summary>
         </member>
         <member name="P:Infragistics.Win.Misc.UltraZoomPanel.ShouldProvideHiddenControl">
@@ -34472,7 +34473,7 @@
         </member>
         <member name="M:Infragistics.Win.Misc.UltraValidator.Infragistics#Win#IUltraValidator#IsValueValid(System.Windows.Forms.Control,System.Object,System.Boolean)">
             <summary>
-            Returns whether the specified <paramref name="value"/> is valid for the specified <paramref name="editor"/>.
+            Returns whether the specified <paramref name="value"/> is valid for the specified <paramref name="extendee"/>.
             </summary>
             <param name="extendee">The <a href="http://msdn.microsoft.com/en-us/library/system.windows.forms.control.aspx">control</a> to which the Infragistics.Win.Misc.ValidationSettings instance which determines validity has been extended.</param>
             <param name="value">The value to be tested.</param>
@@ -35119,7 +35120,7 @@
             <param name="group">The <see cref="T:Infragistics.Win.Misc.ValidationGroup"/> instance to be added.</param>
             <returns>The index of the <see cref="T:Infragistics.Win.Misc.ValidationGroup"/> in this collection.</returns>
             <exception cref="T:System.Exception">Thrown when the specified <see cref="T:Infragistics.Win.Misc.ValidationGroup"/> instance is associated with a different <see cref="T:Infragistics.Win.Misc.UltraNavigationBar"/> instance than the one with which this collection is associated. Also thrown if the specified ValidationGroup is the <see cref="P:Infragistics.Win.Misc.UltraNavigationBar.RootLocation"/>, already belongs to this collection, or belongs to a different collection.</exception>
-            <exception cref="T:System.ArgumentNullException">Thrown when the value of the <paramref name="location"/> parameter contains a null reference.</exception>
+            <exception cref="T:System.ArgumentNullException">Thrown when the value of the <paramref name="group"/> parameter contains a null reference.</exception>
         </member>
         <member name="M:Infragistics.Win.Misc.ValidationGroupsCollection.Add(System.String)">
             <summary>

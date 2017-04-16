@@ -5987,12 +5987,11 @@
         </member>
         <member name="T:Infragistics.Win.UltraWinTree.UltraTreePrintDocument">
             <summary>
-            Component for rendering the tree information of an <see cref="!:UltraCalendarInfo"/> to the printer.
+            Component for rendering  an <see cref="T:Infragistics.Win.UltraWinTree.UltraTree"/> to the printer.
             </summary>
             <remarks>
-            <p class="body">The <b>UltraTreePrintDocument</b> component is used to print the contents of an 
-            associated <see cref="!:UltraCalendarInfo"/> in the style of an UltraTree control.</p>
-            <p class="body">Since priting requires output analogous to the UltraTree control, 
+            <p class="body">The <b>UltraTreePrintDocument</b> component is used to print the contents of an UltraTree control.</p>
+            <p class="body">Since printing requires output analogous to the UltraTree control, 
             the component creates an instance of an UltraTree control as required for the print operation. The component also exposes a <see cref="P:Infragistics.Win.UltraWinTree.UltraTreePrintDocument.Tree"/>
             property. When a Tree control is created for the print operation, the properties of the corresponding Tree control are 
             copied to the control created by the print document. In addition, the component exposes an event to allow this control
@@ -6195,9 +6194,7 @@
             </summary>
             <remarks>
             <p class="body">
-            This event will fire when the generation of the print output results in an error. For example, 
-            if there are not tasks to print, or if the <see cref="!:PrintXColumnsOnEveryPage"/> results
-            in repeating columns that fill the entire width of the page and leave no room for other content.
+            This event will fire when the generation of the print output results in an error. 
             </p>
             </remarks>
             <seealso cref="T:Infragistics.Win.UltraWinTree.Printing.ErrorEventArgs"/>
@@ -12281,7 +12278,6 @@
             </summary>
             <param name="node">The <see cref="T:Infragistics.Win.UltraWinTree.UltraTreeNode"/> which contains the layout item that was resized. Specify null when a header is resized and headers are displayed separately.</param>
             <param name="column">The <see cref="T:Infragistics.Win.UltraWinTree.UltraTreeNodeColumn"/> which contains the layout item that was resized.</param>
-            <param name="column">The <see cref="T:Infragistics.Win.UltraWinTree.UltraTreeNodeColumn"/> which contains the layout item that was resized.</param>
             <param name="isAutoResize">Specifies whether the event was triggered by an auto-resize operation.</param>
         </member>
         <member name="P:Infragistics.Win.UltraWinTree.AfterNodeLayoutItemResizeEventArgs.Column">
@@ -12903,7 +12899,7 @@
             <summary>
             Constructor
             </summary>
-            <param name="affectedNodes">A list of <see cref="T:Infragistics.Win.UltraWinTree.UltraTreeNode"/> objects whose CheckState was changed by the synchronization operation.</param>
+            <param name="affectedNodesSet">A list of <see cref="T:Infragistics.Win.UltraWinTree.UltraTreeNode"/> objects whose CheckState was changed by the synchronization operation.</param>
         </member>
         <member name="P:Infragistics.Win.UltraWinTree.AfterCheckSynchronizationCompleteEventArgs.AffectedNodes">
             <summary>
@@ -16350,7 +16346,7 @@
         </member>
         <member name="F:Infragistics.Win.UltraWinTree.PropertyIds.ButtonDisplayStyle">
             <summary>
-            The <see cref="!:Infragistics.Win.UltraTreeNodeColumn.ButtonDisplayStyle">ButtonDisplayStyle</see> property
+            The <see cref="P:Infragistics.Win.UltraWinTree.UltraTreeNodeColumn.ButtonDisplayStyle">ButtonDisplayStyle</see> property
             </summary>
         </member>
         <member name="F:Infragistics.Win.UltraWinTree.PropertyIds.GlyphPadding">
@@ -16464,6 +16460,13 @@
             Creates a new instance of the <see cref="T:Infragistics.Win.UltraWinTree.ScrollbarIntersectionUIElement"/> class.
             </summary>
             <param name="parent">The parent element.</param>
+        </member>
+        <member name="M:Infragistics.Win.UltraWinTree.ScrollbarIntersectionUIElement.ResolveControlAppearance(Infragistics.Win.AppearanceData@,Infragistics.Win.AppearancePropFlags@)">
+            <summary>
+            Resolves the control-level (non-appstylist) properties of the appearance.
+            </summary>
+            <param name="appData"></param>
+            <param name="requestedProps"></param>
         </member>
         <member name="T:Infragistics.Win.UltraWinTree.SelectedNodesCollection">
             <summary>
@@ -19024,7 +19027,7 @@
             Called when the TouchProvider's state hase changed (e.g. when its Visble or Enabled property has changed).
             </summary>
             <param name="invalidate">If true the control should invalidate itself.</param>
-            <remarks>The default implementation calls <see cref="!:UIElement.DirtyChildElements(bool)"/>.</remarks>        
+            <remarks>The default implementation calls <see cref="M:Infragistics.Win.UIElement.DirtyChildElements(System.Boolean)"/>.</remarks>        
         </member>
         <member name="M:Infragistics.Win.UltraWinTree.UltraTree.ShouldSerializeGesturesEnabled">
             <summary>
@@ -19554,7 +19557,7 @@
             Occurs after the synchronization of node checkboxes is complete. 
             </summary>
             <remarks>
-            <p class="body">This event fires when a node whose <see cref="T:Infragistics.Win.UltraWinTree.NodeStyle"/> is set to SynchronizedCheckBox is changed either in code or by the user. The event fires once after the <see cref="!:UltraTreeNode.CheckState"/> of the node has changed and all other relevent nodes have been synchronized. This allows the processing of all of the CheckState changes in one event, as opposed to using the AfterCheck event to handle each change individually.</p>
+            <p class="body">This event fires when a node whose <see cref="T:Infragistics.Win.UltraWinTree.NodeStyle"/> is set to SynchronizedCheckBox is changed either in code or by the user. The event fires once after the <see cref="P:Infragistics.Win.UltraWinTree.UltraTreeNode.CheckedState"/> of the node has changed and all other relevent nodes have been synchronized. This allows the processing of all of the CheckState changes in one event, as opposed to using the AfterCheck event to handle each change individually.</p>
             <p class="body">The <see cref="P:Infragistics.Win.UltraWinTree.AfterCheckSynchronizationCompleteEventArgs.AffectedNodes"/> property of the <see cref="T:Infragistics.Win.UltraWinTree.AfterCheckSynchronizationCompleteEventArgs"/> contains a list of all nodes whose CheckState was changed as a results of the synchronization operation, including the node whose checkstate initiated the operation.</p>
             </remarks>
             <seealso cref="E:Infragistics.Win.UltraWinTree.UltraTree.BeforeCheck"/>
@@ -20906,6 +20909,7 @@
             Constructor
             </summary>
             <param name="ultraTree">The UltraTree this UI Automation provider represents.</param>
+            <param name="controlElement">The control element.</param>
         </member>
         <member name="M:Infragistics.Win.UltraWinTree.UltraTree.UltraTreeUIAProviderStub.ElementProviderFromPoint(System.Drawing.Point)">
             <summary>

@@ -1535,7 +1535,6 @@
             <remarks>
             <para class="Body">The properties of this object affect the built-in spin button in a numeric editor control. These properties have no effect on a SpinEditorButton (in the ButtonRight or ButtonsLeft collection).</para>
             </remarks>
-            <seealso cref="!:SpinButtonAlignment"/>
             <seealso cref="P:Infragistics.Win.UltraWinMaskedEdit.UltraMaskedEdit.SpinButtonDisplayStyle"/>
         </member>
         <member name="T:Infragistics.Win.UltraWinMaskedEdit.UltraMaskedEdit.DataTypeChangedEventHandler">

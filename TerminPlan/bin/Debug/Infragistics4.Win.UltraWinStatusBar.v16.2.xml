@@ -2521,6 +2521,7 @@
             Constructor
             </summary>
             <param name="ultraStatusBar">The UltraStatusBar this UI Automation provider represents.</param>
+            <param name="controlElement">The control element.</param>
         </member>
         <member name="M:Infragistics.Win.UltraWinStatusBar.UltraStatusBar.UltraStatusBarUIAProviderStub.ElementProviderFromPoint(System.Drawing.Point)">
             <summary>

@@ -5465,6 +5465,11 @@
             The native image
             </summary>
         </member>
+        <member name="F:Infragistics.Documents.Reports.Graphics.Image._marker">
+            <summary>
+            The marker
+            </summary>
+        </member>
         <member name="M:Infragistics.Documents.Reports.Graphics.Image.#ctor(System.String)">
             <summary>
             Initializes a new instance of the <see cref="T:Infragistics.Documents.Reports.Graphics.Image"/> class.
@@ -5544,6 +5549,12 @@
             of the image.
             </p>
             </remarks>
+        </member>
+        <member name="M:Infragistics.Documents.Reports.Graphics.Image.GetData">
+            <summary>
+            Gets the data.
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:Infragistics.Documents.Reports.Graphics.Image.ToBitmap">
             <summary>
@@ -10106,6 +10117,11 @@
             <param name="reason">The reason for the signing.</param>
             <param name="location">The CPU host name or physical location of the signing.</param>
             <param name="contactInfo">Information provided by the signer to enable a recipient to contact the signer to verify the signature.</param>
+        </member>
+        <member name="E:Infragistics.Documents.Reports.PDF.PdfDocument.ReportPublishing">
+            <summary>
+            Occurs when the report is being published
+            </summary>
         </member>
         <member name="P:Infragistics.Documents.Reports.PDF.PdfDocument.Cipher">
             <summary>
@@ -25008,6 +25024,11 @@
             Generates the XPS document.
             </summary>
             <param name="stream">Stream to store the XPS data.</param>
+        </member>
+        <member name="E:Infragistics.Documents.Reports.XPS.XpsDocument.ReportPublishing">
+            <summary>
+            Occurs when the report is being published
+            </summary>
         </member>
         <member name="P:Infragistics.Documents.Reports.XPS.XpsDocument.FileBuffer">
             <summary>

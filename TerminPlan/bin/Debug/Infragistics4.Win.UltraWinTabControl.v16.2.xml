@@ -5137,6 +5137,11 @@
             Returns the <see cref="T:Infragistics.Win.UltraWinTabControl.UltraTabControlBase"/> derived control.
             </summary>
         </member>
+        <member name="P:Infragistics.Win.UltraWinTabControl.UltraTabPageControl.UIAutomationProvider">
+            <summary>
+            Returns a UIAutomation provider for this control.
+            </summary>
+        </member>
         <member name="T:Infragistics.Win.UltraWinTabControl.UltraTabPageControl.UltraTabPageControlUIAutomationStub">
             <summary>
             

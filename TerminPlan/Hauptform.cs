@@ -67,10 +67,10 @@ namespace Terminplan
             // Minimieren der Initialisierungszeit durch Laden der Stilbibliothek
             // vor InitializeComponent(),
             // andernfalls werden alle Metriken nach dem Ändern des Themas neu berechnet.
-            themePaths = DienstProgramme.GetStyleLibraryResourceNames();
-            for (var i = 0; i < themePaths.Length; i++)
+            this.ThemePaths = DienstProgramme.GetStyleLibraryResourceNames();
+            for (var i = 0; i < this.ThemePaths.Length; i++)
             {
-                if (!this.themePaths[i].Contains(@"04"))
+                if (!this.ThemePaths[i].Contains(@"04"))
                 {
                     continue;
                 }
@@ -84,7 +84,7 @@ namespace Terminplan
             System.Threading.Thread.CurrentThread.CurrentUICulture = culture;
 
             // Eingebettete Ressourcen laden
-            StyleManager.Load(DienstProgramme.GetEmbeddedResourceStream(themePaths[CurrentThemeIndex]));
+            StyleManager.Load(DienstProgramme.GetEmbeddedResourceStream(this.ThemePaths[CurrentThemeIndex]));
             SetResourceStrings();
             InitializeComponent();
         }
