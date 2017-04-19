@@ -111,7 +111,9 @@
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool162 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Cut");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool163 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Copy");
             Infragistics.Win.UltraWinToolbars.RibbonGroup ribbonGroup2 = new Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroupZW1");
-            Infragistics.Win.UltraWinToolbars.RibbonGroup ribbonGroup3 = new Infragistics.Win.UltraWinToolbars.RibbonGroup("RibbonGrp_Font");
+            Infragistics.Win.UltraWinToolbars.RibbonGroup ribbonGroup3 = new Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroupEinFuegen");
+            Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool9 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("Insert_Ds");
+            Infragistics.Win.UltraWinToolbars.RibbonGroup ribbonGroup4 = new Infragistics.Win.UltraWinToolbars.RibbonGroup("RibbonGrp_Font");
             Infragistics.Win.UltraWinToolbars.FontListTool fontListTool1 = new Infragistics.Win.UltraWinToolbars.FontListTool("FontList");
             Infragistics.Win.UltraWinToolbars.ComboBoxTool comboBoxTool1 = new Infragistics.Win.UltraWinToolbars.ComboBoxTool("FontSize");
             Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool12 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("FontKleiner");
@@ -122,10 +124,9 @@
             Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool7 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("Rahmen");
             Infragistics.Win.UltraWinToolbars.PopupColorPickerTool popupColorPickerTool1 = new Infragistics.Win.UltraWinToolbars.PopupColorPickerTool("Font_BackColor");
             Infragistics.Win.UltraWinToolbars.PopupColorPickerTool popupColorPickerTool2 = new Infragistics.Win.UltraWinToolbars.PopupColorPickerTool("Font_ForeColor");
-            Infragistics.Win.UltraWinToolbars.RibbonGroup ribbonGroup4 = new Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroupAusrichtung");
+            Infragistics.Win.UltraWinToolbars.RibbonGroup ribbonGroup5 = new Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroupAusrichtung");
             Infragistics.Win.Appearance appearance26 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance27 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool42 = new Infragistics.Win.UltraWinToolbars.ButtonTool("AusrichtungOben");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool45 = new Infragistics.Win.UltraWinToolbars.ButtonTool("AusrichtungZentriert");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool62 = new Infragistics.Win.UltraWinToolbars.ButtonTool("AusrichtungUnten");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool64 = new Infragistics.Win.UltraWinToolbars.ButtonTool("AusrichtungLinks");
@@ -133,12 +134,12 @@
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool72 = new Infragistics.Win.UltraWinToolbars.ButtonTool("AusrichtungRechts");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool66 = new Infragistics.Win.UltraWinToolbars.ButtonTool("EinzugVerkleinern");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool68 = new Infragistics.Win.UltraWinToolbars.ButtonTool("EinzugVergroessern");
-            Infragistics.Win.UltraWinToolbars.RibbonGroup ribbonGroup5 = new Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroupAusrichtung1");
+            Infragistics.Win.UltraWinToolbars.RibbonGroup ribbonGroup6 = new Infragistics.Win.UltraWinToolbars.RibbonGroup("ribbonGroupAusrichtung1");
             Infragistics.Win.Appearance appearance28 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance29 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool75 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Textumbruch");
             Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool25 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("VerbindenUndZentrieren");
-            Infragistics.Win.UltraWinToolbars.RibbonGroup ribbonGroup6 = new Infragistics.Win.UltraWinToolbars.RibbonGroup("RibbonGrp_Tasks");
+            Infragistics.Win.UltraWinToolbars.RibbonGroup ribbonGroup7 = new Infragistics.Win.UltraWinToolbars.RibbonGroup("RibbonGrp_Tasks");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool1 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Tasks_PercentComplete_0");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool19 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Tasks_PercentComplete_25");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool20 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Tasks_PercentComplete_50");
@@ -192,11 +193,11 @@
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool53 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Schedule_OnMoveTask_OnMoveTaskBackwards1Day");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool54 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Schedule_OnMoveTask_OnMoveTaskBackwards1Week");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool55 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Schedule_OnMoveTask_OnMoveTaskBackwards4Weeks");
-            Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool10 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("Insert_Task");
+            Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool10 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("Insert_Ds");
             Infragistics.Win.Appearance appearance54 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance55 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool59 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Insert_Task_TaskAtSelectedRow");
-            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool13 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Insert_Task_Task");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool59 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Insert_Ds_AtSelectedRow");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool13 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Insert_Ds_Button");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool37 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Insert_Summary");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool38 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Insert_Milestone");
             Infragistics.Win.Appearance appearance56 = new Infragistics.Win.Appearance();
@@ -210,7 +211,7 @@
             Infragistics.Win.UltraWinToolbars.StateButtonTool stateButtonTool6 = new Infragistics.Win.UltraWinToolbars.StateButtonTool("Font_Underline", "");
             Infragistics.Win.Appearance appearance62 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance63 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool16 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Insert_Task_Task");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool16 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Insert_Ds_Button");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool50 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Schedule_OnMoveTask_1Day");
             Infragistics.Win.Appearance appearance64 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool51 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Schedule_OnMoveTask_1Week");
@@ -225,7 +226,7 @@
             Infragistics.Win.Appearance appearance68 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool58 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Schedule_OnMoveTask_OnMoveTaskBackwards4Weeks");
             Infragistics.Win.Appearance appearance69 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool60 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Insert_Task_TaskAtSelectedRow");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool60 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Insert_Ds_AtSelectedRow");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool3 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Tasks_PercentComplete_75");
             Infragistics.Win.Appearance appearance70 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance71 = new Infragistics.Win.Appearance();
@@ -281,27 +282,30 @@
             Infragistics.Win.UltraWinToolbars.LabelTool labelTool12 = new Infragistics.Win.UltraWinToolbars.LabelTool("L2");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool43 = new Infragistics.Win.UltraWinToolbars.ButtonTool("AusrichtungOben");
             Infragistics.Win.Appearance appearance84 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool46 = new Infragistics.Win.UltraWinToolbars.ButtonTool("AusrichtungCenter");
             Infragistics.Win.Appearance appearance85 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool61 = new Infragistics.Win.UltraWinToolbars.ButtonTool("AusrichtungZentriert");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool46 = new Infragistics.Win.UltraWinToolbars.ButtonTool("AusrichtungCenter");
             Infragistics.Win.Appearance appearance86 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool63 = new Infragistics.Win.UltraWinToolbars.ButtonTool("AusrichtungUnten");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool61 = new Infragistics.Win.UltraWinToolbars.ButtonTool("AusrichtungZentriert");
             Infragistics.Win.Appearance appearance87 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool65 = new Infragistics.Win.UltraWinToolbars.ButtonTool("AusrichtungLinks");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool63 = new Infragistics.Win.UltraWinToolbars.ButtonTool("AusrichtungUnten");
             Infragistics.Win.Appearance appearance88 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool67 = new Infragistics.Win.UltraWinToolbars.ButtonTool("EinzugVerkleinern");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool65 = new Infragistics.Win.UltraWinToolbars.ButtonTool("AusrichtungLinks");
             Infragistics.Win.Appearance appearance89 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool69 = new Infragistics.Win.UltraWinToolbars.ButtonTool("EinzugVergroessern");
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool67 = new Infragistics.Win.UltraWinToolbars.ButtonTool("EinzugVerkleinern");
             Infragistics.Win.Appearance appearance90 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool69 = new Infragistics.Win.UltraWinToolbars.ButtonTool("EinzugVergroessern");
+            Infragistics.Win.Appearance appearance91 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool71 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Dummy1");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool73 = new Infragistics.Win.UltraWinToolbars.ButtonTool("Textumbruch");
-            Infragistics.Win.Appearance appearance91 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool24 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("VerbindenUndZentrieren");
             Infragistics.Win.Appearance appearance92 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance93 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinToolbars.PopupMenuTool popupMenuTool24 = new Infragistics.Win.UltraWinToolbars.PopupMenuTool("VerbindenUndZentrieren");
+            Infragistics.Win.Appearance appearance94 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance95 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolbars.ListTool listTool8 = new Infragistics.Win.UltraWinToolbars.ListTool("ListVerbindenUndZentrieren");
             Infragistics.Win.UltraWinToolbars.ListTool listTool9 = new Infragistics.Win.UltraWinToolbars.ListTool("ListVerbindenUndZentrieren");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool74 = new Infragistics.Win.UltraWinToolbars.ButtonTool("AusrichtungRechts");
-            Infragistics.Win.Appearance appearance93 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance96 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             this.ultraGridStammDaten = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.ultraDataSource1 = new Infragistics.Win.UltraWinDataSource.UltraDataSource(this.components);
@@ -317,6 +321,7 @@
             this.ultraZoomPanelStammDaten = new Infragistics.Win.Misc.UltraZoomPanel();
             this.ultraTouchProvider1 = new Infragistics.Win.Touch.UltraTouchProvider(this.components);
             this.ultraGridPrintDocumentStamm = new Infragistics.Win.UltraWinGanttView.UltraGanttViewPrintDocument(this.components);
+            this.zedGraphControl1 = new ZedGraph.ZedGraphControl();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridStammDaten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraDataSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManagerStamm)).BeginInit();
@@ -476,7 +481,7 @@
             this.ultraGridStammDaten.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ultraGridStammDaten.Location = new System.Drawing.Point(0, 0);
             this.ultraGridStammDaten.Name = "ultraGridStammDaten";
-            this.ultraGridStammDaten.Size = new System.Drawing.Size(1149, 602);
+            this.ultraGridStammDaten.Size = new System.Drawing.Size(1149, 577);
             this.ultraGridStammDaten.TabIndex = 0;
             // 
             // ultraDataSource1
@@ -757,6 +762,7 @@
             this.ilDefaultImagesLarge.Images.SetKeyName(36, "Insert_Task_Normal");
             this.ilDefaultImagesLarge.Images.SetKeyName(37, "Insert_Task_Active");
             this.ilDefaultImagesLarge.Images.SetKeyName(38, "Insert_Task_Disabled");
+            this.ilDefaultImagesLarge.Images.SetKeyName(39, "WrapText_16x16.png");
             // 
             // ultraToolbarsManagerStamm
             // 
@@ -836,8 +842,13 @@
             buttonTool163});
             ribbonGroup2.Caption = "";
             ribbonGroup2.Visible = false;
-            ribbonGroup3.Caption = "Schriftart";
+            ribbonGroup3.Caption = "Einfügen";
             ribbonGroup3.LayoutDirection = Infragistics.Win.UltraWinToolbars.RibbonGroupToolLayoutDirection.Horizontal;
+            ribbonGroup3.PreferredToolSize = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large;
+            ribbonGroup3.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
+            popupMenuTool9});
+            ribbonGroup4.Caption = "Schriftart";
+            ribbonGroup4.LayoutDirection = Infragistics.Win.UltraWinToolbars.RibbonGroupToolLayoutDirection.Horizontal;
             fontListTool1.InstanceProps.ButtonGroup = "FontSize";
             fontListTool1.InstanceProps.Width = 139;
             comboBoxTool1.InstanceProps.ButtonGroup = "FontSize";
@@ -853,7 +864,7 @@
             popupMenuTool7.InstanceProps.IsFirstInGroup = true;
             popupColorPickerTool1.InstanceProps.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageOnlyOnToolbars;
             popupColorPickerTool1.InstanceProps.IsFirstInGroup = true;
-            ribbonGroup3.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
+            ribbonGroup4.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
             fontListTool1,
             comboBoxTool1,
             popupMenuTool12,
@@ -864,15 +875,15 @@
             popupMenuTool7,
             popupColorPickerTool1,
             popupColorPickerTool2});
-            ribbonGroup4.Caption = "Aus-";
-            ribbonGroup4.LayoutAlignment = Infragistics.Win.UltraWinToolbars.RibbonGroupLayoutAlignment.Near;
-            ribbonGroup4.LayoutDirection = Infragistics.Win.UltraWinToolbars.RibbonGroupToolLayoutDirection.Horizontal;
+            ribbonGroup5.Caption = "Aus-";
+            ribbonGroup5.LayoutAlignment = Infragistics.Win.UltraWinToolbars.RibbonGroupLayoutAlignment.Near;
+            ribbonGroup5.LayoutDirection = Infragistics.Win.UltraWinToolbars.RibbonGroupToolLayoutDirection.Horizontal;
             appearance26.TextHAlignAsString = "Right";
-            ribbonGroup4.Settings.Appearance = appearance26;
+            ribbonGroup5.Settings.Appearance = appearance26;
             appearance27.TextHAlignAsString = "Right";
-            ribbonGroup4.Settings.CaptionAppearance = appearance27;
-            ribbonGroup4.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
-            buttonTool42,
+            ribbonGroup5.Settings.CaptionAppearance = appearance27;
+            buttonTool45.InstanceProps.PreferredSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.ImageOnly;
+            ribbonGroup5.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
             buttonTool45,
             buttonTool62,
             buttonTool64,
@@ -880,16 +891,16 @@
             buttonTool72,
             buttonTool66,
             buttonTool68});
-            ribbonGroup5.Caption = "richung";
-            ribbonGroup5.LayoutAlignment = Infragistics.Win.UltraWinToolbars.RibbonGroupLayoutAlignment.Near;
+            ribbonGroup6.Caption = "richung";
+            ribbonGroup6.LayoutAlignment = Infragistics.Win.UltraWinToolbars.RibbonGroupLayoutAlignment.Near;
             appearance28.TextHAlignAsString = "Left";
-            ribbonGroup5.Settings.Appearance = appearance28;
+            ribbonGroup6.Settings.Appearance = appearance28;
             appearance29.TextHAlignAsString = "Left";
-            ribbonGroup5.Settings.CaptionAppearance = appearance29;
-            ribbonGroup5.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
+            ribbonGroup6.Settings.CaptionAppearance = appearance29;
+            ribbonGroup6.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
             buttonTool75,
             popupMenuTool25});
-            ribbonGroup6.Caption = "Vorgänge";
+            ribbonGroup7.Caption = "Vorgänge";
             buttonTool1.InstanceProps.IsFirstInGroup = true;
             buttonTool1.InstanceProps.MinimumSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large;
             buttonTool1.InstanceProps.PreferredSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large;
@@ -907,7 +918,7 @@
             popupMenuTool1.InstanceProps.PreferredSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large;
             buttonTool11.InstanceProps.MinimumSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large;
             buttonTool11.InstanceProps.PreferredSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large;
-            ribbonGroup6.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
+            ribbonGroup7.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
             buttonTool1,
             buttonTool19,
             buttonTool20,
@@ -923,7 +934,8 @@
             ribbonGroup3,
             ribbonGroup4,
             ribbonGroup5,
-            ribbonGroup6});
+            ribbonGroup6,
+            ribbonGroup7});
             ribbonTab1.MergeOrder = 1;
             appearance30.Image = ((object)(resources.GetObject("appearance30.Image")));
             appearance30.ImageBackgroundAlpha = Infragistics.Win.Alpha.Transparent;
@@ -1008,7 +1020,7 @@
             popupMenuTool10.SharedPropsInternal.AppearancesLarge.Appearance = appearance54;
             appearance55.Image = "Insert_Task_Active";
             popupMenuTool10.SharedPropsInternal.AppearancesLarge.HotTrackAppearance = appearance55;
-            popupMenuTool10.SharedPropsInternal.Caption = "Vorgang";
+            popupMenuTool10.SharedPropsInternal.Caption = "Neuer Datensatz";
             popupMenuTool10.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
             buttonTool59,
             buttonTool13});
@@ -1033,7 +1045,7 @@
             appearance63.Image = "Font_Underline_Active";
             stateButtonTool6.SharedPropsInternal.AppearancesSmall.HotTrackAppearance = appearance63;
             stateButtonTool6.SharedPropsInternal.Caption = "Unterstrichen";
-            buttonTool16.SharedPropsInternal.Caption = "Füge Vorgang am Ende ein";
+            buttonTool16.SharedPropsInternal.Caption = "Datensatz am Ende einfügen";
             appearance64.Image = "Tasks_MoveForward_Day_Normal";
             buttonTool50.SharedPropsInternal.AppearancesSmall.Appearance = appearance64;
             buttonTool50.SharedPropsInternal.Caption = "1 Tag";
@@ -1054,7 +1066,7 @@
             appearance69.Image = "Tasks_MoveBackward_Month_Normal";
             buttonTool58.SharedPropsInternal.AppearancesSmall.Appearance = appearance69;
             buttonTool58.SharedPropsInternal.Caption = "4 Wochen";
-            buttonTool60.SharedPropsInternal.Caption = "Füge Vorgang bei ausgewählter Zeile ein";
+            buttonTool60.SharedPropsInternal.Caption = "Datensatz bei ausgewählter Zeile ein";
             appearance70.Image = "Tasks_PercentComplete_75_Normal";
             buttonTool3.SharedPropsInternal.AppearancesLarge.Appearance = appearance70;
             appearance71.Image = "Tasks_PercentComplete_75_Active";
@@ -1145,41 +1157,47 @@
             appearance83.Image = "DecFont_16x16.png";
             popupMenuTool14.SharedPropsInternal.AppearancesSmall.Appearance = appearance83;
             appearance84.Image = "TopAlign_16x16.png";
-            buttonTool43.SharedPropsInternal.AppearancesSmall.Appearance = appearance84;
+            buttonTool43.SharedPropsInternal.AppearancesLarge.Appearance = appearance84;
+            appearance85.Image = "TopAlign_16x16.png";
+            buttonTool43.SharedPropsInternal.AppearancesSmall.Appearance = appearance85;
             buttonTool43.SharedPropsInternal.ToolTipText = "Text oben ausrichten";
             buttonTool43.SharedPropsInternal.ToolTipTitle = "Oben ausrichten";
-            appearance85.Image = "center_16x16.png";
-            buttonTool46.SharedPropsInternal.AppearancesSmall.Appearance = appearance85;
+            appearance86.Image = "center_16x16.png";
+            buttonTool46.SharedPropsInternal.AppearancesSmall.Appearance = appearance86;
             buttonTool46.SharedPropsInternal.ToolTipTextFormatted = "Text zentriert zwischen oberem<br/>und untermRand der Zelle<br/>ausrichten.<br/>";
             buttonTool46.SharedPropsInternal.ToolTipTitle = "Zentriert ausrichten";
-            appearance86.Image = "CenterAlign_16x16.png";
-            buttonTool61.SharedPropsInternal.AppearancesSmall.Appearance = appearance86;
+            appearance87.Image = ((object)(resources.GetObject("appearance87.Image")));
+            buttonTool61.SharedPropsInternal.AppearancesSmall.Appearance = appearance87;
             buttonTool61.SharedPropsInternal.ToolTipText = "Den Inhalt zentrieren";
             buttonTool61.SharedPropsInternal.ToolTipTitle = "Zentriert";
-            appearance87.Image = "BottomAlign_16x16.png";
-            buttonTool63.SharedPropsInternal.AppearancesSmall.Appearance = appearance87;
+            appearance88.Image = "BottomAlign_16x16.png";
+            buttonTool63.SharedPropsInternal.AppearancesSmall.Appearance = appearance88;
             buttonTool63.SharedPropsInternal.ToolTipText = "Text unten ausrichten";
             buttonTool63.SharedPropsInternal.ToolTipTitle = "Unten ausrichten";
-            appearance88.Image = "left_16x16.png";
-            buttonTool65.SharedPropsInternal.AppearancesSmall.Appearance = appearance88;
-            appearance89.Image = "indentleft_16x16.png";
-            buttonTool67.SharedPropsInternal.AppearancesSmall.Appearance = appearance89;
-            appearance90.Image = "indentright_16x16.png";
-            buttonTool69.SharedPropsInternal.AppearancesSmall.Appearance = appearance90;
+            appearance89.Image = "left_16x16.png";
+            buttonTool65.SharedPropsInternal.AppearancesSmall.Appearance = appearance89;
+            appearance90.Image = "indentleft_16x16.png";
+            buttonTool67.SharedPropsInternal.AppearancesSmall.Appearance = appearance90;
+            appearance91.Image = "indentright_16x16.png";
+            buttonTool69.SharedPropsInternal.AppearancesSmall.Appearance = appearance91;
             buttonTool71.SharedPropsInternal.Enabled = false;
-            appearance91.Image = "WrapText_16x16.png";
-            buttonTool73.SharedPropsInternal.AppearancesSmall.Appearance = appearance91;
+            appearance92.Image = "WrapText_16x16.png";
+            buttonTool73.SharedPropsInternal.AppearancesLarge.Appearance = appearance92;
+            appearance93.Image = ((object)(resources.GetObject("appearance93.Image")));
+            buttonTool73.SharedPropsInternal.AppearancesSmall.Appearance = appearance93;
             buttonTool73.SharedPropsInternal.Caption = "Textumbruch";
             buttonTool73.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
             buttonTool73.SharedPropsInternal.ToolTipTextFormatted = resources.GetString("resource.ToolTipTextFormatted");
             buttonTool73.SharedPropsInternal.ToolTipTitle = "Textumbruch";
-            appearance92.Image = "MergeCellsAndCenter_16x16.png";
-            popupMenuTool24.SharedPropsInternal.AppearancesSmall.Appearance = appearance92;
+            appearance94.Image = "MergeCellsAndCenter_16x16.png";
+            popupMenuTool24.SharedPropsInternal.AppearancesLarge.Appearance = appearance94;
+            appearance95.Image = "MergeCellsAndCenter_16x16.png";
+            popupMenuTool24.SharedPropsInternal.AppearancesSmall.Appearance = appearance95;
             popupMenuTool24.SharedPropsInternal.Caption = "Verbinden und zentrieren";
             popupMenuTool24.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
             listTool8});
-            appearance93.Image = "right_16x16.png";
-            buttonTool74.SharedPropsInternal.AppearancesSmall.Appearance = appearance93;
+            appearance96.Image = "right_16x16.png";
+            buttonTool74.SharedPropsInternal.AppearancesSmall.Appearance = appearance96;
             this.ultraToolbarsManagerStamm.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
             fontListTool2,
             comboBoxTool2,
@@ -1265,7 +1283,7 @@
             this._TerminPlanForm_Toolbars_Dock_Area_Top.ForeColor = System.Drawing.SystemColors.ControlText;
             this._TerminPlanForm_Toolbars_Dock_Area_Top.Location = new System.Drawing.Point(0, 0);
             this._TerminPlanForm_Toolbars_Dock_Area_Top.Name = "_TerminPlanForm_Toolbars_Dock_Area_Top";
-            this._TerminPlanForm_Toolbars_Dock_Area_Top.Size = new System.Drawing.Size(1151, 153);
+            this._TerminPlanForm_Toolbars_Dock_Area_Top.Size = new System.Drawing.Size(1151, 178);
             this._TerminPlanForm_Toolbars_Dock_Area_Top.ToolbarsManager = this.ultraToolbarsManagerStamm;
             // 
             // _TerminPlanForm_Toolbars_Dock_Area_Bottom
@@ -1287,9 +1305,9 @@
             this._TerminPlanForm_Toolbars_Dock_Area_Left.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Left;
             this._TerminPlanForm_Toolbars_Dock_Area_Left.ForeColor = System.Drawing.SystemColors.ControlText;
             this._TerminPlanForm_Toolbars_Dock_Area_Left.InitialResizeAreaExtent = 1;
-            this._TerminPlanForm_Toolbars_Dock_Area_Left.Location = new System.Drawing.Point(0, 153);
+            this._TerminPlanForm_Toolbars_Dock_Area_Left.Location = new System.Drawing.Point(0, 178);
             this._TerminPlanForm_Toolbars_Dock_Area_Left.Name = "_TerminPlanForm_Toolbars_Dock_Area_Left";
-            this._TerminPlanForm_Toolbars_Dock_Area_Left.Size = new System.Drawing.Size(1, 602);
+            this._TerminPlanForm_Toolbars_Dock_Area_Left.Size = new System.Drawing.Size(1, 577);
             this._TerminPlanForm_Toolbars_Dock_Area_Left.ToolbarsManager = this.ultraToolbarsManagerStamm;
             // 
             // _TerminPlanForm_Toolbars_Dock_Area_Right
@@ -1299,24 +1317,24 @@
             this._TerminPlanForm_Toolbars_Dock_Area_Right.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Right;
             this._TerminPlanForm_Toolbars_Dock_Area_Right.ForeColor = System.Drawing.SystemColors.ControlText;
             this._TerminPlanForm_Toolbars_Dock_Area_Right.InitialResizeAreaExtent = 1;
-            this._TerminPlanForm_Toolbars_Dock_Area_Right.Location = new System.Drawing.Point(1150, 153);
+            this._TerminPlanForm_Toolbars_Dock_Area_Right.Location = new System.Drawing.Point(1150, 178);
             this._TerminPlanForm_Toolbars_Dock_Area_Right.Name = "_TerminPlanForm_Toolbars_Dock_Area_Right";
-            this._TerminPlanForm_Toolbars_Dock_Area_Right.Size = new System.Drawing.Size(1, 602);
+            this._TerminPlanForm_Toolbars_Dock_Area_Right.Size = new System.Drawing.Size(1, 577);
             this._TerminPlanForm_Toolbars_Dock_Area_Right.ToolbarsManager = this.ultraToolbarsManagerStamm;
             // 
             // ultraZoomPanelStammDaten
             // 
             appearance14.BackColor = System.Drawing.Color.DarkGray;
             this.ultraZoomPanelStammDaten.Appearance = appearance14;
-            this.ultraZoomPanelStammDaten.AutoScrollMinSize = new System.Drawing.Size(1149, 602);
+            this.ultraZoomPanelStammDaten.AutoScrollMinSize = new System.Drawing.Size(1149, 577);
             // 
             // ultraZoomPanelStammDaten.ClientArea
             // 
             this.ultraZoomPanelStammDaten.ClientArea.Controls.Add(this.ultraGridStammDaten);
             this.ultraZoomPanelStammDaten.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraZoomPanelStammDaten.Location = new System.Drawing.Point(1, 153);
+            this.ultraZoomPanelStammDaten.Location = new System.Drawing.Point(1, 178);
             this.ultraZoomPanelStammDaten.Name = "ultraZoomPanelStammDaten";
-            this.ultraZoomPanelStammDaten.Size = new System.Drawing.Size(1149, 602);
+            this.ultraZoomPanelStammDaten.Size = new System.Drawing.Size(1149, 577);
             this.ultraZoomPanelStammDaten.TabIndex = 13;
             this.ultraZoomPanelStammDaten.Tag = "StammDaten";
             this.ultraZoomPanelStammDaten.ZoomProperties.MaxZoomFactor = 3F;
@@ -1327,6 +1345,20 @@
             this.ultraTouchProvider1.ContainingControl = this;
             this.ultraTouchProvider1.Enabled = false;
             // 
+            // zedGraphControl1
+            // 
+            this.zedGraphControl1.Location = new System.Drawing.Point(798, 122);
+            this.zedGraphControl1.Name = "zedGraphControl1";
+            this.zedGraphControl1.ScrollGrace = 0D;
+            this.zedGraphControl1.ScrollMaxX = 0D;
+            this.zedGraphControl1.ScrollMaxY = 0D;
+            this.zedGraphControl1.ScrollMaxY2 = 0D;
+            this.zedGraphControl1.ScrollMinX = 0D;
+            this.zedGraphControl1.ScrollMinY = 0D;
+            this.zedGraphControl1.ScrollMinY2 = 0D;
+            this.zedGraphControl1.Size = new System.Drawing.Size(8, 8);
+            this.zedGraphControl1.TabIndex = 18;
+            // 
             // StammDaten
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -1334,6 +1366,7 @@
             this.BackColor = System.Drawing.Color.DarkGray;
             this.ClientSize = new System.Drawing.Size(1151, 756);
             this.ControlBox = false;
+            this.Controls.Add(this.zedGraphControl1);
             this.Controls.Add(this.ultraZoomPanelStammDaten);
             this.Controls.Add(this._TerminPlanForm_Toolbars_Dock_Area_Left);
             this.Controls.Add(this._TerminPlanForm_Toolbars_Dock_Area_Right);
@@ -1370,5 +1403,6 @@
         public Infragistics.Win.Misc.UltraZoomPanel ultraZoomPanelStammDaten;
         private Infragistics.Win.Touch.UltraTouchProvider ultraTouchProvider1;
         private Infragistics.Win.UltraWinGanttView.UltraGanttViewPrintDocument ultraGridPrintDocumentStamm;
+        private ZedGraph.ZedGraphControl zedGraphControl1;
     }
 }

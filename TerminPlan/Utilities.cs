@@ -36,8 +36,8 @@ namespace Terminplan
     /// </summary>
     internal class DienstProgramme
     {
-
         #region Static ExecutingAssembly
+
         private static Assembly executingAssembly;
 
         /// <summary>Holt das ausführbare Assembly</summary>
@@ -53,12 +53,13 @@ namespace Terminplan
         #endregion Static ExecutingAssembly
 
         #region SetRibbonGroupToolsEnabledState
+
         /// <summary>
         /// Sets the Enabled property of the tools within the specified RibbonGroup.
         /// </summary>
         /// <param name="group">The group.</param>
         /// <param name="enabledState">if set to <c>true</c> [enabled state].</param>
-        internal static  void SetRibbonGroupToolsEnabledState(RibbonGroup group, bool enabledState)
+        internal static void SetRibbonGroupToolsEnabledState(RibbonGroup group, bool enabledState)
         {
             if (group == null)
                 return;
@@ -68,11 +69,13 @@ namespace Terminplan
                 tool.SharedProps.Enabled = enabledState;
             }
         }
+
         #endregion SetRibbonGroupToolsEnabledState
 
         #region ColorizeImages
+
         /// <summary>
-        /// Creates new images using a pixel-based color replacement on the image from the provided imagelist. 
+        /// Creates new images using a pixel-based color replacement on the image from the provided imagelist.
         /// </summary>
         /// <param name="oldColor">The old Color.</param>
         /// <param name="colors">The dictionary containing the new resolved colors</param>
@@ -96,20 +99,23 @@ namespace Terminplan
                     break;
                 }
 
+                // Falls das Bild schon in der geänderten Liste vorhanden ist, dieses aus der Liste löschen
                 var index = colorizedImageList.Images.IndexOfKey(key);
                 if (index >= 0)
                 {
-                    var oldImage = colorizedImageList.Images[index];
-                    colorizedImageList.Images.RemoveByKey(key);
-                    oldImage.Dispose();
+                    var oldImage = colorizedImageList.Images[index];            // Bild ermitteln
+                    colorizedImageList.Images.RemoveByKey(key);                 // Bild aus Liste löschen
+                    oldImage.Dispose();                                         // Ressourcen für dieses Bild löschen
                 }
 
+                // Falls Bild vorhanden ist, dieses in die Liste der geänderten Bilder eintragen
                 if (bitmap != null)
                 {
                     colorizedImageList.Images.Add(key, bitmap);
                 }
             }
         }
+
         #endregion ColorizeImages
 
         #region GetAssemblyAttribute
@@ -127,9 +133,10 @@ namespace Terminplan
             return value.Invoke(attribute);
         }
 
-        #endregion // GetAssemblyAttribute
+        #endregion GetAssemblyAttribute
 
         #region GetData
+
         /// <summary> R bindenden Daten abuft die zu </summary>
         /// <returns>die gelesenen Daten als DataSet</returns>
         internal static DataSet GetData(string fileName)
@@ -157,11 +164,12 @@ namespace Terminplan
             var openFileDialog1 = new OpenFileDialog
             {
                 Filter = @"XML Dateien|*.xml",
-                Title = @"Terminplan öffnen",                
+                Title = @"Terminplan öffnen",
             };
 
             return openFileDialog1.ShowDialog() != DialogResult.OK ? string.Empty : openFileDialog1.FileName;
         }
+
         #endregion GetData
 
         internal static void PutData(string fileName, DataSet data)
@@ -170,6 +178,7 @@ namespace Terminplan
         }
 
         #region GetEmbeddedResourceStream
+
         /// <summary>
         /// Gets the embedded resource stream.
         /// </summary>
@@ -181,9 +190,11 @@ namespace Terminplan
             Debug.Assert(stream != null, Resources.DienstProgramme_GetEmbeddedResourceStream_Unable_to_locate_embedded_resource_, Resources.DienstProgramme_GetEmbeddedResourceStream_Resource_name___0_, resourceName);
             return stream;
         }
+
         #endregion GetEmbeddedResourceStream
 
         #region GetLocalizedString
+
         /// <summary>
         /// Localizes a string using the ResourceManager.
         /// </summary>
@@ -195,9 +206,11 @@ namespace Terminplan
             var localizedString = rm.GetString(currentString);
             return (string.IsNullOrEmpty(localizedString) ? currentString : localizedString).Replace('_', ' ');
         }
+
         #endregion GetLocalizedString
 
         #region GetStyleLibraryResourceNames
+
         /// <summary>
         /// Gets an array of  style library resource names.
         /// </summary>
@@ -211,6 +224,7 @@ namespace Terminplan
         #endregion GetStyleLibraryResourceNames
 
         #region ToggleDefaultableBoolean
+
         /// <summary>
         /// Toggles a DefaultableBoolean value.
         /// </summary>
@@ -222,6 +236,7 @@ namespace Terminplan
 
             return value;
         }
+
         #endregion ToggleDefaultableBoolean
 
         /// <summary>GUID erstellen und formatieren </summary>
@@ -231,6 +246,5 @@ namespace Terminplan
             var retwert = Guid.NewGuid().ToString(@"D");
             return retwert;
         }
-
     }
 }

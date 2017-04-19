@@ -61,3 +61,6 @@ E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\de-DE\Terminplan.resources.dll
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\Terminplan.exe
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\Terminplan.pdb
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\TerminPlan.csprojResolveAssemblyReference.cache
+E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\Zedgraph.dll
+E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\Zedgraph.xml
+E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\de\Zedgraph.resources.dll
