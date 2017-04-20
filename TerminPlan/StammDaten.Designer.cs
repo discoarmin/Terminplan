@@ -481,7 +481,7 @@
             this.ultraGridStammDaten.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ultraGridStammDaten.Location = new System.Drawing.Point(0, 0);
             this.ultraGridStammDaten.Name = "ultraGridStammDaten";
-            this.ultraGridStammDaten.Size = new System.Drawing.Size(1149, 577);
+            this.ultraGridStammDaten.Size = new System.Drawing.Size(1149, 602);
             this.ultraGridStammDaten.TabIndex = 0;
             // 
             // ultraDataSource1
@@ -1066,7 +1066,7 @@
             appearance69.Image = "Tasks_MoveBackward_Month_Normal";
             buttonTool58.SharedPropsInternal.AppearancesSmall.Appearance = appearance69;
             buttonTool58.SharedPropsInternal.Caption = "4 Wochen";
-            buttonTool60.SharedPropsInternal.Caption = "Datensatz bei ausgewählter Zeile ein";
+            buttonTool60.SharedPropsInternal.Caption = "Datensatz bei ausgewählter Zeile einfügen";
             appearance70.Image = "Tasks_PercentComplete_75_Normal";
             buttonTool3.SharedPropsInternal.AppearancesLarge.Appearance = appearance70;
             appearance71.Image = "Tasks_PercentComplete_75_Active";
@@ -1162,7 +1162,7 @@
             buttonTool43.SharedPropsInternal.AppearancesSmall.Appearance = appearance85;
             buttonTool43.SharedPropsInternal.ToolTipText = "Text oben ausrichten";
             buttonTool43.SharedPropsInternal.ToolTipTitle = "Oben ausrichten";
-            appearance86.Image = "center_16x16.png";
+            appearance86.Image = ((object)(resources.GetObject("appearance86.Image")));
             buttonTool46.SharedPropsInternal.AppearancesSmall.Appearance = appearance86;
             buttonTool46.SharedPropsInternal.ToolTipTextFormatted = "Text zentriert zwischen oberem<br/>und untermRand der Zelle<br/>ausrichten.<br/>";
             buttonTool46.SharedPropsInternal.ToolTipTitle = "Zentriert ausrichten";
@@ -1170,15 +1170,15 @@
             buttonTool61.SharedPropsInternal.AppearancesSmall.Appearance = appearance87;
             buttonTool61.SharedPropsInternal.ToolTipText = "Den Inhalt zentrieren";
             buttonTool61.SharedPropsInternal.ToolTipTitle = "Zentriert";
-            appearance88.Image = "BottomAlign_16x16.png";
+            appearance88.Image = ((object)(resources.GetObject("appearance88.Image")));
             buttonTool63.SharedPropsInternal.AppearancesSmall.Appearance = appearance88;
             buttonTool63.SharedPropsInternal.ToolTipText = "Text unten ausrichten";
             buttonTool63.SharedPropsInternal.ToolTipTitle = "Unten ausrichten";
-            appearance89.Image = "left_16x16.png";
+            appearance89.Image = ((object)(resources.GetObject("appearance89.Image")));
             buttonTool65.SharedPropsInternal.AppearancesSmall.Appearance = appearance89;
-            appearance90.Image = "indentleft_16x16.png";
+            appearance90.Image = ((object)(resources.GetObject("appearance90.Image")));
             buttonTool67.SharedPropsInternal.AppearancesSmall.Appearance = appearance90;
-            appearance91.Image = "indentright_16x16.png";
+            appearance91.Image = ((object)(resources.GetObject("appearance91.Image")));
             buttonTool69.SharedPropsInternal.AppearancesSmall.Appearance = appearance91;
             buttonTool71.SharedPropsInternal.Enabled = false;
             appearance92.Image = "WrapText_16x16.png";
@@ -1191,12 +1191,12 @@
             buttonTool73.SharedPropsInternal.ToolTipTitle = "Textumbruch";
             appearance94.Image = "MergeCellsAndCenter_16x16.png";
             popupMenuTool24.SharedPropsInternal.AppearancesLarge.Appearance = appearance94;
-            appearance95.Image = "MergeCellsAndCenter_16x16.png";
+            appearance95.Image = ((object)(resources.GetObject("appearance95.Image")));
             popupMenuTool24.SharedPropsInternal.AppearancesSmall.Appearance = appearance95;
             popupMenuTool24.SharedPropsInternal.Caption = "Verbinden und zentrieren";
             popupMenuTool24.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
             listTool8});
-            appearance96.Image = "right_16x16.png";
+            appearance96.Image = ((object)(resources.GetObject("appearance96.Image")));
             buttonTool74.SharedPropsInternal.AppearancesSmall.Appearance = appearance96;
             this.ultraToolbarsManagerStamm.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
             fontListTool2,
@@ -1283,7 +1283,7 @@
             this._TerminPlanForm_Toolbars_Dock_Area_Top.ForeColor = System.Drawing.SystemColors.ControlText;
             this._TerminPlanForm_Toolbars_Dock_Area_Top.Location = new System.Drawing.Point(0, 0);
             this._TerminPlanForm_Toolbars_Dock_Area_Top.Name = "_TerminPlanForm_Toolbars_Dock_Area_Top";
-            this._TerminPlanForm_Toolbars_Dock_Area_Top.Size = new System.Drawing.Size(1151, 178);
+            this._TerminPlanForm_Toolbars_Dock_Area_Top.Size = new System.Drawing.Size(1151, 153);
             this._TerminPlanForm_Toolbars_Dock_Area_Top.ToolbarsManager = this.ultraToolbarsManagerStamm;
             // 
             // _TerminPlanForm_Toolbars_Dock_Area_Bottom
@@ -1305,9 +1305,9 @@
             this._TerminPlanForm_Toolbars_Dock_Area_Left.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Left;
             this._TerminPlanForm_Toolbars_Dock_Area_Left.ForeColor = System.Drawing.SystemColors.ControlText;
             this._TerminPlanForm_Toolbars_Dock_Area_Left.InitialResizeAreaExtent = 1;
-            this._TerminPlanForm_Toolbars_Dock_Area_Left.Location = new System.Drawing.Point(0, 178);
+            this._TerminPlanForm_Toolbars_Dock_Area_Left.Location = new System.Drawing.Point(0, 153);
             this._TerminPlanForm_Toolbars_Dock_Area_Left.Name = "_TerminPlanForm_Toolbars_Dock_Area_Left";
-            this._TerminPlanForm_Toolbars_Dock_Area_Left.Size = new System.Drawing.Size(1, 577);
+            this._TerminPlanForm_Toolbars_Dock_Area_Left.Size = new System.Drawing.Size(1, 602);
             this._TerminPlanForm_Toolbars_Dock_Area_Left.ToolbarsManager = this.ultraToolbarsManagerStamm;
             // 
             // _TerminPlanForm_Toolbars_Dock_Area_Right
@@ -1317,24 +1317,24 @@
             this._TerminPlanForm_Toolbars_Dock_Area_Right.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Right;
             this._TerminPlanForm_Toolbars_Dock_Area_Right.ForeColor = System.Drawing.SystemColors.ControlText;
             this._TerminPlanForm_Toolbars_Dock_Area_Right.InitialResizeAreaExtent = 1;
-            this._TerminPlanForm_Toolbars_Dock_Area_Right.Location = new System.Drawing.Point(1150, 178);
+            this._TerminPlanForm_Toolbars_Dock_Area_Right.Location = new System.Drawing.Point(1150, 153);
             this._TerminPlanForm_Toolbars_Dock_Area_Right.Name = "_TerminPlanForm_Toolbars_Dock_Area_Right";
-            this._TerminPlanForm_Toolbars_Dock_Area_Right.Size = new System.Drawing.Size(1, 577);
+            this._TerminPlanForm_Toolbars_Dock_Area_Right.Size = new System.Drawing.Size(1, 602);
             this._TerminPlanForm_Toolbars_Dock_Area_Right.ToolbarsManager = this.ultraToolbarsManagerStamm;
             // 
             // ultraZoomPanelStammDaten
             // 
             appearance14.BackColor = System.Drawing.Color.DarkGray;
             this.ultraZoomPanelStammDaten.Appearance = appearance14;
-            this.ultraZoomPanelStammDaten.AutoScrollMinSize = new System.Drawing.Size(1149, 577);
+            this.ultraZoomPanelStammDaten.AutoScrollMinSize = new System.Drawing.Size(1149, 602);
             // 
             // ultraZoomPanelStammDaten.ClientArea
             // 
             this.ultraZoomPanelStammDaten.ClientArea.Controls.Add(this.ultraGridStammDaten);
             this.ultraZoomPanelStammDaten.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraZoomPanelStammDaten.Location = new System.Drawing.Point(1, 178);
+            this.ultraZoomPanelStammDaten.Location = new System.Drawing.Point(1, 153);
             this.ultraZoomPanelStammDaten.Name = "ultraZoomPanelStammDaten";
-            this.ultraZoomPanelStammDaten.Size = new System.Drawing.Size(1149, 577);
+            this.ultraZoomPanelStammDaten.Size = new System.Drawing.Size(1149, 602);
             this.ultraZoomPanelStammDaten.TabIndex = 13;
             this.ultraZoomPanelStammDaten.Tag = "StammDaten";
             this.ultraZoomPanelStammDaten.ZoomProperties.MaxZoomFactor = 3F;

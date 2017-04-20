@@ -164,6 +164,9 @@
     <Compile Include="StammDatenEreinisse.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="StammDatenPart1.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="StammDatenVariablen.cs">
       <SubType>Form</SubType>
     </Compile>

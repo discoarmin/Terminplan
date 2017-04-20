@@ -87,44 +87,44 @@ namespace Terminplan
             // Ermitteln, auf welches Tool geklickt wurde
             switch (e.Tool.Key)
             {
-                case "Font_Bold":                                               // Fettschrift
+                case @"Font_Bold":                                              // Fettschrift
                     if (this.cellActivationRecursionFlag == false)
                     {
                         this.UpdateFontProperty(FontProperties.Bold);
                     }
                     break;
 
-                case "Font_Italic":                                             // Kursivschrift
+                case @"Font_Italic":                                             // Kursivschrift
                     if (this.cellActivationRecursionFlag == false)
                     {
                         this.UpdateFontProperty(FontProperties.Italics);
                     }
                     break;
 
-                case "Font_Underline":
+                case @"Font_Underline":
                     if (this.cellActivationRecursionFlag == false)              // Unterstrichene Schrift
                     {
                         this.UpdateFontProperty(FontProperties.Underline);
                     }
                     break;
 
-                case "Font_BackColor":                                          // Hintergrundfarbe
+                case @"Font_BackColor":                                          // Hintergrundfarbe
                     this.SetTextBackColor();
                     break;
 
-                case "Font_ForeColor":                                          // Vordergrundfarbe
+                case @"Font_ForeColor":                                          // Vordergrundfarbe
                     this.SetTextForeColor();
                     break;
 
-                case "FontList":                                                // Liste mit den Schriftarten
+                case @"FontList":                                                // Liste mit den Schriftarten
                     this.UpdateFontName();
                     break;
 
-                case "FontSize":                                                // Schriftgröße
+                case @"FontSize":                                                // Schriftgröße
                     this.UpdateFontSize();
                     break;
 
-                case "ThemeList":
+                case @"ThemeList":                                              // Liste mit den FArben für das Aussehen der Anwendung
                     var themeListTool = e.Tool as ListTool;
                     if (themeListTool != null && themeListTool.SelectedItem == null)
                     {
@@ -139,14 +139,22 @@ namespace Terminplan
                     }
                     break;
 
-                case "Print":
+                case @"Print":                                                  // Ausdruck
                     var printPreview = new UltraPrintPreviewDialog { Document = this.ultraGridPrintDocumentStamm };
                     printPreview.ShowDialog(this);
                     break;
 
-                case "Exit":
-                case "Close":
+                case @"Exit":                                                   // Beenden der Anwendung
+                case @"Close":
                     Application.Exit();
+                    break;
+
+                case @"Insert_Ds_Button":                                       // Datensatz am Ende einfügen
+                    this.InsertStammDatenDs(true);
+                    break;
+
+                case @"Insert_Ds_AtSelectedRow":                                // Datensatz bei aktiver Zeile einfügen
+                    this.InsertStammDatenDs(false);
                     break;
             }
         }
