@@ -45,20 +45,23 @@ namespace Terminplan
 
         /// <summary>Holt das Startdatum des Projekts</summary>
         public string Kommission { get; private set; }
+
         #endregion Eigenschaften
 
         #region Ereignisse
+
         /// <summary>Behandelt das Click-Ereignis des btnOk Kontrols.</summary>
         /// <param name="sender">Die Quelle des Ereignisses.</param>
         /// <param name="e">Die <see cref="EventArgs"/> Instanz, welche die Ereignisdaten enthält.</param>
         private void OnBtnOkClick(object sender, EventArgs e)
         {
-            PrjName = ultraTextEditorPrjName.Text;                              // eingeebener Projektname
-            PrjStart = ultraDateTimeEditor1.DateTime;                           // eingegebes Startdatum
+            this.PrjName = ultraTextEditorPrjName.Text;                         // eingeebener Projektname
+            this.PrjStart = ultraDateTimeEditor1.DateTime;                      // eingegebes Startdatum
+            TerminPlanForm.PrjName = this.PrjName;                              // Name des Projekts auch anderen Klassen zur Verfügung stellen
 
             // Die Art der Kommissionsnummer ist ahängig von der Auswahl, ob reiner Text oder EST-Kommissions-Nummer
-            Kommission = rbKommission.Checked ? ultraMaskedEditKommission.Text : ultraTextEditorNormalerText.Text;
-            StartPrj = ErstelleStartDatum();                                    // Erstellt das 
+            this.Kommission = this.rbKommission.Checked ? this.ultraMaskedEditKommission.Text : this.ultraTextEditorNormalerText.Text;
+            StartPrj = ErstelleStartDatum();                                    // Erstellt das
             DialogResult = DialogResult.OK;                                     // Ergebnis des Dialogs ist OK
             Close();                                                            // Dialog beenden
         }
@@ -71,6 +74,7 @@ namespace Terminplan
             DialogResult = DialogResult.Cancel;                                 // Ergebnis des Dialogs ist Cancel
             Close();                                                            // Dialog beenden
         }
+
         #endregion Ereignisse
 
         /// <summary>Erstellt das Startdatum in dem Format jjjj-mm-ttThh:mm:ss+01:00</summary>
@@ -98,13 +102,13 @@ namespace Terminplan
         /// <param name="e">Die <see cref="EventArgs"/>Instanz, welche die Ereignisdaten enthält.</param>
         private void OnRadioButtonChanged(object sender, EventArgs e)
         {
-            var rb = (RadioButton)sender;                                       // die Quelle ist ein RadioButton                                        
-            
+            var rb = (RadioButton)sender;                                       // die Quelle ist ein RadioButton
+
             // Falls der RadioButton abgewählt ist, wird die zugehörige Textbox usichtbar geschaltet, sonst sichtbar
             if (rb.Checked)
             {
                 // Ermitteln, welcher RadioButton betätigt wurde
-                if(rb.Tag.ToString() == @"Text")
+                if (rb.Tag.ToString() == @"Text")
                 {
                     // Der Projektschlüssel besteht aus reinem Text
                     ultraTextEditorNormalerText.Visible = true;                 // Texteditor ausblenden
@@ -112,7 +116,7 @@ namespace Terminplan
                 }
                 else
                 {
-                    // Der Projektschlüssel besteht aus einem 
+                    // Der Projektschlüssel besteht aus einem
                     ultraTextEditorNormalerText.Visible = false;                // Texteditor einblenden
                     ultraMaskedEditKommission.Visible = true;                   // maskierte Eingabe für EST-Kommissionsnummeer ausblenden
                 }

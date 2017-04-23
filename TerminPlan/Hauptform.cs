@@ -41,6 +41,7 @@ namespace Terminplan
     using System.ComponentModel;
     using System.Data;
     using System.Globalization;
+    using System.IO;
     using System.Windows.Forms;
     using Infragistics.Win;
     using Infragistics.Win.AppStyling;
@@ -183,7 +184,8 @@ namespace Terminplan
                     dateiName = DienstProgramme.OeffneXmlDatei();               // Öffnen-Dialog anzeigen
                     if (dateiName != string.Empty)
                     {
-                        DatasetTp = DienstProgramme.GetData(dateiName);         // bestehenden Terminplan laden
+                        this.DatasetTp = DienstProgramme.GetData(dateiName);    // bestehenden Terminplan laden
+                        PrjName = Path.GetFileNameWithoutExtension(dateiName);  // Der Dateiname ist der Projektname
                     }
                 }
                 else

@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="HauptformEreignisse.cs" company="EST GmbH + CO.KG">
+// <copyright file="StammDatenEreignisse.cs" company="EST GmbH + CO.KG">
 //   Copyright (c) EST GmbH + CO.KG. All rights reserved.
 // </copyright>
 // <summary>
@@ -19,6 +19,7 @@
 
 namespace Terminplan
 {
+    using System;
     using System.Collections.Generic;
     using System.Data;
     using System.Diagnostics.CodeAnalysis;
@@ -34,7 +35,7 @@ namespace Terminplan
     using PropertyIds = Infragistics.Win.UltraWinToolbars.PropertyIds;
 
     /// <summary>
-    /// Klasse TerminPlanForm (Hauptformular).
+    /// Klasse StammDaten.
     /// </summary>
     /// <seealso cref="System.Windows.Forms.Form" />
     [SuppressMessage("ReSharper", "SwitchStatementMissingSomeCases")]
@@ -502,6 +503,167 @@ namespace Terminplan
             var culture = CultureInfo.InstalledUICulture;                       // Sprache des Betriebssystems ermitteln
             Thread.CurrentThread.CurrentCulture = culture;
             Thread.CurrentThread.CurrentUICulture = culture;
+
+            var col = this.ultraGridStammDaten.DisplayLayout.Bands[0].Columns;
+
+            // Spaltenbreite einstellen
+            foreach (var de in col)
+            {
+                var colNumber = Convert.ToInt32(DienstProgramme.ZahlenInString(de.Header.Caption)); //Spaltennummer extrahieren
+                var colBez = DienstProgramme.IntConvertToExcelHeadLine(colNumber); // Spaltennummer in Spaltenbuchstabe(n) umwandeln
+
+                de.Header.Caption = colBez;                                     // Spaltenbuchstabe eintragen
+                de.Header.Appearance.TextHAlign = HAlign.Center;
+                de.Header.Appearance.TextVAlign = VAlign.Middle;
+                de.Header.Appearance.FontData.Bold = DefaultableBoolean.True;
+                de.Header.Appearance.FontData.Name = @"Arial";
+                de.Header.Appearance.FontData.SizeInPoints = 10;
+
+                // Spaltenbreite je nach Spaltenummer einstellen
+                switch (colNumber)
+                {
+                    case 1:                                                     // Spalte 1
+                        de.Width = 14;
+                        break;
+
+                    case 2:
+                        de.Width = 320;
+                        break;
+
+                    case 3:
+                    case 5:
+                    case 8:
+                    case 13:
+                    case 18:
+                    case 20:
+                    case 26:
+                    case 32:
+                    case 34:
+                        de.Width = 32;
+                        break;
+
+                    case 4:
+                    case 22:
+                    case 24:
+                    case 30:
+                        de.Width = 22;
+                        break;
+
+                    case 6:
+                        de.Width = 86;
+                        break;
+
+                    case 7:
+                        de.Width = 173;
+                        break;
+
+                    case 9:
+                        de.Width = 166;
+                        break;
+
+                    case 14:
+                        de.Width = 155;
+                        break;
+
+                    case 19:
+                        de.Width = 100;
+                        break;
+
+                    case 21:
+                    case 23:
+                    case 25:
+                        de.Width = 86;
+                        break;
+
+                    case 27:
+                        de.Width = 280;
+                        break;
+
+                    case 28:
+                        de.Width = 26;
+                        break;
+
+                    case 29:
+                        de.Width = 116;
+                        break;
+
+                    case 31:
+                    case 38:
+                    case 39:
+                    case 40:
+                    case 41:
+                        de.Width = 80;
+                        break;
+
+                    case 33:
+                        de.Width = 170;
+                        break;
+
+                    case 35:
+                        de.Width = 35;
+                        break;
+
+                    case 36:
+                        de.Width = 286;
+                        break;
+
+                    case 37:
+                        de.Width = 52;
+                        break;
+
+                    case 42:
+                        de.Width = 440;
+                        break;
+
+                    default:                                                    // Alle anderen Spalten werden ausgeblendet
+                        if ((colNumber <= 57) && (colNumber >= 43))
+                        {
+                            // Zwischen den Spalten 43 und 57 ist die Spaltenbreite gleich
+                            de.Width = 80;
+                        }
+                        else
+                        {
+                            de.Hidden = true;
+                        }
+                        break;
+                }
+
+                //// Arbeitsinhalt oder Aufgabe
+                //if (de.Key.ToLower() == @"name")
+                //{
+                //    //de.Text = "Arbeitsinhalt/Aufgabe";
+                //    de.Text = @"Verfahren";
+                //    de.Visible = DefaultableBoolean.True;
+                //}
+
+                //// Dauer
+                //if (de.Key.ToLower() == @"duration")
+                //{
+                //    de.Text = @"Dauer";
+                //    de.Visible = DefaultableBoolean.True;
+                //}
+
+                //// Start
+                //if (de.Key.ToLower() == @"start")
+                //{
+                //    de.Text = @"Start";
+                //    de.Visible = DefaultableBoolean.True;
+                //}
+
+                //// Ende
+                //if (de.Key.ToLower() == @"enddatetime")
+                //{
+                //    de.Text = @"Ende";
+                //    de.Visible = DefaultableBoolean.True;
+                //}
+
+                //// Fertig in %
+                //if (de.Key.ToLower() == @"percentcomplete")
+                //{
+                //    de.Text = @"Status";
+                //    de.Visible = DefaultableBoolean.True;
+                //}
+            }
 
             // Füllt die Liste mit den Farbschematas
             var selectedIndex = 0;                                              // Index des ausgewählten Farbschemas (1. Element)

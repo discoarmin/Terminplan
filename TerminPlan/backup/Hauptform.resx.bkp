@@ -137,7 +137,7 @@
     <value>ultraZoomPanelTerminPlan.ClientArea</value>
   </data>
   <data name="&gt;&gt;ultraZoomPanelTerminPlan.ClientArea.Type" xml:space="preserve">
-    <value>Infragistics.Win.Misc.UltraPanelClientAreaUnsafe, Infragistics4.Win.Misc.v16.2, Version=16.2.20162.2040, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
+    <value>Infragistics.Win.Misc.UltraPanelClientAreaUnsafe, Infragistics4.Win.Misc.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
   </data>
   <data name="&gt;&gt;ultraZoomPanelTerminPlan.ClientArea.Parent" xml:space="preserve">
     <value>ultraZoomPanelTerminPlan</value>
@@ -150,10 +150,10 @@
     <value>Fill</value>
   </data>
   <data name="ultraZoomPanelTerminPlan.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 152</value>
+    <value>0, 154</value>
   </data>
   <data name="ultraZoomPanelTerminPlan.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1167, 643</value>
+    <value>1167, 641</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="ultraZoomPanelTerminPlan.TabIndex" type="System.Int32, mscorlib">
@@ -163,7 +163,7 @@
     <value>ultraZoomPanelTerminPlan</value>
   </data>
   <data name="&gt;&gt;ultraZoomPanelTerminPlan.Type" xml:space="preserve">
-    <value>Infragistics.Win.Misc.UltraZoomPanel, Infragistics4.Win.Misc.v16.2, Version=16.2.20162.2040, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
+    <value>Infragistics.Win.Misc.UltraZoomPanel, Infragistics4.Win.Misc.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
   </data>
   <data name="&gt;&gt;ultraZoomPanelTerminPlan.Parent" xml:space="preserve">
     <value>$this</value>
@@ -172,10 +172,10 @@
     <value>0</value>
   </data>
   <data name="_TerminPlanForm_Toolbars_Dock_Area_Left.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 152</value>
+    <value>0, 154</value>
   </data>
   <data name="_TerminPlanForm_Toolbars_Dock_Area_Left.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 643</value>
+    <value>0, 641</value>
   </data>
   <metadata name="ultraToolbarsManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -188,7 +188,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACi
-        HQEAAk1TRnQBSQFMAgEBJwEAARwBAwEcAQMBIAEAASABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAGA
+        HQEAAk1TRnQBSQFMAgEBJwEAATQBAwE0AQMBIAEAASABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAGA
         AwABQAEBAgABAQEAASAGAAGAAQL/AP8AHwAB/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/
         AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/
         AQAD/wEAA/8BAAL/GAAB/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/
@@ -1417,119 +1417,119 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAu
-        MgAAAk1TRnQBSQFMAgEBFQEAAeQBBAHkAQQBEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
-        AwABYAMAAQEBAAEgBgABYP8AEwADKwH/AysB/wMrAf8DKwH/AysB/wMrAf8DKwH/AysB/wMrAf8DKwH/
-        AysB/wMrAf8DKwH/AysB/wMrAf/EAAMrAf80AAMrAf/EAAMrAf8EAANHAYADRwGABAADRwGAA0cBgAwA
-        A14B0AMMARAIAAMrAf/EAAMrAf8EAANHAYADRwGABAADRwGAA0cBgAwAAysB/wNfAeADIQEwBAADKwH/
-        xAADKwH/HAADKwH/AysB/wMrAf8DKwH/A18B4AQAAysB/8QAAysB/wQAA0cBgANHAYAEAANHAYADRwGA
-        DAADKwH/A10B8AMhATAEAAMrAf/EAAMrAf8EAANHAYADRwGABAADRwGAA0cBgAwAA14B0AMMARAIAAMr
-        Af/EAAMrAf80AAMrAf/EAAMrAf8EAANHAYADRwGABAADRwGAA0cBgAQAA0cBgANHAYAEAANHAYADRwGA
-        BAADKwH/xAADKwH/BAADRwGAA0cBgAQAA0cBgANHAYAEAANHAYADRwGABAADRwGAA0cBgAQAAysB/8QA
-        AysB/zQAAysB/8QAAysB/wQAAysB/wMrAf8EAAMrAf8DKwH/BAADKwH/AysB/wQAAysB/wMrAf8EAAMr
-        Af/EAAMrAf8EAAMrAf8DKwH/BAADKwH/AysB/wQAAysB/wMrAf8EAAMrAf8DKwH/BAADKwH/xAADKwH/
-        NAADKwH/xAADKwH/AysB/wMrAf8DKwH/AysB/wMrAf8DKwH/AysB/wMrAf8DKwH/AysB/wMrAf8DKwH/
-        AysB/wMrAf//AMUAAysB/wMrAf8DKwH/AysB/wMrAf8DKwH/AysB/wMrAf8DKwH/AysB/wMrAf8DKwH/
-        AysB/wMrAf8DKwH/BAADKwH/AysB/wMrAf8DKwH/AysB/wMrAf8DKwH/AysB/wMrAf8DKwH/AysB/wMr
-        Af8DKwH/AysB/wMrAf8EAAMrAf8DKwH/AysB/wMrAf8DKwH/AysB/wMrAf8DKwH/AysB/wMrAf8DKwH/
-        AysB/wMrAf8DKwH/AysB/wQAAysB/wMrAf8DKwH/AysB/wMrAf8DKwH/AysB/wMrAf8DKwH/AysB/wMr
-        Af8DKwH/AysB/wMrAf8DKwH/BAADKwH/NAADKwH/BAADKwH/NAADKwH/BAADKwH/NAADKwH/BAADKwH/
-        NAADKwH/BAADKwH/CAADDAEQA14B0AwAAysB/wMrAf8EAAMrAf8DKwH/BAADKwH/BAADKwH/CAADDAEQ
-        A14B0AwAA0cBgANHAYAEAANHAYADRwGABAADKwH/BAADKwH/BAADRwGAA0cBgAQAA0cBgANHAYAMAANe
-        AdADDAEQCAADKwH/BAADKwH/BAADKwH/AysB/wQAAysB/wMrAf8MAANeAdADDAEQCAADKwH/BAADKwH/
-        BAADIQEwA18B4AMrAf8MAAMrAf8DKwH/BAADKwH/AysB/wQAAysB/wQAAysB/wQAAyEBMANfAeADKwH/
-        DAADRwGAA0cBgAQAA0cBgANHAYAEAAMrAf8EAAMrAf8EAANHAYADRwGABAADRwGAA0cBgAwAAysB/wNf
-        AeADIQEwBAADKwH/BAADKwH/BAADKwH/AysB/wQAAysB/wMrAf8MAAMrAf8DXwHgAyEBMAQAAysB/wQA
-        AysB/wQAA18B4AMrAf8DKwH/AysB/wMrAf8cAAMrAf8EAAMrAf8EAANfAeADKwH/AysB/wMrAf8DKwH/
-        HAADKwH/BAADKwH/HAADKwH/AysB/wMrAf8DKwH/A18B4AQAAysB/wQAAysB/xwAAysB/wMrAf8DKwH/
-        AysB/wNfAeAEAAMrAf8EAAMrAf8EAAMhATADXQHwAysB/wwAAysB/wMrAf8EAAMrAf8DKwH/BAADKwH/
-        BAADKwH/BAADIQEwA10B8AMrAf8MAANHAYADRwGABAADRwGAA0cBgAQAAysB/wQAAysB/wQAA0cBgANH
-        AYAEAANHAYADRwGADAADKwH/A10B8AMhATAEAAMrAf8EAAMrAf8EAAMrAf8DKwH/BAADKwH/AysB/wwA
-        AysB/wNdAfADIQEwBAADKwH/BAADKwH/CAADDAEQA14B0AwAAysB/wMrAf8EAAMrAf8DKwH/BAADKwH/
-        BAADKwH/CAADDAEQA14B0AwAA0cBgANHAYAEAANHAYADRwGABAADKwH/BAADKwH/BAADRwGAA0cBgAQA
-        A0cBgANHAYAMAANeAdADDAEQCAADKwH/BAADKwH/BAADKwH/AysB/wQAAysB/wMrAf8MAANeAdADDAEQ
-        CAADKwH/BAADKwH/NAADKwH/BAADKwH/NAADKwH/BAADKwH/NAADKwH/BAADKwH/NAADKwH/BAADKwH/
-        BAADKwH/AysB/wQAAysB/wMrAf8EAAMrAf8DKwH/BAADKwH/AysB/wQAAysB/wQAAysB/wQAA0cBgANH
-        AYAEAANHAYADRwGABAADRwGAA0cBgAQAA0cBgANHAYAEAAMrAf8EAAMrAf8EAANHAYADRwGABAADRwGA
-        A0cBgAQAA0cBgANHAYAEAANHAYADRwGABAADKwH/BAADKwH/BAADKwH/AysB/wQAAysB/wMrAf8EAAMr
-        Af8DKwH/BAADKwH/AysB/wQAAysB/wQAAysB/wQAAysB/wMrAf8EAAMrAf8DKwH/BAADKwH/AysB/wQA
-        AysB/wMrAf8EAAMrAf8EAAMrAf8EAANHAYADRwGABAADRwGAA0cBgAQAA0cBgANHAYAEAANHAYADRwGA
-        BAADKwH/BAADKwH/BAADRwGAA0cBgAQAA0cBgANHAYAEAANHAYADRwGABAADRwGAA0cBgAQAAysB/wQA
-        AysB/wQAAysB/wMrAf8EAAMrAf8DKwH/BAADKwH/AysB/wQAAysB/wMrAf8EAAMrAf8EAAMrAf80AAMr
-        Af8EAAMrAf80AAMrAf8EAAMrAf80AAMrAf8EAAMrAf80AAMrAf8EAAMrAf8EAAMrAf8DKwH/BAADKwH/
-        AysB/wQAAysB/wMrAf8EAAMrAf8DKwH/BAADKwH/BAADKwH/BAADKwH/AysB/wQAAysB/wMrAf8EAAMr
-        Af8DKwH/BAADKwH/AysB/wQAAysB/wQAAysB/wQAAysB/wMrAf8EAANHAYADRwGABAADRwGAA0cBgAQA
-        A0cBgANHAYAEAAMrAf8EAAMrAf8EAAMrAf8DKwH/BAADKwH/AysB/wQAAysB/wMrAf8EAAMrAf8DKwH/
-        BAADKwH/BAADKwH/BAADKwH/AysB/wQAAysB/wMrAf8EAAMrAf8DKwH/BAADKwH/AysB/wQAAysB/wQA
-        AysB/wQAAysB/wMrAf8EAAMrAf8DKwH/BAADKwH/AysB/wQAAysB/wMrAf8EAAMrAf8EAAMrAf8EAAMr
-        Af8DKwH/BAADRwGAA0cBgAQAA0cBgANHAYAEAANHAYADRwGABAADKwH/BAADKwH/BAADKwH/AysB/wQA
-        AysB/wMrAf8EAAMrAf8DKwH/BAADKwH/AysB/wQAAysB/wQAAysB/zQAAysB/wQAAysB/zQAAysB/wQA
-        AysB/zQAAysB/wQAAysB/zQAAysB/wQAAysB/wMrAf8DKwH/AysB/wMrAf8DKwH/AysB/wMrAf8DKwH/
-        AysB/wMrAf8DKwH/AysB/wMrAf8DKwH/BAADKwH/AysB/wMrAf8DKwH/AysB/wMrAf8DKwH/AysB/wMr
-        Af8DKwH/AysB/wMrAf8DKwH/AysB/wMrAf8EAAMrAf8DKwH/AysB/wMrAf8DKwH/AysB/wMrAf8DKwH/
-        AysB/wMrAf8DKwH/AysB/wMrAf8DKwH/AysB/wQAAysB/wMrAf8DKwH/AysB/wMrAf8DKwH/AysB/wMr
-        Af8DKwH/AysB/wMrAf8DKwH/AysB/wMrAf8DKwH/BAAB/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEA
+        MgAAAk1TRnQBSQFMAgEBFQEAAfwBBAH8AQQBEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        AwABYAMAAQEBAAEgBgABYP8AEwADKAH/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/
+        AygB/wMoAf8DKAH/AygB/wMoAf/EAAMoAf80AAMoAf/EAAMoAf8EAANHAYADRwGABAADRwGAA0cBgAwA
+        A14B0AMMARAIAAMoAf/EAAMoAf8EAANHAYADRwGABAADRwGAA0cBgAwAAygB/wNfAeADIQEwBAADKAH/
+        xAADKAH/HAADKAH/AygB/wMoAf8DKAH/A18B4AQAAygB/8QAAygB/wQAA0cBgANHAYAEAANHAYADRwGA
+        DAADKAH/A10B8AMhATAEAAMoAf/EAAMoAf8EAANHAYADRwGABAADRwGAA0cBgAwAA14B0AMMARAIAAMo
+        Af/EAAMoAf80AAMoAf/EAAMoAf8EAANHAYADRwGABAADRwGAA0cBgAQAA0cBgANHAYAEAANHAYADRwGA
+        BAADKAH/xAADKAH/BAADRwGAA0cBgAQAA0cBgANHAYAEAANHAYADRwGABAADRwGAA0cBgAQAAygB/8QA
+        AygB/zQAAygB/8QAAygB/wQAAygB/wMoAf8EAAMoAf8DKAH/BAADKAH/AygB/wQAAygB/wMoAf8EAAMo
+        Af/EAAMoAf8EAAMoAf8DKAH/BAADKAH/AygB/wQAAygB/wMoAf8EAAMoAf8DKAH/BAADKAH/xAADKAH/
+        NAADKAH/xAADKAH/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/
+        AygB/wMoAf//AMUAAygB/wMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/
+        AygB/wMoAf8DKAH/BAADKAH/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wMo
+        Af8DKAH/AygB/wMoAf8EAAMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/
+        AygB/wMoAf8DKAH/AygB/wQAAygB/wMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wMo
+        Af8DKAH/AygB/wMoAf8DKAH/BAADKAH/NAADKAH/BAADKAH/NAADKAH/BAADKAH/NAADKAH/BAADKAH/
+        NAADKAH/BAADKAH/CAADDAEQA14B0AwAAygB/wMoAf8EAAMoAf8DKAH/BAADKAH/BAADKAH/CAADDAEQ
+        A14B0AwAA0cBgANHAYAEAANHAYADRwGABAADKAH/BAADKAH/BAADRwGAA0cBgAQAA0cBgANHAYAMAANe
+        AdADDAEQCAADKAH/BAADKAH/BAADKAH/AygB/wQAAygB/wMoAf8MAANeAdADDAEQCAADKAH/BAADKAH/
+        BAADIQEwA18B4AMoAf8MAAMoAf8DKAH/BAADKAH/AygB/wQAAygB/wQAAygB/wQAAyEBMANfAeADKAH/
+        DAADRwGAA0cBgAQAA0cBgANHAYAEAAMoAf8EAAMoAf8EAANHAYADRwGABAADRwGAA0cBgAwAAygB/wNf
+        AeADIQEwBAADKAH/BAADKAH/BAADKAH/AygB/wQAAygB/wMoAf8MAAMoAf8DXwHgAyEBMAQAAygB/wQA
+        AygB/wQAA18B4AMoAf8DKAH/AygB/wMoAf8cAAMoAf8EAAMoAf8EAANfAeADKAH/AygB/wMoAf8DKAH/
+        HAADKAH/BAADKAH/HAADKAH/AygB/wMoAf8DKAH/A18B4AQAAygB/wQAAygB/xwAAygB/wMoAf8DKAH/
+        AygB/wNfAeAEAAMoAf8EAAMoAf8EAAMhATADXQHwAygB/wwAAygB/wMoAf8EAAMoAf8DKAH/BAADKAH/
+        BAADKAH/BAADIQEwA10B8AMoAf8MAANHAYADRwGABAADRwGAA0cBgAQAAygB/wQAAygB/wQAA0cBgANH
+        AYAEAANHAYADRwGADAADKAH/A10B8AMhATAEAAMoAf8EAAMoAf8EAAMoAf8DKAH/BAADKAH/AygB/wwA
+        AygB/wNdAfADIQEwBAADKAH/BAADKAH/CAADDAEQA14B0AwAAygB/wMoAf8EAAMoAf8DKAH/BAADKAH/
+        BAADKAH/CAADDAEQA14B0AwAA0cBgANHAYAEAANHAYADRwGABAADKAH/BAADKAH/BAADRwGAA0cBgAQA
+        A0cBgANHAYAMAANeAdADDAEQCAADKAH/BAADKAH/BAADKAH/AygB/wQAAygB/wMoAf8MAANeAdADDAEQ
+        CAADKAH/BAADKAH/NAADKAH/BAADKAH/NAADKAH/BAADKAH/NAADKAH/BAADKAH/NAADKAH/BAADKAH/
+        BAADKAH/AygB/wQAAygB/wMoAf8EAAMoAf8DKAH/BAADKAH/AygB/wQAAygB/wQAAygB/wQAA0cBgANH
+        AYAEAANHAYADRwGABAADRwGAA0cBgAQAA0cBgANHAYAEAAMoAf8EAAMoAf8EAANHAYADRwGABAADRwGA
+        A0cBgAQAA0cBgANHAYAEAANHAYADRwGABAADKAH/BAADKAH/BAADKAH/AygB/wQAAygB/wMoAf8EAAMo
+        Af8DKAH/BAADKAH/AygB/wQAAygB/wQAAygB/wQAAygB/wMoAf8EAAMoAf8DKAH/BAADKAH/AygB/wQA
+        AygB/wMoAf8EAAMoAf8EAAMoAf8EAANHAYADRwGABAADRwGAA0cBgAQAA0cBgANHAYAEAANHAYADRwGA
+        BAADKAH/BAADKAH/BAADRwGAA0cBgAQAA0cBgANHAYAEAANHAYADRwGABAADRwGAA0cBgAQAAygB/wQA
+        AygB/wQAAygB/wMoAf8EAAMoAf8DKAH/BAADKAH/AygB/wQAAygB/wMoAf8EAAMoAf8EAAMoAf80AAMo
+        Af8EAAMoAf80AAMoAf8EAAMoAf80AAMoAf8EAAMoAf80AAMoAf8EAAMoAf8EAAMoAf8DKAH/BAADKAH/
+        AygB/wQAAygB/wMoAf8EAAMoAf8DKAH/BAADKAH/BAADKAH/BAADKAH/AygB/wQAAygB/wMoAf8EAAMo
+        Af8DKAH/BAADKAH/AygB/wQAAygB/wQAAygB/wQAAygB/wMoAf8EAANHAYADRwGABAADRwGAA0cBgAQA
+        A0cBgANHAYAEAAMoAf8EAAMoAf8EAAMoAf8DKAH/BAADKAH/AygB/wQAAygB/wMoAf8EAAMoAf8DKAH/
+        BAADKAH/BAADKAH/BAADKAH/AygB/wQAAygB/wMoAf8EAAMoAf8DKAH/BAADKAH/AygB/wQAAygB/wQA
+        AygB/wQAAygB/wMoAf8EAAMoAf8DKAH/BAADKAH/AygB/wQAAygB/wMoAf8EAAMoAf8EAAMoAf8EAAMo
+        Af8DKAH/BAADRwGAA0cBgAQAA0cBgANHAYAEAANHAYADRwGABAADKAH/BAADKAH/BAADKAH/AygB/wQA
+        AygB/wMoAf8EAAMoAf8DKAH/BAADKAH/AygB/wQAAygB/wQAAygB/zQAAygB/wQAAygB/zQAAygB/wQA
+        AygB/zQAAygB/wQAAygB/zQAAygB/wQAAygB/wMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/
+        AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/BAADKAH/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wMo
+        Af8DKAH/AygB/wMoAf8DKAH/AygB/wMoAf8EAAMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/
+        AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wQAAygB/wMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wMo
+        Af8DKAH/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/BAAB/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEA
         A/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEA
         A/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEA
         A/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAC/0AAAf8BAAL/AQAD/wEA
         A/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEABP8BAAP/AQAC/wEA
         A/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAT/AQAD/wEA
         Av8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAE/wEA
-        Av8DKwH/AysB/wMrAf8DKwH/AysB/wMrAf8DKwH/AysB/wMrAf8DKwH/AysB/wMrAf8DKwH/AysB/wMr
+        Av8DKAH/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wMo
         Af8EAAH/AQAC/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEA
         A/8BAAT/AQAD/wEAAv8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEA
         A/8BAAP/AQAE/wEAA/8BAAL/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEA
-        A/8BAAP/AQAD/wEABP8BAAL/AysB/zQAAysB/wQAAf8BAAL/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/
+        A/8BAAP/AQAD/wEABP8BAAL/AygB/zQAAygB/wQAAf8BAAL/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/
         AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEABP8BAAP/AQAC/wEAA/8BAAP/AQAD/wEAA/8BAAP/
         AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAT/AQAD/wEAAv8BAAP/AQAD/wEAA/8BAAP/
-        AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAE/wEAAv8DKwH/CAADDAEQA14B0AwA
-        A0cBgANHAYAEAANHAYADRwGABAADKwH/BAAB/wEAAv8BAAT/AQAD/wEAA/8BAAP/AQAD/wEAAv8BAAP/
+        AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAE/wEAAv8DKAH/CAADDAEQA14B0AwA
+        A0cBgANHAYAEAANHAYADRwGABAADKAH/BAAB/wEAAv8BAAT/AQAD/wEAA/8BAAP/AQAD/wEAAv8BAAP/
         AQAE/wEAA/8BAAP/AQAD/wEAA/8BAAL/AQAE/wEAA/8BAAL/AQAE/wEAA/8BAAP/AQAD/wEAA/8BAAL/
         AQAD/wEABP8BAAP/AQAD/wEAA/8BAAP/AQAC/wEABP8BAAP/AQAC/wEABP8BAAP/AQAD/wEAA/8BAAP/
-        AQAC/wEAA/8BAAT/AQAD/wEAA/8BAAP/AQAD/wEAAv8BAAT/AQAC/wMrAf8EAAMhATADXwHgAysB/wwA
-        A0cBgANHAYAEAANHAYADRwGABAADKwH/BAAB/wEAAv8BAAP/AQAE/wEAA/8BAAL/AQAD/wEAA/8BAAP/
+        AQAC/wEAA/8BAAT/AQAD/wEAA/8BAAP/AQAD/wEAAv8BAAT/AQAC/wMoAf8EAAMhATADXwHgAygB/wwA
+        A0cBgANHAYAEAANHAYADRwGABAADKAH/BAAB/wEAAv8BAAP/AQAE/wEAA/8BAAL/AQAD/wEAA/8BAAP/
         AQAD/wEAA/8BAAT/AQAD/wEAAv8BAAP/AQAE/wEAA/8BAAL/AQAD/wEABP8BAAP/AQAC/wEAA/8BAAP/
         AQAD/wEAA/8BAAP/AQAE/wEAA/8BAAL/AQAD/wEABP8BAAP/AQAC/wEAA/8BAAT/AQAD/wEAAv8BAAP/
-        AQAD/wEAA/8BAAP/AQAD/wEABP8BAAP/AQAC/wEAA/8BAAT/AQAC/wMrAf8EAANfAeADKwH/AysB/wMr
-        Af8DKwH/HAADKwH/BAAB/wEAAv8BAAP/AQAD/wEABP8BAAP/AQAC/wEAA/8BAAP/AQAD/wEABP8BAAP/
+        AQAD/wEAA/8BAAP/AQAD/wEABP8BAAP/AQAC/wEAA/8BAAT/AQAC/wMoAf8EAANfAeADKAH/AygB/wMo
+        Af8DKAH/HAADKAH/BAAB/wEAAv8BAAP/AQAD/wEABP8BAAP/AQAC/wEAA/8BAAP/AQAD/wEABP8BAAP/
         AQAC/wEAA/8BAAP/AQAE/wEAA/8BAAL/AQAD/wEAA/8BAAT/AQAD/wEAAv8BAAP/AQAD/wEAA/8BAAT/
         AQAD/wEAAv8BAAP/AQAD/wEABP8BAAP/AQAC/wEAA/8BAAP/AQAE/wEAA/8BAAL/AQAD/wEAA/8BAAP/
-        AQAE/wEAA/8BAAL/AQAD/wEAA/8BAAT/AQAC/wMrAf8EAAMhATADXQHwAysB/wwAA0cBgANHAYAEAANH
-        AYADRwGABAADKwH/BAAB/wEAAv8BAAP/AQAD/wEABP8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/
+        AQAE/wEAA/8BAAL/AQAD/wEAA/8BAAT/AQAC/wMoAf8EAAMhATADXQHwAygB/wwAA0cBgANHAYAEAANH
+        AYADRwGABAADKAH/BAAB/wEAAv8BAAP/AQAD/wEABP8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/
         AQAC/wEAA/8BAAP/AQAE/wEAA/8BAAL/AQAD/wEAA/8BAAT/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/
         AQAD/wEAAv8BAAP/AQAD/wEABP8BAAP/AQAC/wEAA/8BAAP/AQAE/wEAA/8BAAP/AQAD/wEAA/8BAAP/
-        AQAD/wEAA/8BAAL/AQAD/wEAA/8BAAT/AQAC/wMrAf8IAAMMARADXgHQDAADRwGAA0cBgAQAA0cBgANH
-        AYAEAAMrAf8EAAH/AQAC/wEAA/8BAAP/AQAD/wEABP8BAAP/AQAC/wEAA/8BAAT/AQAD/wEAAv8BAAP/
+        AQAD/wEAA/8BAAL/AQAD/wEAA/8BAAT/AQAC/wMoAf8IAAMMARADXgHQDAADRwGAA0cBgAQAA0cBgANH
+        AYAEAAMoAf8EAAH/AQAC/wEAA/8BAAP/AQAD/wEABP8BAAP/AQAC/wEAA/8BAAT/AQAD/wEAAv8BAAP/
         AQAD/wEAA/8BAAT/AQAD/wEAAv8BAAP/AQAD/wEAA/8BAAT/AQAD/wEAAv8BAAP/AQAE/wEAA/8BAAL/
         AQAD/wEAA/8BAAP/AQAE/wEAA/8BAAL/AQAD/wEAA/8BAAP/AQAE/wEAA/8BAAL/AQAD/wEABP8BAAP/
-        AQAC/wEAA/8BAAP/AQAD/wEABP8BAAL/AysB/zQAAysB/wQAAf8BAAL/AQAD/wEAA/8BAAP/AQAE/wEA
+        AQAC/wEAA/8BAAP/AQAD/wEABP8BAAL/AygB/zQAAygB/wQAAf8BAAL/AQAD/wEAA/8BAAP/AQAE/wEA
         A/8BAAL/AQAD/wEABP8BAAP/AQAC/wEAA/8BAAP/AQAD/wEABP8BAAP/AQAC/wEAA/8BAAP/AQAD/wEA
         BP8BAAP/AQAC/wEAA/8BAAT/AQAD/wEAAv8BAAP/AQAD/wEAA/8BAAT/AQAD/wEAAv8BAAP/AQAD/wEA
-        A/8BAAT/AQAD/wEAAv8BAAP/AQAE/wEAA/8BAAL/AQAD/wEAA/8BAAP/AQAE/wEAAv8DKwH/BAADRwGA
-        A0cBgAQAA0cBgANHAYAEAANHAYADRwGABAADRwGAA0cBgAQAAysB/wQAAf8BAAL/AQAD/wEAA/8BAAP/
+        A/8BAAT/AQAD/wEAAv8BAAP/AQAE/wEAA/8BAAL/AQAD/wEAA/8BAAP/AQAE/wEAAv8DKAH/BAADRwGA
+        A0cBgAQAA0cBgANHAYAEAANHAYADRwGABAADRwGAA0cBgAQAAygB/wQAAf8BAAL/AQAD/wEAA/8BAAP/
         AQAD/wEABP8BAAL/AQAD/wEABP8BAAL/AQAD/wEAA/8BAAP/AQAD/wEABP8BAAP/AQAC/wEAA/8BAAP/
         AQAD/wEAA/8BAAT/AQAC/wEAA/8BAAT/AQAC/wEAA/8BAAP/AQAD/wEAA/8BAAT/AQAD/wEAAv8BAAP/
-        AQAD/wEAA/8BAAP/AQAE/wEAAv8BAAP/AQAE/wEAAv8BAAP/AQAD/wEAA/8BAAP/AQAE/wEAAv8DKwH/
-        BAADRwGAA0cBgAQAA0cBgANHAYAEAANHAYADRwGABAADRwGAA0cBgAQAAysB/wQAAf8BAAL/AQAD/wEA
+        AQAD/wEAA/8BAAP/AQAE/wEAAv8BAAP/AQAE/wEAAv8BAAP/AQAD/wEAA/8BAAP/AQAE/wEAAv8DKAH/
+        BAADRwGAA0cBgAQAA0cBgANHAYAEAANHAYADRwGABAADRwGAA0cBgAQAAygB/wQAAf8BAAL/AQAD/wEA
         A/8BAAP/AQAD/wEABP8BAAP/AQAD/wEAA/8BAAL/AQAD/wEAA/8BAAP/AQAD/wEABP8BAAP/AQAC/wEA
         A/8BAAP/AQAD/wEAA/8BAAT/AQAD/wEAA/8BAAP/AQAC/wEAA/8BAAP/AQAD/wEAA/8BAAT/AQAD/wEA
         Av8BAAP/AQAD/wEAA/8BAAP/AQAE/wEAA/8BAAP/AQAD/wEAAv8BAAP/AQAD/wEAA/8BAAP/AQAE/wEA
-        Av8DKwH/NAADKwH/BAAB/wEAAv8BAAP/AQAD/wEAA/8BAAP/AQAD/wEABP8BAAP/AQAC/wEAA/8BAAP/
+        Av8DKAH/NAADKAH/BAAB/wEAAv8BAAP/AQAD/wEAA/8BAAP/AQAD/wEABP8BAAP/AQAC/wEAA/8BAAP/
         AQAD/wEAA/8BAAP/AQAE/wEAA/8BAAL/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAT/AQAD/wEAAv8BAAP/
         AQAD/wEAA/8BAAP/AQAD/wEABP8BAAP/AQAC/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAE/wEAA/8BAAL/
-        AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAT/AQAC/wMrAf8EAANHAYADRwGABAADRwGAA0cBgAQAA0cBgANH
-        AYAEAAMrAf8DKwH/BAADKwH/BAAB/wEAAv8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEA
+        AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAT/AQAC/wMoAf8EAANHAYADRwGABAADRwGAA0cBgAQAA0cBgANH
+        AYAEAAMoAf8DKAH/BAADKAH/BAAB/wEAAv8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEA
         A/8BAAP/AQAD/wEAA/8BAAP/AQAE/wEAA/8BAAL/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEA
         A/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEABP8BAAP/AQAC/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEA
-        A/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAT/AQAC/wMrAf8EAANHAYADRwGABAADRwGAA0cBgAQA
-        A0cBgANHAYAEAAMrAf8DKwH/BAADKwH/BAAB/wEAAv8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/
+        A/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAT/AQAC/wMoAf8EAANHAYADRwGABAADRwGAA0cBgAQA
+        A0cBgANHAYAEAAMoAf8DKAH/BAADKAH/BAAB/wEAAv8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/
         AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAE/wEAA/8BAAL/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/
         AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEABP8BAAP/AQAC/wEAA/8BAAP/AQAD/wEAA/8BAAP/
-        AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAT/AQAC/wMrAf80AAMrAf8EAAH/AQAD/wEA
+        AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAT/AQAC/wMoAf80AAMoAf8EAAH/AQAD/wEA
         A/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEA
         A/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEA
         A/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEA
-        A/8BAAL/AysB/wMrAf8DKwH/AysB/wMrAf8DKwH/AysB/wMrAf8DKwH/AysB/wMrAf8DKwH/AysB/wMr
-        Af8DKwH//wARAAH/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAC/xQAAf8BAAP/
+        A/8BAAL/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wMo
+        Af8DKAH//wARAAH/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAC/xQAAf8BAAP/
         AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAAv8QAAH/AQAD/wEAA/8BAAP/
         AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAL/EAAB/wEAA/8BAAP/AQAD/wEAA/8BAAP/
         AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAC/xQAAf8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/
@@ -1828,7 +1828,7 @@
     <value>_TerminPlanForm_Toolbars_Dock_Area_Left</value>
   </data>
   <data name="&gt;&gt;_TerminPlanForm_Toolbars_Dock_Area_Left.Type" xml:space="preserve">
-    <value>Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea, Infragistics4.Win.UltraWinToolbars.v16.2, Version=16.2.20162.2040, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
+    <value>Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea, Infragistics4.Win.UltraWinToolbars.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
   </data>
   <data name="&gt;&gt;_TerminPlanForm_Toolbars_Dock_Area_Left.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1837,16 +1837,16 @@
     <value>1</value>
   </data>
   <data name="_TerminPlanForm_Toolbars_Dock_Area_Right.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1167, 152</value>
+    <value>1167, 154</value>
   </data>
   <data name="_TerminPlanForm_Toolbars_Dock_Area_Right.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 643</value>
+    <value>0, 641</value>
   </data>
   <data name="&gt;&gt;_TerminPlanForm_Toolbars_Dock_Area_Right.Name" xml:space="preserve">
     <value>_TerminPlanForm_Toolbars_Dock_Area_Right</value>
   </data>
   <data name="&gt;&gt;_TerminPlanForm_Toolbars_Dock_Area_Right.Type" xml:space="preserve">
-    <value>Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea, Infragistics4.Win.UltraWinToolbars.v16.2, Version=16.2.20162.2040, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
+    <value>Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea, Infragistics4.Win.UltraWinToolbars.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
   </data>
   <data name="&gt;&gt;_TerminPlanForm_Toolbars_Dock_Area_Right.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1864,7 +1864,7 @@
     <value>_TerminPlanForm_Toolbars_Dock_Area_Bottom</value>
   </data>
   <data name="&gt;&gt;_TerminPlanForm_Toolbars_Dock_Area_Bottom.Type" xml:space="preserve">
-    <value>Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea, Infragistics4.Win.UltraWinToolbars.v16.2, Version=16.2.20162.2040, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
+    <value>Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea, Infragistics4.Win.UltraWinToolbars.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
   </data>
   <data name="&gt;&gt;_TerminPlanForm_Toolbars_Dock_Area_Bottom.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1873,16 +1873,16 @@
     <value>3</value>
   </data>
   <data name="_MainForm_UltraFormManager_Dock_Area_Left.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 152</value>
+    <value>0, 154</value>
   </data>
   <data name="_MainForm_UltraFormManager_Dock_Area_Left.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 643</value>
+    <value>0, 641</value>
   </data>
   <data name="&gt;&gt;_MainForm_UltraFormManager_Dock_Area_Left.Name" xml:space="preserve">
     <value>_MainForm_UltraFormManager_Dock_Area_Left</value>
   </data>
   <data name="&gt;&gt;_MainForm_UltraFormManager_Dock_Area_Left.Type" xml:space="preserve">
-    <value>Infragistics.Win.UltraWinForm.UltraFormDockArea, Infragistics4.Win.v16.2, Version=16.2.20162.2040, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
+    <value>Infragistics.Win.UltraWinForm.UltraFormDockArea, Infragistics4.Win.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
   </data>
   <data name="&gt;&gt;_MainForm_UltraFormManager_Dock_Area_Left.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1891,16 +1891,16 @@
     <value>4</value>
   </data>
   <data name="_MainForm_UltraFormManager_Dock_Area_Right.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1167, 152</value>
+    <value>1167, 154</value>
   </data>
   <data name="_MainForm_UltraFormManager_Dock_Area_Right.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 643</value>
+    <value>0, 641</value>
   </data>
   <data name="&gt;&gt;_MainForm_UltraFormManager_Dock_Area_Right.Name" xml:space="preserve">
     <value>_MainForm_UltraFormManager_Dock_Area_Right</value>
   </data>
   <data name="&gt;&gt;_MainForm_UltraFormManager_Dock_Area_Right.Type" xml:space="preserve">
-    <value>Infragistics.Win.UltraWinForm.UltraFormDockArea, Infragistics4.Win.v16.2, Version=16.2.20162.2040, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
+    <value>Infragistics.Win.UltraWinForm.UltraFormDockArea, Infragistics4.Win.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
   </data>
   <data name="&gt;&gt;_MainForm_UltraFormManager_Dock_Area_Right.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1909,7 +1909,7 @@
     <value>5</value>
   </data>
   <data name="_MainForm_UltraFormManager_Dock_Area_Top.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 152</value>
+    <value>0, 154</value>
   </data>
   <data name="_MainForm_UltraFormManager_Dock_Area_Top.Size" type="System.Drawing.Size, System.Drawing">
     <value>1167, 0</value>
@@ -1918,7 +1918,7 @@
     <value>_MainForm_UltraFormManager_Dock_Area_Top</value>
   </data>
   <data name="&gt;&gt;_MainForm_UltraFormManager_Dock_Area_Top.Type" xml:space="preserve">
-    <value>Infragistics.Win.UltraWinForm.UltraFormDockArea, Infragistics4.Win.v16.2, Version=16.2.20162.2040, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
+    <value>Infragistics.Win.UltraWinForm.UltraFormDockArea, Infragistics4.Win.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
   </data>
   <data name="&gt;&gt;_MainForm_UltraFormManager_Dock_Area_Top.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1936,7 +1936,7 @@
     <value>_MainForm_UltraFormManager_Dock_Area_Bottom</value>
   </data>
   <data name="&gt;&gt;_MainForm_UltraFormManager_Dock_Area_Bottom.Type" xml:space="preserve">
-    <value>Infragistics.Win.UltraWinForm.UltraFormDockArea, Infragistics4.Win.v16.2, Version=16.2.20162.2040, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
+    <value>Infragistics.Win.UltraWinForm.UltraFormDockArea, Infragistics4.Win.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
   </data>
   <data name="&gt;&gt;_MainForm_UltraFormManager_Dock_Area_Bottom.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1948,13 +1948,13 @@
     <value>0, 0</value>
   </data>
   <data name="_TerminPlanForm_Toolbars_Dock_Area_Top.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1167, 152</value>
+    <value>1167, 154</value>
   </data>
   <data name="&gt;&gt;_TerminPlanForm_Toolbars_Dock_Area_Top.Name" xml:space="preserve">
     <value>_TerminPlanForm_Toolbars_Dock_Area_Top</value>
   </data>
   <data name="&gt;&gt;_TerminPlanForm_Toolbars_Dock_Area_Top.Type" xml:space="preserve">
-    <value>Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea, Infragistics4.Win.UltraWinToolbars.v16.2, Version=16.2.20162.2040, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
+    <value>Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea, Infragistics4.Win.UltraWinToolbars.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
   </data>
   <data name="&gt;&gt;_TerminPlanForm_Toolbars_Dock_Area_Top.Parent" xml:space="preserve">
     <value>$this</value>
@@ -2224,13 +2224,13 @@
     <value>ultraCalendarInfo1</value>
   </data>
   <data name="&gt;&gt;ultraCalendarInfo1.Type" xml:space="preserve">
-    <value>Infragistics.Win.UltraWinSchedule.UltraCalendarInfo, Infragistics4.Win.UltraWinSchedule.v16.2, Version=16.2.20162.2040, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
+    <value>Infragistics.Win.UltraWinSchedule.UltraCalendarInfo, Infragistics4.Win.UltraWinSchedule.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
   </data>
   <data name="&gt;&gt;ultraToolbarsManager1.Name" xml:space="preserve">
     <value>ultraToolbarsManager1</value>
   </data>
   <data name="&gt;&gt;ultraToolbarsManager1.Type" xml:space="preserve">
-    <value>Infragistics.Win.UltraWinToolbars.UltraToolbarsManager, Infragistics4.Win.UltraWinToolbars.v16.2, Version=16.2.20162.2040, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
+    <value>Infragistics.Win.UltraWinToolbars.UltraToolbarsManager, Infragistics4.Win.UltraWinToolbars.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
   </data>
   <data name="&gt;&gt;ilDefaultImagesLarge.Name" xml:space="preserve">
     <value>ilDefaultImagesLarge</value>
@@ -2260,13 +2260,13 @@
     <value>ultraTouchProvider1</value>
   </data>
   <data name="&gt;&gt;ultraTouchProvider1.Type" xml:space="preserve">
-    <value>Infragistics.Win.Touch.UltraTouchProvider, Infragistics4.Win.v16.2, Version=16.2.20162.2040, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
+    <value>Infragistics.Win.Touch.UltraTouchProvider, Infragistics4.Win.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
   </data>
   <data name="&gt;&gt;ultraGanttViewPrintDocument1.Name" xml:space="preserve">
     <value>ultraGanttViewPrintDocument1</value>
   </data>
   <data name="&gt;&gt;ultraGanttViewPrintDocument1.Type" xml:space="preserve">
-    <value>Infragistics.Win.UltraWinGanttView.UltraGanttViewPrintDocument, Infragistics4.Win.UltraWinGanttView.v16.2, Version=16.2.20162.2040, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
+    <value>Infragistics.Win.UltraWinGanttView.UltraGanttViewPrintDocument, Infragistics4.Win.UltraWinGanttView.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>TerminPlanForm</value>
@@ -2311,7 +2311,7 @@
     <value>0, 0</value>
   </data>
   <data name="ultraGanttView1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1167, 643</value>
+    <value>1167, 641</value>
   </data>
   <data name="ultraGanttView1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2326,7 +2326,7 @@
     <value>ultraGanttView1</value>
   </data>
   <data name="&gt;&gt;ultraGanttView1.Type" xml:space="preserve">
-    <value>Infragistics.Win.UltraWinGanttView.UltraGanttView, Infragistics4.Win.UltraWinGanttView.v16.2, Version=16.2.20162.2040, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
+    <value>Infragistics.Win.UltraWinGanttView.UltraGanttView, Infragistics4.Win.UltraWinGanttView.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
   </data>
   <data name="&gt;&gt;ultraGanttView1.Parent" xml:space="preserve">
     <value>ultraZoomPanelTerminPlan.ClientArea</value>

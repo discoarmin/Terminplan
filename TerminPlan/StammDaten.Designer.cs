@@ -20,7 +20,7 @@
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("A");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("B", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("B", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Descending, false);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn3 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("C");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn4 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("D");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn5 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("E");
@@ -322,6 +322,7 @@
             this.ultraTouchProvider1 = new Infragistics.Win.Touch.UltraTouchProvider(this.components);
             this.ultraGridPrintDocumentStamm = new Infragistics.Win.UltraWinGanttView.UltraGanttViewPrintDocument(this.components);
             this.zedGraphControl1 = new ZedGraph.ZedGraphControl();
+            this.ultraGridExcelExporterStammDaten = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridStammDaten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraDataSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManagerStamm)).BeginInit();
@@ -336,6 +337,8 @@
             this.ultraGridStammDaten.DataSource = this.ultraDataSource1;
             appearance1.BackColor = System.Drawing.SystemColors.Window;
             appearance1.BorderColor = System.Drawing.SystemColors.InactiveCaption;
+            appearance1.FontData.Name = "Calibri";
+            appearance1.FontData.SizeInPoints = 11F;
             this.ultraGridStammDaten.DisplayLayout.Appearance = appearance1;
             ultraGridColumn1.Header.VisiblePosition = 0;
             ultraGridColumn1.Width = 14;
@@ -446,6 +449,7 @@
             this.ultraGridStammDaten.DisplayLayout.Override.AllowColMoving = Infragistics.Win.UltraWinGrid.AllowColMoving.NotAllowed;
             this.ultraGridStammDaten.DisplayLayout.Override.AllowColSizing = Infragistics.Win.UltraWinGrid.AllowColSizing.Free;
             this.ultraGridStammDaten.DisplayLayout.Override.AllowColSwapping = Infragistics.Win.UltraWinGrid.AllowColSwapping.NotAllowed;
+            this.ultraGridStammDaten.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.True;
             this.ultraGridStammDaten.DisplayLayout.Override.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
             this.ultraGridStammDaten.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted;
             this.ultraGridStammDaten.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted;
@@ -456,6 +460,7 @@
             this.ultraGridStammDaten.DisplayLayout.Override.CellAppearance = appearance8;
             this.ultraGridStammDaten.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText;
             this.ultraGridStammDaten.DisplayLayout.Override.CellPadding = 0;
+            this.ultraGridStammDaten.DisplayLayout.Override.FilterUIType = Infragistics.Win.UltraWinGrid.FilterUIType.HeaderIcons;
             appearance9.BackColor = System.Drawing.SystemColors.Control;
             appearance9.BackColor2 = System.Drawing.SystemColors.ControlDark;
             appearance9.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
@@ -467,7 +472,7 @@
             this.ultraGridStammDaten.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
             this.ultraGridStammDaten.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.WindowsXPCommand;
             appearance11.BackColor = System.Drawing.SystemColors.Window;
-            appearance11.BorderColor = System.Drawing.Color.Silver;
+            appearance11.BorderColor = System.Drawing.Color.Transparent;
             this.ultraGridStammDaten.DisplayLayout.Override.RowAppearance = appearance11;
             this.ultraGridStammDaten.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.False;
             this.ultraGridStammDaten.DisplayLayout.Override.RowSizing = Infragistics.Win.UltraWinGrid.RowSizing.Free;
@@ -1404,5 +1409,6 @@
         private Infragistics.Win.Touch.UltraTouchProvider ultraTouchProvider1;
         private Infragistics.Win.UltraWinGanttView.UltraGanttViewPrintDocument ultraGridPrintDocumentStamm;
         private ZedGraph.ZedGraphControl zedGraphControl1;
+        private Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter ultraGridExcelExporterStammDaten;
     }
 }

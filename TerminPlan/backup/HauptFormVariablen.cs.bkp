@@ -64,7 +64,7 @@ namespace Terminplan
             FourWeeks,
         }
 
-        #endregion  Stardatum verschieben
+        #endregion Stardatum verschieben
 
         #region Eigenschaften Schriftart
 
@@ -99,13 +99,10 @@ namespace Terminplan
         public DataSet DatasetTp;
 
         /// <summary> Merker für rekursive Zellaktivierung </summary>
-        private bool cellActivationRecursionFlag; // Merker rekursive Zellaktivierung
+        private bool cellActivationRecursionFlag;
 
         /// <summary> Merker, ob neues Projekt hinzugefügt wurde</summary>
         private bool prjHinzugefuegt;
-
-        /// <summary> Index des momentanen Farbschemas </summary>
-        private int currentThemeIndex;
 
         /// <summary> Der ResourceManager </summary>
         private ResourceManager rm = Resources.ResourceManager;
@@ -117,20 +114,36 @@ namespace Terminplan
         // ReSharper disable once UnusedMember.Local
         private const int TaskBarHeight = 20;
 
-        /// <summary> Pfad zu den Farbeinstallungen </summary>
-        // ReSharper disable once FieldCanBeMadeReadOnly.Local
-        private string[] themePaths;
+        /// <summary>
+        /// Holt oder setzt den Pfad zu den Farbeinstellungen
+        /// </summary>
+        public string[] TemePaths { get; set; }
 
+        /// <summary> Pfad zu den Farbeinstallungen </summary>
         public static StyleManager StyleManagerIntern;
+
+        /// <summary>Name des Projekts</summary>
+        public static string PrjName;
 
         #endregion Variablen
 
         #region Eigenschaften
+
         /// <summary>Setzt das Formular für den Terminplan</summary>
         public StammDaten FrmStammDaten { private get; set; }
 
         /// <summary>Setzt die zu bearbeitende Terminplan-Datei</summary>
         public string GeladeneDatei { get; private set; }
+
+        /// <summary>
+        /// Holt oder setzt den Index des momentanen Farbschemas
+        /// </summary>
+        public int CurrentThemeIndex { get; set; }
+
+        /// <summary>
+        /// Holt oder setzt den Pfad zu den Farbeinstellungen
+        /// </summary>
+        public string[] ThemePaths { get; set; }
 
         #endregion Eigenschaften
     }

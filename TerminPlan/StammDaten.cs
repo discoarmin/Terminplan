@@ -20,10 +20,14 @@
 namespace Terminplan
 {
     using System.Globalization;
+    using System.IO;
     using System.Windows.Forms;
     using Infragistics.Win.AppStyling;
     using Infragistics.Win.Printing;
     using Infragistics.Win.UltraWinToolbars;
+
+    //using Infragistics.Win.UltraWinGrid.ExcelExport;
+    //using Infragistics.Documents.Excel;
 
     public partial class StammDaten : Form
     {
@@ -181,6 +185,23 @@ namespace Terminplan
         protected override void OnLoad(System.EventArgs e)
         {
             ColorizeImages();                                                   // Farbe der Bilder an das eingestellte Farbschema anpassen
+
+            // Excel-Datei einlesen. Falls es eine Datei für das Projekt gibt, wird diese genommen,
+            // sonst eine Vorlage
+            var stammdatenDatei = TerminPlanForm.PrjName + @".xlsx";
+            if (File.Exists(stammdatenDatei))
+            {
+                this.LadeExcelTabelle(ref this.ultraGridStammDaten, stammdatenDatei, @"Stammdaten");
+            }
+            else
+            {
+                // Projekt-Datei aexiastiert als Excel-Datei nicht, also Vorlage laden
+                if (File.Exists(@"Vorlage.xlsx"))
+                {
+                    this.LadeExcelTabelle(ref this.ultraGridStammDaten, @"Vorlage.xlsx", @"Stammdaten");
+                }
+            }
+
             InitializeUi();                                                     // Oberfläche initialisieren
 
             // Ereignisprozedur zum Ändern des Schemas festlegen

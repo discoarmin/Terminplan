@@ -26,6 +26,7 @@ namespace Terminplan
     using System.IO;
     using System.Linq;
     using System.Reflection;
+    using System.Text.RegularExpressions;
     using System.Windows.Forms;
     using Infragistics.Win;
     using Infragistics.Win.UltraWinToolbars;
@@ -245,6 +246,59 @@ namespace Terminplan
         {
             var retwert = Guid.NewGuid().ToString(@"D");
             return retwert;
+        }
+
+        // <summary>
+        /// Dieses Funktion kann dazu benutzt werden, um eine integer Zahl in eine Buchstaben Kombination
+        /// umzuwandeln die der Kopfzeile eines Excel Dokumentes entspricht
+        /// </summary>
+        /// <param name="colNumber">die umzuwandelnde Spaltenummer</param>
+        /// <returns>(string) die jeweilige Spaltenbezeichnung</returns>
+        public static string IntConvertToExcelHeadLine(int colNumber)
+        {
+            var colBez = string.Empty;                                          // Spaltenbezeichnung
+            var rest = 0;                                                       // Wenn ungleich 0, dann ist Spaltenbezeichnung mehrstellig
+
+            // Ist die Zahl größer als 26 ist das Ergebniss mindestens 2 Stellig
+            // also muß eine Schleifenverarbeitung durchgeführt werden
+            if (colNumber > 26)
+            {
+                do
+                {
+                    // Ganzzahl ermitteln für den nächsten durchlauf
+                    colNumber = Math.DivRem(colNumber, 26, out rest);
+                    if (rest == 0)
+                    {
+                        colNumber -= 1;
+                        rest = 26;
+                    }
+
+                    // Umwandlung in einen Buchstaben (die + 64 sind nötig, um auf die Ascii-Zeichen für die Grossbuchstaben zu kommen)
+                    colBez = (char)(rest + 64) + colBez;                        // Buchstaben zur Bezeichnung hinzufügen
+                } while (colNumber > 26);
+            }
+
+            colBez = (char)(colNumber + 64) + colBez;                           // Buchstaben zur Bezeichnung hinzufügen
+
+            return colBez;
+        }
+
+        /// <summary>Extrahiert alle Zahlen aus einer Zeichenkette</summary>
+        /// <param name="inputString">die zu untersuchende Zeichenkette</param>
+        /// <returns>die gefundenen Zahlen, sonst Leerstring</returns>
+        public static string ZahlenInString(string inputString)
+        {
+            var pattern = "[0-9]";                                              // Es soll nach Zahlen gefiltert werden
+            var r = new Regex(pattern);                                         // Neue Instanz von Regular Expressions erzeugen
+            var mc = r.Matches(inputString);                                    // Aufzählung der gefundenen Zahlen
+            var retVal = string.Empty;                                          // Leerstring als Rückgabewert vorgeben
+
+            // Aufzählung durchgehen und alle gefundene Zahlen zu einer Zeichenkette zusammensetzen
+            for (var i = 0; i < mc.Count; i++)
+            {
+                retVal += mc[i].Value;
+            }
+            return retVal;
         }
     }
 }

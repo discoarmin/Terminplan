@@ -122,6 +122,9 @@ namespace Terminplan
         /// <summary> Pfad zu den Farbeinstallungen </summary>
         public static StyleManager StyleManagerIntern;
 
+        /// <summary>Name des Projekts</summary>
+        public static string PrjName;
+
         #endregion Variablen
 
         #region Eigenschaften
