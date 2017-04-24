@@ -474,7 +474,7 @@
             appearance11.BackColor = System.Drawing.SystemColors.Window;
             appearance11.BorderColor = System.Drawing.Color.Transparent;
             this.ultraGridStammDaten.DisplayLayout.Override.RowAppearance = appearance11;
-            this.ultraGridStammDaten.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.False;
+            this.ultraGridStammDaten.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
             this.ultraGridStammDaten.DisplayLayout.Override.RowSizing = Infragistics.Win.UltraWinGrid.RowSizing.Free;
             this.ultraGridStammDaten.DisplayLayout.Override.RowSizingArea = Infragistics.Win.UltraWinGrid.RowSizingArea.RowSelectorsOnly;
             this.ultraGridStammDaten.DisplayLayout.Override.SummaryDisplayArea = Infragistics.Win.UltraWinGrid.SummaryDisplayAreas.None;

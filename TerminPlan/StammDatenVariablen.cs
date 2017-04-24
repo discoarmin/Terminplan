@@ -55,6 +55,9 @@ namespace Terminplan
         /// <summary> Merker für rekursive Zellaktivierung </summary>
         private bool cellActivationRecursionFlag;
 
+        /// <summary> Anzahl Zeilen in der Stammdatentabelle </summary>
+        private int rowCount;
+
         #endregion Variablen
 
         #region Eigenschaften

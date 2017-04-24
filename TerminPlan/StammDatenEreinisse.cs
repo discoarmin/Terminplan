@@ -572,7 +572,7 @@ namespace Terminplan
                     case 21:
                     case 23:
                     case 25:
-                        de.Width = 86;
+                        de.Width = 220;
                         break;
 
                     case 27:
@@ -627,42 +627,6 @@ namespace Terminplan
                         }
                         break;
                 }
-
-                //// Arbeitsinhalt oder Aufgabe
-                //if (de.Key.ToLower() == @"name")
-                //{
-                //    //de.Text = "Arbeitsinhalt/Aufgabe";
-                //    de.Text = @"Verfahren";
-                //    de.Visible = DefaultableBoolean.True;
-                //}
-
-                //// Dauer
-                //if (de.Key.ToLower() == @"duration")
-                //{
-                //    de.Text = @"Dauer";
-                //    de.Visible = DefaultableBoolean.True;
-                //}
-
-                //// Start
-                //if (de.Key.ToLower() == @"start")
-                //{
-                //    de.Text = @"Start";
-                //    de.Visible = DefaultableBoolean.True;
-                //}
-
-                //// Ende
-                //if (de.Key.ToLower() == @"enddatetime")
-                //{
-                //    de.Text = @"Ende";
-                //    de.Visible = DefaultableBoolean.True;
-                //}
-
-                //// Fertig in %
-                //if (de.Key.ToLower() == @"percentcomplete")
-                //{
-                //    de.Text = @"Status";
-                //    de.Visible = DefaultableBoolean.True;
-                //}
             }
 
             // Füllt die Liste mit den Farbschematas
@@ -709,6 +673,8 @@ namespace Terminplan
             // Die Bilder entsprechend dem aktuellen Farbschema einfärben.
             ColorizeImages();
             this.ultraToolbarsManagerStamm.Ribbon.FileMenuButtonCaption = Properties.Resources.ribbonFileTabCaption; // Beschriftung des Datei-Menüs-Button eintragen
+
+            this.StelleArbeitsBlattEin();
         }
 
         #endregion InitializeUi

@@ -158,7 +158,7 @@ namespace Terminplan
                 }
             }
 
-            dtExcel.Rows[0].Delete();                                           // Die 1. Zeile löschen
+            this.rowCount = dtExcel.Rows.Count;                                 // Anzahl Zeilen merken
 
             excelGrid.DataSource = dtExcel;                                     // Die Datenquelle dem Grid zuweisen
             excelGrid.DataBind();                                               // Damit die gelesenen Daten angezeigt werden
