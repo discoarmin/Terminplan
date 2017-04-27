@@ -710,5 +710,15 @@ namespace Terminplan
         #endregion OnUpdateFontToolsState
 
         #endregion Methoden
+
+        #region Ereignisse Checkeditoren
+
+        private void OnCheckEditorCheckedValueChange(object sender, EventArgs e)
+        {
+            var wert = e.ToString();
+            this.ultraGridStammDaten.ActiveCell.Value = wert;
+        }
+
+        #endregion Ereignisse Checkeditoren
     }
 }

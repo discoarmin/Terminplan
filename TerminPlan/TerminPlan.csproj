@@ -47,10 +47,7 @@
     </Reference>
     <Reference Include="Infragistics4.Win.SupportDialogs.v16.2, Version=16.2.20162.2040, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
     <Reference Include="Infragistics4.Win.UltraWinCalcManager.v16.2.FormulaBuilder, Version=16.2.20162.2040, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
-    <Reference Include="Infragistics4.Win.UltraWinEditors.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\Infragistics\2016.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinEditors.v16.2.dll</HintPath>
-    </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinEditors.v16.2, Version=16.2.20162.2040, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.UltraWinGanttView.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\Infragistics\2016.2\Windows Forms\CLR4.0\Bin\Infragistics4.Win.UltraWinGanttView.v16.2.dll</HintPath>

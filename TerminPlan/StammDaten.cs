@@ -24,6 +24,8 @@ namespace Terminplan
     using System.Windows.Forms;
     using Infragistics.Win.AppStyling;
     using Infragistics.Win.Printing;
+    using Infragistics.Win.UltraWinEditors;
+    using Infragistics.Win.UltraWinGrid;
     using Infragistics.Win.UltraWinToolbars;
 
     //using Infragistics.Win.UltraWinGrid.ExcelExport;
@@ -229,6 +231,32 @@ namespace Terminplan
         private void ultraToolbarsManagerStamm_PropertyChanged(object sender, Infragistics.Win.PropertyChangedEventArgs e)
         {
             UltraToolbarsManagerStammPropertyChanged(sender, e);
+        }
+
+        /// <summary>
+        /// Behandelt das BeforeCellDeactivate-Ereignis des _BeforeCellDeactivate Kontrols.
+        /// </summary>
+        /// <param name="sender">Die Quelle des Ereignisses.</param>
+        /// <param name="e">The <see cref="CancelEventArgs" /> Instanz, welche die Ereignisdaten enthält.</param>
+        private void OnUltraGridStammDatenBeforeCellDeactivate(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+        }
+
+        private void ultraGridStammDaten_AfterExitEditMode(object sender, System.EventArgs e)
+        {
+            var zelle = ((UltraGrid)sender).ActiveCell;                         // Zelle, welche verlassen wird, ermitteln
+            if (zelle == null) return;                                          // Wenn keine Zelle existiert, kann abgebrochen werden
+            var editor = (UltraCheckEditor)zelle.EditorComponentResolved;       // Eventuell eingebetteten Editor der Zelle ermitteln
+            if (editor == null) return;                                         // Wenn kein Editor existiert, kann abgebrochen werden
+
+            var editor1 = editor.Editor;                                        // Eingebundener Editor
+            var wert = editor1.CurrentEditText.ToLower();                       // Der Zustand der Checkbox kann nur als Text ermittelt werden
+
+            // Zustand des CheckEditors in die Zelle schreiben
+            if (wert == @"true")
+                zelle.Value = @"True";
+            else
+                zelle.Value = @"False";
         }
     }
 }

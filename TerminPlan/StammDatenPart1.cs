@@ -19,12 +19,10 @@
 namespace Terminplan
 {
     using System.Windows.Forms;
-    using Infragistics.Win.AppStyling;
-    using Infragistics.Win.Printing;
-    using Infragistics.Win.UltraWinToolbars;
     using System.Drawing;
     using Infragistics.Win;
     using Infragistics.Win.UltraWinGrid;
+    using Infragistics.Win.UltraWinEditors;
 
     public partial class StammDaten : Form
     {
@@ -61,8 +59,6 @@ namespace Terminplan
 
             for (var r = 0; r < this.rowCount; r++)
             {
-                this.ultraGridStammDaten.DisplayLayout.Rows[r].Appearance.BorderColor = Color.Transparent;
-
                 // Zeilenhöhe einstellen
                 switch (r)
                 {
@@ -87,6 +83,8 @@ namespace Terminplan
                         this.ultraGridStammDaten.Rows[r].Height = 43;
                         break;
                 }
+
+                //this.ultraGridStammDaten.DisplayLayout.Rows[r].Appearance.BorderColor = Color.Transparent;
             }
 
             foreach (var sp in col)
@@ -94,16 +92,12 @@ namespace Terminplan
                 // bei allen Themes außer bei Theme 1
                 if (this.FrmTerminPlan.CurrentThemeIndex != 0)
                 {
-                    sp.CellAppearance.BackColor = Color.White;                  // Standwrdmäßig ist sie Hintergrundfarbe der Zellen weiaa
-                    sp.CellAppearance.ForeColor = Color.Black;                  // Schwarze Schriftfarbe
-
                     ueberSchriftFarbe = Color.Black;
                     hinterGrundFarbe = Color.DarkGray;
                 }
 
                 this.BearbeiteZeile1(sp.Index + 1, hinterGrundFarbe, ueberSchriftFarbe); // Zeile 1 bearbeiten
-
-                var row = this.ultraGridStammDaten.DisplayLayout.Rows[0];
+                this.BearbeiteZeile2(sp.Index + 1, hinterGrundFarbe, ueberSchriftFarbe); // Zeile 2 bearbeiten
             }
         }
 
@@ -115,6 +109,8 @@ namespace Terminplan
             switch (spalte)
             {
                 case 2:
+                case 6:
+                case 7:
                 case 9:
                 case 14:
                 case 19:
@@ -132,31 +128,36 @@ namespace Terminplan
                 case 38:
                     zelle.Appearance.BackColor = hinterGrundFarbe;
                     zelle.Appearance.ForeColor = ueberSchriftFarbe;
-                    zelle.Appearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.True;
+                    zelle.Appearance.FontData.Bold = DefaultableBoolean.True;
                     zelle.Appearance.FontData.Name = @"Arial";
+
+                    if (spalte == 6 || spalte == 7)
+                    {
+                        zelle.Appearance.BorderColor = hinterGrundFarbe;
+                    }
                     break;
 
                 default:
-                    if ((spalte <= 57) && (spalte >= 42))
-                    {
-                        zelle.Appearance.BackColor = hinterGrundFarbe;
-                        zelle.Appearance.ForeColor = ueberSchriftFarbe;
-                        zelle.Appearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.True;
-                        zelle.Appearance.FontData.Name = @"Arial";
-                    }
+                    //if ((spalte <= 57) && (spalte >= 42))
+                    //{
+                    //    zelle.Appearance.BackColor = hinterGrundFarbe;
+                    //    zelle.Appearance.ForeColor = ueberSchriftFarbe;
+                    //    zelle.Appearance.FontData.Bold = DefaultableBoolean.True;
+                    //    zelle.Appearance.FontData.Name = @"Arial";
+                    //}
                     break;
             }
         }
 
         private void BearbeiteZeile2(int spalte, Color hinterGrundFarbe, Color ueberSchriftFarbe)
         {
-            var row = this.ultraGridStammDaten.DisplayLayout.Rows[0];
+            var row = this.ultraGridStammDaten.DisplayLayout.Rows[1];
             var zelle = row.Cells[spalte - 1];                                  // Zelle in der Spalte ermitteln
 
             switch (spalte)
             {
-                case 2:
-                case 9:
+                case 6:
+                case 7:
                 case 14:
                 case 19:
                 case 21:
@@ -173,20 +174,94 @@ namespace Terminplan
                 case 38:
                     zelle.Appearance.BackColor = hinterGrundFarbe;
                     zelle.Appearance.ForeColor = ueberSchriftFarbe;
-                    zelle.Appearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.True;
+                    zelle.Appearance.FontData.Bold = DefaultableBoolean.True;
                     zelle.Appearance.FontData.Name = @"Arial";
+
+                    if (spalte == 6 || spalte == 7)
+                    {
+                        zelle.Appearance.TextHAlign = HAlign.Left;
+                        zelle.Appearance.TextVAlign = VAlign.Bottom;
+                        zelle.Appearance.BorderColor = hinterGrundFarbe;
+                    }
+
+                    // Die Spalten 32, 23 und 25 enthalten Checkboxen
+                    if (spalte == 21 || spalte == 23 || spalte == 25)
+                    {
+                        var checkEditor = new UltraCheckEditor();
+                        checkEditor.CheckedValueChanged += new System.EventHandler(this.CheckEditor_CheckedValueChanged);
+                        checkEditor.CheckedChanged += this.CheckEditor_CheckedChanged;
+                        checkEditor.Click += this.OnCheckEditorClick;
+
+                        checkEditor.Tag = zelle;
+                        zelle.Appearance.TextHAlign = HAlign.Left;
+                        zelle.Appearance.TextVAlign = VAlign.Bottom;
+
+                        // Zustand der Check-Editoren setzen
+                        if (zelle.Text == @"False")
+                        {
+                            checkEditor.Checked = false;
+                        }
+                        else
+                        {
+                            checkEditor.Checked = true;
+                        }
+
+                        switch (spalte)
+                        {
+                            case 21:
+                                checkEditor.Text = @"Benutzerdef 1 anzeigen";
+                                break;
+
+                            case 23:
+                                checkEditor.Text = @"Benutzerdef 2 anzeigen";
+                                break;
+
+                            case 25:
+                                checkEditor.Text = @"Benutzerdef 3 anzeigen";
+                                break;
+                        }
+
+                        checkEditor.Appearance.BackColor = hinterGrundFarbe;
+                        checkEditor.Appearance.ForeColor = ueberSchriftFarbe;
+                        checkEditor.Appearance.FontData.Name = @"Arial";
+                        checkEditor.Appearance.FontData.SizeInPoints = 8;
+                        zelle.EditorComponent = checkEditor;
+                        zelle.CellDisplayStyle = CellDisplayStyle.FullEditorDisplay;
+                    }
                     break;
 
                 default:
-                    if ((spalte <= 57) && (spalte >= 42))
-                    {
-                        zelle.Appearance.BackColor = hinterGrundFarbe;
-                        zelle.Appearance.ForeColor = ueberSchriftFarbe;
-                        zelle.Appearance.FontData.Bold = Infragistics.Win.DefaultableBoolean.True;
-                        zelle.Appearance.FontData.Name = @"Arial";
-                    }
+                    //if ((spalte <= 57) && (spalte >= 42))
+                    //{
+                    //    zelle.Appearance.BackColor = hinterGrundFarbe;
+                    //    zelle.Appearance.ForeColor = ueberSchriftFarbe;
+                    //    zelle.Appearance.FontData.Bold = DefaultableBoolean.True;
+                    //    zelle.Appearance.FontData.Name = @"Arial";
+                    //}
                     break;
             }
+        }
+
+        private void OnCheckEditorClick(object sender, System.EventArgs e)
+        {
+        }
+
+        private void CheckEditor_CheckedChanged(object sender, System.EventArgs e)
+        {
+            //throw new System.NotImplementedException();
+        }
+
+        private void CheckEditor_CheckedValueChanged(object sender, System.EventArgs e)
+        {
+            var editor = (UltraCheckEditor)sender;
+            var wert = editor.Checked;
+            var zelle = (UltraGridCell)editor.Tag;                              // Aus dem UltraCheckEditor die zugehörige Zelle ermitteln
+
+            if (zelle == null) return;                                          // Wenn keine Zelle existiert, kann abgebrochen werden
+            if (wert)
+                zelle.Value = @"True";
+            else
+                zelle.Value = @"False";
         }
     }
 }

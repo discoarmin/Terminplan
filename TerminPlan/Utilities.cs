@@ -300,5 +300,82 @@ namespace Terminplan
             }
             return retVal;
         }
+
+        //private Control cloneObject(Control src_ctl)
+        //{
+        //    var t = src_ctl.GetType();
+        //    var obj = Activator.CreateInstance(t);
+        //    var dst_ctl = (Control)obj;
+
+        //    var src_pdc = TypeDescriptor.GetProperties(src_ctl);
+        //    var dst_pdc = TypeDescriptor.GetProperties(dst_ctl);
+
+        //    for (int i = 0; i < src_pdc.Count; i++)
+        //    {
+        //        string prop_name = src_pdc[i].Name;
+
+        //        if (prop_name == "Parent" || prop_name == "Handle")
+        //            continue;
+
+        //        if (src_pdc[i].Attributes.Contains(DesignerSerializationVisibilityAttribute.Content))
+        //        {
+        //            object collection_val = src_pdc[i].GetValue(src_ctl);
+        //            if ((collection_val is IList) == true)
+        //            {
+        //                foreach (object child in (IList)collection_val)
+        //                {
+        //                    object new_child = null;
+
+        //                    if (child == null)
+        //                        continue;
+
+        //                    if (child is Control)
+        //                    {
+        //                        new_child = cloneObject(child as Control);
+        //                    }
+        //                    else if (child is ICloneable)
+        //                        new_child = (child as ICloneable).Clone();
+        //                    else
+        //                        new_child = ZoomHelper.cloneObject(child); //TODO
+
+        //                    object dst_collection_val = dst_pdc[i].GetValue(dst_ctl);
+        //                    ((IList)dst_collection_val).Add(new_child);
+        //                }
+        //            }
+        //        }
+        //        else if (src_pdc[i].Attributes.Contains(DesignerSerializationVisibilityAttribute.Visible) && !src_pdc[i].IsReadOnly)
+        //        {
+        //            //dst_pdc[src_pdc[i].Name].SetValue(dst_ctl, src_pdc[i].GetValue(src_ctl));
+        //            object child = src_pdc[i].GetValue(src_ctl);
+        //            object new_child = null;
+
+        //            if (child == null)
+        //                continue;
+
+        //            if (child is Control)
+        //                new_child = cloneObject(child as Control);
+        //            else if (child is ICloneable)
+        //                new_child = (child as ICloneable).Clone();
+        //            else
+        //                new_child = ZoomHelper.cloneObject(child);
+
+        //            dst_pdc[src_pdc[i].Name].SetValue(dst_ctl, new_child);
+        //        }
+        //    }
+
+        //    foreach (EventInfo einfo in t.GetEvents())
+        //    {
+        //        //EVENTS
+        //    }
+
+        //    return dst_ctl;
+
+        //    //}
+        //    /*catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //        return null;
+        //    }*/
+        //}
     }
 }
