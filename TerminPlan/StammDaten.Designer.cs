@@ -55,8 +55,6 @@
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn1 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("A");
             Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn2 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("B");
             Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn3 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("C");
@@ -84,7 +82,7 @@
             Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn25 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Y");
             Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn26 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Z");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StammDaten));
-            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
@@ -307,6 +305,8 @@
             Infragistics.Win.UltraWinToolbars.ListTool listTool9 = new Infragistics.Win.UltraWinToolbars.ListTool("ListVerbindenUndZentrieren");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool74 = new Infragistics.Win.UltraWinToolbars.ButtonTool("AusrichtungRechts");
             Infragistics.Win.Appearance appearance97 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
             this.ultraGridStammDaten = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.ultraDataSource1 = new Infragistics.Win.UltraWinDataSource.UltraDataSource(this.components);
@@ -324,6 +324,7 @@
             this.ultraGridPrintDocumentStamm = new Infragistics.Win.UltraWinGanttView.UltraGanttViewPrintDocument(this.components);
             this.zedGraphControl1 = new ZedGraph.ZedGraphControl();
             this.ultraGridExcelExporterStammDaten = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
+            this.ultraFormattedLinkLabel1 = new Infragistics.Win.FormattedLinkLabel.UltraFormattedLinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridStammDaten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraDataSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManagerStamm)).BeginInit();
@@ -442,8 +443,6 @@
             this.ultraGridStammDaten.DisplayLayout.MaxColScrollRegions = 1;
             this.ultraGridStammDaten.DisplayLayout.MaxRowScrollRegions = 1;
             appearance5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            appearance5.BorderColor = System.Drawing.Color.LimeGreen;
-            appearance5.ForeColor = System.Drawing.Color.Black;
             this.ultraGridStammDaten.DisplayLayout.Override.ActiveCellAppearance = appearance5;
             appearance6.BackColor = System.Drawing.SystemColors.Highlight;
             appearance6.ForeColor = System.Drawing.SystemColors.HighlightText;
@@ -457,7 +456,6 @@
             this.ultraGridStammDaten.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted;
             appearance7.BackColor = System.Drawing.SystemColors.Window;
             this.ultraGridStammDaten.DisplayLayout.Override.CardAreaAppearance = appearance7;
-            appearance8.BorderColor = System.Drawing.Color.LightGray;
             appearance8.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
             this.ultraGridStammDaten.DisplayLayout.Override.CellAppearance = appearance8;
             this.ultraGridStammDaten.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText;
@@ -474,21 +472,12 @@
             this.ultraGridStammDaten.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
             this.ultraGridStammDaten.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.WindowsXPCommand;
             this.ultraGridStammDaten.DisplayLayout.Override.MergedCellStyle = Infragistics.Win.UltraWinGrid.MergedCellStyle.Always;
-            appearance11.BackColor = System.Drawing.Color.White;
-            appearance11.BackColorDisabled = System.Drawing.Color.White;
-            appearance11.BorderColor = System.Drawing.Color.LightGray;
-            appearance11.ForeColor = System.Drawing.Color.Black;
-            this.ultraGridStammDaten.DisplayLayout.Override.RowAlternateAppearance = appearance11;
-            appearance12.BackColor = System.Drawing.Color.Gainsboro;
-            appearance12.BorderColor = System.Drawing.Color.LightGray;
-            appearance12.ForeColor = System.Drawing.Color.Black;
-            this.ultraGridStammDaten.DisplayLayout.Override.RowAppearance = appearance12;
             this.ultraGridStammDaten.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
             this.ultraGridStammDaten.DisplayLayout.Override.RowSizing = Infragistics.Win.UltraWinGrid.RowSizing.Free;
             this.ultraGridStammDaten.DisplayLayout.Override.RowSizingArea = Infragistics.Win.UltraWinGrid.RowSizingArea.RowSelectorsOnly;
             this.ultraGridStammDaten.DisplayLayout.Override.SummaryDisplayArea = Infragistics.Win.UltraWinGrid.SummaryDisplayAreas.None;
-            appearance13.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ultraGridStammDaten.DisplayLayout.Override.TemplateAddRowAppearance = appearance13;
+            appearance11.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.ultraGridStammDaten.DisplayLayout.Override.TemplateAddRowAppearance = appearance11;
             this.ultraGridStammDaten.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
             this.ultraGridStammDaten.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
             this.ultraGridStammDaten.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -498,8 +487,8 @@
             this.ultraGridStammDaten.Size = new System.Drawing.Size(1149, 602);
             this.ultraGridStammDaten.SyncWithCurrencyManager = false;
             this.ultraGridStammDaten.TabIndex = 0;
-            this.ultraGridStammDaten.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
-            this.ultraGridStammDaten.AfterExitEditMode += new System.EventHandler(this.ultraGridStammDaten_AfterExitEditMode);
+            this.ultraGridStammDaten.AfterExitEditMode += new System.EventHandler(this.OnUltraGridStammDatenAfterExitEditMode);
+            this.ultraGridStammDaten.BeforeCellActivate += new Infragistics.Win.UltraWinGrid.CancelableCellEventHandler(this.OnUltraGridStammDatenBeforeCellActivate);
             this.ultraGridStammDaten.BeforeCellDeactivate += new System.ComponentModel.CancelEventHandler(this.OnUltraGridStammDatenBeforeCellDeactivate);
             // 
             // ultraDataSource1
@@ -784,8 +773,8 @@
             // 
             // ultraToolbarsManagerStamm
             // 
-            appearance14.BackColor = System.Drawing.Color.DarkGray;
-            this.ultraToolbarsManagerStamm.Appearance = appearance14;
+            appearance12.BackColor = System.Drawing.Color.DarkGray;
+            this.ultraToolbarsManagerStamm.Appearance = appearance12;
             this.ultraToolbarsManagerStamm.DesignerFlags = 1;
             this.ultraToolbarsManagerStamm.DockWithinContainer = this;
             this.ultraToolbarsManagerStamm.DockWithinContainerBaseType = typeof(System.Windows.Forms.Form);
@@ -1342,8 +1331,6 @@
             // 
             // ultraZoomPanelStammDaten
             // 
-            appearance15.BackColor = System.Drawing.Color.DarkGray;
-            this.ultraZoomPanelStammDaten.Appearance = appearance15;
             this.ultraZoomPanelStammDaten.AutoScrollMinSize = new System.Drawing.Size(1149, 602);
             // 
             // ultraZoomPanelStammDaten.ClientArea
@@ -1355,6 +1342,7 @@
             this.ultraZoomPanelStammDaten.Size = new System.Drawing.Size(1149, 602);
             this.ultraZoomPanelStammDaten.TabIndex = 13;
             this.ultraZoomPanelStammDaten.Tag = "StammDaten";
+            this.ultraZoomPanelStammDaten.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.ultraZoomPanelStammDaten.ZoomProperties.MaxZoomFactor = 3F;
             this.ultraZoomPanelStammDaten.ZoomFactorChanged += new System.EventHandler(this.OnZoomFactorChanged);
             // 
@@ -1377,6 +1365,29 @@
             this.zedGraphControl1.Size = new System.Drawing.Size(8, 8);
             this.zedGraphControl1.TabIndex = 18;
             // 
+            // ultraFormattedLinkLabel1
+            // 
+            appearance13.FontData.UnderlineAsString = "True";
+            appearance13.ForeColor = System.Drawing.Color.Blue;
+            this.ultraFormattedLinkLabel1.ActiveLinkAppearance = appearance13;
+            appearance14.FontData.UnderlineAsString = "True";
+            appearance14.ForeColor = System.Drawing.Color.Blue;
+            this.ultraFormattedLinkLabel1.Appearance = appearance14;
+            this.ultraFormattedLinkLabel1.BorderStyle = Infragistics.Win.UIElementBorderStyle.None;
+            appearance15.FontData.UnderlineAsString = "True";
+            this.ultraFormattedLinkLabel1.LinkAppearance = appearance15;
+            this.ultraFormattedLinkLabel1.Location = new System.Drawing.Point(806, 130);
+            this.ultraFormattedLinkLabel1.Name = "ultraFormattedLinkLabel1";
+            this.ultraFormattedLinkLabel1.Size = new System.Drawing.Size(130, 23);
+            this.ultraFormattedLinkLabel1.TabIndex = 23;
+            this.ultraFormattedLinkLabel1.TabStop = true;
+            this.ultraFormattedLinkLabel1.TreatValueAs = Infragistics.Win.FormattedLinkLabel.TreatValueAs.URL;
+            this.ultraFormattedLinkLabel1.UnderlineLinks = Infragistics.Win.FormattedLinkLabel.UnderlineLink.Always;
+            this.ultraFormattedLinkLabel1.UseAppStyling = false;
+            this.ultraFormattedLinkLabel1.Value = "ultraFormattedLinkLabel1";
+            this.ultraFormattedLinkLabel1.Visible = false;
+            this.ultraFormattedLinkLabel1.LinkClicked += new Infragistics.Win.FormattedLinkLabel.LinkClickedEventHandler(this.OnUltraFormattedLinkLabel1LinkClicked);
+            // 
             // StammDaten
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -1384,6 +1395,7 @@
             this.BackColor = System.Drawing.Color.DarkGray;
             this.ClientSize = new System.Drawing.Size(1151, 756);
             this.ControlBox = false;
+            this.Controls.Add(this.ultraFormattedLinkLabel1);
             this.Controls.Add(this.zedGraphControl1);
             this.Controls.Add(this.ultraZoomPanelStammDaten);
             this.Controls.Add(this._TerminPlanForm_Toolbars_Dock_Area_Left);
@@ -1423,5 +1435,6 @@
         private Infragistics.Win.UltraWinGanttView.UltraGanttViewPrintDocument ultraGridPrintDocumentStamm;
         private ZedGraph.ZedGraphControl zedGraphControl1;
         private Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter ultraGridExcelExporterStammDaten;
+        private Infragistics.Win.FormattedLinkLabel.UltraFormattedLinkLabel ultraFormattedLinkLabel1;
     }
 }

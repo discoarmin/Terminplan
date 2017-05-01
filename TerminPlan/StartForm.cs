@@ -1,22 +1,4 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="$File" company="EST GmbH + CO.KG">
-//   Copyright (c) EST GmbH + CO.KG. All rights reserved.
-// </copyright>
-// <summary>
-//   Zusammenfassung für .
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-// <remarks>
-//     <para>Autor: Armin Brenner</para>
-//     <para>
-//        History : Datum     bearb.  Änderung
-//                  --------  ------  ------------------------------------
-//                  02.04.17  br      Grundversion
-//      </para>
-// </remarks>
-// --------------------------------------------------------------------------------------------------------------------
-
-// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="StartForm.cs" company="EST GmbH + CO.KG">
 //   Copyright (c) EST GmbH + CO.KG. All rights reserved.
 // </copyright>
@@ -81,13 +63,6 @@ namespace Terminplan
         private void InitializeZoomPanels()
         {
             this.zoomPanels = new List<UltraZoomPanel>() { fs.ultraZoomPanelStammDaten, ft.ultraZoomPanelTerminPlan };
-
-            //foreach (UltraZoomPanel zoomPanel in zoomPanels)
-            //{
-            //    zoomPanel.ZoomFactorChanged += ZoomPanel_ZoomFactorChanged;
-            //}
-
-            //activeZoomPanel = uzpGrid;
         }
 
         #endregion InitializeZoomPanels

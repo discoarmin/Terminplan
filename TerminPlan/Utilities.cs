@@ -23,6 +23,7 @@ namespace Terminplan
     using System.Data;
     using System.Diagnostics;
     using System.Drawing;
+    using System.Globalization;
     using System.IO;
     using System.Linq;
     using System.Reflection;
@@ -30,6 +31,7 @@ namespace Terminplan
     using System.Windows.Forms;
     using Infragistics.Win;
     using Infragistics.Win.UltraWinToolbars;
+    using Microsoft.Win32;
     using Resources = Properties.Resources;
 
     /// <summary>
@@ -301,81 +303,45 @@ namespace Terminplan
             return retVal;
         }
 
-        //private Control cloneObject(Control src_ctl)
-        //{
-        //    var t = src_ctl.GetType();
-        //    var obj = Activator.CreateInstance(t);
-        //    var dst_ctl = (Control)obj;
-
-        //    var src_pdc = TypeDescriptor.GetProperties(src_ctl);
-        //    var dst_pdc = TypeDescriptor.GetProperties(dst_ctl);
-
-        //    for (int i = 0; i < src_pdc.Count; i++)
-        //    {
-        //        string prop_name = src_pdc[i].Name;
-
-        //        if (prop_name == "Parent" || prop_name == "Handle")
-        //            continue;
-
-        //        if (src_pdc[i].Attributes.Contains(DesignerSerializationVisibilityAttribute.Content))
-        //        {
-        //            object collection_val = src_pdc[i].GetValue(src_ctl);
-        //            if ((collection_val is IList) == true)
-        //            {
-        //                foreach (object child in (IList)collection_val)
-        //                {
-        //                    object new_child = null;
-
-        //                    if (child == null)
-        //                        continue;
-
-        //                    if (child is Control)
-        //                    {
-        //                        new_child = cloneObject(child as Control);
-        //                    }
-        //                    else if (child is ICloneable)
-        //                        new_child = (child as ICloneable).Clone();
-        //                    else
-        //                        new_child = ZoomHelper.cloneObject(child); //TODO
-
-        //                    object dst_collection_val = dst_pdc[i].GetValue(dst_ctl);
-        //                    ((IList)dst_collection_val).Add(new_child);
-        //                }
-        //            }
-        //        }
-        //        else if (src_pdc[i].Attributes.Contains(DesignerSerializationVisibilityAttribute.Visible) && !src_pdc[i].IsReadOnly)
-        //        {
-        //            //dst_pdc[src_pdc[i].Name].SetValue(dst_ctl, src_pdc[i].GetValue(src_ctl));
-        //            object child = src_pdc[i].GetValue(src_ctl);
-        //            object new_child = null;
-
-        //            if (child == null)
-        //                continue;
-
-        //            if (child is Control)
-        //                new_child = cloneObject(child as Control);
-        //            else if (child is ICloneable)
-        //                new_child = (child as ICloneable).Clone();
-        //            else
-        //                new_child = ZoomHelper.cloneObject(child);
-
-        //            dst_pdc[src_pdc[i].Name].SetValue(dst_ctl, new_child);
-        //        }
-        //    }
-
-        //    foreach (EventInfo einfo in t.GetEvents())
-        //    {
-        //        //EVENTS
-        //    }
-
-        //    return dst_ctl;
-
-        //    //}
-        //    /*catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //        return null;
-        //    }*/
-        //}
+        /// <summary>Ermittelt, ob Outlook installiert ist</summary>
+        /// <returns> <c>true</c>, falls Outlook vorhanden, sonst <c>false</c></returns>
+        public static bool IstOutlookInstalliert()
+        {
+            Type requestType = Type.GetTypeFromProgID("Outlook.Application", false);
+            if (requestType == null)
+            {
+                RegistryKey key = null;
+                try
+                {
+                    key = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Office", false);
+                    if (key != null)
+                    {
+                        double version = 0.0, temp = 0.0;
+                        var valueNames = key.GetSubKeyNames();
+                        for (var i = 0; i < valueNames.Length; i++)
+                        {
+                            temp = 0.0;
+                            try
+                            {
+                                temp = Convert.ToDouble(valueNames[i],
+                                CultureInfo.CreateSpecificCulture("de-DE").NumberFormat);
+                            }
+                            catch
+                            {
+                            }
+                            if (temp > version) version = temp;
+                        }
+                        key.Close();
+                        if (version != 0.0)
+                            requestType = Type.GetTypeFromProgID("Outlook.Application." + version.ToString().Replace(",", "."), false);
+                    }
+                }
+                catch
+                {
+                    if (key != null) key.Close();
+                }
+            }
+            return (requestType != null);
+        }
     }
 }

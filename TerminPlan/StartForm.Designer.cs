@@ -322,7 +322,7 @@
         private Infragistics.Win.UltraWinForm.UltraFormDockArea _MainForm_UltraFormManager_Dock_Area_Top;
         private Infragistics.Win.UltraWinForm.UltraFormDockArea _MainForm_UltraFormManager_Dock_Area_Bottom;
         private Infragistics.Win.UltraWinToolbars.UltraToolbarsManager ultraToolbarsManagerStart;
-        private Infragistics.Win.UltraWinStatusBar.UltraStatusBar ultraStatusBarStart;
         private Infragistics.Win.UltraWinEditors.UltraTrackBar trackBarZoom;
+        public Infragistics.Win.UltraWinStatusBar.UltraStatusBar ultraStatusBarStart;
     }
 }

@@ -92,7 +92,7 @@
         </componentStyle>
         <componentStyle name="Inbox Panel">
           <properties>
-            <property name="BackColor" colorCategory="{Default}">222, 222, 222</property>
+            <property name="BackColor" colorCategory="{Default}">154, 154, 154</property>
             <property name="BorderStyle" colorCategory="{Default}">FixedSingle</property>
             <property name="ForeColor" colorCategory="{Default}">68, 68, 68</property>
           </properties>
@@ -1907,7 +1907,6 @@
                 <name>Background Grid Hover</name>
               </resources>
             </state>
-            <state name="AlternateItem" backColor="210, 210, 210" backGradientStyle="None" backHatchStyle="None" />
           </states>
         </style>
         <style role="ScheduleActivity">

@@ -20,9 +20,12 @@ namespace Terminplan
 {
     using System.Windows.Forms;
     using System.Drawing;
+    using Microsoft.Office.Interop.Outlook;
     using Infragistics.Win;
     using Infragistics.Win.UltraWinGrid;
     using Infragistics.Win.UltraWinEditors;
+
+    using Outlook = Microsoft.Office.Interop.Outlook;
 
     public partial class StammDaten : Form
     {
@@ -56,6 +59,9 @@ namespace Terminplan
             // Zellen der Spalte einstellen
             var ueberSchriftFarbe = Color.White;
             var hinterGrundFarbe = Color.LightGray;
+
+            ueberSchriftFarbe = this.ultraZoomPanelStammDaten.Appearance.ForeColor;
+            hinterGrundFarbe = this.ultraZoomPanelStammDaten.Appearance.BackColor;
 
             for (var r = 0; r < this.rowCount; r++)
             {
@@ -98,6 +104,9 @@ namespace Terminplan
 
                 this.BearbeiteZeile1(sp.Index + 1, hinterGrundFarbe, ueberSchriftFarbe); // Zeile 1 bearbeiten
                 this.BearbeiteZeile2(sp.Index + 1, hinterGrundFarbe, ueberSchriftFarbe); // Zeile 2 bearbeiten
+
+                if (sp.Index == 1)
+                    this.BearbeiteSpalte1(sp.Index + 1, hinterGrundFarbe, ueberSchriftFarbe);
             }
         }
 
@@ -105,6 +114,9 @@ namespace Terminplan
         {
             var row = this.ultraGridStammDaten.DisplayLayout.Rows[0];
             var zelle = row.Cells[spalte - 1];                                  // Zelle in der Spalte ermitteln
+
+            // In der 1. Zeile stehen nur Überschriften, die Zellen können also nicht editiert werden
+            zelle.CellDisplayStyle = CellDisplayStyle.PlainText;
 
             switch (spalte)
             {
@@ -126,10 +138,7 @@ namespace Terminplan
                 case 36:
                 case 37:
                 case 38:
-                    zelle.Appearance.BackColor = hinterGrundFarbe;
-                    zelle.Appearance.ForeColor = ueberSchriftFarbe;
-                    zelle.Appearance.FontData.Bold = DefaultableBoolean.True;
-                    zelle.Appearance.FontData.Name = @"Arial";
+                    SetzeUeberSchrift(zelle, hinterGrundFarbe, ueberSchriftFarbe);
 
                     if (spalte == 6 || spalte == 7)
                     {
@@ -138,13 +147,6 @@ namespace Terminplan
                     break;
 
                 default:
-                    //if ((spalte <= 57) && (spalte >= 42))
-                    //{
-                    //    zelle.Appearance.BackColor = hinterGrundFarbe;
-                    //    zelle.Appearance.ForeColor = ueberSchriftFarbe;
-                    //    zelle.Appearance.FontData.Bold = DefaultableBoolean.True;
-                    //    zelle.Appearance.FontData.Name = @"Arial";
-                    //}
                     break;
             }
         }
@@ -172,10 +174,7 @@ namespace Terminplan
                 case 36:
                 case 37:
                 case 38:
-                    zelle.Appearance.BackColor = hinterGrundFarbe;
-                    zelle.Appearance.ForeColor = ueberSchriftFarbe;
-                    zelle.Appearance.FontData.Bold = DefaultableBoolean.True;
-                    zelle.Appearance.FontData.Name = @"Arial";
+                    SetzeUeberSchrift(zelle, hinterGrundFarbe, ueberSchriftFarbe);
 
                     if (spalte == 6 || spalte == 7)
                     {
@@ -231,15 +230,44 @@ namespace Terminplan
                     break;
 
                 default:
-                    //if ((spalte <= 57) && (spalte >= 42))
-                    //{
-                    //    zelle.Appearance.BackColor = hinterGrundFarbe;
-                    //    zelle.Appearance.ForeColor = ueberSchriftFarbe;
-                    //    zelle.Appearance.FontData.Bold = DefaultableBoolean.True;
-                    //    zelle.Appearance.FontData.Name = @"Arial";
-                    //}
                     break;
             }
+        }
+
+        private void BearbeiteSpalte1(int spalte, Color hinterGrundFarbe, Color ueberSchriftFarbe)
+        {
+            // Die Überschrift für Zeile 1 und 2 wird an anderer Stelle verarbeitet
+            // Zeile 4 enthält eineÜberschrift
+            var zelle = this.ultraGridStammDaten.DisplayLayout.Rows[3].Cells[1];
+            SetzeUeberSchrift(zelle, hinterGrundFarbe, ueberSchriftFarbe);
+
+            // Zeile 6 enthält eine Überschrift
+            zelle = this.ultraGridStammDaten.DisplayLayout.Rows[5].Cells[1];
+            SetzeUeberSchrift(zelle, hinterGrundFarbe, ueberSchriftFarbe);
+
+            // Zeile 7 enthält eine URL
+            zelle = this.ultraGridStammDaten.DisplayLayout.Rows[6].Cells[1];
+            SetzeUrl(ref zelle);
+        }
+
+        private void SetzeUeberSchrift(UltraGridCell zelle, Color hinterGrundFarbe, Color ueberSchriftFarbe)
+        {
+            zelle.Appearance.BackColor = hinterGrundFarbe;
+            zelle.Appearance.ForeColor = ueberSchriftFarbe;
+            zelle.Appearance.FontData.Bold = DefaultableBoolean.True;
+            zelle.Appearance.FontData.Name = @"Arial";
+        }
+
+        private void SetzeUrl(ref UltraGridCell zelle)
+        {
+            if (zelle == null) return;                                          // Falls keine Zelle existiert, abbrechen
+
+            zelle.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.URL;        // Zelle enthält eine URL
+            var editor = this.ultraFormattedLinkLabel1;
+            editor.Text = zelle.Text;
+            zelle.EditorComponent = editor;
+            zelle.CellDisplayStyle = CellDisplayStyle.FullEditorDisplay;
+            zelle.Activation = Activation.AllowEdit;
         }
 
         private void OnCheckEditorClick(object sender, System.EventArgs e)

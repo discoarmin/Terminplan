@@ -21,7 +21,8 @@ namespace Terminplan
     using System.Drawing;
     using System.Windows.Forms;
     using System.Reflection;
-    using Properties;
+    using Infragistics.Win.UltraWinEditors;
+    using Terminplan.Properties;
 
     public partial class AboutControl : UserControl
     {
@@ -39,24 +40,26 @@ namespace Terminplan
         #endregion Konstruktor
 
         #region Methoden
+
         #region OnInitializeUi
+
         /// <summary>
         /// Initialisiert die Oberfläche.
         /// </summary>
         private void OnInitializeUi()
         {
             // Namen der Anwendung aus den Ressourcen laden und in das Textfeld eintragen
-            lblAppName.Text = Resources.Title;
-            
+            lblAppName.Text = Properties.Resources.Title;
+
             // Beschreibungn der Anwendung aus den Ressourcen laden und in das Textfeld eintragen
-            lblDescription.Text = Resources.ShortDescription;
-            
+            lblDescription.Text = Properties.Resources.ShortDescription;
+
             // Firmennamen aus des Ressourcen laden und in das Textfeld eintragen
             lblCompany.Text = string.Format(@"{0}: {1}", DienstProgramme.GetLocalizedString(@"Publisher"), Firma);
-            
+
             // Copyright-Info aus den Ressourcen laden und in das Textfeld eintragen
             lblCopyright.Text = DienstProgramme.GetLocalizedString(Copyright);
-            
+
             // Versionsnummer in das Textfeld eintragen
             lblVersion.Text = string.Format(@"{0}: {1}", DienstProgramme.GetLocalizedString(@"Version"), Version);
 
@@ -66,49 +69,63 @@ namespace Terminplan
             pbLogo.Size = logo.Size;
             pbLogo.Image = logo;
         }
+
         #endregion OnInitializeUi
+
         #endregion Methoden
 
         #region Eigenschaften
+
         #region ApplicationName
+
         /// <summary> Holt den Namen der Anwendung </summary>
         internal static string ApplicationName
         {
             get { return DienstProgramme.GetAssemblyAttribute<AssemblyTitleAttribute>(a => a.Title); }
         }
+
         #endregion ApplicationName
 
         #region Beschreibung
+
         /// <summary> Holt die Beschreibung der Anwendung </summary>
         internal static string Beschreibung
         {
             get { return DienstProgramme.GetAssemblyAttribute<AssemblyDescriptionAttribute>(a => a.Description); }
         }
+
         #endregion Beschreibung
 
         #region Firma
+
         /// <summary> Holt die Firma </summary>
         internal static string Firma
         {
             get { return DienstProgramme.GetAssemblyAttribute<AssemblyCompanyAttribute>(a => a.Company); }
         }
+
         #endregion Firma
 
         #region Copyright
+
         /// <summary> Holt die Copyright-Information. </summary>
         internal static string Copyright
         {
             get { return DienstProgramme.GetAssemblyAttribute<AssemblyCopyrightAttribute>(a => a.Copyright); }
         }
+
         #endregion Copyright
 
         #region Version
+
         /// <summary> Holt die Versionsinformation. </summary>
         internal static string Version
         {
             get { return Assembly.GetExecutingAssembly().GetName().Version.ToString(); }
         }
+
         #endregion Version
+
         #endregion Eigenschaften
     }
 }

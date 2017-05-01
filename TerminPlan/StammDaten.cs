@@ -19,6 +19,7 @@
 
 namespace Terminplan
 {
+    using System.Diagnostics;
     using System.Globalization;
     using System.IO;
     using System.Windows.Forms;
@@ -218,7 +219,7 @@ namespace Terminplan
         /// Behandelt das ToolValueChanged-Ereignis des ultraToolbarsManagerStamm Kontrols.
         /// </summary>
         /// <param name="sender">Die Quelle des Ereignisses.</param>
-        /// <param name="e">The <see cref="ToolEventArgs" /> Instanz, welche die Ereignisdaten enthält.</param>
+        /// <param name="e">Die <see cref="ToolEventArgs" /> Instanz, welche die Ereignisdaten enthält.</param>
         private void OnUltraToolbarsManagerStammToolValueChanged(object sender, ToolEventArgs e)
         {
         }
@@ -227,22 +228,27 @@ namespace Terminplan
         /// Behandelt das PropertyChanged-Ereignis des ultraToolbarsManagerStamm Kontrols.
         /// </summary>
         /// <param name="sender">Die Quelle des Ereignisses.</param>
-        /// <param name="e">The <see cref="PropertyChangedEventArgs" /> Instanz, welche die Ereignisdaten enthält.</param>
+        /// <param name="e">Die <see cref="PropertyChangedEventArgs" /> Instanz, welche die Ereignisdaten enthält.</param>
         private void ultraToolbarsManagerStamm_PropertyChanged(object sender, Infragistics.Win.PropertyChangedEventArgs e)
         {
             UltraToolbarsManagerStammPropertyChanged(sender, e);
         }
 
         /// <summary>
-        /// Behandelt das BeforeCellDeactivate-Ereignis des _BeforeCellDeactivate Kontrols.
+        /// Behandelt das BeforeCellDeactivate-Ereignis des UltraGridStammDaten Kontrols.
         /// </summary>
         /// <param name="sender">Die Quelle des Ereignisses.</param>
-        /// <param name="e">The <see cref="CancelEventArgs" /> Instanz, welche die Ereignisdaten enthält.</param>
+        /// <param name="e">Die <see cref="CancelEventArgs" /> Instanz, welche die Ereignisdaten enthält.</param>
         private void OnUltraGridStammDatenBeforeCellDeactivate(object sender, System.ComponentModel.CancelEventArgs e)
         {
         }
 
-        private void ultraGridStammDaten_AfterExitEditMode(object sender, System.EventArgs e)
+        /// <summary>
+        /// Behandelt das ultraGridStammDaten_-Ereignis des UltraGridStammDaten Kontrols.
+        /// </summary>
+        /// <param name="sender">Die Quelle des Ereignisses.</param>
+        /// <param name="e">Die <see cref="CancelEventArgs" /> Instanz, welche die Ereignisdaten enthält.</param>
+        private void OnUltraGridStammDatenAfterExitEditMode(object sender, System.EventArgs e)
         {
             var zelle = ((UltraGrid)sender).ActiveCell;                         // Zelle, welche verlassen wird, ermitteln
             if (zelle == null) return;                                          // Wenn keine Zelle existiert, kann abgebrochen werden
@@ -257,6 +263,28 @@ namespace Terminplan
                 zelle.Value = @"True";
             else
                 zelle.Value = @"False";
+        }
+
+        /// <summary>
+        /// Behandelt das BeforeCellActivate-Ereignis des UltraGridStammDaten Kontrols.
+        /// </summary>
+        /// <param name="sender">Die Quelle des Ereignisses.</param>
+        /// <param name="e">Die <see cref="CancelEventArgs" /> Instanz, welche die Ereignisdaten enthält.</param>
+        private void OnUltraGridStammDatenBeforeCellActivate(object sender, CancelableCellEventArgs e)
+        {
+            var zeile = ((UltraGrid)sender).ActiveRow;                          // Zeile, welche angewählt werden soll, ermitteln
+            if (zeile.Index == 0)
+                e.Cancel = true;
+        }
+
+        /// <summary>
+        /// Behandelt das ultraGridStammDaten_-Ereignis des UltraGridStammDaten Kontrols.
+        /// </summary>
+        /// <param name="sender">Die Quelle des Ereignisses.</param>
+        /// <param name="e">Die <see cref="CancelEventArgs" /> Instanz, welche die Ereignisdaten enthält.</param>
+        private void OnUltraFormattedLinkLabel1LinkClicked(object sender, Infragistics.Win.FormattedLinkLabel.LinkClickedEventArgs e)
+        {
+            MailNachrichtErstellen();
         }
     }
 }
