@@ -37,6 +37,9 @@
       <HintPath>C:\Program Files (x86)\Infragistics\2016.2\Windows Forms\CLR4.0\Bin\Infragistics4.Documents.Core.v16.2.dll</HintPath>
       <Name>Infragistics4.Documents.Core.v16.2</Name>
     </Reference>
+    <Reference Include="Infragistics4.Documents.Excel.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
     <Reference Include="Infragistics4.Shared.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\Infragistics\2016.2\Windows Forms\CLR4.0\Bin\Infragistics4.Shared.v16.2.dll</HintPath>
@@ -128,7 +131,6 @@
     <Reference Include="Infragistics4.Documents.Reports.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="Infragistics4.Documents.Excel.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Office.Tools.Outlook.Implementation, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.Office.Tools.Outlook.Implementation\v4.0_10.0.0.0__b03f5f7f11d50a3a\Microsoft.Office.Tools.Outlook.Implementation.dll</HintPath>
@@ -161,6 +163,11 @@
     </Compile>
     <Compile Include="Besitzer.cs" />
     <Compile Include="BordersDrawFilter.cs" />
+    <Compile Include="DataSetUeberschrift.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetUeberschrift.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Hauptform.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -291,6 +298,17 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>WinGanttViewStrings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="DataSetUeberschrift.xsc">
+      <DependentUpon>DataSetUeberschrift.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetUeberschrift.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetUeberschrift.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSetUeberschrift.xss">
+      <DependentUpon>DataSetUeberschrift.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -353,14 +371,18 @@
     <EmbeddedResource Include="Images\Tasks_PercentComplete_50.png" />
     <EmbeddedResource Include="Images\Tasks_PercentComplete_75.png" />
     <EmbeddedResource Include="Images\AppIcon - Theme 04.ico" />
+    <None Include="Resources\delete.ico" />
+    <None Include="Resources\CHECK.ico" />
+    <None Include="Resources\Erase.gif" />
+    <None Include="Resources\Erase16.gif" />
+    <None Include="Resources\Accept16.gif" />
+    <None Include="Resources\Formel16.gif" />
     <Content Include="WinGanttView.PNG" />
     <Content Include="WinGanttViewPrintDocument.png" />
     <Content Include="WinToolbarsManager.png" />
     <Content Include="WinTouchProvider.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <COMReference Include="AxMicrosoft.Office.Interop.Outlook">
       <Guid>{00062FFF-0000-0000-C000-000000000046}</Guid>

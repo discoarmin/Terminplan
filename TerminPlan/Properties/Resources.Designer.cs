@@ -9,6 +9,9 @@
 //------------------------------------------------------------------------------
 
 namespace Terminplan.Properties {
+    using System;
+    
+    
     /// <summary>
     ///   Eine stark typisierte Ressourcenklasse zum Suchen von lokalisierten Zeichenfolgen usw.
     /// </summary>
@@ -58,6 +61,16 @@ namespace Terminplan.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Accept16 {
+            get {
+                object obj = ResourceManager.GetObject("Accept16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Starte {0}... ähnelt.
         /// </summary>
         internal static string Application_Starting {
@@ -76,11 +89,31 @@ namespace Terminplan.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap CHECK {
+            get {
+                object obj = ResourceManager.GetObject("CHECK", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Copyright EST GmbH 2017 ähnelt.
         /// </summary>
         internal static string Copyright {
             get {
                 return ResourceManager.GetString("Copyright", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap delete {
+            get {
+                object obj = ResourceManager.GetObject("delete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -99,6 +132,36 @@ namespace Terminplan.Properties {
         internal static string DienstProgramme_GetEmbeddedResourceStream_Unable_to_locate_embedded_resource_ {
             get {
                 return ResourceManager.GetString("DienstProgramme_GetEmbeddedResourceStream_Unable_to_locate_embedded_resource_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Erase {
+            get {
+                object obj = ResourceManager.GetObject("Erase", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Erase16 {
+            get {
+                object obj = ResourceManager.GetObject("Erase16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Formel16 {
+            get {
+                object obj = ResourceManager.GetObject("Formel16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

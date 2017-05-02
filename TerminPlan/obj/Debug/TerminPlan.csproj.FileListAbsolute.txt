@@ -49,7 +49,6 @@ E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\Infragistics4.Documents.Report
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\Infragistics4.Documents.Excel.v16.2.xml
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\Zedgraph.xml
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\de\Zedgraph.resources.dll
-E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\TerminPlan.csprojResolveAssemblyReference.cache
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\Terminplan.AboutControl.resources
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\Terminplan.TerminPlanForm.resources
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\Terminplan.StartForm.resources
@@ -89,3 +88,4 @@ E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\Microsoft.VisualStudio.Tools.A
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\AxInterop.Microsoft.Office.Interop.Outlook.dll
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\AxInterop.Microsoft.Office.Interop.Outlook.dll
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\TerminPlan.csproj.ResolveComReference.cache
+E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\TerminPlan.csprojResolveAssemblyReference.cache

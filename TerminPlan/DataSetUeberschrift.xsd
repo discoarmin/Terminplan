@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSetUeberschrift" targetNamespace="http://tempuri.org/DataSetUeberschrift.xsd" xmlns:mstns="http://tempuri.org/DataSetUeberschrift.xsd" xmlns="http://tempuri.org/DataSetUeberschrift.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSetUeberschrift" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSetUeberschrift" msprop:Generator_UserDSName="DataSetUeberschrift">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTableUeberschrift" msprop:Generator_TableClassName="DataTableUeberschriftDataTable" msprop:Generator_TableVarName="tableDataTableUeberschrift" msprop:Generator_TablePropName="DataTableUeberschrift" msprop:Generator_RowDeletingName="DataTableUeberschriftRowDeleting" msprop:Generator_RowChangingName="DataTableUeberschriftRowChanging" msprop:Generator_RowEvHandlerName="DataTableUeberschriftRowChangeEventHandler" msprop:Generator_RowDeletedName="DataTableUeberschriftRowDeleted" msprop:Generator_UserTableName="DataTableUeberschrift" msprop:Generator_RowChangedName="DataTableUeberschriftRowChanged" msprop:Generator_RowEvArgName="DataTableUeberschriftRowChangeEvent" msprop:Generator_RowClassName="DataTableUeberschriftRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Ueberschrift" msdata:Caption="" msprop:nullValue="_null" msprop:Generator_ColumnPropNameInRow="Ueberschrift" msprop:Generator_ColumnVarNameInTable="columnUeberschrift" msprop:Generator_ColumnPropNameInTable="UeberschriftColumn" msprop:Generator_UserColumnName="Ueberschrift" type="xs:string" minOccurs="0" />
+              <xs:element name="SpaltenNr" msdata:Caption="" msprop:Generator_ColumnVarNameInTable="columnSpaltenNr" msprop:Generator_ColumnPropNameInRow="SpaltenNr" msprop:Generator_ColumnPropNameInTable="SpaltenNrColumn" msprop:Generator_UserColumnName="SpaltenNr" type="xs:unsignedInt" default="0" minOccurs="0" />
+              <xs:element name="Tabelle" msdata:Caption="" msprop:nullValue="_null" msprop:Generator_ColumnPropNameInRow="Tabelle" msprop:Generator_ColumnVarNameInTable="columnTabelle" msprop:Generator_ColumnPropNameInTable="TabelleColumn" msprop:Generator_UserColumnName="Tabelle" type="xs:string" minOccurs="0" />
+              <xs:element name="VonSpalte" msdata:Caption="" msprop:Generator_ColumnVarNameInTable="columnVonSpalte" msprop:Generator_ColumnPropNameInRow="VonSpalte" msprop:Generator_ColumnPropNameInTable="VonSpalteColumn" msprop:Generator_UserColumnName="VonSpalte" type="xs:unsignedInt" default="0" minOccurs="0" />
+              <xs:element name="BisSpalte" msdata:Caption="" msprop:Generator_ColumnVarNameInTable="columnBisSpalte" msprop:Generator_ColumnPropNameInRow="BisSpalte" msprop:Generator_ColumnPropNameInTable="BisSpalteColumn" msprop:Generator_UserColumnName="BisSpalte" type="xs:unsignedInt" default="0" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

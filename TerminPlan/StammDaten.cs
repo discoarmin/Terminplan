@@ -19,6 +19,8 @@
 
 namespace Terminplan
 {
+    using System;
+    using System.ComponentModel;
     using System.Diagnostics;
     using System.Globalization;
     using System.IO;
@@ -278,13 +280,31 @@ namespace Terminplan
         }
 
         /// <summary>
-        /// Behandelt das ultraGridStammDaten_-Ereignis des UltraGridStammDaten Kontrols.
+        /// Behandelt das LinkLabel_Clicked-Ereignis des UltraFormattedLinkLabel1 Kontrols.
         /// </summary>
         /// <param name="sender">Die Quelle des Ereignisses.</param>
-        /// <param name="e">Die <see cref="CancelEventArgs" /> Instanz, welche die Ereignisdaten enthält.</param>
+        /// <param name="e">Die <see cref="LinkClickedEventArgs" /> Instanz, welche die Ereignisdaten enthält.</param>
         private void OnUltraFormattedLinkLabel1LinkClicked(object sender, Infragistics.Win.FormattedLinkLabel.LinkClickedEventArgs e)
         {
-            MailNachrichtErstellen();
+            this.MailNachrichtErstellen();
+        }
+
+        /// <summary>
+        /// Behandelt das ValueChanged-Ereignis des UltraGridStammDaten Kontrols.
+        /// </summary>
+        /// <param name="sender">Die Quelle des Ereignisses.</param>
+        /// <param name="e">Die <see cref="EventArgs" /> Instanz, welche die Ereignisdaten enthält.</param>
+        private void OnUltraComboEditorSpatenAusWahlValueChanged(object sender, EventArgs e)
+        {
+        }
+
+        /// <summary>
+        /// Behandelt das Click-Ereignis des UltraButtonErase Kontrols.
+        /// </summary>
+        /// <param name="sender">Die Quelle des Ereignisses.</param>
+        /// <param name="e">Die <see cref="EventArgs" /> Instanz, welche die Ereignisdaten enthält.</param>
+        private void OnUltraButtonEraseClick(object sender, EventArgs e)
+        {
         }
     }
 }
