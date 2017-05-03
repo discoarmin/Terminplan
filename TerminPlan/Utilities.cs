@@ -251,7 +251,7 @@ namespace Terminplan
         }
 
         // <summary>
-        /// Dieses Funktion kann dazu benutzt werden, um eine integer Zahl in eine Buchstaben Kombination
+        /// Dieses Funktion kann dazu benutzt werden, um eine integer Zahl in eine BuchstabenKombination
         /// umzuwandeln die der Kopfzeile eines Excel Dokumentes entspricht
         /// </summary>
         /// <param name="colNumber">die umzuwandelnde Spaltenummer</param>

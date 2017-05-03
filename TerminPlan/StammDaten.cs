@@ -31,6 +31,8 @@ namespace Terminplan
     using Infragistics.Win.UltraWinGrid;
     using Infragistics.Win.UltraWinToolbars;
 
+    using AutoCompleteMode = Infragistics.Win.AutoCompleteMode;
+
     //using Infragistics.Win.UltraWinGrid.ExcelExport;
     //using Infragistics.Documents.Excel;
 
@@ -253,18 +255,14 @@ namespace Terminplan
         private void OnUltraGridStammDatenAfterExitEditMode(object sender, System.EventArgs e)
         {
             var zelle = ((UltraGrid)sender).ActiveCell;                         // Zelle, welche verlassen wird, ermitteln
-            if (zelle == null) return;                                          // Wenn keine Zelle existiert, kann abgebrochen werden
-            var editor = (UltraCheckEditor)zelle.EditorComponentResolved;       // Eventuell eingebetteten Editor der Zelle ermitteln
+            var editor = (UltraCheckEditor)zelle?.EditorComponentResolved;      // Eventuell eingebetteten Editor der Zelle ermitteln
             if (editor == null) return;                                         // Wenn kein Editor existiert, kann abgebrochen werden
 
             var editor1 = editor.Editor;                                        // Eingebundener Editor
             var wert = editor1.CurrentEditText.ToLower();                       // Der Zustand der Checkbox kann nur als Text ermittelt werden
 
             // Zustand des CheckEditors in die Zelle schreiben
-            if (wert == @"true")
-                zelle.Value = @"True";
-            else
-                zelle.Value = @"False";
+            zelle.Value = wert == @"true" ? @"True" : @"False";
         }
 
         /// <summary>
@@ -305,6 +303,120 @@ namespace Terminplan
         /// <param name="e">Die <see cref="EventArgs" /> Instanz, welche die Ereignisdaten enthält.</param>
         private void OnUltraButtonEraseClick(object sender, EventArgs e)
         {
+        }
+
+        /// <summary>
+        ///Wird aufgerufen, nachdem die Zelle aktiviert wurde.
+        /// </summary>
+        /// <param name="sender">Die Quelle des Ereignisses.</param>
+        /// <param name="e">Die <see cref="EventArgs" /> Instanz, welche die Ereignisdaten enthält.</param>
+        private void OnUltraGridStammDatenAfterCellActivate(object sender, EventArgs e)
+        {
+            var zelle = ((UltraGrid)sender).ActiveCell;                         // Zelle, welche angewählt wurde, ermitteln
+
+            this.ultraTextEditor1.Text = zelle.Text;                            // den Inhalt in den Editor kopieren
+
+            var colName = DienstProgramme.IntConvertToExcelHeadLine(zelle.Column.Index); // Spaltennamen aus der Spaltennummer ermitteln
+            var zeile = zelle.Row.Index.ToString();                             // Aktive Zeile
+            this.ultraComboZellen.Text = colName + zeile;                       // Zelleninfo eintragen
+        }
+
+        /// <summary>
+        /// Behandelt das InitializeLayout-Ereignis des ultraCombo Kontrols.
+        /// </summary>
+        /// <param name="sender">Die Quelle des Ereignisses.</param>
+        /// <param name="e">Die <see cref="EventArgs" /> Instanz, welche die Ereignisdaten enthält.</param>
+        private void OnUltraComboZellenInitializeLayout(object sender, InitializeLayoutEventArgs e)
+        {
+            this.ultraComboZellen.DisplayLayout.Bands[0].Columns[0].AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+        }
+
+        /// <summary>
+        /// Behandelt das BeforeDropDown-Ereignis des ultraCombo Kontrols.
+        /// </summary>
+        /// <param name="sender">Die Quelle des Ereignisses.</param>
+        /// <param name="e">Die <see cref="CancelEventArgs" /> Instanz, welche die Ereignisdaten enthält.</param>
+        private void OnUltraComboZellenBeforeDropDown(object sender, CancelEventArgs e)
+        {
+            var combo = (UltraCombo)sender;                                     // ComboBox ermitteln
+            var neueBreite = (float)0;
+
+            var schriftGroesse = this.ultraComboZellen.Font.SizeInPoints;       // Schriftgrösse des Kontrols
+            var anzEintraege = this.dsUeberSchriften.Tables[0].Rows.Count;      // Anzahl dargestellter
+            var eintraege = this.dsUeberSchriften.Tables[0].Rows;
+
+            // Die Breite der DropDown-Liste anhand der Einträge einstellen
+            for (var i = 0; i < anzEintraege; i++)
+            {
+                var eintrag = eintraege[i][0].ToString();                       // Überschrift ermitteln
+                var istBreite = eintrag.Length * schriftGroesse;                // Breite der Überschrift berechnen
+
+                // Maximale Breite ermitteln
+                if (istBreite > neueBreite)
+                {
+                    neueBreite = istBreite;
+                }
+            }
+
+            // DropDown-Liste bisschen breiter wie die sichtbare Spalte, so dass kein Scrollbalken dargestellt wird
+            var breite = (int)Math.Round(neueBreite, MidpointRounding.AwayFromZero);
+            this.ultraComboZellen.DropDownWidth = breite + (int)Math.Round(schriftGroesse * 2, MidpointRounding.AwayFromZero);
+
+            // ermittelte Breite ist auch die Breite der 1. Spalte in der Datentabelle
+            combo.DisplayLayout.Bands[0].Columns[0].Width = breite;
+        }
+
+        /// <summary>
+        /// Behandelt das AfterCloseUp-Ereignis des ultraCombo Kontrols.
+        /// </summary>
+        /// <param name="sender">Die Quelle des Ereignisses.</param>
+        /// <param name="e">Die <see cref="EventArgs" /> Instanz, welche die Ereignisdaten enthält.</param>
+        private void OnUltraComboZellenAfterCloseUp(object sender, EventArgs e)
+        {
+            var combo = (UltraCombo)sender;                                     // ComboBox ermitteln
+            var zeile = combo.ActiveRow;                                        // Zeile der ausgewählten Überschrift
+            if (zeile == null) return;                                          // Es kann abgebrochen werden, da keine Überschrift angewählt ist
+
+            UltraGrid grid = null;                                              // Grid im Formular
+            // ausgewählte Spalte ermitteln
+            var startForm = (StartForm)this.MdiParent;                           // Das Elternfenster holen
+            var aktiveTabelle = startForm.activeTab.TextResolved;
+            var sollTabelle = zeile.Cells[2].Value.ToString();                  // Überschrift ermitteln
+
+            if (sollTabelle != aktiveTabelle)
+            {
+                var manager = startForm.tabManager;                             // Tabmanager zum Auswählen des benötigten Tabs
+                manager.TabFromKey(sollTabelle).Activate();
+            }
+
+            switch (aktiveTabelle)
+            {
+                case @"Stammdaten":
+                    grid = this.ultraGridStammDaten;                            // Das Grid zur Aufnahme der Stammdaten
+                    break;
+
+                    // ToDO: hier weitere Tabs abfragen
+            }
+
+            if (grid == null) return;                                           // Bearbeitung abbrechen, wenn kein Grid vorhanden ist
+
+            // Alle Spaltenauswahlen löschen
+            var anzSpalten = grid.DisplayLayout.Bands[0].Columns.Count;         // Anzahl Spalten im Grid
+            for (var s = 0; s < anzSpalten; s++)
+            {
+                grid.DisplayLayout.Bands[0].Columns[s].Header.Selected = false;
+            }
+
+            var vonSpalte = Convert.ToInt32(zeile.Cells[3].Value);              // Erste auszuwählende Spalte
+            var bisSpalte = Convert.ToInt32(zeile.Cells[4].Value);              // Letzte auszuwählende Spalte
+
+            for (var i = vonSpalte; i <= bisSpalte; i++)
+            {
+                grid.DisplayLayout.Bands[0].Columns[i].Header.Selected = true;
+            }
+
+            var csr = grid.ActiveColScrollRegion;
+            csr.ScrollColIntoView(grid.DisplayLayout.Bands[0].Columns[vonSpalte], true);
         }
     }
 }

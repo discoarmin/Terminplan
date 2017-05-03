@@ -20,12 +20,10 @@ namespace Terminplan
 {
     using System.Windows.Forms;
     using System.Drawing;
-    using Microsoft.Office.Interop.Outlook;
+
     using Infragistics.Win;
     using Infragistics.Win.UltraWinGrid;
     using Infragistics.Win.UltraWinEditors;
-
-    using Outlook = Microsoft.Office.Interop.Outlook;
 
     public partial class StammDaten : Form
     {
@@ -114,6 +112,8 @@ namespace Terminplan
         {
             var row = this.ultraGridStammDaten.DisplayLayout.Rows[0];
             var zelle = row.Cells[spalte - 1];                                  // Zelle in der Spalte ermitteln
+            var vonSpalte = 0;                                                  // Bei Merged Cells der Beginn
+            var bisSpalte = 0;                                                  // Bei Merged Cells das Ende
 
             // In der 1. Zeile stehen nur Überschriften, die Zellen können also nicht editiert werden
             zelle.CellDisplayStyle = CellDisplayStyle.PlainText;
@@ -138,15 +138,25 @@ namespace Terminplan
                 case 36:
                 case 37:
                 case 38:
-                    SetzeUeberSchrift(zelle, hinterGrundFarbe, ueberSchriftFarbe);
-
+                    SetzeUeberSchrift(zelle, hinterGrundFarbe, ueberSchriftFarbe); // Zelle als Überschrift kennzeichnen
+                    vonSpalte = bisSpalte = spalte - 1;                         // Spaltennummer der Zelle merken
                     if (spalte == 6 || spalte == 7)
                     {
                         zelle.Appearance.BorderColor = hinterGrundFarbe;
+                        vonSpalte = 5;
+                        bisSpalte = 6;
                     }
-                    break;
 
-                default:
+                    // Überschrift in Combobox eintragen
+                    if (!string.IsNullOrEmpty(zelle.Text))
+                    {
+                        this.dsUeberSchriften.Tables[0].Rows.Add(zelle.Text,
+                            zelle.Column.Index,
+                           @"Stammdaten",
+                            vonSpalte,
+                            bisSpalte);
+                    }
+
                     break;
             }
         }

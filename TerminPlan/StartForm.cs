@@ -29,6 +29,12 @@ namespace Terminplan
     {
         #region Variablen
 
+        /// <summary>Control zum Darstellen von MDI-Formulare als Tabs</summary>
+        public UltraTabbedMdiManager tabManager;
+
+        /// <summary>der ausgewählte Tab</summary>
+        public MdiTab activeTab;
+
         /// <summary> das aktive Panel </summary>
         private UltraZoomPanel activeZoomPanel;
 
@@ -115,10 +121,10 @@ namespace Terminplan
         /// <summary> Behandelt das TabSelected-Ereignis des ultraTabbedMdiManager1 </summary>
         /// <param name="sender">Die Quelle des Ereignisses.</param>
         /// <param name="e">Die <see cref="Infragistics.Win.UltraWinTabbedMdi.MdiTabEventArgs" /> Instanz,welche die Ereignisdaten enthält.</param>
-        private void OnUltraTabbedMdiManager1TabSelected(object sender, Infragistics.Win.UltraWinTabbedMdi.MdiTabEventArgs e)
+        private void OnUltraTabbedMdiManager1TabSelected(object sender, MdiTabEventArgs e)
         {
-            var tabManager = (UltraTabbedMdiManager)sender;                     // Die Quelle ist ein UltraTabbedMdiManager
-            var activeTab = e.Tab;                                              // ausgewählten Tab ermitteln
+            this.tabManager = (UltraTabbedMdiManager)sender;                    // Die Quelle ist ein UltraTabbedMdiManager
+            this.activeTab = e.Tab;                                             // ausgewählten Tab ermitteln
                                                                                 //
                                                                                 //activeZoomPanel = (UltraZoomPanel)activeTab.t  .Form.   C     TabPage.Controls[0];
         }
