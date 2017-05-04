@@ -377,6 +377,11 @@
     <None Include="Resources\Erase16.gif" />
     <None Include="Resources\Accept16.gif" />
     <None Include="Resources\Formel16.gif" />
+    <None Include="Resources\Schmid Maschinenbau.jpg" />
+    <None Include="Resources\Logo.PNG" />
+    <None Include="Resources\Schmid Maschinenbau.gif" />
+    <None Include="Resources\EST.gif" />
+    <None Include="Resources\Inda.gif" />
     <Content Include="WinGanttView.PNG" />
     <Content Include="WinGanttViewPrintDocument.png" />
     <Content Include="WinToolbarsManager.png" />

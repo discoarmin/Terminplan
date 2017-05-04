@@ -242,7 +242,8 @@ namespace Terminplan
         /// Behandelt das BeforeCellDeactivate-Ereignis des UltraGridStammDaten Kontrols.
         /// </summary>
         /// <param name="sender">Die Quelle des Ereignisses.</param>
-        /// <param name="e">Die <see cref="CancelEventArgs" /> Instanz, welche die Ereignisdaten enthält.</param>
+        /// <private param name = "e" > Die < see cref="CancelEventArgs" /> Instanz, welche die Ereignisdaten enthält.</param>
+
         private void OnUltraGridStammDatenBeforeCellDeactivate(object sender, System.ComponentModel.CancelEventArgs e)
         {
         }
@@ -255,14 +256,23 @@ namespace Terminplan
         private void OnUltraGridStammDatenAfterExitEditMode(object sender, System.EventArgs e)
         {
             var zelle = ((UltraGrid)sender).ActiveCell;                         // Zelle, welche verlassen wird, ermitteln
-            var editor = (UltraCheckEditor)zelle?.EditorComponentResolved;      // Eventuell eingebetteten Editor der Zelle ermitteln
-            if (editor == null) return;                                         // Wenn kein Editor existiert, kann abgebrochen werden
 
-            var editor1 = editor.Editor;                                        // Eingebundener Editor
-            var wert = editor1.CurrentEditText.ToLower();                       // Der Zustand der Checkbox kann nur als Text ermittelt werden
+            // ultraComboEditorFirma
 
-            // Zustand des CheckEditors in die Zelle schreiben
-            zelle.Value = wert == @"true" ? @"True" : @"False";
+            try
+            {
+                var editor = (UltraCheckEditor)zelle?.EditorComponentResolved;      // Eventuell eingebetteten Editor der Zelle ermitteln
+                if (editor == null) return;                                         // Wenn kein Editor existiert, kann abgebrochen werden
+
+                var editor1 = editor.Editor;                                        // Eingebundener Editor
+                var wert = editor1.CurrentEditText.ToLower();                       // Der Zustand der Checkbox kann nur als Text ermittelt werden
+
+                // Zustand des CheckEditors in die Zelle schreiben
+                zelle.Value = wert == @"true" ? @"True" : @"False";
+            }
+            // ReSharper disable once EmptyGeneralCatchClause
+            catch
+            { }
         }
 
         /// <summary>
@@ -316,7 +326,7 @@ namespace Terminplan
 
             this.ultraTextEditor1.Text = zelle.Text;                            // den Inhalt in den Editor kopieren
 
-            var colName = DienstProgramme.IntConvertToExcelHeadLine(zelle.Column.Index); // Spaltennamen aus der Spaltennummer ermitteln
+            var colName = DienstProgramme.IntConvertToExcelHeadLine(zelle.Column.Index + 1); // Spaltennamen aus der Spaltennummer ermitteln
             var zeile = zelle.Row.Index.ToString();                             // Aktive Zeile
             this.ultraComboZellen.Text = colName + zeile;                       // Zelleninfo eintragen
         }
@@ -417,6 +427,22 @@ namespace Terminplan
 
             var csr = grid.ActiveColScrollRegion;
             csr.ScrollColIntoView(grid.DisplayLayout.Bands[0].Columns[vonSpalte], true);
+        }
+
+        private void ultraComboEditorFirma_AfterCloseUp(object sender, EventArgs e)
+        {
+        }
+
+        private void ultraComboEditorFirma_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void ultraComboEditorFirma_ValueChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void ultraComboEditorFirma_SelectionChanged(object sender, EventArgs e)
+        {
         }
     }
 }

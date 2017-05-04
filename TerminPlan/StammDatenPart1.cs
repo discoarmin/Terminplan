@@ -258,6 +258,10 @@ namespace Terminplan
             // Zeile 7 enthält eine URL
             zelle = this.ultraGridStammDaten.DisplayLayout.Rows[6].Cells[1];
             SetzeUrl(ref zelle);
+
+            // Zeile 22 enthält Auswahl Firma
+            zelle = this.ultraGridStammDaten.DisplayLayout.Rows[21].Cells[1];
+            SetzeComboFirma(ref zelle);
         }
 
         private void SetzeUeberSchrift(UltraGridCell zelle, Color hinterGrundFarbe, Color ueberSchriftFarbe)
@@ -266,6 +270,17 @@ namespace Terminplan
             zelle.Appearance.ForeColor = ueberSchriftFarbe;
             zelle.Appearance.FontData.Bold = DefaultableBoolean.True;
             zelle.Appearance.FontData.Name = @"Arial";
+        }
+
+        private void SetzeComboFirma(ref UltraGridCell zelle)
+        {
+            if (zelle == null) return;                                          // Falls keine Zelle existiert, abbrechen
+
+            zelle.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDownList;        // Zelle enthält eine URL
+            var editor = this.ultraComboEditorFirma;
+            zelle.EditorComponent = editor;
+            zelle.CellDisplayStyle = CellDisplayStyle.FullEditorDisplay | CellDisplayStyle.PlainText;
+            zelle.Activation = Activation.AllowEdit;
         }
 
         private void SetzeUrl(ref UltraGridCell zelle)

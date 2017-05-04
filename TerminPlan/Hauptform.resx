@@ -133,49 +133,172 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>1167, 795</value>
   </data>
-  <data name="&gt;&gt;ultraZoomPanelTerminPlan.ClientArea.Name" xml:space="preserve">
-    <value>ultraZoomPanelTerminPlan.ClientArea</value>
-  </data>
-  <data name="&gt;&gt;ultraZoomPanelTerminPlan.ClientArea.Type" xml:space="preserve">
-    <Value>Infragistics.Win.Misc.UltraPanelClientAreaUnsafe, Infragistics4.Win.Misc.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
-  </data>
-  <data name="&gt;&gt;ultraZoomPanelTerminPlan.ClientArea.Parent" xml:space="preserve">
-    <value>ultraZoomPanelTerminPlan</value>
-  </data>
-  <data name="&gt;&gt;ultraZoomPanelTerminPlan.ClientArea.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ultraZoomPanelTerminPlan.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="splitContainerHauptDaten.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="ultraZoomPanelTerminPlan.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 154</value>
+  <data name="splitContainerHauptDaten.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 123</value>
   </data>
-  <data name="ultraZoomPanelTerminPlan.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1167, 641</value>
+  <data name="splitContainerHauptDaten.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
+    <value>Horizontal</value>
+  </data>
+  <metadata name="ultraDataSourceDaten.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>585, 54</value>
+  </metadata>
+  <data name="appearance3.TextHAlignAsString" xml:space="preserve">
+    <value>Center</value>
+  </data>
+  <data name="appearance3.TextVAlignAsString" xml:space="preserve">
+    <value>Middle</value>
+  </data>
+  <data name="appearance4.TextHAlignAsString" xml:space="preserve">
+    <value>Center</value>
+  </data>
+  <data name="appearance4.TextVAlignAsString" xml:space="preserve">
+    <value>Middle</value>
+  </data>
+  <data name="appearance5.TextHAlignAsString" xml:space="preserve">
+    <value>Center</value>
+  </data>
+  <data name="appearance5.TextVAlignAsString" xml:space="preserve">
+    <value>Middle</value>
+  </data>
+  <data name="ultraGridColumn2.Header.Caption" xml:space="preserve">
+    <value>Projekt</value>
+  </data>
+  <data name="appearance6.TextHAlignAsString" xml:space="preserve">
+    <value>Center</value>
+  </data>
+  <data name="appearance6.TextVAlignAsString" xml:space="preserve">
+    <value>Middle</value>
+  </data>
+  <data name="ultraGridColumn4.Header.Caption" xml:space="preserve">
+    <value>Projektleiter</value>
+  </data>
+  <data name="ultraGridColumn5.Header.Caption" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ultraGridColumn6.Header.Caption" xml:space="preserve">
+    <value>Meilensteine</value>
+  </data>
+  <data name="appearance15.TextHAlignAsString" xml:space="preserve">
+    <value>Center</value>
+  </data>
+  <data name="appearance15.TextVAlignAsString" xml:space="preserve">
+    <value>Middle</value>
+  </data>
+  <data name="resource.BoldAsString" xml:space="preserve">
+    <value>True</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ultraZoomPanelTerminPlan.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+  <data name="resource.SizeInPoints" type="System.Single, mscorlib">
+    <value>10</value>
   </data>
-  <data name="&gt;&gt;ultraZoomPanelTerminPlan.Name" xml:space="preserve">
-    <value>ultraZoomPanelTerminPlan</value>
+  <data name="appearance18.TextHAlignAsString" xml:space="preserve">
+    <value>Center</value>
   </data>
-  <data name="&gt;&gt;ultraZoomPanelTerminPlan.Type" xml:space="preserve">
-    <Value>Infragistics.Win.Misc.UltraZoomPanel, Infragistics4.Win.Misc.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+  <data name="appearance18.TextVAlignAsString" xml:space="preserve">
+    <value>Middle</value>
   </data>
-  <data name="&gt;&gt;ultraZoomPanelTerminPlan.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="resource.BoldAsString1" xml:space="preserve">
+    <value>True</value>
   </data>
-  <data name="&gt;&gt;ultraZoomPanelTerminPlan.ZOrder" xml:space="preserve">
+  <data name="resource.SizeInPoints1" type="System.Single, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="appearance20.TextHAlignAsString" xml:space="preserve">
+    <value>Center</value>
+  </data>
+  <data name="appearance20.TextVAlignAsString" xml:space="preserve">
+    <value>Middle</value>
+  </data>
+  <data name="appearance22.TextHAlignAsString" xml:space="preserve">
+    <value>Center</value>
+  </data>
+  <data name="appearance22.TextVAlignAsString" xml:space="preserve">
+    <value>Middle</value>
+  </data>
+  <data name="ultraGridDaten.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="ultraGridDaten.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
+  <data name="ultraGridDaten.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="ultraGridDaten.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1167, 85</value>
+  </data>
+  <data name="ultraGridDaten.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;ultraGridDaten.Name" xml:space="preserve">
+    <value>ultraGridDaten</value>
+  </data>
+  <data name="&gt;&gt;ultraGridDaten.Type" xml:space="preserve">
+    <value>Infragistics.Win.UltraWinGrid.UltraGrid, Infragistics4.Win.UltraWinGrid.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
+  </data>
+  <data name="&gt;&gt;ultraGridDaten.Parent" xml:space="preserve">
+    <value>splitContainerHauptDaten.Panel1</value>
+  </data>
+  <data name="&gt;&gt;ultraGridDaten.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="_TerminPlanForm_Toolbars_Dock_Area_Left.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 154</value>
+  <data name="&gt;&gt;splitContainerHauptDaten.Panel1.Name" xml:space="preserve">
+    <value>splitContainerHauptDaten.Panel1</value>
   </data>
-  <data name="_TerminPlanForm_Toolbars_Dock_Area_Left.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 641</value>
+  <data name="&gt;&gt;splitContainerHauptDaten.Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainerHauptDaten.Panel1.Parent" xml:space="preserve">
+    <value>splitContainerHauptDaten</value>
+  </data>
+  <data name="&gt;&gt;splitContainerHauptDaten.Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;splitContainerHauptDaten.Panel2.Name" xml:space="preserve">
+    <value>splitContainerHauptDaten.Panel2</value>
+  </data>
+  <data name="&gt;&gt;splitContainerHauptDaten.Panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainerHauptDaten.Panel2.Parent" xml:space="preserve">
+    <value>splitContainerHauptDaten</value>
+  </data>
+  <data name="&gt;&gt;splitContainerHauptDaten.Panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="splitContainerHauptDaten.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1167, 672</value>
+  </data>
+  <data name="splitContainerHauptDaten.SplitterDistance" type="System.Int32, mscorlib">
+    <value>85</value>
+  </data>
+  <data name="splitContainerHauptDaten.SplitterWidth" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="splitContainerHauptDaten.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;splitContainerHauptDaten.Name" xml:space="preserve">
+    <value>splitContainerHauptDaten</value>
+  </data>
+  <data name="&gt;&gt;splitContainerHauptDaten.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainerHauptDaten.Parent" xml:space="preserve">
+    <value>ultraZoomPanelTerminPlan.ClientArea</value>
+  </data>
+  <data name="&gt;&gt;splitContainerHauptDaten.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="_ClientArea_Toolbars_Dock_Area_Left.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 123</value>
+  </data>
+  <data name="_ClientArea_Toolbars_Dock_Area_Left.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 672</value>
   </data>
   <metadata name="ultraToolbarsManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
@@ -188,7 +311,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACi
-        HQEAAk1TRnQBSQFMAgEBJwEAATQBAwE0AQMBIAEAASABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAGA
+        HQEAAk1TRnQBSQFMAgEBJwEAAWQBAwFkAQMBIAEAASABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAGA
         AwABQAEBAgABAQEAASAGAAGAAQL/AP8AHwAB/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/
         AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/
         AQAD/wEAA/8BAAL/GAAB/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/
@@ -1417,119 +1540,119 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAu
-        MgAAAk1TRnQBSQFMAgEBFQEAAfwBBAH8AQQBEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
-        AwABYAMAAQEBAAEgBgABYP8AEwADKAH/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/
-        AygB/wMoAf8DKAH/AygB/wMoAf/EAAMoAf80AAMoAf/EAAMoAf8EAANHAYADRwGABAADRwGAA0cBgAwA
-        A14B0AMMARAIAAMoAf/EAAMoAf8EAANHAYADRwGABAADRwGAA0cBgAwAAygB/wNfAeADIQEwBAADKAH/
-        xAADKAH/HAADKAH/AygB/wMoAf8DKAH/A18B4AQAAygB/8QAAygB/wQAA0cBgANHAYAEAANHAYADRwGA
-        DAADKAH/A10B8AMhATAEAAMoAf/EAAMoAf8EAANHAYADRwGABAADRwGAA0cBgAwAA14B0AMMARAIAAMo
-        Af/EAAMoAf80AAMoAf/EAAMoAf8EAANHAYADRwGABAADRwGAA0cBgAQAA0cBgANHAYAEAANHAYADRwGA
-        BAADKAH/xAADKAH/BAADRwGAA0cBgAQAA0cBgANHAYAEAANHAYADRwGABAADRwGAA0cBgAQAAygB/8QA
-        AygB/zQAAygB/8QAAygB/wQAAygB/wMoAf8EAAMoAf8DKAH/BAADKAH/AygB/wQAAygB/wMoAf8EAAMo
-        Af/EAAMoAf8EAAMoAf8DKAH/BAADKAH/AygB/wQAAygB/wMoAf8EAAMoAf8DKAH/BAADKAH/xAADKAH/
-        NAADKAH/xAADKAH/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/
-        AygB/wMoAf//AMUAAygB/wMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/
-        AygB/wMoAf8DKAH/BAADKAH/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wMo
-        Af8DKAH/AygB/wMoAf8EAAMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/
-        AygB/wMoAf8DKAH/AygB/wQAAygB/wMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wMo
-        Af8DKAH/AygB/wMoAf8DKAH/BAADKAH/NAADKAH/BAADKAH/NAADKAH/BAADKAH/NAADKAH/BAADKAH/
-        NAADKAH/BAADKAH/CAADDAEQA14B0AwAAygB/wMoAf8EAAMoAf8DKAH/BAADKAH/BAADKAH/CAADDAEQ
-        A14B0AwAA0cBgANHAYAEAANHAYADRwGABAADKAH/BAADKAH/BAADRwGAA0cBgAQAA0cBgANHAYAMAANe
-        AdADDAEQCAADKAH/BAADKAH/BAADKAH/AygB/wQAAygB/wMoAf8MAANeAdADDAEQCAADKAH/BAADKAH/
-        BAADIQEwA18B4AMoAf8MAAMoAf8DKAH/BAADKAH/AygB/wQAAygB/wQAAygB/wQAAyEBMANfAeADKAH/
-        DAADRwGAA0cBgAQAA0cBgANHAYAEAAMoAf8EAAMoAf8EAANHAYADRwGABAADRwGAA0cBgAwAAygB/wNf
-        AeADIQEwBAADKAH/BAADKAH/BAADKAH/AygB/wQAAygB/wMoAf8MAAMoAf8DXwHgAyEBMAQAAygB/wQA
-        AygB/wQAA18B4AMoAf8DKAH/AygB/wMoAf8cAAMoAf8EAAMoAf8EAANfAeADKAH/AygB/wMoAf8DKAH/
-        HAADKAH/BAADKAH/HAADKAH/AygB/wMoAf8DKAH/A18B4AQAAygB/wQAAygB/xwAAygB/wMoAf8DKAH/
-        AygB/wNfAeAEAAMoAf8EAAMoAf8EAAMhATADXQHwAygB/wwAAygB/wMoAf8EAAMoAf8DKAH/BAADKAH/
-        BAADKAH/BAADIQEwA10B8AMoAf8MAANHAYADRwGABAADRwGAA0cBgAQAAygB/wQAAygB/wQAA0cBgANH
-        AYAEAANHAYADRwGADAADKAH/A10B8AMhATAEAAMoAf8EAAMoAf8EAAMoAf8DKAH/BAADKAH/AygB/wwA
-        AygB/wNdAfADIQEwBAADKAH/BAADKAH/CAADDAEQA14B0AwAAygB/wMoAf8EAAMoAf8DKAH/BAADKAH/
-        BAADKAH/CAADDAEQA14B0AwAA0cBgANHAYAEAANHAYADRwGABAADKAH/BAADKAH/BAADRwGAA0cBgAQA
-        A0cBgANHAYAMAANeAdADDAEQCAADKAH/BAADKAH/BAADKAH/AygB/wQAAygB/wMoAf8MAANeAdADDAEQ
-        CAADKAH/BAADKAH/NAADKAH/BAADKAH/NAADKAH/BAADKAH/NAADKAH/BAADKAH/NAADKAH/BAADKAH/
-        BAADKAH/AygB/wQAAygB/wMoAf8EAAMoAf8DKAH/BAADKAH/AygB/wQAAygB/wQAAygB/wQAA0cBgANH
-        AYAEAANHAYADRwGABAADRwGAA0cBgAQAA0cBgANHAYAEAAMoAf8EAAMoAf8EAANHAYADRwGABAADRwGA
-        A0cBgAQAA0cBgANHAYAEAANHAYADRwGABAADKAH/BAADKAH/BAADKAH/AygB/wQAAygB/wMoAf8EAAMo
-        Af8DKAH/BAADKAH/AygB/wQAAygB/wQAAygB/wQAAygB/wMoAf8EAAMoAf8DKAH/BAADKAH/AygB/wQA
-        AygB/wMoAf8EAAMoAf8EAAMoAf8EAANHAYADRwGABAADRwGAA0cBgAQAA0cBgANHAYAEAANHAYADRwGA
-        BAADKAH/BAADKAH/BAADRwGAA0cBgAQAA0cBgANHAYAEAANHAYADRwGABAADRwGAA0cBgAQAAygB/wQA
-        AygB/wQAAygB/wMoAf8EAAMoAf8DKAH/BAADKAH/AygB/wQAAygB/wMoAf8EAAMoAf8EAAMoAf80AAMo
-        Af8EAAMoAf80AAMoAf8EAAMoAf80AAMoAf8EAAMoAf80AAMoAf8EAAMoAf8EAAMoAf8DKAH/BAADKAH/
-        AygB/wQAAygB/wMoAf8EAAMoAf8DKAH/BAADKAH/BAADKAH/BAADKAH/AygB/wQAAygB/wMoAf8EAAMo
-        Af8DKAH/BAADKAH/AygB/wQAAygB/wQAAygB/wQAAygB/wMoAf8EAANHAYADRwGABAADRwGAA0cBgAQA
-        A0cBgANHAYAEAAMoAf8EAAMoAf8EAAMoAf8DKAH/BAADKAH/AygB/wQAAygB/wMoAf8EAAMoAf8DKAH/
-        BAADKAH/BAADKAH/BAADKAH/AygB/wQAAygB/wMoAf8EAAMoAf8DKAH/BAADKAH/AygB/wQAAygB/wQA
-        AygB/wQAAygB/wMoAf8EAAMoAf8DKAH/BAADKAH/AygB/wQAAygB/wMoAf8EAAMoAf8EAAMoAf8EAAMo
-        Af8DKAH/BAADRwGAA0cBgAQAA0cBgANHAYAEAANHAYADRwGABAADKAH/BAADKAH/BAADKAH/AygB/wQA
-        AygB/wMoAf8EAAMoAf8DKAH/BAADKAH/AygB/wQAAygB/wQAAygB/zQAAygB/wQAAygB/zQAAygB/wQA
-        AygB/zQAAygB/wQAAygB/zQAAygB/wQAAygB/wMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/
-        AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/BAADKAH/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wMo
-        Af8DKAH/AygB/wMoAf8DKAH/AygB/wMoAf8EAAMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/
-        AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wQAAygB/wMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wMo
-        Af8DKAH/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/BAAB/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEA
+        MgAAAk1TRnQBSQFMAgEBFQEAASwBBQEsAQUBEAEAARABAAT/ASEBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        AwABYAMAAQEBAAEgBgABYP8AEwADIgH/AyIB/wMiAf8DIgH/AyIB/wMiAf8DIgH/AyIB/wMiAf8DIgH/
+        AyIB/wMiAf8DIgH/AyIB/wMiAf/EAAMiAf80AAMiAf/EAAMiAf8EAANHAYADRwGABAADRwGAA0cBgAwA
+        A14B0AMMARAIAAMiAf/EAAMiAf8EAANHAYADRwGABAADRwGAA0cBgAwAAyIB/wNfAeADIQEwBAADIgH/
+        xAADIgH/HAADIgH/AyIB/wMiAf8DIgH/A18B4AQAAyIB/8QAAyIB/wQAA0cBgANHAYAEAANHAYADRwGA
+        DAADIgH/A10B8AMhATAEAAMiAf/EAAMiAf8EAANHAYADRwGABAADRwGAA0cBgAwAA14B0AMMARAIAAMi
+        Af/EAAMiAf80AAMiAf/EAAMiAf8EAANHAYADRwGABAADRwGAA0cBgAQAA0cBgANHAYAEAANHAYADRwGA
+        BAADIgH/xAADIgH/BAADRwGAA0cBgAQAA0cBgANHAYAEAANHAYADRwGABAADRwGAA0cBgAQAAyIB/8QA
+        AyIB/zQAAyIB/8QAAyIB/wQAAyIB/wMiAf8EAAMiAf8DIgH/BAADIgH/AyIB/wQAAyIB/wMiAf8EAAMi
+        Af/EAAMiAf8EAAMiAf8DIgH/BAADIgH/AyIB/wQAAyIB/wMiAf8EAAMiAf8DIgH/BAADIgH/xAADIgH/
+        NAADIgH/xAADIgH/AyIB/wMiAf8DIgH/AyIB/wMiAf8DIgH/AyIB/wMiAf8DIgH/AyIB/wMiAf8DIgH/
+        AyIB/wMiAf//AMUAAyIB/wMiAf8DIgH/AyIB/wMiAf8DIgH/AyIB/wMiAf8DIgH/AyIB/wMiAf8DIgH/
+        AyIB/wMiAf8DIgH/BAADIgH/AyIB/wMiAf8DIgH/AyIB/wMiAf8DIgH/AyIB/wMiAf8DIgH/AyIB/wMi
+        Af8DIgH/AyIB/wMiAf8EAAMiAf8DIgH/AyIB/wMiAf8DIgH/AyIB/wMiAf8DIgH/AyIB/wMiAf8DIgH/
+        AyIB/wMiAf8DIgH/AyIB/wQAAyIB/wMiAf8DIgH/AyIB/wMiAf8DIgH/AyIB/wMiAf8DIgH/AyIB/wMi
+        Af8DIgH/AyIB/wMiAf8DIgH/BAADIgH/NAADIgH/BAADIgH/NAADIgH/BAADIgH/NAADIgH/BAADIgH/
+        NAADIgH/BAADIgH/CAADDAEQA14B0AwAAyIB/wMiAf8EAAMiAf8DIgH/BAADIgH/BAADIgH/CAADDAEQ
+        A14B0AwAA0cBgANHAYAEAANHAYADRwGABAADIgH/BAADIgH/BAADRwGAA0cBgAQAA0cBgANHAYAMAANe
+        AdADDAEQCAADIgH/BAADIgH/BAADIgH/AyIB/wQAAyIB/wMiAf8MAANeAdADDAEQCAADIgH/BAADIgH/
+        BAADIQEwA18B4AMiAf8MAAMiAf8DIgH/BAADIgH/AyIB/wQAAyIB/wQAAyIB/wQAAyEBMANfAeADIgH/
+        DAADRwGAA0cBgAQAA0cBgANHAYAEAAMiAf8EAAMiAf8EAANHAYADRwGABAADRwGAA0cBgAwAAyIB/wNf
+        AeADIQEwBAADIgH/BAADIgH/BAADIgH/AyIB/wQAAyIB/wMiAf8MAAMiAf8DXwHgAyEBMAQAAyIB/wQA
+        AyIB/wQAA18B4AMiAf8DIgH/AyIB/wMiAf8cAAMiAf8EAAMiAf8EAANfAeADIgH/AyIB/wMiAf8DIgH/
+        HAADIgH/BAADIgH/HAADIgH/AyIB/wMiAf8DIgH/A18B4AQAAyIB/wQAAyIB/xwAAyIB/wMiAf8DIgH/
+        AyIB/wNfAeAEAAMiAf8EAAMiAf8EAAMhATADXQHwAyIB/wwAAyIB/wMiAf8EAAMiAf8DIgH/BAADIgH/
+        BAADIgH/BAADIQEwA10B8AMiAf8MAANHAYADRwGABAADRwGAA0cBgAQAAyIB/wQAAyIB/wQAA0cBgANH
+        AYAEAANHAYADRwGADAADIgH/A10B8AMhATAEAAMiAf8EAAMiAf8EAAMiAf8DIgH/BAADIgH/AyIB/wwA
+        AyIB/wNdAfADIQEwBAADIgH/BAADIgH/CAADDAEQA14B0AwAAyIB/wMiAf8EAAMiAf8DIgH/BAADIgH/
+        BAADIgH/CAADDAEQA14B0AwAA0cBgANHAYAEAANHAYADRwGABAADIgH/BAADIgH/BAADRwGAA0cBgAQA
+        A0cBgANHAYAMAANeAdADDAEQCAADIgH/BAADIgH/BAADIgH/AyIB/wQAAyIB/wMiAf8MAANeAdADDAEQ
+        CAADIgH/BAADIgH/NAADIgH/BAADIgH/NAADIgH/BAADIgH/NAADIgH/BAADIgH/NAADIgH/BAADIgH/
+        BAADIgH/AyIB/wQAAyIB/wMiAf8EAAMiAf8DIgH/BAADIgH/AyIB/wQAAyIB/wQAAyIB/wQAA0cBgANH
+        AYAEAANHAYADRwGABAADRwGAA0cBgAQAA0cBgANHAYAEAAMiAf8EAAMiAf8EAANHAYADRwGABAADRwGA
+        A0cBgAQAA0cBgANHAYAEAANHAYADRwGABAADIgH/BAADIgH/BAADIgH/AyIB/wQAAyIB/wMiAf8EAAMi
+        Af8DIgH/BAADIgH/AyIB/wQAAyIB/wQAAyIB/wQAAyIB/wMiAf8EAAMiAf8DIgH/BAADIgH/AyIB/wQA
+        AyIB/wMiAf8EAAMiAf8EAAMiAf8EAANHAYADRwGABAADRwGAA0cBgAQAA0cBgANHAYAEAANHAYADRwGA
+        BAADIgH/BAADIgH/BAADRwGAA0cBgAQAA0cBgANHAYAEAANHAYADRwGABAADRwGAA0cBgAQAAyIB/wQA
+        AyIB/wQAAyIB/wMiAf8EAAMiAf8DIgH/BAADIgH/AyIB/wQAAyIB/wMiAf8EAAMiAf8EAAMiAf80AAMi
+        Af8EAAMiAf80AAMiAf8EAAMiAf80AAMiAf8EAAMiAf80AAMiAf8EAAMiAf8EAAMiAf8DIgH/BAADIgH/
+        AyIB/wQAAyIB/wMiAf8EAAMiAf8DIgH/BAADIgH/BAADIgH/BAADIgH/AyIB/wQAAyIB/wMiAf8EAAMi
+        Af8DIgH/BAADIgH/AyIB/wQAAyIB/wQAAyIB/wQAAyIB/wMiAf8EAANHAYADRwGABAADRwGAA0cBgAQA
+        A0cBgANHAYAEAAMiAf8EAAMiAf8EAAMiAf8DIgH/BAADIgH/AyIB/wQAAyIB/wMiAf8EAAMiAf8DIgH/
+        BAADIgH/BAADIgH/BAADIgH/AyIB/wQAAyIB/wMiAf8EAAMiAf8DIgH/BAADIgH/AyIB/wQAAyIB/wQA
+        AyIB/wQAAyIB/wMiAf8EAAMiAf8DIgH/BAADIgH/AyIB/wQAAyIB/wMiAf8EAAMiAf8EAAMiAf8EAAMi
+        Af8DIgH/BAADRwGAA0cBgAQAA0cBgANHAYAEAANHAYADRwGABAADIgH/BAADIgH/BAADIgH/AyIB/wQA
+        AyIB/wMiAf8EAAMiAf8DIgH/BAADIgH/AyIB/wQAAyIB/wQAAyIB/zQAAyIB/wQAAyIB/zQAAyIB/wQA
+        AyIB/zQAAyIB/wQAAyIB/zQAAyIB/wQAAyIB/wMiAf8DIgH/AyIB/wMiAf8DIgH/AyIB/wMiAf8DIgH/
+        AyIB/wMiAf8DIgH/AyIB/wMiAf8DIgH/BAADIgH/AyIB/wMiAf8DIgH/AyIB/wMiAf8DIgH/AyIB/wMi
+        Af8DIgH/AyIB/wMiAf8DIgH/AyIB/wMiAf8EAAMiAf8DIgH/AyIB/wMiAf8DIgH/AyIB/wMiAf8DIgH/
+        AyIB/wMiAf8DIgH/AyIB/wMiAf8DIgH/AyIB/wQAAyIB/wMiAf8DIgH/AyIB/wMiAf8DIgH/AyIB/wMi
+        Af8DIgH/AyIB/wMiAf8DIgH/AyIB/wMiAf8DIgH/BAAB/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEA
         A/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEA
         A/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEA
         A/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAC/0AAAf8BAAL/AQAD/wEA
         A/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEABP8BAAP/AQAC/wEA
         A/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAT/AQAD/wEA
         Av8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAE/wEA
-        Av8DKAH/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wMo
+        Av8DIgH/AyIB/wMiAf8DIgH/AyIB/wMiAf8DIgH/AyIB/wMiAf8DIgH/AyIB/wMiAf8DIgH/AyIB/wMi
         Af8EAAH/AQAC/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEA
         A/8BAAT/AQAD/wEAAv8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEA
         A/8BAAP/AQAE/wEAA/8BAAL/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEA
-        A/8BAAP/AQAD/wEABP8BAAL/AygB/zQAAygB/wQAAf8BAAL/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/
+        A/8BAAP/AQAD/wEABP8BAAL/AyIB/zQAAyIB/wQAAf8BAAL/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/
         AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEABP8BAAP/AQAC/wEAA/8BAAP/AQAD/wEAA/8BAAP/
         AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAT/AQAD/wEAAv8BAAP/AQAD/wEAA/8BAAP/
-        AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAE/wEAAv8DKAH/CAADDAEQA14B0AwA
-        A0cBgANHAYAEAANHAYADRwGABAADKAH/BAAB/wEAAv8BAAT/AQAD/wEAA/8BAAP/AQAD/wEAAv8BAAP/
+        AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAE/wEAAv8DIgH/CAADDAEQA14B0AwA
+        A0cBgANHAYAEAANHAYADRwGABAADIgH/BAAB/wEAAv8BAAT/AQAD/wEAA/8BAAP/AQAD/wEAAv8BAAP/
         AQAE/wEAA/8BAAP/AQAD/wEAA/8BAAL/AQAE/wEAA/8BAAL/AQAE/wEAA/8BAAP/AQAD/wEAA/8BAAL/
         AQAD/wEABP8BAAP/AQAD/wEAA/8BAAP/AQAC/wEABP8BAAP/AQAC/wEABP8BAAP/AQAD/wEAA/8BAAP/
-        AQAC/wEAA/8BAAT/AQAD/wEAA/8BAAP/AQAD/wEAAv8BAAT/AQAC/wMoAf8EAAMhATADXwHgAygB/wwA
-        A0cBgANHAYAEAANHAYADRwGABAADKAH/BAAB/wEAAv8BAAP/AQAE/wEAA/8BAAL/AQAD/wEAA/8BAAP/
+        AQAC/wEAA/8BAAT/AQAD/wEAA/8BAAP/AQAD/wEAAv8BAAT/AQAC/wMiAf8EAAMhATADXwHgAyIB/wwA
+        A0cBgANHAYAEAANHAYADRwGABAADIgH/BAAB/wEAAv8BAAP/AQAE/wEAA/8BAAL/AQAD/wEAA/8BAAP/
         AQAD/wEAA/8BAAT/AQAD/wEAAv8BAAP/AQAE/wEAA/8BAAL/AQAD/wEABP8BAAP/AQAC/wEAA/8BAAP/
         AQAD/wEAA/8BAAP/AQAE/wEAA/8BAAL/AQAD/wEABP8BAAP/AQAC/wEAA/8BAAT/AQAD/wEAAv8BAAP/
-        AQAD/wEAA/8BAAP/AQAD/wEABP8BAAP/AQAC/wEAA/8BAAT/AQAC/wMoAf8EAANfAeADKAH/AygB/wMo
-        Af8DKAH/HAADKAH/BAAB/wEAAv8BAAP/AQAD/wEABP8BAAP/AQAC/wEAA/8BAAP/AQAD/wEABP8BAAP/
+        AQAD/wEAA/8BAAP/AQAD/wEABP8BAAP/AQAC/wEAA/8BAAT/AQAC/wMiAf8EAANfAeADIgH/AyIB/wMi
+        Af8DIgH/HAADIgH/BAAB/wEAAv8BAAP/AQAD/wEABP8BAAP/AQAC/wEAA/8BAAP/AQAD/wEABP8BAAP/
         AQAC/wEAA/8BAAP/AQAE/wEAA/8BAAL/AQAD/wEAA/8BAAT/AQAD/wEAAv8BAAP/AQAD/wEAA/8BAAT/
         AQAD/wEAAv8BAAP/AQAD/wEABP8BAAP/AQAC/wEAA/8BAAP/AQAE/wEAA/8BAAL/AQAD/wEAA/8BAAP/
-        AQAE/wEAA/8BAAL/AQAD/wEAA/8BAAT/AQAC/wMoAf8EAAMhATADXQHwAygB/wwAA0cBgANHAYAEAANH
-        AYADRwGABAADKAH/BAAB/wEAAv8BAAP/AQAD/wEABP8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/
+        AQAE/wEAA/8BAAL/AQAD/wEAA/8BAAT/AQAC/wMiAf8EAAMhATADXQHwAyIB/wwAA0cBgANHAYAEAANH
+        AYADRwGABAADIgH/BAAB/wEAAv8BAAP/AQAD/wEABP8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/
         AQAC/wEAA/8BAAP/AQAE/wEAA/8BAAL/AQAD/wEAA/8BAAT/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/
         AQAD/wEAAv8BAAP/AQAD/wEABP8BAAP/AQAC/wEAA/8BAAP/AQAE/wEAA/8BAAP/AQAD/wEAA/8BAAP/
-        AQAD/wEAA/8BAAL/AQAD/wEAA/8BAAT/AQAC/wMoAf8IAAMMARADXgHQDAADRwGAA0cBgAQAA0cBgANH
-        AYAEAAMoAf8EAAH/AQAC/wEAA/8BAAP/AQAD/wEABP8BAAP/AQAC/wEAA/8BAAT/AQAD/wEAAv8BAAP/
+        AQAD/wEAA/8BAAL/AQAD/wEAA/8BAAT/AQAC/wMiAf8IAAMMARADXgHQDAADRwGAA0cBgAQAA0cBgANH
+        AYAEAAMiAf8EAAH/AQAC/wEAA/8BAAP/AQAD/wEABP8BAAP/AQAC/wEAA/8BAAT/AQAD/wEAAv8BAAP/
         AQAD/wEAA/8BAAT/AQAD/wEAAv8BAAP/AQAD/wEAA/8BAAT/AQAD/wEAAv8BAAP/AQAE/wEAA/8BAAL/
         AQAD/wEAA/8BAAP/AQAE/wEAA/8BAAL/AQAD/wEAA/8BAAP/AQAE/wEAA/8BAAL/AQAD/wEABP8BAAP/
-        AQAC/wEAA/8BAAP/AQAD/wEABP8BAAL/AygB/zQAAygB/wQAAf8BAAL/AQAD/wEAA/8BAAP/AQAE/wEA
+        AQAC/wEAA/8BAAP/AQAD/wEABP8BAAL/AyIB/zQAAyIB/wQAAf8BAAL/AQAD/wEAA/8BAAP/AQAE/wEA
         A/8BAAL/AQAD/wEABP8BAAP/AQAC/wEAA/8BAAP/AQAD/wEABP8BAAP/AQAC/wEAA/8BAAP/AQAD/wEA
         BP8BAAP/AQAC/wEAA/8BAAT/AQAD/wEAAv8BAAP/AQAD/wEAA/8BAAT/AQAD/wEAAv8BAAP/AQAD/wEA
-        A/8BAAT/AQAD/wEAAv8BAAP/AQAE/wEAA/8BAAL/AQAD/wEAA/8BAAP/AQAE/wEAAv8DKAH/BAADRwGA
-        A0cBgAQAA0cBgANHAYAEAANHAYADRwGABAADRwGAA0cBgAQAAygB/wQAAf8BAAL/AQAD/wEAA/8BAAP/
+        A/8BAAT/AQAD/wEAAv8BAAP/AQAE/wEAA/8BAAL/AQAD/wEAA/8BAAP/AQAE/wEAAv8DIgH/BAADRwGA
+        A0cBgAQAA0cBgANHAYAEAANHAYADRwGABAADRwGAA0cBgAQAAyIB/wQAAf8BAAL/AQAD/wEAA/8BAAP/
         AQAD/wEABP8BAAL/AQAD/wEABP8BAAL/AQAD/wEAA/8BAAP/AQAD/wEABP8BAAP/AQAC/wEAA/8BAAP/
         AQAD/wEAA/8BAAT/AQAC/wEAA/8BAAT/AQAC/wEAA/8BAAP/AQAD/wEAA/8BAAT/AQAD/wEAAv8BAAP/
-        AQAD/wEAA/8BAAP/AQAE/wEAAv8BAAP/AQAE/wEAAv8BAAP/AQAD/wEAA/8BAAP/AQAE/wEAAv8DKAH/
-        BAADRwGAA0cBgAQAA0cBgANHAYAEAANHAYADRwGABAADRwGAA0cBgAQAAygB/wQAAf8BAAL/AQAD/wEA
+        AQAD/wEAA/8BAAP/AQAE/wEAAv8BAAP/AQAE/wEAAv8BAAP/AQAD/wEAA/8BAAP/AQAE/wEAAv8DIgH/
+        BAADRwGAA0cBgAQAA0cBgANHAYAEAANHAYADRwGABAADRwGAA0cBgAQAAyIB/wQAAf8BAAL/AQAD/wEA
         A/8BAAP/AQAD/wEABP8BAAP/AQAD/wEAA/8BAAL/AQAD/wEAA/8BAAP/AQAD/wEABP8BAAP/AQAC/wEA
         A/8BAAP/AQAD/wEAA/8BAAT/AQAD/wEAA/8BAAP/AQAC/wEAA/8BAAP/AQAD/wEAA/8BAAT/AQAD/wEA
         Av8BAAP/AQAD/wEAA/8BAAP/AQAE/wEAA/8BAAP/AQAD/wEAAv8BAAP/AQAD/wEAA/8BAAP/AQAE/wEA
-        Av8DKAH/NAADKAH/BAAB/wEAAv8BAAP/AQAD/wEAA/8BAAP/AQAD/wEABP8BAAP/AQAC/wEAA/8BAAP/
+        Av8DIgH/NAADIgH/BAAB/wEAAv8BAAP/AQAD/wEAA/8BAAP/AQAD/wEABP8BAAP/AQAC/wEAA/8BAAP/
         AQAD/wEAA/8BAAP/AQAE/wEAA/8BAAL/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAT/AQAD/wEAAv8BAAP/
         AQAD/wEAA/8BAAP/AQAD/wEABP8BAAP/AQAC/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAE/wEAA/8BAAL/
-        AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAT/AQAC/wMoAf8EAANHAYADRwGABAADRwGAA0cBgAQAA0cBgANH
-        AYAEAAMoAf8DKAH/BAADKAH/BAAB/wEAAv8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEA
+        AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAT/AQAC/wMiAf8EAANHAYADRwGABAADRwGAA0cBgAQAA0cBgANH
+        AYAEAAMiAf8DIgH/BAADIgH/BAAB/wEAAv8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEA
         A/8BAAP/AQAD/wEAA/8BAAP/AQAE/wEAA/8BAAL/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEA
         A/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEABP8BAAP/AQAC/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEA
-        A/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAT/AQAC/wMoAf8EAANHAYADRwGABAADRwGAA0cBgAQA
-        A0cBgANHAYAEAAMoAf8DKAH/BAADKAH/BAAB/wEAAv8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/
+        A/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAT/AQAC/wMiAf8EAANHAYADRwGABAADRwGAA0cBgAQA
+        A0cBgANHAYAEAAMiAf8DIgH/BAADIgH/BAAB/wEAAv8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/
         AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAE/wEAA/8BAAL/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/
         AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEABP8BAAP/AQAC/wEAA/8BAAP/AQAD/wEAA/8BAAP/
-        AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAT/AQAC/wMoAf80AAMoAf8EAAH/AQAD/wEA
+        AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAT/AQAC/wMiAf80AAMiAf8EAAH/AQAD/wEA
         A/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEA
         A/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEA
         A/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEA
-        A/8BAAL/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wMoAf8DKAH/AygB/wMo
-        Af8DKAH//wARAAH/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAC/xQAAf8BAAP/
+        A/8BAAL/AyIB/wMiAf8DIgH/AyIB/wMiAf8DIgH/AyIB/wMiAf8DIgH/AyIB/wMiAf8DIgH/AyIB/wMi
+        Af8DIgH//wARAAH/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAC/xQAAf8BAAP/
         AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAAv8QAAH/AQAD/wEAA/8BAAP/
         AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAL/EAAB/wEAA/8BAAP/AQAD/wEAA/8BAAP/
         AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/AQAC/xQAAf8BAAP/AQAD/wEAA/8BAAP/AQAD/wEAA/8BAAP/
@@ -1637,16 +1760,16 @@
   <data name="resource.Name1" xml:space="preserve">
     <value>Segoe UI</value>
   </data>
-  <data name="resource.SizeInPoints" type="System.Single, mscorlib">
+  <data name="resource.SizeInPoints2" type="System.Single, mscorlib">
     <value>10.5</value>
   </data>
   <data name="resource.Name2" xml:space="preserve">
     <value>Segoe UI</value>
   </data>
-  <data name="resource.SizeInPoints1" type="System.Single, mscorlib">
+  <data name="resource.SizeInPoints3" type="System.Single, mscorlib">
     <value>12</value>
   </data>
-  <data name="resource.SizeInPoints2" type="System.Single, mscorlib">
+  <data name="resource.SizeInPoints4" type="System.Single, mscorlib">
     <value>10.5</value>
   </data>
   <data name="ribbonTab1.Caption" xml:space="preserve">
@@ -1664,7 +1787,7 @@
   <data name="ribbonGroup4.Caption" xml:space="preserve">
     <value>Eigenschaften</value>
   </data>
-  <data name="appearance15.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="appearance38.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         vAAADrwBlbxySQAAAbNJREFUWEfFVQGOwzAI2/9f1Z/1YsAJIYR23abz5ppgIHQ66V7nP+PVYKGC55j/
@@ -1680,7 +1803,7 @@
   <data name="resource.Name3" xml:space="preserve">
     <value>Standard</value>
   </data>
-  <data name="resource.SizeInPoints3" type="System.Single, mscorlib">
+  <data name="resource.SizeInPoints5" type="System.Single, mscorlib">
     <value>10</value>
   </data>
   <data name="popupColorPickerTool3.SharedPropsInternal.Caption" xml:space="preserve">
@@ -1824,92 +1947,164 @@
   <data name="buttonTool35.SharedPropsInternal.Caption" xml:space="preserve">
     <value>Speichern unter</value>
   </data>
-  <data name="&gt;&gt;_TerminPlanForm_Toolbars_Dock_Area_Left.Name" xml:space="preserve">
-    <value>_TerminPlanForm_Toolbars_Dock_Area_Left</value>
+  <data name="labelTool11.SharedPropsInternal.Caption" xml:space="preserve">
+    <value>Projekt: </value>
   </data>
-  <data name="&gt;&gt;_TerminPlanForm_Toolbars_Dock_Area_Left.Type" xml:space="preserve">
-    <Value>Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea, Infragistics4.Win.UltraWinToolbars.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+  <data name="textBoxTool3.SharedPropsInternal.Caption" xml:space="preserve">
+    <value>Projektname</value>
   </data>
-  <data name="&gt;&gt;_TerminPlanForm_Toolbars_Dock_Area_Left.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="labelTool12.SharedPropsInternal.Caption" xml:space="preserve">
+    <value>Projektleiter: </value>
   </data>
-  <data name="&gt;&gt;_TerminPlanForm_Toolbars_Dock_Area_Left.ZOrder" xml:space="preserve">
+  <data name="controlContainerTool2.SharedPropsInternal.ToolTipText" xml:space="preserve">
+    <value>Eingestellte Firma</value>
+  </data>
+  <data name="labelTool15.SharedPropsInternal.Caption" xml:space="preserve">
+    <value>Neues Projekt</value>
+  </data>
+  <data name="labelTool16.SharedPropsInternal.Caption" xml:space="preserve">
+    <value>Wolfgang Schmid</value>
+  </data>
+  <data name="&gt;&gt;_ClientArea_Toolbars_Dock_Area_Left.Name" xml:space="preserve">
+    <value>_ClientArea_Toolbars_Dock_Area_Left</value>
+  </data>
+  <data name="&gt;&gt;_ClientArea_Toolbars_Dock_Area_Left.Type" xml:space="preserve">
+    <value>Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea, Infragistics4.Win.UltraWinToolbars.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
+  </data>
+  <data name="&gt;&gt;_ClientArea_Toolbars_Dock_Area_Left.Parent" xml:space="preserve">
+    <value>ultraZoomPanelTerminPlan.ClientArea</value>
+  </data>
+  <data name="&gt;&gt;_ClientArea_Toolbars_Dock_Area_Left.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="_TerminPlanForm_Toolbars_Dock_Area_Right.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1167, 154</value>
+  <data name="_ClientArea_Toolbars_Dock_Area_Right.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1167, 123</value>
   </data>
-  <data name="_TerminPlanForm_Toolbars_Dock_Area_Right.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 641</value>
+  <data name="_ClientArea_Toolbars_Dock_Area_Right.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 672</value>
   </data>
-  <data name="&gt;&gt;_TerminPlanForm_Toolbars_Dock_Area_Right.Name" xml:space="preserve">
-    <value>_TerminPlanForm_Toolbars_Dock_Area_Right</value>
+  <data name="&gt;&gt;_ClientArea_Toolbars_Dock_Area_Right.Name" xml:space="preserve">
+    <value>_ClientArea_Toolbars_Dock_Area_Right</value>
   </data>
-  <data name="&gt;&gt;_TerminPlanForm_Toolbars_Dock_Area_Right.Type" xml:space="preserve">
-    <Value>Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea, Infragistics4.Win.UltraWinToolbars.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+  <data name="&gt;&gt;_ClientArea_Toolbars_Dock_Area_Right.Type" xml:space="preserve">
+    <value>Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea, Infragistics4.Win.UltraWinToolbars.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
   </data>
-  <data name="&gt;&gt;_TerminPlanForm_Toolbars_Dock_Area_Right.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;_ClientArea_Toolbars_Dock_Area_Right.Parent" xml:space="preserve">
+    <value>ultraZoomPanelTerminPlan.ClientArea</value>
   </data>
-  <data name="&gt;&gt;_TerminPlanForm_Toolbars_Dock_Area_Right.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;_ClientArea_Toolbars_Dock_Area_Right.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="_TerminPlanForm_Toolbars_Dock_Area_Bottom.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="_ClientArea_Toolbars_Dock_Area_Bottom.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 795</value>
   </data>
-  <data name="_TerminPlanForm_Toolbars_Dock_Area_Bottom.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="_ClientArea_Toolbars_Dock_Area_Bottom.Size" type="System.Drawing.Size, System.Drawing">
     <value>1167, 0</value>
   </data>
-  <data name="&gt;&gt;_TerminPlanForm_Toolbars_Dock_Area_Bottom.Name" xml:space="preserve">
-    <value>_TerminPlanForm_Toolbars_Dock_Area_Bottom</value>
+  <data name="&gt;&gt;_ClientArea_Toolbars_Dock_Area_Bottom.Name" xml:space="preserve">
+    <value>_ClientArea_Toolbars_Dock_Area_Bottom</value>
   </data>
-  <data name="&gt;&gt;_TerminPlanForm_Toolbars_Dock_Area_Bottom.Type" xml:space="preserve">
-    <Value>Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea, Infragistics4.Win.UltraWinToolbars.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+  <data name="&gt;&gt;_ClientArea_Toolbars_Dock_Area_Bottom.Type" xml:space="preserve">
+    <value>Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea, Infragistics4.Win.UltraWinToolbars.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
   </data>
-  <data name="&gt;&gt;_TerminPlanForm_Toolbars_Dock_Area_Bottom.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;_ClientArea_Toolbars_Dock_Area_Bottom.Parent" xml:space="preserve">
+    <value>ultraZoomPanelTerminPlan.ClientArea</value>
   </data>
-  <data name="&gt;&gt;_TerminPlanForm_Toolbars_Dock_Area_Bottom.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;_ClientArea_Toolbars_Dock_Area_Bottom.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="_ClientArea_Toolbars_Dock_Area_Top.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="_ClientArea_Toolbars_Dock_Area_Top.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1167, 123</value>
+  </data>
+  <data name="&gt;&gt;_ClientArea_Toolbars_Dock_Area_Top.Name" xml:space="preserve">
+    <value>_ClientArea_Toolbars_Dock_Area_Top</value>
+  </data>
+  <data name="&gt;&gt;_ClientArea_Toolbars_Dock_Area_Top.Type" xml:space="preserve">
+    <value>Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea, Infragistics4.Win.UltraWinToolbars.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
+  </data>
+  <data name="&gt;&gt;_ClientArea_Toolbars_Dock_Area_Top.Parent" xml:space="preserve">
+    <value>ultraZoomPanelTerminPlan.ClientArea</value>
+  </data>
+  <data name="&gt;&gt;_ClientArea_Toolbars_Dock_Area_Top.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;ultraZoomPanelTerminPlan.ClientArea.Name" xml:space="preserve">
+    <value>ultraZoomPanelTerminPlan.ClientArea</value>
+  </data>
+  <data name="&gt;&gt;ultraZoomPanelTerminPlan.ClientArea.Type" xml:space="preserve">
+    <value>Infragistics.Win.Misc.UltraPanelClientAreaUnsafe, Infragistics4.Win.Misc.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
+  </data>
+  <data name="&gt;&gt;ultraZoomPanelTerminPlan.ClientArea.Parent" xml:space="preserve">
+    <value>ultraZoomPanelTerminPlan</value>
+  </data>
+  <data name="&gt;&gt;ultraZoomPanelTerminPlan.ClientArea.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="ultraZoomPanelTerminPlan.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="ultraZoomPanelTerminPlan.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="ultraZoomPanelTerminPlan.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1167, 795</value>
+  </data>
+  <data name="ultraZoomPanelTerminPlan.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;ultraZoomPanelTerminPlan.Name" xml:space="preserve">
+    <value>ultraZoomPanelTerminPlan</value>
+  </data>
+  <data name="&gt;&gt;ultraZoomPanelTerminPlan.Type" xml:space="preserve">
+    <value>Infragistics.Win.Misc.UltraZoomPanel, Infragistics4.Win.Misc.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
+  </data>
+  <data name="&gt;&gt;ultraZoomPanelTerminPlan.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;ultraZoomPanelTerminPlan.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="_MainForm_UltraFormManager_Dock_Area_Left.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 154</value>
+    <value>0, 0</value>
   </data>
   <data name="_MainForm_UltraFormManager_Dock_Area_Left.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 641</value>
+    <value>0, 795</value>
   </data>
   <data name="&gt;&gt;_MainForm_UltraFormManager_Dock_Area_Left.Name" xml:space="preserve">
     <value>_MainForm_UltraFormManager_Dock_Area_Left</value>
   </data>
   <data name="&gt;&gt;_MainForm_UltraFormManager_Dock_Area_Left.Type" xml:space="preserve">
-    <Value>Infragistics.Win.UltraWinForm.UltraFormDockArea, Infragistics4.Win.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+    <value>Infragistics.Win.UltraWinForm.UltraFormDockArea, Infragistics4.Win.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
   </data>
   <data name="&gt;&gt;_MainForm_UltraFormManager_Dock_Area_Left.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;_MainForm_UltraFormManager_Dock_Area_Left.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>1</value>
   </data>
   <data name="_MainForm_UltraFormManager_Dock_Area_Right.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1167, 154</value>
+    <value>1167, 0</value>
   </data>
   <data name="_MainForm_UltraFormManager_Dock_Area_Right.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 641</value>
+    <value>0, 795</value>
   </data>
   <data name="&gt;&gt;_MainForm_UltraFormManager_Dock_Area_Right.Name" xml:space="preserve">
     <value>_MainForm_UltraFormManager_Dock_Area_Right</value>
   </data>
   <data name="&gt;&gt;_MainForm_UltraFormManager_Dock_Area_Right.Type" xml:space="preserve">
-    <Value>Infragistics.Win.UltraWinForm.UltraFormDockArea, Infragistics4.Win.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+    <value>Infragistics.Win.UltraWinForm.UltraFormDockArea, Infragistics4.Win.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
   </data>
   <data name="&gt;&gt;_MainForm_UltraFormManager_Dock_Area_Right.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;_MainForm_UltraFormManager_Dock_Area_Right.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>2</value>
   </data>
   <data name="_MainForm_UltraFormManager_Dock_Area_Top.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 154</value>
+    <value>0, 0</value>
   </data>
   <data name="_MainForm_UltraFormManager_Dock_Area_Top.Size" type="System.Drawing.Size, System.Drawing">
     <value>1167, 0</value>
@@ -1918,13 +2113,13 @@
     <value>_MainForm_UltraFormManager_Dock_Area_Top</value>
   </data>
   <data name="&gt;&gt;_MainForm_UltraFormManager_Dock_Area_Top.Type" xml:space="preserve">
-    <Value>Infragistics.Win.UltraWinForm.UltraFormDockArea, Infragistics4.Win.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+    <value>Infragistics.Win.UltraWinForm.UltraFormDockArea, Infragistics4.Win.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
   </data>
   <data name="&gt;&gt;_MainForm_UltraFormManager_Dock_Area_Top.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;_MainForm_UltraFormManager_Dock_Area_Top.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>3</value>
   </data>
   <data name="_MainForm_UltraFormManager_Dock_Area_Bottom.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 795</value>
@@ -1936,31 +2131,13 @@
     <value>_MainForm_UltraFormManager_Dock_Area_Bottom</value>
   </data>
   <data name="&gt;&gt;_MainForm_UltraFormManager_Dock_Area_Bottom.Type" xml:space="preserve">
-    <Value>Infragistics.Win.UltraWinForm.UltraFormDockArea, Infragistics4.Win.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+    <value>Infragistics.Win.UltraWinForm.UltraFormDockArea, Infragistics4.Win.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
   </data>
   <data name="&gt;&gt;_MainForm_UltraFormManager_Dock_Area_Bottom.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;_MainForm_UltraFormManager_Dock_Area_Bottom.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="_TerminPlanForm_Toolbars_Dock_Area_Top.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="_TerminPlanForm_Toolbars_Dock_Area_Top.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1167, 154</value>
-  </data>
-  <data name="&gt;&gt;_TerminPlanForm_Toolbars_Dock_Area_Top.Name" xml:space="preserve">
-    <value>_TerminPlanForm_Toolbars_Dock_Area_Top</value>
-  </data>
-  <data name="&gt;&gt;_TerminPlanForm_Toolbars_Dock_Area_Top.Type" xml:space="preserve">
-    <Value>Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea, Infragistics4.Win.UltraWinToolbars.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
-  </data>
-  <data name="&gt;&gt;_TerminPlanForm_Toolbars_Dock_Area_Top.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;_TerminPlanForm_Toolbars_Dock_Area_Top.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>4</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2224,13 +2401,19 @@
     <value>ultraCalendarInfo1</value>
   </data>
   <data name="&gt;&gt;ultraCalendarInfo1.Type" xml:space="preserve">
-    <Value>Infragistics.Win.UltraWinSchedule.UltraCalendarInfo, Infragistics4.Win.UltraWinSchedule.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+    <value>Infragistics.Win.UltraWinSchedule.UltraCalendarInfo, Infragistics4.Win.UltraWinSchedule.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
   </data>
   <data name="&gt;&gt;ultraToolbarsManager1.Name" xml:space="preserve">
     <value>ultraToolbarsManager1</value>
   </data>
   <data name="&gt;&gt;ultraToolbarsManager1.Type" xml:space="preserve">
-    <Value>Infragistics.Win.UltraWinToolbars.UltraToolbarsManager, Infragistics4.Win.UltraWinToolbars.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+    <value>Infragistics.Win.UltraWinToolbars.UltraToolbarsManager, Infragistics4.Win.UltraWinToolbars.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
+  </data>
+  <data name="&gt;&gt;ultraDataSourceDaten.Name" xml:space="preserve">
+    <value>ultraDataSourceDaten</value>
+  </data>
+  <data name="&gt;&gt;ultraDataSourceDaten.Type" xml:space="preserve">
+    <value>Infragistics.Win.UltraWinDataSource.UltraDataSource, Infragistics4.Win.UltraWinDataSource.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
   </data>
   <data name="&gt;&gt;ilDefaultImagesLarge.Name" xml:space="preserve">
     <value>ilDefaultImagesLarge</value>
@@ -2260,13 +2443,13 @@
     <value>ultraTouchProvider1</value>
   </data>
   <data name="&gt;&gt;ultraTouchProvider1.Type" xml:space="preserve">
-    <Value>Infragistics.Win.Touch.UltraTouchProvider, Infragistics4.Win.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+    <value>Infragistics.Win.Touch.UltraTouchProvider, Infragistics4.Win.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
   </data>
   <data name="&gt;&gt;ultraGanttViewPrintDocument1.Name" xml:space="preserve">
     <value>ultraGanttViewPrintDocument1</value>
   </data>
   <data name="&gt;&gt;ultraGanttViewPrintDocument1.Type" xml:space="preserve">
-    <Value>Infragistics.Win.UltraWinGanttView.UltraGanttViewPrintDocument, Infragistics4.Win.UltraWinGanttView.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+    <value>Infragistics.Win.UltraWinGanttView.UltraGanttViewPrintDocument, Infragistics4.Win.UltraWinGanttView.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>TerminPlanForm</value>
@@ -2277,7 +2460,7 @@
   <data name="ultraGanttView1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="resource.SizeInPoints4" type="System.Single, mscorlib">
+  <data name="resource.SizeInPoints6" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="taskColumnSettings5.Text" xml:space="preserve">
@@ -2304,14 +2487,14 @@
   <data name="taskColumnSettings13.Text" xml:space="preserve">
     <value>Zeilennummer</value>
   </data>
-  <data name="resource.SizeInPoints5" type="System.Single, mscorlib">
+  <data name="resource.SizeInPoints7" type="System.Single, mscorlib">
     <value>10.5</value>
   </data>
   <data name="ultraGanttView1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
   <data name="ultraGanttView1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1167, 641</value>
+    <value>1167, 577</value>
   </data>
   <data name="ultraGanttView1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2319,17 +2502,17 @@
   <data name="ultraGanttView1.Text" xml:space="preserve">
     <value>ultraGanttView1  </value>
   </data>
-  <data name="resource.SizeInPoints6" type="System.Single, mscorlib">
+  <data name="resource.SizeInPoints8" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="&gt;&gt;ultraGanttView1.Name" xml:space="preserve">
     <value>ultraGanttView1</value>
   </data>
   <data name="&gt;&gt;ultraGanttView1.Type" xml:space="preserve">
-    <Value>Infragistics.Win.UltraWinGanttView.UltraGanttView, Infragistics4.Win.UltraWinGanttView.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</Value>
+    <value>Infragistics.Win.UltraWinGanttView.UltraGanttView, Infragistics4.Win.UltraWinGanttView.v16.2, Version=16.2.20162.2084, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb</value>
   </data>
   <data name="&gt;&gt;ultraGanttView1.Parent" xml:space="preserve">
-    <value>ultraZoomPanelTerminPlan.ClientArea</value>
+    <value>splitContainerHauptDaten.Panel2</value>
   </data>
   <data name="&gt;&gt;ultraGanttView1.ZOrder" xml:space="preserve">
     <value>0</value>

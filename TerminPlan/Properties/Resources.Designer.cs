@@ -158,9 +158,29 @@ namespace Terminplan.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap EST {
+            get {
+                object obj = ResourceManager.GetObject("EST", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Formel16 {
             get {
                 object obj = ResourceManager.GetObject("Formel16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Inda {
+            get {
+                object obj = ResourceManager.GetObject("Inda", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -180,6 +200,16 @@ namespace Terminplan.Properties {
         internal static string Loading {
             get {
                 return ResourceManager.GetString("Loading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Logo {
+            get {
+                object obj = ResourceManager.GetObject("Logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -216,6 +246,26 @@ namespace Terminplan.Properties {
         internal static string ribbonFileTabCaption {
             get {
                 return ResourceManager.GetString("ribbonFileTabCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Schmid_Maschinenbau {
+            get {
+                object obj = ResourceManager.GetObject("Schmid Maschinenbau", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Schmid_Maschinenbau1 {
+            get {
+                object obj = ResourceManager.GetObject("Schmid Maschinenbau1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
