@@ -25,7 +25,7 @@ namespace Terminplan
     /// <summary>
     /// Filter zum zusammenführen von Zellen.
     /// </summary>
-    class MyCreation:IUIElementCreationFilter
+    internal class MyCreation : IUIElementCreationFilter
     {
         #region IUIElementCreationFilter Members
 
@@ -36,25 +36,26 @@ namespace Terminplan
             {
                 var remcell = new List<CellUIElement>();
                 var cell = (CellUIElement)row.ChildElements[0];
-               
-                    for (int i = 1; i < row.ChildElements.Count; i++)
-                    {
-                        if (!(row.ChildElements[i] is CellUIElement)) continue;
 
-                        var nextCell = (CellUIElement)row.ChildElements[i];
-                        if (cell.Cell.Value.ToString() == nextCell.Cell.Value.ToString())
-                        {
-                            var s = cell.Rect.Size;
-                            s.Width += nextCell.Rect.Width;
-                            cell.Rect = new Rectangle(cell.Rect.Location, s);
-                            nextCell.Rect = new Rectangle(0, 0, 0, 0);
-                            remcell.Add(nextCell);
-                        }
-                        else
-                        {
-                            cell = nextCell;
-                        }
+                for (int i = 1; i < row.ChildElements.Count; i++)
+                {
+                    if (!(row.ChildElements[i] is CellUIElement)) continue;
+
+                    var nextCell = (CellUIElement)row.ChildElements[i];
+                    if (cell.Cell.Value.ToString() == nextCell.Cell.Value.ToString())
+                    {
+                        var s = cell.Rect.Size;
+                        s.Width += nextCell.Rect.Width;
+                        cell.Rect = new Rectangle(cell.Rect.Location, s);
+                        nextCell.Rect = new Rectangle(0, 0, 0, 0);
+                        remcell.Add(nextCell);
                     }
+                    else
+                    {
+                        cell = nextCell;
+                    }
+                }
+
                 foreach (CellUIElement rc in remcell)
                 {
                     row.ChildElements.Remove(rc);
@@ -67,6 +68,6 @@ namespace Terminplan
             return false;//throw new NotImplementedException();
         }
 
-        #endregion
+        #endregion IUIElementCreationFilter Members
     }
 }

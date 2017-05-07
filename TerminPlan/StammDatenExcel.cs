@@ -19,7 +19,8 @@
 namespace Terminplan
 {
     using System;
-    using System.Data;
+    using System.Runtime.InteropServices;
+    using System.Threading;
     using System.Windows.Forms;
     using Infragistics.Documents.Excel;
     using Infragistics.Win.UltraWinGrid;
@@ -38,10 +39,35 @@ namespace Terminplan
         /// <param name="workSheet">Das zu ladende Arbeitsblatt.</param>
         private void LadeExcelTabelle(ref UltraGrid excelGrid, string datei, string workSheet)
         {
-            var wb = Workbook.Load(datei);                                      // Excel-Tabelle laden
+            Workbook wb = null;
+            try
+            {
+                wb = Workbook.Load(datei);                                      // Excel-Tabelle laden
+            }
+            catch (System.IO.IOException ex)
+            {
+                var hres = ex.HResult;                                          // Nummer der Ausnahme ermitteln
+
+                // Falls die Datei durch einen anderen Prozess geöffnet ist, diesen schließen
+                if (hres == -2147024864)
+                {
+                    bool instanziert;
+                    var mutex = new Mutex(false, "Local\\" + "Excel.exe", out instanziert);
+
+                    if (instanziert)
+                    {
+                        var anwendung = LaufendeAnwendungen.GetRunningCOMObjectByName("Excel");
+                        var xlsApp = (Microsoft.Office.Interop.Excel.Application)Marshal.GetActiveObject("Excel.Application");
+                        LaufendeAnwendungen.KillExcelInstanceById(ref xlsApp);
+                    }
+
+                    //var liste = LaufendeAnwendungen.GetRunningCOMObjectNames();
+                    //var anwendung = LaufendeAnwendungen.GetRunningCOMObjectByName("Vorlage.xlsx - Excel");
+                }
+            }
 
             // Erstellen einer DataTable, welche verwendet wird, um Daten aus der Excel-Datei zu speichern
-            var dtExcel = new DataTable();
+            var dtExcel = new System.Data.DataTable();
 
             object[] rowArray;                                                  // Array zu Aufnahme der Daten einer Zelle für einer Zeile
             var colCount = 0;                                                   // Anzahl Spalten in der zu lesenden Excel-Tabelle

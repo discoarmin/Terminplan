@@ -30,10 +30,10 @@ namespace Terminplan
         #region Variablen
 
         /// <summary>Control zum Darstellen von MDI-Formulare als Tabs</summary>
-        public UltraTabbedMdiManager tabManager;
+        public UltraTabbedMdiManager TabManager;
 
         /// <summary>der ausgewählte Tab</summary>
-        public MdiTab activeTab;
+        public MdiTab ActiveTab;
 
         /// <summary> das aktive Panel </summary>
         private UltraZoomPanel activeZoomPanel;
@@ -42,10 +42,10 @@ namespace Terminplan
         private List<UltraZoomPanel> zoomPanels;
 
         /// <summary> Formular mit den Stanndaten </summary>
-        private StammDaten fs;
+        public StammDaten Fs;
 
         /// <summary> Formular mit dem Terminplan </summary>
-        private TerminPlanForm ft;
+        public TerminPlanForm Ft;
 
         #endregion Variablen
 
@@ -68,7 +68,7 @@ namespace Terminplan
 
         private void InitializeZoomPanels()
         {
-            this.zoomPanels = new List<UltraZoomPanel>() { fs.ultraZoomPanelStammDaten, ft.ultraZoomPanelTerminPlan };
+            this.zoomPanels = new List<UltraZoomPanel>() { this.Fs.ultraZoomPanelStammDaten, this.Ft.ultraZoomPanelTerminPlan };
         }
 
         #endregion InitializeZoomPanels
@@ -81,7 +81,7 @@ namespace Terminplan
         {
             // Hier müssen die beiden Formulare geladen werden
             // a) Stammdaten
-            this.fs = new StammDaten
+            this.Fs = new StammDaten
             {
                 Tag = @"Stammdaten",
                 Text = @"Stammdaten",
@@ -89,19 +89,19 @@ namespace Terminplan
             };
 
             // b) Formular für den Terminplan
-            this.ft = new TerminPlanForm
+            this.Ft = new TerminPlanForm
             {
                 Tag = @"Terminplan",
                 Text = @"Terminplan",
                 MdiParent = this
             };
 
-            this.fs.FrmTerminPlan = this.ft;                                    // Dem Projektplan die Stammdaten bekannt machen
-            this.ft.FrmStammDaten = this.fs;                                    // Den Stammdaten den Projektplan bekant machen
+            this.Fs.FrmTerminPlan = this.Ft;                                    // Dem Projektplan die Stammdaten bekannt machen
+            this.Ft.FrmStammDaten = this.Fs;                                    // Den Stammdaten den Projektplan bekant machen
 
             // Formulare anzeigen
-            this.fs.Show();
-            this.ft.Show();
+            this.Fs.Show();
+            this.Ft.Show();
 
             base.OnLoad(e);
         }
@@ -114,8 +114,8 @@ namespace Terminplan
             var zoomLevel = Convert.ToDouble(this.trackBarZoom.Value);
             var anzeigeWert = (zoomLevel / 100d).ToString("P0", CultureInfo.CreateSpecificCulture("de-DE"));
             this.ultraStatusBarStart.Panels[@"ZoomInfo"].Text = anzeigeWert;
-            this.fs.ultraZoomPanelStammDaten.ZoomProperties.ZoomFactor = (float)(zoomLevel / 10) + 1;
-            this.ft.ultraZoomPanelTerminPlan.ZoomProperties.ZoomFactor = (float)(zoomLevel / 10) + 1;
+            this.Fs.ultraZoomPanelStammDaten.ZoomProperties.ZoomFactor = (float)(zoomLevel / 10) + 1;
+            this.Ft.ultraZoomPanelTerminPlan.ZoomProperties.ZoomFactor = (float)(zoomLevel / 10) + 1;
         }
 
         /// <summary> Behandelt das TabSelected-Ereignis des ultraTabbedMdiManager1 </summary>
@@ -123,8 +123,8 @@ namespace Terminplan
         /// <param name="e">Die <see cref="Infragistics.Win.UltraWinTabbedMdi.MdiTabEventArgs" /> Instanz,welche die Ereignisdaten enthält.</param>
         private void OnUltraTabbedMdiManager1TabSelected(object sender, MdiTabEventArgs e)
         {
-            this.tabManager = (UltraTabbedMdiManager)sender;                    // Die Quelle ist ein UltraTabbedMdiManager
-            this.activeTab = e.Tab;                                             // ausgewählten Tab ermitteln
+            this.TabManager = (UltraTabbedMdiManager)sender;                    // Die Quelle ist ein UltraTabbedMdiManager
+            this.ActiveTab = e.Tab;                                             // ausgewählten Tab ermitteln
                                                                                 //
                                                                                 //activeZoomPanel = (UltraZoomPanel)activeTab.t  .Form.   C     TabPage.Controls[0];
         }

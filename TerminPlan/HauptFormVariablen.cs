@@ -114,20 +114,23 @@ namespace Terminplan
         // ReSharper disable once UnusedMember.Local
         private const int TaskBarHeight = 20;
 
-        /// <summary>
-        /// Holt oder setzt den Pfad zu den Farbeinstellungen
-        /// </summary>
-        public string[] TemePaths { get; set; }
-
         /// <summary> Pfad zu den Farbeinstallungen </summary>
         public static StyleManager StyleManagerIntern;
 
         /// <summary>Name des Projekts</summary>
         public static string PrjName;
 
+        /// <summary>Index der ausgewählten Firma</summary>
+        public int FirmenIndex;
+
         #endregion Variablen
 
         #region Eigenschaften
+
+        /// <summary>
+        /// Holt oder setzt den Pfad zu den Farbeinstellungen
+        /// </summary>
+        public string[] TemePaths { get; set; }
 
         /// <summary>Setzt das Formular für den Terminplan</summary>
         public StammDaten FrmStammDaten { private get; set; }

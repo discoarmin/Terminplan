@@ -17,6 +17,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace Terminplan
 {
+    using Infragistics.Win;
     using Infragistics.Win.AppStyling;
 
     /// <summary>
@@ -57,6 +58,12 @@ namespace Terminplan
 
         /// <summary> Anzahl Zeilen in der Stammdatentabelle </summary>
         private int rowCount;
+
+        /// <summary> Liste mit den auszuwählenden Firmen </summary>
+        private ValueList vlFirmen;
+
+        /// <summary> Liste mit den Berschnungsarten für die Dauer eines Vorgangs</summary>
+        private ValueList vlBerechnungsArt;
 
         #endregion Variablen
 

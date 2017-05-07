@@ -313,7 +313,7 @@
             this.ultraGanttView1.ActiveTaskChanging += new Infragistics.Win.UltraWinGanttView.ActiveTaskChangingHandler(this.OnUltraGanttView1ActiveTaskChanging);
             this.ultraGanttView1.CellActivating += new Infragistics.Win.UltraWinGanttView.CellActivatingHandler(this.OnUltraGanttView1CellActivating);
             this.ultraGanttView1.CellDeactivating += new Infragistics.Win.UltraWinGanttView.CellDeactivatingHandler(this.OnUltraGanttView1CellDeactivating);
-            this.ultraGanttView1.BindingContextChanged += new System.EventHandler(this.ultraGanttView1_BindingContextChanged);
+            this.ultraGanttView1.BindingContextChanged += new System.EventHandler(this.UltraGanttView1BindingContextChanged);
             // 
             // ultraCalendarInfo1
             // 

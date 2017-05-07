@@ -820,7 +820,7 @@ namespace Terminplan
             ultraToolbarsManager1.Tools[@"Speichern"].SharedProps.Enabled = !prjHinzugefuegt;
         }
 
-        private void ultraGanttView1_BindingContextChanged(object sender, EventArgs e)
+        private void UltraGanttView1BindingContextChanged(object sender, EventArgs e)
         {
         }
 

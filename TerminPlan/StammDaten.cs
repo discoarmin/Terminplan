@@ -21,10 +21,12 @@ namespace Terminplan
 {
     using System;
     using System.ComponentModel;
-    using System.Diagnostics;
+    using System.Drawing;
     using System.Globalization;
     using System.IO;
     using System.Windows.Forms;
+
+    using Infragistics.Win;
     using Infragistics.Win.AppStyling;
     using Infragistics.Win.Printing;
     using Infragistics.Win.UltraWinEditors;
@@ -232,7 +234,7 @@ namespace Terminplan
         /// Behandelt das PropertyChanged-Ereignis des ultraToolbarsManagerStamm Kontrols.
         /// </summary>
         /// <param name="sender">Die Quelle des Ereignisses.</param>
-        /// <param name="e">Die <see cref="PropertyChangedEventArgs" /> Instanz, welche die Ereignisdaten enthält.</param>
+        /// <param name="e">Die <see cref="System.ComponentModel.PropertyChangedEventArgs" /> Instanz, welche die Ereignisdaten enthält.</param>
         private void ultraToolbarsManagerStamm_PropertyChanged(object sender, Infragistics.Win.PropertyChangedEventArgs e)
         {
             UltraToolbarsManagerStammPropertyChanged(sender, e);
@@ -390,12 +392,12 @@ namespace Terminplan
             UltraGrid grid = null;                                              // Grid im Formular
             // ausgewählte Spalte ermitteln
             var startForm = (StartForm)this.MdiParent;                           // Das Elternfenster holen
-            var aktiveTabelle = startForm.activeTab.TextResolved;
+            var aktiveTabelle = startForm.ActiveTab.TextResolved;
             var sollTabelle = zeile.Cells[2].Value.ToString();                  // Überschrift ermitteln
 
             if (sollTabelle != aktiveTabelle)
             {
-                var manager = startForm.tabManager;                             // Tabmanager zum Auswählen des benötigten Tabs
+                var manager = startForm.TabManager;                             // Tabmanager zum Auswählen des benötigten Tabs
                 manager.TabFromKey(sollTabelle).Activate();
             }
 
@@ -429,19 +431,97 @@ namespace Terminplan
             csr.ScrollColIntoView(grid.DisplayLayout.Bands[0].Columns[vonSpalte], true);
         }
 
-        private void ultraComboEditorFirma_AfterCloseUp(object sender, EventArgs e)
+        private void UltraComboEditorFirmaAfterCloseUp(object sender, EventArgs e)
         {
         }
 
-        private void ultraComboEditorFirma_TextChanged(object sender, EventArgs e)
+        private void UltraComboEditorFirmaTextChanged(object sender, EventArgs e)
         {
         }
 
-        private void ultraComboEditorFirma_ValueChanged(object sender, EventArgs e)
+        private void UltraComboEditorFirmaValueChanged(object sender, EventArgs e)
         {
         }
 
-        private void ultraComboEditorFirma_SelectionChanged(object sender, EventArgs e)
+        private void UltraComboEditorFirmaSelectionChanged(object sender, EventArgs e)
+        {
+        }
+
+        /// <summary>
+        /// Initialisiert das Layout des Grids.
+        /// </summary>
+        /// <param name="sender">Die Quelle des Ereignisses.</param>
+        /// <param name="e">Die <see cref="InitializeLayoutEventArgs" /> Instanz, welche die Ereignisdaten enthält.</param>
+        private void OnUltraGridStammDatenInitializeLayout(object sender, InitializeLayoutEventArgs e)
+        {
+            e.Layout.Override.MergedCellStyle = MergedCellStyle.Always;
+            e.Layout.Override.MergedCellContentArea = MergedCellContentArea.VirtualRect;
+
+            // Liste zur Auswahl der Firmen generieren
+            if (!e.Layout.ValueLists.Exists(@"Firmenliste"))
+            {
+                this.vlFirmen = e.Layout.ValueLists.Add(@"Firmenliste");
+                this.vlFirmen.ValueListItems.Add(0, @"Schmid");
+                this.vlFirmen.ValueListItems.Add(1, @"Inda Markert");
+                this.vlFirmen.ValueListItems.Add(2, @"EST");
+                this.vlFirmen.ValueListItems.Add(3, @"EST intern");
+            }
+
+            this.vlFirmen.Appearance.FontData.SizeInPoints = 10;
+            this.vlFirmen.Appearance.BackColor = SystemColors.ControlLight;
+            this.vlFirmen.Appearance.ForeColor = Color.Blue;
+            this.vlFirmen.Appearance.BorderColor = Color.Silver;
+            this.vlFirmen.SortStyle = ValueListSortStyle.AscendingByValue;
+            this.vlFirmen.SelectedIndex = 0;
+
+            // Liste zur Auswahl der Berechnungsart generieren
+            if (!e.Layout.ValueLists.Exists(@"Berechnungsart"))
+            {
+                this.vlBerechnungsArt = e.Layout.ValueLists.Add(@"Berechnungsart");
+                this.vlBerechnungsArt.ValueListItems.Add(0, @"Arbeitstage");
+                this.vlBerechnungsArt.ValueListItems.Add(1, @"Wochentage");
+            }
+
+            this.vlBerechnungsArt.Appearance.FontData.SizeInPoints = 10;
+            this.vlBerechnungsArt.Appearance.BackColor = SystemColors.ControlLight;
+            this.vlBerechnungsArt.Appearance.ForeColor = Color.Blue;
+            this.vlBerechnungsArt.Appearance.BorderColor = Color.Silver;
+            this.vlBerechnungsArt.SortStyle = ValueListSortStyle.AscendingByValue;
+            this.vlBerechnungsArt.SelectedIndex = 0;
+        }
+
+        /// <summary>
+        /// Wird ausgelöst, wenn aus der Firmenliste eine Liste ausgewählt wird.
+        /// </summary>
+        /// <param name="sender">Die Quelle des Ereignisses.</param>
+        /// <param name="e">Die <see cref="InitializeLayoutEventArgs" /> Instanz, welche die Ereignisdaten enthält.</param>
+        private void UltraGridStammDatenCellListSelect(object sender, CellEventArgs e)
+        {
+            var startForm = (StartForm)this.MdiParent;                          // Das Elternfenster holen
+            var terminPlan = startForm.Fs.FrmTerminPlan;                        // Das Fenster des Terminplans holen
+            terminPlan.FirmenIndex = e.Cell.ValueList.SelectedItemIndex;        // Index der ausgewählten Firma merken
+
+            var grid = startForm.Fs.FrmTerminPlan.ultraGridDaten;               // Grid, welches das Firmenloo enthält#
+            var zelle = grid.DisplayLayout.Rows[0].Cells[2];                    // Zelle, welches das Logo enthält
+
+            // Frmenlogo einstellen
+            switch (terminPlan.FirmenIndex)
+            {
+                case 0:                                                         // Schmid
+                    zelle.Appearance.ImageBackground = Properties.Resources.Schmid_Maschinenbau1;
+                    break;
+
+                case 1:                                                         // Inda
+                    zelle.Appearance.ImageBackground = Properties.Resources.Inda;
+                    break;
+
+                default:                                                        // EST
+                    zelle.Appearance.ImageBackground = Properties.Resources.EST;
+                    break;
+            }
+        }
+
+        private void ultraDateTimeEditorPrjStart_ValueChanged(object sender, EventArgs e)
         {
         }
     }

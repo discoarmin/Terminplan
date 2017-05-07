@@ -42,7 +42,7 @@ namespace Terminplan
                     @"Die Mail kann deshalb nicht verschickt werden.";
                 const string Ueberschrift = @"EMail-Client nicht gefunden";
                 MessageBox.Show(this, meldung, Ueberschrift, MessageBoxButtons.OK);
-                return retwert;                                                 // Falls Outlook nicht installiert ist, kann hier abgebrochen werden
+                return false;                                                   // Falls Outlook nicht installiert ist, kann hier abgebrochen werden
             }
 
             var startForm = (StartForm)MdiParent;                               // Das Elternfenster holen
@@ -52,8 +52,6 @@ namespace Terminplan
             var mailItem = (MailItem)outlookApp.CreateItem(OlItemType.olMailItem);
 
             var currentUser = outlookApp.Session.CurrentUser.AddressEntry;      // Eigene Email-Addresse ermitteln
-            //mailItem.GetInspector.Activate();
-
             var signature = LeseSignature();                                    // Signatur der eigenen Mailadresse ermitteln
             var anschrift = @"Sehr geehrte Damen und Herren,";
 
