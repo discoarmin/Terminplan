@@ -787,7 +787,6 @@
             this.ultraZoomPanelTerminPlan.ClientArea.Controls.Add(this._ClientArea_Toolbars_Dock_Area_Top);
             resources.ApplyResources(this.ultraZoomPanelTerminPlan, "ultraZoomPanelTerminPlan");
             this.ultraZoomPanelTerminPlan.Name = "ultraZoomPanelTerminPlan";
-            this.ultraZoomPanelTerminPlan.ZoomFactorChanged += new System.EventHandler(this.OnZoomFactorChanged);
             // 
             // splitContainerHauptDaten
             // 

@@ -32,6 +32,7 @@ namespace Terminplan
     using Infragistics.Win.UltraWinEditors;
     using Infragistics.Win.UltraWinGrid;
     using Infragistics.Win.UltraWinToolbars;
+    using WinGridZoomGrid;
 
     using AutoCompleteMode = Infragistics.Win.AutoCompleteMode;
 
@@ -50,6 +51,14 @@ namespace Terminplan
             System.Threading.Thread.CurrentThread.CurrentUICulture = culture;
 
             this.InitializeComponent();
+
+            this.zoomGridStamm = new WinGridZoomGrid.GridZoomProperty();        // Zoomdaten im Grid für Stammdaten
+            this.zoomGridGrund = new WinGridZoomGrid.GridZoomProperty();        // Zoomdaten im Grid für Grunddaten
+
+            // Eigenschaften de^s Grids für das Zoomen ermitteln
+            this.zoomGridStamm.GetGridOriginZoomProperty(this.ultraGridStammDaten); // Originaleinstellungen ermitteln
+            this.zoomGridAktuell = this.zoomGridStamm;
+            this.zoomGridAktuell.ZoomGrid(100, this.ultraGridStammDaten);       // Gestartet wird mit 100%
         }
 
         #region Dispose
@@ -170,15 +179,6 @@ namespace Terminplan
                     this.InsertStammDatenDs(false);
                     break;
             }
-        }
-
-        /// <summary>
-        /// Wird aufgerufen, wenn sich der Zoomfaktor ändert.
-        /// </summary>
-        /// <param name="sender">Die Quelle des Ereignisses.</param>
-        /// <param name="e">Die <see cref="System.EventArgs"/> Instanz,  welche die Ereignisdaten enthält.</param>
-        private void OnZoomFactorChanged(object sender, System.EventArgs e)
-        {
         }
 
         #endregion Ereignisprozeduren
@@ -522,6 +522,10 @@ namespace Terminplan
         }
 
         private void ultraDateTimeEditorPrjStart_ValueChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void ultraTextEditorBloecke_ValueChanged(object sender, EventArgs e)
         {
         }
     }

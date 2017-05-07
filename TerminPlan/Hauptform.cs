@@ -823,9 +823,5 @@ namespace Terminplan
         private void UltraGanttView1BindingContextChanged(object sender, EventArgs e)
         {
         }
-
-        private void OnZoomFactorChanged(object sender, EventArgs e)
-        {
-        }
     }
 }

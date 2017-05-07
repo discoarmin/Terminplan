@@ -1,0 +1,110 @@
+E:\PrjDotNet4.6\flexChip V4\WinGridZoomGrid\bin\Debug\WinGridZoomGrid.dll
+E:\PrjDotNet4.6\flexChip V4\WinGridZoomGrid\bin\Debug\WinGridZoomGrid.pdb
+E:\PrjDotNet4.6\flexChip V4\WinGridZoomGrid\obj\Debug\WinGridZoomGrid.dll
+E:\PrjDotNet4.6\flexChip V4\WinGridZoomGrid\obj\Debug\WinGridZoomGrid.pdb
+E:\PrjDotNet4.6\flexChip V4\WinGridZoomGrid\bin\Debug\Infragistics4.Shared.v16.1.dll
+E:\PrjDotNet4.6\flexChip V4\WinGridZoomGrid\bin\Debug\Infragistics4.Win.UltraWinEditors.v16.1.dll
+E:\PrjDotNet4.6\flexChip V4\WinGridZoomGrid\bin\Debug\Infragistics4.Win.UltraWinGrid.v16.1.dll
+E:\PrjDotNet4.6\flexChip V4\WinGridZoomGrid\bin\Debug\Infragistics4.Win.v16.1.dll
+E:\PrjDotNet4.6\flexChip V4\WinGridZoomGrid\bin\Debug\Infragistics4.Win.Misc.v16.1.dll
+E:\PrjDotNet4.6\flexChip V4\WinGridZoomGrid\bin\Debug\Infragistics4.Shared.v16.1.xml
+E:\PrjDotNet4.6\flexChip V4\WinGridZoomGrid\bin\Debug\Infragistics4.Win.UltraWinEditors.v16.1.xml
+E:\PrjDotNet4.6\flexChip V4\WinGridZoomGrid\bin\Debug\Infragistics4.Win.UltraWinGrid.v16.1.xml
+E:\PrjDotNet4.6\flexChip V4\WinGridZoomGrid\bin\Debug\Infragistics4.Win.v16.1.xml
+E:\PrjDotNet4.6\flexChip V4\WinGridZoomGrid\bin\Debug\Infragistics4.Win.Misc.v16.1.xml
+E:\prjDotNet4.6\flexChip4\WinGridZoomGrid\bin\Debug\WinGridZoomGrid.dll
+E:\prjDotNet4.6\flexChip4\WinGridZoomGrid\bin\Debug\WinGridZoomGrid.pdb
+E:\prjDotNet4.6\flexChip4\WinGridZoomGrid\obj\Debug\WinGridZoomGrid.dll
+E:\prjDotNet4.6\flexChip4\WinGridZoomGrid\obj\Debug\WinGridZoomGrid.pdb
+E:\prjDotNet4.6\FlexChip42\WinGridZoomGrid\bin\Debug\WinGridZoomGrid.dll
+E:\prjDotNet4.6\FlexChip42\WinGridZoomGrid\bin\Debug\WinGridZoomGrid.pdb
+E:\prjDotNet4.6\FlexChip42\WinGridZoomGrid\obj\Debug\WinGridZoomGrid.dll
+E:\prjDotNet4.6\FlexChip42\WinGridZoomGrid\obj\Debug\WinGridZoomGrid.pdb
+E:\PrjDotNet4.6\flexChip V4\WinGridZoomGrid\obj\Debug\WinGridZoomGrid.csprojResolveAssemblyReference.cache
+E:\PrjDotNet4.6\flexChip V42\WinGridZoomGrid\bin\Debug\WinGridZoomGrid.dll
+E:\PrjDotNet4.6\flexChip V42\WinGridZoomGrid\bin\Debug\WinGridZoomGrid.pdb
+E:\PrjDotNet4.6\flexChip V42\WinGridZoomGrid\bin\Debug\Infragistics4.Shared.v16.1.dll
+E:\PrjDotNet4.6\flexChip V42\WinGridZoomGrid\bin\Debug\Infragistics4.Win.UltraWinEditors.v16.1.dll
+E:\PrjDotNet4.6\flexChip V42\WinGridZoomGrid\bin\Debug\Infragistics4.Win.UltraWinGrid.v16.1.dll
+E:\PrjDotNet4.6\flexChip V42\WinGridZoomGrid\bin\Debug\Infragistics4.Win.v16.1.dll
+E:\PrjDotNet4.6\flexChip V42\WinGridZoomGrid\bin\Debug\Infragistics4.Win.Misc.v16.1.dll
+E:\PrjDotNet4.6\flexChip V42\WinGridZoomGrid\bin\Debug\Infragistics4.Shared.v16.1.xml
+E:\PrjDotNet4.6\flexChip V42\WinGridZoomGrid\bin\Debug\Infragistics4.Win.UltraWinEditors.v16.1.xml
+E:\PrjDotNet4.6\flexChip V42\WinGridZoomGrid\bin\Debug\Infragistics4.Win.UltraWinGrid.v16.1.xml
+E:\PrjDotNet4.6\flexChip V42\WinGridZoomGrid\bin\Debug\Infragistics4.Win.v16.1.xml
+E:\PrjDotNet4.6\flexChip V42\WinGridZoomGrid\bin\Debug\Infragistics4.Win.Misc.v16.1.xml
+E:\PrjDotNet4.6\flexChip V42\WinGridZoomGrid\obj\Debug\WinGridZoomGrid.csprojResolveAssemblyReference.cache
+E:\PrjDotNet4.6\flexChip V42\WinGridZoomGrid\obj\Debug\WinGridZoomGrid.dll
+E:\PrjDotNet4.6\flexChip V42\WinGridZoomGrid\obj\Debug\WinGridZoomGrid.pdb
+E:\prjDotNet4.6\FlexChip42\WinGridZoomGrid\obj\Debug\WinGridZoomGrid.csprojResolveAssemblyReference.cache
+E:\prjDotNet4.6\FlexChip43\WinGridZoomGrid\bin\Debug\WinGridZoomGrid.dll
+E:\prjDotNet4.6\FlexChip43\WinGridZoomGrid\bin\Debug\WinGridZoomGrid.pdb
+E:\prjDotNet4.6\FlexChip43\WinGridZoomGrid\bin\Debug\log4net.dll
+E:\prjDotNet4.6\FlexChip43\WinGridZoomGrid\bin\Debug\log4net.xml
+E:\prjDotNet4.6\FlexChip43\WinGridZoomGrid\obj\Debug\WinGridZoomGrid.dll
+E:\prjDotNet4.6\FlexChip43\WinGridZoomGrid\obj\Debug\WinGridZoomGrid.pdb
+E:\prjDotNet4.6\FlexChip43\WinGridZoomGrid\obj\Debug\WinGridZoomGrid.csprojResolveAssemblyReference.cache
+E:\PrjDotNet4.6\flexChip V43\WinGridZoomGrid\bin\Debug\WinGridZoomGrid.dll
+E:\PrjDotNet4.6\flexChip V43\WinGridZoomGrid\bin\Debug\WinGridZoomGrid.pdb
+E:\PrjDotNet4.6\flexChip V43\WinGridZoomGrid\bin\Debug\Infragistics4.Shared.v16.2.dll
+E:\PrjDotNet4.6\flexChip V43\WinGridZoomGrid\bin\Debug\Infragistics4.Win.UltraWinEditors.v16.2.dll
+E:\PrjDotNet4.6\flexChip V43\WinGridZoomGrid\bin\Debug\Infragistics4.Win.UltraWinGrid.v16.2.dll
+E:\PrjDotNet4.6\flexChip V43\WinGridZoomGrid\bin\Debug\Infragistics4.Win.v16.2.dll
+E:\PrjDotNet4.6\flexChip V43\WinGridZoomGrid\bin\Debug\log4net.dll
+E:\PrjDotNet4.6\flexChip V43\WinGridZoomGrid\bin\Debug\Infragistics4.Win.Misc.v16.2.dll
+E:\PrjDotNet4.6\flexChip V43\WinGridZoomGrid\bin\Debug\Infragistics4.Win.v16.2.xml
+E:\PrjDotNet4.6\flexChip V43\WinGridZoomGrid\bin\Debug\Infragistics4.Win.UltraWinGrid.v16.2.xml
+E:\PrjDotNet4.6\flexChip V43\WinGridZoomGrid\bin\Debug\Infragistics4.Win.UltraWinEditors.v16.2.xml
+E:\PrjDotNet4.6\flexChip V43\WinGridZoomGrid\bin\Debug\Infragistics4.Shared.v16.2.xml
+E:\PrjDotNet4.6\flexChip V43\WinGridZoomGrid\bin\Debug\log4net.xml
+E:\PrjDotNet4.6\flexChip V43\WinGridZoomGrid\bin\Debug\Infragistics4.Win.Misc.v16.2.xml
+E:\PrjDotNet4.6\flexChip V43\WinGridZoomGrid\obj\Debug\WinGridZoomGrid.csprojResolveAssemblyReference.cache
+E:\PrjDotNet4.6\flexChip V43\WinGridZoomGrid\obj\Debug\WinGridZoomGrid.dll
+E:\PrjDotNet4.6\flexChip V43\WinGridZoomGrid\obj\Debug\WinGridZoomGrid.pdb
+E:\PrjDotNet4.6\flexChip V43_gesch\WinGridZoomGrid\bin\Debug\WinGridZoomGrid.dll
+E:\PrjDotNet4.6\flexChip V43_gesch\WinGridZoomGrid\bin\Debug\WinGridZoomGrid.pdb
+E:\PrjDotNet4.6\flexChip V43_gesch\WinGridZoomGrid\bin\Debug\Infragistics4.Shared.v16.2.dll
+E:\PrjDotNet4.6\flexChip V43_gesch\WinGridZoomGrid\bin\Debug\Infragistics4.Win.UltraWinEditors.v16.2.dll
+E:\PrjDotNet4.6\flexChip V43_gesch\WinGridZoomGrid\bin\Debug\Infragistics4.Win.UltraWinGrid.v16.2.dll
+E:\PrjDotNet4.6\flexChip V43_gesch\WinGridZoomGrid\bin\Debug\Infragistics4.Win.v16.2.dll
+E:\PrjDotNet4.6\flexChip V43_gesch\WinGridZoomGrid\bin\Debug\log4net.dll
+E:\PrjDotNet4.6\flexChip V43_gesch\WinGridZoomGrid\bin\Debug\Infragistics4.Win.Misc.v16.2.dll
+E:\PrjDotNet4.6\flexChip V43_gesch\WinGridZoomGrid\bin\Debug\Infragistics4.Win.v16.2.xml
+E:\PrjDotNet4.6\flexChip V43_gesch\WinGridZoomGrid\bin\Debug\Infragistics4.Win.UltraWinGrid.v16.2.xml
+E:\PrjDotNet4.6\flexChip V43_gesch\WinGridZoomGrid\bin\Debug\Infragistics4.Win.UltraWinEditors.v16.2.xml
+E:\PrjDotNet4.6\flexChip V43_gesch\WinGridZoomGrid\bin\Debug\Infragistics4.Shared.v16.2.xml
+E:\PrjDotNet4.6\flexChip V43_gesch\WinGridZoomGrid\bin\Debug\log4net.xml
+E:\PrjDotNet4.6\flexChip V43_gesch\WinGridZoomGrid\bin\Debug\Infragistics4.Win.Misc.v16.2.xml
+E:\PrjDotNet4.6\flexChip V43_gesch\WinGridZoomGrid\obj\Debug\WinGridZoomGrid.dll
+E:\PrjDotNet4.6\flexChip V43_gesch\WinGridZoomGrid\obj\Debug\WinGridZoomGrid.pdb
+E:\PrjDotNet4.6\flexChip V43_gesch\WinGridZoomGrid\obj\Debug\WinGridZoomGrid.csprojResolveAssemblyReference.cache
+E:\prjDotNet4.6\FlexChip43_16.2\WinGridZoomGrid\bin\Debug\WinGridZoomGrid.dll
+E:\prjDotNet4.6\FlexChip43_16.2\WinGridZoomGrid\bin\Debug\WinGridZoomGrid.pdb
+E:\prjDotNet4.6\FlexChip43_16.2\WinGridZoomGrid\bin\Debug\Infragistics4.Shared.v16.2.dll
+E:\prjDotNet4.6\FlexChip43_16.2\WinGridZoomGrid\bin\Debug\Infragistics4.Win.UltraWinEditors.v16.2.dll
+E:\prjDotNet4.6\FlexChip43_16.2\WinGridZoomGrid\bin\Debug\Infragistics4.Win.UltraWinGrid.v16.2.dll
+E:\prjDotNet4.6\FlexChip43_16.2\WinGridZoomGrid\bin\Debug\Infragistics4.Win.v16.2.dll
+E:\prjDotNet4.6\FlexChip43_16.2\WinGridZoomGrid\bin\Debug\log4net.dll
+E:\prjDotNet4.6\FlexChip43_16.2\WinGridZoomGrid\bin\Debug\Infragistics4.Win.v16.2.xml
+E:\prjDotNet4.6\FlexChip43_16.2\WinGridZoomGrid\bin\Debug\Infragistics4.Win.UltraWinGrid.v16.2.xml
+E:\prjDotNet4.6\FlexChip43_16.2\WinGridZoomGrid\bin\Debug\Infragistics4.Win.UltraWinEditors.v16.2.xml
+E:\prjDotNet4.6\FlexChip43_16.2\WinGridZoomGrid\bin\Debug\Infragistics4.Shared.v16.2.xml
+E:\prjDotNet4.6\FlexChip43_16.2\WinGridZoomGrid\bin\Debug\log4net.xml
+E:\prjDotNet4.6\FlexChip43_16.2\WinGridZoomGrid\obj\Debug\WinGridZoomGrid.dll
+E:\prjDotNet4.6\FlexChip43_16.2\WinGridZoomGrid\obj\Debug\WinGridZoomGrid.pdb
+E:\prjDotNet4.6\FlexChip43_16.2\WinGridZoomGrid\obj\Debug\WinGridZoomGrid.csprojResolveAssemblyReference.cache
+E:\PrjDotNet4.6.2\Terminplan\WinGridZoomGrid\bin\Debug\WinGridZoomGrid.dll
+E:\PrjDotNet4.6.2\Terminplan\WinGridZoomGrid\bin\Debug\WinGridZoomGrid.pdb
+E:\PrjDotNet4.6.2\Terminplan\WinGridZoomGrid\bin\Debug\Infragistics4.Shared.v16.2.dll
+E:\PrjDotNet4.6.2\Terminplan\WinGridZoomGrid\bin\Debug\Infragistics4.Win.UltraWinEditors.v16.2.dll
+E:\PrjDotNet4.6.2\Terminplan\WinGridZoomGrid\bin\Debug\Infragistics4.Win.UltraWinGrid.v16.2.dll
+E:\PrjDotNet4.6.2\Terminplan\WinGridZoomGrid\bin\Debug\Infragistics4.Win.v16.2.dll
+E:\PrjDotNet4.6.2\Terminplan\WinGridZoomGrid\bin\Debug\Infragistics4.Win.Misc.v16.2.dll
+E:\PrjDotNet4.6.2\Terminplan\WinGridZoomGrid\bin\Debug\Infragistics4.Win.v16.2.xml
+E:\PrjDotNet4.6.2\Terminplan\WinGridZoomGrid\bin\Debug\Infragistics4.Win.UltraWinGrid.v16.2.xml
+E:\PrjDotNet4.6.2\Terminplan\WinGridZoomGrid\bin\Debug\Infragistics4.Win.UltraWinEditors.v16.2.xml
+E:\PrjDotNet4.6.2\Terminplan\WinGridZoomGrid\bin\Debug\Infragistics4.Shared.v16.2.xml
+E:\PrjDotNet4.6.2\Terminplan\WinGridZoomGrid\bin\Debug\Infragistics4.Win.Misc.v16.2.xml
+E:\PrjDotNet4.6.2\Terminplan\WinGridZoomGrid\obj\Debug\WinGridZoomGrid.csprojResolveAssemblyReference.cache
+E:\PrjDotNet4.6.2\Terminplan\WinGridZoomGrid\obj\Debug\WinGridZoomGrid.dll
+E:\PrjDotNet4.6.2\Terminplan\WinGridZoomGrid\obj\Debug\WinGridZoomGrid.pdb

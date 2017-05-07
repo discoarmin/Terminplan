@@ -353,20 +353,20 @@ namespace Terminplan
             zelle.Value = @"Anzahl anzuzeigender Blöcke";
             SetzeUeberSchrift(zelle, hinterGrundFarbe, ueberSchriftFarbe);
 
-            // Zellen 33, 34 und 35 der Spalte 'B' verbinden
-            for (var i = 33; i <= 35; i++)
-            {
-                this.ultraGridStammDaten.Rows[i].Cells[1].Selected = true;
-                this.ultraGridStammDaten.Rows[i].Cells[1].M
-            }
+            //// Zellen 33, 34 und 35 der Spalte 'B' verbinden
+            //for (var i = 33; i <= 35; i++)
+            //{
+            //    this.ultraGridStammDaten.Rows[i].Cells[1].Selected = true;
+            //    this.ultraGridStammDaten.Rows[i].Cells[1].M
+            //}
 
-            var selCells = this.ultraGridStammDaten.Selected.Cells;
-            if (selCells != null)
-            {
-                this.ultraGridStammDaten.DisplayLayout.Bands[0].Columns[1].MergedCellEvaluationType = MergedCellEvaluationType.MergeSameValue
-                selCells.Mer
-            }
-            MergedCellContentArea
+            //var selCells = this.ultraGridStammDaten.Selected.Cells;
+            //if (selCells != null)
+            //{
+            //    this.ultraGridStammDaten.DisplayLayout.Bands[0].Columns[1].MergedCellEvaluationType = MergedCellEvaluationType.MergeSameValue
+            //    selCells.Mer
+            //}
+            //MergedCellContentArea
         }
 
         /// <summary>Setz eine Zelle als Überschrift.</summary>

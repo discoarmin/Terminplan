@@ -389,7 +389,12 @@
     <Content Include="WinToolbarsManager.png" />
     <Content Include="WinTouchProvider.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\WinGridZoomGrid\WinGridZoomGrid.csproj">
+      <Project>{5cad1e1d-ef0d-4548-92e2-294ebbe0d264}</Project>
+      <Name>WinGridZoomGrid</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <COMReference Include="AxMicrosoft.Office.Interop.Outlook">
       <Guid>{00062FFF-0000-0000-C000-000000000046}</Guid>

@@ -65,6 +65,15 @@ namespace Terminplan
         /// <summary> Liste mit den Berschnungsarten für die Dauer eines Vorgangs</summary>
         private ValueList vlBerechnungsArt;
 
+        /// <summary>Zoomdaten für Stammdaten</summary>
+        private WinGridZoomGrid.WinGridZoomGrid.GridZoomProperty zoomGridStamm;
+
+        /// <summary>Zoomdaten für Grunddaten</summary>
+        private WinGridZoomGrid.WinGridZoomGrid.GridZoomProperty zoomGridGrund;
+
+        /// <summary>Gerade bearbeitete Zoomdaten</summary>
+        public WinGridZoomGrid.WinGridZoomGrid.GridZoomProperty zoomGridAktuell;
+
         #endregion Variablen
 
         #region Eigenschaften

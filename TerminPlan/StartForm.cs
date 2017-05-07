@@ -81,29 +81,21 @@ namespace Terminplan
         {
             // Hier müssen die beiden Formulare geladen werden
             // a) Stammdaten
-            this.Fs = new StammDaten
-            {
-                Tag = @"Stammdaten",
-                Text = @"Stammdaten",
-                MdiParent = this
-            };
+            this.Fs = new StammDaten { Tag = @"Stammdaten", Text = @"Stammdaten", MdiParent = this };
 
             // b) Formular für den Terminplan
-            this.Ft = new TerminPlanForm
-            {
-                Tag = @"Terminplan",
-                Text = @"Terminplan",
-                MdiParent = this
-            };
+            this.Ft = new TerminPlanForm { Tag = @"Terminplan", Text = @"Terminplan", MdiParent = this };
 
-            this.Fs.FrmTerminPlan = this.Ft;                                    // Dem Projektplan die Stammdaten bekannt machen
-            this.Ft.FrmStammDaten = this.Fs;                                    // Den Stammdaten den Projektplan bekant machen
+            this.Fs.FrmTerminPlan = this.Ft; // Dem Projektplan die Stammdaten bekannt machen
+            this.Ft.FrmStammDaten = this.Fs; // Den Stammdaten den Projektplan bekant machen
 
             // Formulare anzeigen
             this.Fs.Show();
             this.Ft.Show();
 
             base.OnLoad(e);
+
+            this.ultraStatusBarStart.Panels[@"ZoomInfo"].Text = @"100 %";
         }
 
         /// <summary> Wird aufgerufen, wenn sich der Wert des trackBarZoom - Controls ändert. </summary>
@@ -111,11 +103,29 @@ namespace Terminplan
         /// <param name="e">Die <see cref="EventArgs"/> Instanz, welche die Ereignisdaten enthält.</param>
         private void OnTrackBarZoomValueChanged(object sender, EventArgs e)
         {
-            var zoomLevel = Convert.ToDouble(this.trackBarZoom.Value);
-            var anzeigeWert = (zoomLevel / 100d).ToString("P0", CultureInfo.CreateSpecificCulture("de-DE"));
+            double zoomLevel = 100;
+
+            // Zoompanel für Zoom je nach ausgewähltem Tab einstellen
+            switch (this.ultraTabbedMdiManager1.ActiveTab.TextResolved)
+            {
+                default:                                                        // Standardmäßig ist der Terminplan ausgewählt
+                    zoomLevel = Convert.ToDouble(this.trackBarZoom.Value);
+                    this.Ft.ultraZoomPanelTerminPlan.ZoomProperties.ZoomFactor = (float)(zoomLevel / 10) + 1;  // Das Zoomen erfolgt ausschließlich über das Zoompanel
+                    break;
+
+                case @"Stammdaten":                                             // Stammdaten
+                    zoomLevel = Convert.ToDouble(this.trackBarZoomStamm.Value);
+                    this.Fs.ultraZoomPanelStammDaten.ZoomProperties.ZoomFactor = (float)(zoomLevel / 10) + 1;
+                    this.Fs.zoomGridAktuell.ZoomGrid((float)zoomLevel, this.Fs.ultraGridStammDaten); // Grid zoomen
+                    break;
+
+                case @"Grunddaten":                                             // Grunddaten
+                    break;
+            }
+
+            // ReSharper disable once LocalizableElement
+            var anzeigeWert = (zoomLevel * 10d).ToString("P0", CultureInfo.CreateSpecificCulture("de-DE"));
             this.ultraStatusBarStart.Panels[@"ZoomInfo"].Text = anzeigeWert;
-            this.Fs.ultraZoomPanelStammDaten.ZoomProperties.ZoomFactor = (float)(zoomLevel / 10) + 1;
-            this.Ft.ultraZoomPanelTerminPlan.ZoomProperties.ZoomFactor = (float)(zoomLevel / 10) + 1;
         }
 
         /// <summary> Behandelt das TabSelected-Ereignis des ultraTabbedMdiManager1 </summary>
@@ -125,8 +135,31 @@ namespace Terminplan
         {
             this.TabManager = (UltraTabbedMdiManager)sender;                    // Die Quelle ist ein UltraTabbedMdiManager
             this.ActiveTab = e.Tab;                                             // ausgewählten Tab ermitteln
-                                                                                //
-                                                                                //activeZoomPanel = (UltraZoomPanel)activeTab.t  .Form.   C     TabPage.Controls[0];
+
+            // Alle Trckbars zum Zoomen auf unsichtbar
+            this.trackBarZoom.Visible = false;
+            this.trackBarZoomStamm.Visible = false;
+            this.trackBarZoomGrund.Visible = false;
+
+            // Trackbar für Zoom je nach ausgewähltem Tab einstellen
+            switch (this.ActiveTab.TextResolved)
+            {
+                default:                                                        // Standardmäßig ist der Terminplan ausgewählt
+                    this.ultraStatusBarStart.Panels[@"Zoom"].Control = this.trackBarZoom;
+                    this.trackBarZoom.Visible = true;                           // Trackbar  für den Terminplan einschalten
+                    break;
+
+                case @"Stammdaten":                                                         // Stammdaten
+                    this.ultraStatusBarStart.Panels[@"Zoom"].Control = this.trackBarZoomStamm;
+                    this.trackBarZoomStamm.Visible = true;                      // Trackbar  für die Stammdaten einschalten
+                    break;
+
+                case @"Grunddaten":                                                         // Grunddaten
+                    this.ultraStatusBarStart.Panels[@"Zoom"].Control = this.trackBarZoomGrund;
+                    this.trackBarZoomGrund.Visible = true;                      // Trackbar  für die Grunddaten einschalten
+                    break;
+            }
+            //activeZoomPanel = (UltraZoomPanel)activeTab.t  .Form.   C     TabPage.Controls[0];
         }
     }
 }
