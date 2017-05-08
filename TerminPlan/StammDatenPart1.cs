@@ -258,6 +258,8 @@ namespace Terminplan
         {
             DateTime datumsWert;
 
+            this.ultraGridStammDaten.DisplayLayout.Bands[0].Columns[1].CellMultiLine = DefaultableBoolean.True;
+
             // Die Überschrift für Zeile 1 und 2 wird an anderer Stelle verarbeitet
             // Zeile 3 enthält eine Überschrift (Adresse)
             var zelle = this.ultraGridStammDaten.DisplayLayout.Rows[3].Cells[1];
@@ -367,6 +369,36 @@ namespace Terminplan
             //    selCells.Mer
             //}
             //MergedCellContentArea
+
+            // Zeile 43 enthält eine Überschrift (Timer Intervall)
+            zelle = this.ultraGridStammDaten.DisplayLayout.Rows[43].Cells[1];
+            SetzeUeberSchrift(zelle, hinterGrundFarbe, ueberSchriftFarbe);
+            zelle = this.ultraGridStammDaten.DisplayLayout.Rows[44].Cells[1];
+            zelle.Appearance.TextHAlign = HAlign.Center;
+
+            // Zeile 47 enthält eine Überschrift (History bei Änderungen ...)
+            zelle = this.ultraGridStammDaten.DisplayLayout.Rows[47].Cells[1];
+            SetzeUeberSchrift(zelle, hinterGrundFarbe, ueberSchriftFarbe);
+            zelle = this.ultraGridStammDaten.DisplayLayout.Rows[48].Cells[1];
+            zelle.Appearance.TextHAlign = HAlign.Center;
+
+            // Zeile 50 enthält eine Überschrift (Zeilenhöhe einstellen)
+            zelle = this.ultraGridStammDaten.DisplayLayout.Rows[50].Cells[1];
+            SetzeUeberSchrift(zelle, hinterGrundFarbe, ueberSchriftFarbe);
+            zelle = this.ultraGridStammDaten.DisplayLayout.Rows[51].Cells[1];
+            zelle.Appearance.TextHAlign = HAlign.Center;
+
+            // Zeile 53 enthält eine Überschrift (Zeilenhöhe bei mehrzeiligen Zellen)
+            zelle = this.ultraGridStammDaten.DisplayLayout.Rows[53].Cells[1];
+            SetzeUeberSchrift(zelle, hinterGrundFarbe, ueberSchriftFarbe);
+            zelle = this.ultraGridStammDaten.DisplayLayout.Rows[54].Cells[1];
+            zelle.Appearance.TextHAlign = HAlign.Center;
+
+            // Zeile 56 enthält eine Überschrift (Zeilenhöhe bri mehrzeiligen Zellen)
+            zelle = this.ultraGridStammDaten.DisplayLayout.Rows[56].Cells[1];
+            SetzeUeberSchrift(zelle, hinterGrundFarbe, ueberSchriftFarbe);
+            zelle = this.ultraGridStammDaten.DisplayLayout.Rows[57].Cells[1];
+            zelle.Appearance.TextHAlign = HAlign.Center;
         }
 
         /// <summary>Setz eine Zelle als Überschrift.</summary>

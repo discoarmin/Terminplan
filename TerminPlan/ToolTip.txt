@@ -1,0 +1,25 @@
+Hi,
+
+May be one possible suggestion is to get the event "ClickCell" at the UltraWinGrid and include the code below:
+
+
+private void ultraGrid1_ClickCell(object sender, Infragistics.Win.UltraWinGrid.ClickCellEventArgs e)
+
+
+{
+
+
+UltraToolTipInfo MyToolTipInfo = new UltraToolTipInfo();
+
+
+MyToolTipInfo.ToolTipText = e.Cell.GetText(Infragistics.Win.UltraWinMaskedEdit.MaskMode.IncludeBoth);
+
+
+
+ultraToolTipManager1.SetUltraToolTip(ultraGrid1, MyToolTipInfo);
+
+
+ultraGrid1.DisplayLayout.UIElement.CaptureMouseForElement(e.Cell.GetUIElement());
+
+
+}

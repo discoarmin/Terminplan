@@ -1,0 +1,21 @@
+	//'Zugang zur API ''user32'' 
+
+//'Beenden eines speziellen Excel Prozesses, anhand seiner Id
+
+ // ERROR: Not supported in C#: DeclareDeclaration
+private static void killExcelInstanceById(ref Excel.Application xlsApp)
+{
+
+	IntPtr processId = default(IntPtr);
+
+	//'API Funktion, out val: processId
+	GetWindowThreadProcessId(xlsApp.Hwnd, ref processId);
+
+	//'Prozess erstellen
+	Process excelProcess = Process.GetProcessById(processId.ToInt32());
+
+	Debug.WriteLine(processId);
+
+	//'die lang ersehnte Erlösung, für den speziellen Excel Process der XlsApp :)
+	excelProcess.Kill();
+}
