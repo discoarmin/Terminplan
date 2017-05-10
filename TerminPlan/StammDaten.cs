@@ -21,11 +21,13 @@ namespace Terminplan
 {
     using System;
     using System.ComponentModel;
+    using System.Diagnostics;
     using System.Drawing;
     using System.Globalization;
     using System.IO;
+    using System.Text;
     using System.Windows.Forms;
-
+    using Infragistics.DrawFilters;
     using Infragistics.Win;
     using Infragistics.Win.AppStyling;
     using Infragistics.Win.Printing;
@@ -59,6 +61,10 @@ namespace Terminplan
             this.zoomGridStamm.GetGridOriginZoomProperty(this.ultraGridStammDaten); // Originaleinstellungen ermitteln
             this.zoomGridAktuell = this.zoomGridStamm;
             this.zoomGridAktuell.ZoomGrid(100, this.ultraGridStammDaten);       // Gestartet wird mit 100%
+
+            this.ultraTilePanel1.DrawFilter = new NoFocusRectDrawFilter();
+            cellFilter = new CellFilter(this.ultraGridStammDaten);
+            this.ultraGridStammDaten.DrawFilter = this.cellFilter;
         }
 
         #region Dispose
@@ -248,6 +254,10 @@ namespace Terminplan
 
         private void OnUltraGridStammDatenBeforeCellDeactivate(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            if (Kommentar1.Visible)
+            {
+                Kommentar1.Visible = false;
+            }
         }
 
         /// <summary>
@@ -527,6 +537,128 @@ namespace Terminplan
 
         private void ultraTextEditorBloecke_ValueChanged(object sender, EventArgs e)
         {
+        }
+
+        private void ultraGridStammDaten_MouseEnterElement(object sender, UIElementEventArgs e)
+        {
+            Bitmap memoryImage;
+            var myGraphics = this.CreateGraphics();
+            memoryImage = new Bitmap(1, 1, myGraphics);
+            var memoryGraphics = Graphics.FromImage(memoryImage);
+
+            memoryGraphics.CopyFromScreen(Cursor.Position.X, Cursor.Position.Y, 0, 0, new Size(1, 1));
+            var c1 = memoryImage.GetPixel(0, 0);
+
+            var txt = @"PosX:" + Cursor.Position.X + @" PosY:" + Cursor.Position.Y + @" Farbe:" + c1.ToString();
+            Debug.WriteLine("MouseEnnterElement" + txt);
+
+            //if (c1.ToKnownColor() == Color.Red.ToKnownColor())
+            if (c1.R == 255 && c1.G == 0 && c1.B == 0)
+            {
+                Kommentar1.Clear();
+
+                var sb = new StringBuilder();
+                sb.Append(@"{\rtf1\ansi");
+                sb.Append(@"\b Hier einstellen, ob die Historie der \b0\line");
+                sb.Append(@"\b Zeitänderungen sofort nach der \b0\line");
+                sb.Append(@"\b Änderung erzeugt werden soll. \b0\line\line");
+                sb.Append(@"\b Möglichkeiten: \b0\line");
+                sb.Append(@"    - sofort automatisch:       1\line");
+                sb.Append(@"    - von Hand über Menü:     0 \line\line");
+                sb.Append(@"\b Achtung: Bei großen Tabellen sollte aus \b0\line");
+                sb.Append(@"\b Geschwindigkeitsgründen dieser Wert auf 0\b0\line");
+                sb.Append(@"\b stehen und die Tabelle von Hand \b0\line");
+                sb.Append(@"\b erzeugt werden.\b0}");
+
+                var rec_WA = Screen.FromControl(this).WorkingArea;
+                var breite = Screen.FromControl(this).Bounds.Width;
+                var hoehe = Screen.FromControl(this).Bounds.Height;
+                var neuX = breite - Math.Abs(Cursor.Position.X);
+                var neuY = hoehe - Math.Abs(Cursor.Position.Y);
+                neuY = rec_WA.Height - Math.Abs(Cursor.Position.Y);
+                var loc = new Point(Convert.ToInt32(rec_WA.X + ((rec_WA.Width - this.Width) / 2)), Convert.ToInt32(rec_WA.Y + ((rec_WA.Height - this.Height) / 2)));
+
+                Kommentar1.Rtf = sb.ToString();
+                Kommentar1.Location = new Point(neuX / 2 + 20, Cursor.Position.Y + 10);
+                Kommentar1.Location = new Point(neuX / 2 + 20, neuY + 10);
+                Kommentar1.Visible = true;
+                Kommentar1.Invalidate();
+            }
+        }
+
+        private void ultraGridStammDaten_MouseHover(object sender, EventArgs e)
+        {
+            Bitmap memoryImage;
+            Graphics myGraphics = this.CreateGraphics();
+            memoryImage = new Bitmap(1, 1, myGraphics);
+            Graphics memoryGraphics = Graphics.FromImage(memoryImage);
+
+            memoryGraphics.CopyFromScreen(Cursor.Position.X, Cursor.Position.Y, 0, 0, new Size(1, 1));
+            Color c1 = memoryImage.GetPixel(0, 0);
+
+            var txt = @"PosX:" + Cursor.Position.X + @" PosY:" + Cursor.Position.Y + @"Farbe:" + c1.ToString();
+            Debug.WriteLine("MouseHover" + txt);
+
+            var zelle = ((UltraGrid)sender).ActiveCell;
+            if (zelle != null && zelle.Tag != null && zelle.Tag.ToString() == @"Kommentar1")
+            {
+                var region = zelle.GetUIElement().Region.GetRegionData().Data;
+                var x = region[10];
+                var y = region[11];
+                var breite = zelle.Width;
+                var location = Kommentar1.Location;
+
+                var posX = Cursor.Position.X;
+                var posY = Cursor.Position.Y;
+
+                var rec_WA = Screen.FromControl(this).WorkingArea;
+                this.Location = new Point(Convert.ToInt32(rec_WA.X + ((rec_WA.Width - this.Width) / 2)), Convert.ToInt32(rec_WA.Y + ((rec_WA.Height - this.Height) / 2)));
+
+                Kommentar1.Clear();
+
+                var sb = new StringBuilder();
+                sb.Append(@"{\rtf1\ansi");
+                sb.Append(@"\b Hier einstellen, ob die Historie der \b0\line");
+                sb.Append(@"\b Zeitänderungen sofort nach der \b0\line");
+                sb.Append(@"\b Änderung erzeugt werden soll. \b0\line\line");
+                sb.Append(@"\b Möglichkeiten: \b0\line");
+                sb.Append(@"    - sofort automatisch:       1\line");
+                sb.Append(@"    - von Hand über Menü:     0 \line\line");
+                sb.Append(@"\b Achtung: Bei großen Tabellen sollte aus \b0\line");
+                sb.Append(@"\b Geschwindigkeitsgründen dieser Wert auf 0\b0\line");
+                sb.Append(@"\b stehen und die Tabelle von Hand \b0\line");
+                sb.Append(@"\b erzeugt werden.\b0}");
+
+                Kommentar1.Rtf = sb.ToString();
+                Kommentar1.Location = new Point(x + breite * 2 / 3, y + zelle.Height * 10);
+                Kommentar1.Visible = true;
+                Kommentar1.Invalidate();
+            }
+        }
+
+        private void ultraGridStammDaten_MouseLeave(object sender, EventArgs e)
+        {
+            var zelle = ((UltraGrid)sender).ActiveCell;
+            if (zelle != null) Debug.WriteLine("MouseLeave" + zelle.ToString());
+
+            if (Kommentar1.Visible)
+            {
+                //Kommentar1.Visible = false;
+            }
+        }
+
+        private void ultraGridStammDaten_MouseEnter(object sender, EventArgs e)
+        {
+            Bitmap memoryImage;
+            Graphics myGraphics = this.CreateGraphics();
+            memoryImage = new Bitmap(1, 1, myGraphics);
+            Graphics memoryGraphics = Graphics.FromImage(memoryImage);
+
+            memoryGraphics.CopyFromScreen(Cursor.Position.X, Cursor.Position.Y, 0, 0, new Size(1, 1));
+            Color c1 = memoryImage.GetPixel(0, 0);
+
+            var txt = @"PosX:" + Cursor.Position.X + @" PosY:" + Cursor.Position.Y + @"Farbe:" + c1.ToString();
+            Debug.WriteLine("MouseEnnter" + txt);
         }
     }
 }

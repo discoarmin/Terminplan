@@ -19,6 +19,7 @@ namespace Terminplan
 {
     using Infragistics.Win;
     using Infragistics.Win.AppStyling;
+    using Infragistics.DrawFilters;
 
     /// <summary>
     /// Die Variablendeklaration.
@@ -53,6 +54,9 @@ namespace Terminplan
         /// <summary> Pfad zu den Farbeinstallungen </summary>
         public static StyleManager StyleManagerStammDaten;
 
+        /// <summary>Gerade bearbeitete Zoomdaten</summary>
+        public WinGridZoomGrid.WinGridZoomGrid.GridZoomProperty zoomGridAktuell;
+
         /// <summary> Merker für rekursive Zellaktivierung </summary>
         private bool cellActivationRecursionFlag;
 
@@ -71,8 +75,7 @@ namespace Terminplan
         /// <summary>Zoomdaten für Grunddaten</summary>
         private WinGridZoomGrid.WinGridZoomGrid.GridZoomProperty zoomGridGrund;
 
-        /// <summary>Gerade bearbeitete Zoomdaten</summary>
-        public WinGridZoomGrid.WinGridZoomGrid.GridZoomProperty zoomGridAktuell;
+        private CellFilter cellFilter;
 
         #endregion Variablen
 

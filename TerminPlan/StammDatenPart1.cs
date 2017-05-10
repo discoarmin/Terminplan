@@ -257,6 +257,8 @@ namespace Terminplan
         private void BearbeiteSpalte1(int spalte, Color hinterGrundFarbe, Color ueberSchriftFarbe)
         {
             DateTime datumsWert;
+            UIElement uiElement;
+            UIElementDrawParams uiParams;
 
             this.ultraGridStammDaten.DisplayLayout.Bands[0].Columns[1].CellMultiLine = DefaultableBoolean.True;
 
@@ -373,13 +375,21 @@ namespace Terminplan
             // Zeile 43 enthält eine Überschrift (Timer Intervall)
             zelle = this.ultraGridStammDaten.DisplayLayout.Rows[43].Cells[1];
             SetzeUeberSchrift(zelle, hinterGrundFarbe, ueberSchriftFarbe);
+
             zelle = this.ultraGridStammDaten.DisplayLayout.Rows[44].Cells[1];
             zelle.Appearance.TextHAlign = HAlign.Center;
+            //uiElement = zelle.GetUIElement();
+            //uiParams = new UIElementDrawParams(uiElement);
+            //uiParams.Element
+            //uiElement.D
+            //this.cellFilter.DrawElement(DrawPhase.AfterDrawElement, ref uiParams);
 
             // Zeile 47 enthält eine Überschrift (History bei Änderungen ...)
             zelle = this.ultraGridStammDaten.DisplayLayout.Rows[47].Cells[1];
             SetzeUeberSchrift(zelle, hinterGrundFarbe, ueberSchriftFarbe);
+
             zelle = this.ultraGridStammDaten.DisplayLayout.Rows[48].Cells[1];
+            zelle.Tag = @"Kommentar1";
             zelle.Appearance.TextHAlign = HAlign.Center;
 
             // Zeile 50 enthält eine Überschrift (Zeilenhöhe einstellen)

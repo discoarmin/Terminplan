@@ -163,6 +163,7 @@
     </Compile>
     <Compile Include="Besitzer.cs" />
     <Compile Include="BordersDrawFilter.cs" />
+    <Compile Include="CellFilter.cs" />
     <Compile Include="DataSetUeberschrift.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -190,6 +191,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LaufendeAnwendungen.cs" />
+    <Compile Include="NoFocusRectDrawFilter.cs" />
     <Compile Include="StammDatenEreinisse.cs">
       <SubType>Form</SubType>
     </Compile>

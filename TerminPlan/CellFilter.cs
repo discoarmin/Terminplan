@@ -23,16 +23,15 @@ namespace Infragistics.DrawFilters
     using Infragistics.Win;
     using Infragistics.Win.UltraWinGrid;
 
-    class CellFilter: IUIElementDrawFilter, IDisposable
+    public class CellFilter : IUIElementDrawFilter, IDisposable
     {
         public CellFilter(UltraGrid grid)
         {
-
         }
 
-        #region IUIElementDrawFilter 
+        #region IUIElementDrawFilter
 
-        bool IUIElementDrawFilter.DrawElement(DrawPhase drawPhase, ref UIElementDrawParams drawParams, bool alternateMarker = false)
+        bool IUIElementDrawFilter.DrawElement(DrawPhase drawPhase, ref UIElementDrawParams drawParams)
         {
             // Ermitteln, ob eine Zelle gezeichnet werden soll
             if (drawParams.Element is CellUIElement)
@@ -40,37 +39,36 @@ namespace Infragistics.DrawFilters
                 var cell = drawParams.Element.GetContext(typeof(UltraGridCell), true) as UltraGridCell; // die zu zeichnende Zelle ermitteln
                 if (cell != null && cell.Column.Index != 0 && cell.Tag != null)
                 {
-                    var rect = drawParams.Element.Rect;                 // Maße der Zelle ermittel
+                    var rect = drawParams.Element.Rect;                         // Maße der Zelle ermitteln
 
                     // Punkte erstelllen, die ein Dreieck definieren
-                    Point point1 = new Point(rect.X + rect.Width* 7 / 8, rect.Y);
-                    Point point2 = new Point(rect.X + rect.Width, rect.Y);
-                    Point point3 = new Point(rect.X + rect.Width, rect.Y + rect.Height / 4);
+                    var point1 = new Point(rect.X + rect.Width - 10, rect.Y);
+                    var point2 = new Point(rect.X + rect.Width, rect.Y);
+                    var point3 = new Point(rect.X + rect.Width, rect.Y + 10);
                     Point[] curvePoints = { point1, point2, point3 };
 
-                    if(alternateMarker)
+                    //if(alternateMarker)
+                    //{
+                    //    using (SolidBrush blueBrush = new SolidBrush(cell.Column.Index % 2 == 0 ? Color.Blue : Color.Red))
+                    //    {
+                    //        // Dreieck zeichnen.
+                    //        drawParams.Graphics.FillPolygon(blueBrush, curvePoints);
+                    //    }
+                    //}
+                    //else
+                    //{
+                    using (SolidBrush blueBrush = new SolidBrush(Color.Red))
                     {
-                        using (SolidBrush blueBrush = new SolidBrush(cell.Column.Index % 2 == 0 ? Color.Blue : Color.Red))
-                        {
-                            // Dreieck zeichnen.
-                            drawParams.Graphics.FillPolygon(blueBrush, curvePoints);
-                        }
+                        // Dreieck zeichnen.
+                        drawParams.Graphics.FillPolygon(blueBrush, curvePoints);
                     }
-                    else
-                    {
-                        using (SolidBrush blueBrush = new SolidBrush(Color.Red))
-                        {
-                            // Dreieck zeichnen.
-                            drawParams.Graphics.FillPolygon(blueBrush, curvePoints);
-                        }
-                    }
+                    // }
                 }
 
                 return true;
             }
 
             return false;
-
         }
 
         DrawPhase IUIElementDrawFilter.GetPhasesToFilter(ref UIElementDrawParams drawParams)
@@ -83,6 +81,6 @@ namespace Infragistics.DrawFilters
             this.Dispose();
         }
 
-        #endregion
+        #endregion IUIElementDrawFilter
     }
 }

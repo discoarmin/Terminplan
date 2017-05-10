@@ -114,6 +114,7 @@
             Infragistics.Win.Appearance appearance34 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance37 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance36 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance38 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance42 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance43 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance44 = new Infragistics.Win.Appearance();
@@ -358,7 +359,6 @@
             Infragistics.Win.ValueListItem valueListItem2 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem3 = new Infragistics.Win.ValueListItem();
             Infragistics.Win.ValueListItem valueListItem4 = new Infragistics.Win.ValueListItem();
-            Infragistics.Win.Appearance appearance38 = new Infragistics.Win.Appearance();
             this.ultraGridStammDaten = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.ultraDataSource1 = new Infragistics.Win.UltraWinDataSource.UltraDataSource(this.components);
             this.ilColorizedImagesSmall = new System.Windows.Forms.ImageList(this.components);
@@ -369,6 +369,8 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.ultraComboZellen = new Infragistics.Win.UltraWinGrid.UltraCombo();
+            this.dsUeberSchriftenBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsUeberSchriften = new Terminplan.DataSetUeberschrift();
             this.ultraTilePanel1 = new Infragistics.Win.Misc.UltraTilePanel();
             this.ultraTile1 = new Infragistics.Win.Misc.UltraTile();
             this.tableLayoutPanelButtons = new System.Windows.Forms.TableLayoutPanel();
@@ -377,6 +379,9 @@
             this.ultraButtonErase = new Infragistics.Win.Misc.UltraButton();
             this.ultraTile2 = new Infragistics.Win.Misc.UltraTile();
             this.ultraTextEditor1 = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
+            this.Kommentar1 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.ultraTextEditorBloecke = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.ultraDateTimeEditorPrjStart = new Infragistics.Win.UltraWinEditors.UltraDateTimeEditor();
             this.ultraTouchProvider1 = new Infragistics.Win.Touch.UltraTouchProvider(this.components);
             this.ultraGridPrintDocumentStamm = new Infragistics.Win.UltraWinGanttView.UltraGanttViewPrintDocument(this.components);
@@ -390,9 +395,6 @@
             this._TerminPlanForm_Toolbars_Dock_Area_Bottom = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
             this._TerminPlanForm_Toolbars_Dock_Area_Top = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
             this.ultraComboEditorFirma = new Infragistics.Win.UltraWinEditors.UltraComboEditor();
-            this.ultraTextEditorBloecke = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
-            this.dsUeberSchriftenBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dsUeberSchriften = new Terminplan.DataSetUeberschrift();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridStammDaten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraDataSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraZoomPanelStammDaten)).BeginInit();
@@ -407,20 +409,20 @@
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraComboZellen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsUeberSchriftenBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsUeberSchriften)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraTilePanel1)).BeginInit();
             this.ultraTilePanel1.SuspendLayout();
             this.ultraTile1.SuspendLayout();
             this.tableLayoutPanelButtons.SuspendLayout();
             this.ultraTile2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraTextEditor1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraTextEditorBloecke)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraDateTimeEditorPrjStart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraTouchProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManagerStamm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraComboEditorFirma)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraTextEditorBloecke)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsUeberSchriftenBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsUeberSchriften)).BeginInit();
             this.SuspendLayout();
             // 
             // ultraGridStammDaten
@@ -583,6 +585,10 @@
             this.ultraGridStammDaten.CellListSelect += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.UltraGridStammDatenCellListSelect);
             this.ultraGridStammDaten.BeforeCellActivate += new Infragistics.Win.UltraWinGrid.CancelableCellEventHandler(this.OnUltraGridStammDatenBeforeCellActivate);
             this.ultraGridStammDaten.BeforeCellDeactivate += new System.ComponentModel.CancelEventHandler(this.OnUltraGridStammDatenBeforeCellDeactivate);
+            this.ultraGridStammDaten.MouseEnterElement += new Infragistics.Win.UIElementEventHandler(this.ultraGridStammDaten_MouseEnterElement);
+            this.ultraGridStammDaten.MouseEnter += new System.EventHandler(this.ultraGridStammDaten_MouseEnter);
+            this.ultraGridStammDaten.MouseLeave += new System.EventHandler(this.ultraGridStammDaten_MouseLeave);
+            this.ultraGridStammDaten.MouseHover += new System.EventHandler(this.ultraGridStammDaten_MouseHover);
             // 
             // ultraDataSource1
             // 
@@ -898,6 +904,8 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.Kommentar1);
+            this.splitContainer1.Panel2.Controls.Add(this.richTextBox1);
             this.splitContainer1.Panel2.Controls.Add(this.ultraTextEditorBloecke);
             this.splitContainer1.Panel2.Controls.Add(this.ultraDateTimeEditorPrjStart);
             this.splitContainer1.Panel2.Controls.Add(this.ultraGridStammDaten);
@@ -1048,6 +1056,16 @@
             this.ultraComboZellen.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler(this.OnUltraComboZellenInitializeLayout);
             this.ultraComboZellen.AfterCloseUp += new System.EventHandler(this.OnUltraComboZellenAfterCloseUp);
             this.ultraComboZellen.BeforeDropDown += new System.ComponentModel.CancelEventHandler(this.OnUltraComboZellenBeforeDropDown);
+            // 
+            // dsUeberSchriftenBindingSource
+            // 
+            this.dsUeberSchriftenBindingSource.DataSource = this.dsUeberSchriften;
+            this.dsUeberSchriftenBindingSource.Position = 0;
+            // 
+            // dsUeberSchriften
+            // 
+            this.dsUeberSchriften.DataSetName = "dsUeberSchriften";
+            this.dsUeberSchriften.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // ultraTilePanel1
             // 
@@ -1226,6 +1244,45 @@
             this.ultraTextEditor1.TabIndex = 1;
             this.ultraTextEditor1.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
             this.ultraTextEditor1.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
+            // 
+            // Kommentar1
+            // 
+            this.Kommentar1.BackColor = System.Drawing.Color.LemonChiffon;
+            this.Kommentar1.Cursor = System.Windows.Forms.Cursors.No;
+            this.Kommentar1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Kommentar1.Location = new System.Drawing.Point(276, 328);
+            this.Kommentar1.Name = "Kommentar1";
+            this.Kommentar1.ReadOnly = true;
+            this.Kommentar1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.Kommentar1.Size = new System.Drawing.Size(328, 228);
+            this.Kommentar1.TabIndex = 4;
+            this.Kommentar1.TabStop = false;
+            this.Kommentar1.Text = "";
+            this.Kommentar1.Visible = false;
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(24, 440);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(100, 96);
+            this.richTextBox1.TabIndex = 3;
+            this.richTextBox1.Text = "";
+            // 
+            // ultraTextEditorBloecke
+            // 
+            appearance38.BackColor = System.Drawing.SystemColors.Control;
+            appearance38.FontData.SizeInPoints = 10F;
+            this.ultraTextEditorBloecke.Appearance = appearance38;
+            this.ultraTextEditorBloecke.BackColor = System.Drawing.SystemColors.Control;
+            this.ultraTextEditorBloecke.DisplayStyle = Infragistics.Win.EmbeddableElementDisplayStyle.Standard;
+            this.ultraTextEditorBloecke.HideSelection = false;
+            this.ultraTextEditorBloecke.Location = new System.Drawing.Point(21, 437);
+            this.ultraTextEditorBloecke.Multiline = true;
+            this.ultraTextEditorBloecke.Name = "ultraTextEditorBloecke";
+            this.ultraTextEditorBloecke.Size = new System.Drawing.Size(146, 71);
+            this.ultraTextEditorBloecke.TabIndex = 2;
+            this.ultraTextEditorBloecke.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
+            this.ultraTextEditorBloecke.ValueChanged += new System.EventHandler(this.ultraTextEditorBloecke_ValueChanged);
             // 
             // ultraDateTimeEditorPrjStart
             // 
@@ -1918,32 +1975,6 @@
             this.ultraComboEditorFirma.ValueChanged += new System.EventHandler(this.UltraComboEditorFirmaValueChanged);
             this.ultraComboEditorFirma.TextChanged += new System.EventHandler(this.UltraComboEditorFirmaTextChanged);
             // 
-            // ultraTextEditorBloecke
-            // 
-            appearance38.BackColor = System.Drawing.SystemColors.Control;
-            appearance38.FontData.SizeInPoints = 10F;
-            this.ultraTextEditorBloecke.Appearance = appearance38;
-            this.ultraTextEditorBloecke.BackColor = System.Drawing.SystemColors.Control;
-            this.ultraTextEditorBloecke.DisplayStyle = Infragistics.Win.EmbeddableElementDisplayStyle.Standard;
-            this.ultraTextEditorBloecke.HideSelection = false;
-            this.ultraTextEditorBloecke.Location = new System.Drawing.Point(21, 437);
-            this.ultraTextEditorBloecke.Multiline = true;
-            this.ultraTextEditorBloecke.Name = "ultraTextEditorBloecke";
-            this.ultraTextEditorBloecke.Size = new System.Drawing.Size(146, 71);
-            this.ultraTextEditorBloecke.TabIndex = 2;
-            this.ultraTextEditorBloecke.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
-            this.ultraTextEditorBloecke.ValueChanged += new System.EventHandler(this.ultraTextEditorBloecke_ValueChanged);
-            // 
-            // dsUeberSchriftenBindingSource
-            // 
-            this.dsUeberSchriftenBindingSource.DataSource = this.dsUeberSchriften;
-            this.dsUeberSchriftenBindingSource.Position = 0;
-            // 
-            // dsUeberSchriften
-            // 
-            this.dsUeberSchriften.DataSetName = "dsUeberSchriften";
-            this.dsUeberSchriften.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // StammDaten
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -1980,6 +2011,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ultraComboZellen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsUeberSchriftenBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsUeberSchriften)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraTilePanel1)).EndInit();
             this.ultraTilePanel1.ResumeLayout(false);
             this.ultraTile1.ResumeLayout(false);
@@ -1987,14 +2020,12 @@
             this.ultraTile2.ResumeLayout(false);
             this.ultraTile2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraTextEditor1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraTextEditorBloecke)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraDateTimeEditorPrjStart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraTouchProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManager)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManagerStamm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraComboEditorFirma)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraTextEditorBloecke)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsUeberSchriftenBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dsUeberSchriften)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2035,5 +2066,7 @@
         private Infragistics.Win.UltraWinEditors.UltraDateTimeEditor ultraDateTimeEditorPrjStart;
         private Infragistics.Win.UltraWinEditors.UltraTextEditor ultraTextEditorBloecke;
         public Infragistics.Win.UltraWinGrid.UltraGrid ultraGridStammDaten;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        public System.Windows.Forms.RichTextBox Kommentar1;
     }
 }
