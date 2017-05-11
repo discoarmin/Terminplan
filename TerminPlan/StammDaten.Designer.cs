@@ -585,7 +585,7 @@
             this.ultraGridStammDaten.CellListSelect += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.UltraGridStammDatenCellListSelect);
             this.ultraGridStammDaten.BeforeCellActivate += new Infragistics.Win.UltraWinGrid.CancelableCellEventHandler(this.OnUltraGridStammDatenBeforeCellActivate);
             this.ultraGridStammDaten.BeforeCellDeactivate += new System.ComponentModel.CancelEventHandler(this.OnUltraGridStammDatenBeforeCellDeactivate);
-            this.ultraGridStammDaten.MouseEnterElement += new Infragistics.Win.UIElementEventHandler(this.ultraGridStammDaten_MouseEnterElement);
+            this.ultraGridStammDaten.MouseEnterElement += new Infragistics.Win.UIElementEventHandler(this.OnUltraGridStammDatenMouseEnterElement);
             this.ultraGridStammDaten.MouseEnter += new System.EventHandler(this.ultraGridStammDaten_MouseEnter);
             this.ultraGridStammDaten.MouseLeave += new System.EventHandler(this.ultraGridStammDaten_MouseLeave);
             this.ultraGridStammDaten.MouseHover += new System.EventHandler(this.ultraGridStammDaten_MouseHover);

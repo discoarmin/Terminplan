@@ -395,19 +395,24 @@ namespace Terminplan
             // Zeile 50 enthält eine Überschrift (Zeilenhöhe einstellen)
             zelle = this.ultraGridStammDaten.DisplayLayout.Rows[50].Cells[1];
             SetzeUeberSchrift(zelle, hinterGrundFarbe, ueberSchriftFarbe);
+
             zelle = this.ultraGridStammDaten.DisplayLayout.Rows[51].Cells[1];
+            zelle.Tag = @"Kommentar2";
             zelle.Appearance.TextHAlign = HAlign.Center;
 
             // Zeile 53 enthält eine Überschrift (Zeilenhöhe bei mehrzeiligen Zellen)
             zelle = this.ultraGridStammDaten.DisplayLayout.Rows[53].Cells[1];
             SetzeUeberSchrift(zelle, hinterGrundFarbe, ueberSchriftFarbe);
+
             zelle = this.ultraGridStammDaten.DisplayLayout.Rows[54].Cells[1];
-            zelle.Appearance.TextHAlign = HAlign.Center;
+            zelle.Tag = @"Kommentar3"; zelle.Appearance.TextHAlign = HAlign.Center;
 
             // Zeile 56 enthält eine Überschrift (Zeilenhöhe bri mehrzeiligen Zellen)
             zelle = this.ultraGridStammDaten.DisplayLayout.Rows[56].Cells[1];
             SetzeUeberSchrift(zelle, hinterGrundFarbe, ueberSchriftFarbe);
+
             zelle = this.ultraGridStammDaten.DisplayLayout.Rows[57].Cells[1];
+            zelle.Tag = @"Kommentar4";
             zelle.Appearance.TextHAlign = HAlign.Center;
         }
 

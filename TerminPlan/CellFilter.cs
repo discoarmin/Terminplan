@@ -47,21 +47,34 @@ namespace Infragistics.DrawFilters
                     var point3 = new Point(rect.X + rect.Width, rect.Y + 10);
                     Point[] curvePoints = { point1, point2, point3 };
 
-                    //if(alternateMarker)
-                    //{
-                    //    using (SolidBrush blueBrush = new SolidBrush(cell.Column.Index % 2 == 0 ? Color.Blue : Color.Red))
-                    //    {
-                    //        // Dreieck zeichnen.
-                    //        drawParams.Graphics.FillPolygon(blueBrush, curvePoints);
-                    //    }
-                    //}
-                    //else
-                    //{
-                    using (SolidBrush blueBrush = new SolidBrush(Color.Red))
+                    var redBrush = new SolidBrush(Color.Red);
+
+                    switch (cell.Tag.ToString())
                     {
-                        // Dreieck zeichnen.
-                        drawParams.Graphics.FillPolygon(blueBrush, curvePoints);
+                        default:                                                // Standardmässig wird rot eingestellt
+                            // Dreieck zeichnen.
+                            drawParams.Graphics.FillPolygon(redBrush, curvePoints);
+                            break;
+
+                        case @"Kommentar2":
+                            redBrush = new SolidBrush(Color.FromArgb(254, 0, 0));
+                            // Dreieck zeichnen.
+                            drawParams.Graphics.FillPolygon(redBrush, curvePoints);
+                            break;
+
+                        case @"Kommentar3":
+                            redBrush = new SolidBrush(Color.FromArgb(253, 0, 0));
+                            // Dreieck zeichnen.
+                            drawParams.Graphics.FillPolygon(redBrush, curvePoints);
+                            break;
+
+                        case @"Kommentar4":
+                            redBrush = new SolidBrush(Color.FromArgb(253, 0, 0));
+                            // Dreieck zeichnen.
+                            drawParams.Graphics.FillPolygon(redBrush, curvePoints);
+                            break;
                     }
+
                     // }
                 }
 
