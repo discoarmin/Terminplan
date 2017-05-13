@@ -380,7 +380,6 @@
             this.ultraTile2 = new Infragistics.Win.Misc.UltraTile();
             this.ultraTextEditor1 = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.Kommentar1 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.ultraTextEditorBloecke = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.ultraDateTimeEditorPrjStart = new Infragistics.Win.UltraWinEditors.UltraDateTimeEditor();
             this.ultraTouchProvider1 = new Infragistics.Win.Touch.UltraTouchProvider(this.components);
@@ -580,8 +579,10 @@
             this.ultraGridStammDaten.SyncWithCurrencyManager = false;
             this.ultraGridStammDaten.TabIndex = 0;
             this.ultraGridStammDaten.AfterCellActivate += new System.EventHandler(this.OnUltraGridStammDatenAfterCellActivate);
+            this.ultraGridStammDaten.AfterCellUpdate += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.OnUltraGridStammDatenAfterCellUpdate);
             this.ultraGridStammDaten.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler(this.OnUltraGridStammDatenInitializeLayout);
             this.ultraGridStammDaten.AfterExitEditMode += new System.EventHandler(this.OnUltraGridStammDatenAfterExitEditMode);
+            this.ultraGridStammDaten.CellChange += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.OnUltraGridStammDatenCellChange);
             this.ultraGridStammDaten.CellListSelect += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.UltraGridStammDatenCellListSelect);
             this.ultraGridStammDaten.BeforeCellActivate += new Infragistics.Win.UltraWinGrid.CancelableCellEventHandler(this.OnUltraGridStammDatenBeforeCellActivate);
             this.ultraGridStammDaten.BeforeCellDeactivate += new System.ComponentModel.CancelEventHandler(this.OnUltraGridStammDatenBeforeCellDeactivate);
@@ -905,7 +906,6 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.Kommentar1);
-            this.splitContainer1.Panel2.Controls.Add(this.richTextBox1);
             this.splitContainer1.Panel2.Controls.Add(this.ultraTextEditorBloecke);
             this.splitContainer1.Panel2.Controls.Add(this.ultraDateTimeEditorPrjStart);
             this.splitContainer1.Panel2.Controls.Add(this.ultraGridStammDaten);
@@ -1248,9 +1248,9 @@
             // Kommentar1
             // 
             this.Kommentar1.BackColor = System.Drawing.Color.LemonChiffon;
-            this.Kommentar1.Cursor = System.Windows.Forms.Cursors.No;
+            this.Kommentar1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Kommentar1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Kommentar1.Location = new System.Drawing.Point(276, 328);
+            this.Kommentar1.Location = new System.Drawing.Point(272, 324);
             this.Kommentar1.Name = "Kommentar1";
             this.Kommentar1.ReadOnly = true;
             this.Kommentar1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
@@ -1259,14 +1259,7 @@
             this.Kommentar1.TabStop = false;
             this.Kommentar1.Text = "";
             this.Kommentar1.Visible = false;
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(24, 440);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(100, 96);
-            this.richTextBox1.TabIndex = 3;
-            this.richTextBox1.Text = "";
+            this.Kommentar1.ContentsResized += new System.Windows.Forms.ContentsResizedEventHandler(this.Kommentar1_ContentsResized);
             // 
             // ultraTextEditorBloecke
             // 
@@ -1279,9 +1272,10 @@
             this.ultraTextEditorBloecke.Location = new System.Drawing.Point(21, 437);
             this.ultraTextEditorBloecke.Multiline = true;
             this.ultraTextEditorBloecke.Name = "ultraTextEditorBloecke";
-            this.ultraTextEditorBloecke.Size = new System.Drawing.Size(146, 71);
+            this.ultraTextEditorBloecke.Size = new System.Drawing.Size(146, 63);
             this.ultraTextEditorBloecke.TabIndex = 2;
             this.ultraTextEditorBloecke.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
+            this.ultraTextEditorBloecke.Visible = false;
             this.ultraTextEditorBloecke.ValueChanged += new System.EventHandler(this.ultraTextEditorBloecke_ValueChanged);
             // 
             // ultraDateTimeEditorPrjStart
@@ -1296,7 +1290,7 @@
             this.ultraDateTimeEditorPrjStart.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
             this.ultraDateTimeEditorPrjStart.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.ultraDateTimeEditorPrjStart.Visible = false;
-            this.ultraDateTimeEditorPrjStart.ValueChanged += new System.EventHandler(this.ultraDateTimeEditorPrjStart_ValueChanged);
+            this.ultraDateTimeEditorPrjStart.ValueChanged += new System.EventHandler(this.OnUltraDateTimeEditorPrjStartValueChanged);
             // 
             // ultraTouchProvider1
             // 
@@ -2064,9 +2058,8 @@
         private Infragistics.Win.Misc.UltraButton ultraButtonErase;
         public Infragistics.Win.UltraWinEditors.UltraComboEditor ultraComboEditorFirma;
         private Infragistics.Win.UltraWinEditors.UltraDateTimeEditor ultraDateTimeEditorPrjStart;
-        private Infragistics.Win.UltraWinEditors.UltraTextEditor ultraTextEditorBloecke;
         public Infragistics.Win.UltraWinGrid.UltraGrid ultraGridStammDaten;
-        private System.Windows.Forms.RichTextBox richTextBox1;
         public System.Windows.Forms.RichTextBox Kommentar1;
+        public Infragistics.Win.UltraWinEditors.UltraTextEditor ultraTextEditorBloecke;
     }
 }

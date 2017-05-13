@@ -30,7 +30,6 @@ E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\Infragistics4.Win.v16.2.dll
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\Microsoft.Office.Tools.Outlook.Implementation.dll
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\WinGridZoomGrid.dll
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\Zedgraph.dll
-E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\Infragistics4.Win.UltraWinCalcManager.v16.2.dll
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\Microsoft.Office.Tools.Outlook.dll
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\Microsoft.Office.Tools.Common.dll
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\Microsoft.Office.Tools.dll
@@ -63,7 +62,6 @@ E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\Infragistics4.Win.UltraWinData
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\Infragistics4.Win.AppStylistSupport.v16.2.xml
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\Infragistics4.Documents.Reports.v16.2.xml
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\Zedgraph.xml
-E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\Infragistics4.Win.UltraWinCalcManager.v16.2.xml
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\Microsoft.Office.Tools.Outlook.xml
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\Microsoft.Office.Tools.Common.xml
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\Microsoft.Office.Tools.v4.0.Framework.xml
@@ -91,3 +89,5 @@ E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\Terminplan.exe.licenses
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\de-DE\Terminplan.resources.dll
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\Terminplan.exe
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\Terminplan.pdb
+E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\TerminPlan.csproj.Terminplan.exe.config
+E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\Infragistics4.Win.UltraWinCalcManager.v16.2.dll

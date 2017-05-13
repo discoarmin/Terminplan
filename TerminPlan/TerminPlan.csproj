@@ -52,6 +52,9 @@
       <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinCalcManager.v16.2, Version=16.2.20162.2040, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Infragistics4.Win.UltraWinCalcManager.v16.2.FormulaBuilder, Version=16.2.20162.2040, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <Private>True</Private>
@@ -405,6 +408,7 @@
       <Lcid>0</Lcid>
       <WrapperTool>aximp</WrapperTool>
       <Isolated>False</Isolated>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </COMReference>
     <COMReference Include="Microsoft.Office.Core">
       <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>

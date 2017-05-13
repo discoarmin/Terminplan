@@ -63,7 +63,7 @@ namespace Terminplan
             this.zoomGridAktuell.ZoomGrid(100, this.ultraGridStammDaten);       // Gestartet wird mit 100%
 
             this.ultraTilePanel1.DrawFilter = new NoFocusRectDrawFilter();
-            cellFilter = new CellFilter(this.ultraGridStammDaten);
+            cellFilter = new CellFilter(this);
             this.ultraGridStammDaten.DrawFilter = this.cellFilter;
         }
 
@@ -507,6 +507,8 @@ namespace Terminplan
         /// <param name="e">Die <see cref="InitializeLayoutEventArgs" /> Instanz, welche die Ereignisdaten enthält.</param>
         private void UltraGridStammDatenCellListSelect(object sender, CellEventArgs e)
         {
+            if (e.Cell.ValueList == null) return;                                // Abbrechen, falls es keine Zellenliste gibt
+
             var startForm = (StartForm)this.MdiParent;                          // Das Elternfenster holen
             var terminPlan = startForm.Fs.FrmTerminPlan;                        // Das Fenster des Terminplans holen
             terminPlan.FirmenIndex = e.Cell.ValueList.SelectedItemIndex;        // Index der ausgewählten Firma merken
@@ -514,7 +516,7 @@ namespace Terminplan
             var grid = startForm.Fs.FrmTerminPlan.ultraGridDaten;               // Grid, welches das Firmenloo enthält#
             var zelle = grid.DisplayLayout.Rows[0].Cells[2];                    // Zelle, welches das Logo enthält
 
-            // Frmenlogo einstellen
+            // Firmenlogo einstellen
             switch (terminPlan.FirmenIndex)
             {
                 case 0:                                                         // Schmid
@@ -531,8 +533,21 @@ namespace Terminplan
             }
         }
 
-        private void ultraDateTimeEditorPrjStart_ValueChanged(object sender, EventArgs e)
+        /// <summary>
+        /// Behandelt das ValueChanged Ereignis des ultraDateTimeEditorPrjStart Controls.
+        /// </summary>
+        /// <param name="sender">Die Quelle des Ereignisses.</param>
+        /// <param name="e">Die <see cref="EventArgs"/> Instanz, welche die Ereignisdaten enthält.</param>
+        private void OnUltraDateTimeEditorPrjStartValueChanged(object sender, EventArgs e)
         {
+            var editor = (UltraDateTimeEditor)sender;                           // Damit der geänderte Wert ermittelt werden kann
+            var prjStartDatum = Convert.ToDateTime(editor.Value);               // Ausgewähltes Datum ermitteln
+
+            // Das eingestelle Datum in die Zelle im Grid eintragen
+            editor.Parent.Text = prjStartDatum.ToString();
+            var eintrag = @"PS - " + editor.Parent.Text;
+            var zelle = ultraGridStammDaten.DisplayLayout.Rows[13].Cells[3];
+            zelle.Value = eintrag;
         }
 
         private void ultraTextEditorBloecke_ValueChanged(object sender, EventArgs e)
@@ -546,79 +561,105 @@ namespace Terminplan
         /// <param name="e">Die <see cref="UIElementEventArgs"/> Instanz, welche die Ereignisdaten enthält.</param>
         private void OnUltraGridStammDatenMouseEnterElement(object sender, UIElementEventArgs e)
         {
-            Bitmap memoryImage;
-            var myGraphics = this.CreateGraphics();
-            memoryImage = new Bitmap(1, 1, myGraphics);
-            var memoryGraphics = Graphics.FromImage(memoryImage);
-
-            memoryGraphics.CopyFromScreen(Cursor.Position.X, Cursor.Position.Y, 0, 0, new Size(1, 1));
-            var c1 = memoryImage.GetPixel(0, 0);
-
-            var txt = @"PosX:" + Cursor.Position.X + @" PosY:" + Cursor.Position.Y + @" Farbe:" + c1.ToString();
-            Debug.WriteLine("MouseEnnterElement" + txt);
-
-            // Abfragen, welcher Kommentar angezeigt werden soll
-            if (c1.R == 255 && c1.G == 0 && c1.B == 0)
+            if (e.Element is CellUIElement)
             {
-                Kommentar1.Clear();
+                var zelle = e.Element.SelectableItem as UltraGridCell;          // Zelle unter dem Cursor
+                var spalte = (UltraGridColumn)e.Element.GetContext();           // ermittelte Spalte im Grid für die Cursorposition
+                if (spalte != null && zelle.Tag != null)
+                {
+                    var sb = new StringBuilder();                               // Zum Zusammenstellen des Kommentars
 
-                var grid = (UltraGrid)sender;
-                //e.Element.G.
-                var sb = new StringBuilder();
-                sb.Append(@"{\rtf1\ansi");
-                sb.Append(@"\b Hier einstellen, ob die Historie der \b0\line");
-                sb.Append(@"\b Zeitänderungen sofort nach der \b0\line");
-                sb.Append(@"\b Änderung erzeugt werden soll. \b0\line\line");
-                sb.Append(@"\b Möglichkeiten: \b0\line");
-                sb.Append(@"    - sofort automatisch:       1\line");
-                sb.Append(@"    - von Hand über Menü:     0 \line\line");
-                sb.Append(@"\b Achtung: Bei großen Tabellen sollte aus \b0\line");
-                sb.Append(@"\b Geschwindigkeitsgründen dieser Wert auf 0\b0\line");
-                sb.Append(@"\b stehen und die Tabelle von Hand \b0\line");
-                sb.Append(@"\b erzeugt werden.\b0}");
-                Kommentar1.Rtf = sb.ToString();
+                    // Ermitteln, welcher Kommentar angezeigt werden soll (steht im Tag der Zelle)
+                    var welcherKommentar = zelle.Tag.ToString();
+                    if (welcherKommentar.Contains(@"Kommentar"))
+                    {
+                        if (welcherKommentar == @"Kommentar1")
+                        {
+                            sb.Append(@"{\rtf1\ansi");
+                            sb.Append(@"\b Hier einstellen, ob die Historie der \b0\line");
+                            sb.Append(@"\b Zeitänderungen sofort nach der \b0\line");
+                            sb.Append(@"\b Änderung erzeugt werden soll. \b0\line\line");
+                            sb.Append(@"\b Möglichkeiten: \b0\line");
+                            sb.Append(@"    - sofort automatisch:       1\line");
+                            sb.Append(@"    - von Hand über Menü:     0 \line\line");
+                            sb.Append(@"\b Achtung: Bei großen Tabellen sollte aus \b0\line");
+                            sb.Append(@"\b Geschwindigkeitsgründen dieser Wert auf 0\b0\line");
+                            sb.Append(@"\b stehen und die Tabelle von Hand \b0\line");
+                            sb.Append(@"\b erzeugt werden.\b0}");
+                        }
+                        else if (welcherKommentar == @"Kommentar2")
+                        {
+                            sb.Append(@"{\rtf1\ansi");
+                            sb.Append(@"\b Hier einstellen, wie die Zeilenhöhe im Projekt- \b0\line");
+                            sb.Append(@"\b plan automatisch eingestellt werden soll: \b0\line\line");
+                            sb.Append(@"    - nicht:                                 0\line");
+                            sb.Append(@"    - nur grau hinterlegte Zeilen:   1 \line");
+                            sb.Append(@"    - alle Zeilen:                          2 ");
+                        }
+                        else if (welcherKommentar == @"Kommentar3")
+                        {
+                            sb.Append(@"{\rtf1\ansi");
+                            sb.Append(@"\b Hier einstellen, ob die Zeilenhöhe im \b0\line");
+                            sb.Append(@"\b Projektplan bei Zellen mit automatischen \b0\line");
+                            sb.Append(@"\b Zellenumbruch an den Inhalt der Zelle \b0\line");
+                            sb.Append(@"\b angepasst werden soll. Geprüft wird nur \b0\line");
+                            sb.Append(@"\b die Spalte 'C' (Bezeichnung des \b0\line");
+                            sb.Append(@"\b Arbeitsiinhalts). \b0\line\line");
+                            sb.Append(@"\b Möglichkeiten: \b0\line");
+                            sb.Append(@"    - automatisch:       1\line");
+                            sb.Append(@"    - von Hand:            0 \line");
+                            sb.Append(@"    - alle Zeilen:          1 \line\line");
+                            sb.Append(@"\b Achtung: Bei großen Tabellen sollte aus \b0\line");
+                            sb.Append(@"\b Geschwindigkeitsgründen dieser Wert \b0\line");
+                            sb.Append(@"\b auf 0 stehen und die Tabelle von Hand \b0\line");
+                            sb.Append(@"\b korrigiert werden \b0");
+                        }
+                        else if (welcherKommentar == @"Kommentar4")
+                        {
+                            sb.Append(@"{\rtf1\ansi");
+                            sb.Append(@"\b Art für die Erzeugung des Status \b0\line");
+                            sb.Append(@"\b Möglichkeiten: \b0\line");
+                            sb.Append(@"    - über Mittelwert:  1 \line");
+                            sb.Append(@"    - über Formel:      0 ");
+                        }
+                        else if (welcherKommentar == @"Kommentar5")
+                        {
+                            sb.Append(@"{\rtf1\ansi");
+                            sb.Append(@"\b Hier das gewünschte Intervall \b0\line");
+                            sb.Append(@"\b zum Auffrischen des Status \b0\line");
+                            sb.Append(@"\b eingeben \b0\line\line");
+                            sb.Append(@"\b Beispiele: \b0\line");
+                            sb.Append(@"    - für 2 Stunden:                             02:00:00 \line");
+                            sb.Append(@"    - für 5 Minuten:                              00:05:00 \line");
+                            sb.Append(@"    - für 10 Sekunden:                         00:00:10 \line");
+                            sb.Append(@"    - kein automatisches Auffrischen:   00:00:00 ");
+                        }
 
-                var neuX1 = e.Element.DrawingRect.Right;
-                var neuY1 = e.Element.DrawingRect.Top;
-                var korr = Kommentar1.Height + 20;
-                //Kommentar1.Location = new Point(neuX / 2 + 20, Cursor.Position.Y + 10);
-                //Kommentar1.Location = new Point(neuX / 2 + 20, neuY + 10);
-                Kommentar1.Location = new Point(neuX1 + 5, neuY1 - korr);
-                Kommentar1.Visible = true;
-                Kommentar1.Invalidate();
+                        Kommentar1.Rtf = sb.ToString();
+                        Kommentar1.AutoSize = true;
+
+                        var neuX1 = e.Element.DrawingRect.Right;
+                        var neuY1 = e.Element.DrawingRect.Top;
+                        var korr = Kommentar1.Height + 20;
+                        Kommentar1.Location = new Point(neuX1 + 5, neuY1 - korr);
+                        Kommentar1.Visible = true;
+                        Kommentar1.Invalidate();
+                    }
+                    else if (welcherKommentar == @"anzBloecke")
+                    {
+                        //ultraTextEditorBloecke.Invalidate();
+                        //ultraTextEditorBloecke.Update();
+                    }
+                }
+                else
+                {
+                    if (Kommentar1.Visible) Kommentar1.Visible = false;
+                }
             }
-            else if (c1.R == 254 && c1.G == 0 && c1.B == 0)
+            else if (e.Element is MergedCellUIElement)
             {
-                Kommentar1.Clear();
-
-                var grid = (UltraGrid)sender;
-                //e.Element.G.
-                var sb = new StringBuilder();
-                sb.Append(@"{\rtf1\ansi");
-                sb.Append(@"\b Hier einstellen, ob die Historie der \b0\line");
-                sb.Append(@"\b Zeitänderungen sofort nach der \b0\line");
-                sb.Append(@"\b Änderung erzeugt werden soll. \b0\line\line");
-                sb.Append(@"\b Möglichkeiten: \b0\line");
-                sb.Append(@"    - sofort automatisch:       1\line");
-                sb.Append(@"    - von Hand über Menü:     0 \line\line");
-                sb.Append(@"\b Achtung: Bei großen Tabellen sollte aus \b0\line");
-                sb.Append(@"\b Geschwindigkeitsgründen dieser Wert auf 0\b0\line");
-                sb.Append(@"\b stehen und die Tabelle von Hand \b0\line");
-                sb.Append(@"\b erzeugt werden.\b0}");
-                Kommentar1.Rtf = sb.ToString();
-
-                var neuX1 = e.Element.DrawingRect.Right;
-                var neuY1 = e.Element.DrawingRect.Top;
-                var korr = Kommentar1.Height + 20;
-                //Kommentar1.Location = new Point(neuX / 2 + 20, Cursor.Position.Y + 10);
-                //Kommentar1.Location = new Point(neuX / 2 + 20, neuY + 10);
-                Kommentar1.Location = new Point(neuX1 + 5, neuY1 - korr);
-                Kommentar1.Visible = true;
-                Kommentar1.Invalidate();
-            }
-            else
-            {
-                if (Kommentar1.Visible) Kommentar1.Visible = false;
+                ultraTextEditorBloecke.Invalidate();
+                ultraTextEditorBloecke.Update();
             }
         }
 
@@ -702,6 +743,40 @@ namespace Terminplan
 
             var txt = @"PosX:" + Cursor.Position.X + @" PosY:" + Cursor.Position.Y + @"Farbe:" + c1.ToString();
             Debug.WriteLine("MouseEnnter" + txt);
+        }
+
+        private void Kommentar1_ContentsResized(object sender, ContentsResizedEventArgs e)
+        {
+            ((RichTextBox)sender).AutoSize = true;
+            ((RichTextBox)sender).Height = e.NewRectangle.Height + 5;
+        }
+
+        /// <summary>
+        ///Behandelt das AfterCellUpdate Ereignis des ultraGridStammDaten Controls.
+        /// </summary>
+        /// <param name="sender">Die Quelle des Ereignisses.</param>
+        /// <param name="e">Die <see cref="CellEventArgs"/> Instanz, welche die Ereignisdaten enthält.</param>
+        private void OnUltraGridStammDatenAfterCellUpdate(object sender, CellEventArgs e)
+        {
+            // Ermitteln, welche Zelle geändert wurde
+            var zeile = e.Cell.Row.Index;                                       // Zeile der geänderten Zelle
+            var spalte = e.Cell.Column.Index;                                   // Spalte der geänderten Zelle
+
+            // Ermitteln, ob es das Startdatum des Projekts ist
+        }
+
+        /// <summary>
+        ///Behandelt das CellChange Ereignis des ultraGridStammDaten Controls.
+        /// </summary>
+        /// <param name="sender">Die Quelle des Ereignisses.</param>
+        /// <param name="e">Die <see cref="CellEventArgs"/> Instanz, welche die Ereignisdaten enthält.</param>
+        private void OnUltraGridStammDatenCellChange(object sender, CellEventArgs e)
+        {
+            // Ermitteln, welche Zelle geändert wurde
+            var zeile = e.Cell.Row.Index;                                       // Zeile der geänderten Zelle
+            var spalte = e.Cell.Column.Index;                                   // Spalte der geänderten Zelle
+
+            // Ermitteln, ob es das Startdatum des Projekts ist
         }
     }
 }

@@ -357,32 +357,30 @@ namespace Terminplan
             zelle.Value = @"Anzahl anzuzeigender Blöcke";
             SetzeUeberSchrift(zelle, hinterGrundFarbe, ueberSchriftFarbe);
 
-            //// Zellen 33, 34 und 35 der Spalte 'B' verbinden
-            //for (var i = 33; i <= 35; i++)
-            //{
-            //    this.ultraGridStammDaten.Rows[i].Cells[1].Selected = true;
-            //    this.ultraGridStammDaten.Rows[i].Cells[1].M
-            //}
+            zelle = this.ultraGridStammDaten.DisplayLayout.Rows[33].Cells[1];
+            zelle.Tag = @"anzBloecke";
 
-            //var selCells = this.ultraGridStammDaten.Selected.Cells;
-            //if (selCells != null)
+            zelle.Selected = true; ;
+            Application.DoEvents();
+            zelle.Selected = false;
+            //zelle.EditorComponent = ultraTextEditorBloecke;
+            //zelle.CellDisplayStyle = CellDisplayStyle.FullEditorDisplay;
+            //if (zelle.GetUIElement() != null)
             //{
-            //    this.ultraGridStammDaten.DisplayLayout.Bands[0].Columns[1].MergedCellEvaluationType = MergedCellEvaluationType.MergeSameValue
-            //    selCells.Mer
+            //    var neuX1 = zelle.GetUIElement().DrawingRect.Right;
+
+            //    ultraTextEditorBloecke.Location = new Point(zelle.GetUIElement().DrawingRect.Left + 5,
+            //        zelle.GetUIElement().DrawingRect.Top);
+            //    ultraTextEditorBloecke.Invalidate();
             //}
-            //MergedCellContentArea
 
             // Zeile 43 enthält eine Überschrift (Timer Intervall)
             zelle = this.ultraGridStammDaten.DisplayLayout.Rows[43].Cells[1];
             SetzeUeberSchrift(zelle, hinterGrundFarbe, ueberSchriftFarbe);
 
             zelle = this.ultraGridStammDaten.DisplayLayout.Rows[44].Cells[1];
+            zelle.Tag = @"Kommentar5";
             zelle.Appearance.TextHAlign = HAlign.Center;
-            //uiElement = zelle.GetUIElement();
-            //uiParams = new UIElementDrawParams(uiElement);
-            //uiParams.Element
-            //uiElement.D
-            //this.cellFilter.DrawElement(DrawPhase.AfterDrawElement, ref uiParams);
 
             // Zeile 47 enthält eine Überschrift (History bei Änderungen ...)
             zelle = this.ultraGridStammDaten.DisplayLayout.Rows[47].Cells[1];
