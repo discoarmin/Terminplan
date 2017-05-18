@@ -30,6 +30,7 @@ namespace Terminplan
     using System.Text.RegularExpressions;
     using System.Windows.Forms;
     using Infragistics.Win;
+    using Infragistics.Win.UltraWinGrid;
     using Infragistics.Win.UltraWinToolbars;
     using Microsoft.Win32;
     using Resources = Properties.Resources;
@@ -342,6 +343,18 @@ namespace Terminplan
                 }
             }
             return (requestType != null);
+        }
+
+        public static double SpaltenNummer(UltraGrid grid, string spalte)
+        {
+            try
+            {
+                return grid.DisplayLayout.Bands[0].Columns[spalte].Index;
+            }
+            catch
+            {
+                return (double)-1;
+            }
         }
     }
 }

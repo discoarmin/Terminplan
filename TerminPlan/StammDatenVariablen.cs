@@ -17,15 +17,23 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace Terminplan
 {
+    using System;
+    using Infragistics.DrawFilters;
     using Infragistics.Win;
     using Infragistics.Win.AppStyling;
-    using Infragistics.DrawFilters;
 
     /// <summary>
     /// Die Variablendeklaration.
     /// </summary>
     public partial class StammDaten
     {
+        #region Konstanten
+
+        public const int MaxWochen = 350;                                       // Maximale Anzahl einzugebender Wochen
+        public const int MaxWochenProJahr = 53;                                 // Maximale Anzal Wochen pro Jahr
+
+        #endregion Konstanten
+
         #region Aufzählungen
 
         #region Eigenschaften Schriftart
@@ -75,7 +83,20 @@ namespace Terminplan
         /// <summary>Zoomdaten für Grunddaten</summary>
         private WinGridZoomGrid.WinGridZoomGrid.GridZoomProperty zoomGridGrund;
 
+        /// <summary>Filter für eine Zelle</summary>
         private CellFilter cellFilter;
+
+        /// <summary>Startdatum des Projekts</summary>
+        private DateTime prjStartDatum;
+
+        /// <summary>Revisionsstand des Projekts</summary>
+        private DateTime prjRevisionsStand;
+
+        /// <summary>Anzahl anzuzeigender Spaltenblöcke</summary>
+        private int anzSpaltenBloecke;
+
+        /// <summary>Anzahl darzustellender Wochen</summary>
+        private int anzWochen;
 
         #endregion Variablen
 

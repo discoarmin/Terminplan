@@ -105,6 +105,6 @@ E:\PrjDotNet4.6.2\Terminplan\WinGridZoomGrid\bin\Debug\Infragistics4.Win.UltraWi
 E:\PrjDotNet4.6.2\Terminplan\WinGridZoomGrid\bin\Debug\Infragistics4.Win.UltraWinEditors.v16.2.xml
 E:\PrjDotNet4.6.2\Terminplan\WinGridZoomGrid\bin\Debug\Infragistics4.Shared.v16.2.xml
 E:\PrjDotNet4.6.2\Terminplan\WinGridZoomGrid\bin\Debug\Infragistics4.Win.Misc.v16.2.xml
-E:\PrjDotNet4.6.2\Terminplan\WinGridZoomGrid\obj\Debug\WinGridZoomGrid.csprojResolveAssemblyReference.cache
 E:\PrjDotNet4.6.2\Terminplan\WinGridZoomGrid\obj\Debug\WinGridZoomGrid.dll
 E:\PrjDotNet4.6.2\Terminplan\WinGridZoomGrid\obj\Debug\WinGridZoomGrid.pdb
+E:\PrjDotNet4.6.2\Terminplan\WinGridZoomGrid\obj\Debug\WinGridZoomGrid.csprojResolveAssemblyReference.cache

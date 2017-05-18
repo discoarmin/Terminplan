@@ -531,7 +531,6 @@ namespace Terminplan
 
                     case 3:
                     case 5:
-                    case 8:
                     case 13:
                     case 18:
                     case 20:
@@ -539,6 +538,10 @@ namespace Terminplan
                     case 32:
                     case 34:
                         de.Width = 32;
+                        break;
+
+                    case 8:
+                        de.Width = 50;
                         break;
 
                     case 4:
@@ -561,7 +564,7 @@ namespace Terminplan
                         break;
 
                     case 14:
-                        de.Width = 155;
+                        de.Width = 165;
                         break;
 
                     case 19:
@@ -575,15 +578,15 @@ namespace Terminplan
                         break;
 
                     case 27:
-                        de.Width = 280;
+                        de.Width = 320;
                         break;
 
                     case 28:
-                        de.Width = 26;
+                        de.Width = 35;
                         break;
 
                     case 29:
-                        de.Width = 116;
+                        de.Width = 140;
                         break;
 
                     case 31:
@@ -595,7 +598,7 @@ namespace Terminplan
                         break;
 
                     case 33:
-                        de.Width = 170;
+                        de.Width = 230;
                         break;
 
                     case 35:
@@ -607,7 +610,7 @@ namespace Terminplan
                         break;
 
                     case 37:
-                        de.Width = 52;
+                        de.Width = 65;
                         break;
 
                     case 42:

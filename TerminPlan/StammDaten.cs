@@ -464,6 +464,9 @@ namespace Terminplan
         /// <param name="e">Die <see cref="InitializeLayoutEventArgs" /> Instanz, welche die Ereignisdaten enthält.</param>
         private void OnUltraGridStammDatenInitializeLayout(object sender, InitializeLayoutEventArgs e)
         {
+            // Spalte'S' beinhaltet eine %-Darstellung
+            this.ultraGridStammDaten.DisplayLayout.Bands[0].Columns[18].Format = "P";
+
             e.Layout.Override.MergedCellStyle = MergedCellStyle.Always;
             e.Layout.Override.MergedCellContentArea = MergedCellContentArea.VirtualRect;
 
@@ -541,13 +544,12 @@ namespace Terminplan
         private void OnUltraDateTimeEditorPrjStartValueChanged(object sender, EventArgs e)
         {
             var editor = (UltraDateTimeEditor)sender;                           // Damit der geänderte Wert ermittelt werden kann
-            var prjStartDatum = Convert.ToDateTime(editor.Value);               // Ausgewähltes Datum ermitteln
+            prjStartDatum = Convert.ToDateTime(editor.Value);               // Ausgewähltes Datum ermitteln
 
             // Das eingestelle Datum in die Zelle im Grid eintragen
             editor.Parent.Text = prjStartDatum.ToString();
             var eintrag = @"PS - " + editor.Parent.Text;
-            var zelle = ultraGridStammDaten.DisplayLayout.Rows[13].Cells[3];
-            zelle.Value = eintrag;
+            SetDataRowValue(ultraGridStammDaten, 3, 13, eintrag);
         }
 
         private void ultraTextEditorBloecke_ValueChanged(object sender, EventArgs e)
@@ -776,7 +778,25 @@ namespace Terminplan
             var zeile = e.Cell.Row.Index;                                       // Zeile der geänderten Zelle
             var spalte = e.Cell.Column.Index;                                   // Spalte der geänderten Zelle
 
-            // Ermitteln, ob es das Startdatum des Projekts ist
+            // Ermitteln, ob es das Startdatum des Projekts ist (steht in 'B15')
+            if (zeile == 15 && spalte == 1)
+            {
+                var prjStartDatum = Convert.ToDateTime(e.Cell.Value);           // Ausgewähltes Datum ermitteln
+                                                                                // Das eingestelle Datum in die Zelle im Grid eintragen
+                var neuerWert = prjStartDatum.ToLongDateString();
+                var eintrag = @"PS - " + neuerWert;
+                SetDataRowValue(ultraGridStammDaten, 3, 13, eintrag);
+
+                // Anzahl darzustellender Wochen ermitteln (steht in Zelle 'B25')
+                var anzZeilen = ultraGridStammDaten.DisplayLayout.Rows[25].Cells[1].Value;
+                if (anzZeilen.GetType() == typeof(DBNull))
+                {
+                    anzZeilen = 120;
+                }
+
+                SetzeDatumsSpalte(ultraGridStammDaten, 7, (int)anzZeilen, 13, neuerWert);
+                BearbeiteFeiertage(prjStartDatum);                              // Feiertage ab dem Jahr des Startdatums berechnen
+            }
         }
     }
 }

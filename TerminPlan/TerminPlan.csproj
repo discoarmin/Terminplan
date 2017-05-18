@@ -172,6 +172,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetUeberschrift.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Feiertage\Feiertage.cs" />
     <Compile Include="Hauptform.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -456,6 +457,7 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
