@@ -106,10 +106,8 @@ namespace Terminplan
                     hinterGrundFarbe = Color.DarkGray;
                 }
 
-                this.BearbeiteZeile1(sp.Index + 1, hinterGrundFarbe, ueberSchriftFarbe); // Zeile 1 bearbeiten
-                this.BearbeiteZeile2(sp.Index + 1, hinterGrundFarbe, ueberSchriftFarbe); // Zeile 2 bearbeiten
-                this.SetzeHistoryUeberschriften(ueberSchriftFarbe);
-                this.BearbeiteSpalteS();
+                BearbeiteZeile1(sp.Index + 1, hinterGrundFarbe, ueberSchriftFarbe); // Zeile 1 bearbeiten
+                BearbeiteZeile2(sp.Index + 1, hinterGrundFarbe, ueberSchriftFarbe); // Zeile 2 bearbeiten
 
                 if (sp.Index == 1)
                 {
@@ -119,6 +117,10 @@ namespace Terminplan
                     sp.SortIndicator = SortIndicator.None;
                 }
             }
+
+            SetzeHistoryUeberschriften(ueberSchriftFarbe);                      // Überschriften für Bereich zum Zwischenspeicherung der Änderungen
+            BearbeiteSpalteS();                                                 // Prozentwerte der Ferigstellung
+            BearbeiteDelta();                                                   // Farbeinstellungen der Delta-Werte
 
             // Spaltenüberschriften für die Historyeinträge
             //var zelle = this.ultraGridStammDaten.DisplayLayout.Rows[48].Cells[5];
@@ -146,6 +148,8 @@ namespace Terminplan
         private void BearbeiteZeile1(int spalte, Color hinterGrundFarbe, Color ueberSchriftFarbe)
         {
             var row = this.ultraGridStammDaten.DisplayLayout.Rows[0];
+            var rowTest = this.ultraGridStammDaten.DisplayLayout.Rows[1];
+
             var zelle = row.Cells[spalte - 1];                                  // Zelle in der Spalte ermitteln
             var vonSpalte = 0;                                                  // Bei Merged Cells der Beginn
             var bisSpalte = 0;                                                  // Bei Merged Cells das Ende
@@ -174,7 +178,7 @@ namespace Terminplan
                 case 36:
                 case 37:
                 case 38:
-                    SetzeUeberSchrift(zelle, hinterGrundFarbe, ueberSchriftFarbe); // Zelle als Überschrift kennzeichnen
+                    SetzeUeberSchrift(zelle, hinterGrundFarbe, ueberSchriftFarbe, rowTest); // Zelle als Überschrift kennzeichnen
                     vonSpalte = bisSpalte = spalte - 1;                         // Spaltennummer der Zelle merken
                     if (spalte == 6 || spalte == 7)
                     {
@@ -204,6 +208,7 @@ namespace Terminplan
         private void BearbeiteZeile2(int spalte, Color hinterGrundFarbe, Color ueberSchriftFarbe)
         {
             var row = this.ultraGridStammDaten.DisplayLayout.Rows[1];
+            var rowTest = this.ultraGridStammDaten.DisplayLayout.Rows[2];
             var zelle = row.Cells[spalte - 1];                                  // Zelle in der Spalte ermitteln
 
             // Spaltespezifische Einstellungen vornehmen
@@ -219,13 +224,13 @@ namespace Terminplan
                 case 27:
                 case 28:
                 case 29:
-                case 31:
+                //case 31:
                 case 33:
                 case 35:
                 case 36:
                 case 37:
                 case 38:
-                    SetzeUeberSchrift(zelle, hinterGrundFarbe, ueberSchriftFarbe);
+                    SetzeUeberSchrift(zelle, hinterGrundFarbe, ueberSchriftFarbe, rowTest);
 
                     if (spalte == 6 || spalte == 7)
                     {
@@ -294,6 +299,8 @@ namespace Terminplan
                         {
                             zelle.Appearance.FontData.SizeInPoints = 8;
                             zelle.Column.CellMultiLine = DefaultableBoolean.True;
+                            zelle.Appearance.ForeColorDisabled = zelle.Appearance.ForeColor;
+                            zelle.Activation = Activation.Disabled;
                         }
 
                         if (spalte == 38)
@@ -306,6 +313,105 @@ namespace Terminplan
 
                 default:
                     break;
+            }
+        }
+
+        /// <summary>Einstellungen für das Zeitfenster (Darstellung Delta).</summary>
+        private void BearbeiteDelta()
+        {
+            // Die drei zu bearbeitenden Zeilen ermitteln
+            var row = this.ultraGridStammDaten.DisplayLayout.Rows[3];
+            var row1 = this.ultraGridStammDaten.DisplayLayout.Rows[4];
+            var row2 = this.ultraGridStammDaten.DisplayLayout.Rows[5];
+            var row3 = this.ultraGridStammDaten.DisplayLayout.Rows[6];
+
+            // Die Einstellungen befinden sich in den Spalten 27-29
+            for (var spalte = 27; spalte < 30; spalte++)
+            {
+                var zelle = row.Cells[spalte - 1];                              // Zelle der 1. Zeile der Spalte ermitteln
+                var zelle1 = row1.Cells[spalte - 1];                            // Zelle der 2. Zeile der Spalte ermitteln
+                var zelle2 = row2.Cells[spalte - 1];                            // Zelle der 3. Zeile der Spalte ermitteln
+                var zelle3 = row3.Cells[spalte - 1];                            // Zelle der 4. Zeile (dient zur Ermittlung von verbundenen Zellen)
+
+                if (spalte == 27 || spalte == 28 || spalte == 29)
+                {
+                    if (spalte != 28)
+                    {
+                        zelle.Appearance.BackColor = Color.FromArgb(9868950);
+                        zelle.Appearance.ForeColorDisabled = zelle.Appearance.ForeColor;
+                        zelle.SelectedAppearance.BorderColor = zelle.Appearance.BackColor;
+                        zelle.ActiveAppearance.BorderColor = zelle.Appearance.BackColor;
+                        zelle.Activation = Activation.NoEdit;                   // Zelle kann nicht bearbeitet werden
+
+                        zelle1.Appearance.BackColor = Color.FromArgb(9868950);  // Grau
+                        zelle1.Appearance.ForeColorDisabled = zelle1.Appearance.ForeColor;
+                        zelle1.ActiveAppearance.BorderColor = zelle1.Appearance.BackColor;
+                        zelle1.Activation = Activation.NoEdit;                  // Zelle kann nicht bearbeitet werden
+                        zelle1.SelectedAppearance.BorderColor = zelle1.Appearance.BackColor;
+
+                        // Falls in der Zelle kein Wert eingetragen ist, überprüfen, ob Zelle in der nächsten Zeile einen Wert enthält
+                        if (!zelle2.IsMergedWith(zelle3))
+                        {
+                            zelle2.Appearance.BackColor = Color.FromArgb(9868950);
+                            zelle2.Appearance.ForeColorDisabled = zelle2.Appearance.ForeColor;
+                            zelle2.Activation = Activation.NoEdit;              // Zelle kann nicht bearbeitet werden
+                            zelle2.SelectedAppearance.BorderColor = zelle2.Appearance.BackColor;
+                            zelle2.ActiveAppearance.BorderColor = zelle2.Appearance.BackColor;
+                            continue;                                           // Falls noch eine Zelle mit Daten kommt, nächste Spalte bearbeiten
+                        }
+                        else
+                        {
+                            zelle2.Appearance.BackColor = Color.FromArgb(9868950);
+                            zelle2.Appearance.ForeColorDisabled = zelle2.Appearance.ForeColor;
+                            zelle2.SelectedAppearance.BorderColor = zelle2.Appearance.BackColor;
+                            zelle2.ActiveAppearance.BorderColor = zelle2.Appearance.BackColor;
+                            zelle2.Activation = Activation.NoEdit;              // Zelle kann nicht bearbeitet werden
+
+                            // in die lezte zu bearbeitende Zelle einen nicht sichtbaren Text eintragen,
+                            // da sonst alle mit dieser Zelle verbundenen Zellen eingefärbt werden
+                            zelle2.Value = @" ";
+                            zelle2.Appearance.ForeColor = zelle2.Appearance.BackColor;
+                        }
+                    }
+                    else
+                    {
+                        // In dieser Spalte werden die Eingaben gemacht
+                        zelle.Appearance.BackColor = Color.FromArgb(70, 227, 3);  // Grün
+                        zelle.ActiveAppearance.BackColor = Color.FromArgb(70, 227, 3);
+                        zelle.SelectedAppearance.BackColor = Color.FromArgb(70, 227, 3);
+                        zelle.ActiveAppearance.BorderColor = Color.FromArgb(70, 227, 3);
+
+                        zelle1.Appearance.BackColor = Color.FromArgb(236, 173, 52); // Orange
+                        zelle1.ActiveAppearance.BackColor = Color.FromArgb(236, 173, 52);
+                        zelle1.SelectedAppearance.BackColor = Color.FromArgb(236, 173, 52);
+                        zelle1.ActiveAppearance.BorderColor = Color.FromArgb(236, 173, 52);
+
+                        zelle2.Activation = Activation.Disabled;                // Zelle kann weder aktiviert noch bearbeitet werden
+
+                        // Falls in der Zelle kein Wert eingetragen, überprüfen, ob Zelle in der nächsten Zeile einen Wert enthält
+                        if (!zelle2.IsMergedWith(zelle3))
+                        {
+                            zelle2.Appearance.BackColor = Color.FromArgb(9868950);
+                            zelle2.ActiveAppearance.BackColor = Color.FromArgb(9868950);
+                            zelle2.SelectedAppearance.BackColor = Color.FromArgb(9868950);
+                            zelle2.ActiveAppearance.BorderColor = Color.FromArgb(9868950);
+                            continue;                                           // Da noch eine Zelle mit Daten kommt, nächste Spalte bearbeiten
+                        }
+                        else
+                        {
+                            // Nächste Zelle enthält keine Daten
+                            zelle2.Appearance.BackColor = Color.FromArgb(9868950);
+                            zelle2.ActiveAppearance.BackColor = Color.FromArgb(9868950);
+                            zelle2.SelectedAppearance.BackColor = Color.FromArgb(9868950);
+                            zelle2.ActiveAppearance.BorderColor = Color.FromArgb(9868950);
+
+                            // in die lezte zu bearbeitende Zelle einen nicht sichtbaren Text eintragen,
+                            // da sonst alle mit dieser Zelle verbundenen Zellen eingefärbt werden
+                            zelle2.Value = @" ";
+                            zelle2.Appearance.ForeColor = zelle2.Appearance.BackColor;
+                        }
+                    }
+                }
             }
         }
 
@@ -357,6 +463,13 @@ namespace Terminplan
                 row[32] = eintrag;                                              // Datum eintragen
             }
 
+            // Keiner der eingetragenen Feiertage ist editierbar
+            for (var z = 0; z < anzFeiertage1; z++)
+            {
+                var zelle = ultraGridStammDaten.DisplayLayout.Rows[z + 3].Cells[32];
+                zelle.Activation = Activation.NoEdit;
+            }
+
             // Falls nur für ein Jahr Feiertage eingetragen werden soll
             // kann hier abgebrochen werden.
             if (anzWochen <= MaxWochenProJahr) return;
@@ -373,6 +486,13 @@ namespace Terminplan
                 var eintrag = alleFeiertage[z].Datum.ToShortDateString();
                 eintrag += @" " + alleFeiertage[z].Name;                        // Name des Feiertags hinzufügen
                 row[32] = eintrag;                                              // Datum eintragen
+            }
+
+            // Keiner der eingetragenen Feiertage ist editierbar
+            for (var z = 0; z < anzFeiertage2; z++)
+            {
+                var zelle = ultraGridStammDaten.DisplayLayout.Rows[z + anzFeiertage1 + 3].Cells[32];
+                zelle.Activation = Activation.NoEdit;
             }
         }
 
@@ -517,7 +637,7 @@ namespace Terminplan
             var row = table.Rows[25];                                           // Zeile, in Welche der Wert eingetragen werden soll
             row[1] = anzZeilen;                                                 // Neuen Wert zuweisen
 
-            SetzeDatumsSpalte(ultraGridStammDaten, 7, (int)anzZeilen, 13, neuerWert);
+            SetzeDatumsSpalte(ultraGridStammDaten, 6, (int)anzZeilen, 13, neuerWert);
 
             // Zeile 27 enthält eine Überschrift (Anzahl Spaltenblöcke)
             zelle = this.ultraGridStammDaten.DisplayLayout.Rows[27].Cells[1];
@@ -612,15 +732,48 @@ namespace Terminplan
         /// <param name="zelle">Die Zelle.</param>
         /// <param name="hinterGrundFarbe">Hintergrundfarbe der Zelle.</param>
         /// <param name="ueberSchriftFarbe">Vordergrundfarbe der Zelle.</param>
-        private void SetzeUeberSchrift(UltraGridCell zelle, Color hinterGrundFarbe, Color ueberSchriftFarbe)
+        private void SetzeUeberSchrift(UltraGridCell zelle, Color hinterGrundFarbe, Color ueberSchriftFarbe, UltraGridRow rowTest = null)
         {
             if (zelle == null) return;                                          // Falls keine Zelle existiert, abbrechen
-            zelle.Appearance.BackColor = hinterGrundFarbe;
-            zelle.Appearance.ForeColor = ueberSchriftFarbe;
-            zelle.Appearance.BorderColor = hinterGrundFarbe;                    // Damit keine Zellränder sichtbar sind
-            zelle.Appearance.FontData.Bold = DefaultableBoolean.True;
-            zelle.Appearance.FontData.Name = @"Arial";
-            zelle.Activation = Activation.NoEdit;                               // Überschrift kann nicht bearbeitet werden
+            if (rowTest == null)
+            {
+                zelle.Appearance.BackColor = hinterGrundFarbe;
+                zelle.Appearance.ForeColor = ueberSchriftFarbe;
+                zelle.Appearance.BorderColor = hinterGrundFarbe;                // Damit keine Zellränder sichtbar sind
+                zelle.Appearance.FontData.Bold = DefaultableBoolean.True;
+                zelle.Appearance.FontData.Name = @"Arial";
+                zelle.Activation = Activation.NoEdit;                           // Überschrift kann nicht bearbeitet werden
+            }
+            else
+            {
+                var index = zelle.Column.Index;                                 // Spalte der zu bearbeitenden Zelle
+                var zelleTest = rowTest.Cells[index];                           // Zum Test auf verbundene Zellen
+                if (!zelle.IsMergedWith(zelleTest))
+                {
+                    zelle.Appearance.BackColor = hinterGrundFarbe;
+                    zelle.Appearance.ForeColor = ueberSchriftFarbe;
+                    zelle.Appearance.BorderColor = hinterGrundFarbe;            // Damit keine Zellränder sichtbar sind
+                    zelle.Appearance.FontData.Bold = DefaultableBoolean.True;
+                    zelle.Appearance.FontData.Name = @"Arial";
+                    zelle.Activation = Activation.NoEdit;                       // Überschrift kann nicht bearbeitet werden
+                }
+                else
+                {
+                    // Da es sich um eine verbundene Zelle handelt, muss ein unsichtbarer
+                    // Text eingetragen werden, da sonst alle verbundenen Zellen die
+                    // Heintergrundfarbe annehmen würden
+                    zelleTest.Value = @" ";
+                    zelleTest.Appearance.BackColor = hinterGrundFarbe;
+
+                    zelle.Appearance.BackColor = hinterGrundFarbe;
+                    zelle.Appearance.ForeColor = zelle.Appearance.BackColor;
+                    zelle.Appearance.ForeColor = ueberSchriftFarbe;
+                    zelle.Appearance.BorderColor = hinterGrundFarbe;            // Damit keine Zellränder sichtbar sind
+                    zelle.Appearance.FontData.Bold = DefaultableBoolean.True;
+                    zelle.Appearance.FontData.Name = @"Arial";
+                    zelle.Activation = Activation.NoEdit;                       // Überschrift kann nicht bearbeitet werden
+                }
+            }
         }
 
         /// <summary>Setzt eine DropDownList in die übergebene Zelle.</summary>

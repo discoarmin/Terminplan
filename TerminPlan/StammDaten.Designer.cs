@@ -1204,14 +1204,17 @@
             this.ultraTextEditor1.AcceptsReturn = true;
             appearance36.BackColor = System.Drawing.SystemColors.ControlDark;
             appearance36.Cursor = System.Windows.Forms.Cursors.Arrow;
+            appearance36.FontData.SizeInPoints = 8F;
             appearance36.TextHAlignAsString = "Left";
             appearance36.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
             appearance36.TextVAlignAsString = "Top";
             this.ultraTextEditor1.Appearance = appearance36;
+            this.ultraTextEditor1.AutoSize = false;
             this.ultraTextEditor1.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ultraTextEditor1.BorderStyle = Infragistics.Win.UIElementBorderStyle.None;
             this.ultraTextEditor1.DisplayStyle = Infragistics.Win.EmbeddableElementDisplayStyle.Standard;
             this.ultraTextEditor1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ultraTextEditor1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ultraTextEditor1.ImeMode = System.Windows.Forms.ImeMode.On;
             this.ultraTextEditor1.Location = new System.Drawing.Point(0, 0);
             this.ultraTextEditor1.Margin = new System.Windows.Forms.Padding(0);
@@ -1988,7 +1991,6 @@
             this.ultraTile1.ResumeLayout(false);
             this.tableLayoutPanelButtons.ResumeLayout(false);
             this.ultraTile2.ResumeLayout(false);
-            this.ultraTile2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraTextEditor1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraTextEditorBloecke)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraDateTimeEditorPrjStart)).EndInit();

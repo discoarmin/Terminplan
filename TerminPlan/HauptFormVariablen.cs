@@ -27,6 +27,17 @@ namespace Terminplan
     /// </summary>
     public partial class TerminPlanForm
     {
+        #region Konstanten
+
+        /// <summary> Zeilenhöhe einer Arbeitsaufgabe </summary>
+        private const int TaskRowHeight = 30;
+
+        /// <summary> Höhe der Aufgabenleiste </summary>
+        // ReSharper disable once UnusedMember.Local
+        private const int TaskBarHeight = 20;
+
+        #endregion Konstanten
+
         #region Aufzählungen
 
         #region GanttViewAktion
@@ -107,13 +118,6 @@ namespace Terminplan
         /// <summary> Der ResourceManager </summary>
         private ResourceManager rm = Resources.ResourceManager;
 
-        /// <summary> Zeilenhöhe einer Arbeitsaufgabe </summary>
-        private const int TaskRowHeight = 30;
-
-        /// <summary> Höhe der Aufgabenleiste </summary>
-        // ReSharper disable once UnusedMember.Local
-        private const int TaskBarHeight = 20;
-
         /// <summary> Pfad zu den Farbeinstallungen </summary>
         public static StyleManager StyleManagerIntern;
 
@@ -123,13 +127,14 @@ namespace Terminplan
         /// <summary>Index der ausgewählten Firma</summary>
         public int FirmenIndex;
 
+        private int statusGruen;
+        private int statusOrange;
+
         #endregion Variablen
 
         #region Eigenschaften
 
-        /// <summary>
-        /// Holt oder setzt den Pfad zu den Farbeinstellungen
-        /// </summary>
+        /// <summary>Holt oder setzt den Pfad zu den Farbeinstellungen</summary>
         public string[] TemePaths { get; set; }
 
         /// <summary>Setzt das Formular für den Terminplan</summary>
@@ -138,15 +143,17 @@ namespace Terminplan
         /// <summary>Setzt die zu bearbeitende Terminplan-Datei</summary>
         public string GeladeneDatei { get; private set; }
 
-        /// <summary>
-        /// Holt oder setzt den Index des momentanen Farbschemas
-        /// </summary>
+        /// <summary>Holt oder setzt den Index des momentanen Farbschemas</summary>
         public int CurrentThemeIndex { get; set; }
 
-        /// <summary>
-        /// Holt oder setzt den Pfad zu den Farbeinstellungen
-        /// </summary>
+        /// <summary>Holt oder setzt den Pfad zu den Farbeinstellungen</summary>
         public string[] ThemePaths { get; set; }
+
+        /// <summary>Holt oder setzt einen Wert, welcher anzeigt, ab welchem Delta-Wert dieser grün dargestellt wird </summary>
+        public int StatusGruen { get; set; }
+
+        /// <summary>Holt oder setzt einen Wert, welcher anzeigt, ab welchem Delta-Wert dieser orange dargestellt wird </summary>
+        public int StatusOrange { get; set; }
 
         #endregion Eigenschaften
     }

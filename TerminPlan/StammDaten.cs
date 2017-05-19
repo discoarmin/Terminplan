@@ -794,7 +794,7 @@ namespace Terminplan
                     anzZeilen = 120;
                 }
 
-                SetzeDatumsSpalte(ultraGridStammDaten, 7, (int)anzZeilen, 13, neuerWert);
+                SetzeDatumsSpalte(ultraGridStammDaten, 6, (int)anzZeilen, 13, neuerWert);
                 BearbeiteFeiertage(prjStartDatum);                              // Feiertage ab dem Jahr des Startdatums berechnen
             }
         }
