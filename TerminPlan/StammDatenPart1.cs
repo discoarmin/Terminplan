@@ -1,9 +1,9 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="StammDaten.cs" company="EST GmbH + CO.KG">
+// <copyright file="StammDatenPart1.cs" company="EST GmbH + CO.KG">
 //   Copyright (c) EST GmbH + CO.KG. All rights reserved.
 // </copyright>
 // <summary>
-//   Ereignisbehandlung des Formulars.
+//   1. Teil Bearbeitung der Stammdaten des Formulars.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 // <remarks>
@@ -63,12 +63,13 @@ namespace Terminplan
             this.ultraGridStammDaten.DisplayLayout.Override.HeaderClickAction = HeaderClickAction.Select;
 
             // Zellen der Spalte einstellen
-            var ueberSchriftFarbe = Color.White;
-            var hinterGrundFarbe = Color.LightGray;
+            var ueberSchriftFarbe = Color.White;                                // Schriftfarbe der Überschrift
+            var hinterGrundFarbe = Color.LightGray;                             // Hintergrundfarbe der Überschrift
 
             ueberSchriftFarbe = this.ultraZoomPanelStammDaten.Appearance.ForeColor;
             hinterGrundFarbe = this.ultraZoomPanelStammDaten.Appearance.BackColor;
 
+            // Alle vorhandenen Zeilen bearbeiten
             for (var r = 0; r < this.rowCount; r++)
             {
                 // Zeilenhöhe einstellen
@@ -97,13 +98,14 @@ namespace Terminplan
                 }
             }
 
+            // Alle Spalten einer Zeile bearbeiten
             foreach (var sp in col)
             {
-                // bei allen Themes außer bei Theme 1
+                // bei allen Themes außer bei Theme 1 werden andere Schriftfarben und Hintergrundfarben eingestellt
                 if (this.FrmTerminPlan.CurrentThemeIndex != 0)
                 {
-                    ueberSchriftFarbe = Color.Black;
-                    hinterGrundFarbe = Color.DarkGray;
+                    ueberSchriftFarbe = Color.Black;                            // Schriftfarbe ist schwarz
+                    hinterGrundFarbe = Color.DarkGray;                          // Hintergrundfarbe ist Dunkelgrau
                 }
 
                 BearbeiteZeile1(sp.Index + 1, hinterGrundFarbe, ueberSchriftFarbe); // Zeile 1 bearbeiten
@@ -121,12 +123,11 @@ namespace Terminplan
             SetzeHistoryUeberschriften(ueberSchriftFarbe);                      // Überschriften für Bereich zum Zwischenspeicherung der Änderungen
             BearbeiteSpalteS();                                                 // Prozentwerte der Ferigstellung
             BearbeiteDelta();                                                   // Farbeinstellungen der Delta-Werte
-
-            // Spaltenüberschriften für die Historyeinträge
-            //var zelle = this.ultraGridStammDaten.DisplayLayout.Rows[48].Cells[5];
+            BearbeiteAufgaben();                                                // Checkeditoren für die Aufgaben
+            BearbeiteDauer();
         }
 
-        /// <summary>Setzt die Überschriftspalten für die History-Einträge in den Stammdaten.</summary>
+        /// <summary>Setzt das Format der Überschriftspalten für die History-Einträge in den Stammdaten.</summary>
         /// <param name="ueberSchriftFarbe">Farbe für die Überschrift.</param>
         private void SetzeHistoryUeberschriften(Color ueberSchriftFarbe)
         {
@@ -216,6 +217,7 @@ namespace Terminplan
             {
                 case 6:                                                         // Projektmitglieder Kürzel
                 case 7:                                                         // Projektmitglieder Name und Vorname
+                case 9:
                 case 14:
                 case 19:
                 case 21:
@@ -436,298 +438,6 @@ namespace Terminplan
             }
         }
 
-        /// <summary>Berechnet die Feiertage für das übergebene Jahr.</summary>
-        /// <param name="startDatum">Das Jahr, für welches die Feiertage berechnet werden sollen.</param>
-        private void BearbeiteFeiertage(DateTime startDatum)
-        {
-            // Zuerst alle bisherigen Einträge löschen
-            // Da maximal zwei Jahre dargestellt werden müssen maximal 106
-            // Zeilen gelöscht werden, da in Deutschland ein Jahr maximal 53 Wochen haben kann
-            var table = (DataTable)ultraGridStammDaten.DataSource;              // Datentabelle ermitteln
-            for (var z = 3; z <= 3 + MaxWochenProJahr * 2; z++)
-            {
-                var row = table.Rows[z];                                        // In diese Zeile wird der Wert eingetragen
-                row[32] = string.Empty;                                         // Zelleninhalt löschen
-            }
-
-            var alleFeiertage = FeiertagLogik.ErmittleFeiertage(startDatum);    // Alle Feiertage für das übergebene Jahr ermitteln
-
-            // Die sortierten Einträge in die Datumsspalte eintragen.
-            // Die Einträge beginnen ab Zeile 3
-            var anzFeiertage1 = alleFeiertage.Count;                            // Anzahl Feiertage merken
-            for (var z = 0; z < anzFeiertage1; z++)
-            {
-                var row = table.Rows[z + 3];                                    // In diese Zeile wird der Wert eingetragen
-                var eintrag = alleFeiertage[z].Datum.ToShortDateString();
-                eintrag += @" " + alleFeiertage[z].Name;                        // Name des Feiertags hinzufügen
-                row[32] = eintrag;                                              // Datum eintragen
-            }
-
-            // Keiner der eingetragenen Feiertage ist editierbar
-            for (var z = 0; z < anzFeiertage1; z++)
-            {
-                var zelle = ultraGridStammDaten.DisplayLayout.Rows[z + 3].Cells[32];
-                zelle.Activation = Activation.NoEdit;
-            }
-
-            // Falls nur für ein Jahr Feiertage eingetragen werden soll
-            // kann hier abgebrochen werden.
-            if (anzWochen <= MaxWochenProJahr) return;
-
-            var startDatum2 = startDatum.Date.AddYears(1);                      // neues Datum für die Feiertagsberechnung ermitteln
-
-            alleFeiertage = FeiertagLogik.ErmittleFeiertage(startDatum2);        // Alle Feiertage für das 2. Jahr Jahr ermitteln
-
-            // Die sortierten Einträge in die Datumsspalte eintragen
-            var anzFeiertage2 = alleFeiertage.Count;                            // Anzahl Feiertage für das 2. Jahr merken
-            for (var z = 0; z < anzFeiertage2; z++)
-            {
-                var row = table.Rows[z + anzFeiertage1 + 3];                    // In diese Zeile wird der Wert eingetragen. Der 1. Eintrag steht in Zeile 3
-                var eintrag = alleFeiertage[z].Datum.ToShortDateString();
-                eintrag += @" " + alleFeiertage[z].Name;                        // Name des Feiertags hinzufügen
-                row[32] = eintrag;                                              // Datum eintragen
-            }
-
-            // Keiner der eingetragenen Feiertage ist editierbar
-            for (var z = 0; z < anzFeiertage2; z++)
-            {
-                var zelle = ultraGridStammDaten.DisplayLayout.Rows[z + anzFeiertage1 + 3].Cells[32];
-                zelle.Activation = Activation.NoEdit;
-            }
-        }
-
-        /// <summary>Setzt Überschriften und Controls in einer Spalte.</summary>
-        /// <param name="spalte">Die zu bearbeitende Spalte.</param>
-        /// <param name="hinterGrundFarbe">einzustellende Hintergrundfarbe.</param>
-        /// <param name="ueberSchriftFarbe">einzustellende Vordergrundfarbe.</param>
-        private void BearbeiteSpalte1(int spalte, Color hinterGrundFarbe, Color ueberSchriftFarbe)
-        {
-            DateTime datumsWert;
-            UIElement uiElement;
-            UIElementDrawParams uiParams;
-            var table = (DataTable)ultraGridStammDaten.DataSource;              // Datentabelle ermitteln
-
-            this.ultraGridStammDaten.DisplayLayout.Bands[0].Columns[1].CellMultiLine = DefaultableBoolean.True;
-
-            // Die Überschrift für Zeile 1 und 2 wird an anderer Stelle verarbeitet
-            // Zeile 3 enthält eine Überschrift (Adresse)
-            var zelle = this.ultraGridStammDaten.DisplayLayout.Rows[3].Cells[1];
-            SetzeUeberSchrift(zelle, hinterGrundFarbe, ueberSchriftFarbe);
-
-            // Zeile 5 enthält eine Überschrift (Email)
-            zelle = this.ultraGridStammDaten.DisplayLayout.Rows[5].Cells[1];
-            SetzeUeberSchrift(zelle, hinterGrundFarbe, ueberSchriftFarbe);
-
-            // Zeile 6 enthält eine URL (Mailadresse)
-            zelle = this.ultraGridStammDaten.DisplayLayout.Rows[6].Cells[1];
-            SetzeUrl(ref zelle);
-
-            // Zeile 8 enthält eine Überschrift (Projektname)
-            zelle = this.ultraGridStammDaten.DisplayLayout.Rows[8].Cells[1];
-            SetzeUeberSchrift(zelle, hinterGrundFarbe, ueberSchriftFarbe);
-
-            // Zeile 11 enthält eine Überschrift (Projektleiter)
-            zelle = this.ultraGridStammDaten.DisplayLayout.Rows[11].Cells[1];
-            SetzeUeberSchrift(zelle, hinterGrundFarbe, ueberSchriftFarbe);
-
-            // Zeile 14 enthält eine Überschrift (Projektstart)
-            zelle = this.ultraGridStammDaten.DisplayLayout.Rows[14].Cells[1];
-            SetzeUeberSchrift(zelle, hinterGrundFarbe, ueberSchriftFarbe);
-
-            // Der Projektstart (Zeile 15) ist ein Datum
-            zelle = this.ultraGridStammDaten.DisplayLayout.Rows[15].Cells[1];
-            DateTime.TryParseExact(zelle.Value.ToString(), @"yyyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.AssumeLocal, out datumsWert);
-            zelle.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DateTime;   // Zelle enthält ein Datum
-            var editor = this.ultraDateTimeEditorPrjStart;
-            editor.Appearance.BorderColor = ueberSchriftFarbe;
-
-            // Falls kein gültiges Datum gefunden wurde, das heutige Datum eintragen
-            if (datumsWert.Year < 2000)
-            {
-                prjStartDatum = DateTime.Now;                                   // Es gibt kein gültiges Datum, heutiges Datum nehmen
-                editor.Value = prjStartDatum.ToShortDateString();               // Kurze Version des Datums eintragen (Im Editor und in der Zelle)
-                zelle.Value = editor.Value;
-            }
-            else
-            {
-                prjStartDatum = datumsWert;                                     // Es gibt ein gültiges Datum
-                editor.Value = prjStartDatum.ToShortDateString();               // Kurze Version des Datums eintragen (Im Editor und in der Zelle)
-                zelle.Value = editor.Value;
-            }
-
-            zelle.EditorComponent = editor;
-            zelle.CellDisplayStyle = CellDisplayStyle.FullEditorDisplay;
-            zelle.Activation = Activation.AllowEdit;
-
-            // Projektstart in Datumsspalte eintragen
-            var startDatum = prjStartDatum.ToShortDateString();
-            var eintrag = @"PS - " + startDatum;
-            SetDataRowValue(ultraGridStammDaten, 3, 13, eintrag);
-
-            // Zeile 17 enthält eine Überschrift (Revisionsstand)
-            zelle = this.ultraGridStammDaten.DisplayLayout.Rows[17].Cells[1];
-            SetzeUeberSchrift(zelle, hinterGrundFarbe, ueberSchriftFarbe);
-
-            // Der Revisionsstand (Zeile 18) ist ein Datum
-            zelle = this.ultraGridStammDaten.DisplayLayout.Rows[18].Cells[1];
-            DateTime.TryParseExact(zelle.Value.ToString(), @"yyyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.AssumeLocal, out datumsWert);
-            zelle.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DateTime;   // Zelle enthält ein Datum
-            var editor1 = this.ultraDateTimeEditorPrjStart;
-            editor1.Appearance.BorderColor = ueberSchriftFarbe;
-
-            // Falls kein gültiges Datum gefunden wurde, das heutige Datum eintragen
-            if (datumsWert.Year < 2000)
-            {
-                prjRevisionsStand = DateTime.Now;                               // Es gibt kein gültiges Datum, heutiges Datum nehmen
-                editor1.Value = prjRevisionsStand.ToShortDateString();          // Kurze Version des Datums eintragen (Im Editor und in der Zelle)
-                zelle.Value = editor1.Value;
-            }
-            else
-            {
-                prjRevisionsStand = datumsWert;                                 // Es gibt ein gültiges Datum
-                editor1.Value = prjRevisionsStand.ToShortDateString();           // Kurze Version des Datums eintragen (Im Editor und in der Zelle)
-                zelle.Value = editor1.Value;
-            }
-
-            zelle.EditorComponent = editor1;
-            zelle.CellDisplayStyle = CellDisplayStyle.FullEditorDisplay;
-            zelle.Activation = Activation.AllowEdit;
-
-            // Zeile 19 enthält eine Überschrift (Berechnungsart)
-            zelle = this.ultraGridStammDaten.DisplayLayout.Rows[19].Cells[1];
-            zelle.Value = @"Berechnungsart";
-            SetzeUeberSchrift(zelle, hinterGrundFarbe, ueberSchriftFarbe);
-
-            // Zeile 20 enthält Auswahl Berechnungsart
-            zelle = this.ultraGridStammDaten.DisplayLayout.Rows[20].Cells[1];
-            SetzeComboBerechnungsArt(ref zelle);
-            zelle.Value = zelle.ValueList.GetText(0);                           // Beim Start ist 'arbeitstage' ausgewählt
-            zelle.Appearance.ForeColor = Color.Blue;
-
-            // Zeile 22 enthält eine Überschrift (Auswahl Firma)
-            zelle = this.ultraGridStammDaten.DisplayLayout.Rows[22].Cells[1];
-            zelle.Value = @"Auswahl Firma:";
-            SetzeUeberSchrift(zelle, hinterGrundFarbe, ueberSchriftFarbe);
-
-            // Zeile 23 enthält Auswahl Firma
-            zelle = this.ultraGridStammDaten.DisplayLayout.Rows[23].Cells[1];
-            SetzeComboFirma(ref zelle);
-            zelle.Value = zelle.ValueList.GetText(0);                           // Beim Start ist Fa. Schmid ausgewählt
-            zelle.Appearance.ForeColor = Color.Blue;
-
-            // Zeile 24 enthält eine Überschrift (Anzahl Wochen)
-            zelle = this.ultraGridStammDaten.DisplayLayout.Rows[24].Cells[1];
-            zelle.Value = @"Anzahl Wochen:";
-            SetzeUeberSchrift(zelle, hinterGrundFarbe, ueberSchriftFarbe);
-
-            // Zeile 25 enthält die Anzahl darzustellender Wochen
-            zelle = this.ultraGridStammDaten.DisplayLayout.Rows[25].Cells[1];
-            zelle.Appearance.BorderColor = ueberSchriftFarbe;
-            zelle.Appearance.BorderAlpha = Alpha.Opaque;
-            zelle.Appearance.TextHAlign = HAlign.Center;
-            zelle.Appearance.ForeColor = Color.Blue;
-            var anzZeilen = zelle.Value;
-            if (anzZeilen.GetType() == typeof(DBNull))
-            {
-                anzZeilen = 120;
-            }
-
-            anzWochen = (int)anzZeilen;                                         // Anzahl darzustellender Wochen merken
-            var neuerWert = prjStartDatum.ToShortDateString();
-            var row = table.Rows[25];                                           // Zeile, in Welche der Wert eingetragen werden soll
-            row[1] = anzZeilen;                                                 // Neuen Wert zuweisen
-
-            SetzeDatumsSpalte(ultraGridStammDaten, 6, (int)anzZeilen, 13, neuerWert);
-
-            // Zeile 27 enthält eine Überschrift (Anzahl Spaltenblöcke)
-            zelle = this.ultraGridStammDaten.DisplayLayout.Rows[27].Cells[1];
-            zelle.Value = @"Anzahl Spaltenblöcke:";
-            SetzeUeberSchrift(zelle, hinterGrundFarbe, ueberSchriftFarbe);
-
-            zelle = this.ultraGridStammDaten.DisplayLayout.Rows[28].Cells[1];
-            zelle.Appearance.BorderColor = ueberSchriftFarbe;
-            zelle.Appearance.BorderAlpha = Alpha.Opaque;
-            zelle.Appearance.TextHAlign = HAlign.Center;
-            zelle.Appearance.ForeColor = Color.Blue;
-
-            var blockAnz = zelle.Value;
-            if (blockAnz.GetType() == typeof(DBNull))
-            {
-                // Dieser Wert ändert sich mit der Auswahl der Firma
-                blockAnz = 18;                                                  // Standardwert für Schmid vorgeben
-            }
-
-            anzSpaltenBloecke = (int)blockAnz;                                  // Blockanzahl merken
-            row = table.Rows[28];                                               // Zeile, in Welche der Wert eingetragen werden soll
-            row[1] = anzSpaltenBloecke;                                         // Neuen Wert zuweisen
-
-            // Zeile 32 enthält eine Überschrift (Anzahl anzuzeigender Blöcke)
-            zelle = this.ultraGridStammDaten.DisplayLayout.Rows[32].Cells[1];
-            zelle.Value = @"Anzahl anzuzeigender Blöcke";
-            SetzeUeberSchrift(zelle, hinterGrundFarbe, ueberSchriftFarbe);
-
-            zelle = this.ultraGridStammDaten.DisplayLayout.Rows[33].Cells[1];
-            zelle.Tag = @"anzBloecke";
-            if (ultraGridStammDaten.DisplayLayout.Rows[33].Cells[1].Value.GetType() == typeof(DBNull))
-            {
-                anzSpaltenBloecke = 120;
-            }
-            else
-            {
-                anzSpaltenBloecke = (int)ultraGridStammDaten.DisplayLayout.Rows[33].Cells[1].Value;
-            }
-
-            //zelle.EditorComponent = ultraTextEditorBloecke;
-            //zelle.CellDisplayStyle = CellDisplayStyle.FullEditorDisplay;
-            //if (zelle.GetUIElement() != null)
-            //{
-            //    var neuX1 = zelle.GetUIElement().DrawingRect.Right;
-
-            //    ultraTextEditorBloecke.Location = new Point(zelle.GetUIElement().DrawingRect.Left + 5,
-            //        zelle.GetUIElement().DrawingRect.Top);
-            //    ultraTextEditorBloecke.Invalidate();
-            //}
-
-            // Zeile 43 enthält eine Überschrift (Timer Intervall)
-            zelle = this.ultraGridStammDaten.DisplayLayout.Rows[43].Cells[1];
-            SetzeUeberSchrift(zelle, hinterGrundFarbe, ueberSchriftFarbe);
-
-            zelle = this.ultraGridStammDaten.DisplayLayout.Rows[44].Cells[1];
-            zelle.Tag = @"Kommentar5";
-            zelle.Appearance.TextHAlign = HAlign.Center;
-
-            // Zeile 47 enthält eine Überschrift (History bei Änderungen ...)
-            zelle = this.ultraGridStammDaten.DisplayLayout.Rows[47].Cells[1];
-            SetzeUeberSchrift(zelle, hinterGrundFarbe, ueberSchriftFarbe);
-
-            zelle = this.ultraGridStammDaten.DisplayLayout.Rows[48].Cells[1];
-            zelle.Tag = @"Kommentar1";
-            zelle.Appearance.TextHAlign = HAlign.Center;
-
-            // Zeile 50 enthält eine Überschrift (Zeilenhöhe einstellen)
-            zelle = this.ultraGridStammDaten.DisplayLayout.Rows[50].Cells[1];
-            SetzeUeberSchrift(zelle, hinterGrundFarbe, ueberSchriftFarbe);
-
-            zelle = this.ultraGridStammDaten.DisplayLayout.Rows[51].Cells[1];
-            zelle.Tag = @"Kommentar2";
-            zelle.Appearance.TextHAlign = HAlign.Center;
-
-            // Zeile 53 enthält eine Überschrift (Zeilenhöhe bei mehrzeiligen Zellen)
-            zelle = this.ultraGridStammDaten.DisplayLayout.Rows[53].Cells[1];
-            SetzeUeberSchrift(zelle, hinterGrundFarbe, ueberSchriftFarbe);
-
-            zelle = this.ultraGridStammDaten.DisplayLayout.Rows[54].Cells[1];
-            zelle.Tag = @"Kommentar3"; zelle.Appearance.TextHAlign = HAlign.Center;
-
-            // Zeile 56 enthält eine Überschrift (Zeilenhöhe bri mehrzeiligen Zellen)
-            zelle = this.ultraGridStammDaten.DisplayLayout.Rows[56].Cells[1];
-            SetzeUeberSchrift(zelle, hinterGrundFarbe, ueberSchriftFarbe);
-
-            zelle = this.ultraGridStammDaten.DisplayLayout.Rows[57].Cells[1];
-            zelle.Tag = @"Kommentar4";
-            zelle.Appearance.TextHAlign = HAlign.Center;
-        }
-
         /// <summary>Setz eine Zelle als Überschrift.</summary>
         /// <param name="zelle">Die Zelle.</param>
         /// <param name="hinterGrundFarbe">Hintergrundfarbe der Zelle.</param>
@@ -849,6 +559,12 @@ namespace Terminplan
             row[spalte] = neuerWert;                                            // Neuen Wert zuweisen
         }
 
+        /// <summary>Setzt einen Wert in die übergebene Zeile und Spalte.</summary>
+        /// <param name="grid">das mit der DataSource verbundene Grid.</param>
+        /// <param name="vonZeile">Ab dieser Zeile werden die Werte eingetragen.</param>
+        /// <param name="anzZeilen">Anzahl der zu bearbeitenden Zeilen.</param>
+        /// <param name="spalte">Spalte, in welcher der Wert eingetragen werden soll.</param>
+        /// <param name="neuerWert">das Datum, von welchem aus die Berechnung erfolgt.</param>
         private void SetzeDatumsSpalte(UltraGrid grid, int vonZeile, int anzZeilen, int spalte, object neuerWert)
         {
             if (grid == null) return;                                           // Abbruch, wenn kein Grid vorhanden ist

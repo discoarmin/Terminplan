@@ -27,6 +27,7 @@ namespace Terminplan
     using System.IO;
     using System.Linq;
     using System.Reflection;
+    using System.Runtime.InteropServices;
     using System.Text.RegularExpressions;
     using System.Windows.Forms;
     using Infragistics.Win;
@@ -164,14 +165,21 @@ namespace Terminplan
         /// <returns>die ausgewählte Datei, bei Abbruch Leerstring</returns>
         public static string OeffneXmlDatei()
         {
+            var form = new Form()
+            {
+                TopMost = true,
+                StartPosition = FormStartPosition.CenterParent,
+            };
+
             // Dialog zum Öffnen einer Datei anzeigen
             var openFileDialog1 = new OpenFileDialog
             {
                 Filter = @"XML Dateien|*.xml",
                 Title = @"Terminplan öffnen",
+                InitialDirectory = Application.StartupPath + @"\",
             };
 
-            return openFileDialog1.ShowDialog() != DialogResult.OK ? string.Empty : openFileDialog1.FileName;
+            return openFileDialog1.ShowDialog(form) != DialogResult.OK ? string.Empty : openFileDialog1.FileName;
         }
 
         #endregion GetData
