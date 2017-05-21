@@ -491,7 +491,6 @@ namespace Terminplan
         private void SetzeComboFirma(ref UltraGridCell zelle)
         {
             if (zelle == null) return;                                          // Falls keine Zelle existiert, abbrechen
-
             zelle.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.DropDownList;  // Zelle enthält eine DropDownList
             zelle.ValueList = this.vlFirmen;
         }
@@ -554,6 +553,13 @@ namespace Terminplan
         /// <param name="neuerWert">der neu einzutragende Wert.</param>
         private void SetDataRowValue(UltraGrid grid, int zeile, int spalte, object neuerWert)
         {
+            if (grid.Name == @"ultraGridDaten")
+            {
+                grid.Rows[zeile].Cells[spalte].Value = neuerWert;
+                grid.UpdateData();                                              // geänderte Daten in das DataSource schreiben
+                return;
+            }
+
             var table = (DataTable)grid.DataSource;                             // Datentabelle ermitteln
             var row = table.Rows[zeile];                                        // Zeile, in Welche der Wert eingetragen werden soll
             row[spalte] = neuerWert;                                            // Neuen Wert zuweisen

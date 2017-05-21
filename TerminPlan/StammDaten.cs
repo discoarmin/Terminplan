@@ -310,15 +310,6 @@ namespace Terminplan
         }
 
         /// <summary>
-        /// Behandelt das ValueChanged-Ereignis des UltraGridStammDaten Kontrols.
-        /// </summary>
-        /// <param name="sender">Die Quelle des Ereignisses.</param>
-        /// <param name="e">Die <see cref="EventArgs" /> Instanz, welche die Ereignisdaten enthält.</param>
-        private void OnUltraComboEditorSpatenAusWahlValueChanged(object sender, EventArgs e)
-        {
-        }
-
-        /// <summary>
         /// Behandelt das Click-Ereignis des UltraButtonErase Kontrols.
         /// </summary>
         /// <param name="sender">Die Quelle des Ereignisses.</param>
@@ -516,7 +507,7 @@ namespace Terminplan
             var terminPlan = startForm.Fs.FrmTerminPlan;                        // Das Fenster des Terminplans holen
             terminPlan.FirmenIndex = e.Cell.ValueList.SelectedItemIndex;        // Index der ausgewählten Firma merken
 
-            var grid = startForm.Fs.FrmTerminPlan.ultraGridDaten;               // Grid, welches das Firmenloo enthält#
+            var grid = startForm.Fs.FrmTerminPlan.ultraGridDaten;               // Grid, welches das Firmenlogo enthält
             var zelle = grid.DisplayLayout.Rows[0].Cells[2];                    // Zelle, welches das Logo enthält
 
             // Firmenlogo einstellen
@@ -534,6 +525,8 @@ namespace Terminplan
                     zelle.Appearance.ImageBackground = Properties.Resources.EST;
                     break;
             }
+
+            grid.UpdateData();
         }
 
         /// <summary>
@@ -777,6 +770,19 @@ namespace Terminplan
             // Ermitteln, welche Zelle geändert wurde
             var zeile = e.Cell.Row.Index;                                       // Zeile der geänderten Zelle
             var spalte = e.Cell.Column.Index;                                   // Spalte der geänderten Zelle
+            var startForm = (StartForm)this.MdiParent;                          // Das Elternfenster holen
+
+            // Ermitteln, ob der Projektname geändert wurde
+            if (zeile == 9 && spalte == 1)
+            {
+                SetDataRowValue(startForm.Fs.FrmTerminPlan.ultraGridDaten, 0, 0, e.Cell.Value); // Projektname im Terminplan eintragen
+            }
+
+            // Ermitteln, ob der Projektleiter geändert wurde
+            if (zeile == 12 && spalte == 1)
+            {
+                SetDataRowValue(startForm.Fs.FrmTerminPlan.ultraGridDaten, 0, 1, e.Cell.Value); // Projektleiter im Terminplan eintragen
+            }
 
             // Ermitteln, ob es das Startdatum des Projekts ist (steht in 'B15')
             if (zeile == 15 && spalte == 1)

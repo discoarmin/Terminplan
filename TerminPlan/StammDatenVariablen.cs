@@ -21,6 +21,7 @@ namespace Terminplan
     using Infragistics.DrawFilters;
     using Infragistics.Win;
     using Infragistics.Win.AppStyling;
+    using Sanity;
 
     /// <summary>
     /// Die Variablendeklaration.
@@ -58,6 +59,9 @@ namespace Terminplan
         #endregion Aufzählungen
 
         #region Variablen
+
+        /// <summary>Enthält Merker, ob Arbeitsinhalt onHold enthält </summary>
+        public static bool[] OnHold;
 
         /// <summary> Pfad zu den Farbeinstallungen </summary>
         public static StyleManager StyleManagerStammDaten;

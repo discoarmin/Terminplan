@@ -1219,7 +1219,7 @@
             this.ultraTextEditor1.Location = new System.Drawing.Point(0, 0);
             this.ultraTextEditor1.Margin = new System.Windows.Forms.Padding(0);
             this.ultraTextEditor1.Name = "ultraTextEditor1";
-            this.ultraTextEditor1.Size = new System.Drawing.Size(682, 17);
+            this.ultraTextEditor1.Size = new System.Drawing.Size(682, 25);
             this.ultraTextEditor1.TabIndex = 1;
             this.ultraTextEditor1.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
             this.ultraTextEditor1.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
