@@ -49,7 +49,23 @@ namespace Terminplan
             startForm.ultraStatusBarStart.Panels[0].Text = @"Lade Outlook";     // Statusmeldung ausgeben
 
             var outlookApp = new Outlook.Application();                         // Neue Instanz von Outlook erzeugen
-            var mailItem = (MailItem)outlookApp.CreateItem(OlItemType.olMailItem);
+
+            // Der Namensraum 'Object' (Session) hat eine Sammlung von Konten.
+            var konten = outlookApp.Session.Accounts;                           // Alle vorhandenen Outlook-Konten ermitteln
+            Account konto = null;
+
+            // Alle ermittelten Konten durchlaufen um detailierte Kontoinformationen zu ermitteln
+            // Alle Eigenschaften des Kontoobjekts sind schreibgeschützt.
+            foreach (Account konto1 in konten)
+            {
+                if (konto1.SmtpAddress != outlookApp.Session.CurrentUser.AddressEntry.Name)
+                {
+                    konto = konto1;
+                    break;
+                }
+            }
+
+            var mailItem = outlookApp.CreateItem(OlItemType.olMailItem) as MailItem;
 
             var currentUser = outlookApp.Session.CurrentUser.AddressEntry;      // Eigene Email-Addresse ermitteln
             var signature = LeseSignature();                                    // Signatur der eigenen Mailadresse ermitteln
@@ -57,7 +73,7 @@ namespace Terminplan
 
             mailItem.Subject = "Hier Betreff eingaben";
             mailItem.To = this.ultraFormattedLinkLabel1.Value.ToString();
-            //mailItem.Body = @"Sehr geehrte Damen und Herren,";
+            if (konto != null) mailItem.SendUsingAccount = konto;
             mailItem.Body = anschrift +
                 Environment.NewLine +
                 Environment.NewLine +
