@@ -55704,11 +55704,28 @@
             <param name="appearance">The appearance structure to initialize</param>
             <param name="requestedProps">The properties that are needed</param>
         </member>
+        <member name="M:Infragistics.Win.UltraWinGrid.UltraGridCellProxyUIElement.OnMouseEnter">
+            <summary>
+            Called when the mouse enters this element
+            </summary>
+        </member>
+        <member name="M:Infragistics.Win.UltraWinGrid.UltraGridCellProxyUIElement.OnMouseLeave">
+            <summary>
+            Called when the mouse leaves this element
+            </summary>
+        </member>
         <member name="M:Infragistics.Win.UltraWinGrid.UltraGridCellProxyUIElement.PositionChildElementsHelper(Infragistics.Win.UIElementsCollection)">
             <summary>
             Positions any additional child elements after the main embeddable element has been positioned.
             </summary>
             <param name="oldChildElements">The old child elements collection from the previous positioning logic.</param>
+        </member>
+        <member name="M:Infragistics.Win.UltraWinGrid.UltraGridCellProxyUIElement.QueryEditElements(System.Boolean@,System.Boolean@)">
+            <summary>
+            Returns whether edit elements should currently be displayed in the editor.
+            </summary>
+            <param name="includeEditElements"></param>
+            <param name="reserveSpaceForEditElements"></param>
         </member>
         <member name="P:Infragistics.Win.UltraWinGrid.UltraGridCellProxyUIElement.BorderStyle">
             <summary>

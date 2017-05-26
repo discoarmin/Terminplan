@@ -1,0 +1,88 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Projekte>
+    <ProjektID>87033232-7833-4bfe-a1ec-4b76f3ecd0c2</ProjektID>
+    <ProjektKey>2222/22</ProjektKey>
+    <ProjektName>Test</ProjektName>
+    <ProjektStart>2017-05-22T00:00:00+02:00</ProjektStart>
+  </Projekte>
+  <Arbeitsinhalt_Aufgaben>
+    <TaskID>8eb81b51-0ffe-456f-8a00-67a7b0524974</TaskID>
+    <ProjektKey>2222/22</ProjektKey>
+    <TaskName>Arbeitsinhalt 1</TaskName>
+    <TaskStartTime>2017-05-22T00:00:00+02:00</TaskStartTime>
+    <TaskDauer>P5D</TaskDauer>
+    <Einschraenkung xsi:type="xs:" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">1</Einschraenkung>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAHNJbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNi4yLCBWZXJzaW9uPTE2LjIuMjAxNjIuMjExMSwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiBQEAAAAmSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlRhc2sJAAAAAklkEkNvbnN0cmFpbnREYXRlVGltZQhEdXJhdGlvbg5EdXJhdGlvbkZvcm1hdBVTdW1tYXJ5RHVyYXRpb25Gb3JtYXQETmFtZQ9QZXJjZW50Q29tcGxldGUKUHJvamVjdEtleQ1TdGFydERhdGVUaW1lAwAAAAABAAEAC1N5c3RlbS5HdWlkDQwICAsNAgAAAAT9////C1N5c3RlbS5HdWlkCwAAAAJfYQJfYgJfYwJfZAJfZQJfZgJfZwJfaAJfaQJfagJfawAAAAAAAAAAAAAACAcHAgICAgICAgJRG7iO/g9vRYoAZ6ewUkl0AAAAAAAAAAAAwBDU7QMAAAMAAAADAAAABgQAAAAPQXJiZWl0c2luaGFsdCAxAAAAAAYFAAAABzIyMjIvMjIAgGZ9paDUCAs=</AlleEigenschaften>
+  </Arbeitsinhalt_Aufgaben>
+  <Arbeitsinhalt_Aufgaben>
+    <TaskID>e944f219-d093-4565-95d4-7ec7622338e6</TaskID>
+    <ProjektKey>2222/22</ProjektKey>
+    <TaskName>Aufgabe 1</TaskName>
+    <TaskStartTime>2017-05-22T00:00:00+02:00</TaskStartTime>
+    <TaskDauer>P2D</TaskDauer>
+    <ParentTaskID>8eb81b51-0ffe-456f-8a00-67a7b0524974</ParentTaskID>
+    <Einschraenkung xsi:type="xs:" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">6</Einschraenkung>
+    <TaskFertigInProzent>25</TaskFertigInProzent>
+  </Arbeitsinhalt_Aufgaben>
+  <Besitzer>
+    <Key>Martin Knoblauch</Key>
+    <Name>Martin Knoblauch(kn)</Name>
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+  </Besitzer>
+  <Besitzer>
+    <Key>Martin Kaiser</Key>
+    <Name>Martin Kaiser(ka)</Name>
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+  </Besitzer>
+  <Besitzer>
+    <Key>Wolfgang Roth</Key>
+    <Name>Wolfgang Roth(ro)</Name>
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+  </Besitzer>
+  <Besitzer>
+    <Key>Armin Brenner</Key>
+    <Name>Armin Brenner(br)</Name>
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+  </Besitzer>
+  <Besitzer>
+    <Key>C. Klute-Lang</Key>
+    <Name>C. Klute-Lang(kl)</Name>
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+  </Besitzer>
+  <Besitzer>
+    <Key>Martin Jetter</Key>
+    <Name>Martin Jetter(je)</Name>
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+  </Besitzer>
+  <Besitzer>
+    <Key>J. Echsler-Kull</Key>
+    <Name>J. Echsler-Kull(ku)</Name>
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+  </Besitzer>
+  <Besitzer>
+    <Key>Benjamin Kittlaus</Key>
+    <Name>Benjamin Kittlaus(ks)</Name>
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+  </Besitzer>
+  <Besitzer>
+    <Key>Andreas Held</Key>
+    <Name>Andreas Held(hd)</Name>
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+  </Besitzer>
+  <Besitzer>
+    <Key>Xue Yang</Key>
+    <Name>Xue Yang(ya)</Name>
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+  </Besitzer>
+</NewDataSet>

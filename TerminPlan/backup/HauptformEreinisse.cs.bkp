@@ -1,22 +1,4 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="$File" company="EST GmbH + CO.KG">
-//   Copyright (c) EST GmbH + CO.KG. All rights reserved.
-// </copyright>
-// <summary>
-//   Zusammenfassung für .
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-// <remarks>
-//     <para>Autor: Armin Brenner</para>
-//     <para>
-//        History : Datum     bearb.  Änderung
-//                  --------  ------  ------------------------------------
-//                  02.04.17  br      Grundversion
-//      </para>
-// </remarks>
-// --------------------------------------------------------------------------------------------------------------------
-
-// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="HauptformEreignisse.cs" company="EST GmbH + CO.KG">
 //   Copyright (c) EST GmbH + CO.KG. All rights reserved.
 // </copyright>

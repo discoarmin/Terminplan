@@ -1,0 +1,131 @@
+<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:Locale="de-DE">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="Projekte">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="ProjektID" type="xs:string" minOccurs="0" />
+                <xs:element name="ProjektKey" type="xs:string" minOccurs="0" />
+                <xs:element name="ProjektName" type="xs:string" minOccurs="0" />
+                <xs:element name="ProjektStart" type="xs:dateTime" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Arbeitsinhalt_Aufgaben">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="TaskID" type="xs:string" minOccurs="0" />
+                <xs:element name="ProjektKey" type="xs:string" minOccurs="0" />
+                <xs:element name="TaskName" type="xs:string" minOccurs="0" />
+                <xs:element name="TaskStartTime" type="xs:dateTime" minOccurs="0" />
+                <xs:element name="TaskDauer" type="xs:duration" minOccurs="0" />
+                <xs:element name="ParentTaskID" type="xs:string" minOccurs="0" />
+                <xs:element name="Einschraenkung" msdata:DataType="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" type="xs:anyType" minOccurs="0" />
+                <xs:element name="TaskFertigInProzent" type="xs:string" minOccurs="0" />
+                <xs:element name="AlleEigenschaften" type="xs:base64Binary" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Besitzer">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Key" type="xs:string" minOccurs="0" />
+                <xs:element name="Name" type="xs:string" minOccurs="0" />
+                <xs:element name="EmailAddresse" type="xs:string" minOccurs="0" />
+                <xs:element name="Sichtbar" type="xs:boolean" minOccurs="0" />
+                <xs:element name="AlleEigenschaften" type="xs:base64Binary" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+  <Projekte>
+    <ProjektID>bc50344c-a95c-4917-a0c2-75d6240f80dd</ProjektID>
+    <ProjektKey>1234/00</ProjektKey>
+    <ProjektName>Test</ProjektName>
+    <ProjektStart>2017-05-22T00:00:00+02:00</ProjektStart>
+  </Projekte>
+  <Arbeitsinhalt_Aufgaben>
+    <TaskID>7ae661c9-ee1f-4697-b386-dba33d4496df</TaskID>
+    <ProjektKey>1234/00</ProjektKey>
+    <TaskName>Arbeitsinhalt 1</TaskName>
+    <TaskStartTime>2017-05-22T00:00:00+02:00</TaskStartTime>
+    <TaskDauer>P5D</TaskDauer>
+    <Einschraenkung xsi:type="xs:" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">1</Einschraenkung>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAHNJbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNi4yLCBWZXJzaW9uPTE2LjIuMjAxNjIuMjExMSwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiBQEAAAAmSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlRhc2sJAAAAAklkEkNvbnN0cmFpbnREYXRlVGltZQhEdXJhdGlvbg5EdXJhdGlvbkZvcm1hdBVTdW1tYXJ5RHVyYXRpb25Gb3JtYXQETmFtZQ9QZXJjZW50Q29tcGxldGUKUHJvamVjdEtleQ1TdGFydERhdGVUaW1lAwAAAAABAAEAC1N5c3RlbS5HdWlkDQwICAsNAgAAAAT9////C1N5c3RlbS5HdWlkCwAAAAJfYQJfYgJfYwJfZAJfZQJfZgJfZwJfaAJfaQJfagJfawAAAAAAAAAAAAAACAcHAgICAgICAgLJYeZ6H+6XRrOG26M9RJbfAAAAAAAAAAAAwBDU7QMAAAMAAAADAAAABgQAAAAPQXJiZWl0c2luaGFsdCAxAAAAAAYFAAAABzEyMzQvMDAAgGZ9paDUCAs=</AlleEigenschaften>
+  </Arbeitsinhalt_Aufgaben>
+  <Arbeitsinhalt_Aufgaben>
+    <TaskID>cf2f38f1-7e79-4155-a004-1b341b9e1674</TaskID>
+    <ProjektKey>1234/00</ProjektKey>
+    <TaskName>Aufgabe 1</TaskName>
+    <TaskStartTime>2017-05-22T00:00:00+02:00</TaskStartTime>
+    <TaskDauer>P2D</TaskDauer>
+    <ParentTaskID>7ae661c9-ee1f-4697-b386-dba33d4496df</ParentTaskID>
+    <Einschraenkung xsi:type="xs:" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">6</Einschraenkung>
+    <TaskFertigInProzent>25</TaskFertigInProzent>
+  </Arbeitsinhalt_Aufgaben>
+  <Besitzer>
+    <Key>Martin Knoblauch</Key>
+    <Name>Martin Knoblauch(kn)</Name>
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+  </Besitzer>
+  <Besitzer>
+    <Key>Martin Kaiser</Key>
+    <Name>Martin Kaiser(ka)</Name>
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+  </Besitzer>
+  <Besitzer>
+    <Key>Wolfgang Roth</Key>
+    <Name>Wolfgang Roth(ro)</Name>
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+  </Besitzer>
+  <Besitzer>
+    <Key>Armin Brenner</Key>
+    <Name>Armin Brenner(br)</Name>
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+  </Besitzer>
+  <Besitzer>
+    <Key>C. Klute-Lang</Key>
+    <Name>C. Klute-Lang(kl)</Name>
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+  </Besitzer>
+  <Besitzer>
+    <Key>Martin Jetter</Key>
+    <Name>Martin Jetter(je)</Name>
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+  </Besitzer>
+  <Besitzer>
+    <Key>J. Echsler-Kull</Key>
+    <Name>J. Echsler-Kull(ku)</Name>
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+  </Besitzer>
+  <Besitzer>
+    <Key>Benjamin Kittlaus</Key>
+    <Name>Benjamin Kittlaus(ks)</Name>
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+  </Besitzer>
+  <Besitzer>
+    <Key>Andreas Held</Key>
+    <Name>Andreas Held(hd)</Name>
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+  </Besitzer>
+  <Besitzer>
+    <Key>Xue Yang</Key>
+    <Name>Xue Yang(ya)</Name>
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+  </Besitzer>
+</NewDataSet>

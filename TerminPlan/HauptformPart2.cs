@@ -140,11 +140,12 @@ namespace Terminplan
         /// <param name="dateiName">Name der zu speichernden Datei mit Pfadangabe.</param>
         private void Speichern(string dateiName)
         {
-            //var writer = new System.IO.StreamWriter();
+            //var writer = new StreamWriter(dateiName);
             DatasetTp.AcceptChanges();                                          // Damit alle Änderungen übernommen werden
             var streamWrite = new FileStream
                     (dateiName, FileMode.Create);
-            //this.DatasetTp.WriteXml(dateiName, XmlWriteMode.WriteSchema);
+            //DatasetTp.WriteXml(dateiName, XmlWriteMode.WriteSchema);
+            //DatasetTp.WriteXml(writer, XmlWriteMode.WriteSchema);
             DatasetTp.WriteXml(streamWrite, XmlWriteMode.WriteSchema);
         }
 

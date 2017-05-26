@@ -273,11 +273,14 @@ namespace Terminplan
 
             try
             {
-                var editor = (UltraCheckEditor)zelle?.EditorComponentResolved;      // Eventuell eingebetteten Editor der Zelle ermitteln
-                if (editor == null) return;                                         // Wenn kein Editor existiert, kann abgebrochen werden
+                UltraCheckEditor editor = null;
 
-                var editor1 = editor.Editor;                                        // Eingebundener Editor
-                var wert = editor1.CurrentEditText.ToLower();                       // Der Zustand der Checkbox kann nur als Text ermittelt werden
+                // Eventuell eingebetteten Editor der Zelle ermitteln
+                if (zelle.EditorComponentResolved != null) editor = zelle.EditorComponentResolved as UltraCheckEditor;
+                if (editor == null) return;                                     // Wenn kein Editor existiert, kann abgebrochen werden
+
+                var editor1 = editor.Editor;                                    // Eingebundener Editor
+                var wert = editor1.CurrentEditText.ToLower();                   // Der Zustand der Checkbox kann nur als Text ermittelt werden
 
                 // Zustand des CheckEditors in die Zelle schreiben
                 zelle.Value = wert == @"true" ? @"True" : @"False";
@@ -771,17 +774,24 @@ namespace Terminplan
             var zeile = e.Cell.Row.Index;                                       // Zeile der geänderten Zelle
             var spalte = e.Cell.Column.Index;                                   // Spalte der geänderten Zelle
             var startForm = (StartForm)this.MdiParent;                          // Das Elternfenster holen
+            var zelle = ((UltraGrid)sender).ActiveCell;                         // Zelle, welche angewählt wurde, ermitteln
+
+            this.ultraTextEditor1.Text = zelle.Text;                            // den Inhalt in den Editor kopieren
 
             // Ermitteln, ob der Projektname geändert wurde
             if (zeile == 9 && spalte == 1)
             {
                 SetDataRowValue(startForm.Fs.FrmTerminPlan.ultraGridDaten, 0, 0, e.Cell.Value); // Projektname im Terminplan eintragen
+                startForm.Fs.FrmTerminPlan.ultraGridDaten.Invalidate();
+                startForm.Fs.FrmTerminPlan.ultraGridDaten.Update();
             }
 
             // Ermitteln, ob der Projektleiter geändert wurde
             if (zeile == 12 && spalte == 1)
             {
                 SetDataRowValue(startForm.Fs.FrmTerminPlan.ultraGridDaten, 0, 1, e.Cell.Value); // Projektleiter im Terminplan eintragen
+                startForm.Fs.FrmTerminPlan.ultraGridDaten.Invalidate();
+                startForm.Fs.FrmTerminPlan.ultraGridDaten.Update();
             }
 
             // Ermitteln, ob es das Startdatum des Projekts ist (steht in 'B15')

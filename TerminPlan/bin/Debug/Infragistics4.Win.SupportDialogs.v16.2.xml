@@ -3894,6 +3894,13 @@
             Overriden: Called when the object is disposed of
             </summary>
         </member>
+        <member name="M:Infragistics.Win.SupportDialogs.RibbonCustomizationProvider.ToolNode.IsAllowed(Infragistics.Win.SupportDialogs.RibbonCustomizationProvider.StockItemModificationOption)">
+            <summary>
+            Indicates if the provided StockItemModificationOption is allowed
+            </summary>
+            <param name="option"></param>
+            <returns></returns>
+        </member>
         <member name="F:Infragistics.Win.SupportDialogs.RibbonCustomizationProvider.RibbonItemTreeNodeType.ContextualNode">
             <summary>
             Used to represent the group of Main Tabs, and Contextual Tab Groups

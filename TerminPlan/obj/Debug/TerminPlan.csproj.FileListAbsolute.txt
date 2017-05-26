@@ -89,7 +89,7 @@ E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\Terminplan.exe.licenses
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\de-DE\Terminplan.resources.dll
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\Terminplan.exe
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\Terminplan.pdb
-E:\PrjDotNet4.6.2\Terminplan\TerminPlan\obj\Debug\TerminPlan.csproj.Terminplan.exe.config
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\Infragistics4.Win.UltraWinCalcManager.v16.2.dll
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\Sanity.dll
 E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\Sanity.pdb
+E:\PrjDotNet4.6.2\Terminplan\TerminPlan\bin\Debug\Infragistics4.Win.UltraWinCalcManager.v16.2.xml

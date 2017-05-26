@@ -1,0 +1,145 @@
+<Terminplan>
+  <xs:schema id="Terminplan" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="Terminplan" msdata:IsDataSet="true" msdata:Locale="de-DE">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="Projekte">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="ProjektID" type="xs:string" minOccurs="0" />
+                <xs:element name="ProjektKey" type="xs:string" minOccurs="0" />
+                <xs:element name="ProjektName" type="xs:string" minOccurs="0" />
+                <xs:element name="ProjektStart" type="xs:dateTime" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Arbeitsinhalt_Aufgaben">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="TaskID" type="xs:string" minOccurs="0" />
+                <xs:element name="ProjektKey" type="xs:string" minOccurs="0" />
+                <xs:element name="TaskName" type="xs:string" minOccurs="0" />
+                <xs:element name="TaskStartTime" type="xs:dateTime" minOccurs="0" />
+                <xs:element name="TaskDauer" type="xs:duration" minOccurs="0" />
+                <xs:element name="ParentTaskID" type="xs:string" minOccurs="0" />
+                <xs:element name="Einschraenkung" type="xs:int" minOccurs="0" />
+                <xs:element name="TaskFertigInProzent" type="xs:string" minOccurs="0" />
+                <xs:element name="AlleEigenschaften" type="xs:base64Binary" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Besitzer">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Key" type="xs:string" minOccurs="0" />
+                <xs:element name="Name" type="xs:string" minOccurs="0" />
+                <xs:element name="EmailAddresse" type="xs:string" minOccurs="0" />
+                <xs:element name="Sichtbar" type="xs:boolean" minOccurs="0" />
+                <xs:element name="AlleEigenschaften" type="xs:base64Binary" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+      <xs:unique name="Constraint1">
+        <xs:selector xpath=".//Besitzer" />
+        <xs:field xpath="Key" />
+      </xs:unique>
+    </xs:element>
+  </xs:schema>
+  <Projekte>
+    <ProjektID>c1539f14-55ef-4dc9-9b66-a30f6dec7f5a</ProjektID>
+    <ProjektKey>1234/56</ProjektKey>
+    <ProjektName>TestSchmid</ProjektName>
+    <ProjektStart>2017-05-22T00:00:00+02:00</ProjektStart>
+  </Projekte>
+  <Arbeitsinhalt_Aufgaben>
+    <TaskID>d0b5a674-1246-4eec-b7e8-8983906a4eda</TaskID>
+    <ProjektKey>1234/56</ProjektKey>
+    <TaskName>Arbeitsinhalt 1</TaskName>
+    <TaskStartTime>2017-05-22T00:00:00+02:00</TaskStartTime>
+    <TaskDauer>P5D</TaskDauer>
+    <Einschraenkung>1</Einschraenkung>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAHNJbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNi4yLCBWZXJzaW9uPTE2LjIuMjAxNjIuMjExMSwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiBQEAAAAmSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlRhc2sJAAAAAklkEkNvbnN0cmFpbnREYXRlVGltZQhEdXJhdGlvbg5EdXJhdGlvbkZvcm1hdBVTdW1tYXJ5RHVyYXRpb25Gb3JtYXQETmFtZQ9QZXJjZW50Q29tcGxldGUKUHJvamVjdEtleQ1TdGFydERhdGVUaW1lAwAAAAABAAEAC1N5c3RlbS5HdWlkDQwICAsNAgAAAAT9////C1N5c3RlbS5HdWlkCwAAAAJfYQJfYgJfYwJfZAJfZQJfZgJfZwJfaAJfaQJfagJfawAAAAAAAAAAAAAACAcHAgICAgICAgJ0prXQRhLsTrfoiYOQak7aAAAAAAAAAAAAwBDU7QMAAAMAAAADAAAABgQAAAAPQXJiZWl0c2luaGFsdCAxAAAAAAYFAAAABzEyMzQvNTYAgGZ9paDUCAs=</AlleEigenschaften>
+  </Arbeitsinhalt_Aufgaben>
+  <Arbeitsinhalt_Aufgaben>
+    <TaskID>19946d96-2e48-4990-9bf8-3d74b25c5dcb</TaskID>
+    <ProjektKey>1234/56</ProjektKey>
+    <TaskName>Aufgabe 1</TaskName>
+    <TaskStartTime>2017-05-22T00:00:00+02:00</TaskStartTime>
+    <TaskDauer>P2D</TaskDauer>
+    <ParentTaskID>d0b5a674-1246-4eec-b7e8-8983906a4eda</ParentTaskID>
+    <Einschraenkung>6</Einschraenkung>
+    <TaskFertigInProzent>25</TaskFertigInProzent>
+  </Arbeitsinhalt_Aufgaben>
+  <Besitzer>
+    <Key>Martin Knoblauch</Key>
+    <Name>Martin Knoblauch(kn)</Name>
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAHNJbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNi4yLCBWZXJzaW9uPTE2LjIuMjAxNjIuMjExMSwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiBQEAAAAnSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLk93bmVyAgAAAANLZXkETmFtZQEBAgAAAAYDAAAAEE1hcnRpbiBLbm9ibGF1Y2gGBAAAABRNYXJ0aW4gS25vYmxhdWNoKGtuKQs=</AlleEigenschaften>
+  </Besitzer>
+  <Besitzer>
+    <Key>Martin Kaiser</Key>
+    <Name>Martin Kaiser(ka)</Name>
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAHNJbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNi4yLCBWZXJzaW9uPTE2LjIuMjAxNjIuMjExMSwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiBQEAAAAnSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLk93bmVyAgAAAANLZXkETmFtZQEBAgAAAAYDAAAADU1hcnRpbiBLYWlzZXIGBAAAABFNYXJ0aW4gS2Fpc2VyKGthKQs=</AlleEigenschaften>
+  </Besitzer>
+  <Besitzer>
+    <Key>Wolfgang Roth</Key>
+    <Name>Wolfgang Roth(ro)</Name>
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAHNJbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNi4yLCBWZXJzaW9uPTE2LjIuMjAxNjIuMjExMSwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiBQEAAAAnSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLk93bmVyAgAAAANLZXkETmFtZQEBAgAAAAYDAAAADVdvbGZnYW5nIFJvdGgGBAAAABFXb2xmZ2FuZyBSb3RoKHJvKQs=</AlleEigenschaften>
+  </Besitzer>
+  <Besitzer>
+    <Key>Armin Brenner</Key>
+    <Name>Armin Brenner(br)</Name>
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAHNJbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNi4yLCBWZXJzaW9uPTE2LjIuMjAxNjIuMjExMSwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiBQEAAAAnSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLk93bmVyAgAAAANLZXkETmFtZQEBAgAAAAYDAAAADUFybWluIEJyZW5uZXIGBAAAABFBcm1pbiBCcmVubmVyKGJyKQs=</AlleEigenschaften>
+  </Besitzer>
+  <Besitzer>
+    <Key>C. Klute-Lang</Key>
+    <Name>C. Klute-Lang(kl)</Name>
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAHNJbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNi4yLCBWZXJzaW9uPTE2LjIuMjAxNjIuMjExMSwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiBQEAAAAnSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLk93bmVyAgAAAANLZXkETmFtZQEBAgAAAAYDAAAADUMuIEtsdXRlLUxhbmcGBAAAABFDLiBLbHV0ZS1MYW5nKGtsKQs=</AlleEigenschaften>
+  </Besitzer>
+  <Besitzer>
+    <Key>Martin Jetter</Key>
+    <Name>Martin Jetter(je)</Name>
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAHNJbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNi4yLCBWZXJzaW9uPTE2LjIuMjAxNjIuMjExMSwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiBQEAAAAnSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLk93bmVyAgAAAANLZXkETmFtZQEBAgAAAAYDAAAADU1hcnRpbiBKZXR0ZXIGBAAAABFNYXJ0aW4gSmV0dGVyKGplKQs=</AlleEigenschaften>
+  </Besitzer>
+  <Besitzer>
+    <Key>J. Echsler-Kull</Key>
+    <Name>J. Echsler-Kull(ku)</Name>
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAHNJbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNi4yLCBWZXJzaW9uPTE2LjIuMjAxNjIuMjExMSwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiBQEAAAAnSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLk93bmVyAgAAAANLZXkETmFtZQEBAgAAAAYDAAAAD0ouIEVjaHNsZXItS3VsbAYEAAAAE0ouIEVjaHNsZXItS3VsbChrdSkL</AlleEigenschaften>
+  </Besitzer>
+  <Besitzer>
+    <Key>Benjamin Kittlaus</Key>
+    <Name>Benjamin Kittlaus(ks)</Name>
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAHNJbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNi4yLCBWZXJzaW9uPTE2LjIuMjAxNjIuMjExMSwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiBQEAAAAnSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLk93bmVyAgAAAANLZXkETmFtZQEBAgAAAAYDAAAAEUJlbmphbWluIEtpdHRsYXVzBgQAAAAVQmVuamFtaW4gS2l0dGxhdXMoa3MpCw==</AlleEigenschaften>
+  </Besitzer>
+  <Besitzer>
+    <Key>Andreas Held</Key>
+    <Name>Andreas Held(hd)</Name>
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAHNJbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNi4yLCBWZXJzaW9uPTE2LjIuMjAxNjIuMjExMSwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiBQEAAAAnSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLk93bmVyAgAAAANLZXkETmFtZQEBAgAAAAYDAAAADEFuZHJlYXMgSGVsZAYEAAAAEEFuZHJlYXMgSGVsZChoZCkL</AlleEigenschaften>
+  </Besitzer>
+  <Besitzer>
+    <Key>Xue Yang</Key>
+    <Name>Xue Yang(ya)</Name>
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAHNJbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNi4yLCBWZXJzaW9uPTE2LjIuMjAxNjIuMjExMSwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiBQEAAAAnSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLk93bmVyAgAAAANLZXkETmFtZQEBAgAAAAYDAAAACFh1ZSBZYW5nBgQAAAAMWHVlIFlhbmcoeWEpCw==</AlleEigenschaften>
+  </Besitzer>
+</Terminplan>
