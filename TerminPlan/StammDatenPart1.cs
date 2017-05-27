@@ -513,10 +513,15 @@ namespace Terminplan
 
             zelle.Style = Infragistics.Win.UltraWinGrid.ColumnStyle.URL;        // Zelle enthält eine URL
             var editor = this.ultraFormattedLinkLabel1;
+            editor.Click += ultraFormattedLinkLabel1Click;
             editor.Text = zelle.Text;
             zelle.EditorComponent = editor;
             zelle.CellDisplayStyle = CellDisplayStyle.FullEditorDisplay;
             zelle.Activation = Activation.AllowEdit;
+        }
+
+        private void ultraFormattedLinkLabel1Click(object sender, EventArgs e)
+        {
         }
 
         private void OnCheckEditorClick(object sender, System.EventArgs e)
@@ -553,16 +558,28 @@ namespace Terminplan
         /// <param name="neuerWert">der neu einzutragende Wert.</param>
         private void SetDataRowValue(UltraGrid grid, int zeile, int spalte, object neuerWert)
         {
+            var art = grid.DataSource.GetType().Name;                           // Name des Typs der Datasource
             if (grid.Name == @"ultraGridDaten")
             {
-                grid.Rows[zeile].Cells[spalte].Value = neuerWert;
-                grid.UpdateData();                                              // geänderte Daten in das DataSource schreiben
+                var startForm = (StartForm)this.MdiParent;                      // Das Elternfenster holen
+
+                var ds = startForm.Fs.FrmTerminPlan.dataSetPrjDaten;            // DataSet, welches die Projektdaten enthält
+                var tabelle = ds.Tables[0];                                     // Es gibt nur eine Tabelle
+                if (tabelle.Rows.Count == 0)
+                {
+                    var neueZeile = tabelle.NewRow();
+                    tabelle.Rows.Add(neueZeile);
+                }
+
+                tabelle.Rows[zeile][spalte] = neuerWert;
+                System.Threading.Thread.Sleep(200);
                 return;
             }
 
             var table = (DataTable)grid.DataSource;                             // Datentabelle ermitteln
             var row = table.Rows[zeile];                                        // Zeile, in Welche der Wert eingetragen werden soll
             row[spalte] = neuerWert;                                            // Neuen Wert zuweisen
+            System.Threading.Thread.Sleep(200);
         }
 
         /// <summary>Setzt einen Wert in die übergebene Zeile und Spalte.</summary>
@@ -574,8 +591,6 @@ namespace Terminplan
         private void SetzeDatumsSpalte(UltraGrid grid, int vonZeile, int anzZeilen, int spalte, object neuerWert)
         {
             if (grid == null) return;                                           // Abbruch, wenn kein Grid vorhanden ist
-
-            neuerWert = (Convert.ToDateTime(neuerWert)).ToShortDateString();
 
             // Es können nur die maximale Anzahl an Wochen eingegeben werden.
             // Ist diese Anzahl überschritten, so wird die maximale Anzahl an Wochen genommen

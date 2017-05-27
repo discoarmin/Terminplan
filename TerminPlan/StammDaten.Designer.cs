@@ -435,6 +435,7 @@
             appearance1.FontData.SizeInPoints = 11F;
             this.ultraGridStammDaten.DisplayLayout.Appearance = appearance1;
             ultraGridColumn27.Header.VisiblePosition = 0;
+            ultraGridColumn28.AutoEditMode = Infragistics.Win.DefaultableBoolean.True;
             ultraGridColumn28.Header.VisiblePosition = 1;
             ultraGridColumn29.Header.VisiblePosition = 2;
             ultraGridColumn30.Header.VisiblePosition = 3;
@@ -1292,28 +1293,33 @@
             // 
             // ultraFormattedLinkLabel1
             // 
+            appearance42.BackColor = System.Drawing.Color.Transparent;
             appearance42.FontData.UnderlineAsString = "True";
             appearance42.ForeColor = System.Drawing.Color.Blue;
             this.ultraFormattedLinkLabel1.ActiveLinkAppearance = appearance42;
+            appearance43.BackColor = System.Drawing.Color.Transparent;
             appearance43.FontData.UnderlineAsString = "True";
             appearance43.ForeColor = System.Drawing.Color.Blue;
             this.ultraFormattedLinkLabel1.Appearance = appearance43;
-            this.ultraFormattedLinkLabel1.AutoSize = true;
             this.ultraFormattedLinkLabel1.BorderStyle = Infragistics.Win.UIElementBorderStyle.None;
+            appearance44.BackColor = System.Drawing.Color.Transparent;
             appearance44.FontData.UnderlineAsString = "True";
             this.ultraFormattedLinkLabel1.LinkAppearance = appearance44;
             this.ultraFormattedLinkLabel1.Location = new System.Drawing.Point(806, 130);
             this.ultraFormattedLinkLabel1.Margin = new System.Windows.Forms.Padding(0);
             this.ultraFormattedLinkLabel1.Name = "ultraFormattedLinkLabel1";
-            this.ultraFormattedLinkLabel1.Size = new System.Drawing.Size(129, 14);
+            this.ultraFormattedLinkLabel1.Size = new System.Drawing.Size(130, 23);
             this.ultraFormattedLinkLabel1.TabIndex = 23;
             this.ultraFormattedLinkLabel1.TabStop = true;
             this.ultraFormattedLinkLabel1.TreatValueAs = Infragistics.Win.FormattedLinkLabel.TreatValueAs.URL;
             this.ultraFormattedLinkLabel1.UnderlineLinks = Infragistics.Win.FormattedLinkLabel.UnderlineLink.Always;
             this.ultraFormattedLinkLabel1.UseAppStyling = false;
+            this.ultraFormattedLinkLabel1.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.ultraFormattedLinkLabel1.Value = "ultraFormattedLinkLabel1";
             this.ultraFormattedLinkLabel1.Visible = false;
             this.ultraFormattedLinkLabel1.LinkClicked += new Infragistics.Win.FormattedLinkLabel.LinkClickedEventHandler(this.OnUltraFormattedLinkLabel1LinkClicked);
+            this.ultraFormattedLinkLabel1.Click += new System.EventHandler(this.ultraFormattedLinkLabel1_Click);
+            this.ultraFormattedLinkLabel1.Enter += new System.EventHandler(this.ultraFormattedLinkLabel1_Enter);
             // 
             // ultraToolbarsManager
             // 
@@ -2014,7 +2020,6 @@
         private Infragistics.Win.UltraWinGanttView.UltraGanttViewPrintDocument ultraGridPrintDocumentStamm;
         private ZedGraph.ZedGraphControl zedGraphControl1;
         private Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter ultraGridExcelExporterStammDaten;
-        private Infragistics.Win.FormattedLinkLabel.UltraFormattedLinkLabel ultraFormattedLinkLabel1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private Infragistics.Win.Misc.UltraTilePanel ultraTilePanel1;
@@ -2039,5 +2044,6 @@
         public Infragistics.Win.UltraWinGrid.UltraGrid ultraGridStammDaten;
         public System.Windows.Forms.RichTextBox Kommentar1;
         public Infragistics.Win.UltraWinEditors.UltraTextEditor ultraTextEditorBloecke;
+        public Infragistics.Win.FormattedLinkLabel.UltraFormattedLinkLabel ultraFormattedLinkLabel1;
     }
 }

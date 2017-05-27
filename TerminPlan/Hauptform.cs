@@ -1,22 +1,4 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="$File" company="EST GmbH + CO.KG">
-//   Copyright (c) EST GmbH + CO.KG. All rights reserved.
-// </copyright>
-// <summary>
-//   Zusammenfassung für .
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
-// <remarks>
-//     <para>Autor: Armin Brenner</para>
-//     <para>
-//        History : Datum     bearb.  Änderung
-//                  --------  ------  ------------------------------------
-//                  02.04.17  br      Grundversion
-//      </para>
-// </remarks>
-// --------------------------------------------------------------------------------------------------------------------
-
-// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="HauptForm.cs" company="EST GmbH + CO.KG">
 //   Copyright (c) EST GmbH + CO.KG. All rights reserved.
 // </copyright>
@@ -331,6 +313,16 @@ namespace Terminplan
         /// <param name="e">Die <see cref="TaskAddedEventArgs" /> Instanz,welche die Ereignisdaten enthält.</param>
         private void OnUltraGanttView1TaskAdded(object sender, TaskAddedEventArgs e)
         {
+            // Vorgaben für den neuen Task machen
+            DateTime startDatum;                                                // Startdatum des hinzugefügten Verfahrens
+            DateTime endeDatum;                                                 // Endedatum des hinzugefügten Verfahrens
+            var prjStart = Convert.ToDateTime(StammDaten.prjStartDatum.ToShortDateString()); // Projektstart aus den Stammdaten
+            startDatum = e.Task.Parent != null ? e.Task.Parent.StartDateTime : prjStart;
+            if (startDatum < prjStart) startDatum = prjStart;                   // Falls das Startdatum vor dem Projektstart liegt, dieses auf den Projektstart setzen
+            e.Task.StartDateTime = startDatum;
+
+            endeDatum = startDatum.AddDays( e.Task.Duration.Days);              // Standarddauar zum Startdatum hinzuzählen für das Endedatum
+            e.Task.EndDateTime = endeDatum;
             UltraGanttView1TaskAdded(sender, e);
         }
 
@@ -467,6 +459,7 @@ namespace Terminplan
         private void OnInitializeUi()
         {
             InitializeUi();                                                     // Oberfläche initialisieren
+            ultraGridDaten.DisplayLayout.Bands[0].Columns[0].AutoSizeMode = Infragistics.Win.UltraWinGrid.ColumnAutoSizeMode.AllRowsInBand;
         }
 
         #endregion OnInitializeUI
@@ -636,7 +629,7 @@ namespace Terminplan
                 };
 
                 // TODO: Falls nicht EST, Daten aus den Stammdaten holen
-                var listAufgaben = new List<string> { @"Aufgabe 1" };             // Liste der Aufgaben
+                var listAufgaben = new List<string> { @"Aufgabe 1" };           // Liste der Aufgaben
 
                 if (AddNewProjekt(prjNeu.PrjName,
                     prjNeu.PrjStart,
@@ -821,6 +814,14 @@ namespace Terminplan
         }
 
         private void UltraGanttView1BindingContextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void ultraGanttView1_TaskAdding(object sender, TaskAddingEventArgs e)
+        {
+        }
+
+        private void ultraGanttView1_ContextMenuStripChanged(object sender, EventArgs e)
         {
         }
     }

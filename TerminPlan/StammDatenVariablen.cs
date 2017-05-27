@@ -66,6 +66,12 @@ namespace Terminplan
         /// <summary> Pfad zu den Farbeinstallungen </summary>
         public static StyleManager StyleManagerStammDaten;
 
+        /// <summary>Startdatum des Projekts</summary>
+        public static DateTime prjStartDatum;
+
+        /// <summary>Revisionsstand des Projekts</summary>
+        public static DateTime prjRevisionsStand;
+
         /// <summary>Gerade bearbeitete Zoomdaten</summary>
         public WinGridZoomGrid.WinGridZoomGrid.GridZoomProperty zoomGridAktuell;
 
@@ -89,12 +95,6 @@ namespace Terminplan
 
         /// <summary>Filter für eine Zelle</summary>
         private CellFilter cellFilter;
-
-        /// <summary>Startdatum des Projekts</summary>
-        private DateTime prjStartDatum;
-
-        /// <summary>Revisionsstand des Projekts</summary>
-        private DateTime prjRevisionsStand;
 
         /// <summary>Anzahl anzuzeigender Spaltenblöcke</summary>
         private int anzSpaltenBloecke;

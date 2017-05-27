@@ -58,6 +58,7 @@ namespace Terminplan
                     //de.Text = "Arbeitsinhalt/Aufgabe";
                     de.Text = @"Verfahren";
                     de.Visible = DefaultableBoolean.True;
+                    de.CellMultiLine = DefaultableBoolean.True;
                 }
 
                 // Dauer

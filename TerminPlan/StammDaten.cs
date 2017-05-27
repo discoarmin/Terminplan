@@ -529,6 +529,8 @@ namespace Terminplan
                     break;
             }
 
+            var breite = zelle.Appearance.ImageBackground.Width;
+            zelle.Column.Width = breite;
             grid.UpdateData();
         }
 
@@ -781,7 +783,14 @@ namespace Terminplan
             // Ermitteln, ob der Projektname geändert wurde
             if (zeile == 9 && spalte == 1)
             {
-                SetDataRowValue(startForm.Fs.FrmTerminPlan.ultraGridDaten, 0, 0, e.Cell.Value); // Projektname im Terminplan eintragen
+                System.Threading.Thread.Sleep(200);
+
+                // Es muss der Text genommen werden, da in Value noch der alte Wert steht
+                var obj = e.Cell.Text as Object;
+                SetDataRowValue(startForm.Fs.FrmTerminPlan.ultraGridDaten, 0, 0, obj); // Projektname im Terminplan eintragen
+                var anzPixel = startForm.Fs.FrmTerminPlan.ultraGridDaten.DisplayLayout.Override.CellAppearance.FontData.SizeInPoints;
+                var breite = e.Cell.Text.Length * anzPixel;                     // Breite der Spalte anhand des Inhalts
+                zelle.Column.Width = (int)breite + 5;
                 startForm.Fs.FrmTerminPlan.ultraGridDaten.Invalidate();
                 startForm.Fs.FrmTerminPlan.ultraGridDaten.Update();
             }
@@ -789,7 +798,12 @@ namespace Terminplan
             // Ermitteln, ob der Projektleiter geändert wurde
             if (zeile == 12 && spalte == 1)
             {
-                SetDataRowValue(startForm.Fs.FrmTerminPlan.ultraGridDaten, 0, 1, e.Cell.Value); // Projektleiter im Terminplan eintragen
+                System.Threading.Thread.Sleep(200);
+
+                // Es muss der Text genommen werden, da in Value noch der alte Wert steht
+                var obj = e.Cell.Text as Object;
+
+                SetDataRowValue(startForm.Fs.FrmTerminPlan.ultraGridDaten, 0, 1, obj); // Projektleiter im Terminplan eintragen
                 startForm.Fs.FrmTerminPlan.ultraGridDaten.Invalidate();
                 startForm.Fs.FrmTerminPlan.ultraGridDaten.Update();
             }
@@ -797,22 +811,34 @@ namespace Terminplan
             // Ermitteln, ob es das Startdatum des Projekts ist (steht in 'B15')
             if (zeile == 15 && spalte == 1)
             {
-                var prjStartDatum = Convert.ToDateTime(e.Cell.Value);           // Ausgewähltes Datum ermitteln
+                var prjStartDatum = Convert.ToDateTime(e.Cell.Text);            // Ausgewähltes Datum ermitteln
                                                                                 // Das eingestelle Datum in die Zelle im Grid eintragen
-                var neuerWert = prjStartDatum.ToLongDateString();
+                var neuerWert = prjStartDatum.ToShortDateString();
                 var eintrag = @"PS - " + neuerWert;
-                SetDataRowValue(ultraGridStammDaten, 3, 13, eintrag);
+                var einTragObj = eintrag as Object;
+                SetDataRowValue(ultraGridStammDaten, 3, 13, einTragObj);
 
                 // Anzahl darzustellender Wochen ermitteln (steht in Zelle 'B25')
-                var anzZeilen = ultraGridStammDaten.DisplayLayout.Rows[25].Cells[1].Value;
+                var anzZeilen = ultraGridStammDaten.DisplayLayout.Rows[25].Cells[1].Text;
+                var anzahlZeilen = 120;
                 if (anzZeilen.GetType() == typeof(DBNull))
                 {
-                    anzZeilen = 120;
+                    anzZeilen = @"120";
                 }
 
-                SetzeDatumsSpalte(ultraGridStammDaten, 6, (int)anzZeilen, 13, neuerWert);
+                anzahlZeilen = Convert.ToInt32(anzZeilen);
+
+                SetzeDatumsSpalte(ultraGridStammDaten, 6, anzahlZeilen, 13, neuerWert);
                 BearbeiteFeiertage(prjStartDatum);                              // Feiertage ab dem Jahr des Startdatums berechnen
             }
+        }
+
+        private void ultraFormattedLinkLabel1_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void ultraFormattedLinkLabel1_Enter(object sender, EventArgs e)
+        {
         }
     }
 }
