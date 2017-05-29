@@ -211,10 +211,10 @@
             this._MainForm_UltraFormManager_Dock_Area_Left.ForeColor = System.Drawing.Color.Black;
             this._MainForm_UltraFormManager_Dock_Area_Left.FormManager = this.ultraFormManager;
             this._MainForm_UltraFormManager_Dock_Area_Left.InitialResizeAreaExtent = 1;
-            this._MainForm_UltraFormManager_Dock_Area_Left.Location = new System.Drawing.Point(0, 31);
+            this._MainForm_UltraFormManager_Dock_Area_Left.Location = new System.Drawing.Point(0, 30);
             this._MainForm_UltraFormManager_Dock_Area_Left.Margin = new System.Windows.Forms.Padding(6);
             this._MainForm_UltraFormManager_Dock_Area_Left.Name = "_MainForm_UltraFormManager_Dock_Area_Left";
-            this._MainForm_UltraFormManager_Dock_Area_Left.Size = new System.Drawing.Size(1, 1092);
+            this._MainForm_UltraFormManager_Dock_Area_Left.Size = new System.Drawing.Size(1, 1093);
             // 
             // _MainForm_UltraFormManager_Dock_Area_Right
             // 
@@ -224,10 +224,10 @@
             this._MainForm_UltraFormManager_Dock_Area_Right.ForeColor = System.Drawing.Color.Black;
             this._MainForm_UltraFormManager_Dock_Area_Right.FormManager = this.ultraFormManager;
             this._MainForm_UltraFormManager_Dock_Area_Right.InitialResizeAreaExtent = 1;
-            this._MainForm_UltraFormManager_Dock_Area_Right.Location = new System.Drawing.Point(2281, 31);
+            this._MainForm_UltraFormManager_Dock_Area_Right.Location = new System.Drawing.Point(2281, 30);
             this._MainForm_UltraFormManager_Dock_Area_Right.Margin = new System.Windows.Forms.Padding(6);
             this._MainForm_UltraFormManager_Dock_Area_Right.Name = "_MainForm_UltraFormManager_Dock_Area_Right";
-            this._MainForm_UltraFormManager_Dock_Area_Right.Size = new System.Drawing.Size(1, 1092);
+            this._MainForm_UltraFormManager_Dock_Area_Right.Size = new System.Drawing.Size(1, 1093);
             // 
             // _MainForm_UltraFormManager_Dock_Area_Top
             // 
@@ -239,7 +239,7 @@
             this._MainForm_UltraFormManager_Dock_Area_Top.Location = new System.Drawing.Point(0, 0);
             this._MainForm_UltraFormManager_Dock_Area_Top.Margin = new System.Windows.Forms.Padding(6);
             this._MainForm_UltraFormManager_Dock_Area_Top.Name = "_MainForm_UltraFormManager_Dock_Area_Top";
-            this._MainForm_UltraFormManager_Dock_Area_Top.Size = new System.Drawing.Size(2282, 31);
+            this._MainForm_UltraFormManager_Dock_Area_Top.Size = new System.Drawing.Size(2282, 30);
             // 
             // _MainForm_UltraFormManager_Dock_Area_Bottom
             // 

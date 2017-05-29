@@ -18,6 +18,7 @@
 namespace Terminplan
 {
     using System;
+    using System.Drawing;
     using Infragistics.DrawFilters;
     using Infragistics.Win;
     using Infragistics.Win.AppStyling;
@@ -102,6 +103,8 @@ namespace Terminplan
         /// <summary>Anzahl darzustellender Wochen</summary>
         private int anzWochen;
 
+        /// <summary>Position der Textbox zur Aufnahme der Zellentexte</summary>
+        private Point rtfLocation;
         #endregion Variablen
 
         #region Eigenschaften

@@ -20,10 +20,13 @@ namespace Terminplan
 {
     using System;
     using System.IO;
+    using System.Net;
+    using System.Net.Mail;
     using System.Text;
+    using System.Web;
     using System.Windows.Forms;
     using Microsoft.Office.Interop.Outlook;
-
+    using Exception = System.Exception;
     using Outlook = Microsoft.Office.Interop.Outlook;
 
     public partial class StammDaten : Form
@@ -65,24 +68,25 @@ namespace Terminplan
                 }
             }
 
-            var mailItem = outlookApp.CreateItem(OlItemType.olMailItem) as MailItem;
-
-            var currentUser = outlookApp.Session.CurrentUser.AddressEntry;      // Eigene Email-Addresse ermitteln
             var signature = LeseSignature();                                    // Signatur der eigenen Mailadresse ermitteln
             var anschrift = @"Sehr geehrte Damen und Herren,";
 
+            var mailItem = outlookApp.CreateItem(OlItemType.olMailItem) as MailItem;
+            if (konto != null) mailItem.SendUsingAccount = konto;
+
+            var currentUser = outlookApp.Session.CurrentUser.AddressEntry;      // Eigene Email-Addresse ermitteln
+                
             mailItem.Subject = "Hier Betreff eingaben";
             mailItem.To = this.ultraFormattedLinkLabel1.Value.ToString();
-            if (konto != null) mailItem.SendUsingAccount = konto;
             mailItem.Body = anschrift +
                 Environment.NewLine +
                 Environment.NewLine +
                 signature;
             mailItem.Importance = OlImportance.olImportanceNormal;
-            mailItem.Display(true);
+            mailItem.Display(true);                                             // Outlook anzeigen, um Text einzugeben
 
             startForm.ultraStatusBarStart.Panels[0].Text = @"Bereit ...";
-            return retwert;
+            return retwert;                
         }
 
         /// <summary>Ermittelt die Signatur des Benutzers.</summary>
@@ -101,14 +105,6 @@ namespace Terminplan
                 fiSignature[0].FullName,
                 Encoding.Default);                                              // Es wird die erste vorhandene Signatur genommen
             signature = sr.ReadToEnd();                                         // Signatur laden
-
-            //// Überprüfen, ob es sich um eine leere Signatur handelt
-            //if (!string.IsNullOrEmpty(signature))
-            //{
-            //    // Signatur enthält Text, Signatur zusammenstellen
-            //    var fileName = fiSignature[0].Name.Replace(fiSignature[0].Extension, string.Empty);
-            //    signature = signature.Replace(fileName + "_files/", appDataDir + "/" + fileName + "_files/");
-            //}
 
             return signature;                                                   // Signatur zurückgaben
         }

@@ -541,13 +541,17 @@ namespace Terminplan
         /// <param name="e">Die <see cref="EventArgs"/> Instanz, welche die Ereignisdaten enthält.</param>
         private void OnUltraDateTimeEditorPrjStartValueChanged(object sender, EventArgs e)
         {
+            var startForm = (StartForm)this.MdiParent;                          // Das Elternfenster holen
             var editor = (UltraDateTimeEditor)sender;                           // Damit der geänderte Wert ermittelt werden kann
-            prjStartDatum = Convert.ToDateTime(editor.Value);               // Ausgewähltes Datum ermitteln
+            prjStartDatum = Convert.ToDateTime(editor.Value);                   // Ausgewähltes Datum ermitteln
 
             // Das eingestelle Datum in die Zelle im Grid eintragen
             editor.Parent.Text = prjStartDatum.ToString();
             var eintrag = @"PS - " + editor.Parent.Text;
-            SetDataRowValue(ultraGridStammDaten, 3, 13, eintrag);
+            SetDataRowValue(ultraGridStammDaten, 3, 13, eintrag);               // Startdatum in die Datumsspalte (Spalte 'M') eintragen
+
+            var eintrag1 = @"Projektstart [PS]: " + prjStartDatum.ToShortTimeString();
+            SetDataRowValue(startForm.Fs.FrmTerminPlan.ultraGridDaten, 1, 0, eintrag1); // Projektstart im Terminplan eintragen
         }
 
         private void ultraTextEditorBloecke_ValueChanged(object sender, EventArgs e)
@@ -839,6 +843,34 @@ namespace Terminplan
 
         private void ultraFormattedLinkLabel1_Enter(object sender, EventArgs e)
         {
+        }
+
+        /// <summary>
+        ///Behandelt das _EditorButtonClick Ereignis des ultraTextEditor1 Controls.
+        /// </summary>
+        /// <param name="sender">Die Quelle des Ereignisses.</param>
+        /// <param name="e">Die <see cref="EditorButtonEventArgs"/> Instanz, welche die Ereignisdaten enthält.</param>
+        private void OnUltraTextEditor1EditorButtonClick(object sender, EditorButtonEventArgs e)
+        {
+            if (rtfLocation.X == 0 && rtfLocation.Y == 0) return;
+            richTextBoxZelle.Location = rtfLocation;
+            richTextBoxZelle.Width = ultraTextEditor1.Width;
+            richTextBoxZelle.Text = ultraTextEditor1.Text;
+            ultraTile2.Height = richTextBoxZelle.Height;
+            ultraTile2.Control = richTextBoxZelle;
+            richTextBoxZelle.Dock = DockStyle.Top;
+            ultraTextEditor1.Hide();
+            ultraGridStammDaten.SendToBack();
+            richTextBoxZelle.BringToFront();
+            richTextBoxZelle.Show();
+        }
+
+        private void ultraTextEditor1_MouseDown(object sender, MouseEventArgs e)
+        {
+            // rtfLocation = this.PointToClient(ultraTextEditor1.PointToScreen((new Point(e.X,
+            //     e.Y))));
+            rtfLocation = this.PointToClient(ultraTextEditor1.PointToScreen(new Point(ultraTextEditor1.Location.X, ultraTextEditor1.Location.Y -
+                (int)ultraTextEditor1.Size.Height * 10)));
         }
     }
 }

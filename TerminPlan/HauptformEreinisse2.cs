@@ -139,8 +139,6 @@ namespace Terminplan
             // Die Bilder entsprechend dem aktuellen Farbschema einfärben.
             ColorizeImages();
             this.ultraToolbarsManager1.Ribbon.FileMenuButtonCaption = Resources.ribbonFileTabCaption; // Beschriftung des Datei-Menüs-Button eintragen
-
-            // Grid
         }
 
         #endregion InitializeUi

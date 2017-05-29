@@ -827,6 +827,7 @@
             appearance4.FontData.BoldAsString = resources.GetString("resource.BoldAsString");
             ultraGridColumn1.Header.Appearance = appearance4;
             ultraGridColumn1.Header.VisiblePosition = 0;
+            ultraGridColumn1.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(0, 39);
             ultraGridColumn1.Width = 300;
             ultraGridColumn3.AllowGroupBy = Infragistics.Win.DefaultableBoolean.False;
             ultraGridColumn3.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
@@ -834,6 +835,7 @@
             ultraGridColumn3.AutoSizeMode = Infragistics.Win.UltraWinGrid.ColumnAutoSizeMode.SiblingRowsOnly;
             ultraGridColumn3.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
             ultraGridColumn3.Header.VisiblePosition = 1;
+            ultraGridColumn3.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(0, 39);
             ultraGridColumn3.Width = 180;
             ultraGridColumn5.AllowGroupBy = Infragistics.Win.DefaultableBoolean.False;
             ultraGridColumn5.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
@@ -843,6 +845,7 @@
             appearance5.FontData.BoldAsString = resources.GetString("resource.BoldAsString1");
             ultraGridColumn5.Header.Appearance = appearance5;
             ultraGridColumn5.Header.VisiblePosition = 2;
+            ultraGridColumn5.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(0, 39);
             ultraGridColumn5.Width = 100;
             resources.ApplyResources(ultraGridColumn5.Header, "ultraGridColumn5.Header");
             ultraGridColumn5.ForceApplyResources = "Header";
@@ -850,6 +853,7 @@
             ultraGridColumn7.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
             ultraGridColumn7.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
             ultraGridColumn7.Header.VisiblePosition = 3;
+            ultraGridColumn7.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(0, 39);
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn1,
             ultraGridColumn3,
@@ -956,6 +960,7 @@
             this.ultraGridDaten.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
             resources.ApplyResources(this.ultraGridDaten, "ultraGridDaten");
             this.ultraGridDaten.Name = "ultraGridDaten";
+            this.ultraGridDaten.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler(this.OnUltraGridDatenInitializeLayout);
             // 
             // dataSetPrjDaten
             // 

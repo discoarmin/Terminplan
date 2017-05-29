@@ -565,14 +565,22 @@ namespace Terminplan
 
                 var ds = startForm.Fs.FrmTerminPlan.dataSetPrjDaten;            // DataSet, welches die Projektdaten enthält
                 var tabelle = ds.Tables[0];                                     // Es gibt nur eine Tabelle
+
+                // Falls noch keine Zeile existiert, diese erzeugen
+                // Die Tabelle enthält 3 Zeilen
                 if (tabelle.Rows.Count == 0)
                 {
                     var neueZeile = tabelle.NewRow();
+                    tabelle.Rows.Add(neueZeile);
+                    neueZeile = tabelle.NewRow();
+                    tabelle.Rows.Add(neueZeile);
+                    neueZeile = tabelle.NewRow();
                     tabelle.Rows.Add(neueZeile);
                 }
 
                 tabelle.Rows[zeile][spalte] = neuerWert;
                 System.Threading.Thread.Sleep(200);
+                grid.Rows[zeile].Activated = false;
                 return;
             }
 

@@ -28,6 +28,7 @@ namespace Terminplan
     using Infragistics.Win;
     using Infragistics.Win.AppStyling;
     using Infragistics.Win.UltraWinGanttView;
+    using Infragistics.Win.UltraWinGrid;
     using Infragistics.Win.UltraWinSchedule;
     using Infragistics.Win.UltraWinSchedule.TaskUI;
     using Infragistics.Win.UltraWinToolbars;
@@ -460,6 +461,7 @@ namespace Terminplan
         {
             InitializeUi();                                                     // Oberfläche initialisieren
             ultraGridDaten.DisplayLayout.Bands[0].Columns[0].AutoSizeMode = Infragistics.Win.UltraWinGrid.ColumnAutoSizeMode.AllRowsInBand;
+            splitContainerHauptDaten.SplitterDistance = 125;
         }
 
         #endregion OnInitializeUI
@@ -823,6 +825,17 @@ namespace Terminplan
 
         private void ultraGanttView1_ContextMenuStripChanged(object sender, EventArgs e)
         {
+        }
+
+        /// <summary>Initialisiert das UltraGridDaten Control.</summary>
+        /// <remarks>Dient zur Anzeige der Stammdaten im Terminplan</remarks>
+        /// <param name="sender">Die Quelle des Ereignisses.</param>
+        /// <param name="e">Die <see cref="Infragistics.Win.UltraWinToolbars.InitializeLayoutEventArgs" /> Instanz, welche die Ereignisdaten enthält.</param>
+        private void OnUltraGridDatenInitializeLayout(object sender, Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+        {
+            // Die Spalten zur Aufnahme des Firmenlogos und des Controls zur Anzeige der Meilensteine sind verbundene Spalten
+            e.Layout.Bands[0].Columns["meilenSteine"].MergedCellStyle = MergedCellStyle.Always;
+            e.Layout.Bands[0].Columns["firma"].MergedCellStyle = MergedCellStyle.Always;
         }
     }
 }
