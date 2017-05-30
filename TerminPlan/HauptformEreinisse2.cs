@@ -55,8 +55,8 @@ namespace Terminplan
                 // Arbeitsinhalt oder Aufgabe
                 if (de.Key.ToLower() == @"name")
                 {
-                    //de.Text = "Arbeitsinhalt/Aufgabe";
-                    de.Text = @"Verfahren";
+                    de.Text = "Arbeitsinhalt/Aufgabe";
+                    //de.Text = @"Verfahren";
                     de.Visible = DefaultableBoolean.True;
                     de.CellMultiLine = DefaultableBoolean.True;
                 }

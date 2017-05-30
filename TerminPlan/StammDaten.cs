@@ -853,24 +853,48 @@ namespace Terminplan
         private void OnUltraTextEditor1EditorButtonClick(object sender, EditorButtonEventArgs e)
         {
             if (rtfLocation.X == 0 && rtfLocation.Y == 0) return;
-            richTextBoxZelle.Location = rtfLocation;
+
             richTextBoxZelle.Width = ultraTextEditor1.Width;
-            richTextBoxZelle.Text = ultraTextEditor1.Text;
-            ultraTile2.Height = richTextBoxZelle.Height;
-            ultraTile2.Control = richTextBoxZelle;
-            richTextBoxZelle.Dock = DockStyle.Top;
-            ultraTextEditor1.Hide();
-            ultraGridStammDaten.SendToBack();
-            richTextBoxZelle.BringToFront();
-            richTextBoxZelle.Show();
+            richTextBoxZelle.Height = ultraTextEditor1.Height * 3;
+            richTextBoxZelle.Visible = true;
+
+            // Damit man die Richtextbox über der Textbox anzeigen kann, muss sie in einem eigenen Fenster laufen
+            var popup = new Form()
+            {
+                TopMost = true,
+                //StartPosition = FormStartPosition.CenterScreen,
+                //StartPosition = FormStartPosition.CenterParent,
+                Location = rtfLocation,
+                Text = string.Empty,
+                ControlBox = false,
+                ShowIcon = false,
+                ShowInTaskbar = false,
+                FormBorderStyle = FormBorderStyle.None,
+                SizeGripStyle = SizeGripStyle.Hide,
+                //AutoScaleMode = AutoScaleMode.Dpi,
+            };
+
+            //popup.Size = richTextBoxZelle.Size;
+            var groesse = new Size(ultraTextEditor1.Width,
+                ultraTextEditor1.Height*4);
+            popup.Size = groesse;
+            popup.Controls.Add(richTextBoxZelle);
+            //popup.Show();
         }
 
         private void ultraTextEditor1_MouseDown(object sender, MouseEventArgs e)
         {
             // rtfLocation = this.PointToClient(ultraTextEditor1.PointToScreen((new Point(e.X,
             //     e.Y))));
-            rtfLocation = this.PointToClient(ultraTextEditor1.PointToScreen(new Point(ultraTextEditor1.Location.X, ultraTextEditor1.Location.Y -
-                (int)ultraTextEditor1.Size.Height * 10)));
+            rtfLocation = this.PointToClient(ultraTile2.PointToScreen(new Point((ultraTile2.Location.X),
+                ultraTile2.Location.Y + (int)(ultraTextEditor1.Size.Height * 2))));
+
+            rtfLocation.Y += 15;
+            rtfLocation.X += 300;
+
+            richTextBoxZelle.Text = ultraTextEditor1.Text;
+            richTextBoxZelle.BackColor = ultraTextEditor1.BackColor;
+            richTextBoxZelle.Dock = DockStyle.Fill;
         }
     }
 }

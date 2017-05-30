@@ -18,9 +18,11 @@
 
 namespace Terminplan
 {
+    using System;
     using System.Data;
     using System.IO;
     using System.Windows.Forms;
+    using Infragistics.Win;
     using Resources = Infragistics.Win.UltraWinGanttView.Resources;
 
     /// <summary>
@@ -176,6 +178,141 @@ namespace Terminplan
                 Speichern(saveFileDialog1.FileName);
                 prjHinzugefuegt = false;                                        // Damit Auswahl 'Speichern' wieder freigeschaltet wird
             }
+        }
+
+        /// <summary>Stellt die Breite des Grids in der GanttView ein</summary>
+        private void GridBreiteEinstellen()
+        {
+            // Bildschirmauflösung ermitteln. Dazu muss ermittelt werden, auf welchem Monitor
+            // die Anwendung läuft
+            var currentScreen = Screen.FromControl(this);                       // momentan benutzter Monitor ermitteln
+            var resBreite = currentScreen.Bounds.Width;                         // Breite des Monitors
+            var resHoehe = currentScreen.Bounds.Height;                         // Höhe des Monitors
+
+            var fontGroesse = ultraGanttView1.GridSettings.RowAppearance.FontData.SizeInPoints;
+            var headerGroesse = ultraGanttView1.GridSettings.ColumnHeaderAppearance.FontData.SizeInPoints;
+
+            if (resBreite < 1024)
+            {
+                fontGroesse = 8;
+                headerGroesse = 9;
+
+                ultraGanttView1.GridSettings.RowAppearance.FontData.SizeInPoints = fontGroesse;
+                ultraGanttView1.GridSettings.ColumnHeaderAppearance.FontData.SizeInPoints = FontHeight;
+            }
+
+            ultraGanttView1.Appearance.FontData.SizeInPoints = fontGroesse;
+            var breite = ultraGanttView1.GridAreaWidth;
+
+            var col = ultraGanttView1.GridSettings.ColumnSettings.Values;
+            var anzZeilen = ultraGanttView1.CalendarInfo.Tasks;
+            var schluessel = string.Empty;
+            var panalWeite = 0;
+            var zellenLaenge = 0;
+            var taskLaenge = 0;
+            // Überschriften einstellen
+            foreach (var de in col)
+            {
+                var headerBreite = de.Text.Length * fontGroesse;
+                if ((de.Visible == DefaultableBoolean.True) && (de.Width < headerBreite))
+                {
+                    de.Width = Convert.ToInt32(headerBreite);
+                }
+
+                // Alle vorhandenen Spalten analysieren
+                switch (de.Key.ToLower())
+                {
+                    case @"name":                                               // Name (Arbeitsinhalt oder Aufgabe)
+
+                        // Alle eingetragene Verfahren durchgehen und deren größte Länge bestimmen
+                        zellenLaenge = 0;
+                        foreach (var ze in anzZeilen)
+                        {
+                            taskLaenge = Convert.ToInt32(ze.Name.Length * fontGroesse / 2);
+                            if (taskLaenge > zellenLaenge)
+                            {
+                                zellenLaenge = taskLaenge;
+                            }
+                        }
+                        panalWeite += zellenLaenge;                             // Breite der Spalte hinzuaddieren
+                        break;
+
+                    case @"duration":                                           // Dauer
+                        // Alle eingetragene Verfahren durchgehen und deren größte Länge bestimmen
+                        zellenLaenge = 0;
+                        foreach (var ze in anzZeilen)
+                        {
+                            taskLaenge = Convert.ToInt32(ze.Name.Length * fontGroesse / 2);
+                            if (taskLaenge > zellenLaenge)
+                            {
+                                zellenLaenge = taskLaenge;
+                            }
+                        }
+                        panalWeite += zellenLaenge;                             // Breite der Spalte hinzuaddieren
+                        break;
+
+                    case @"start":                                              // Startdatum
+                        // Alle eingetragene Verfahren durchgehen und deren größte Länge bestimmen
+                        zellenLaenge = 0;
+                        foreach (var ze in anzZeilen)
+                        {
+                            taskLaenge = Convert.ToInt32(ze.Name.Length * fontGroesse / 2);
+                            if (taskLaenge > zellenLaenge)
+                            {
+                                zellenLaenge = taskLaenge;
+                            }
+                        }
+                        panalWeite += zellenLaenge;                             // Breite der Spalte hinzuaddieren
+                        break;
+
+                    case @"enddatetime":                                        // Endedatum
+                        // Alle eingetragene Verfahren durchgehen und deren größte Länge bestimmen
+                        zellenLaenge = 0;
+                        foreach (var ze in anzZeilen)
+                        {
+                            taskLaenge = Convert.ToInt32(ze.Name.Length * fontGroesse / 2);
+                            if (taskLaenge > zellenLaenge)
+                            {
+                                zellenLaenge = taskLaenge;
+                            }
+                        }
+                        panalWeite += zellenLaenge;                             // Breite der Spalte hinzuaddieren
+                        break;
+
+                    case @"percentcomplete":                                    // Fetiggestellt (Status)
+                        // Alle eingetragene Verfahren durchgehen und deren größte Länge bestimmen
+                        zellenLaenge = 0;
+                        foreach (var ze in anzZeilen)
+                        {
+                            taskLaenge = Convert.ToInt32(ze.Name.Length * fontGroesse / 2);
+                            if (taskLaenge > zellenLaenge)
+                            {
+                                zellenLaenge = taskLaenge;
+                            }
+                        }
+                        panalWeite += zellenLaenge;                             // Breite der Spalte hinzuaddieren
+                        break;
+
+                    default:                                                    // Alle sonstigen Spalten
+                        if (de.Visible == DefaultableBoolean.True)
+                        {
+                            // Alle eingetragene Verfahren durchgehen und deren größte Länge bestimmen
+                            zellenLaenge = 0;
+                            foreach (var ze in anzZeilen)
+                            {
+                                taskLaenge = Convert.ToInt32(ze.Name.Length * fontGroesse / 2);
+                                if (taskLaenge > zellenLaenge)
+                                {
+                                    zellenLaenge = taskLaenge;
+                                }
+                            }
+                            panalWeite += zellenLaenge;                         // Breite der Spalte hinzuaddieren
+                        }
+                        break;
+                }
+            }
+
+            ultraGanttView1.GridAreaWidth = panalWeite;                         // Breite des Grids einstellen
         }
     }
 }

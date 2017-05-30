@@ -177,11 +177,6 @@ namespace Terminplan
                     OnInitializationStatusChanged(Resources.Binding);           // Anzeige im Splashscreen aktualisieren
                 }
             }
-            //DatasetTp = DienstProgramme.GetData(Path.Combine(Application.StartupPath, @"Data.TestDatenEST.XML")); // Testdaten laden
-            //DatasetTp = DienstProgramme.GetData(Path.Combine(Application.StartupPath, @"Data.TestDaten1EST.XML")); // Testdaten laden
-            //DatasetTp = DienstProgramme.GetData(Path.Combine(Application.StartupPath, @"Data.TestDaten2EST.XML")); // Testdaten laden
-            //DatasetTp = DienstProgramme.GetData(Path.Combine(Application.StartupPath, @"Data.DatenNeuEST.XML")); // Testdaten laden
-            //DatasetTp = DienstProgramme.GetData(Path.Combine(Application.StartupPath, @"ProjectTerminplan.XML")); // Testdaten laden
 
             if (!this.prjHinzugefuegt)
             {
@@ -194,6 +189,7 @@ namespace Terminplan
             OnInitializationStatusChanged(Resources.Initializing);              // Anzeige im Splashscreen aktualisieren
             OnColorizeImages();                                                 // Farbe der Bilder an das eingestellte Farbschema anpassen
             OnInitializeUi();                                                   // Oberfläche initialisieren
+            GridBreiteEinstellen();
 
             // Ereignisprozedur zum Ändern des Schemas festlegen
             StyleManager.StyleChanged += this.OnApplicationStyleChanged;
@@ -322,7 +318,7 @@ namespace Terminplan
             if (startDatum < prjStart) startDatum = prjStart;                   // Falls das Startdatum vor dem Projektstart liegt, dieses auf den Projektstart setzen
             e.Task.StartDateTime = startDatum;
 
-            endeDatum = startDatum.AddDays( e.Task.Duration.Days);              // Standarddauar zum Startdatum hinzuzählen für das Endedatum
+            endeDatum = startDatum.AddDays(e.Task.Duration.Days);              // Standarddauar zum Startdatum hinzuzählen für das Endedatum
             e.Task.EndDateTime = endeDatum;
             UltraGanttView1TaskAdded(sender, e);
         }
@@ -511,6 +507,7 @@ namespace Terminplan
 
             // Die eingelesenen Daten an die ultraCalendarInfo anbinden.
             OnBindArbInhaltData(DatasetTp);                                     // Daten an ultraCalendarInfo anbinden
+            GridBreiteEinstellen();                                             // Spaltenbreite des Grids in der GanttView an deren Inhalt anpassen
         }
 
         #endregion Datei laden

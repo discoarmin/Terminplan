@@ -270,6 +270,7 @@
             this.ultraGanttView1.Appearance = appearance1;
             this.ultraGanttView1.CalendarInfo = this.ultraCalendarInfo1;
             resources.ApplyResources(this.ultraGanttView1, "ultraGanttView1");
+            this.ultraGanttView1.GridAreaWidth = 350;
             appearance82.FontData.SizeInPoints = ((float)(resources.GetObject("resource.SizeInPoints6")));
             this.ultraGanttView1.GridSettings.ColumnHeaderAppearance = appearance82;
             this.ultraGanttView1.GridSettings.ColumnSettings.GetValue("Constraint").VisiblePosition = 6;
@@ -311,6 +312,7 @@
             this.ultraGanttView1.TimelineSettings.BarSettings.BarTextAppearance = appearance84;
             this.ultraGanttView1.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.ultraGanttView1.VerticalSplitterMinimumResizeWidth = 10;
+            this.ultraGanttView1.VerticalSplitterWidth = 5;
             this.ultraGanttView1.TaskDeleted += new Infragistics.Win.UltraWinGanttView.TaskDeletedHandler(this.OnUltraGanttView1TaskDeleted);
             this.ultraGanttView1.TaskAdding += new Infragistics.Win.UltraWinGanttView.TaskAddingHandler(this.ultraGanttView1_TaskAdding);
             this.ultraGanttView1.TaskAdded += new Infragistics.Win.UltraWinGanttView.TaskAddedHandler(this.OnUltraGanttView1TaskAdded);
@@ -834,6 +836,7 @@
             ultraGridColumn3.AutoEditMode = Infragistics.Win.DefaultableBoolean.False;
             ultraGridColumn3.AutoSizeMode = Infragistics.Win.UltraWinGrid.ColumnAutoSizeMode.SiblingRowsOnly;
             ultraGridColumn3.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn3.CellDisplayStyle = Infragistics.Win.UltraWinGrid.CellDisplayStyle.PlainText;
             ultraGridColumn3.Header.VisiblePosition = 1;
             ultraGridColumn3.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(0, 39);
             ultraGridColumn3.Width = 180;
@@ -850,7 +853,10 @@
             resources.ApplyResources(ultraGridColumn5.Header, "ultraGridColumn5.Header");
             ultraGridColumn5.ForceApplyResources = "Header";
             ultraGridColumn7.AllowGroupBy = Infragistics.Win.DefaultableBoolean.False;
+            ultraGridColumn7.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.False;
             ultraGridColumn7.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
+            ultraGridColumn7.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
+            ultraGridColumn7.AutoEditMode = Infragistics.Win.DefaultableBoolean.False;
             ultraGridColumn7.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
             ultraGridColumn7.Header.VisiblePosition = 3;
             ultraGridColumn7.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(0, 39);
@@ -892,6 +898,7 @@
             resources.ApplyResources(appearance10, "appearance10");
             this.ultraGridDaten.DisplayLayout.Override.ActiveCellAppearance = appearance10;
             appearance11.BackColor = System.Drawing.SystemColors.Window;
+            appearance11.BorderAlpha = Infragistics.Win.Alpha.Transparent;
             appearance11.BorderColor = System.Drawing.Color.Transparent;
             appearance11.ForeColor = System.Drawing.SystemColors.ControlText;
             this.ultraGridDaten.DisplayLayout.Override.ActiveRowAppearance = appearance11;
@@ -907,6 +914,7 @@
             this.ultraGridDaten.DisplayLayout.Override.CardAreaAppearance = appearance12;
             appearance13.BackColor = System.Drawing.SystemColors.Window;
             appearance13.BackGradientStyle = Infragistics.Win.GradientStyle.None;
+            appearance13.BorderAlpha = Infragistics.Win.Alpha.Transparent;
             appearance13.BorderColor = System.Drawing.Color.Transparent;
             appearance13.FontData.BoldAsString = resources.GetString("resource.BoldAsString2");
             appearance13.FontData.SizeInPoints = ((float)(resources.GetObject("resource.SizeInPoints")));
@@ -933,6 +941,7 @@
             appearance16.BackColor = System.Drawing.SystemColors.Window;
             this.ultraGridDaten.DisplayLayout.Override.RowAlternateAppearance = appearance16;
             appearance17.BackColor = System.Drawing.SystemColors.ControlDark;
+            appearance17.BorderAlpha = Infragistics.Win.Alpha.Transparent;
             appearance17.BorderColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(appearance17, "appearance17");
             this.ultraGridDaten.DisplayLayout.Override.RowAppearance = appearance17;
@@ -940,6 +949,7 @@
             this.ultraGridDaten.DisplayLayout.Override.RowSizing = Infragistics.Win.UltraWinGrid.RowSizing.Free;
             this.ultraGridDaten.DisplayLayout.Override.RowSizingArea = Infragistics.Win.UltraWinGrid.RowSizingArea.EntireRow;
             appearance18.BackColor = System.Drawing.SystemColors.Window;
+            appearance18.BorderAlpha = Infragistics.Win.Alpha.Transparent;
             appearance18.BorderColor = System.Drawing.Color.Transparent;
             this.ultraGridDaten.DisplayLayout.Override.SelectedCellAppearance = appearance18;
             appearance19.BackColor = System.Drawing.SystemColors.ControlDark;
