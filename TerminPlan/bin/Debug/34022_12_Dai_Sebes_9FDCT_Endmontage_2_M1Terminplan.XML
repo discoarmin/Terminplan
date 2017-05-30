@@ -1,0 +1,301 @@
+<TerminPlan>
+  <xs:schema id="TerminPlan" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="TerminPlan" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="Projekte">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="ProjektID" type="xs:string" minOccurs="0" />
+                <xs:element name="ProjektKey" type="xs:string" minOccurs="0" />
+                <xs:element name="ProjektName" type="xs:string" minOccurs="0" />
+                <xs:element name="ProjektStart" type="xs:dateTime" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Arbeitsinhalt_Aufgaben">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="TaskID" type="xs:string" minOccurs="0" />
+                <xs:element name="ProjektKey" type="xs:string" minOccurs="0" />
+                <xs:element name="TaskName" type="xs:string" minOccurs="0" />
+                <xs:element name="TaskStartTime" type="xs:dateTime" minOccurs="0" />
+                <xs:element name="TaskDauer" type="xs:duration" minOccurs="0" />
+                <xs:element name="ParentTaskID" type="xs:string" minOccurs="0" />
+                <xs:element name="Einschraenkung" type="xs:int" minOccurs="0" />
+                <xs:element name="TaskFertigInProzent" type="xs:string" minOccurs="0" />
+                <xs:element name="AlleEigenschaften" type="xs:base64Binary" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Besitzer">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Key" type="xs:string" minOccurs="0" />
+                <xs:element name="Name" type="xs:string" minOccurs="0" />
+                <xs:element name="EmailAddresse" type="xs:string" minOccurs="0" />
+                <xs:element name="Sichtbar" type="xs:boolean" minOccurs="0" />
+                <xs:element name="AlleEigenschaften" type="xs:base64Binary" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+      <xs:unique name="Constraint1">
+        <xs:selector xpath=".//Besitzer" />
+        <xs:field xpath="Key" />
+      </xs:unique>
+    </xs:element>
+  </xs:schema>
+  <Projekte>
+    <ProjektID>381790b8-ec27-4a20-9a07-2cf10d3bd89d</ProjektID>
+    <ProjektKey>projectKey</ProjektKey>
+    <ProjektName>34022_12_Dai_Sebes_9FDCT_Endmontage_2_M1</ProjektName>
+    <ProjektStart>2016-06-17T07:00:00+02:00</ProjektStart>
+  </Projekte>
+  <Arbeitsinhalt_Aufgaben>
+    <TaskID>f0c9f4a4-ec25-49b3-b6de-a13b4e8c9925</TaskID>
+    <ProjektKey>projectKey</ProjektKey>
+    <TaskName>Getriebe umsetzen (EHS Seite oben)</TaskName>
+    <TaskStartTime>2014-01-17T18:24:16.9002971+01:00</TaskStartTime>
+    <TaskDauer>P10D</TaskDauer>
+    <Einschraenkung>1</Einschraenkung>
+    <TaskFertigInProzent>33,33</TaskFertigInProzent>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAHNJbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNi4yLCBWZXJzaW9uPTE2LjIuMjAxNjIuMjExMSwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiBQEAAAAmSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlRhc2sKAAAAAklkEkNvbnN0cmFpbnREYXRlVGltZQhEdXJhdGlvbg5EdXJhdGlvbkZvcm1hdBVTdW1tYXJ5RHVyYXRpb25Gb3JtYXQETmFtZQ9QZXJjZW50Q29tcGxldGUKUHJvamVjdEtleQlSb3dIZWlnaHQNU3RhcnREYXRlVGltZQMAAAAAAQABAAALU3lzdGVtLkd1aWQNDAgICwgNAgAAAAT9////C1N5c3RlbS5HdWlkCwAAAAJfYQJfYgJfYwJfZAJfZQJfZgJfZwJfaAJfaQJfagJfawAAAAAAAAAAAAAACAcHAgICAgICAgKk9MnwJeyzSbbeoTtOjJklAAAAAAAAAAAAgCGo2wcAAAMAAAADAAAABgQAAAAiR2V0cmllYmUgdW1zZXR6ZW4gKEVIUyBTZWl0ZSBvYmVuKexRBUIGBQAAAApwcm9qZWN0S2V5MQAAANtnNnfI4dAICw==</AlleEigenschaften>
+  </Arbeitsinhalt_Aufgaben>
+  <Arbeitsinhalt_Aufgaben>
+    <TaskID>4ddd2307-cf07-4452-9db0-c3451661be47</TaskID>
+    <ProjektKey>projectKey</ProjektKey>
+    <TaskName>Konzept</TaskName>
+    <TaskStartTime>2016-07-11T00:00:00+02:00</TaskStartTime>
+    <TaskDauer>P42D</TaskDauer>
+    <Einschraenkung>6</Einschraenkung>
+    <TaskFertigInProzent>100</TaskFertigInProzent>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAHNJbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNi4yLCBWZXJzaW9uPTE2LjIuMjAxNjIuMjExMSwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiBQEAAAAmSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlRhc2sMAAAAAklkCkNvbnN0cmFpbnQSQ29uc3RyYWludERhdGVUaW1lCER1cmF0aW9uDkR1cmF0aW9uRm9ybWF0FVN1bW1hcnlEdXJhdGlvbkZvcm1hdAROYW1lD1BlcmNlbnRDb21wbGV0ZQpQcm9qZWN0S2V5CVJlc291cmNlcw1TdGFydERhdGVUaW1lDFBhcmVudFRhc2tJZAMAAAAAAAEAAQQAAwtTeXN0ZW0uR3VpZAgNDAgICzVJbmZyYWdpc3RpY3MuV2luLlVsdHJhV2luU2NoZWR1bGUuUmVzb3VyY2VzQ29sbGVjdGlvbgIAAAANC1N5c3RlbS5HdWlkAgAAAAT9////C1N5c3RlbS5HdWlkCwAAAAJfYQJfYgJfYwJfZAJfZQJfZgJfZwJfaAJfaQJfagJfawAAAAAAAAAAAAAACAcHAgICAgICAgIHI91NB89SRJ2ww0UWYb5HBgAAAABAR00eqdMIAIBZ9QAhAAADAAAAAwAAAAYEAAAAB0tvbnplcHQAAMhCBgUAAAAKcHJvamVjdEtleQkGAAAAAEBHTR6p0wgB+f////3///+k9MnwJeyzSbbeoTtOjJklBQYAAAA1SW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlJlc291cmNlc0NvbGxlY3Rpb24BAAAAATABAgAAAAYIAAAADUFybWluIEJyZW5uZXIL</AlleEigenschaften>
+  </Arbeitsinhalt_Aufgaben>
+  <Arbeitsinhalt_Aufgaben>
+    <TaskID>06d9dbc3-b4e6-46fb-a319-d30e36ccc049</TaskID>
+    <ProjektKey>projectKey</ProjektKey>
+    <TaskName>mech. Konstruktion</TaskName>
+    <TaskStartTime>2016-08-22T00:00:00+02:00</TaskStartTime>
+    <TaskDauer>P84D</TaskDauer>
+    <Einschraenkung>6</Einschraenkung>
+    <TaskFertigInProzent>100</TaskFertigInProzent>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAHNJbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNi4yLCBWZXJzaW9uPTE2LjIuMjAxNjIuMjExMSwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiBQEAAAAmSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlRhc2sNAAAAAklkCkNvbnN0cmFpbnQSQ29uc3RyYWludERhdGVUaW1lDERlcGVuZGVuY2llcwhEdXJhdGlvbg5EdXJhdGlvbkZvcm1hdBVTdW1tYXJ5RHVyYXRpb25Gb3JtYXQETmFtZQ9QZXJjZW50Q29tcGxldGUKUHJvamVjdEtleQlSZXNvdXJjZXMNU3RhcnREYXRlVGltZQxQYXJlbnRUYXNrSWQDAAAEAAAAAQABBAADC1N5c3RlbS5HdWlkCA08SW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlRhc2tEZXBlbmRlbmNpZXNDb2xsZWN0aW9uAgAAAAwICAs1SW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlJlc291cmNlc0NvbGxlY3Rpb24CAAAADQtTeXN0ZW0uR3VpZAIAAAAE/f///wtTeXN0ZW0uR3VpZAsAAAACX2ECX2ICX2MCX2QCX2UCX2YCX2cCX2gCX2kCX2oCX2sAAAAAAAAAAAAAAAgHBwICAgICAgICw9vZBua0+0ajGdMONszASQYAAAAAwKBCH8rTCAkEAAAAAACz6gFCAAADAAAAAwAAAAYFAAAAEm1lY2guIEtvbnN0cnVrdGlvbgAAyEIGBgAAAApwcm9qZWN0S2V5CQcAAAAAwKBCH8rTCAH4/////f///6T0yfAl7LNJtt6hO06MmSUFBAAAADxJbmZyYWdpc3RpY3MuV2luLlVsdHJhV2luU2NoZWR1bGUuVGFza0RlcGVuZGVuY2llc0NvbGxlY3Rpb24BAAAAATAEMEluZnJhZ2lzdGljcy5XaW4uVWx0cmFXaW5TY2hlZHVsZS5UYXNrRGVwZW5kZW5jeQIAAAACAAAACQkAAAAFBwAAADVJbmZyYWdpc3RpY3MuV2luLlVsdHJhV2luU2NoZWR1bGUuUmVzb3VyY2VzQ29sbGVjdGlvbgEAAAABMAECAAAABgoAAAANQy4gS2x1dGUtTGFuZwUJAAAAMEluZnJhZ2lzdGljcy5XaW4uVWx0cmFXaW5TY2hlZHVsZS5UYXNrRGVwZW5kZW5jeQEAAAANUHJlZGVjZXNzb3JJZAMLU3lzdGVtLkd1aWQCAAAAAfX////9////ByPdTQfPUkSdsMNFFmG+Rws=</AlleEigenschaften>
+  </Arbeitsinhalt_Aufgaben>
+  <Arbeitsinhalt_Aufgaben>
+    <TaskID>54c31b4d-4e3d-4766-b918-8ddd6dfa76c9</TaskID>
+    <ProjektKey>projectKey</ProjektKey>
+    <TaskName>mech. Konstruktion Freigabe Kunden</TaskName>
+    <TaskStartTime>2016-08-22T00:00:00+02:00</TaskStartTime>
+    <TaskDauer>P34D</TaskDauer>
+    <Einschraenkung>6</Einschraenkung>
+    <TaskFertigInProzent>100</TaskFertigInProzent>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAHNJbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNi4yLCBWZXJzaW9uPTE2LjIuMjAxNjIuMjExMSwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiBQEAAAAmSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlRhc2sOAAAAAklkCkNvbnN0cmFpbnQSQ29uc3RyYWludERhdGVUaW1lDERlcGVuZGVuY2llcwhEdXJhdGlvbg5EdXJhdGlvbkZvcm1hdBVTdW1tYXJ5RHVyYXRpb25Gb3JtYXQETmFtZQ9QZXJjZW50Q29tcGxldGUKUHJvamVjdEtleQlSZXNvdXJjZXMJUm93SGVpZ2h0DVN0YXJ0RGF0ZVRpbWUMUGFyZW50VGFza0lkAwAABAAAAAEAAQQAAAMLU3lzdGVtLkd1aWQIDTxJbmZyYWdpc3RpY3MuV2luLlVsdHJhV2luU2NoZWR1bGUuVGFza0RlcGVuZGVuY2llc0NvbGxlY3Rpb24CAAAADAgICzVJbmZyYWdpc3RpY3MuV2luLlVsdHJhV2luU2NoZWR1bGUuUmVzb3VyY2VzQ29sbGVjdGlvbgIAAAAIDQtTeXN0ZW0uR3VpZAIAAAAE/f///wtTeXN0ZW0uR3VpZAsAAAACX2ECX2ICX2MCX2QCX2UCX2YCX2cCX2gCX2kCX2oCX2sAAAAAAAAAAAAAAAgHBwICAgICAgICTRvDVD1OZke5GI3dbfp2yQYAAAAAwKBCH8rTCAkEAAAAAIALorcaAAADAAAAAwAAAAYFAAAAIm1lY2guIEtvbnN0cnVrdGlvbiBGcmVpZ2FiZSBLdW5kZW4AAMhCBgYAAAAKcHJvamVjdEtleQkHAAAAMQAAAADAoEIfytMIAfj////9////pPTJ8CXss0m23qE7ToyZJQUEAAAAPEluZnJhZ2lzdGljcy5XaW4uVWx0cmFXaW5TY2hlZHVsZS5UYXNrRGVwZW5kZW5jaWVzQ29sbGVjdGlvbgEAAAABMAQwSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlRhc2tEZXBlbmRlbmN5AgAAAAIAAAAJCQAAAAUHAAAANUluZnJhZ2lzdGljcy5XaW4uVWx0cmFXaW5TY2hlZHVsZS5SZXNvdXJjZXNDb2xsZWN0aW9uAQAAAAEwAQIAAAAGCgAAAA1NYXJ0aW4gS2Fpc2VyBQkAAAAwSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlRhc2tEZXBlbmRlbmN5AQAAAA1QcmVkZWNlc3NvcklkAwtTeXN0ZW0uR3VpZAIAAAAB9f////3////D29kG5rT7RqMZ0w42zMBJCw==</AlleEigenschaften>
+  </Arbeitsinhalt_Aufgaben>
+  <Arbeitsinhalt_Aufgaben>
+    <TaskID>b6f5c89e-1ff0-4def-8e4c-7c12a63ece52</TaskID>
+    <ProjektKey>projectKey</ProjektKey>
+    <TaskName>Prozessbaustein OP61858</TaskName>
+    <TaskStartTime>2014-01-24T00:24:16.9002971+01:00</TaskStartTime>
+    <TaskDauer>P12D</TaskDauer>
+    <Einschraenkung>1</Einschraenkung>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAHNJbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNi4yLCBWZXJzaW9uPTE2LjIuMjAxNjIuMjExMSwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiBQEAAAAmSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlRhc2sJAAAAAklkEkNvbnN0cmFpbnREYXRlVGltZQhEdXJhdGlvbg5EdXJhdGlvbkZvcm1hdBVTdW1tYXJ5RHVyYXRpb25Gb3JtYXQETmFtZQ9QZXJjZW50Q29tcGxldGUKUHJvamVjdEtleQ1TdGFydERhdGVUaW1lAwAAAAABAAEAC1N5c3RlbS5HdWlkDQwICAsNAgAAAAT9////C1N5c3RlbS5HdWlkCwAAAAJfYQJfYgJfYwJfZAJfZQJfZgJfZwJfaAJfaQJfagJfawAAAAAAAAAAAAAACAcHAgICAgICAgKeyPW28B/vTY5MfBKmPs5SAAAAAAAAAAAAAPX8bQkAAAMAAAADAAAABgQAAAAXUHJvemVzc2JhdXN0ZWluIE9QNjE4NTgAAAAABgUAAAAKcHJvamVjdEtledvnsHV/5tAICw==</AlleEigenschaften>
+  </Arbeitsinhalt_Aufgaben>
+  <Arbeitsinhalt_Aufgaben>
+    <TaskID>41173f2b-22d0-482f-9bf7-52ba3b2225e7</TaskID>
+    <ProjektKey>projectKey</ProjektKey>
+    <TaskName>Konzept</TaskName>
+    <TaskStartTime>2016-07-11T00:00:00+02:00</TaskStartTime>
+    <TaskDauer>P42D</TaskDauer>
+    <ParentTaskID>b6f5c89e-1ff0-4def-8e4c-7c12a63ece52</ParentTaskID>
+    <Einschraenkung>6</Einschraenkung>
+    <TaskFertigInProzent>85</TaskFertigInProzent>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAHNJbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNi4yLCBWZXJzaW9uPTE2LjIuMjAxNjIuMjExMSwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiBQEAAAAmSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlRhc2sLAAAAAklkCkNvbnN0cmFpbnQSQ29uc3RyYWludERhdGVUaW1lCER1cmF0aW9uDkR1cmF0aW9uRm9ybWF0FVN1bW1hcnlEdXJhdGlvbkZvcm1hdAROYW1lD1BlcmNlbnRDb21wbGV0ZQpQcm9qZWN0S2V5DVN0YXJ0RGF0ZVRpbWUMUGFyZW50VGFza0lkAwAAAAAAAQABAAMLU3lzdGVtLkd1aWQIDQwICAsNC1N5c3RlbS5HdWlkAgAAAAT9////C1N5c3RlbS5HdWlkCwAAAAJfYQJfYgJfYwJfZAJfZQJfZgJfZwJfaAJfaQJfagJfawAAAAAAAAAAAAAACAcHAgICAgICAgIrPxdB0CIvSJv3Uro7IiXnBgAAAABAR00eqdMIAIBZ9QAhAAADAAAAAwAAAAYEAAAAB0tvbnplcHQAAKpCBgUAAAAKcHJvamVjdEtleQBAR00eqdMIAfr////9////nsj1tvAf702OTHwSpj7OUgs=</AlleEigenschaften>
+  </Arbeitsinhalt_Aufgaben>
+  <Arbeitsinhalt_Aufgaben>
+    <TaskID>f07520fe-231d-4a34-8c6d-f40b42d07041</TaskID>
+    <ProjektKey>projectKey</ProjektKey>
+    <TaskName>mech. Konstruktion</TaskName>
+    <TaskStartTime>2014-01-26T00:24:16.9002971+01:00</TaskStartTime>
+    <TaskDauer>P84D</TaskDauer>
+    <ParentTaskID>b6f5c89e-1ff0-4def-8e4c-7c12a63ece52</ParentTaskID>
+    <Einschraenkung>1</Einschraenkung>
+    <TaskFertigInProzent>13</TaskFertigInProzent>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAHNJbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNi4yLCBWZXJzaW9uPTE2LjIuMjAxNjIuMjExMSwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiBQEAAAAmSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlRhc2sLAAAAAklkEkNvbnN0cmFpbnREYXRlVGltZQxEZXBlbmRlbmNpZXMIRHVyYXRpb24ORHVyYXRpb25Gb3JtYXQVU3VtbWFyeUR1cmF0aW9uRm9ybWF0BE5hbWUPUGVyY2VudENvbXBsZXRlClByb2plY3RLZXkNU3RhcnREYXRlVGltZQxQYXJlbnRUYXNrSWQDAAQAAAABAAEAAwtTeXN0ZW0uR3VpZA08SW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlRhc2tEZXBlbmRlbmNpZXNDb2xsZWN0aW9uAgAAAAwICAsNC1N5c3RlbS5HdWlkAgAAAAT9////C1N5c3RlbS5HdWlkCwAAAAJfYQJfYgJfYwJfZAJfZQJfZgJfZwJfaAJfaQJfagJfawAAAAAAAAAAAAAACAcHAgICAgICAgL+IHXwHSM0Soxt9AtC0HBBAAAAAAAAAAAJBAAAAAAAs+oBQgAAAwAAAAMAAAAGBQAAABJtZWNoLiBLb25zdHJ1a3Rpb24AAFBBBgYAAAAKcHJvamVjdEtledtnhMoR6NAIAfn////9////nsj1tvAf702OTHwSpj7OUgUEAAAAPEluZnJhZ2lzdGljcy5XaW4uVWx0cmFXaW5TY2hlZHVsZS5UYXNrRGVwZW5kZW5jaWVzQ29sbGVjdGlvbgEAAAABMAQwSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlRhc2tEZXBlbmRlbmN5AgAAAAIAAAAJCAAAAAUIAAAAMEluZnJhZ2lzdGljcy5XaW4uVWx0cmFXaW5TY2hlZHVsZS5UYXNrRGVwZW5kZW5jeQEAAAANUHJlZGVjZXNzb3JJZAMLU3lzdGVtLkd1aWQCAAAAAff////9////Kz8XQdAiL0ib91K6OyIl5ws=</AlleEigenschaften>
+  </Arbeitsinhalt_Aufgaben>
+  <Arbeitsinhalt_Aufgaben>
+    <TaskID>561a4b9b-2be6-4f6d-b609-d511e2fe5b1f</TaskID>
+    <ProjektKey>projectKey</ProjektKey>
+    <TaskName>mech. Konstruktion Freigabe Kunden</TaskName>
+    <TaskStartTime>2014-01-28T00:24:16.9002971+01:00</TaskStartTime>
+    <TaskDauer>P30D</TaskDauer>
+    <ParentTaskID>b6f5c89e-1ff0-4def-8e4c-7c12a63ece52</ParentTaskID>
+    <Einschraenkung>1</Einschraenkung>
+    <TaskFertigInProzent>4</TaskFertigInProzent>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAHNJbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNi4yLCBWZXJzaW9uPTE2LjIuMjAxNjIuMjExMSwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiBQEAAAAmSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlRhc2sLAAAAAklkEkNvbnN0cmFpbnREYXRlVGltZQxEZXBlbmRlbmNpZXMIRHVyYXRpb24ORHVyYXRpb25Gb3JtYXQVU3VtbWFyeUR1cmF0aW9uRm9ybWF0BE5hbWUPUGVyY2VudENvbXBsZXRlClByb2plY3RLZXkNU3RhcnREYXRlVGltZQxQYXJlbnRUYXNrSWQDAAQAAAABAAEAAwtTeXN0ZW0uR3VpZA08SW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlRhc2tEZXBlbmRlbmNpZXNDb2xsZWN0aW9uAgAAAAwICAsNC1N5c3RlbS5HdWlkAgAAAAT9////C1N5c3RlbS5HdWlkCwAAAAJfYQJfYgJfYwJfZAJfZQJfZgJfZwJfaAJfaQJfagJfawAAAAAAAAAAAAAACAcHAgICAgICAgKbSxpW5ittT7YJ1RHi/lsfAAAAAAAAAAAJBAAAAACAZPiSFwAAAwAAAAMAAAAGBQAAACJtZWNoLiBLb25zdHJ1a3Rpb24gRnJlaWdhYmUgS3VuZGVuAACAQAYGAAAACnByb2plY3RLZXnb51cfpOnQCAH5/////f///57I9bbwH+9Njkx8EqY+zlIFBAAAADxJbmZyYWdpc3RpY3MuV2luLlVsdHJhV2luU2NoZWR1bGUuVGFza0RlcGVuZGVuY2llc0NvbGxlY3Rpb24BAAAAATAEMEluZnJhZ2lzdGljcy5XaW4uVWx0cmFXaW5TY2hlZHVsZS5UYXNrRGVwZW5kZW5jeQIAAAACAAAACQgAAAAFCAAAADBJbmZyYWdpc3RpY3MuV2luLlVsdHJhV2luU2NoZWR1bGUuVGFza0RlcGVuZGVuY3kBAAAADVByZWRlY2Vzc29ySWQDC1N5c3RlbS5HdWlkAgAAAAH3/////f////4gdfAdIzRKjG30C0LQcEEL</AlleEigenschaften>
+  </Arbeitsinhalt_Aufgaben>
+  <Arbeitsinhalt_Aufgaben>
+    <TaskID>7e0b4906-07b7-4104-8d67-348eab92891e</TaskID>
+    <ProjektKey>projectKey</ProjektKey>
+    <TaskName>Mech. Detailierung + Übergabe AV</TaskName>
+    <TaskStartTime>2016-11-21T00:00:00+01:00</TaskStartTime>
+    <TaskDauer>P14D</TaskDauer>
+    <Einschraenkung>6</Einschraenkung>
+    <TaskFertigInProzent>6,43</TaskFertigInProzent>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAHNJbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNi4yLCBWZXJzaW9uPTE2LjIuMjAxNjIuMjExMSwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiBQEAAAAmSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlRhc2sMAAAAAklkCkNvbnN0cmFpbnQSQ29uc3RyYWludERhdGVUaW1lCER1cmF0aW9uDkR1cmF0aW9uRm9ybWF0FVN1bW1hcnlEdXJhdGlvbkZvcm1hdAROYW1lD1BlcmNlbnRDb21wbGV0ZQpQcm9qZWN0S2V5CVJlc291cmNlcw1TdGFydERhdGVUaW1lDFBhcmVudFRhc2tJZAMAAAAAAAEAAQQAAwtTeXN0ZW0uR3VpZAgNDAgICzVJbmZyYWdpc3RpY3MuV2luLlVsdHJhV2luU2NoZWR1bGUuUmVzb3VyY2VzQ29sbGVjdGlvbgIAAAANC1N5c3RlbS5HdWlkAgAAAAT9////C1N5c3RlbS5HdWlkCwAAAAJfYQJfYgJfYwJfZAJfZQJfZgJfZwJfaAJfaQJfagJfawAAAAAAAAAAAAAACAcHAgICAgICAgIGSQt+twcEQY1nNI6rkokeBgAAAAAAOFahEdQIAIDIUQALAAADAAAAAwAAAAYEAAAAIU1lY2guIERldGFpbGllcnVuZyArIMOcYmVyZ2FiZSBBVo/CzUAGBQAAAApwcm9qZWN0S2V5CQYAAAAAADhWoRHUCAH5/////f///57I9bbwH+9Njkx8EqY+zlIFBgAAADVJbmZyYWdpc3RpY3MuV2luLlVsdHJhV2luU2NoZWR1bGUuUmVzb3VyY2VzQ29sbGVjdGlvbgEAAAABMAECAAAABggAAAAJTS4gSmV0dGVyCw==</AlleEigenschaften>
+  </Arbeitsinhalt_Aufgaben>
+  <Arbeitsinhalt_Aufgaben>
+    <TaskID>feac9af2-8aeb-42c1-ab90-e05def9bbc68</TaskID>
+    <ProjektKey>projectKey</ProjektKey>
+    <TaskName>Beschaffung / Fertigung</TaskName>
+    <TaskStartTime>2017-02-27T00:00:00+01:00</TaskStartTime>
+    <TaskDauer>P56D</TaskDauer>
+    <Einschraenkung>6</Einschraenkung>
+    <TaskFertigInProzent>1,07</TaskFertigInProzent>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAHNJbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNi4yLCBWZXJzaW9uPTE2LjIuMjAxNjIuMjExMSwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiBQEAAAAmSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlRhc2sMAAAAAklkCkNvbnN0cmFpbnQSQ29uc3RyYWludERhdGVUaW1lCER1cmF0aW9uDkR1cmF0aW9uRm9ybWF0FVN1bW1hcnlEdXJhdGlvbkZvcm1hdAROYW1lD1BlcmNlbnRDb21wbGV0ZQpQcm9qZWN0S2V5CVJlc291cmNlcw1TdGFydERhdGVUaW1lDFBhcmVudFRhc2tJZAMAAAAAAAEAAQQAAwtTeXN0ZW0uR3VpZAgNDAgICzVJbmZyYWdpc3RpY3MuV2luLlVsdHJhV2luU2NoZWR1bGUuUmVzb3VyY2VzQ29sbGVjdGlvbgIAAAANC1N5c3RlbS5HdWlkAgAAAAT9////C1N5c3RlbS5HdWlkCwAAAAJfYQJfYgJfYwJfZAJfZQJfZgJfZwJfaAJfaQJfagJfawAAAAAAAAAAAAAACAcHAgICAgICAgLymqz+64rBQquQ4F3vm7xoBgAAAACAs5KjXtQIAAAiRwEsAAADAAAAAwAAAAYEAAAAF0Jlc2NoYWZmdW5nIC8gRmVydGlndW5nw/WIPwYFAAAACnByb2plY3RLZXkJBgAAAACAs5KjXtQIAfn////9////nsj1tvAf702OTHwSpj7OUgUGAAAANUluZnJhZ2lzdGljcy5XaW4uVWx0cmFXaW5TY2hlZHVsZS5SZXNvdXJjZXNDb2xsZWN0aW9uAQAAAAEwAQIAAAAGCAAAAAlNLiBKZXR0ZXIL</AlleEigenschaften>
+  </Arbeitsinhalt_Aufgaben>
+  <Arbeitsinhalt_Aufgaben>
+    <TaskID>668ffd2e-297e-4344-bf56-750c28dddfb1</TaskID>
+    <ProjektKey>projectKey</ProjektKey>
+    <TaskName>Montage</TaskName>
+    <TaskStartTime>2017-05-15T00:00:00+02:00</TaskStartTime>
+    <TaskDauer>P28D</TaskDauer>
+    <ParentTaskID>b6f5c89e-1ff0-4def-8e4c-7c12a63ece52</ParentTaskID>
+    <Einschraenkung>6</Einschraenkung>
+    <TaskFertigInProzent>1,071429</TaskFertigInProzent>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAHNJbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNi4yLCBWZXJzaW9uPTE2LjIuMjAxNjIuMjExMSwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiBQEAAAAmSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlRhc2sMAAAAAklkCkNvbnN0cmFpbnQSQ29uc3RyYWludERhdGVUaW1lDERlcGVuZGVuY2llcwhEdXJhdGlvbg5EdXJhdGlvbkZvcm1hdBVTdW1tYXJ5RHVyYXRpb25Gb3JtYXQETmFtZQ9QZXJjZW50Q29tcGxldGUKUHJvamVjdEtleQ1TdGFydERhdGVUaW1lDFBhcmVudFRhc2tJZAMAAAQAAAABAAEAAwtTeXN0ZW0uR3VpZAgNPEluZnJhZ2lzdGljcy5XaW4uVWx0cmFXaW5TY2hlZHVsZS5UYXNrRGVwZW5kZW5jaWVzQ29sbGVjdGlvbgIAAAAMCAgLDQtTeXN0ZW0uR3VpZAIAAAAE/f///wtTeXN0ZW0uR3VpZAsAAAACX2ECX2ICX2MCX2QCX2UCX2YCX2cCX2gCX2kCX2oCX2sAAAAAAAAAAAAAAAgHBwICAgICAgICLv2PZn4pREO/VnUMKN3fsQYAAAAAQIJUJZvUCAkEAAAAAACRowAWAAADAAAAAwAAAAYFAAAAB01vbnRhZ2WTJIk/BgYAAAAKcHJvamVjdEtleQBAglQlm9QIAfn////9////nsj1tvAf702OTHwSpj7OUgUEAAAAPEluZnJhZ2lzdGljcy5XaW4uVWx0cmFXaW5TY2hlZHVsZS5UYXNrRGVwZW5kZW5jaWVzQ29sbGVjdGlvbgEAAAABMAQwSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlRhc2tEZXBlbmRlbmN5AgAAAAIAAAAJCAAAAAUIAAAAMEluZnJhZ2lzdGljcy5XaW4uVWx0cmFXaW5TY2hlZHVsZS5UYXNrRGVwZW5kZW5jeQEAAAANUHJlZGVjZXNzb3JJZAMLU3lzdGVtLkd1aWQCAAAAAff////9////8pqs/uuKwUKrkOBd75u8aAs=</AlleEigenschaften>
+  </Arbeitsinhalt_Aufgaben>
+  <Arbeitsinhalt_Aufgaben>
+    <TaskID>abb7e31c-ec6d-45bc-90d9-f5f4e6d6148b</TaskID>
+    <ProjektKey>projectKey</ProjektKey>
+    <TaskName>elekt. Konstruktion</TaskName>
+    <TaskStartTime>2016-12-05T00:00:00+01:00</TaskStartTime>
+    <TaskDauer>P28D</TaskDauer>
+    <Einschraenkung>6</Einschraenkung>
+    <TaskFertigInProzent>22,86</TaskFertigInProzent>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAHNJbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNi4yLCBWZXJzaW9uPTE2LjIuMjAxNjIuMjExMSwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiBQEAAAAmSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlRhc2sMAAAAAklkCkNvbnN0cmFpbnQSQ29uc3RyYWludERhdGVUaW1lCER1cmF0aW9uDkR1cmF0aW9uRm9ybWF0FVN1bW1hcnlEdXJhdGlvbkZvcm1hdAROYW1lD1BlcmNlbnRDb21wbGV0ZQpQcm9qZWN0S2V5CVJlc291cmNlcw1TdGFydERhdGVUaW1lDFBhcmVudFRhc2tJZAMAAAAAAAEAAQQAAwtTeXN0ZW0uR3VpZAgNDAgICzVJbmZyYWdpc3RpY3MuV2luLlVsdHJhV2luU2NoZWR1bGUuUmVzb3VyY2VzQ29sbGVjdGlvbgIAAAANC1N5c3RlbS5HdWlkAgAAAAT9////C1N5c3RlbS5HdWlkCwAAAAJfYQJfYgJfYwJfZAJfZQJfZgJfZwJfaAJfaQJfagJfawAAAAAAAAAAAAAACAcHAgICAgICAgIc47erbey8RZDZ9fTm1hSLBgAAAACAAKihHNQIAACRowAWAAADAAAAAwAAAAYEAAAAE2VsZWt0LiBLb25zdHJ1a3Rpb25I4bZBBgUAAAAKcHJvamVjdEtleQkGAAAAAIAAqKEc1AgB+f////3///+eyPW28B/vTY5MfBKmPs5SBQYAAAA1SW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlJlc291cmNlc0NvbGxlY3Rpb24BAAAAATABAgAAAAYIAAAAFUJlcm5kIEbDvHR0ZXJlciAoRsO8KQs=</AlleEigenschaften>
+  </Arbeitsinhalt_Aufgaben>
+  <Arbeitsinhalt_Aufgaben>
+    <TaskID>7874be45-69d8-4182-a901-069ad747930a</TaskID>
+    <ProjektKey>projectKey</ProjektKey>
+    <TaskName>Beschaffung Elektrik</TaskName>
+    <TaskStartTime>2017-01-02T00:00:00+01:00</TaskStartTime>
+    <TaskDauer>P21D</TaskDauer>
+    <Einschraenkung>6</Einschraenkung>
+    <TaskFertigInProzent>10,2</TaskFertigInProzent>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAHNJbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNi4yLCBWZXJzaW9uPTE2LjIuMjAxNjIuMjExMSwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiBQEAAAAmSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlRhc2sMAAAAAklkCkNvbnN0cmFpbnQSQ29uc3RyYWludERhdGVUaW1lCER1cmF0aW9uDkR1cmF0aW9uRm9ybWF0FVN1bW1hcnlEdXJhdGlvbkZvcm1hdAROYW1lD1BlcmNlbnRDb21wbGV0ZQpQcm9qZWN0S2V5CVJlc291cmNlcw1TdGFydERhdGVUaW1lDFBhcmVudFRhc2tJZAMAAAAAAAEAAQQAAwtTeXN0ZW0uR3VpZAgNDAgICzVJbmZyYWdpc3RpY3MuV2luLlVsdHJhV2luU2NoZWR1bGUuUmVzb3VyY2VzQ29sbGVjdGlvbgIAAAANC1N5c3RlbS5HdWlkAgAAAAT9////C1N5c3RlbS5HdWlkCwAAAAJfYQJfYgJfYwJfZAJfZQJfZgJfZwJfaAJfaQJfagJfawAAAAAAAAAAAAAACAcHAgICAgICAgJFvnR42GmCQakBBprXR5MKBgAAAACAkUuiMtQIAMCseoAQAAADAAAAAwAAAAYEAAAAFEJlc2NoYWZmdW5nIEVsZWt0cmlrMzMjQQYFAAAACnByb2plY3RLZXkJBgAAAACAkUuiMtQIAfn////9////nsj1tvAf702OTHwSpj7OUgUGAAAANUluZnJhZ2lzdGljcy5XaW4uVWx0cmFXaW5TY2hlZHVsZS5SZXNvdXJjZXNDb2xsZWN0aW9uAQAAAAEwAQIAAAAGCAAAABNFcndpbiBIZWlucmljaCAoaGUpCw==</AlleEigenschaften>
+  </Arbeitsinhalt_Aufgaben>
+  <Arbeitsinhalt_Aufgaben>
+    <TaskID>3933416c-f7d1-4eb0-9c4a-137f5a75ab3f</TaskID>
+    <ProjektKey>projectKey</ProjektKey>
+    <TaskName>Schaltschrankbau</TaskName>
+    <TaskStartTime>2017-01-23T00:00:00+01:00</TaskStartTime>
+    <TaskDauer>P21D</TaskDauer>
+    <Einschraenkung>6</Einschraenkung>
+    <TaskFertigInProzent>15,24</TaskFertigInProzent>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAHNJbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNi4yLCBWZXJzaW9uPTE2LjIuMjAxNjIuMjExMSwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiBQEAAAAmSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlRhc2sMAAAAAklkCkNvbnN0cmFpbnQSQ29uc3RyYWludERhdGVUaW1lCER1cmF0aW9uDkR1cmF0aW9uRm9ybWF0FVN1bW1hcnlEdXJhdGlvbkZvcm1hdAROYW1lD1BlcmNlbnRDb21wbGV0ZQpQcm9qZWN0S2V5CVJlc291cmNlcw1TdGFydERhdGVUaW1lDFBhcmVudFRhc2tJZAMAAAAAAAEAAQQAAwtTeXN0ZW0uR3VpZAgNDAgICzVJbmZyYWdpc3RpY3MuV2luLlVsdHJhV2luU2NoZWR1bGUuUmVzb3VyY2VzQ29sbGVjdGlvbgIAAAANC1N5c3RlbS5HdWlkAgAAAAT9////C1N5c3RlbS5HdWlkCwAAAAJfYQJfYgJfYwJfZAJfZQJfZgJfZwJfaAJfaQJfagJfawAAAAAAAAAAAAAACAcHAgICAgICAgJsQTM50fewTpxKE39adas/BgAAAABAPsYiQ9QIAMCseoAQAAADAAAAAwAAAAYEAAAAEFNjaGFsdHNjaHJhbmtiYXUK13NBBgUAAAAKcHJvamVjdEtleQkGAAAAAEA+xiJD1AgB+f////3///+eyPW28B/vTY5MfBKmPs5SBQYAAAA1SW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlJlc291cmNlc0NvbGxlY3Rpb24BAAAAATABAgAAAAYIAAAADURpZXRlciBLaW1tZWwL</AlleEigenschaften>
+  </Arbeitsinhalt_Aufgaben>
+  <Arbeitsinhalt_Aufgaben>
+    <TaskID>0f7ebe8c-0617-45cf-b9e1-18765274d6d3</TaskID>
+    <ProjektKey>projectKey</ProjektKey>
+    <TaskName>Prozessbaustein OP61860</TaskName>
+    <TaskStartTime>2014-02-10T00:24:16.9002971+01:00</TaskStartTime>
+    <TaskDauer>P20D</TaskDauer>
+    <Einschraenkung>1</Einschraenkung>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAHNJbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNi4yLCBWZXJzaW9uPTE2LjIuMjAxNjIuMjExMSwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiBQEAAAAmSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlRhc2sJAAAAAklkEkNvbnN0cmFpbnREYXRlVGltZQhEdXJhdGlvbg5EdXJhdGlvbkZvcm1hdBVTdW1tYXJ5RHVyYXRpb25Gb3JtYXQETmFtZQ9QZXJjZW50Q29tcGxldGUKUHJvamVjdEtleQ1TdGFydERhdGVUaW1lAwAAAAABAAEAC1N5c3RlbS5HdWlkDQwICAsNAgAAAAT9////C1N5c3RlbS5HdWlkCwAAAAJfYQJfYgJfYwJfZAJfZQJfZgJfZwJfaAJfaQJfagJfawAAAAAAAAAAAAAACAcHAgICAgICAgKMvn4PFwbPRbnhGHZSdNbTAAAAAAAAAAAAAENQtw8AAAMAAAADAAAABgQAAAAXUHJvemVzc2JhdXN0ZWluIE9QNjE4NjAAAAAABgUAAAAKcHJvamVjdEtleduntkbb89AICw==</AlleEigenschaften>
+  </Arbeitsinhalt_Aufgaben>
+  <Arbeitsinhalt_Aufgaben>
+    <TaskID>99e69b80-4d17-42ba-9c17-404d309ff7fe</TaskID>
+    <ProjektKey>projectKey</ProjektKey>
+    <TaskName>Konzept</TaskName>
+    <TaskStartTime>2016-07-11T07:00:00+02:00</TaskStartTime>
+    <TaskDauer>P42D</TaskDauer>
+    <ParentTaskID>0f7ebe8c-0617-45cf-b9e1-18765274d6d3</ParentTaskID>
+    <Einschraenkung>6</Einschraenkung>
+    <TaskFertigInProzent>7,619048</TaskFertigInProzent>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAHNJbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNi4yLCBWZXJzaW9uPTE2LjIuMjAxNjIuMjExMSwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiBQEAAAAmSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlRhc2sLAAAAAklkCkNvbnN0cmFpbnQSQ29uc3RyYWludERhdGVUaW1lCER1cmF0aW9uDkR1cmF0aW9uRm9ybWF0FVN1bW1hcnlEdXJhdGlvbkZvcm1hdAROYW1lD1BlcmNlbnRDb21wbGV0ZQpQcm9qZWN0S2V5DVN0YXJ0RGF0ZVRpbWUMUGFyZW50VGFza0lkAwAAAAAAAQABAAMLU3lzdGVtLkd1aWQIDQwICAsNC1N5c3RlbS5HdWlkAgAAAAT9////C1N5c3RlbS5HdWlkCwAAAAJfYQJfYgJfYwJfZAJfZQJfZgJfZwJfaAJfaQJfagJfawAAAAAAAAAAAAAACAcHAgICAgICAgKAm+aZF026QpwXQE0wn/f+BgAAAAAYpvlYqdMIAIBZ9QAhAAADAAAAAwAAAAYEAAAAB0tvbnplcHQ9z/NABgUAAAAKcHJvamVjdEtleQAYpvlYqdMIAfr////9////jL5+DxcGz0W54Rh2UnTW0ws=</AlleEigenschaften>
+  </Arbeitsinhalt_Aufgaben>
+  <Arbeitsinhalt_Aufgaben>
+    <TaskID>4e0955ae-6267-474c-ac00-d879fca22485</TaskID>
+    <ProjektKey>projectKey</ProjektKey>
+    <TaskName>mech. Konstruktion</TaskName>
+    <TaskStartTime>2014-02-13T00:24:16.9002971+01:00</TaskStartTime>
+    <TaskDauer>P84D</TaskDauer>
+    <ParentTaskID>0f7ebe8c-0617-45cf-b9e1-18765274d6d3</ParentTaskID>
+    <Einschraenkung>1</Einschraenkung>
+    <TaskFertigInProzent>3,333333</TaskFertigInProzent>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAHNJbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNi4yLCBWZXJzaW9uPTE2LjIuMjAxNjIuMjExMSwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiBQEAAAAmSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlRhc2sLAAAAAklkEkNvbnN0cmFpbnREYXRlVGltZQxEZXBlbmRlbmNpZXMIRHVyYXRpb24ORHVyYXRpb25Gb3JtYXQVU3VtbWFyeUR1cmF0aW9uRm9ybWF0BE5hbWUPUGVyY2VudENvbXBsZXRlClByb2plY3RLZXkNU3RhcnREYXRlVGltZQxQYXJlbnRUYXNrSWQDAAQAAAABAAEAAwtTeXN0ZW0uR3VpZA08SW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlRhc2tEZXBlbmRlbmNpZXNDb2xsZWN0aW9uAgAAAAwICAsNC1N5c3RlbS5HdWlkAgAAAAT9////C1N5c3RlbS5HdWlkCwAAAAJfYQJfYgJfYwJfZAJfZQJfZgJfZwJfaAJfaQJfagJfawAAAAAAAAAAAAAACAcHAgICAgICAgKuVQlOZ2JMR6wA2Hn8oiSFAAAAAAAAAAAJBAAAAAAAs+oBQgAAAwAAAAMAAAAGBQAAABJtZWNoLiBLb25zdHJ1a3Rpb25WVVVABgYAAAAKcHJvamVjdEtledvn88U29tAIAfn////9////jL5+DxcGz0W54Rh2UnTW0wUEAAAAPEluZnJhZ2lzdGljcy5XaW4uVWx0cmFXaW5TY2hlZHVsZS5UYXNrRGVwZW5kZW5jaWVzQ29sbGVjdGlvbgEAAAABMAQwSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlRhc2tEZXBlbmRlbmN5AgAAAAIAAAAJCAAAAAUIAAAAMEluZnJhZ2lzdGljcy5XaW4uVWx0cmFXaW5TY2hlZHVsZS5UYXNrRGVwZW5kZW5jeQEAAAANUHJlZGVjZXNzb3JJZAMLU3lzdGVtLkd1aWQCAAAAAff////9////gJvmmRdNukKcF0BNMJ/3/gs=</AlleEigenschaften>
+  </Arbeitsinhalt_Aufgaben>
+  <Arbeitsinhalt_Aufgaben>
+    <TaskID>4f80a859-68f5-44ef-8f26-cf5dcf4fcb7a</TaskID>
+    <ProjektKey>projectKey</ProjektKey>
+    <TaskName>mech. Konstruktion Freigabe Kunden</TaskName>
+    <TaskStartTime>2014-02-16T00:24:16.9002971+01:00</TaskStartTime>
+    <TaskDauer>P7D</TaskDauer>
+    <ParentTaskID>0f7ebe8c-0617-45cf-b9e1-18765274d6d3</ParentTaskID>
+    <Einschraenkung>1</Einschraenkung>
+    <TaskFertigInProzent>34,28572</TaskFertigInProzent>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAHNJbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNi4yLCBWZXJzaW9uPTE2LjIuMjAxNjIuMjExMSwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiBQEAAAAmSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlRhc2sMAAAAAklkEkNvbnN0cmFpbnREYXRlVGltZQxEZXBlbmRlbmNpZXMIRHVyYXRpb24ORHVyYXRpb25Gb3JtYXQVU3VtbWFyeUR1cmF0aW9uRm9ybWF0BE5hbWUPUGVyY2VudENvbXBsZXRlClByb2plY3RLZXkJUm93SGVpZ2h0DVN0YXJ0RGF0ZVRpbWUMUGFyZW50VGFza0lkAwAEAAAAAQABAAADC1N5c3RlbS5HdWlkDTxJbmZyYWdpc3RpY3MuV2luLlVsdHJhV2luU2NoZWR1bGUuVGFza0RlcGVuZGVuY2llc0NvbGxlY3Rpb24CAAAADAgICwgNC1N5c3RlbS5HdWlkAgAAAAT9////C1N5c3RlbS5HdWlkCwAAAAJfYQJfYgJfYwJfZAJfZQJfZgJfZwJfaAJfaQJfagJfawAAAAAAAAAAAAAACAcHAgICAgICAgJZqIBP9WjvRI8mz13PT8t6AAAAAAAAAAAJBAAAAABA5CiABQAAAwAAAAMAAAAGBQAAACJtZWNoLiBLb25zdHJ1a3Rpb24gRnJlaWdhYmUgS3VuZGVukyQJQgYGAAAACnByb2plY3RLZXkoAAAA2ycxRZL40AgB+f////3///+Mvn4PFwbPRbnhGHZSdNbTBQQAAAA8SW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlRhc2tEZXBlbmRlbmNpZXNDb2xsZWN0aW9uAQAAAAEwBDBJbmZyYWdpc3RpY3MuV2luLlVsdHJhV2luU2NoZWR1bGUuVGFza0RlcGVuZGVuY3kCAAAAAgAAAAkIAAAABQgAAAAwSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlRhc2tEZXBlbmRlbmN5AQAAAA1QcmVkZWNlc3NvcklkAwtTeXN0ZW0uR3VpZAIAAAAB9/////3///+uVQlOZ2JMR6wA2Hn8oiSFCw==</AlleEigenschaften>
+  </Arbeitsinhalt_Aufgaben>
+  <Arbeitsinhalt_Aufgaben>
+    <TaskID>eafd55ee-4eda-40f2-ba29-f7a783ee21bc</TaskID>
+    <ProjektKey>projectKey</ProjektKey>
+    <TaskName>Mech. Detailierung + Übergabe AV</TaskName>
+    <TaskStartTime>2014-02-19T00:24:16.9002971+01:00</TaskStartTime>
+    <TaskDauer>P14D</TaskDauer>
+    <ParentTaskID>0f7ebe8c-0617-45cf-b9e1-18765274d6d3</ParentTaskID>
+    <Einschraenkung>1</Einschraenkung>
+    <TaskFertigInProzent>14,28572</TaskFertigInProzent>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAHNJbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNi4yLCBWZXJzaW9uPTE2LjIuMjAxNjIuMjExMSwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiBQEAAAAmSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlRhc2sLAAAAAklkEkNvbnN0cmFpbnREYXRlVGltZQxEZXBlbmRlbmNpZXMIRHVyYXRpb24ORHVyYXRpb25Gb3JtYXQVU3VtbWFyeUR1cmF0aW9uRm9ybWF0BE5hbWUPUGVyY2VudENvbXBsZXRlClByb2plY3RLZXkNU3RhcnREYXRlVGltZQxQYXJlbnRUYXNrSWQDAAQAAAABAAEAAwtTeXN0ZW0uR3VpZA08SW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlRhc2tEZXBlbmRlbmNpZXNDb2xsZWN0aW9uAgAAAAwICAsNC1N5c3RlbS5HdWlkAgAAAAT9////C1N5c3RlbS5HdWlkCwAAAAJfYQJfYgJfYwJfZAJfZQJfZgJfZwJfaAJfaQJfagJfawAAAAAAAAAAAAAACAcHAgICAgICAgLuVf3q2k7yQLop96eD7iG8AAAAAAAAAAAJBAAAAACAyFEACwAAAwAAAAMAAAAGBQAAACFNZWNoLiBEZXRhaWxpZXJ1bmcgKyDDnGJlcmdhYmUgQVZKkmRBBgYAAAAKcHJvamVjdEtledtnbsTt+tAIAfn////9////jL5+DxcGz0W54Rh2UnTW0wUEAAAAPEluZnJhZ2lzdGljcy5XaW4uVWx0cmFXaW5TY2hlZHVsZS5UYXNrRGVwZW5kZW5jaWVzQ29sbGVjdGlvbgEAAAABMAQwSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLlRhc2tEZXBlbmRlbmN5AgAAAAIAAAAJCAAAAAUIAAAAMEluZnJhZ2lzdGljcy5XaW4uVWx0cmFXaW5TY2hlZHVsZS5UYXNrRGVwZW5kZW5jeQEAAAANUHJlZGVjZXNzb3JJZAMLU3lzdGVtLkd1aWQCAAAAAff////9////WaiAT/Vo70SPJs9dz0/Legs=</AlleEigenschaften>
+  </Arbeitsinhalt_Aufgaben>
+  <Besitzer>
+    <Key>Martin Knoblauch</Key>
+    <Name>Martin Knoblauch(kn)</Name>
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAHNJbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNi4yLCBWZXJzaW9uPTE2LjIuMjAxNjIuMjExMSwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiBQEAAAAnSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLk93bmVyAgAAAANLZXkETmFtZQEBAgAAAAYDAAAAEE1hcnRpbiBLbm9ibGF1Y2gGBAAAABRNYXJ0aW4gS25vYmxhdWNoKGtuKQs=</AlleEigenschaften>
+  </Besitzer>
+  <Besitzer>
+    <Key>Martin Kaiser</Key>
+    <Name>Martin Kaiser(ka)</Name>
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAHNJbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNi4yLCBWZXJzaW9uPTE2LjIuMjAxNjIuMjExMSwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiBQEAAAAnSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLk93bmVyAgAAAANLZXkETmFtZQEBAgAAAAYDAAAADU1hcnRpbiBLYWlzZXIGBAAAABFNYXJ0aW4gS2Fpc2VyKGthKQs=</AlleEigenschaften>
+  </Besitzer>
+  <Besitzer>
+    <Key>Wolfgang Roth</Key>
+    <Name>Wolfgang Roth(ro)</Name>
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAHNJbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNi4yLCBWZXJzaW9uPTE2LjIuMjAxNjIuMjExMSwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiBQEAAAAnSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLk93bmVyAgAAAANLZXkETmFtZQEBAgAAAAYDAAAADVdvbGZnYW5nIFJvdGgGBAAAABFXb2xmZ2FuZyBSb3RoKHJvKQs=</AlleEigenschaften>
+  </Besitzer>
+  <Besitzer>
+    <Key>C. Klute-Lang</Key>
+    <Name>C. Klute-Lang(kl)</Name>
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAHNJbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNi4yLCBWZXJzaW9uPTE2LjIuMjAxNjIuMjExMSwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiBQEAAAAnSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLk93bmVyAgAAAANLZXkETmFtZQEBAgAAAAYDAAAADUMuIEtsdXRlLUxhbmcGBAAAABFDLiBLbHV0ZS1MYW5nKGtsKQs=</AlleEigenschaften>
+  </Besitzer>
+  <Besitzer>
+    <Key>Armin Brenner</Key>
+    <Name>Armin Brenner(br)</Name>
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAHNJbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNi4yLCBWZXJzaW9uPTE2LjIuMjAxNjIuMjExMSwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiBQEAAAAnSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLk93bmVyAgAAAANLZXkETmFtZQEBAgAAAAYDAAAADUFybWluIEJyZW5uZXIGBAAAABFBcm1pbiBCcmVubmVyKGJyKQs=</AlleEigenschaften>
+  </Besitzer>
+  <Besitzer>
+    <Key>J. Echsler-Kull</Key>
+    <Name>J. Echsler-Kull(ku)</Name>
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAHNJbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNi4yLCBWZXJzaW9uPTE2LjIuMjAxNjIuMjExMSwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiBQEAAAAnSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLk93bmVyAgAAAANLZXkETmFtZQEBAgAAAAYDAAAAD0ouIEVjaHNsZXItS3VsbAYEAAAAE0ouIEVjaHNsZXItS3VsbChrdSkL</AlleEigenschaften>
+  </Besitzer>
+  <Besitzer>
+    <Key>M. Jetter</Key>
+    <Name>Martin Jetter(je)</Name>
+    <EmailAddresse />
+    <Sichtbar>true</Sichtbar>
+    <AlleEigenschaften>AAEAAAD/////AQAAAAAAAAAMAgAAAHNJbmZyYWdpc3RpY3M0Lldpbi5VbHRyYVdpblNjaGVkdWxlLnYxNi4yLCBWZXJzaW9uPTE2LjIuMjAxNjIuMjExMSwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj03ZGQ1YzMxNjNmMmNkMGNiBQEAAAAnSW5mcmFnaXN0aWNzLldpbi5VbHRyYVdpblNjaGVkdWxlLk93bmVyAgAAAANLZXkETmFtZQEBAgAAAAYDAAAACU0uIEpldHRlcgYEAAAAEU1hcnRpbiBKZXR0ZXIoamUpCw==</AlleEigenschaften>
+  </Besitzer>
+</TerminPlan>
