@@ -130,10 +130,16 @@ namespace WinGridZoomGrid
                 }
 
                 // b) Zeilen einer Hierarchie bearbeiten
-                foreach (var addrow in grid.Rows.Select(row => new RowSize(row.Index, row.Height, row.Band.Index)))
+                for (var i = 0; i < grid.Rows.Count; i++)
                 {
+                    var addrow = new RowSize(grid.Rows[i].Index, grid.Rows[i].Height, grid.Rows[i].Band.Index);
                     this.OriginRs.Add(addrow);                                  // Zeile der Liste für die originale Zeilenngrösse hinzufügen
                 }
+
+                //foreach (var addrow in grid.Rows.Select(row => new RowSize(row.Index, row.Height, row.Band.Index)))
+                //{
+                //    this.OriginRs.Add(addrow);                                  // Zeile der Liste für die originale Zeilenngrösse hinzufügen
+                //}
             }
 
             /// <summary>
@@ -148,15 +154,23 @@ namespace WinGridZoomGrid
                 // Jede Spalte aus der Originalliste verändern
                 foreach (var cs in this.OriginCs)
                 {
-                    grid.DisplayLayout.Bands[cs.BandIndex].Columns[cs.Key].Width =
-                        (int)(zoomIndex * cs.Width);
+                    try
+                    {
+                        grid.DisplayLayout.Bands[cs.BandIndex].Columns[cs.Key].Width =
+                    (int)(zoomIndex * cs.Width);
+                    }
+                    catch { }
                 }
 
                 // Jede Zeile aus der Originalliste verändern
                 foreach (var rs in this.OriginRs)
                 {
-                    grid.DisplayLayout.Rows[rs.Index].Height =
-                        (int)(zoomIndex * rs.Height);
+                    try
+                    {
+                        grid.DisplayLayout.Rows[rs.Index].Height =
+                            (int)(zoomIndex * rs.Height);
+                    }
+                    catch { }
                 }
 
                 // Schriftgröße des Grids einstellen

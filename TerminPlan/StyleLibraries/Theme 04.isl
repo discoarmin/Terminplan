@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <styleLibrary office2007ColorScheme="Black" office2007CustomBlendColor="" office2010ColorScheme="Black" office2013ColorScheme="DarkGray" office2013CustomBlendColor="" office2013Theme="Excel">
   <annotation>
-    <lastModified>2017-01-28T08:35:36</lastModified>
+    <lastModified>2017-07-15T20:04:04</lastModified>
   </annotation>
   <styleSets defaultStyleSet="Default">
     <styleSet name="Default" buttonStyle="Office2013Button" viewStyle="Office2013" useFlatMode="True">
@@ -947,6 +947,12 @@
             </state>
           </states>
         </style>
+        <style role="GanttViewMilestoneTaskDeadlineIndicator">
+          <states>
+            <state name="Normal" backColor="80, 255, 45" backGradientStyle="None" backHatchStyle="None" />
+            <state name="Active" backColor="80, 255, 45" backGradientStyle="None" backHatchStyle="None" />
+          </states>
+        </style>
         <style role="GanttViewSummaryTaskBarElement">
           <states>
             <state name="Normal" backColor="DimGray" borderColor="45, 45, 45" backGradientStyle="None" backHatchStyle="None" />
@@ -979,12 +985,13 @@
         </style>
         <style role="GanttViewTaskDeadlineIndicator">
           <states>
-            <state name="Normal">
+            <state name="Normal" backColor="255, 130, 67" backGradientStyle="None" backHatchStyle="None">
               <resources>
                 <name>Background Grid Hover</name>
                 <name>Border Hover</name>
               </resources>
             </state>
+            <state name="Active" backColor="255, 130, 67" backGradientStyle="None" backHatchStyle="None" />
           </states>
         </style>
         <style role="GanttViewTaskDependencyLinkArrow">
@@ -1070,7 +1077,11 @@
             <state name="Selected" backColor="67, 148, 103" backGradientStyle="None" backHatchStyle="None" />
           </states>
         </style>
-        <style role="GridCell" borderStyle="Solid" />
+        <style role="GridCell" borderStyle="Solid">
+          <states>
+            <state name="Selected" backColor="255, 255, 135" backGradientStyle="None" backHatchStyle="None" />
+          </states>
+        </style>
         <style role="GridColumnChooserButton" buttonStyle="Office2013Button">
           <states>
             <state name="Normal">
@@ -1176,6 +1187,12 @@
                 <name>Foreground</name>
               </resources>
             </state>
+          </states>
+        </style>
+        <style role="GridRow">
+          <states>
+            <state name="Selected" borderColor="124, 186, 0" />
+            <state name="AlternateItem" backColor="225, 225, 225" borderColor="124, 186, 0" backGradientStyle="None" backHatchStyle="None" />
           </states>
         </style>
         <style role="GridRowEditTemplatePanel">
@@ -2061,6 +2078,7 @@
           <states>
             <state name="Normal">
               <resources>
+                <name>Default_ScheduleNonWorkingDay_Normal</name>
                 <name>Background Grid Hover</name>
                 <name>Border Hover</name>
                 <name>Foreground</name>
@@ -2830,7 +2848,7 @@
         </style>
         <style role="UltraPanel">
           <states>
-            <state name="Normal">
+            <state name="Normal" backColor="DarkGray" backGradientStyle="None" backHatchStyle="None">
               <resources>
                 <name>Background DarkGray</name>
               </resources>
@@ -2897,12 +2915,17 @@
         </style>
         <style role="UltraTile" borderStyle="Solid">
           <states>
-            <state name="Normal">
+            <state name="Normal" backColor="DarkGray" backGradientStyle="None" backHatchStyle="None">
               <resources>
                 <name>Background</name>
                 <name>Border Selected/Pressed</name>
               </resources>
             </state>
+          </states>
+        </style>
+        <style role="UltraTilePanel">
+          <states>
+            <state name="Normal" backColor="DarkGray" backGradientStyle="None" backHatchStyle="None" />
           </states>
         </style>
         <style role="UnpinnedTabArea">
@@ -3242,6 +3265,7 @@
       <imageBackground>AAEAAAD/////AQAAAAAAAAAMAgAAAFFTeXN0ZW0uRHJhd2luZywgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2EFAQAAABVTeXN0ZW0uRHJhd2luZy5CaXRtYXABAAAABERhdGEHAgIAAAAJAwAAAA8DAAAAhQAAAAKJUE5HDQoaCgAAAA1JSERSAAAAAQAAABQIBgAAAEwOV6EAAAAEZ0FNQQAAsY8L/GEFAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABdJREFUGFdj+P//PwNtCMVit/9Awu0/ALphOX2g4ascAAAAAElFTkSuQmCCCwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</imageBackground>
     </resource>
     <resource name="DarkGray" backColor="51, 51, 51" backGradientStyle="None" backHatchStyle="None" />
+    <resource name="Default_ScheduleNonWorkingDay_Normal" backColor="135, 175, 255" backGradientStyle="None" backHatchStyle="None" />
     <resource name="Foreground" foreColor="68, 68, 68" foreColorDisabled="210, 210, 210" />
     <resource name="Foreground Error" foreColor="210, 0, 0" />
     <resource name="Foreground Hover/Selected" foreColor="33, 115, 70" />

@@ -104,56 +104,58 @@ namespace Terminplan
         /// <param name="e">Ein <see cref="T:System.EventArgs" /> welches die Ereignisdaten enthält.</param>
         protected override void OnLoad(EventArgs e)
         {
-            OnInitializationStatusChanged(Resources.Loading);   // Anzeige im Splashscreen aktualisieren
+            OnInitializationStatusChanged(Resources.Loading);                   // Anzeige im Splashscreen aktualisieren
             //base.OnLoad(e);
 
-            var splitterWeite = 10;                                             // Zum Einstellen des Splitters
-            var col = ultraGanttView1.GridSettings.ColumnSettings.Values;
-            var schluessel = string.Empty;
+            this.StellePanelBreiteEin();
 
-            // Überschriften einstellen
-            foreach (var de in col)
-            {
-                // Arbeitsinhalt oder Aufgabe
-                if (de.Key.ToLower() == @"name")
-                {
-                    de.Text = @"Arbeitsinhalt/Aufgabe";
-                    de.Visible = DefaultableBoolean.True;
-                    splitterWeite += de.Width;                                  // Breite der Spalte hinzuaddieren
-                }
+            ////var splitterWeite = 10;                                             // Zum Einstellen des Splitters
+            ////var col = ultraGanttView1.GridSettings.ColumnSettings.Values;
+            ////var schluessel = string.Empty;
 
-                // Dauer
-                if (de.Key.ToLower() == @"duration")
-                {
-                    de.Text = @"Dauer";
-                    de.Visible = DefaultableBoolean.True;
-                    splitterWeite += de.Width;                                  // Breite der Spalte hinzuaddieren
-                }
+            ////// Überschriften einstellen
+            ////foreach (var de in col)
+            ////{
+            ////    // Arbeitsinhalt oder Aufgabe
+            ////    if (de.Key.ToLower() == @"name")
+            ////    {
+            ////        de.Text = @"Arbeitsinhalt/Aufgabe";
+            ////        de.Visible = DefaultableBoolean.True;
+            ////        splitterWeite += de.Width;                                  // Breite der Spalte hinzuaddieren
+            ////    }
 
-                // Start
-                if (de.Key.ToLower() == @"start")
-                {
-                    de.Text = @"Start";
-                    de.Visible = DefaultableBoolean.True;
-                    splitterWeite += de.Width;                                  // Breite der Spalte hinzuaddieren
-                }
+            ////    // Dauer
+            ////    if (de.Key.ToLower() == @"duration")
+            ////    {
+            ////        de.Text = @"Dauer";
+            ////        de.Visible = DefaultableBoolean.True;
+            ////        splitterWeite += de.Width;                                  // Breite der Spalte hinzuaddieren
+            ////    }
 
-                // Ende
-                if (de.Key.ToLower() == @"enddatetime")
-                {
-                    de.Text = @"Ende";
-                    de.Visible = DefaultableBoolean.True;
-                    splitterWeite += de.Width;                                  // Breite der Spalte hinzuaddieren
-                }
+            ////    // Start
+            ////    if (de.Key.ToLower() == @"start")
+            ////    {
+            ////        de.Text = @"Start";
+            ////        de.Visible = DefaultableBoolean.True;
+            ////        splitterWeite += de.Width;                                  // Breite der Spalte hinzuaddieren
+            ////    }
 
-                // Fertig in %
-                if (de.Key.ToLower() == @"percentcomplete")
-                {
-                    de.Text = @"Status";
-                    de.Visible = DefaultableBoolean.True;
-                    splitterWeite += de.Width;                                  // Breite der Spalte hinzuaddieren
-                }
-            }
+            ////    // Ende
+            ////    if (de.Key.ToLower() == @"enddatetime")
+            ////    {
+            ////        de.Text = @"Ende";
+            ////        de.Visible = DefaultableBoolean.True;
+            ////        splitterWeite += de.Width;                                  // Breite der Spalte hinzuaddieren
+            ////    }
+
+            ////    // Fertig in %
+            ////    if (de.Key.ToLower() == @"percentcomplete")
+            ////    {
+            ////        de.Text = @"Status";
+            ////        de.Visible = DefaultableBoolean.True;
+            ////        splitterWeite += de.Width;                                  // Breite der Spalte hinzuaddieren
+            ////    }
+            ////}
 
             // Ruft die Daten aus der bereitgestellten XML-Datei ab
             OnInitializationStatusChanged(Resources.Retrieving);                // Daten im Splashscreen aktualisieren
@@ -189,13 +191,18 @@ namespace Terminplan
             OnInitializationStatusChanged(Resources.Initializing);              // Anzeige im Splashscreen aktualisieren
             OnColorizeImages();                                                 // Farbe der Bilder an das eingestellte Farbschema anpassen
             OnInitializeUi();                                                   // Oberfläche initialisieren
-            GridBreiteEinstellen();
+            this.StellePanelBreiteEin();                                        // Spaltenbreite des Panels einstellen
 
             // Ereignisprozedur zum Ändern des Schemas festlegen
             StyleManager.StyleChanged += this.OnApplicationStyleChanged;
 
             // Startdatum des Projekts ermitteln
             AnzeigeDatumEinstellen();
+
+            // Eigenschaften des Grids für das Zoomen ermittelen
+            var startForm = (StartForm)this.MdiParent;                          // Das Elternfenster holen
+            startForm.Fs.InitialisiereZoom();
+
             //            if (DatasetTp != null)
             //            {
             //                DatasetTp.AcceptChanges();
@@ -507,7 +514,9 @@ namespace Terminplan
 
             // Die eingelesenen Daten an die ultraCalendarInfo anbinden.
             OnBindArbInhaltData(DatasetTp);                                     // Daten an ultraCalendarInfo anbinden
-            GridBreiteEinstellen();                                             // Spaltenbreite des Grids in der GanttView an deren Inhalt anpassen
+            this.StellePanelBreiteEin();                                        // Spaltenbreite des Panels einstellen
+            var startForm = (StartForm)this.MdiParent;                          // Das Elternfenster holen
+            startForm.Fs.InitialisiereZoom();                                   // Zoom neu einstellen
         }
 
         #endregion Datei laden
@@ -833,6 +842,99 @@ namespace Terminplan
             // Die Spalten zur Aufnahme des Firmenlogos und des Controls zur Anzeige der Meilensteine sind verbundene Spalten
             e.Layout.Bands[0].Columns["meilenSteine"].MergedCellStyle = MergedCellStyle.Always;
             e.Layout.Bands[0].Columns["firma"].MergedCellStyle = MergedCellStyle.Always;
+        }
+
+        private void StellePanelBreiteEin()
+        {
+            // Bildschirmauflösung ermitteln. Dazu muss ermittelt werden, auf welchem Monitor
+            // die Anwendung läuft
+            var currentScreen = Screen.FromControl(this);                       // momentan benutzter Monitor ermitteln
+            var resBreite = currentScreen.Bounds.Width;                         // Breite des Monitors
+            var resHoehe = currentScreen.Bounds.Height;                         // Höhe des Monitors
+
+            var fontGroesse = ultraGanttView1.GridSettings.RowAppearance.FontData.SizeInPoints;
+            var headerGroesse = ultraGanttView1.GridSettings.ColumnHeaderAppearance.FontData.SizeInPoints;
+
+            if (resBreite < 1024)
+            {
+                fontGroesse = 8;
+                headerGroesse = 9;
+
+                ultraGanttView1.GridSettings.RowAppearance.FontData.SizeInPoints = fontGroesse;
+                ultraGanttView1.GridSettings.ColumnHeaderAppearance.FontData.SizeInPoints = FontHeight;
+            }
+
+            this.ultraGanttView1.Appearance.FontData.SizeInPoints = fontGroesse;
+            var breite = this.ultraGanttView1.GridAreaWidth;
+
+            var col = ultraGanttView1.GridSettings.ColumnSettings.Values;       // Vorhandene Spalten
+            var schluessel = string.Empty;
+            var panalWeite = 0.0;                                               // Errechnete Breite ds Panels
+            var headerBreite = 0.0;                                             // Breite des Headers
+
+            // Überschriften einstellen
+            foreach (var de in col)
+            {
+                headerBreite = de.Text.Length * fontGroesse;
+                if ((de.Visible == DefaultableBoolean.True) && (de.Width < headerBreite))
+                {
+                    de.Width = Convert.ToInt32(headerBreite);
+                }
+
+                // Alle vorhandenen Spalten analysieren
+                switch (de.Key.ToLower())
+                {
+                    case @"name":                                               // Name (Arbeitsinhalt oder Aufgabe)
+                        de.Text = @"Arbeitsinhalt/Aufgabe";
+                        de.Visible = DefaultableBoolean.True;
+                        headerBreite = de.Text.Length * fontGroesse;
+                        panalWeite += headerBreite;                             // Breite der Spalte hinzuaddieren
+                        break;
+
+                    case @"duration":                                           // Dauer
+                        de.Text = @"Dauer";
+                        headerBreite = de.Text.Length * fontGroesse;
+                        panalWeite += headerBreite;                             // Breite der Spalte hinzuaddieren
+                        break;
+
+                    case @"start":                                              // Startdatum
+                        de.Text = @"Start";
+                        de.Visible = DefaultableBoolean.True;
+                        headerBreite = de.Text.Length * fontGroesse;
+                        panalWeite += headerBreite;                             // Breite der Spalte hinzuaddieren
+                        break;
+
+                    case @"enddatetime":                                        // Endedatum
+                        de.Text = @"Ende";
+                        de.Visible = DefaultableBoolean.True;
+                        headerBreite = de.Text.Length * fontGroesse;
+                        panalWeite += headerBreite;                             // Breite der Spalte hinzuaddieren
+                        break;
+
+                    case @"percentcomplete":                                    // Fetiggestellt (Status)
+                        de.Text = @"Status";
+                        de.Visible = DefaultableBoolean.True;
+                        headerBreite = de.Text.Length * fontGroesse;
+                        panalWeite += headerBreite;                             // Breite der Spalte hinzuaddieren
+                        break;
+
+                    default:                                                    // Alle sonstigen Spalten
+                        if (de.Visible == DefaultableBoolean.True)
+                        {
+                            headerBreite = de.Text.Length * fontGroesse;
+                            panalWeite += headerBreite;                             // Breite der Spalte hinzuaddieren
+                        }
+                        break;
+                }
+            }
+
+            this.ultraGanttView1.GridAreaWidth = (int)(panalWeite + 5);
+            var splitterWeite = panalWeite * 1.8;
+
+            this.ultraGanttView1.GridAreaWidth = Convert.ToInt32(splitterWeite);
+
+            var gesamtbreite = this.Width;
+            var teiler = Math.Abs((float)breite / (float)gesamtbreite);
         }
     }
 }

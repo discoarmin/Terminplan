@@ -12,7 +12,7 @@
 //        History : Datum     bearb.  Änderung
 //                  --------  ------  ------------------------------------
 //                  04.02.17  br      Grundversion
-//                  01.04.17  br      Einfärben 2. Toolbarmanaer
+//                  01.04.17  br      Einfärben 2. Toolbarmanager
 // </para>
 // </remarks>
 // --------------------------------------------------------------------------------------------------------------------
@@ -43,6 +43,9 @@ namespace Terminplan
 
     public partial class StammDaten : Form
     {
+        private int distanz;                                                    // Splitterdistanz
+        private bool erweitert;                                                 // Merker, ob das Textfeld erweitert idt oder nicht
+
         #region Konstruktor
 
         /// <summary>Initialisiert eine neue Instanz der  <see cref="StammDaten"/> Klasse. </summary>
@@ -57,14 +60,12 @@ namespace Terminplan
             this.zoomGridStamm = new WinGridZoomGrid.GridZoomProperty();        // Zoomdaten im Grid für Stammdaten
             this.zoomGridGrund = new WinGridZoomGrid.GridZoomProperty();        // Zoomdaten im Grid für Grunddaten
 
-            // Eigenschaften de^s Grids für das Zoomen ermitteln
-            this.zoomGridStamm.GetGridOriginZoomProperty(this.ultraGridStammDaten); // Originaleinstellungen ermitteln
-            this.zoomGridAktuell = this.zoomGridStamm;
-            this.zoomGridAktuell.ZoomGrid(100, this.ultraGridStammDaten);       // Gestartet wird mit 100%
+            this.InitialisiereZoom();                                           // Eigenschaften des Grids für das Zoomen ermitteln
 
-            this.ultraTilePanel1.DrawFilter = new NoFocusRectDrawFilter();
-            cellFilter = new CellFilter(this);
+            this.ultraTilePanel1.DrawFilter = new NoFocusRectDrawFilter();      // Damit beim Aktivieren einer Zelle kein Rechteck dargestellt wird
+            this.cellFilter = new CellFilter(this);
             this.ultraGridStammDaten.DrawFilter = this.cellFilter;
+            this.distanz = this.splitContainer1.SplitterDistance;
         }
 
         #region Dispose
@@ -122,7 +123,7 @@ namespace Terminplan
                     }
                     break;
 
-                case @"Font_Italic":                                             // Kursivschrift
+                case @"Font_Italic":                                            // Kursivschrift
                     if (this.cellActivationRecursionFlag == false)
                     {
                         this.UpdateFontProperty(FontProperties.Italics);
@@ -218,7 +219,7 @@ namespace Terminplan
             }
 
             InitializeUi();                                                     // Oberfläche initialisieren
-
+            distanz = this.splitContainer1.SplitterDistance;                    // Splitterdistanz merken
             // Ereignisprozedur zum Ändern des Schemas festlegen
             StyleManager.StyleChanged += this.OnApplicationStyleChanged;
         }
@@ -226,6 +227,15 @@ namespace Terminplan
         #endregion OnLoad
 
         #endregion Überschreibungen der Basisklasse
+
+        public void InitialisiereZoom()
+        {
+            // Eigenschaften des Grids für das Zoomen ermitteln
+            this.zoomGridStamm.GetGridOriginZoomProperty(this.ultraGridStammDaten); // Originaleinstellungen ermitteln
+            this.zoomGridAktuell = this.zoomGridStamm;
+            this.zoomGridAktuell.ZoomGrid(1, this.ultraGridStammDaten);         // Gestartet wird mit 100%
+
+        }
 
         /// <summary>
         /// Behandelt das ToolValueChanged-Ereignis des ultraToolbarsManagerStamm Kontrols.
@@ -612,7 +622,6 @@ namespace Terminplan
                             sb.Append(@"\b Möglichkeiten: \b0\line");
                             sb.Append(@"    - automatisch:       1\line");
                             sb.Append(@"    - von Hand:            0 \line");
-                            sb.Append(@"    - alle Zeilen:          1 \line\line");
                             sb.Append(@"\b Achtung: Bei großen Tabellen sollte aus \b0\line");
                             sb.Append(@"\b Geschwindigkeitsgründen dieser Wert \b0\line");
                             sb.Append(@"\b auf 0 stehen und die Tabelle von Hand \b0\line");
@@ -854,10 +863,24 @@ namespace Terminplan
         {
             if (rtfLocation.X == 0 && rtfLocation.Y == 0) return;
 
-            richTextBoxZelle.Width = ultraTextEditor1.Width;
-            richTextBoxZelle.Height = ultraTextEditor1.Height * 3;
-            richTextBoxZelle.Visible = true;
+            if (this.erweitert)
+            {
+                this.erweitert = false;
+                this.splitContainer1.SplitterDistance = this.distanz;
+            }
+            else
+            {
+                this.erweitert = true;
+                //this.ultraTextEditor1.Height = this.ultraTextEditor1.Height * 3;
+                this.splitContainer1.SplitterDistance = this.distanz * 2;
+            }
 
+            return;
+            richTextBoxZelle.Width = ultraTextEditor1.Width;
+            richTextBoxZelle.Height = ultraTextEditor1.Height;
+            richTextBoxZelle.Visible = true;
+            return;
+            
             // Damit man die Richtextbox über der Textbox anzeigen kann, muss sie in einem eigenen Fenster laufen
             var popup = new Form()
             {
@@ -876,7 +899,7 @@ namespace Terminplan
 
             //popup.Size = richTextBoxZelle.Size;
             var groesse = new Size(ultraTextEditor1.Width,
-                ultraTextEditor1.Height*4);
+                ultraTextEditor1.Height * 4);
             popup.Size = groesse;
             popup.Controls.Add(richTextBoxZelle);
             //popup.Show();
@@ -895,6 +918,13 @@ namespace Terminplan
             richTextBoxZelle.Text = ultraTextEditor1.Text;
             richTextBoxZelle.BackColor = ultraTextEditor1.BackColor;
             richTextBoxZelle.Dock = DockStyle.Fill;
+        }
+
+        private void ultraGridStammDaten_SizeChanged(object sender, EventArgs e)
+        {
+            var scrollpos = this.ultraGridStammDaten.ActiveRowScrollRegion.ScrollPosition;
+            Refresh();
+            this.ultraGridStammDaten.ActiveRowScrollRegion.ScrollPosition = scrollpos;
         }
     }
 }

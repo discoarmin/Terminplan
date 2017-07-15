@@ -110,13 +110,13 @@ namespace Terminplan
             {
                 default:                                                        // Standardmäßig ist der Terminplan ausgewählt
                     zoomLevel = Convert.ToDouble(this.trackBarZoom.Value);
-                    this.Ft.ultraZoomPanelTerminPlan.ZoomProperties.ZoomFactor = (float)(zoomLevel / 10) + 1;  // Das Zoomen erfolgt ausschließlich über das Zoompanel
+                    this.Ft.ultraZoomPanelTerminPlan.ZoomProperties.ZoomFactor = (float)((zoomLevel / 100) / 5);  // Das Zoomen erfolgt ausschließlich über das Zoompanel
+                    this.Ft.ultraZoomPanelGanttView.ZoomProperties.ZoomFactor = (float)(zoomLevel / 100);  // Das Zoomen erfolgt ausschließlich über das Zoompanel
                     break;
 
                 case @"Stammdaten":                                             // Stammdaten
                     zoomLevel = Convert.ToDouble(this.trackBarZoomStamm.Value);
-                    this.Fs.ultraZoomPanelStammDaten.ZoomProperties.ZoomFactor = (float)(zoomLevel / 10) + 1;
-                    this.Fs.zoomGridAktuell.ZoomGrid((float)zoomLevel, this.Fs.ultraGridStammDaten); // Grid zoomen
+                    this.Fs.ultraZoomPanelStammDaten.ZoomProperties.ZoomFactor = (float)(zoomLevel / 100);
                     break;
 
                 case @"Grunddaten":                                             // Grunddaten

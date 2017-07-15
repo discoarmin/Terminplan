@@ -233,6 +233,8 @@
             this.projektLeiter = new System.Data.DataColumn();
             this.firma = new System.Data.DataColumn();
             this.meilenSteine = new System.Data.DataColumn();
+            this.ultraZoomPanelGanttView = new Infragistics.Win.Misc.UltraZoomPanel();
+            this.zedGraphControl1 = new ZedGraph.ZedGraphControl();
             this._ClientArea_Toolbars_Dock_Area_Left = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
             this._ClientArea_Toolbars_Dock_Area_Right = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
             this._ClientArea_Toolbars_Dock_Area_Bottom = new Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea();
@@ -260,6 +262,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridDaten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetPrjDaten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTablePrjDaten)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraZoomPanelGanttView)).BeginInit();
+            this.ultraZoomPanelGanttView.ClientArea.SuspendLayout();
+            this.ultraZoomPanelGanttView.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraDataSourceDaten)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraTouchProvider1)).BeginInit();
             this.SuspendLayout();
@@ -270,7 +275,7 @@
             this.ultraGanttView1.Appearance = appearance1;
             this.ultraGanttView1.CalendarInfo = this.ultraCalendarInfo1;
             resources.ApplyResources(this.ultraGanttView1, "ultraGanttView1");
-            this.ultraGanttView1.GridAreaWidth = 350;
+            this.ultraGanttView1.GridAreaWidth = 550;
             appearance82.FontData.SizeInPoints = ((float)(resources.GetObject("resource.SizeInPoints6")));
             this.ultraGanttView1.GridSettings.ColumnHeaderAppearance = appearance82;
             this.ultraGanttView1.GridSettings.ColumnSettings.GetValue("Constraint").VisiblePosition = 6;
@@ -807,7 +812,7 @@
             // 
             // splitContainerHauptDaten.Panel2
             // 
-            this.splitContainerHauptDaten.Panel2.Controls.Add(this.ultraGanttView1);
+            this.splitContainerHauptDaten.Panel2.Controls.Add(this.ultraZoomPanelGanttView);
             // 
             // ultraGridDaten
             // 
@@ -829,8 +834,9 @@
             appearance4.FontData.BoldAsString = resources.GetString("resource.BoldAsString");
             ultraGridColumn1.Header.Appearance = appearance4;
             ultraGridColumn1.Header.VisiblePosition = 0;
+            ultraGridColumn1.RowLayoutColumnInfo.PreferredCellSize = new System.Drawing.Size(480, 0);
             ultraGridColumn1.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(0, 39);
-            ultraGridColumn1.Width = 300;
+            ultraGridColumn1.Width = 500;
             ultraGridColumn3.AllowGroupBy = Infragistics.Win.DefaultableBoolean.False;
             ultraGridColumn3.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
             ultraGridColumn3.AutoEditMode = Infragistics.Win.DefaultableBoolean.False;
@@ -858,6 +864,7 @@
             ultraGridColumn7.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.None;
             ultraGridColumn7.AutoEditMode = Infragistics.Win.DefaultableBoolean.False;
             ultraGridColumn7.CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit;
+            ultraGridColumn7.CellMultiLine = Infragistics.Win.DefaultableBoolean.True;
             ultraGridColumn7.Header.VisiblePosition = 3;
             ultraGridColumn7.RowLayoutColumnInfo.PreferredLabelSize = new System.Drawing.Size(0, 39);
             ultraGridBand1.Columns.AddRange(new object[] {
@@ -1008,6 +1015,29 @@
             this.meilenSteine.Caption = "Meilensteine";
             this.meilenSteine.ColumnName = "meilenSteine";
             this.meilenSteine.DataType = typeof(object);
+            // 
+            // ultraZoomPanelGanttView
+            // 
+            this.ultraZoomPanelGanttView.AutoScrollMinSize = new System.Drawing.Size(1167, 512);
+            // 
+            // ultraZoomPanelGanttView.ClientArea
+            // 
+            this.ultraZoomPanelGanttView.ClientArea.Controls.Add(this.zedGraphControl1);
+            this.ultraZoomPanelGanttView.ClientArea.Controls.Add(this.ultraGanttView1);
+            resources.ApplyResources(this.ultraZoomPanelGanttView, "ultraZoomPanelGanttView");
+            this.ultraZoomPanelGanttView.Name = "ultraZoomPanelGanttView";
+            // 
+            // zedGraphControl1
+            // 
+            resources.ApplyResources(this.zedGraphControl1, "zedGraphControl1");
+            this.zedGraphControl1.Name = "zedGraphControl1";
+            this.zedGraphControl1.ScrollGrace = 0D;
+            this.zedGraphControl1.ScrollMaxX = 0D;
+            this.zedGraphControl1.ScrollMaxY = 0D;
+            this.zedGraphControl1.ScrollMaxY2 = 0D;
+            this.zedGraphControl1.ScrollMinX = 0D;
+            this.zedGraphControl1.ScrollMinY = 0D;
+            this.zedGraphControl1.ScrollMinY2 = 0D;
             // 
             // _ClientArea_Toolbars_Dock_Area_Left
             // 
@@ -1224,6 +1254,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridDaten)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetPrjDaten)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataTablePrjDaten)).EndInit();
+            this.ultraZoomPanelGanttView.ClientArea.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ultraZoomPanelGanttView)).EndInit();
+            this.ultraZoomPanelGanttView.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ultraDataSourceDaten)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraTouchProvider1)).EndInit();
             this.ResumeLayout(false);
@@ -1259,6 +1292,8 @@
         private System.Data.DataColumn firma;
         private System.Data.DataColumn meilenSteine;
         public System.Data.DataSet dataSetPrjDaten;
+        private ZedGraph.ZedGraphControl zedGraphControl1;
+        public Infragistics.Win.Misc.UltraZoomPanel ultraZoomPanelGanttView;
     }
 }
 

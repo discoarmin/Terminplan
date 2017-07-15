@@ -84,13 +84,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StammDaten));
             Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("DataTableUeberschrift", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn63 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Ueberschrift");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn64 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("SpaltenNr");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn65 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Tabelle");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn66 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("VonSpalte");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn67 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("BisSpalte");
-            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
@@ -106,21 +106,21 @@
             Infragistics.Win.Appearance appearance27 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance28 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance29 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance35 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance30 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance36 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance31 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance32 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance33 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance34 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance38 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance36 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinEditors.DropDownEditorButton dropDownEditorButton1 = new Infragistics.Win.UltraWinEditors.DropDownEditorButton();
-            Infragistics.Win.Appearance appearance37 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance35 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance39 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance37 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinEditors.DropDownEditorButton dropDownEditorButton1 = new Infragistics.Win.UltraWinEditors.DropDownEditorButton();
+            Infragistics.Win.Appearance appearance38 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance43 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance44 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance45 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance133 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance130 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance46 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance47 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance48 = new Infragistics.Win.Appearance();
@@ -349,11 +349,8 @@
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool70 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btAdd");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool76 = new Infragistics.Win.UltraWinToolbars.ButtonTool("brFormel");
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool78 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btLoeschen");
-            Infragistics.Win.Appearance appearance130 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool36 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btAnnehmen");
-            Infragistics.Win.Appearance appearance131 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinToolbars.ButtonTool buttonTool79 = new Infragistics.Win.UltraWinToolbars.ButtonTool("btFormel");
-            Infragistics.Win.Appearance appearance132 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance40 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance41 = new Infragistics.Win.Appearance();
             Infragistics.Win.ValueListItem valueListItem1 = new Infragistics.Win.ValueListItem();
@@ -368,6 +365,10 @@
             this.ilDefaultImagesSmall = new System.Windows.Forms.ImageList(this.components);
             this.ilDefaultImagesLarge = new System.Windows.Forms.ImageList(this.components);
             this.ultraZoomPanelStammDaten = new Infragistics.Win.Misc.UltraZoomPanel();
+            this.ultraTextEditorBloecke = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
+            this.Kommentar1 = new System.Windows.Forms.RichTextBox();
+            this.richTextBoxZelle = new System.Windows.Forms.RichTextBox();
+            this.ultraDateTimeEditorPrjStart = new Infragistics.Win.UltraWinEditors.UltraDateTimeEditor();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.ultraComboZellen = new Infragistics.Win.UltraWinGrid.UltraCombo();
@@ -381,10 +382,6 @@
             this.ultraButtonErase = new Infragistics.Win.Misc.UltraButton();
             this.ultraTile2 = new Infragistics.Win.Misc.UltraTile();
             this.ultraTextEditor1 = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
-            this.richTextBoxZelle = new System.Windows.Forms.RichTextBox();
-            this.Kommentar1 = new System.Windows.Forms.RichTextBox();
-            this.ultraTextEditorBloecke = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
-            this.ultraDateTimeEditorPrjStart = new Infragistics.Win.UltraWinEditors.UltraDateTimeEditor();
             this.ultraTouchProvider1 = new Infragistics.Win.Touch.UltraTouchProvider(this.components);
             this.ultraGridPrintDocumentStamm = new Infragistics.Win.UltraWinGanttView.UltraGanttViewPrintDocument(this.components);
             this.zedGraphControl1 = new ZedGraph.ZedGraphControl();
@@ -402,6 +399,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ultraZoomPanelStammDaten)).BeginInit();
             this.ultraZoomPanelStammDaten.ClientArea.SuspendLayout();
             this.ultraZoomPanelStammDaten.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraTextEditorBloecke)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraDateTimeEditorPrjStart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -419,8 +418,6 @@
             this.tableLayoutPanelButtons.SuspendLayout();
             this.ultraTile2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraTextEditor1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraTextEditorBloecke)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraDateTimeEditorPrjStart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraTouchProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManagerStamm)).BeginInit();
@@ -554,7 +551,7 @@
             this.ultraGridStammDaten.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ultraGridStammDaten.Location = new System.Drawing.Point(0, 0);
             this.ultraGridStammDaten.Name = "ultraGridStammDaten";
-            this.ultraGridStammDaten.Size = new System.Drawing.Size(1149, 558);
+            this.ultraGridStammDaten.Size = new System.Drawing.Size(1149, 530);
             this.ultraGridStammDaten.SyncWithCurrencyManager = false;
             this.ultraGridStammDaten.TabIndex = 0;
             this.ultraGridStammDaten.AfterCellActivate += new System.EventHandler(this.OnUltraGridStammDatenAfterCellActivate);
@@ -566,6 +563,7 @@
             this.ultraGridStammDaten.BeforeCellActivate += new Infragistics.Win.UltraWinGrid.CancelableCellEventHandler(this.OnUltraGridStammDatenBeforeCellActivate);
             this.ultraGridStammDaten.BeforeCellDeactivate += new System.ComponentModel.CancelEventHandler(this.OnUltraGridStammDatenBeforeCellDeactivate);
             this.ultraGridStammDaten.MouseEnterElement += new Infragistics.Win.UIElementEventHandler(this.OnUltraGridStammDatenMouseEnterElement);
+            this.ultraGridStammDaten.SizeChanged += new System.EventHandler(this.ultraGridStammDaten_SizeChanged);
             this.ultraGridStammDaten.MouseEnter += new System.EventHandler(this.ultraGridStammDaten_MouseEnter);
             this.ultraGridStammDaten.MouseLeave += new System.EventHandler(this.ultraGridStammDaten_MouseLeave);
             this.ultraGridStammDaten.MouseHover += new System.EventHandler(this.ultraGridStammDaten_MouseHover);
@@ -853,27 +851,91 @@
             // 
             // ultraZoomPanelStammDaten
             // 
-            this.ultraZoomPanelStammDaten.AutoScrollMinSize = new System.Drawing.Size(1149, 602);
+            this.ultraZoomPanelStammDaten.AutoScrollMinSize = new System.Drawing.Size(1149, 530);
             this.ultraZoomPanelStammDaten.BorderStyle = Infragistics.Win.UIElementBorderStyle.None;
             // 
             // ultraZoomPanelStammDaten.ClientArea
             // 
-            this.ultraZoomPanelStammDaten.ClientArea.Controls.Add(this.splitContainer1);
+            this.ultraZoomPanelStammDaten.ClientArea.Controls.Add(this.ultraTextEditorBloecke);
+            this.ultraZoomPanelStammDaten.ClientArea.Controls.Add(this.Kommentar1);
+            this.ultraZoomPanelStammDaten.ClientArea.Controls.Add(this.richTextBoxZelle);
+            this.ultraZoomPanelStammDaten.ClientArea.Controls.Add(this.ultraDateTimeEditorPrjStart);
+            this.ultraZoomPanelStammDaten.ClientArea.Controls.Add(this.ultraGridStammDaten);
             this.ultraZoomPanelStammDaten.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraZoomPanelStammDaten.Location = new System.Drawing.Point(1, 153);
+            this.ultraZoomPanelStammDaten.Location = new System.Drawing.Point(0, 0);
             this.ultraZoomPanelStammDaten.Name = "ultraZoomPanelStammDaten";
-            this.ultraZoomPanelStammDaten.Size = new System.Drawing.Size(1149, 602);
+            this.ultraZoomPanelStammDaten.Size = new System.Drawing.Size(1149, 530);
             this.ultraZoomPanelStammDaten.TabIndex = 13;
             this.ultraZoomPanelStammDaten.Tag = "StammDaten";
             this.ultraZoomPanelStammDaten.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.ultraZoomPanelStammDaten.ZoomProperties.MaxZoomFactor = 5F;
             // 
+            // ultraTextEditorBloecke
+            // 
+            appearance12.BackColor = System.Drawing.SystemColors.Control;
+            appearance12.FontData.SizeInPoints = 10F;
+            this.ultraTextEditorBloecke.Appearance = appearance12;
+            this.ultraTextEditorBloecke.BackColor = System.Drawing.SystemColors.Control;
+            this.ultraTextEditorBloecke.DisplayStyle = Infragistics.Win.EmbeddableElementDisplayStyle.Standard;
+            this.ultraTextEditorBloecke.HideSelection = false;
+            this.ultraTextEditorBloecke.Location = new System.Drawing.Point(110, 61);
+            this.ultraTextEditorBloecke.Multiline = true;
+            this.ultraTextEditorBloecke.Name = "ultraTextEditorBloecke";
+            this.ultraTextEditorBloecke.Size = new System.Drawing.Size(146, 63);
+            this.ultraTextEditorBloecke.TabIndex = 2;
+            this.ultraTextEditorBloecke.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
+            this.ultraTextEditorBloecke.Visible = false;
+            this.ultraTextEditorBloecke.ValueChanged += new System.EventHandler(this.ultraTextEditorBloecke_ValueChanged);
+            // 
+            // Kommentar1
+            // 
+            this.Kommentar1.BackColor = System.Drawing.Color.LemonChiffon;
+            this.Kommentar1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Kommentar1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Kommentar1.Location = new System.Drawing.Point(532, 100);
+            this.Kommentar1.Name = "Kommentar1";
+            this.Kommentar1.ReadOnly = true;
+            this.Kommentar1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.Kommentar1.Size = new System.Drawing.Size(328, 228);
+            this.Kommentar1.TabIndex = 4;
+            this.Kommentar1.TabStop = false;
+            this.Kommentar1.Text = "";
+            this.Kommentar1.Visible = false;
+            this.Kommentar1.ContentsResized += new System.Windows.Forms.ContentsResizedEventHandler(this.Kommentar1_ContentsResized);
+            // 
+            // richTextBoxZelle
+            // 
+            this.richTextBoxZelle.BackColor = System.Drawing.Color.DarkGray;
+            this.richTextBoxZelle.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxZelle.ForeColor = System.Drawing.Color.Black;
+            this.richTextBoxZelle.Location = new System.Drawing.Point(314, 61);
+            this.richTextBoxZelle.Name = "richTextBoxZelle";
+            this.richTextBoxZelle.Size = new System.Drawing.Size(100, 96);
+            this.richTextBoxZelle.TabIndex = 5;
+            this.richTextBoxZelle.Text = "";
+            this.richTextBoxZelle.Visible = false;
+            // 
+            // ultraDateTimeEditorPrjStart
+            // 
+            this.ultraDateTimeEditorPrjStart.BorderStyle = Infragistics.Win.UIElementBorderStyle.None;
+            this.ultraDateTimeEditorPrjStart.DateTime = new System.DateTime(2017, 7, 15, 0, 0, 0, 0);
+            this.ultraDateTimeEditorPrjStart.DisplayStyle = Infragistics.Win.EmbeddableElementDisplayStyle.Standard;
+            this.ultraDateTimeEditorPrjStart.FormatProvider = new System.Globalization.CultureInfo("de-DE");
+            this.ultraDateTimeEditorPrjStart.Location = new System.Drawing.Point(128, 410);
+            this.ultraDateTimeEditorPrjStart.Name = "ultraDateTimeEditorPrjStart";
+            this.ultraDateTimeEditorPrjStart.Size = new System.Drawing.Size(144, 17);
+            this.ultraDateTimeEditorPrjStart.TabIndex = 1;
+            this.ultraDateTimeEditorPrjStart.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
+            this.ultraDateTimeEditorPrjStart.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
+            this.ultraDateTimeEditorPrjStart.Value = new System.DateTime(2017, 7, 15, 0, 0, 0, 0);
+            this.ultraDateTimeEditorPrjStart.Visible = false;
+            this.ultraDateTimeEditorPrjStart.ValueChanged += new System.EventHandler(this.OnUltraDateTimeEditorPrjStartValueChanged);
+            // 
             // splitContainer1
             // 
             this.splitContainer1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.IsSplitterFixed = true;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Location = new System.Drawing.Point(1, 178);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -885,14 +947,10 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.richTextBoxZelle);
-            this.splitContainer1.Panel2.Controls.Add(this.Kommentar1);
-            this.splitContainer1.Panel2.Controls.Add(this.ultraTextEditorBloecke);
-            this.splitContainer1.Panel2.Controls.Add(this.ultraDateTimeEditorPrjStart);
-            this.splitContainer1.Panel2.Controls.Add(this.ultraGridStammDaten);
+            this.splitContainer1.Panel2.Controls.Add(this.ultraZoomPanelStammDaten);
             this.splitContainer1.Panel2MinSize = 40;
-            this.splitContainer1.Size = new System.Drawing.Size(1149, 602);
-            this.splitContainer1.SplitterDistance = 40;
+            this.splitContainer1.Size = new System.Drawing.Size(1149, 577);
+            this.splitContainer1.SplitterDistance = 43;
             this.splitContainer1.TabIndex = 1;
             // 
             // splitContainer2
@@ -912,20 +970,20 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.ultraTilePanel1);
             this.splitContainer2.Panel2.Margin = new System.Windows.Forms.Padding(0, 0, 50, 0);
-            this.splitContainer2.Size = new System.Drawing.Size(1149, 40);
+            this.splitContainer2.Size = new System.Drawing.Size(1149, 43);
             this.splitContainer2.SplitterDistance = 210;
             this.splitContainer2.SplitterWidth = 20;
             this.splitContainer2.TabIndex = 0;
             // 
             // ultraComboZellen
             // 
-            appearance12.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ultraComboZellen.Appearance = appearance12;
+            appearance13.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.ultraComboZellen.Appearance = appearance13;
             this.ultraComboZellen.BorderStyle = Infragistics.Win.UIElementBorderStyle.None;
             this.ultraComboZellen.DataMember = "DataTableUeberschrift";
             this.ultraComboZellen.DataSource = this.dsUeberSchriftenBindingSource;
-            appearance13.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ultraComboZellen.DisplayLayout.Appearance = appearance13;
+            appearance14.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.ultraComboZellen.DisplayLayout.Appearance = appearance14;
             ultraGridColumn63.Header.Enabled = false;
             ultraGridColumn63.Header.VisiblePosition = 0;
             ultraGridColumn64.Header.Enabled = false;
@@ -951,72 +1009,72 @@
             this.ultraComboZellen.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
             this.ultraComboZellen.DisplayLayout.DefaultSelectedBackColor = System.Drawing.SystemColors.ControlDark;
             this.ultraComboZellen.DisplayLayout.DefaultSelectedForeColor = System.Drawing.SystemColors.ControlText;
-            appearance14.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            appearance14.BackColor2 = System.Drawing.SystemColors.ControlDark;
-            appearance14.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance14.BorderColor = System.Drawing.SystemColors.Window;
-            this.ultraComboZellen.DisplayLayout.GroupByBox.Appearance = appearance14;
-            appearance15.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.ultraComboZellen.DisplayLayout.GroupByBox.BandLabelAppearance = appearance15;
-            this.ultraComboZellen.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
-            appearance16.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            appearance16.BackColor2 = System.Drawing.SystemColors.Control;
-            appearance16.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance15.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            appearance15.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance15.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance15.BorderColor = System.Drawing.SystemColors.Window;
+            this.ultraComboZellen.DisplayLayout.GroupByBox.Appearance = appearance15;
             appearance16.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.ultraComboZellen.DisplayLayout.GroupByBox.PromptAppearance = appearance16;
+            this.ultraComboZellen.DisplayLayout.GroupByBox.BandLabelAppearance = appearance16;
+            this.ultraComboZellen.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+            appearance17.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            appearance17.BackColor2 = System.Drawing.SystemColors.Control;
+            appearance17.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance17.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.ultraComboZellen.DisplayLayout.GroupByBox.PromptAppearance = appearance17;
             this.ultraComboZellen.DisplayLayout.InterBandSpacing = 10;
             this.ultraComboZellen.DisplayLayout.MaxColScrollRegions = 1;
             this.ultraComboZellen.DisplayLayout.MaxRowScrollRegions = 1;
-            appearance17.BackColor = System.Drawing.SystemColors.Window;
-            appearance17.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.ultraComboZellen.DisplayLayout.Override.ActiveCellAppearance = appearance17;
-            appearance18.BackColor = System.Drawing.SystemColors.Highlight;
-            appearance18.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.ultraComboZellen.DisplayLayout.Override.ActiveRowAppearance = appearance18;
+            appearance18.BackColor = System.Drawing.SystemColors.Window;
+            appearance18.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.ultraComboZellen.DisplayLayout.Override.ActiveCellAppearance = appearance18;
+            appearance19.BackColor = System.Drawing.SystemColors.Highlight;
+            appearance19.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.ultraComboZellen.DisplayLayout.Override.ActiveRowAppearance = appearance19;
             this.ultraComboZellen.DisplayLayout.Override.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
             this.ultraComboZellen.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.None;
             this.ultraComboZellen.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dashed;
-            appearance19.BackColor = System.Drawing.Color.Transparent;
-            this.ultraComboZellen.DisplayLayout.Override.CardAreaAppearance = appearance19;
-            appearance20.BackColor = System.Drawing.SystemColors.Control;
-            appearance20.BackColor2 = System.Drawing.SystemColors.ControlLightLight;
-            appearance20.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
-            this.ultraComboZellen.DisplayLayout.Override.CellAppearance = appearance20;
+            appearance20.BackColor = System.Drawing.Color.Transparent;
+            this.ultraComboZellen.DisplayLayout.Override.CardAreaAppearance = appearance20;
+            appearance21.BackColor = System.Drawing.SystemColors.Control;
+            appearance21.BackColor2 = System.Drawing.SystemColors.ControlLightLight;
+            appearance21.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+            this.ultraComboZellen.DisplayLayout.Override.CellAppearance = appearance21;
             this.ultraComboZellen.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.EditAndSelectText;
             this.ultraComboZellen.DisplayLayout.Override.CellPadding = 2;
             this.ultraComboZellen.DisplayLayout.Override.CellSpacing = 2;
-            appearance21.BackColor = System.Drawing.SystemColors.Control;
-            appearance21.BackColor2 = System.Drawing.SystemColors.ControlDark;
-            appearance21.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
-            appearance21.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
-            appearance21.BorderColor = System.Drawing.SystemColors.Window;
-            this.ultraComboZellen.DisplayLayout.Override.GroupByRowAppearance = appearance21;
             appearance22.BackColor = System.Drawing.SystemColors.Control;
             appearance22.BackColor2 = System.Drawing.SystemColors.ControlDark;
-            appearance22.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
-            appearance22.FontData.ItalicAsString = "True";
-            appearance22.TextHAlignAsString = "Left";
-            appearance22.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
-            this.ultraComboZellen.DisplayLayout.Override.HeaderAppearance = appearance22;
+            appearance22.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
+            appearance22.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance22.BorderColor = System.Drawing.SystemColors.Window;
+            this.ultraComboZellen.DisplayLayout.Override.GroupByRowAppearance = appearance22;
+            appearance23.BackColor = System.Drawing.SystemColors.Control;
+            appearance23.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance23.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+            appearance23.FontData.ItalicAsString = "True";
+            appearance23.TextHAlignAsString = "Left";
+            appearance23.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
+            this.ultraComboZellen.DisplayLayout.Override.HeaderAppearance = appearance23;
             this.ultraComboZellen.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
             this.ultraComboZellen.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.WindowsXPCommand;
             this.ultraComboZellen.DisplayLayout.Override.MergedCellStyle = Infragistics.Win.UltraWinGrid.MergedCellStyle.Never;
-            appearance23.BorderColor = System.Drawing.SystemColors.ControlDark;
-            this.ultraComboZellen.DisplayLayout.Override.RowAppearance = appearance23;
             appearance24.BorderColor = System.Drawing.SystemColors.ControlDark;
-            appearance24.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ultraComboZellen.DisplayLayout.Override.RowSelectorAppearance = appearance24;
+            this.ultraComboZellen.DisplayLayout.Override.RowAppearance = appearance24;
+            appearance25.BorderColor = System.Drawing.SystemColors.ControlDark;
+            appearance25.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ultraComboZellen.DisplayLayout.Override.RowSelectorAppearance = appearance25;
             this.ultraComboZellen.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.False;
             this.ultraComboZellen.DisplayLayout.Override.RowSpacingAfter = 1;
             this.ultraComboZellen.DisplayLayout.Override.RowSpacingBefore = 2;
-            appearance25.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            appearance25.BackColor2 = System.Drawing.SystemColors.ActiveCaption;
-            appearance25.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
-            this.ultraComboZellen.DisplayLayout.Override.SelectedRowAppearance = appearance25;
+            appearance26.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            appearance26.BackColor2 = System.Drawing.SystemColors.ActiveCaption;
+            appearance26.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+            this.ultraComboZellen.DisplayLayout.Override.SelectedRowAppearance = appearance26;
             this.ultraComboZellen.DisplayLayout.Override.SummaryDisplayArea = Infragistics.Win.UltraWinGrid.SummaryDisplayAreas.None;
             this.ultraComboZellen.DisplayLayout.Override.SupportDataErrorInfo = Infragistics.Win.UltraWinGrid.SupportDataErrorInfo.None;
-            appearance26.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ultraComboZellen.DisplayLayout.Override.TemplateAddRowAppearance = appearance26;
+            appearance27.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.ultraComboZellen.DisplayLayout.Override.TemplateAddRowAppearance = appearance27;
             this.ultraComboZellen.DisplayLayout.RowConnectorColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ultraComboZellen.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
             this.ultraComboZellen.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
@@ -1024,13 +1082,13 @@
             this.ultraComboZellen.DisplayLayout.ViewStyleBand = Infragistics.Win.UltraWinGrid.ViewStyleBand.OutlookGroupBy;
             this.ultraComboZellen.DisplayStyle = Infragistics.Win.EmbeddableElementDisplayStyle.Standard;
             this.ultraComboZellen.Dock = System.Windows.Forms.DockStyle.Fill;
-            appearance27.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ultraComboZellen.DropDownResizeHandleAppearance = appearance27;
+            appearance28.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.ultraComboZellen.DropDownResizeHandleAppearance = appearance28;
             this.ultraComboZellen.EditAreaDisplayStyle = Infragistics.Win.UltraWinGrid.EditAreaDisplayStyle.DisplayText;
             this.ultraComboZellen.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ultraComboZellen.Location = new System.Drawing.Point(10, 0);
             this.ultraComboZellen.Name = "ultraComboZellen";
-            this.ultraComboZellen.Size = new System.Drawing.Size(190, 40);
+            this.ultraComboZellen.Size = new System.Drawing.Size(190, 43);
             this.ultraComboZellen.TabIndex = 1;
             this.ultraComboZellen.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
             this.ultraComboZellen.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
@@ -1050,12 +1108,12 @@
             // 
             // ultraTilePanel1
             // 
-            appearance28.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ultraTilePanel1.Appearance = appearance28;
+            appearance29.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.ultraTilePanel1.Appearance = appearance29;
             this.ultraTilePanel1.BorderStyle = Infragistics.Win.UIElementBorderStyle.None;
             this.ultraTilePanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            appearance29.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ultraTilePanel1.DropAreaAppearance = appearance29;
+            appearance30.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.ultraTilePanel1.DropAreaAppearance = appearance30;
             this.ultraTilePanel1.DropAreaBorderStyle = Infragistics.Win.UIElementBorderStyle.None;
             this.ultraTilePanel1.EmptyTileAreaBorderStyle = Infragistics.Win.UIElementBorderStyle.None;
             this.ultraTilePanel1.LargeTilePosition = Infragistics.Win.Misc.LargeTilePosition.Right;
@@ -1063,14 +1121,14 @@
             this.ultraTilePanel1.Margin = new System.Windows.Forms.Padding(0);
             this.ultraTilePanel1.MaximumColumns = 2;
             this.ultraTilePanel1.MaximumRows = 1;
-            this.ultraTilePanel1.MaximumSize = new System.Drawing.Size(0, 25);
+            this.ultraTilePanel1.MaximumSize = new System.Drawing.Size(0, 100);
             this.ultraTilePanel1.MinimumColumns = 1;
             this.ultraTilePanel1.MinimumRows = 1;
             this.ultraTilePanel1.MinimumSize = new System.Drawing.Size(0, 40);
             this.ultraTilePanel1.MinimumTileSize = new System.Drawing.Size(0, 25);
             this.ultraTilePanel1.Name = "ultraTilePanel1";
             this.ultraTilePanel1.NormalModeDimensions = new System.Drawing.Size(2, 1);
-            this.ultraTilePanel1.Size = new System.Drawing.Size(919, 40);
+            this.ultraTilePanel1.Size = new System.Drawing.Size(919, 43);
             this.ultraTilePanel1.TabIndex = 0;
             this.ultraTilePanel1.Tiles.Add(this.ultraTile1);
             this.ultraTilePanel1.Tiles.Add(this.ultraTile2);
@@ -1085,14 +1143,14 @@
             this.ultraTile1.Caption = "";
             this.ultraTile1.Control = this.tableLayoutPanelButtons;
             this.ultraTile1.Controls.Add(this.tableLayoutPanelButtons);
-            this.ultraTile1.MaximumSize = new System.Drawing.Size(0, 25);
+            this.ultraTile1.MaximumSize = new System.Drawing.Size(0, 80);
             this.ultraTile1.Name = "ultraTile1";
             this.ultraTile1.PositionInNormalMode = new System.Drawing.Point(0, 0);
-            appearance35.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ultraTile1.Settings.Appearance = appearance35;
+            appearance36.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.ultraTile1.Settings.Appearance = appearance36;
             this.ultraTile1.Settings.BorderStyle = Infragistics.Win.UIElementBorderStyle.None;
             this.ultraTile1.Settings.HeaderPosition = Infragistics.Win.Misc.TileHeaderPosition.Hidden;
-            this.ultraTile1.Settings.MaximumSize = new System.Drawing.Size(0, 25);
+            this.ultraTile1.Settings.MaximumSize = new System.Drawing.Size(0, 80);
             this.ultraTile1.Settings.ShowCloseButton = Infragistics.Win.DefaultableBoolean.False;
             this.ultraTile1.Settings.ShowStateChangeButton = Infragistics.Win.DefaultableBoolean.False;
             this.ultraTile1.Settings.ShowTileShadow = Infragistics.Win.DefaultableBoolean.False;
@@ -1101,6 +1159,9 @@
             // 
             // tableLayoutPanelButtons
             // 
+            this.tableLayoutPanelButtons.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanelButtons.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.tableLayoutPanelButtons.ColumnCount = 3;
             this.tableLayoutPanelButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -1110,10 +1171,10 @@
             this.tableLayoutPanelButtons.Controls.Add(this.ultraButtonAccept, 1, 0);
             this.tableLayoutPanelButtons.Controls.Add(this.ultraButtonErase, 0, 0);
             this.tableLayoutPanelButtons.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.tableLayoutPanelButtons.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelButtons.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.tableLayoutPanelButtons.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanelButtons.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanelButtons.MaximumSize = new System.Drawing.Size(0, 25);
             this.tableLayoutPanelButtons.Name = "tableLayoutPanelButtons";
             this.tableLayoutPanelButtons.RowCount = 1;
             this.tableLayoutPanelButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -1122,10 +1183,11 @@
             // 
             // ultraButtonFunktion
             // 
-            appearance30.BackColor = System.Drawing.SystemColors.ControlDark;
-            appearance30.Image = ((object)(resources.GetObject("appearance30.Image")));
-            appearance30.ImageHAlign = Infragistics.Win.HAlign.Center;
-            this.ultraButtonFunktion.Appearance = appearance30;
+            appearance31.BackColor = System.Drawing.SystemColors.ControlDark;
+            appearance31.Image = ((object)(resources.GetObject("appearance31.Image")));
+            appearance31.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance31.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.ultraButtonFunktion.Appearance = appearance31;
             this.ultraButtonFunktion.ButtonStyle = Infragistics.Win.UIElementButtonStyle.FlatBorderless;
             this.ultraButtonFunktion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraButtonFunktion.Location = new System.Drawing.Point(111, 3);
@@ -1139,15 +1201,15 @@
             // 
             // ultraButtonAccept
             // 
-            appearance31.BackColor = System.Drawing.SystemColors.ControlDark;
-            appearance31.Image = ((object)(resources.GetObject("appearance31.Image")));
-            appearance31.ImageHAlign = Infragistics.Win.HAlign.Center;
-            this.ultraButtonAccept.Appearance = appearance31;
-            this.ultraButtonAccept.ButtonStyle = Infragistics.Win.UIElementButtonStyle.FlatBorderless;
-            this.ultraButtonAccept.Dock = System.Windows.Forms.DockStyle.Fill;
             appearance32.BackColor = System.Drawing.SystemColors.ControlDark;
             appearance32.Image = ((object)(resources.GetObject("appearance32.Image")));
-            this.ultraButtonAccept.HotTrackAppearance = appearance32;
+            appearance32.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance32.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.ultraButtonAccept.Appearance = appearance32;
+            this.ultraButtonAccept.ButtonStyle = Infragistics.Win.UIElementButtonStyle.FlatBorderless;
+            this.ultraButtonAccept.Dock = System.Windows.Forms.DockStyle.Fill;
+            appearance33.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.ultraButtonAccept.HotTrackAppearance = appearance33;
             this.ultraButtonAccept.Location = new System.Drawing.Point(57, 3);
             this.ultraButtonAccept.Name = "ultraButtonAccept";
             this.ultraButtonAccept.Size = new System.Drawing.Size(48, 19);
@@ -1160,16 +1222,15 @@
             // 
             // ultraButtonErase
             // 
-            appearance33.BackColor = System.Drawing.SystemColors.ControlDark;
-            appearance33.Image = ((object)(resources.GetObject("appearance33.Image")));
-            appearance33.ImageHAlign = Infragistics.Win.HAlign.Center;
-            appearance33.ImageVAlign = Infragistics.Win.VAlign.Middle;
-            this.ultraButtonErase.Appearance = appearance33;
-            this.ultraButtonErase.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Borderless;
             appearance34.BackColor = System.Drawing.SystemColors.ControlDark;
-            appearance34.ForeColor = System.Drawing.SystemColors.ControlText;
             appearance34.Image = ((object)(resources.GetObject("appearance34.Image")));
-            this.ultraButtonErase.HotTrackAppearance = appearance34;
+            appearance34.ImageHAlign = Infragistics.Win.HAlign.Center;
+            appearance34.ImageVAlign = Infragistics.Win.VAlign.Middle;
+            this.ultraButtonErase.Appearance = appearance34;
+            this.ultraButtonErase.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Borderless;
+            appearance35.BackColor = System.Drawing.SystemColors.ControlDark;
+            appearance35.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.ultraButtonErase.HotTrackAppearance = appearance35;
             this.ultraButtonErase.Location = new System.Drawing.Point(3, 3);
             this.ultraButtonErase.Name = "ultraButtonErase";
             this.ultraButtonErase.ShowFocusRect = false;
@@ -1189,14 +1250,14 @@
             this.ultraTile2.Controls.Add(this.ultraTextEditor1);
             this.ultraTile2.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.ultraTile2.IndexInLargeTileCollection = 0;
-            this.ultraTile2.MaximumSize = new System.Drawing.Size(0, 25);
+            this.ultraTile2.MaximumSize = new System.Drawing.Size(0, 80);
             this.ultraTile2.Name = "ultraTile2";
             this.ultraTile2.PositionInNormalMode = new System.Drawing.Point(1, 0);
-            appearance38.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ultraTile2.Settings.Appearance = appearance38;
+            appearance39.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.ultraTile2.Settings.Appearance = appearance39;
             this.ultraTile2.Settings.BorderStyle = Infragistics.Win.UIElementBorderStyle.None;
             this.ultraTile2.Settings.HeaderPosition = Infragistics.Win.Misc.TileHeaderPosition.Hidden;
-            this.ultraTile2.Settings.MaximumSize = new System.Drawing.Size(0, 25);
+            this.ultraTile2.Settings.MaximumSize = new System.Drawing.Size(0, 80);
             this.ultraTile2.Settings.ShowCloseButton = Infragistics.Win.DefaultableBoolean.False;
             this.ultraTile2.Settings.ShowStateChangeButton = Infragistics.Win.DefaultableBoolean.False;
             this.ultraTile2.Settings.ShowTileShadow = Infragistics.Win.DefaultableBoolean.False;
@@ -1207,26 +1268,30 @@
             // ultraTextEditor1
             // 
             this.ultraTextEditor1.AcceptsReturn = true;
-            appearance36.BackColor = System.Drawing.SystemColors.ControlDark;
-            appearance36.Cursor = System.Windows.Forms.Cursors.Arrow;
-            appearance36.FontData.SizeInPoints = 8F;
-            appearance36.TextHAlignAsString = "Left";
-            appearance36.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
-            appearance36.TextVAlignAsString = "Top";
-            this.ultraTextEditor1.Appearance = appearance36;
+            this.ultraTextEditor1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            appearance37.BackColor = System.Drawing.SystemColors.ControlDark;
+            appearance37.Cursor = System.Windows.Forms.Cursors.Arrow;
+            appearance37.FontData.SizeInPoints = 8F;
+            appearance37.TextHAlignAsString = "Left";
+            appearance37.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
+            appearance37.TextVAlignAsString = "Top";
+            this.ultraTextEditor1.Appearance = appearance37;
             this.ultraTextEditor1.AutoSize = false;
             this.ultraTextEditor1.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ultraTextEditor1.BorderStyle = Infragistics.Win.UIElementBorderStyle.None;
-            appearance37.BackColor = System.Drawing.Color.DarkGray;
-            dropDownEditorButton1.Appearance = appearance37;
+            appearance38.BackColor = System.Drawing.Color.DarkGray;
+            dropDownEditorButton1.Appearance = appearance38;
             dropDownEditorButton1.ButtonStyle = Infragistics.Win.UIElementButtonStyle.FlatBorderless;
             this.ultraTextEditor1.ButtonsRight.Add(dropDownEditorButton1);
             this.ultraTextEditor1.DisplayStyle = Infragistics.Win.EmbeddableElementDisplayStyle.Standard;
-            this.ultraTextEditor1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraTextEditor1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ultraTextEditor1.ImeMode = System.Windows.Forms.ImeMode.On;
             this.ultraTextEditor1.Location = new System.Drawing.Point(0, 0);
             this.ultraTextEditor1.Margin = new System.Windows.Forms.Padding(0);
+            this.ultraTextEditor1.MaximumSize = new System.Drawing.Size(0, 80);
+            this.ultraTextEditor1.Multiline = true;
             this.ultraTextEditor1.Name = "ultraTextEditor1";
             this.ultraTextEditor1.Size = new System.Drawing.Size(682, 25);
             this.ultraTextEditor1.TabIndex = 1;
@@ -1234,65 +1299,6 @@
             this.ultraTextEditor1.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
             this.ultraTextEditor1.EditorButtonClick += new Infragistics.Win.UltraWinEditors.EditorButtonEventHandler(this.OnUltraTextEditor1EditorButtonClick);
             this.ultraTextEditor1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ultraTextEditor1_MouseDown);
-            // 
-            // richTextBoxZelle
-            // 
-            this.richTextBoxZelle.BackColor = System.Drawing.Color.DarkGray;
-            this.richTextBoxZelle.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBoxZelle.ForeColor = System.Drawing.Color.Black;
-            this.richTextBoxZelle.Location = new System.Drawing.Point(408, 96);
-            this.richTextBoxZelle.Name = "richTextBoxZelle";
-            this.richTextBoxZelle.Size = new System.Drawing.Size(100, 96);
-            this.richTextBoxZelle.TabIndex = 5;
-            this.richTextBoxZelle.Text = "";
-            this.richTextBoxZelle.Visible = false;
-            // 
-            // Kommentar1
-            // 
-            this.Kommentar1.BackColor = System.Drawing.Color.LemonChiffon;
-            this.Kommentar1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Kommentar1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Kommentar1.Location = new System.Drawing.Point(272, 324);
-            this.Kommentar1.Name = "Kommentar1";
-            this.Kommentar1.ReadOnly = true;
-            this.Kommentar1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.Kommentar1.Size = new System.Drawing.Size(328, 228);
-            this.Kommentar1.TabIndex = 4;
-            this.Kommentar1.TabStop = false;
-            this.Kommentar1.Text = "";
-            this.Kommentar1.Visible = false;
-            this.Kommentar1.ContentsResized += new System.Windows.Forms.ContentsResizedEventHandler(this.Kommentar1_ContentsResized);
-            // 
-            // ultraTextEditorBloecke
-            // 
-            appearance39.BackColor = System.Drawing.SystemColors.Control;
-            appearance39.FontData.SizeInPoints = 10F;
-            this.ultraTextEditorBloecke.Appearance = appearance39;
-            this.ultraTextEditorBloecke.BackColor = System.Drawing.SystemColors.Control;
-            this.ultraTextEditorBloecke.DisplayStyle = Infragistics.Win.EmbeddableElementDisplayStyle.Standard;
-            this.ultraTextEditorBloecke.HideSelection = false;
-            this.ultraTextEditorBloecke.Location = new System.Drawing.Point(21, 437);
-            this.ultraTextEditorBloecke.Multiline = true;
-            this.ultraTextEditorBloecke.Name = "ultraTextEditorBloecke";
-            this.ultraTextEditorBloecke.Size = new System.Drawing.Size(146, 63);
-            this.ultraTextEditorBloecke.TabIndex = 2;
-            this.ultraTextEditorBloecke.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
-            this.ultraTextEditorBloecke.Visible = false;
-            this.ultraTextEditorBloecke.ValueChanged += new System.EventHandler(this.ultraTextEditorBloecke_ValueChanged);
-            // 
-            // ultraDateTimeEditorPrjStart
-            // 
-            this.ultraDateTimeEditorPrjStart.BorderStyle = Infragistics.Win.UIElementBorderStyle.None;
-            this.ultraDateTimeEditorPrjStart.DisplayStyle = Infragistics.Win.EmbeddableElementDisplayStyle.Standard;
-            this.ultraDateTimeEditorPrjStart.FormatProvider = new System.Globalization.CultureInfo("de-DE");
-            this.ultraDateTimeEditorPrjStart.Location = new System.Drawing.Point(117, 130);
-            this.ultraDateTimeEditorPrjStart.Name = "ultraDateTimeEditorPrjStart";
-            this.ultraDateTimeEditorPrjStart.Size = new System.Drawing.Size(144, 17);
-            this.ultraDateTimeEditorPrjStart.TabIndex = 1;
-            this.ultraDateTimeEditorPrjStart.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
-            this.ultraDateTimeEditorPrjStart.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
-            this.ultraDateTimeEditorPrjStart.Visible = false;
-            this.ultraDateTimeEditorPrjStart.ValueChanged += new System.EventHandler(this.OnUltraDateTimeEditorPrjStartValueChanged);
             // 
             // ultraTouchProvider1
             // 
@@ -1345,8 +1351,8 @@
             // 
             // ultraToolbarsManager
             // 
-            appearance133.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ultraToolbarsManager.Appearance = appearance133;
+            appearance130.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.ultraToolbarsManager.Appearance = appearance130;
             this.ultraToolbarsManager.DesignerFlags = 1;
             this.ultraToolbarsManager.Style = Infragistics.Win.UltraWinToolbars.ToolbarStyle.Office2013;
             // 
@@ -1523,7 +1529,6 @@
             ribbonGroup6,
             ribbonGroup7});
             ribbonTab1.MergeOrder = 1;
-            appearance62.Image = ((object)(resources.GetObject("appearance62.Image")));
             appearance62.ImageBackgroundAlpha = Infragistics.Win.Alpha.Transparent;
             appearance62.ImageHAlign = Infragistics.Win.HAlign.Center;
             appearance62.ImageVAlign = Infragistics.Win.VAlign.Middle;
@@ -1762,10 +1767,16 @@
             buttonTool63.SharedPropsInternal.ToolTipTitle = "Unten ausrichten";
             appearance121.Image = ((object)(resources.GetObject("appearance121.Image")));
             buttonTool65.SharedPropsInternal.AppearancesSmall.Appearance = appearance121;
+            buttonTool65.SharedPropsInternal.ToolTipText = "Den Inhalt linksbündig ausrichten";
+            buttonTool65.SharedPropsInternal.ToolTipTitle = "Linksbündig ausrichten";
             appearance122.Image = ((object)(resources.GetObject("appearance122.Image")));
             buttonTool67.SharedPropsInternal.AppearancesSmall.Appearance = appearance122;
+            buttonTool67.SharedPropsInternal.ToolTipTextFormatted = "Den Inhalt näher zum Zellenrand<br/>hin verschieben.<br/>";
+            buttonTool67.SharedPropsInternal.ToolTipTitle = "Einzug verkleinern";
             appearance123.Image = ((object)(resources.GetObject("appearance123.Image")));
             buttonTool69.SharedPropsInternal.AppearancesSmall.Appearance = appearance123;
+            buttonTool69.SharedPropsInternal.ToolTipTextFormatted = "Den Inhalt weiter vom Zellenrand<br/>weg verschieben.<br/>";
+            buttonTool69.SharedPropsInternal.ToolTipTitle = "EInzug vergrößern";
             buttonTool71.SharedPropsInternal.Enabled = false;
             appearance124.Image = "WrapText_16x16.png";
             buttonTool73.SharedPropsInternal.AppearancesLarge.Appearance = appearance124;
@@ -1780,6 +1791,8 @@
             appearance127.Image = ((object)(resources.GetObject("appearance127.Image")));
             popupMenuTool24.SharedPropsInternal.AppearancesSmall.Appearance = appearance127;
             popupMenuTool24.SharedPropsInternal.Caption = "Verbinden und zentrieren";
+            popupMenuTool24.SharedPropsInternal.ToolTipTextFormatted = resources.GetString("popupMenuTool24.SharedPropsInternal.ToolTipTextFormatted");
+            popupMenuTool24.SharedPropsInternal.ToolTipTitle = "Verbinden und zentrieren";
             popupMenuTool24.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
             listTool8});
             appearance128.Image = ((object)(resources.GetObject("appearance128.Image")));
@@ -1787,13 +1800,7 @@
             appearance129.Image = global::Terminplan.Properties.Resources.Erase16;
             buttonTool42.SharedPropsInternal.AppearancesSmall.Appearance = appearance129;
             buttonTool42.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
-            appearance130.Image = ((object)(resources.GetObject("appearance130.Image")));
-            buttonTool78.SharedPropsInternal.AppearancesSmall.Appearance = appearance130;
             buttonTool78.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.DefaultForToolType;
-            appearance131.Image = ((object)(resources.GetObject("appearance131.Image")));
-            buttonTool36.SharedPropsInternal.AppearancesSmall.Appearance = appearance131;
-            appearance132.Image = ((object)(resources.GetObject("appearance132.Image")));
-            buttonTool79.SharedPropsInternal.AppearancesSmall.Appearance = appearance132;
             this.ultraToolbarsManagerStamm.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
             fontListTool2,
             comboBoxTool2,
@@ -1884,9 +1891,9 @@
             this._TerminPlanForm_Toolbars_Dock_Area_Right.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Right;
             this._TerminPlanForm_Toolbars_Dock_Area_Right.ForeColor = System.Drawing.SystemColors.ControlText;
             this._TerminPlanForm_Toolbars_Dock_Area_Right.InitialResizeAreaExtent = 1;
-            this._TerminPlanForm_Toolbars_Dock_Area_Right.Location = new System.Drawing.Point(1150, 153);
+            this._TerminPlanForm_Toolbars_Dock_Area_Right.Location = new System.Drawing.Point(1150, 178);
             this._TerminPlanForm_Toolbars_Dock_Area_Right.Name = "_TerminPlanForm_Toolbars_Dock_Area_Right";
-            this._TerminPlanForm_Toolbars_Dock_Area_Right.Size = new System.Drawing.Size(1, 602);
+            this._TerminPlanForm_Toolbars_Dock_Area_Right.Size = new System.Drawing.Size(1, 577);
             this._TerminPlanForm_Toolbars_Dock_Area_Right.ToolbarsManager = this.ultraToolbarsManagerStamm;
             // 
             // _TerminPlanForm_Toolbars_Dock_Area_Left
@@ -1896,9 +1903,9 @@
             this._TerminPlanForm_Toolbars_Dock_Area_Left.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Left;
             this._TerminPlanForm_Toolbars_Dock_Area_Left.ForeColor = System.Drawing.SystemColors.ControlText;
             this._TerminPlanForm_Toolbars_Dock_Area_Left.InitialResizeAreaExtent = 1;
-            this._TerminPlanForm_Toolbars_Dock_Area_Left.Location = new System.Drawing.Point(0, 153);
+            this._TerminPlanForm_Toolbars_Dock_Area_Left.Location = new System.Drawing.Point(0, 178);
             this._TerminPlanForm_Toolbars_Dock_Area_Left.Name = "_TerminPlanForm_Toolbars_Dock_Area_Left";
-            this._TerminPlanForm_Toolbars_Dock_Area_Left.Size = new System.Drawing.Size(1, 602);
+            this._TerminPlanForm_Toolbars_Dock_Area_Left.Size = new System.Drawing.Size(1, 577);
             this._TerminPlanForm_Toolbars_Dock_Area_Left.ToolbarsManager = this.ultraToolbarsManagerStamm;
             // 
             // _TerminPlanForm_Toolbars_Dock_Area_Bottom
@@ -1921,7 +1928,7 @@
             this._TerminPlanForm_Toolbars_Dock_Area_Top.ForeColor = System.Drawing.SystemColors.ControlText;
             this._TerminPlanForm_Toolbars_Dock_Area_Top.Location = new System.Drawing.Point(0, 0);
             this._TerminPlanForm_Toolbars_Dock_Area_Top.Name = "_TerminPlanForm_Toolbars_Dock_Area_Top";
-            this._TerminPlanForm_Toolbars_Dock_Area_Top.Size = new System.Drawing.Size(1151, 153);
+            this._TerminPlanForm_Toolbars_Dock_Area_Top.Size = new System.Drawing.Size(1151, 178);
             this._TerminPlanForm_Toolbars_Dock_Area_Top.ToolbarsManager = this.ultraToolbarsManagerStamm;
             // 
             // ultraComboEditorFirma
@@ -1983,10 +1990,10 @@
             this.BackColor = System.Drawing.Color.DarkGray;
             this.ClientSize = new System.Drawing.Size(1151, 756);
             this.ControlBox = false;
+            this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.ultraComboEditorFirma);
             this.Controls.Add(this.ultraFormattedLinkLabel1);
             this.Controls.Add(this.zedGraphControl1);
-            this.Controls.Add(this.ultraZoomPanelStammDaten);
             this.Controls.Add(this._TerminPlanForm_Toolbars_Dock_Area_Left);
             this.Controls.Add(this._TerminPlanForm_Toolbars_Dock_Area_Right);
             this.Controls.Add(this._TerminPlanForm_Toolbars_Dock_Area_Bottom);
@@ -1999,11 +2006,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.ultraGridStammDaten)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraDataSource1)).EndInit();
             this.ultraZoomPanelStammDaten.ClientArea.ResumeLayout(false);
+            this.ultraZoomPanelStammDaten.ClientArea.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraZoomPanelStammDaten)).EndInit();
             this.ultraZoomPanelStammDaten.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ultraTextEditorBloecke)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraDateTimeEditorPrjStart)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
-            this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
@@ -2020,8 +2029,6 @@
             this.tableLayoutPanelButtons.ResumeLayout(false);
             this.ultraTile2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ultraTextEditor1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraTextEditorBloecke)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraDateTimeEditorPrjStart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraTouchProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManager)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraToolbarsManagerStamm)).EndInit();
