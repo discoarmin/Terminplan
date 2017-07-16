@@ -551,7 +551,7 @@
             this.ultraGridStammDaten.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ultraGridStammDaten.Location = new System.Drawing.Point(0, 0);
             this.ultraGridStammDaten.Name = "ultraGridStammDaten";
-            this.ultraGridStammDaten.Size = new System.Drawing.Size(1149, 530);
+            this.ultraGridStammDaten.Size = new System.Drawing.Size(1149, 531);
             this.ultraGridStammDaten.SyncWithCurrencyManager = false;
             this.ultraGridStammDaten.TabIndex = 0;
             this.ultraGridStammDaten.AfterCellActivate += new System.EventHandler(this.OnUltraGridStammDatenAfterCellActivate);
@@ -851,7 +851,7 @@
             // 
             // ultraZoomPanelStammDaten
             // 
-            this.ultraZoomPanelStammDaten.AutoScrollMinSize = new System.Drawing.Size(1149, 530);
+            this.ultraZoomPanelStammDaten.AutoScrollMinSize = new System.Drawing.Size(1149, 531);
             this.ultraZoomPanelStammDaten.BorderStyle = Infragistics.Win.UIElementBorderStyle.None;
             // 
             // ultraZoomPanelStammDaten.ClientArea
@@ -864,7 +864,7 @@
             this.ultraZoomPanelStammDaten.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ultraZoomPanelStammDaten.Location = new System.Drawing.Point(0, 0);
             this.ultraZoomPanelStammDaten.Name = "ultraZoomPanelStammDaten";
-            this.ultraZoomPanelStammDaten.Size = new System.Drawing.Size(1149, 530);
+            this.ultraZoomPanelStammDaten.Size = new System.Drawing.Size(1149, 531);
             this.ultraZoomPanelStammDaten.TabIndex = 13;
             this.ultraZoomPanelStammDaten.Tag = "StammDaten";
             this.ultraZoomPanelStammDaten.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
@@ -950,7 +950,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.ultraZoomPanelStammDaten);
             this.splitContainer1.Panel2MinSize = 40;
             this.splitContainer1.Size = new System.Drawing.Size(1149, 577);
-            this.splitContainer1.SplitterDistance = 43;
+            this.splitContainer1.SplitterDistance = 42;
             this.splitContainer1.TabIndex = 1;
             // 
             // splitContainer2
@@ -970,7 +970,7 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.ultraTilePanel1);
             this.splitContainer2.Panel2.Margin = new System.Windows.Forms.Padding(0, 0, 50, 0);
-            this.splitContainer2.Size = new System.Drawing.Size(1149, 43);
+            this.splitContainer2.Size = new System.Drawing.Size(1149, 42);
             this.splitContainer2.SplitterDistance = 210;
             this.splitContainer2.SplitterWidth = 20;
             this.splitContainer2.TabIndex = 0;
@@ -1088,7 +1088,7 @@
             this.ultraComboZellen.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ultraComboZellen.Location = new System.Drawing.Point(10, 0);
             this.ultraComboZellen.Name = "ultraComboZellen";
-            this.ultraComboZellen.Size = new System.Drawing.Size(190, 43);
+            this.ultraComboZellen.Size = new System.Drawing.Size(190, 42);
             this.ultraComboZellen.TabIndex = 1;
             this.ultraComboZellen.UseFlatMode = Infragistics.Win.DefaultableBoolean.True;
             this.ultraComboZellen.UseOsThemes = Infragistics.Win.DefaultableBoolean.False;
@@ -1128,7 +1128,7 @@
             this.ultraTilePanel1.MinimumTileSize = new System.Drawing.Size(0, 25);
             this.ultraTilePanel1.Name = "ultraTilePanel1";
             this.ultraTilePanel1.NormalModeDimensions = new System.Drawing.Size(2, 1);
-            this.ultraTilePanel1.Size = new System.Drawing.Size(919, 43);
+            this.ultraTilePanel1.Size = new System.Drawing.Size(919, 42);
             this.ultraTilePanel1.TabIndex = 0;
             this.ultraTilePanel1.Tiles.Add(this.ultraTile1);
             this.ultraTilePanel1.Tiles.Add(this.ultraTile2);
@@ -1791,12 +1791,14 @@
             appearance127.Image = ((object)(resources.GetObject("appearance127.Image")));
             popupMenuTool24.SharedPropsInternal.AppearancesSmall.Appearance = appearance127;
             popupMenuTool24.SharedPropsInternal.Caption = "Verbinden und zentrieren";
-            popupMenuTool24.SharedPropsInternal.ToolTipTextFormatted = resources.GetString("popupMenuTool24.SharedPropsInternal.ToolTipTextFormatted");
+            popupMenuTool24.SharedPropsInternal.ToolTipTextFormatted = resources.GetString("resource.ToolTipTextFormatted1");
             popupMenuTool24.SharedPropsInternal.ToolTipTitle = "Verbinden und zentrieren";
             popupMenuTool24.Tools.AddRange(new Infragistics.Win.UltraWinToolbars.ToolBase[] {
             listTool8});
             appearance128.Image = ((object)(resources.GetObject("appearance128.Image")));
             buttonTool74.SharedPropsInternal.AppearancesSmall.Appearance = appearance128;
+            buttonTool74.SharedPropsInternal.ToolTipTextFormatted = "Den Inhalt rechtsbündig<br/>ausrichten<br/>";
+            buttonTool74.SharedPropsInternal.ToolTipTitle = "Rechtsbündig ausrichten";
             appearance129.Image = global::Terminplan.Properties.Resources.Erase16;
             buttonTool42.SharedPropsInternal.AppearancesSmall.Appearance = appearance129;
             buttonTool42.SharedPropsInternal.DisplayStyle = Infragistics.Win.UltraWinToolbars.ToolDisplayStyle.ImageAndText;
